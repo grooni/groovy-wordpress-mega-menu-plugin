@@ -151,7 +151,12 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 
 		$db_version = get_option( GROOVY_MENU_DB_VER_OPTION );
 
-		if ( version_compare( $db_version, '1.7.0.619', '>=' ) ) {
+		$lver = false;
+		if ( defined( 'GROOVY_MENU_LVER' ) && '2' === GROOVY_MENU_LVER ) {
+			$lver = true;
+		}
+
+		if ( $lver || version_compare( $db_version, '1.7.0.619', '>=' ) ) {
 			$val = $this->getGMNavMenuMeta( $item_id, $param_name, $flag );
 		} else {
 			$val = get_post_meta( $item_id, $param_name, $flag );

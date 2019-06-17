@@ -372,9 +372,7 @@ if ( ! class_exists( 'GroovyMenuPreset' ) ) {
 
 			// load cache with data.
 			foreach ( $raw_base_data as $preset ) {
-				if ( $lver && $default_preset && intval( $preset->ID ) !== $default_preset ) {
-					continue;
-				} elseif ( $lver && 0 === $default_preset ) {
+				if ( $lver ) {
 					$default_preset = intval( $preset->ID );
 				}
 
@@ -386,6 +384,10 @@ if ( ! class_exists( 'GroovyMenuPreset' ) ) {
 				$preset_obj->id   = strval( $preset->ID );
 				$preset_obj->name = $preset->post_title;
 				$cache['obj'][]   = $preset_obj;
+
+				if ( $lver ) {
+					break;
+				}
 			}
 
 			$presets = array();
