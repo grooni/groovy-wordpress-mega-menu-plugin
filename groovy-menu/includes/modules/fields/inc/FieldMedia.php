@@ -28,7 +28,7 @@ class FieldMedia extends \GroovyMenu\FieldField {
 			$thumbnail_src = $image;
 
 			if ( $image_id ) {
-				$thumbnail     = wp_get_attachment_image_src( $image_id, 'thumbnail' );
+				$thumbnail     = wp_get_attachment_image_src( $image_id, 'medium' );
 				$thumbnail_src = empty( $thumbnail[0] ) ? $image : $thumbnail[0];
 			}
 
