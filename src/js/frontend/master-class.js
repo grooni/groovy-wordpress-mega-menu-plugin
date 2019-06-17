@@ -291,7 +291,7 @@ class GroovyMenu {
 
     }, 50));
 
-    // Append .gm-main-menu-wrapper to body
+    // Append .gm-main-menu-wrapper css class to body
     if (headerStyle === 2) {
       navbar.after(mainMenuWrapper);
     }
