@@ -53,6 +53,11 @@ function groovyMenu( $args = array() ) {
 		return null;
 	}
 
+	$lver = false;
+	if ( defined( 'GROOVY_MENU_LVER' ) && '2' === GROOVY_MENU_LVER ) {
+		$lver = true;
+	}
+
 	$defaults_args = array(
 		'menu'           => GroovyMenuUtils::getMasterNavmenu(),
 		'gm_preset_id'   => GroovyMenuUtils::getMasterPreset(),
@@ -77,6 +82,8 @@ function groovyMenu( $args = array() ) {
 			GroovyMenuUtils::getMasterPreset()
 			:
 			$args['gm_preset_id'];
+
+	gm_debug_value( $args['gm_preset_id'] ); // TODO debug ---.
 
 
 	// Merge incoming params with defaults.
@@ -116,6 +123,17 @@ function groovyMenu( $args = array() ) {
 			$nav_menu_obj = ! empty( $cat_nav_menu ) ? wp_get_nav_menu_object( $cat_nav_menu ) : null;
 			if ( ! empty( $nav_menu_obj ) && ! empty( $nav_menu_obj->term_id ) ) {
 				$args['menu'] = $nav_menu_obj->term_id;
+			}
+		}
+	}
+
+	if ( is_null( $args['gm_preset_id'] ) && $lver ) {
+		$presets_list = GroovyMenuPreset::getAll();
+		if ( is_array( $presets_list ) ) {
+			foreach ( $presets_list as $item ) {
+				if ( isset( $item->id ) && $args['gm_preset_id'] = $item->id ) {
+					break;
+				}
 			}
 		}
 	}
