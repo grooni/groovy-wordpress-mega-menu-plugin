@@ -343,6 +343,7 @@ if ( ! class_exists( 'GroovyMenuPreset' ) ) {
 
 			if ( $disable_cache ) {
 				$cache_enable = false;
+
 				return null;
 			}
 
@@ -355,9 +356,6 @@ if ( ! class_exists( 'GroovyMenuPreset' ) ) {
 			if ( defined( 'GROOVY_MENU_LVER' ) && '2' === GROOVY_MENU_LVER ) {
 				$lver = true;
 			}
-			$default_preset = get_option( self::DEFAULT_PRESET_OPTION );
-			$default_preset = empty( $default_preset ) ? 0 : intval( $default_preset );
-			$default_preset = empty( $default_preset ) ? 0 : $default_preset;
 
 			// get posts.
 			$args          = array(
@@ -372,10 +370,6 @@ if ( ! class_exists( 'GroovyMenuPreset' ) ) {
 
 			// load cache with data.
 			foreach ( $raw_base_data as $preset ) {
-				if ( $lver ) {
-					$default_preset = intval( $preset->ID );
-				}
-
 				// as key_value.
 				$cache['key_value'][ strval( $preset->ID ) ] = $preset->post_title;
 
