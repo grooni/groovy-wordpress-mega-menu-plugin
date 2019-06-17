@@ -1,5 +1,4 @@
 export function uploadMedia (e) {
-  console.log('uploadMedia')
   e.preventDefault();
   let changeEvent = new Event('change');
   let uploadInput = this
@@ -55,7 +54,6 @@ export function changeMedia () {
     logoImg.setAttribute('src', this.dataset.thumbnail);
     moduleMedia.classList.add('gm-gui__module__media--selected');
     moduleMedia.querySelector('.gm-media-preview').innerHTML = '';
-    console.log(logoImg)
     moduleMedia.querySelector('.gm-media-preview')
       .append(logoImg);
   } else {
