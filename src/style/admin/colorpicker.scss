@@ -3,3 +3,26 @@
   width: 42px;
   border: 1px solid #ddd;
 }
+
+.pcr-app .pcr-selection .pcr-color-chooser .pcr-slider, .pcr-app .pcr-selection .pcr-color-opacity .pcr-slider {
+  width: 16px;
+  border-radius: 0.15em;
+}
+
+.pickr .pcr-button::before,
+.pcr-app .pcr-selection .pcr-color-palette .pcr-palette::before {
+  background-size: 16px;
+}
+
+.pcr-app .pcr-selection .pcr-color-palette {
+  height: 100%;
+}
+
+.pcr-app {
+  width: 250px;
+  height: 250px;
+}
+
+.pcr-type {
+  display: none;
+}

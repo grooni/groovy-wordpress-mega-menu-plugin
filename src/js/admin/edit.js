@@ -179,9 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
-  console.log(uploadMediaBtns)
   uploadMediaBtns.forEach((btn) => {
-    console.log(btn)
     btn.addEventListener('click', uploadMedia);
   });
 
