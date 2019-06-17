@@ -1,6 +1,7 @@
 import axios from 'axios';
 import tingle from 'tingle.js';
 import { resetPreviewModalState } from './modal';
+import { uploadMedia, removeMedia, changeMedia } from './media';
 
 document.addEventListener('DOMContentLoaded', () => {
   let dropDowns = document.querySelectorAll('.preset-options');
@@ -17,6 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
   let createNewPresetBtn = document.querySelector('.preset--create-new');
   let presetImportFromLibBtn = document.querySelectorAll('.preset-import-from-library');
   let presetNeedScreenshot = document.querySelectorAll('.preset--need-screenshot');
+  const uploadMediaBtns = document.querySelectorAll('.gm-upload-btn');
+  const removeMediaBtns = document.querySelectorAll('.gm-remove-btn');
+  const uploadMediaInputs = document.querySelectorAll('.gm-upload-input');
+  const changeEvent = new Event('change');
+
 
   function cancelEdit () {
     dropDowns.forEach(function (dropDown) {
@@ -67,6 +73,19 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('click', () => {
     closeDropdown();
     cancelEdit();
+  });
+
+  uploadMediaBtns.forEach((btn) => {
+    btn.addEventListener('click', uploadMedia);
+  });
+
+  removeMediaBtns.forEach((btn) => {
+    btn.addEventListener('click', removeMedia);
+  });
+
+  uploadMediaInputs.forEach((input) => {
+    input.addEventListener('change', changeMedia);
+    input.dispatchEvent(changeEvent);
   });
 
   function openDropdown (preset) {

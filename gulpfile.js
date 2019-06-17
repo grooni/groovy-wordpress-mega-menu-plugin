@@ -72,11 +72,11 @@ gulp.task('style:build', function () {
     .pipe(gulp.dest(path.build.css))
 
     // RTL
-    .pipe(save.restore('for-rtl'))
-    .pipe(rtlcss())
-    .pipe(rename({suffix: '-rtl'}))
+    // .pipe(save.restore('for-rtl'))
+    // .pipe(rtlcss())
+    // .pipe(rename({suffix: '-rtl'}))
     // .pipe(envConfig.production ? cleanCSS() : gutil.noop())
-    .pipe(gulp.dest(path.build.css))
+    // .pipe(gulp.dest(path.build.css))
 
     .pipe(reload({ stream: true }));
 });

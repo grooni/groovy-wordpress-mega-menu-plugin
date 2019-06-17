@@ -1,4 +1,5 @@
 export function uploadMedia (e) {
+  console.log('uploadMedia')
   e.preventDefault();
   let changeEvent = new Event('change');
   let uploadInput = this
@@ -19,12 +20,11 @@ export function uploadMedia (e) {
         .toJSON();
 
       var thumbImage = uploadedImage.url;
-
       if ('sizes' in uploadedImage) {
         if ('thumbnail' in uploadedImage.sizes) {
-          if ('url' in uploadedImage.sizes.thumbnail) {
-            if (uploadedImage.sizes.thumbnail.url.length) {
-              thumbImage = uploadedImage.sizes.thumbnail.url;
+          if ('url' in uploadedImage.sizes.medium) {
+            if (uploadedImage.sizes.medium.url.length) {
+              thumbImage = uploadedImage.sizes.medium.url;
             }
           }
         }
@@ -58,6 +58,8 @@ export function changeMedia () {
 
     logoImg.setAttribute('src', this.dataset.thumbnail);
     moduleMedia.classList.add('gm-gui__module__media--selected');
+    moduleMedia.querySelector('.gm-media-preview').innerHTML = '';
+    console.log(logoImg)
     moduleMedia.querySelector('.gm-media-preview')
       .append(logoImg);
   } else {
