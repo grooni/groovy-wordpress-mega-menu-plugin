@@ -28,7 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
     return false;
   }
 
-  gsForm.addEventListener('submit', submitGlobalSettings);
+  if (gsForm !== null) {
+    gsForm.addEventListener('submit', submitGlobalSettings);
+  }
 
   gsTabs.forEach((tab) => {
     tab.addEventListener('click', function (e) {

@@ -101,7 +101,7 @@ class GroovyMenu {
     if (options.hideDropdownBg) {
       let dropdownMenus = document.querySelectorAll('.gm-dropdown-menu');
 
-      dropdownMenus.forEach(function (el) {
+      dropdownMenus.forEach((el) => {
         el.style.backgroundImage = null;
       });
     }
@@ -186,7 +186,7 @@ class GroovyMenu {
     }
 
     if (options.showSubmenu === 'click' || isMobile()) {
-      dropdownItems.forEach(function (dropdownItem) {
+      dropdownItems.forEach((dropdownItem) => {
         dropdownItem.addEventListener('click', initDropdownAction);
       });
     }
@@ -306,7 +306,7 @@ class GroovyMenu {
       body.appendChild(navbarSearchContainer);
     }
 
-    gmSearch.forEach(function (item) {
+    gmSearch.forEach((item) => {
       item.addEventListener('click', function () {
         if (item.classList.contains('fullscreen') || isMobile()) {
           navbarSearchContainer.classList.remove('gm-hidden');
@@ -316,7 +316,6 @@ class GroovyMenu {
           }, 200);
           return;
         }
-
 
         if (headerStyle !== 3 && headerStyle !== 4) {
           dropdownToggle(item.closest('.gm-search'));
