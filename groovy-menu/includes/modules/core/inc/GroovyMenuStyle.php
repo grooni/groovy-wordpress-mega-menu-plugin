@@ -269,7 +269,7 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 			$compiled_css = $this->get( 'general', 'compiled_css' );
 
 			if ( empty( $compiled_css ) ) {
-				$classes_navbar[] = 'gm-no-compiledCss';
+				$classes_navbar[] = 'gm-no-compiled-css';
 			}
 
 			$custom_css_class = $this->getCustomHtmlClass();

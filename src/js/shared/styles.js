@@ -2988,7 +2988,6 @@ export default class GmStyles {
   }
 
   addToHeader (styles) {
-    // todo double check on preview and front
     if (document.querySelector('.gm-compiled-css') !== null) {
       document.querySelector('.gm-compiled-css').remove();
     }

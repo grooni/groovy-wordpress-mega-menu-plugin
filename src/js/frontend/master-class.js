@@ -110,12 +110,12 @@ class GroovyMenu {
       overlapMenu(options);
     }
 
-    if (navbar.classList.contains('gm-no-compiledCss') || isPreview) {
+    if (navbar.classList.contains('gm-no-compiled-css') || isPreview) {
       gmStyles.addToHeader(cssGenerated);
     }
 
     if (!isPreview) {
-      if (navbar.classList.contains('gm-no-compiledCss')
+      if (navbar.classList.contains('gm-no-compiled-css')
         || options.version !== navbar.getAttribute('data-version')
         || direction !== options.direction) {
         gmStyles.addToHeader(cssGenerated);

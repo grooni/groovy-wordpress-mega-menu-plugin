@@ -9,16 +9,15 @@ function saveStyles (options, cssGenerated) {
     'preset_id': options.preset.id
   };
   const params = new URLSearchParams(data);
-
   axios.post(groovyMenuHelper.ajaxurl, params);
 }
 
 export function reinsertCompiledStyles (gmStyles, options, cssGenerated) {
-  let menuStyles;
-
   saveStyles(options, cssGenerated);
-  gmStyles.addToHeader(options);
+  gmStyles.addToHeader(cssGenerated);
 
-  menuStyles = document.querySelector('.gm-compiled-css');
-  menuStyles.remove();
+  if (document.querySelector('#groovy-menu-style-inline-css') !== null) {
+    let menuStyles = document.querySelector('.gm-compiled-css');
+    menuStyles.remove();
+  }
 }
