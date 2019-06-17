@@ -67,7 +67,7 @@ gulp.task('style:build', function () {
   return gulp.src(path.src.style)
     .pipe(sass().on('error', sass.logError))
     .pipe(prefixer())
-    .pipe(save('for-rtl')) // Save the current stream for RTL
+    // .pipe(save('for-rtl')) // Save the current stream for RTL
     // .pipe(envConfig.production ? cleanCSS() : gutil.noop())
     .pipe(gulp.dest(path.build.css))
 

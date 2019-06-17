@@ -20,14 +20,10 @@ export function uploadMedia (e) {
         .toJSON();
 
       var thumbImage = uploadedImage.url;
-      if ('sizes' in uploadedImage) {
-        if ('thumbnail' in uploadedImage.sizes) {
-          if ('url' in uploadedImage.sizes.medium) {
-            if (uploadedImage.sizes.medium.url.length) {
-              thumbImage = uploadedImage.sizes.medium.url;
-            }
-          }
-        }
+      if (uploadedImage.sizes.medium !== undefined && uploadedImage.sizes.medium.url !== undefined) {
+        thumbImage = uploadedImage.sizes.medium.url;
+      } else {
+        thumbImage = uploadedImage.sizes.full.url;
       }
 
       uploadInput.value = uploadedImage.id;
