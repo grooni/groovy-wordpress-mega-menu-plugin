@@ -3,15 +3,12 @@
 var browserSync = require('browser-sync'),
   cleanCSS = require('gulp-clean-css'),
   gulp = require('gulp'),
-  gulpif = require('gulp-if'),
   gutil = require('gulp-util'),
-  merge = require('merge-stream'),
   prefixer = require('gulp-autoprefixer'),
   reload = browserSync.reload,
   rename = require('gulp-rename'),
   sass = require('gulp-sass'),
   sourcemaps = require('gulp-sourcemaps'),
-  uglify = require('gulp-uglify'),
   watch = require('gulp-watch'),
   save = require('gulp-save'),
   rtlcss = require('gulp-rtlcss'),
@@ -39,7 +36,7 @@ var path = {
     fonts: 'groovy-menu/assets/fonts/'
   },
   watch: {
-    js: ['src/js/**/*.js', 'node_modules/gm-wp/index.js'],
+    js: 'src/js/**/*.js',
     style: 'src/style/**/*.scss',
     img: 'src/images/**/*.*'
   }
@@ -68,21 +65,18 @@ gulp.task('js:build', function () {
 
 gulp.task('style:build', function () {
   return gulp.src(path.src.style)
-    // .pipe(gulpif(envConfig.sourceMaps, sourcemaps.init()))
     .pipe(sass().on('error', sass.logError))
     .pipe(prefixer())
-    // .pipe(save('for-rtl')) // Save the current stream for RTL
+    .pipe(save('for-rtl')) // Save the current stream for RTL
     // .pipe(envConfig.production ? cleanCSS() : gutil.noop())
-    // .pipe(gulpif(envConfig.sourceMaps, sourcemaps.write('.')))
     .pipe(gulp.dest(path.build.css))
 
     // RTL
-    // .pipe(save.restore('for-rtl'))
-    // .pipe(rtlcss())
-    // .pipe(rename({suffix: '-rtl'}))
-    // // .pipe(envConfig.production ? cleanCSS() : gutil.noop())
-    // // .pipe(gulpif(envConfig.sourceMaps, sourcemaps.write('.')))
-    // .pipe(gulp.dest(path.build.css))
+    .pipe(save.restore('for-rtl'))
+    .pipe(rtlcss())
+    .pipe(rename({suffix: '-rtl'}))
+    // .pipe(envConfig.production ? cleanCSS() : gutil.noop())
+    .pipe(gulp.dest(path.build.css))
 
     .pipe(reload({ stream: true }));
 });
