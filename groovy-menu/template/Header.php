@@ -127,7 +127,7 @@ function groovyMenu( $args = array() ) {
 		}
 	}
 
-	if ( is_null( $args['gm_preset_id'] ) && $lver ) {
+	if ( $lver ) {
 		$presets_list = GroovyMenuPreset::getAll();
 		if ( is_array( $presets_list ) ) {
 			foreach ( $presets_list as $item ) {
