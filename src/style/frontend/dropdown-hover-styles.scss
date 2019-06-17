@@ -1,0 +1,49 @@
+/***********************************
+DROPDOWN HOVER STYLES
+***********************************/
+
+.gm-dropdown-hover-style-shift-right {
+  .gm-dropdown-menu .gm-menu-item:hover > a .gm-menu-item__txt-wrapper {
+    transform: translateX(25px);
+  }
+
+  .gm-dropdown-menu .gm-menu-item:hover > .gm-menu-item__link::before {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .gm-dropdown-menu .gm-menu-item__link {
+    &::before {
+      position: absolute;
+      left: 15px;
+      display: inline-block;
+      visibility: hidden;
+      content: '\f178';
+      transition: all linear 0.2s;
+      transform: translateX(0);
+      opacity: 0;
+      font: normal normal normal 16px/1 FontAwesome;
+      font-size: inherit;
+      line-height: inherit;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: auto;
+    }
+  }
+
+  .mega-gm-dropdown .gm-dropdown-menu .gm-menu-item__link {
+    &::before {
+      left: 0;
+    }
+  }
+}
+
+[dir='rtl'] .gm-dropdown-hover-style-shift-right .gm-dropdown-menu {
+  .gm-menu-item {
+    overflow: hidden;
+  }
+
+  .gm-menu-item__link::before {
+    content: '\f177';
+  }
+}

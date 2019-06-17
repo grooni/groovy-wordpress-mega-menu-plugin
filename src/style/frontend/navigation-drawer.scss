@@ -1,0 +1,149 @@
+.gm-navigation-drawer {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  z-index: 1000;
+  overflow-y: auto;
+  transition: transform cubic-bezier(0.7, 0, 0.3, 1) 0.4s;
+  will-change: transform;
+
+  .gm-menu-item__icon {
+    margin-right: 8px;
+  }
+
+  .gm-dropdown-menu-wrapper {
+    display: none;
+  }
+
+  .gm-dropdown-toggle.gm-menu-item__link .gm-caret i {
+    transform: rotate(90deg);
+  }
+
+  li {
+    margin-bottom: 0;
+  }
+
+  .gm-logo__img {
+    display: none;
+  }
+
+  .gm-logo__img-alt {
+    display: flex;
+  }
+
+  .gm-search,
+  .gm-minicart {
+    cursor: pointer;
+  }
+
+  .gm-anchor,
+  .gm-mega-menu__item__title {
+    text-transform: uppercase;
+    border-bottom-width: 1px;
+    border-bottom-style: dotted;
+    line-height: 1.4;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: inherit;
+
+    .gm-menu-item__txt-wrapper {
+      margin-right: auto;
+    }
+  }
+
+  .gm-search {
+    .gm-icon {
+      font-size: 17px;
+
+      &:not(:last-child) {
+        margin-bottom: 8px;
+      }
+    }
+
+    .gm-search__txt {
+      font-size: 11px;
+      display: block;
+    }
+  }
+
+  .gm-minicart {
+    text-align: center;
+
+    .gm-minicart-link {
+      color: inherit;
+    }
+
+    .gm-minicart__txt {
+      font-size: 11px;
+      display: block;
+    }
+
+    .gm-icon {
+      font-size: 17px;
+    }
+  }
+}
+
+.gm-navigation-drawer--mobile.gm-navigation-drawer--right {
+  .gm-dropdown-menu-wrapper {
+    padding-left: 15px;
+  }
+}
+
+.gm-navigation-drawer--mobile.gm-navigation-drawer--left {
+  .gm-dropdown-menu-wrapper {
+    padding-right: 15px;
+  }
+}
+
+.gm-divider--vertical {
+  width: 0;
+  max-width: 0;
+  max-height: 100%;
+  border-style: solid;
+  border-width: 0 1px 0 0;
+  overflow: visible;
+  align-self: stretch;
+  display: inline;
+  height: auto;
+
+  &:last-child {
+    display: none;
+  }
+}
+
+body:not(.admin-bar) {
+  .gm-navigation-drawer {
+    top: 0;
+    height: 100vh;
+  }
+}
+
+@media (max-width: 782px) {
+  .admin-bar {
+    .gm-navigation-drawer {
+      top: 46px;
+      height: calc(100vh - 46px);
+    }
+  }
+}
+
+@media (min-width: 783px) {
+  .admin-bar {
+    .gm-navigation-drawer {
+      top: 32px;
+      height: calc(100vh - 32px);
+    }
+  }
+}
+
+.gm-nav-content-wrapper {
+  transition: transform cubic-bezier(0.7, 0, 0.3, 1) 0.4s;
+  will-change: transform;
+}
+
+.gm-navigation-drawer.gm-navigation-drawer--open {
+  transform: translate3d(0, 0, 0) !important;
+}

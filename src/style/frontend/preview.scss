@@ -1,0 +1,18 @@
+/***********************************
+GROOVY PREVIEW
+***********************************/
+
+#preview-modal,
+.preview-modal-wrapper {
+  .gm-modal-body {
+    height: 100%;
+  }
+}
+
+a[href='#disabled'].gm-minicart-link {
+  color: inherit;
+}
+
+.gm-modal-body-iframe {
+  height: 100%;
+}

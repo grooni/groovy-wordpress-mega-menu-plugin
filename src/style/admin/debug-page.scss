@@ -1,0 +1,69 @@
+.gm-debug-log-hidden {
+  display: none !important;
+}
+
+.gm-debug-container {
+  border: 1px solid #ccc;
+  margin: 20px 0;
+  padding: 10px 12px;
+  background: #eee;
+}
+
+.gm-debug-body > h2 {
+  text-align: center;
+  font-size: 200%;
+}
+
+.gm-debug-section {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  margin-top: 8px;
+  padding: 10px 16px;
+  background: #fff;
+}
+
+.gm-debug-section-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  .gm-elem-index,
+  .gm-elem-value {
+    width: 50%;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.gm-elem-value > * {
+  margin: 0 5px;
+}
+
+.gm-debug-section-list-item {
+  padding: 5px 0;
+  border-bottom: 1px dotted #aaa;
+  box-sizing: border-box;
+}
+
+.gm-debug-log-block-wrapper {
+  display: block;
+  border: 1px solid #aaa;
+  background: #d8d8d8;
+  padding: 20px 10px;
+}
+
+.gm-debug-log-block-title {
+  text-align: center;
+  font-size: 150%;
+  margin: 20px 0;
+  border-bottom: 1px dashed #888;
+  padding-bottom: 8px;
+}
+
+.gm-debug-log-block-title span {
+  font-weight: 700;
+}
+
+.gm-debug-log-item .num {
+  padding: 0 20px 0 0;
+}

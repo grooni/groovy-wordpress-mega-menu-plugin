@@ -1,0 +1,84 @@
+/***********************************
+WPML
+***********************************/
+
+// legacy version of WPML
+
+#lang_sel {
+  z-index: 10;
+  height: 38px;
+}
+
+#lang_sel_click {
+  height: auto;
+  font-family: inherit;
+
+  a {
+    padding: 0 15px !important;
+  }
+
+  li {
+    width: 90px !important;
+  }
+
+  a.lang_sel_sel,
+  a.lang_sel_sel:hover {
+    position: relative;
+    background: none;
+  }
+
+  a.lang_sel_sel::after {
+    position: absolute;
+    top: 13px;
+    right: 14px;
+    content: '\f107';
+    font: normal normal normal 16px/1 FontAwesome;
+  }
+
+  a:visited,
+  a {
+    border: none;
+    line-height: 38px;
+  }
+
+  ul ul a {
+    display: block;
+    width: 100%;
+  }
+
+  ul ul {
+    top: 38px;
+    width: 90px !important;
+    border: none;
+    line-height: 38px;
+  }
+
+  img.iclflag {
+    position: static;
+  }
+}
+
+#lang_sel ul li a,
+#lang_sel_click ul li a {
+  height: 38px !important;
+  padding: 0 15px !important;
+  line-height: 38px !important;
+}
+
+#lang_sel_click a:hover,
+#lang_sel_click:hover > a,
+#lang_sel_click ul ul :hover > a {
+  background: none;
+}
+
+// Styles for WPML ^4.0
+
+.wpml-ls {
+  margin-left: 15px;
+  align-self: center;
+  width: auto;
+}
+
+.wpml-ls-legacy-dropdown a {
+  border: none;
+}

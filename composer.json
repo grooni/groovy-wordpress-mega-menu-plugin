@@ -1,0 +1,101 @@
+{
+  "name": "grooni/groovy-menu-project",
+  "require": {
+    "symfony/filesystem": "^2.7",
+    "alchemy/zippy": "^0.2.1",
+    "guzzlehttp/guzzle": "^6.1",
+    "groovymenu/core": ">=1.8",
+    "groovymenu/fields": ">=1.2",
+    "groovymenu/walkers": ">=1.1",
+    "groovymenu/storage": ">=1.1",
+    "groovymenu/debugpage": ">=1.2",
+    "groovymenu/virtualpages": ">=1.1",
+    "mnsami/composer-custom-directory-installer": "1.1.*"
+  },
+  "require-dev": {
+    "composer/composer": "1.2"
+  },
+  "config": {
+    "secure-http": false
+  },
+  "repositories": [
+    {
+      "type": "package",
+      "package": {
+        "name": "groovymenu/core",
+        "version": "1.8",
+        "dist": {
+          "url": "./zip_modules/core.zip",
+          "type": "zip"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "groovymenu/fields",
+        "version": "1.2",
+        "dist": {
+          "url": "./zip_modules/fields.zip",
+          "type": "zip"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "groovymenu/walkers",
+        "version": "1.2",
+        "dist": {
+          "url": "./zip_modules/walkers.zip",
+          "type": "zip"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "groovymenu/storage",
+        "version": "1.1",
+        "dist": {
+          "url": "./zip_modules/storage.zip",
+          "type": "zip"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "groovymenu/debugpage",
+        "version": "1.2",
+        "dist": {
+          "url": "./zip_modules/debugpage.zip",
+          "type": "zip"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "groovymenu/virtualpages",
+        "version": "1.1",
+        "dist": {
+          "url": "./zip_modules/virtualpages.zip",
+          "type": "zip"
+        }
+      }
+    }
+  ],
+  "extra": {
+    "installer-paths": {
+      "./groovy-menu/includes/modules/{$name}": [
+        "groovymenu/core",
+        "groovymenu/fields",
+        "groovymenu/walkers",
+        "groovymenu/storage",
+        "groovymenu/debugpage",
+        "groovymenu/virtualpages"
+      ]
+    }
+  }
+}

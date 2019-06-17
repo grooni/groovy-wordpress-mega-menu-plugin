@@ -1,0 +1,71 @@
+{
+  "env": {
+    "browser": true,
+    "jquery": true,
+    "node": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 9,
+    "sourceType": "module"
+  },
+  "globals": {
+    "_": true,
+    "wpColorPickerL10n": true,
+    "Color": true,
+    "wp": true,
+    "wpNavMenu": true,
+    "previewMobileWidth": true,
+    "previewChangeBgColor": true,
+    "previewChangeSticky": true,
+    "noUiSlider": true,
+    "ajaxurl": true,
+    "saveAlert": true,
+    "redux": true,
+    "html2canvas": true,
+    "groovyMenuLocalize": true,
+    "groovyMenuSettings": true,
+    "groovyMenuHelper": true
+  },
+  "extends": "eslint:recommended",
+  "rules": {
+    "indent": [
+      "error",
+      2
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "allowTemplateLiterals": true
+      }
+    ],
+    "curly": "error",
+    "semi": [
+      "error",
+      "always"
+    ],
+    "space-in-parens": [
+      "error",
+      "never"
+    ],
+    "newline-per-chained-call": [
+      "error",
+      {
+        "ignoreChainWithDepth": 2
+      }
+    ],
+    "max-len": [
+      "warn",
+      {
+        "code": 120,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true
+      }
+    ]
+  }
+}

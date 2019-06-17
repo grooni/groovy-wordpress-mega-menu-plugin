@@ -1,0 +1,1257 @@
+/***************************************
+ICON FONT
+***************************************/
+
+@font-face {
+  font-family: 'groovy-gui';
+  font-weight: normal;
+  font-style: normal;
+  src: url('../fonts/groovy-gui.woff') format('woff');
+}
+
+.gm-gui-icon {
+  text-transform: none;
+  font-family: 'groovy-gui' !important;
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  speak: none;
+}
+
+.gm-icon-file-box::before {
+  content: '\e900';
+}
+
+.gm-icon-list::before {
+  content: '\e901';
+}
+
+.gm-icon-help::before {
+  content: '\e902';
+}
+
+.gm-icon-tools::before {
+  content: '\e903';
+}
+
+.gm-icon-download::before {
+  content: '\e904';
+}
+
+.gm-icon-layers::before {
+  content: '\e905';
+}
+
+.gm-icon-power-off::before {
+  content: '\e906';
+}
+
+.gm-icon-music-mixer::before {
+  content: '\e907';
+}
+
+.gm-icon-drop::before {
+  content: '\e908';
+}
+
+/***************************************
+GROOVY MENU GENERAL SETTINGS
+***************************************/
+
+.gm-gui-container * {
+  box-sizing: border-box;
+}
+
+.gm-gui-container {
+  position: relative;
+  visibility: hidden;
+  min-height: 795px;
+  margin: 20px;
+  transition: visibility 0.3s linear, opacity 0.3s linear;
+  opacity: 0;
+  color: #555;
+  background-color: #e7e7e7;
+  line-height: 1.4;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 137px;
+    height: 100%;
+    content: '';
+    background-color: #242930;
+  }
+
+  input[type=number] {
+    width: 100%;
+    height: 42px;
+    max-width: 100px;
+    margin: 0;
+    padding: 10px;
+    transition: border-color ease-in-out 0.15s, color ease-in-out 0.15s;
+    vertical-align: middle;
+    color: #686868;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    outline: 0;
+    background-color: #fff;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
+    font-size: 14px;
+  }
+
+  .wp-color-result {
+    height: 40px;
+  }
+
+  .wp-color-result::after {
+    line-height: 41px;
+  }
+}
+
+.gm-gui-container.loaded {
+  visibility: visible;
+  opacity: 1;
+}
+
+.gm-gui-nav-wrapper,
+.gm-gui-nav-wrapper *,
+#gm-gui__header-types *,
+.gm-gui__tab-panes {
+  box-sizing: border-box;
+}
+
+.gm-gui__brand-wrapper {
+  position: relative;
+  z-index: 99;
+  display: block;
+  min-height: 90px;
+  background-color: #448aff;
+  box-shadow: 0 0 21px rgba(1, 2, 2, 0.12);
+}
+
+.gm-gui__brand-logo {
+  position: absolute;
+  top: 50%;
+  left: 28px;
+  display: block;
+  width: 144px;
+  max-width: 100%;
+  height: auto;
+  transform: translateY(-50%);
+}
+
+.gm-gui__ver {
+  display: block;
+  margin-top: 5px;
+}
+
+.gm-gui__tab-panes form {
+  float: left;
+  width: 100%;
+}
+
+.gm-gui__restore-btn {
+  position: relative;
+  z-index: 99;
+  display: block;
+  width: 137px;
+  margin: 0;
+  padding: 28px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color linear 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: white;
+  border: none;
+  outline: none;
+  background-color: #30343f;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+
+  &:hover,
+  &:focus {
+    color: white;
+  }
+
+  &:hover {
+    background-color: #e43846;
+  }
+}
+
+a:focus {
+  box-shadow: none;
+}
+
+@media (max-width: 1199px) {
+  .gm-gui__restore-btn {
+    padding: 15px 0;
+    font-size: 10px;
+  }
+}
+
+.gm-gui-save-btn:hover {
+  background-color: #448aff;
+}
+
+.gm-gui-restore-section-btn:hover {
+  background-color: #e43846;
+}
+
+.gm-clearfix::before,
+.gm-clearfix::after {
+  display: table;
+  content: ' ';
+}
+
+.gm-clearfix::after {
+  clear: both;
+}
+
+.gm-gui-btn {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 5px;
+  padding: 0 15px;
+  cursor: pointer;
+  transition: ease 0.2s;
+  transform: translateX(0);
+  text-align: left;
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: white;
+  border: none;
+  background-color: #393b3f;
+  font-size: 13px;
+  font-weight: 700;
+
+  &:hover {
+    transform: translateX(-80px);
+  }
+}
+
+.gm-gui-btn .fa {
+  display: inline-block;
+  margin-right: 16px;
+  font-size: 16px;
+}
+
+.gm-gui-btn-group {
+  position: fixed;
+  z-index: 99;
+  top: 50%;
+  right: 0;
+  transform: translate(81px, -50%);
+}
+
+.gm-gui__font-preview-wrapper {
+  margin-bottom: 15px;
+  width: 280px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e6e6e6;
+}
+
+.gm-gui__font-preview {
+  font-size: 20px;
+  font-weight: 400;
+  opacity: 1;
+  transition: opacity 0.2s;
+
+  &--loading {
+    opacity: 0;
+  }
+}
+
+/* rtl:ignore */
+[dir='rtl'] .gm-gui-btn-group {
+  transform: translate(-85px, -50%);
+}
+
+/***************************************
+GROOVY MENU NAV (SIDEBAR)
+***************************************/
+
+.gm-gui-nav-wrapper {
+  display: block;
+  float: left;
+  width: 320px;
+}
+
+.gm-gui__nav-tabs {
+  position: relative;
+  display: block;
+  margin: 0;
+}
+
+.gm-gui__nav-tabs__item {
+  display: block;
+  width: 137px;
+  height: 137px;
+  margin: 0;
+  list-style: none;
+  border-bottom: 1px solid #2b2d32;
+  background-color: #242930;
+}
+
+.gm-gui__nav-tabs__item__anchor {
+  position: relative;
+  z-index: 99;
+  display: block;
+  width: 100%;
+  padding-top: 38px;
+  padding-bottom: 38px;
+  transition: all linear 0.3s;
+  text-align: center;
+  text-decoration: none;
+  color: #676a6f;
+  outline: 0;
+  cursor: pointer;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: #fff;
+  }
+}
+
+.gm-gui__nav-tabs__item.active .gm-gui__nav-tabs__item__anchor {
+  color: #fff;
+
+  &::after {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 0;
+    height: 0;
+    content: '';
+    transform: translateY(-50%);
+    border-width: 12.5px 12px 12.5px 0;
+    border-style: solid;
+    border-color: transparent #e6e6e6 transparent transparent;
+  }
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    content: '';
+    transform: translateY(-50%);
+    background-color: #448aff;
+  }
+}
+
+.gm-gui__nav-tabs__item .gm-gui-icon {
+  display: block;
+  font-size: 32px;
+}
+
+.gm-gui__nav-tabs__item__txt {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.gm-gui__restore-btn .gm-gui__nav-tabs__item__txt {
+  margin-top: 0;
+}
+
+//sublevel
+
+.gm-gui__nav-tabs__sublevel {
+  position: absolute;
+  top: 36px;
+  right: 0;
+  display: none;
+  width: 100%;
+  padding-left: 137px;
+}
+
+.gm-gui__nav-tabs__item.active .gm-gui__nav-tabs__sublevel {
+  display: block;
+}
+
+.gm-gui__nav-tabs__sublevel__item {
+  padding-right: 20px;
+  padding-left: 20px;
+  border-bottom: 1px solid #d5d5d5;
+  margin-bottom: 0;
+}
+
+.gm-gui__nav-tabs__sublevel__item span {
+  display: block;
+  text-decoration: none;
+  color: #767676;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 61px;
+  cursor: pointer;
+}
+
+.gm-gui__nav-tabs__sublevel__item.active .gm-gui__nav-tabs__sublevel__item__anchor {
+  font-weight: bold;
+}
+
+.gm-sublevel {
+  display: none;
+}
+
+.gm-sublevel.active {
+  display: block;
+}
+
+/***************************************
+GROOVY MENU TABS GENERAL
+***************************************/
+
+.gm-gui__tab-panes {
+  min-height: 795px;
+  margin-left: 320px;
+  padding: 30px 30px 0 30px;
+  background-color: #fff;
+}
+
+.tab-pane {
+  position: relative;
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+/***************************************
+GROOVY MENU TABS INNER
+***************************************/
+
+.tab-pane__header {
+  display: block;
+  margin-bottom: 25px;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.tab-pane__subheader {
+  display: block;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.gm-gui-unit {
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.gm-gui-spacer {
+  display: block;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+/***************************************
+GROOVY MENU TABS MODULE
+***************************************/
+
+.gm-sublevel > .gm-gui__module,
+.groovy-tab-pane .gm-gui__module {
+  display: flex;
+  padding-top: 15px;
+  padding-bottom: 21px;
+  border-top: 1px solid silver;
+  flex-wrap: wrap;
+}
+
+.gm-sublevel > .gm-gui__module {
+  &--hidden {
+    display: none;
+  }
+}
+
+.groovy-tab-pane .gm-gui__module:first-of-type {
+  border-top: none;
+}
+
+.groovy-tab-pane .gm-gui__module .gm-gui__module__text-wrapper input {
+  width: 100%;
+  max-width: 360px;
+}
+
+.gm-gui__module__ui .gm-gui__module__import {
+  width: 100%;
+}
+
+.gm-sublevel > .gm-gui__module .gm-gui__module__title,
+.groovy-tab-pane .gm-gui__module .gm-gui__module__title {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  flex-basis: 100%;
+}
+
+.gm-gui-module-wrapper .gm-gui__module__title {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 14px;
+}
+
+.gm-gui__module .gm-gui__module__subselect-title {
+  display: block;
+  margin: 14px 0 2px 0;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.gm-gui__module__info {
+  flex-basis: 100%;
+}
+
+.gm-sublevel > .gm-gui__module .gm-gui__module__info,
+.groovy-tab-pane .gm-gui__module__info {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.gm-gui__module p {
+  margin: 0;
+}
+
+/***************************************
+GROOVY MENU POST TYPES
+***************************************/
+
+.gm-gui__module__post_types .gm-gui__module__switch-wrapper {
+  display: inline-block;
+  margin: 8px 20px;
+}
+
+/***************************************
+GROOVY MENU SWITCH
+***************************************/
+
+.gm-gui__module__switch__label {
+  display: block;
+  font-weight: bolder;
+}
+
+.gm-gui__module__switch__info {
+  display: inline-block;
+  cursor: default;
+  user-select: none;
+  vertical-align: middle;
+  line-height: 31px;
+}
+
+$base-font-size: 10px;
+$switch-width: 6em;
+$switch-size: 3.1em;
+$switch-space: 0.2em;
+$switch-off-padding: 0;
+$switch-on-padding: $switch-size - $switch-space;
+$switch-button-size: $switch-size - ($switch-space*2);
+$switch-off-border: darkgrey;
+$switch-on-color: #448aff;
+$switch-toggle-color: #fff;
+$switch-animation-bounce-distance: 0.4em;
+$size-adjust: -($switch-button-size/3);
+
+.gm-gui__module__switch-wrapper input[type='checkbox'] {
+  position: relative;
+  display: inline-block;
+  width: $switch-width;
+  height: $switch-size;
+  margin: 0 5px;
+  padding: 0;
+  cursor: pointer;
+  user-select: none;
+  transition: box-shadow 0.3s ease-in-out, padding 0.25s ease-in-out;
+  transition-delay: 0.1s, 0s;
+  text-align: start;
+  vertical-align: middle;
+  border: none;
+  border-radius: $switch-size/2;
+  outline: 1px solid transparent !important;
+  background: #ccc;
+  box-shadow: inset 0 0 0 $switch-space $switch-off-border;
+  font-size: $base-font-size;
+  line-height: $switch-size;
+  appearance: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-touch-callout: none;
+
+  &:checked {
+    padding-left: $switch-on-padding !important;
+    transition-delay: 0s, 0s;
+    box-shadow: inset 0 0 0 $switch-size/1.75 $switch-on-color !important;
+
+    &::before {
+      font-size: $base-font-size;
+    }
+  }
+
+  /* Animations if supported */
+  &.hit {
+    animation: slide-off 0.35s ease both;
+  }
+
+  &.hit:checked {
+    animation: slide-on 0.35s ease both 0.05s;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+  }
+
+  &::after {
+    position: absolute;
+    top: $size-adjust;
+    right: $size-adjust;
+    bottom: $size-adjust;
+    left: $size-adjust;
+  }
+
+  &::before {
+    display: inline-block;
+    width: $switch-button-size;
+    height: $switch-button-size;
+    margin: $switch-space 0 0 $switch-space;
+    transition: all 0.1s ease 0.1s;
+    border-radius: $switch-button-size/2;
+    background-color: $switch-toggle-color;
+    box-shadow:
+      0 $switch-space ($switch-space*2) 0 rgba(0, 0, 0, 0.2),
+      0 0 ($switch-space/2) ($switch-space/2) rgba(0, 0, 0, 0.1);
+  }
+
+  &:active::before {
+    transition: all 0.1s ease 0.05s;
+  }
+
+  &.touch:hover::before {
+    transition: all 0s ease 0s;
+  }
+
+  &:active::before,
+  &.touch:hover::before {
+    width: $switch-button-size + ($switch-space*4);
+  }
+
+  &:active:checked::before,
+  &.touch:hover:checked::before {
+    margin-left: -($switch-space*3);
+  }
+}
+
+@keyframes slide-on {
+  0% {
+    padding-left: $switch-off-padding;
+  }
+
+  60% {
+    padding-left: $switch-on-padding + $switch-animation-bounce-distance;
+  }
+
+  100% {
+    padding-left: $switch-on-padding;
+  }
+}
+
+@keyframes slide-off {
+  0% {
+    padding-left: $switch-on-padding;
+    text-indent: 0;
+  }
+
+  60% {
+    padding-left: $switch-off-padding;
+    text-indent: -$switch-animation-bounce-distance;
+  }
+
+  100% {
+    padding-left: $switch-off-padding;
+    text-indent: 0;
+  }
+}
+
+/***************************************
+GROOVY MENU SELECT
+***************************************/
+
+.choices {
+  min-width: 200px;
+}
+
+$select-color: #555;
+$select-background: #fff;
+$select-width: 250px;
+$select-height: 40px;
+
+.select-hidden {
+  display: none;
+  visibility: hidden;
+  padding-right: 10px;
+}
+
+.gm-sublevel .gm-gui-module-wrapper .gm-gui__module .select {
+  position: relative;
+  display: inline-block;
+  min-width: 150px;
+  max-width: $select-width;
+  height: $select-height;
+  color: $select-color;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+.gm-gui__module .select {
+  position: relative;
+  display: inline-block;
+  min-width: $select-width;
+  height: $select-height;
+  color: $select-color;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+.select-styled {
+  position: static;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 8px 30px 8px 15px;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+  background-color: $select-background;
+
+  &::after {
+    position: absolute;
+    top: 16px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    content: '';
+    border: 7px solid;
+    border-color: $select-color transparent transparent transparent;
+  }
+
+  &:hover {
+    background-color: darken($select-background, 2);
+  }
+
+  &:active,
+  &.active {
+    &::after {
+      top: 9px;
+      border-color: transparent transparent $select-color transparent;
+    }
+  }
+}
+
+.select-styled:not(.active) ~ .select-options {
+  display: none;
+}
+
+.select-options {
+  position: absolute;
+  z-index: 999;
+  top: 100%;
+  right: 0;
+  left: 0;
+  overflow-y: auto;
+  max-height: 236px;
+  margin: 0 0 15px 0;
+  padding: 0;
+  list-style: none;
+  outline: 1px solid #ddd;
+  background-color: $select-background;
+
+  li {
+    margin: 0;
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: all 0.15s ease-in;
+    border-top: 1px solid darken($select-background, 10);
+
+    &:hover {
+      color: $select-background;
+      background: #448aff;
+    }
+
+    &[rel='hide'] {
+      display: none;
+    }
+  }
+}
+
+/***************************************
+CODEMIRROR styles
+***************************************/
+.gm-form .CodeMirror {
+  border: 1px solid #dbdbdb;
+}
+
+/***************************************
+HEADER TYPES
+***************************************/
+
+#gm-gui__header-types {
+  width: 100%;
+  max-width: 1170px;
+}
+
+.gm-gui__header-types__title {
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: middle;
+  font-size: 16px;
+  line-height: 33px;
+}
+
+/* HEADER TYPES options */
+
+.gm-gui__header-types__options {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gm-gui__header-types__options__align {
+  padding: 9px 0 9px 15px;
+  margin-left: -2px;
+  margin-right: -2px;
+  background-color: #d4d4d4;
+  display: flex;
+  align-items: center;
+}
+
+.gm-gui__header-types__options__align > span {
+  padding: 6px 9px;
+  cursor: pointer;
+  transition: all linear 0.3s;
+  border-radius: 3px;
+  font-size: 15px;
+  margin-left: 2px;
+  margin-right: 2px;
+
+  &:hover {
+    color: #fff;
+    background-color: #448aff;
+  }
+}
+
+.gm-gui__header-types__options__align span.active {
+  color: #fff;
+  background-color: #448aff;
+}
+
+.gm-gui__header-types__options__toolbar-toggle {
+  padding: 7px 15px;
+  display: flex;
+  align-items: center;
+  background-color: #d4d4d4;
+}
+
+.gm-gui__header-types__options__toolbar-toggle .gm-gui__module__switch-wrapper {
+  display: inline-block;
+}
+
+.gm-gui__header-types__options__toolbar-toggle .gm-gui__module__switch-wrapper input[type='checkbox'] {
+  font-size: 7px;
+
+  &:checked::before {
+    font-size: 7px;
+  }
+}
+
+/* HEADER TYPES list */
+
+.gm-gui__header-types__options__list {
+  display: flex;
+  margin-right: auto;
+  align-items: center;
+}
+
+.gm-gui__header-types__options__list .gm-gui__header-types__title {
+  margin-right: 15px;
+}
+
+.gm-gui__header-types__options__list__item {
+  display: inline-block;
+  padding: 5px 11px;
+  cursor: pointer;
+  transition: all linear 0.3s;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 15px;
+  font-weight: bold;
+
+  &:hover {
+    color: #fff;
+    border-color: #448aff;
+    background-color: #448aff;
+  }
+}
+
+.gm-gui__header-types__options__list__item.active {
+  color: #fff;
+  border-color: #448aff;
+  background-color: #448aff;
+}
+
+.gm-gui__header-types__options__list__item + .gm-gui__header-types__options__list__item {
+  margin-left: 5px;
+}
+
+/* HEADER TYPES preview */
+
+.gm-gui__header-types__preview-wrapper {
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  height: 250px;
+  border: 5px solid #d4d4d4;
+}
+
+.gm-gui__header-types__preview {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff url(../images/styles-menu-logo.png) no-repeat;
+}
+
+/* HEADER TYPES bg position */
+
+/* Style 1 */
+
+.style-1-align-left .gm-gui__header-types__preview {
+  background-position: 0 -3124px;
+}
+
+.style-1-align-left.toolbar-true .gm-gui__header-types__preview {
+  background-position: 0 -2839px;
+}
+
+.style-1-align-center .gm-gui__header-types__preview {
+  background-position: 0 -2556px;
+}
+
+.style-1-align-center.toolbar-true .gm-gui__header-types__preview {
+  background-position: 0 -2271px;
+}
+
+.style-1-align-right .gm-gui__header-types__preview {
+  background-position: 0 -3692px;
+}
+
+.style-1-align-right.toolbar-true .gm-gui__header-types__preview {
+  background-position: 0 -3407px;
+}
+
+/* Style 2 */
+
+.style-2-align-left .gm-gui__header-types__preview {
+  background-position: 0 -4260px;
+}
+
+.style-2-align-left.toolbar-true .gm-gui__header-types__preview {
+  background-position: 0 -3975px;
+}
+
+.style-2-align-center .gm-gui__header-types__preview {
+  background-position: 0 -5396px;
+}
+
+.style-2-align-center.toolbar-true .gm-gui__header-types__preview {
+  background-position: 0 -5112px;
+}
+
+.style-2-align-right .gm-gui__header-types__preview {
+  background-position: 0 -4828px;
+}
+
+.style-2-align-right.toolbar-true .gm-gui__header-types__preview {
+  background-position: 0 -4543px;
+}
+
+/* Style 3 */
+
+.style-3-align-left .gm-gui__header-types__preview {
+  background-position: 0 0;
+}
+
+.style-3-align-left.toolbar-true .gm-gui__header-types__preview {
+  background-position: 0 -568px;
+}
+
+.style-3-align-right .gm-gui__header-types__preview {
+  background-position: 0 -284px;
+}
+
+.style-3-align-right.toolbar-true .gm-gui__header-types__preview {
+  background-position: 0 -852px;
+}
+
+/* Style 4 */
+
+.style-4-align-left .gm-gui__header-types__preview {
+  background-position: 0 -1420px;
+}
+
+.style-4-align-left.toolbar-true .gm-gui__header-types__preview {
+  background-position: 0 -1988px;
+}
+
+.style-4-align-right .gm-gui__header-types__preview {
+  background-position: -10px -1136px;
+}
+
+.style-4-align-right.toolbar-true .gm-gui__header-types__preview {
+  background-position: -10px -1704px;
+}
+
+/***************************************
+Hover styles
+***************************************/
+
+.gm-gui__module__hover-style-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gm-gui__module__hover-style__item {
+  cursor: pointer;
+  margin: 10px;
+  transition: all ease 0.2s;
+
+  &:hover {
+    box-shadow: 0 0 0 2px #448aff;
+  }
+}
+
+.gm-gui__module__hover-style__item.active {
+  box-shadow: 0 0 0 2px #448aff;
+}
+
+.gm-gui__module__hover-style__item img {
+  display: flex;
+  max-width: 100%;
+  height: auto;
+}
+
+.gm-media-preview img {
+  z-index: 10;
+  max-width: 150px;
+  height: auto;
+  max-height: 85px;
+}
+
+.gm-media-preview {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  height: 100px;
+  margin-bottom: 15px;
+  background: url(../images/pattern.png) left center repeat;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    animation: slide 5s linear infinite;
+  }
+
+  &:hover::after {
+    background-color: rgba(68, 138, 255, 0.5);
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+    transition: linear 0.3s;
+  }
+}
+
+@keyframes slide {
+  from {
+    background-position: left center;
+  }
+
+  to {
+    background-position: right center;
+  }
+}
+
+.wp-core-ui .button-secondary {
+  display: inline-block;
+}
+
+.gm-gui__module__media .gm-remove-btn {
+  display: none;
+}
+
+.gm-gui__module__media--selected .gm-remove-btn {
+  display: inline-block;
+}
+
+/***************************************
+RESPONSIVE
+***************************************/
+
+@media (max-width: 768px) {
+  .gm-gui__tab-panes {
+    margin-left: auto;
+  }
+
+  .gm-gui-nav-wrapper {
+    float: none;
+    width: 100%;
+  }
+
+  .gm-gui__nav-tabs {
+    background-color: #e7e7e7;
+  }
+
+  .gm-gui__nav-tabs__item__anchor {
+    background-color: #242930;
+  }
+}
+
+@media (max-width: 480px) {
+  .gm-gui-container {
+    margin-right: 10px;
+    margin-left: 0;
+  }
+}
+
+.gm-gui-module-wrapper {
+  display: flex;
+  padding-top: 15px;
+  padding-bottom: 21px;
+  border-top: 1px solid silver;
+  flex-wrap: wrap;
+
+  .gm-gui__module {
+    box-sizing: border-box;
+    padding: 10px 15px 10px 0;
+  }
+}
+
+.gm-gui__module__alpha {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.gm-gui__module__text-wrapper,
+.gm-gui__module__text-wrapper textarea {
+  display: block;
+  width: 100%;
+}
+
+.gm-gui__module__text-wrapper textarea {
+  height: 150px;
+  white-space: normal;
+  border-radius: 2px;
+}
+
+.gm-gui__logotype {
+  display: inline-block;
+  height: 155px;
+  transition: box-shadow ease 0.2s;
+  box-shadow: 0 0 0 0 #448aff;
+
+  input[type="radio"] {
+    display: none;
+  }
+}
+
+.gm-gui__logotype + .gm-gui__logotype {
+  margin-left: 10px;
+}
+
+.gm-gui__logotype--selected {
+  box-shadow: 0 0 0 2px #448aff;
+}
+
+.gm-gui__module__colorpicker .wp-picker-holder {
+  position: absolute;
+  z-index: 99;
+}
+
+/***************************************
+SNACKBAR
+***************************************/
+
+.gm-snackbar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 18px 24px;
+  min-height: 16px;
+  max-height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  line-height: 22px;
+  color: #fff;
+  background-color: rgba(26, 26, 27, 0.92);
+  opacity: 0;
+  transition-property: opacity, transform;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  transform: translateY(60px);
+
+  &--visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (min-width: 640px) {
+  .gm-snackbar {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    min-width: 288px;
+    max-width: 500px;
+  }
+}
+
+/***************************************
+CHOICES
+***************************************/
+
+.choices__list--dropdown .choices__item--selectable {
+  padding: 10px;
+}

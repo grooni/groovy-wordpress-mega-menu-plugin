@@ -1,0 +1,47 @@
+/***************************************
+MEGA DROPDOWN
+***************************************/
+
+.gm-main-menu-wrapper {
+  .gm-mega-menu__item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+
+    .gm-dropdown-menu-wrapper {
+      position: static;
+      margin: 0 !important;
+      visibility: visible;
+    }
+
+    > ul {
+      flex: 1;
+      position: relative;
+    }
+
+    &:not(:last-of-type) > ul {
+      &::after {
+        position: absolute;
+        top: 5px;
+        right: -15px;
+        height: calc(100% - 5px);
+        content: '';
+      }
+    }
+
+    .gm-dropdown-menu {
+      position: static;
+    }
+  }
+
+  .mega-gm-dropdown .gm-dropdown-menu-wrapper {
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+  }
+
+  .gm-mega-menu__item__title {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}

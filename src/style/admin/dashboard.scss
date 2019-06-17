@@ -1,0 +1,900 @@
+/***************************************
+GROOVY DASHBOARD GENERAL SETTINGS
+***************************************/
+
+.groovy-tabs::before,
+.groovy-tabs::after,
+.groovy-iconset::before,
+.groovy-iconset::after,
+.groovy-icons::before,
+.groovy-icons::after {
+  display: table;
+  content: ' ';
+}
+
+.groovy-tabs::after,
+.groovy-iconset::after,
+.groovy-icons::after {
+  clear: both;
+}
+
+.btn {
+  display: block;
+  padding: 7px 20px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color linear 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  border: none;
+  background-color: #393b3f;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4 !important;
+
+  &:hover {
+    background-color: #448aff;
+  }
+}
+
+/***************************************
+GROOVY DASHBOARD HEADER
+***************************************/
+
+.gm-dashboard-container {
+  margin: 20px;
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+.gm-dashboard-header {
+  position: relative;
+  overflow: hidden;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #2b2d30 url(../images/groovy_bg.jpg) right no-repeat;
+}
+
+.gm-dashboard-header__logo {
+  position: relative;
+  max-width: 412px;
+  width: 100%;
+  height: 100%;
+  padding-left: 45px;
+  display: flex;
+  align-items: center;
+  background-color: #448aff;
+
+  img {
+    height: 53px;
+  }
+}
+
+.gm-dashboard-header__btn-group {
+  position: relative;
+  padding-right: 52px;
+  display: flex;
+  align-items: center;
+}
+
+.gm-dashboard__global-settings-btn {
+  height: 70px;
+  margin: 0;
+  padding: 0 29px;
+  cursor: pointer;
+  border: none;
+  border-right: 1px solid #414349;
+  border-left: 1px solid #414349;
+  outline: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+}
+
+.gm-dashboard__global-settings-btn > .gm-gui-icon {
+  margin-right: 17px;
+  color: #cecece;
+  font-size: 32px;
+}
+
+.global-settings-btn-title {
+  display: block;
+  color: #cecece;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+}
+
+.global-settings-btn-subtitle {
+  display: block;
+  text-transform: uppercase;
+  color: #949494;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.gm-dashboard-header__help-link {
+  margin-left: 28px;
+  transition: color ease 0.2s;
+  text-decoration: none;
+  color: #676a6f;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  display: flex;
+  align-items: center;
+}
+
+.gm-dashboard-header__help-link > .gm-gui-icon {
+  margin-right: 10px;
+  font-size: 32px;
+}
+
+/***************************************
+GROOVY DASHBOARD BODY
+***************************************/
+
+.gm-dashboard-body {
+  position: relative;
+  padding: 20px 20px 43px 20px;
+  background-color: #f7f7f7;
+  box-shadow: 0 0 21px rgba(1, 2, 2, 0.12);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gm-dashboard-body_inner {
+  display: flex;
+  margin-right: -15px;
+  margin-left: -15px;
+  flex-wrap: wrap;
+}
+
+.gm-dashboard-body_inner,
+.gm-dashboard-body__title {
+  flex: 1 100%;
+}
+
+.gm-dashboard-body__title__alpha {
+  margin-top: 20px;
+  margin-bottom: 25px;
+  color: #23282d;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/***************************************
+GROOVY DASHBOARD PRESET
+***************************************/
+
+.preset {
+  min-height: 1px;
+  max-height: 197px;
+  margin-bottom: 15px;
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 100%;
+}
+
+@media (min-width: 600px) {
+  .preset {
+    width: 50%;
+  }
+}
+
+@media (min-width: 800px) {
+  .preset {
+    width: 33%;
+  }
+}
+
+@media (min-width: 1100px) {
+  .preset {
+    width: 25%;
+  }
+}
+
+.preset-inner {
+  transition: 0.2s;
+  transform: translate3d(0, 0, 0);
+  border: 1px solid #e0e0e0;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.09);
+  -webkit-backface-visibility: hidden;
+  cursor: pointer;
+}
+
+.grooni-metabox-row .preset {
+  min-width: 250px;
+}
+
+.grooni-metabox-row .preset-title {
+  width: 100%;
+}
+
+#groovy-select-preset-modal .preset--selected .preset-placeholder::after,
+.grooni-metabox-row .preset--current .preset-placeholder::after,
+.groovy-menu-redux-current .preset--current .preset-placeholder::after,
+.groovy-menu-redux-modal .preset--selected .preset-placeholder::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: url(../images/current.png);
+}
+
+.grooni-metabox-row .preset * {
+  box-sizing: border-box;
+}
+
+.preset-inner.active {
+  position: relative;
+  z-index: 999;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 7.2px 2.8px rgba(0, 0, 0, 0.24);
+}
+
+.preset .preset-inner:not(.active):hover,
+.preset .preset-inner:not(.active):hover {
+  transform: translateY(-4px);
+  box-shadow: 0 13px 10px rgba(0, 0, 0, 0.24);
+}
+
+.preset--create-new .preset-inner,
+.preset--add-template .preset-inner[data-toggle="modal"],
+.preset--import .preset-inner {
+  cursor: pointer;
+}
+
+.preset-placeholder {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 160px;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.preset-placeholder img {
+  max-width: 85% !important;
+  height: auto !important;
+  max-height: 138px;
+  background-image: url(../images/pattern-preview.png);
+}
+
+.groovy-menu-redux-current {
+  > .preset {
+    padding: 0;
+    width: auto;
+    max-width: 390px;
+  }
+}
+
+.preset--add-template.preset--not-allowed {
+  .preset-title__alpha {
+    white-space: normal;
+    text-transform: initial !important;
+    font-weight: normal !important;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.preset--default .preset-placeholder::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: url(../images/set-as-default.png);
+}
+
+.preset--create-new .preset-inner .preset-placeholder,
+.preset--add-template .preset-inner .preset-placeholder,
+.preset--import .preset-inner .preset-placeholder {
+  min-height: 197px;
+  text-align: center;
+  border: 2px dashed #b8b8b8;
+  background-color: white;
+
+  .preset-placeholder-inner a {
+    text-decoration: none;
+    color: #686868;
+  }
+
+  .gm-gui-icon {
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .preset-title__alpha {
+    text-transform: uppercase;
+    color: #686868;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 15px;
+  }
+
+  .preset-title__beta {
+    color: #a6a6a6;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 13px;
+  }
+}
+
+.preset-placeholder .preset-title__alpha,
+.preset-placeholder .preset-title__beta {
+  text-align: center;
+  pointer-events: none;
+}
+
+.preset--create-new .gm-gui-icon {
+  font-size: 22px;
+}
+
+.preset--import .gm-gui-icon {
+  font-size: 32px;
+}
+
+.preset--add-template .gm-gui-icon {
+  font-size: 30px;
+}
+
+.preset-info {
+  position: relative;
+  display: flex;
+}
+
+.preset-title {
+  position: relative;
+  overflow: hidden;
+  height: 35px;
+  padding: 5px 15px;
+  background-color: rgba(2, 2, 2, 0.12);
+  flex: 1;
+}
+
+.preset-title__alpha {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  cursor: text;
+  text-align: left;
+  white-space: nowrap;
+  text-transform: uppercase;
+  text-overflow: ellipsis;
+  color: #686868;
+  border: none;
+  background: transparent !important;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.preset-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  text-align: center;
+
+  & > .fa {
+    background-color: #b8b8b8;
+    display: block;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    transition: background-color ease 0.2s;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    line-height: 35px;
+
+    &:hover {
+      background-color: #448aff;
+    }
+  }
+}
+
+.preset-opts__nav {
+  position: absolute;
+  z-index: 999;
+  top: 100%;
+  right: 0;
+  width: 164px;
+  margin: 0;
+  transition: opacity 0.2s ease, visivility 0.2s ease;
+  background-color: #3b3b3b;
+  box-shadow: 0 13px 8px rgba(0, 0, 0, 0.24);
+}
+
+.preset-inner:not(.active) .preset-opts__nav {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.preset-opts__nav__item {
+  display: block;
+  margin: 0;
+  padding-right: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-align: left;
+  color: #fff;
+  line-height: 34px;
+
+  &:hover {
+    background-color: #448aff;
+  }
+}
+
+.preset-opts__nav__item a {
+  display: block;
+  text-decoration: none;
+  color: #fff;
+}
+
+.preset-opts__nav__item .fa {
+  display: inline-block;
+  max-width: 42px;
+  padding-right: 17px;
+  padding-left: 17px;
+}
+
+.gm-modal-header {
+  min-height: 16px;
+  padding: 15px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/**************************
+GENERAL SETTINGS MODAL
+**************************/
+
+.groovy-tab-pane {
+  display: none;
+  padding: 0 30px 90px 30px;
+  overflow-y: auto;
+  height: calc(100vh - 110px);
+}
+
+.groovy-tab-pane-active {
+  display: block;
+}
+
+.groovy-tabs {
+  text-align: center;
+  background-color: #242930;
+  display: flex;
+  overflow-x: auto;
+}
+
+.groovy-tab {
+  position: relative;
+  display: inline-block;
+  padding: 0 20px;
+  transition: color linear 0.2s, background-color linear 0.2s;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #676a6f;
+  font-size: 15px;
+  line-height: 60px;
+  white-space: nowrap;
+
+  &:hover,
+  &:focus {
+    color: #fff;
+  }
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    content: '';
+  }
+}
+
+.groovy-tab-active {
+  color: #fff;
+
+  &::before {
+    background-color: #448aff;
+  }
+}
+
+.gm-gui__module__text-wrapper input,
+.gm-gui__module__icon-wrapper input {
+  display: inline-block;
+  float: left;
+  padding: 10px 24px;
+  transition: border-color ease-in-out 0.15s, color ease-in-out 0.15s;
+  vertical-align: middle;
+  color: #686868;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  outline: 0;
+  background-color: #fff;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
+  font-size: 16px;
+}
+
+.gm-gui__module .gm-icon-preview {
+  width: 39px;
+  height: 39px;
+  float: left;
+  font-size: 33px;
+  margin: 5px  10px 0 0;
+}
+
+.select-icon {
+  position: relative;
+  z-index: 999;
+  top: 1px;
+  left: -2px;
+  float: left;
+  padding: 14px 20px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color linear 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: white;
+  border: none;
+  background-color: #393b3f;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+
+  &:hover {
+    background-color: #448aff;
+  }
+}
+
+.gm-upload-icon-pack,
+.gm-install-default-icon-pack {
+  z-index: 999;
+  padding: 10px 20px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color linear 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: white;
+  border: none;
+  background-color: #393b3f;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+
+  &:hover {
+    background-color: #448aff;
+  }
+}
+
+.groovy-iconset {
+  margin-top: 25px;
+  padding: 15px;
+  background: #fff;
+}
+
+.groovy-iconset-name {
+  display: block;
+  float: left;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  line-height: 29px;
+}
+
+.groovy-delete-font {
+  cursor: pointer;
+  position: relative;
+  z-index: 999;
+  display: block;
+  float: right;
+  margin-bottom: 15px;
+  padding: 8px 20px;
+  user-select: none;
+  transition: background-color linear 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: white;
+  border: none;
+  background-color: #393b3f;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+
+  &:hover,
+  &:focus {
+    color: white;
+    background-color: #e43846;
+  }
+}
+
+.groovy-icons {
+  overflow: auto;
+  overflow-x: hidden;
+  width: 100%;
+  height: auto;
+  max-height: 207px;
+  border: 1px solid silver;
+  font-size: 30px;
+}
+
+.groovy-icons span {
+  display: block;
+  float: left;
+  width: 5%;
+  height: 41px;
+  margin: 0;
+  text-align: center;
+  box-shadow: 0 0 0 1px silver;
+  font-size: 18px;
+  line-height: 41px;
+}
+
+#global-settings-modal .gm-modal-body {
+  padding: 0;
+}
+
+.gm-infobox {
+  position: fixed;
+  top: 75px;
+  right: 20px;
+  z-index: 999;
+  display: block;
+  visibility: visible;
+  padding: 10px 20px;
+  transition: opacity linear 0.3s, visibility linear 0.3s;
+  opacity: 1;
+}
+
+.gm-infobox.gm-hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.gm-infobox-success {
+  background-color: #4caf50;
+}
+
+.gm-infobox__txt {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.preview-size-change {
+  position: relative;
+  display: flex;
+  background-color: #242930;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.preview-size-change a {
+  position: relative;
+  padding: 0 20px;
+  transition: color linear 0.2s, background-color linear 0.2s;
+  text-decoration: none;
+  color: #676a6f;
+  font-size: 15px;
+  line-height: 60px;
+}
+
+.preview-size-change .active {
+  color: #fff;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    content: '';
+    background-color: #448aff;
+  }
+}
+
+.gm-modal-body-iframe {
+  margin: 0 auto;
+}
+
+.iframe--size-desktop .gm-modal-body-iframe,
+.iframe--size-tablet .gm-modal-body-iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.gm-modal-body.iframe--size-desktop,
+.gm-modal-body.iframe--size-tablet {
+  height: 100%;
+}
+
+#preview-modal,
+.preview-modal-wrapper {
+  .gm-close {
+    margin-right: 15px;
+    cursor: pointer;
+    color: #fff;
+    line-height: 60px;
+    background: url('../images/preview-close.png') center no-repeat;
+    width: 14px;
+    height: 14px;
+  }
+
+  .modal-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+
+    .modal-title {
+      color: white;
+      font-size: 15px;
+    }
+
+    .modal-preview-name {
+      color: #6d7889;
+      font-size: 13px;
+    }
+  }
+
+  .gm-modal-body {
+    position: relative;
+    padding: 0;
+  }
+}
+
+.preview-size-change__tabs,
+.preview-color-change__tabs,
+.preview-sticky-change__tabs {
+  display: flex;
+}
+
+.preview-sticky-change__tabs {
+  padding-right: 360px;
+}
+
+.value {
+  margin-left: 10px;
+}
+
+.gm-gui__module__number-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+#toplevel_page_groovy_menu_settings .dashicons-admin-generic::before {
+  content: '';
+  background-image: url('../images/groovy.svg');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.preview-size-change__tabs a {
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.preview-size-change__tabs a svg {
+  fill: #6d7279;
+  fill-opacity: 0.4;
+  transition: fill linear 0.2s, fill-opacity linear 0.2s;
+}
+
+.preview-size-change__tabs a.active svg {
+  fill: #fff;
+  fill-opacity: 1;
+}
+
+.preview-color-change__tabs a {
+  display: flex;
+  align-items: center;
+}
+
+.preview-color-placeholder {
+  width: 21px;
+  height: 21px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.preview-color-change__tabs {
+  height: 60px;
+
+  a[data-color='transparent'] .preview-color-placeholder {
+    background: url(../images/preview-color-transparent.png) center no-repeat;
+    background-size: cover;
+  }
+
+  a[data-color='black'] .preview-color-placeholder {
+    background-color: #000;
+  }
+
+  a[data-color='gray'] .preview-color-placeholder {
+    background-color: #a0a0a0;
+  }
+
+  a[data-color='white'] .preview-color-placeholder {
+    background-color: #fff;
+  }
+}
+
+/**************************
+INTEGRATION DASHBOARD
+**************************/
+
+.gm-dashboard__integration {
+  .gm-dashboard-body {
+    padding: 20px;
+  }
+
+  .gm-dashboard-body-section:not(:last-of-type) {
+    margin-bottom: 32px;
+  }
+
+  .gm-dashboard-body_inner {
+    margin-left: 0;
+    margin-right: 0;
+    overflow: hidden;
+    display: block;
+  }
+
+  h3 {
+    text-align: left;
+    line-height: 1.8;
+  }
+
+  p {
+    font-size: 16px;
+    width: 100%;
+  }
+
+  pre {
+    background-color: #fff;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    padding: 15px;
+    overflow: auto;
+  }
+}
+
+.gm-screenshot-iframe {
+  position: absolute;
+  left: -1400px;
+  top: -1000px;
+}
+
+.gm-delete-warn {
+  color: #f00;
+  font-weight: bold;
+}

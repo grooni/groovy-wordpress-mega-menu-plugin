@@ -1,0 +1,61 @@
+.menu-item-settings {
+  overflow: hidden;
+}
+
+#gm-icon-settings-modal .groovy-icon {
+  display: block;
+  float: left;
+  width: 41px;
+  height: 41px;
+  margin: 0;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 0 0 1px silver;
+  font-size: 18px;
+  line-height: 41px;
+  transition: background-color ease 0.2s;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.gm-icon-preview {
+  float: left;
+  width: 19px;
+  height: 19px;
+  margin: 3px 10px 0 0;
+  font-size: 19px;
+}
+
+.menu-item-depth-0 .menu-item-settings .gm-show-featured-image-wrapper {
+  display: none;
+}
+
+.groovy-select-maxwidth {
+  width: 100%;
+}
+
+.groovy-meta-box-item {
+  margin: 10px 0;
+}
+
+.groovymenu-megamenu-bg {
+  float: left;
+}
+
+.groovymenu-megamenu-bg-preview {
+  img {
+    margin-top: 10px;
+    max-width: 150px;
+    max-height: 150px;
+  }
+}
+
+.gm-msg-link-widgets {
+  display: none;
+}
+
+.gm-fat-label {
+  font-weight: bold;
+}

@@ -1,0 +1,9 @@
+{
+  "presets": [["@babel/preset-env", {
+    "corejs": "2",
+    "useBuiltIns": "usage",
+  }]],
+  "plugins": [
+    "@babel/proposal-object-rest-spread"
+  ]
+}
