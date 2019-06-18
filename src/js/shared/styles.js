@@ -2249,7 +2249,7 @@ export default class GmStyles {
       const color = settings.megaMenuDividerColor;
 
       css.push({
-        '.gm-main-menu-wrapper .gm-mega-menu__item:not(:last-of-type) > ul::after': `border-right: 1px solid ${color};`,
+        '.gm-main-menu-wrapper .gm-mega-menu__item:not(:last-of-type) > .gm-dropdown-menu-wrapper > ul::after': `border-right: 1px solid ${color};`,
         media: 'desktop'
       });
     }

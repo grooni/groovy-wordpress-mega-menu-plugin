@@ -298,7 +298,7 @@ return array(
 				'title'       => esc_html__( 'Submenu width', 'groovy-menu' ),
 				'description' => esc_html__( 'By applying this option you can set width of submenu excluding mega menu. Note: this option works with default and icon menu types.', 'groovy-menu' ),
 				'type'        => 'number',
-				'range'       => array( 100, 500 ),
+				'range'       => array( 0, 500 ),
 				'default'     => 230,
 				'unit'        => 'px',
 			),
@@ -472,7 +472,7 @@ return array(
 			'sub_level_item_text_size'                     => array(
 				'title'   => esc_html__( 'Size', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 10, 50 ),
+				'range'   => array( 0, 100 ),
 				'default' => 11,
 				'unit'    => 'px',
 			),
@@ -507,7 +507,7 @@ return array(
 			'sub_item_letter_spacing'                      => array(
 				'title'   => esc_html__( 'Letter spacing', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 0, 5 ),
+				'range'   => array( 0, 100 ),
 				'default' => 0,
 				'unit'    => 'px',
 			),
@@ -528,7 +528,7 @@ return array(
 			'megamenu_title_text_size'                     => array(
 				'title'     => esc_html__( 'Size', 'groovy-menu' ),
 				'type'      => 'number',
-				'range'     => array( 10, 50 ),
+				'range'     => array( 0, 100 ),
 				'default'   => 13,
 				'unit'      => 'px',
 				'condition' => array( 'header.style', 'in', array( '1' ) ),

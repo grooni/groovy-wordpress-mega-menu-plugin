@@ -12,14 +12,14 @@ MEGA DROPDOWN
       position: static;
       margin: 0 !important;
       visibility: visible;
+
+      > ul {
+        flex: 1;
+        position: relative;
+      }
     }
 
-    > ul {
-      flex: 1;
-      position: relative;
-    }
-
-    &:not(:last-of-type) > ul {
+    &:not(:last-of-type) .gm-dropdown-menu-wrapper > ul {
       &::after {
         position: absolute;
         top: 5px;
