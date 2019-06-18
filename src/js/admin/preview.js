@@ -62,15 +62,18 @@ document.addEventListener('DOMContentLoaded', () => {
         </p>`;
 
     let previewMinicartWrapper = document.querySelector('.widget_shopping_cart_content');
-    previewMinicartWrapper.innerHTML = previewMinicartContent;
-    let previewMinicartLinks = previewMinicartWrapper.querySelector('a');
-    let cartCounter = document.querySelector('.gm-cart-counter');
 
-    cartCounter.textContent = '2';
-    // Prevent call WC event handlers
-    previewMinicartLinks.addEventListener('click', (event) => {
-      event.stopImmediatePropagation();
-    });
+    if (previewMinicartWrapper !== null) {
+      previewMinicartWrapper.innerHTML = previewMinicartContent;
+      let previewMinicartLinks = previewMinicartWrapper.querySelector('a');
+      let cartCounter = document.querySelector('.gm-cart-counter');
+
+      cartCounter.textContent = '2';
+      // Prevent call WC event handlers
+      previewMinicartLinks.addEventListener('click', (event) => {
+        event.stopImmediatePropagation();
+      });
+    }
   }
 
   if (groovyMenuSettings.woocommerceCart === true) {
