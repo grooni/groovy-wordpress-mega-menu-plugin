@@ -132,8 +132,10 @@ function changeFieldVisibility (field, visibility) {
   let changeEvent = new Event('change');
 
   if (field.matches('option')) {
-    field.setAttribute('disabled', !visibility);
-    field.dispatchEvent(changeEvent);
+    if (!visibility) {
+      field.disabled = true;
+      field.dispatchEvent(changeEvent);
+    }
   } else {
     if (visibility) {
       field.style.removeProperty('display');

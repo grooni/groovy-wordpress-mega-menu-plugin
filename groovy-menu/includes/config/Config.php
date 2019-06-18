@@ -140,9 +140,9 @@ return array(
 				'options'     => array_merge( array(
 					'all' => array(
 						'title'     => esc_html__( 'Search in all post types', 'groovy-menu' ),
-						'condition' => array( 'search_form', 'in', array( 'fullscreen', 'dropdown-without-ajax' ) )
 					),
 				), GroovyMenuUtils::getPostTypesForSearch() ),
+				'condition' => array( 'search_form', 'in', array( 'fullscreen', 'dropdown-without-ajax' ) ),
 				'default'     => 'all',
 			),
 			'search_form_end'                              => array(

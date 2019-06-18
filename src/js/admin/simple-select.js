@@ -1,7 +1,6 @@
 function initSelect (select) {
   let changeEvent = new Event('change');
   var listHtml = '';
-  var options = select.querySelectorAll('option');
   var optionChecked = select.querySelector('option:checked');
 
   // main wrapper
@@ -22,8 +21,8 @@ function initSelect (select) {
 
   select.classList.add('select-hidden');
 
-  if (optionChecked.length === 0) {
-    options[0].setAttribute('selected', 'selected');
+  if (select.selectedIndex == -1) {
+    select.options[0].selected = true;
   }
 
   let styledSelect = selectWrapper.querySelector('.select-styled');
