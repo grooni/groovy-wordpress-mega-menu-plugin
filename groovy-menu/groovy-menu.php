@@ -419,6 +419,7 @@ if ( ! function_exists( 'groovy_menu_scripts_admin' ) ) {
 
 		// Only Appearance > Menus page.
 		if ( 'nav-menus.php' === $hook_suffix ) {
+			wp_enqueue_media();
 			wp_enqueue_script( 'groovy-menu-js-appearance', GROOVY_MENU_URL . 'assets/js/appearance.js', [], GROOVY_MENU_VERSION, true );
 		}
 
