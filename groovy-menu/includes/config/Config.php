@@ -690,7 +690,7 @@ return array(
 			'logo_txt_font_size'                           => array(
 				'title'     => esc_html__( 'font size', 'groovy-menu' ),
 				'type'      => 'number',
-				'range'     => array( 10, 50 ),
+				'range'     => array( 0, 100 ),
 				'default'   => 20,
 				'unit'      => 'px',
 				'condition' => array( 'logo_type', '==', 'text' ),
@@ -1075,7 +1075,7 @@ return array(
 			'bottom_border_thickness'                   => array(
 				'title'   => esc_html__( 'thickness', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 0, 10 ),
+				'range'   => array( 0, 100 ),
 				'default' => 0,
 				'unit'    => 'px',
 			),
@@ -1135,7 +1135,7 @@ return array(
 			'item_text_size'                            => array(
 				'title'   => esc_html__( 'Size', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 10, 50 ),
+				'range'   => array( 0, 100 ),
 				'default' => 14,
 				'unit'    => 'px',
 			),
@@ -1169,7 +1169,7 @@ return array(
 			'item_letter_spacing'                       => array(
 				'title'   => esc_html__( 'Letter spacing', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 0, 5 ),
+				'range'   => array( 0, 10 ),
 				'default' => 0,
 				'unit'    => 'px',
 			),
@@ -1259,14 +1259,14 @@ return array(
 			'toolbar_additional_info_font_size'         => array(
 				'title'   => esc_html__( 'Toolbar additional information font size', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 10, 50 ),
+				'range'   => array( 0, 100 ),
 				'default' => 14,
 				'unit'    => 'px',
 			),
 			'toolbar_icon_size'                         => array(
 				'title'   => esc_html__( 'Toolbar social icon size', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 10, 50 ),
+				'range'   => array( 0, 100 ),
 				'default' => 16,
 				'unit'    => 'px',
 			),
@@ -1300,14 +1300,14 @@ return array(
 			'hamburger_icon_size'                       => array(
 				'title'   => esc_html__( 'size', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 10, 50 ),
+				'range'   => array( 0, 100 ),
 				'default' => 24,
 				'unit'    => 'px',
 			),
 			'hamburger_icon_padding'                    => array(
 				'title'   => esc_html__( 'padding area', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 0, 20 ),
+				'range'   => array( 0, 50 ),
 				'default' => 0,
 				'unit'    => 'px',
 			),
@@ -1333,7 +1333,7 @@ return array(
 			'hamburger_icon_border_width'               => array(
 				'title'   => esc_html__( 'width', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 0, 5 ),
+				'range'   => array( 0, 10 ),
 				'default' => 0,
 				'unit'    => 'px',
 			),
@@ -1353,7 +1353,7 @@ return array(
 			'hamburger_icon_size_mobile'                => array(
 				'title'   => esc_html__( 'size', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 10, 50 ),
+				'range'   => array( 0, 100 ),
 				'default' => 24,
 				'unit'    => 'px',
 			),
@@ -1681,7 +1681,7 @@ return array(
 				'title'   => esc_html__( 'Mobile navigation drawer width', 'groovy-menu' ),
 				'type'    => 'number',
 				'default' => '250',
-				'range'   => array( 150, 1000 ),
+				'range'   => array( 0, 1000 ),
 				'unit'    => 'px',
 			),
 			'mobile_width'                           => array(
@@ -1689,7 +1689,7 @@ return array(
 				'description' => esc_html__( 'You can change switch to mobile breakpoint using this option. (default:1023px).', 'groovy-menu' ),
 				'type'        => 'number',
 				'default'     => '1023',
-				'range'       => array( 360, 1700 ),
+				'range'       => array( 0, 2000 ),
 				'unit'        => 'px',
 			),
 			'mobile_header_height'                   => array(
@@ -1711,7 +1711,7 @@ return array(
 			'mobile_item_text_size'                            => array(
 				'title'   => esc_html__( 'Size', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 6, 50 ),
+				'range'   => array( 0, 100 ),
 				'default' => 11,
 				'unit'    => 'px',
 			),
@@ -1751,7 +1751,7 @@ return array(
 			'mobile_subitem_text_size'                            => array(
 				'title'   => esc_html__( 'Size', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 6, 50 ),
+				'range'   => array( 0, 100 ),
 				'default' => 11,
 				'unit'    => 'px',
 			),
