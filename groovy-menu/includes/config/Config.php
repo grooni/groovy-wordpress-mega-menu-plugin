@@ -62,7 +62,7 @@ return array(
 				'description' => esc_html__( 'You can change menu height using this option. (by default:100px).', 'groovy-menu' ),
 				'type'        => 'number',
 				'default'     => '100',
-				'range'       => array( 50, 200 ),
+				'range'       => array( 0, 500 ),
 				'unit'        => 'px',
 			),
 			'minimalistic_menu_open_type'                  => array(
@@ -112,7 +112,7 @@ return array(
 				'description' => esc_html__( 'Container width by default is 1200px.', 'groovy-menu' ),
 				'type'        => 'number',
 				'default'     => '1200',
-				'range'       => array( 900, 2000 ),
+				'range'       => array( 0, 2000 ),
 				'unit'        => 'px',
 			),
 			'search_form_start'                            => array(
@@ -622,7 +622,7 @@ return array(
 				'description' => esc_html__( 'Default container width is 1200px.', 'groovy-menu' ),
 				'type'        => 'number',
 				'default'     => '1200',
-				'range'       => array( 900, 2000 ),
+				'range'       => array( 0, 2000 ),
 				'unit'        => 'px',
 			),
 			'mega_menu_divider_color'                      => array(
@@ -1696,7 +1696,7 @@ return array(
 				'title'   => esc_html__( 'Mobile header height', 'groovy-menu' ),
 				'type'    => 'number',
 				'default' => '70',
-				'range'   => array( 50, 200 ),
+				'range'   => array( 0, 200 ),
 				'unit'    => 'px',
 			),
 			'mobile_group_typography'                           => array(

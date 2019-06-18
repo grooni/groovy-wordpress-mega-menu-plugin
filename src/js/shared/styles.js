@@ -1704,7 +1704,7 @@ export default class GmStyles {
 
       if (settings.searchFormIconSizeMobile) {
         css.push({
-          '.gm-main-menu-wrapper .gm-search > i': `font-size: ${settings.searchFormIconSizeMobile}px`,
+          '.gm-search > .gm-icon': `font-size: ${settings.searchFormIconSizeMobile}px`,
           media: 'mobile'
         });
       }
