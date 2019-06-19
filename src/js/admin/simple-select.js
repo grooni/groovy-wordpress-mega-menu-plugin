@@ -1,7 +1,5 @@
 function initSelect (select) {
   let changeEvent = new Event('change');
-  var listHtml = '';
-  var optionChecked = select.querySelector('option:checked');
 
   // main wrapper
   let selectWrapper = document.createElement('div');
@@ -10,7 +8,7 @@ function initSelect (select) {
   // selected option wrapper
   let selectStyled = document.createElement('div');
   selectStyled.classList.add('select-styled');
-  selectStyled.textContent = optionChecked.textContent;
+  selectStyled.textContent = select.options[select.selectedIndex].text;
 
   selectWrapper.append(selectStyled);
 
@@ -25,16 +23,16 @@ function initSelect (select) {
     select.options[0].selected = true;
   }
 
-  let styledSelect = selectWrapper.querySelector('.select-styled');
+  [...select.children].forEach((option) => {
+    let listHtml = document.createElement('li');
 
-  [...select.children].forEach(function (option) {
-    listHtml = document.createElement('li');
     listHtml.innerHTML = `${option.textContent}`;
     listHtml.setAttribute('rel', option.value);
     list.append(listHtml);
   });
 
   let listItems = list.children;
+  let styledSelect = selectWrapper.querySelector('.select-styled');
 
   function itemChange (e) {
     e.stopPropagation();
@@ -44,7 +42,7 @@ function initSelect (select) {
     select.value = this.getAttribute('rel');
     select.dispatchEvent(changeEvent);
     select.querySelectorAll('option')
-      .forEach(function (option) {
+      .forEach((option) => {
         option.removeAttribute('selected');
       });
     select.querySelector(`option[value="${this.getAttribute('rel')}"]`)
@@ -56,13 +54,13 @@ function initSelect (select) {
     e.stopPropagation();
 
     document.querySelectorAll('.select-styled.active')
-      .forEach(function (select) {
+      .forEach((select) => {
         select.classList.remove('active');
       });
     this.classList.toggle('active');
   }, false);
 
-  [...listItems].forEach(function (item) {
+  [...listItems].forEach((item) => {
     item.addEventListener('click', itemChange);
   });
 
