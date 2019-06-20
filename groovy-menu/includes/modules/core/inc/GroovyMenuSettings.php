@@ -625,7 +625,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 									<div class="preset-info">
 										<div class="preset-title">
 											<input
-												class="preset-title__alpha"
+												class="preset-title__input"
 												value="<?php echo esc_attr( $preset->name ); ?>"
 												readonly>
 										</div>

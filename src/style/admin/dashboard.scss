@@ -228,7 +228,7 @@ GROOVY DASHBOARD PRESET
   transition: 0.2s;
   transform: translate3d(0, 0, 0);
   border: 1px solid #e0e0e0;
-  background-color: white;
+  background-color: #fff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.09);
   -webkit-backface-visibility: hidden;
   cursor: pointer;
@@ -324,7 +324,7 @@ GROOVY DASHBOARD PRESET
   min-height: 197px;
   text-align: center;
   border: 2px dashed #b8b8b8;
-  background-color: white;
+  background-color: #fff;
 
   .preset-placeholder-inner a {
     text-decoration: none;
@@ -334,14 +334,6 @@ GROOVY DASHBOARD PRESET
   .gm-gui-icon {
     display: block;
     margin-bottom: 12px;
-  }
-
-  .preset-title__alpha {
-    text-transform: uppercase;
-    color: #686868;
-    font-size: 13px;
-    font-weight: 700;
-    line-height: 15px;
   }
 
   .preset-title__beta {
@@ -384,7 +376,26 @@ GROOVY DASHBOARD PRESET
   flex: 1;
 }
 
+.preset-placeholder-inner {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+  color: #686868;
+}
+
 .preset-title__alpha {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 25px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.preset-title__alpha-sub {
+
+}
+
+.preset-title__input {
   display: block;
   overflow: hidden;
   width: 100%;
