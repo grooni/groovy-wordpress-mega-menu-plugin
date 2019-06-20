@@ -23,40 +23,36 @@ ICON FONT
   speak: none;
 }
 
-.gm-icon-file-box::before {
-  content: '\e900';
+.gm-icon-crown:before {
+  content: "\e900";
 }
 
-.gm-icon-list::before {
-  content: '\e901';
+.gm-icon-file-box:before {
+  content: "\e901";
 }
-
-.gm-icon-help::before {
-  content: '\e902';
+.gm-icon-list:before {
+  content: "\e902";
 }
-
-.gm-icon-tools::before {
-  content: '\e903';
+.gm-icon-help:before {
+  content: "\e903";
 }
-
-.gm-icon-download::before {
-  content: '\e904';
+.gm-icon-tools:before {
+  content: "\e904";
 }
-
-.gm-icon-layers::before {
-  content: '\e905';
+.gm-icon-download:before {
+  content: "\e905";
 }
-
-.gm-icon-power-off::before {
-  content: '\e906';
+.gm-icon-layers:before {
+  content: "\e906";
 }
-
-.gm-icon-music-mixer::before {
-  content: '\e907';
+.gm-icon-power-off:before {
+  content: "\e907";
 }
-
-.gm-icon-drop::before {
-  content: '\e908';
+.gm-icon-music-mixer:before {
+  content: "\e908";
+}
+.gm-icon-drop:before {
+  content: "\e909";
 }
 
 /***************************************

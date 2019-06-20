@@ -1035,7 +1035,7 @@ class GroovyMenuUtils {
 		}
 
 		if ( $lver ) {
-			$upgrade_link = '<a href="https://groovymenu.grooni.com/upgrade/" target="_blank"><span style="color:#3e9e16">' . esc_html__( 'Upgrade to Pro', 'groovy-menu' ) . '</span></a>';
+			$upgrade_link = '<a href="https://groovymenu.grooni.com/upgrade/" target="_blank"><span style="color:#3e9e16; font-weight: bold;">' . esc_html__( 'Upgrade to Pro', 'groovy-menu' ) . '</span></a>';
 			array_unshift( $actions, $upgrade_link );
 		}
 
