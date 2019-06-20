@@ -15,7 +15,7 @@
 
 ### ////////////////////////////////////
 echo '-----=[ remove old zip_modules files and same folder ]==-----'
-rm -r zip_modules/
+rm -r zip_modules
 
 ### ////////////////////////////////////
 echo '-----=[ run build-modules.php ]==-----'
