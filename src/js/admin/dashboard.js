@@ -363,7 +363,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Add New preset
-  if (createNewPresetBtn !== null) {
+  if (createNewPresetBtn !== null && !createNewPresetBtn.classList.contains('preset--only-in-pro')) {
     createNewPresetBtn.addEventListener('click', () => {
       window.location = `${groovyMenuLocalize.GroovyMenuAdminUrl}&action=create`;
     });
