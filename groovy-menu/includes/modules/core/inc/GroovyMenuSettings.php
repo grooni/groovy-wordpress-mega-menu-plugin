@@ -702,7 +702,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 									<div class="preset-placeholder-inner">
 										<span class="gm-gui-icon gm-icon-download"></span>
 										<span class="preset-title__alpha">
-												<?php esc_html_e( 'Import preset', 'groovy-menu' ); ?>
+												<?php esc_html_e( 'IMPORT MENU PRESET', 'groovy-menu' ); ?>
 											</span>
 										<span class="preset-title__alpha-sub">
 												<?php esc_html_e( 'Available in the PRO version', 'groovy-menu' ); ?>

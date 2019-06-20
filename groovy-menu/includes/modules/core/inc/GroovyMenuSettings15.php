@@ -1024,7 +1024,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 											<div class="preset-placeholder-inner">
 												<span class="gm-gui-icon gm-icon-list"></span>
 												<span
-													class="preset-title__alpha"><?php esc_html_e( 'New preset', 'groovy-menu' ); ?></span>
+													class="preset-title__alpha"><?php esc_html_e( 'CREATE NEW PRESET', 'groovy-menu' ); ?></span>
 												<span class="preset-title__alpha-sub">
 												<?php esc_html_e( 'Available in the', 'groovy-menu' ); ?>
 													<span><?php esc_html_e( 'PRO version', 'groovy-menu' ); ?></span>
@@ -1050,7 +1050,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 											<div class="preset-placeholder-inner">
 												<span class="gm-gui-icon gm-icon-download"></span>
 												<span class="preset-title__alpha">
-												<?php esc_html_e( 'Import preset', 'groovy-menu' ); ?>
+												<?php esc_html_e( 'IMPORT MENU PRESET', 'groovy-menu' ); ?>
 											</span>
 												<span class="preset-title__alpha-sub">
 												<?php esc_html_e( 'Available in the', 'groovy-menu' ); ?>
