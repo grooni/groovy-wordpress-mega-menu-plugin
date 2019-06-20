@@ -459,28 +459,56 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				$show_integration = false;
 			}
 
+			$main_slug = 'groovy_menu_settings';
+			if ( $this->lver ) {
+				$main_slug = 'groovy_menu_welcome';
+			}
+
 			add_menu_page(
 				__( 'Groovy menu', 'groovy-menu' ),
 				__( 'Groovy menu', 'groovy-menu' ),
 				GroovyMenuRoleCapabilities::presetRead(),
-				'groovy_menu_settings',
+				$main_slug,
 				'',
 				'',
 				91
 			);
 
-			add_submenu_page(
-				'groovy_menu_settings',
-				__( 'Dashboard', 'groovy-menu' ),
-				__( 'Dashboard', 'groovy-menu' ),
-				GroovyMenuRoleCapabilities::presetRead(),
-				'groovy_menu_settings',
-				array( $this, 'render' )
-			);
+			if ( $this->lver ) {
+
+				add_submenu_page(
+					$main_slug,
+					__( 'Welcome', 'groovy-menu' ),
+					__( 'Welcome', 'groovy-menu' ),
+					GroovyMenuRoleCapabilities::presetRead(),
+					'groovy_menu_welcome',
+					array( $this, 'welcome' )
+				);
+				add_submenu_page(
+					$main_slug,
+					__( 'Dashboard', 'groovy-menu' ),
+					__( 'Dashboard', 'groovy-menu' ),
+					GroovyMenuRoleCapabilities::presetRead(),
+					'groovy_menu_settings',
+					array( $this, 'render' )
+				);
+
+			} else {
+
+				add_submenu_page(
+					$main_slug,
+					__( 'Dashboard', 'groovy-menu' ),
+					__( 'Dashboard', 'groovy-menu' ),
+					GroovyMenuRoleCapabilities::presetRead(),
+					'groovy_menu_settings',
+					array( $this, 'render' )
+				);
+
+            }
 
 			if ( $show_integration ) {
 				add_submenu_page(
-					'groovy_menu_settings',
+					$main_slug,
 					__( 'Integration', 'groovy-menu' ),
 					__( 'Integration', 'groovy-menu' ),
 					GroovyMenuRoleCapabilities::globalOptions(),
@@ -489,6 +517,40 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				);
 			}
 
+			if ( $this->lver ) {
+				add_submenu_page(
+					$main_slug,
+					__( 'Menus', 'groovy-menu' ),
+					__( 'Menus', 'groovy-menu' ),
+					GroovyMenuRoleCapabilities::presetRead(),
+					'groovy_menu_menus',
+					array( $this, 'menus' )
+				);
+				add_submenu_page(
+					$main_slug,
+					__( 'Premium', 'groovy-menu' ),
+					__( 'Premium', 'groovy-menu' ),
+					GroovyMenuRoleCapabilities::presetRead(),
+					'groovy_menu_premium',
+					array( $this, 'premium' )
+				);
+			}
+
+		}
+
+
+		public function menus() {
+			?>
+			<script>window.location.href = '<?php echo admin_url( 'nav-menus.php' ); ?>';</script>
+			<?php
+			exit;
+		}
+
+		public function premium() {
+			?>
+            <script>window.location.href = 'https://groovymenu.grooni.com/upgrade/';</script>
+			<?php
+			exit;
 		}
 
 		public function render() {
@@ -1149,6 +1211,40 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 			 * @since 1.2.20
 			 */
 			do_action( 'gm_after_dashboard_output' );
+
+		}
+
+
+		public function welcome() {
+			/**
+			 * Fires before the groovy menu welcome page output.
+			 *
+			 * @since 1.2.20
+			 */
+			do_action( 'gm_before_welcome_output' );
+
+			?>
+
+            <div class="gm-welcome-container">
+                <div class="gm-welcome-body">
+                    <div class="gm-welcome-body__title">
+                        <h3 class="gm-welcome-body__title__alpha"><?php esc_html_e( 'Welcome', 'groovy-menu' ); ?></h3>
+                    </div>
+                    <div class="gm-welcome-body_inner">
+                            Welcome body
+                    </div>
+                </div>
+            </div>
+
+
+			<?php
+
+			/**
+			 * Fires after the groovy menu welcome page output.
+			 *
+			 * @since 1.9.0
+			 */
+			do_action( 'gm_after_welcome_output' );
 
 		}
 

@@ -825,7 +825,7 @@ GENERAL SETTINGS MODAL
   align-items: center;
 }
 
-#toplevel_page_groovy_menu_settings .dashicons-admin-generic::before {
+#toplevel_page_groovy_menu_settings .dashicons-admin-generic::before, #toplevel_page_groovy_menu_welcome .dashicons-admin-generic::before {
   content: '';
   background-image: url('../images/groovy.svg');
   background-repeat: no-repeat;
