@@ -87,57 +87,77 @@ GROOVY DASHBOARD HEADER
 }
 
 .gm-dashboard__global-settings-btn {
-  height: 70px;
+  height: 52px;
+  width: 196px;
   margin: 0;
-  padding: 0 29px;
+  padding: 0 13px 0 19px;
   cursor: pointer;
   border: none;
-  border-right: 1px solid #414349;
-  border-left: 1px solid #414349;
+  border-radius: 3px;
+  background-color: #448aff;
   outline: none;
-  background-color: transparent;
   display: flex;
   align-items: center;
-}
+  transition: background-color 0.2s ease;
 
-.gm-dashboard__global-settings-btn > .gm-gui-icon {
-  margin-right: 17px;
-  color: #cecece;
-  font-size: 32px;
-}
+  &:hover {
+    background-color: #3293ff;
+  }
 
-.global-settings-btn-title {
-  display: block;
-  color: #cecece;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 17px;
-}
+  .gm-gui-icon {
+    margin-right: 16px;
+    color: #fff;
+    font-size: 32px;
+  }
 
-.global-settings-btn-subtitle {
-  display: block;
-  text-transform: uppercase;
-  color: #949494;
-  font-size: 10px;
-  font-weight: 400;
-  line-height: 18px;
+  .global-settings-btn__txt-group {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    line-height: 17px;
+  }
+
+  .global-settings-btn-title {
+    color: #9df9ff;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .global-settings-btn-subtitle {
+    color: #fff;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
 }
 
 .gm-dashboard-header__help-link {
-  margin-left: 28px;
-  transition: color ease 0.2s;
+  padding: 0 35px;
+  height: 52px;
+  width: 196px;
+  border-radius: 3px;
+  background-color: #efefef;
+  margin-left: 17px;
+  transition: background-color ease 0.2s;
   text-decoration: none;
-  color: #676a6f;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 17px;
   display: flex;
   align-items: center;
-}
+  color: #686868 !important;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
 
-.gm-dashboard-header__help-link > .gm-gui-icon {
-  margin-right: 10px;
-  font-size: 32px;
+  &:hover {
+    background-color: #fff;
+  }
+
+  .gm-gui-icon {
+    font-size: 32px;
+    color: #cecece;
+    margin-right: 15px;
+  }
 }
 
 /***************************************
