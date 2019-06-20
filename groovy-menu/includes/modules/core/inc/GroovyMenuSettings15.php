@@ -1084,22 +1084,24 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 										<div class="preset-placeholder-inner">
 											<span class="gm-gui-icon gm-icon-file-box"></span>
 											<span class="preset-title__alpha">
-                                                <?php esc_html_e( 'Add preset from library', 'groovy-menu' ); ?>
-                                                <?php if ( ! $allow_library ) : ?>
-	                                                <?php if ( ! $this->lver ) {
-		                                                esc_html_e( 'To enable presets from the online library, please enable the option in "Global settings > Tools > Allow fetching presets from online library"', 'groovy-menu' );
-	                                                } ?>
-                                                <?php endif; ?>
-                                                <?php
-                                                if ( $this->lver ) {
-	                                                echo '</span><span class="preset-title__alpha-sub">';
-	                                                esc_html_e( 'Available in the', 'groovy-menu' );
-	                                                echo ' <span>';
-	                                                esc_html_e( 'PRO version', 'groovy-menu' );
-	                                                echo ' </span>';
-                                                }
-                                                ?>
-									</span>
+                        <?php esc_html_e( 'Add preset from library', 'groovy-menu' ); ?>
+                        <?php if ( ! $allow_library ) : ?>
+                          <?php if ( ! $this->lver ) {
+                            echo '</span><span class="preset-title__alpha-sub">';
+                            esc_html_e( 'To enable presets from the online library, please enable the option in "Global settings > Tools > Allow fetching presets from online library"', 'groovy-menu' );
+                            echo ' </span>';
+                          } ?>
+                        <?php endif; ?>
+                        <?php
+                        if ( $this->lver ) {
+                          echo '</span><span class="preset-title__alpha-sub">';
+                          esc_html_e( 'Available in the', 'groovy-menu' );
+                          echo ' <span>';
+                          esc_html_e( 'PRO version', 'groovy-menu' );
+                          echo ' </span>';
+                        }
+                        ?>
+									    </span>
 										</div>
 									</div>
 								</div>
