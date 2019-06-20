@@ -351,6 +351,11 @@ GROOVY DASHBOARD PRESET
   font-size: 30px;
 }
 
+.preset--add-template.preset--not-allowed .preset-title__alpha-sub {
+  font-size: 12px;
+  line-height: 16px;
+}
+
 .preset-info {
   position: relative;
   display: flex;
