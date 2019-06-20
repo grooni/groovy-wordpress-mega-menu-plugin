@@ -29,6 +29,7 @@ define( 'GROOVY_MENU_VERSION', '0.9.9' );
 define( 'GROOVY_MENU_DB_VER_OPTION', 'groovy_menu_db_version' );
 define( 'GROOVY_MENU_DIR', plugin_dir_path( __FILE__ ) );
 define( 'GROOVY_MENU_URL', plugin_dir_url( __FILE__ ) );
+define( 'GROOVY_MENU_BASENAME', plugin_basename( trailingslashit( dirname( dirname( __FILE__ ) ) ) . 'groovy-menu.php' ) );
 
 if ( ! defined( 'AUTH_COOKIE' ) && function_exists( 'is_multisite' ) && is_multisite() ) {
 	if ( function_exists( 'wp_cookie_constants' ) ) {
@@ -63,6 +64,7 @@ register_deactivation_hook( __FILE__, 'groovy_menu_deactivation' );
 
 add_action( 'init', array( 'GroovyMenuUtils', 'add_groovy_menu_preset_post_type' ), 3 );
 add_filter( 'plugin_row_meta', array( 'GroovyMenuUtils', 'gm_plugin_meta_links' ), 10, 2 );
+add_filter( 'plugin_action_links', array( 'GroovyMenuUtils', 'gm_plugin_page_links' ), 10, 2 );
 
 
 // Initialize Groovy Menu.

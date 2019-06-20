@@ -994,9 +994,52 @@ class GroovyMenuUtils {
 			return $links;
 		}
 
-		$links[] = '<a href="https://grooni.ticksy.com/" target="_blank"">' . esc_html__( 'Get Support', 'groovy-menu' ) . '</a>';
+		$lver = false;
+		if ( defined( 'GROOVY_MENU_LVER' ) && '2' === GROOVY_MENU_LVER ) {
+			$lver = true;
+		}
+
+		if ( $lver) {
+			$links[] = '<a href="https://grooni.com/docs/groovy-menu/" target="_blank">' . esc_html__( 'Docs', 'groovy-menu' ) . '</a>';
+			$links[] = '<a href="https://wordpress.org/groovy-mega-menu/" target="_blank"">' . esc_html__( 'Free support', 'groovy-menu' ) . '</a>';
+		} else {
+			$links[] = '<a href="https://grooni.com/docs/groovy-menu/" target="_blank">' . esc_html__( 'Docs', 'groovy-menu' ) . '</a>';
+			$links[] = '<a href="https://grooni.ticksy.com/" target="_blank"">' . esc_html__( 'Get Support', 'groovy-menu' ) . '</a>';
+		}
 
 		return $links;
+	}
+
+	/**
+	 * Adds plugin action links to the plugin in the WP Admin > Plugins screen
+	 *
+	 * @param array $actions
+	 * @param string $plugin_file
+	 *
+	 * @return array
+	 */
+	public static function gm_plugin_page_links( $actions, $plugin_file ) {
+
+		$basename = defined( 'GROOVY_MENU_BASENAME' ) ? GROOVY_MENU_BASENAME : 'groovy-menu.php';
+
+		if ( false === strpos( $plugin_file, $basename ) ) {
+			return $actions;
+		}
+
+		$lver = false;
+		if ( defined( 'GROOVY_MENU_LVER' ) && '2' === GROOVY_MENU_LVER ) {
+			$lver = true;
+		}
+
+		if ( $lver ) {
+			$upgrade_link = '<a href="https://groovymenu.grooni.com/upgrade/" target="_blank"><span style="color:#3e9e16">' . esc_html__( 'Upgrade to Pro', 'groovy-menu' ) . '</span></a>';
+			array_unshift( $actions, $upgrade_link );
+		}
+
+		$add_link = '<a href="' . admin_url( 'admin.php?page=groovy_menu_settings' ) . '" target="_blank">' . esc_html__( 'Settings', 'groovy-menu' ) . '</a>';
+		array_push( $actions, $add_link );
+
+		return $actions;
 	}
 
 
