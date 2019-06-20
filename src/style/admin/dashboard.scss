@@ -224,6 +224,20 @@ GROOVY DASHBOARD PRESET
   }
 }
 
+.preset-comparision {
+  .preset-placeholder {
+    background-image: url(../images/comparision-bg.png);
+    background-size: cover;
+    background-position: 8px center;
+    background-repeat: no-repeat;
+  }
+
+  .gm-gui-icon {
+    font-size: 32px;
+    color: #f9b000;
+  }
+}
+
 .preset-inner {
   transition: 0.2s;
   transform: translate3d(0, 0, 0);
@@ -269,9 +283,7 @@ GROOVY DASHBOARD PRESET
   box-shadow: 0 13px 10px rgba(0, 0, 0, 0.24);
 }
 
-.preset--create-new .preset-inner,
-.preset--add-template .preset-inner[data-toggle="modal"],
-.preset--import .preset-inner {
+.preset-inner {
   cursor: pointer;
 }
 
@@ -309,7 +321,8 @@ GROOVY DASHBOARD PRESET
 
 .preset--create-new .preset-inner .preset-placeholder,
 .preset--add-template .preset-inner .preset-placeholder,
-.preset--import .preset-inner .preset-placeholder {
+.preset--import .preset-inner .preset-placeholder,
+.preset-comparision .preset-inner .preset-placeholder {
   min-height: 197px;
   text-align: center;
   border: 2px dashed #b8b8b8;
@@ -320,17 +333,16 @@ GROOVY DASHBOARD PRESET
     color: #686868;
   }
 
-  .gm-gui-icon {
-    display: block;
-    margin-bottom: 12px;
-  }
-
   .preset-title__beta {
     color: #a6a6a6;
     font-size: 11px;
     font-weight: 700;
     line-height: 13px;
   }
+}
+
+.preset-placeholder .gm-gui-icon {
+  margin-bottom: 12px;
 }
 
 .preset-placeholder .preset-title__alpha,
@@ -373,6 +385,7 @@ GROOVY DASHBOARD PRESET
 .preset-placeholder-inner {
   display: flex;
   flex-direction: column;
+  text-align: center;
   font-family: 'Roboto', sans-serif;
   color: #686868;
 }
