@@ -1026,6 +1026,9 @@ class GroovyMenuUtils {
 			return $actions;
 		}
 
+		$settings_link = '<a href="' . admin_url( 'admin.php?page=groovy_menu_settings' ) . '" target="_blank">' . esc_html__( 'Settings', 'groovy-menu' ) . '</a>';
+		array_unshift( $actions, $settings_link );
+
 		$lver = false;
 		if ( defined( 'GROOVY_MENU_LVER' ) && '2' === GROOVY_MENU_LVER ) {
 			$lver = true;
@@ -1035,9 +1038,6 @@ class GroovyMenuUtils {
 			$upgrade_link = '<a href="https://groovymenu.grooni.com/upgrade/" target="_blank"><span style="color:#3e9e16">' . esc_html__( 'Upgrade to Pro', 'groovy-menu' ) . '</span></a>';
 			array_unshift( $actions, $upgrade_link );
 		}
-
-		$add_link = '<a href="' . admin_url( 'admin.php?page=groovy_menu_settings' ) . '" target="_blank">' . esc_html__( 'Settings', 'groovy-menu' ) . '</a>';
-		array_push( $actions, $add_link );
 
 		return $actions;
 	}
