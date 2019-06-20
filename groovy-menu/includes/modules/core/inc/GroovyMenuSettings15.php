@@ -1025,7 +1025,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                                                 <span class="gm-gui-icon gm-icon-list"></span>
                                                 <span class="preset-title__alpha"><?php esc_html_e( 'New preset', 'groovy-menu' ); ?></span>
                                                 <span class="preset-title__alpha-sub">
-												<?php esc_html_e( 'Available in the PRO version', 'groovy-menu' ); ?>
+												<?php esc_html_e( 'Available in the', 'groovy-menu' ); ?> <span><?php esc_html_e( 'PRO version', 'groovy-menu' ); ?></span>
 											</span>
                                             </div>
                                         </div>
@@ -1051,7 +1051,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 												<?php esc_html_e( 'Import preset', 'groovy-menu' ); ?>
 											</span>
 												<span class="preset-title__alpha-sub">
-												<?php esc_html_e( 'Available in the PRO version', 'groovy-menu' ); ?>
+												<?php esc_html_e( 'Available in the', 'groovy-menu' ); ?> <span><?php esc_html_e( 'PRO version', 'groovy-menu' ); ?></span>
 											</span>
 											</div>
 										</div>
@@ -1088,7 +1088,10 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 											if ( $this->lver ) {
 												esc_html_e( 'Online library', 'groovy-menu' );
 												echo '</span><span class="preset-title__alpha-sub">';
-												esc_html_e( 'Available in the PRO version', 'groovy-menu' );
+												esc_html_e( 'Available in the', 'groovy-menu' );
+												echo ' <span>';
+												esc_html_e( 'PRO version', 'groovy-menu' );
+												echo ' </span>';
 											} else {
 												esc_html_e( 'To enable presets from the online library, please enable the option in "Global settings > Tools > Allow fetching presets from online library"', 'groovy-menu' );
 											}
