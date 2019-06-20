@@ -1086,7 +1086,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 											esc_html_e( 'Add preset from library', 'groovy-menu' );
 										else:
 											if ( $this->lver ) {
-												esc_html_e( 'Online library', 'groovy-menu' );
+												esc_html_e( 'ADD PRESET FROM LIBRARY', 'groovy-menu' );
 												echo '</span><span class="preset-title__alpha-sub">';
 												esc_html_e( 'Available in the', 'groovy-menu' );
 												echo ' <span>';
