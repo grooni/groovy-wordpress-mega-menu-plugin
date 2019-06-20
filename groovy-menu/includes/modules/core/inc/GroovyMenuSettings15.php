@@ -1016,11 +1016,28 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 						<?php } ?>
 
 						<?php if ( GroovyMenuRoleCapabilities::presetCreate( true ) ) : ?>
-							<?php
-							if ( ! $this->lver && class_exists( '\GroovyMenu\Templates' ) ) {
-								\GroovyMenu\Templates::presetNewDashboard();
-							}
-							?>
+
+							<?php if ( $this->lver ) : ?>
+                                <div class="preset preset--create-new preset--only-in-pro">
+                                    <div class="preset-inner">
+                                        <div class="preset-placeholder">
+                                            <div class="preset-placeholder-inner">
+                                                <span class="gm-gui-icon gm-icon-list"></span>
+                                                <span class="preset-title__alpha"><?php esc_html_e( 'New preset', 'groovy-menu' ); ?></span>
+                                                <span class="preset-title__alpha-sub">
+												<?php esc_html_e( 'Available in the PRO version', 'groovy-menu' ); ?>
+											</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+							<?php else: ?>
+								<?php
+								if ( ! $this->lver && class_exists( '\GroovyMenu\Templates' ) ) {
+									\GroovyMenu\Templates::presetNewDashboard();
+								}
+								?>
+							<?php endif; ?>
 						<?php endif; ?>
 
 						<?php if ( GroovyMenuRoleCapabilities::canImport( true ) ) : ?>
