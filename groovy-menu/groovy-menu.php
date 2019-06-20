@@ -3,7 +3,7 @@
 Plugin Name: Groovy Menu (free)
 Version: 0.9.11
 Description: Groovy menu is a modern adjustable and flexible menu designed for creating mobile-friendly menus with a lot of options.
-Plugin URI: https://grooni.com/docs/groovy-menu/
+Plugin URI: https://groovymenu.grooni.com/
 Author: Grooni
 Author URI: https://grooni.com
 Text Domain: groovy-menu
