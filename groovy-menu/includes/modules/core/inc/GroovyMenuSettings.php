@@ -625,7 +625,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 									<div class="preset-info">
 										<div class="preset-title">
 											<input
-												class="preset-title__input"
+												class="preset-title__alpha"
 												value="<?php echo esc_attr( $preset->name ); ?>"
 												readonly>
 										</div>
@@ -736,7 +736,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 											esc_html_e( 'Add preset from library', 'groovy-menu' );
 										else:
 											if ( $this->lver ) {
-												esc_html_e( 'ADD PRESET FROM LIBRARY', 'groovy-menu' );
+												esc_html_e( 'Online library', 'groovy-menu' );
 												echo '</span><span class="preset-title__alpha-sub">';
 												esc_html_e( 'Available in the PRO version', 'groovy-menu' );
 											} else {
