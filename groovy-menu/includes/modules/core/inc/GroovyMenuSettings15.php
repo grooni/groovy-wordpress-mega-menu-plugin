@@ -1235,7 +1235,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 			/**
 			 * Fires before the groovy menu welcome page output.
 			 *
-			 * @since 1.2.20
+			 * @since 1.9.0
 			 */
 			do_action( 'gm_before_welcome_output' );
 
