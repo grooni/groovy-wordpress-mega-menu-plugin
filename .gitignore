@@ -1,7 +1,7 @@
 .idea
 .vscode
 
-groovy-menu.zip
+groovy-menu*.zip
 groovy-menu*.tgz
 /package-lock.json
 /composer.lock
