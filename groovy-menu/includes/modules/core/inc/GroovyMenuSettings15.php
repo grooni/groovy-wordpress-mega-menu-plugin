@@ -1249,8 +1249,8 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                       <span>free version</span>
                     </span>
                     <h1 class="gm-welcome-header__title">
-                      <span>Powerful Mega Menu Plugin</span>
-                      Thank you for choosing our plugin!
+                      <span>Enjoying GROOVY?</span>
+                      Why not leave a review on WordPress.org? We'd really appreciate it.
                     </h1>
                     <span class="gm-welcome-header__version">1.0.0</span>
                   </div>
@@ -1282,14 +1282,13 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                     </div>
                   </div>
                   <div class="gm-welcome-comparision">
-                    <h2 class="gm-welcome-comparision-title">Free version vs <span>PREMIUM</span></h2>
-                    <p class="gm-welcome-comparision-subtitle">Campare
-                      table</p>
+                    <h2>Free version vs <span>PREMIUM</span></h2>
+                    <p>Comparision table</p>
                     <div class="gm-welcome-comparision-grid">
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__title">FEATURE LIST</div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__title">FREE PLUGIN</div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__title
-                      gm-welcome-comparision-grid__title--premium"><span class="gm-gui-icon gm-icon-crown"></span>PREMIUM</div>
+                      gm-welcome-comparision-grid__title-premium"><span class="gm-gui-icon gm-icon-crown"></span>PREMIUM</div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid--feature">
                         Mega menu
                       </div>
