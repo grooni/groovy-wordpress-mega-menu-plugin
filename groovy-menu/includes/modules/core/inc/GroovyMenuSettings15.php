@@ -1245,7 +1245,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                 <div class="gm-welcome-body">
                   <div class="gm-welcome-header">
                     <div class="gm-welcome-logo">
-                      <img src="" alt="">
+                      <img src="<?php echo GROOVY_MENU_URL; ?>assets/images/groovy-menu-alternative.svg" alt="">
                     </div>
                     <div class="gm-welcome-header__title">
                       <h1><?php esc_html_e( 'Powerful Mega Menu Plugin  Thank you for choosing our plugin!', 'groovy-menu' ); ?></h1>
@@ -1258,7 +1258,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                       <p>Thank you for choosing our plugin! Add an awesome mega menu on your site. Is an easy to customize, just need to upload your logo and fit your own colors, fonts and sizes. </p>
                     </div>
                     <div class="gm-welcome-top-block__img">
-                      <img src="" alt="">
+                      <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/groovy-menu-alternative.svg" alt="">
                     </div>
                   </div>
                   <div class="gm-welcome-tiles">
@@ -1279,7 +1279,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                     </div>
                   </div>
                   <div class="gm-welcome-comparision">
-                    <h2 class="gm-welcome-comparision-title">Free version vs PREMIUM</h2>
+                    <h2 class="gm-welcome-comparision-title">Free version vs <span>PREMIUM</span></h2>
                     <p class="gm-welcome-comparision-subtitle">Campare
                       table</p>
                     <div class="gm-welcome-comparision-grid">
@@ -1291,13 +1291,15 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                         Mega menu
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid--free">
-                        <img src="" alt="">
+                        <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid--premium">
-                        <img src="" alt="">
+                        <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/no.svg" alt="">
+
                       </div>
                     </div>
                   </div>
+                  <a href="https://groovymenu.grooni.com/" class="bg-welcome-buy-btn">UPGRADE TO PRO</a>
                 </div>
             </div>
 
