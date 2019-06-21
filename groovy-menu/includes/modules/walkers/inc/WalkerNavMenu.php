@@ -298,11 +298,15 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 			$post  = get_post( $wpml_gm_menu_block_id );
 
 			if ( empty( $post->ID ) ) {
+				// Recovery global $post exemplar.
+				$post = $_post;
 				return $mm_content;
 			}
 
 			if ( isset( $_GET['elementor-preview'] ) && isset( $_GET['gm_menu_block'] ) ) { // @codingStandardsIgnoreLine
 				if ( intval( $_GET['elementor-preview'] ) === intval( $post->ID ) ) { // @codingStandardsIgnoreLine
+					// Recovery global $post exemplar.
+					$post = $_post;
 					return $mm_content;
 				}
 			}
