@@ -1243,12 +1243,61 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 
             <div class="gm-welcome-container">
                 <div class="gm-welcome-body">
-                    <div class="gm-welcome-body__title">
-                        <h3 class="gm-welcome-body__title__alpha"><?php esc_html_e( 'Welcome', 'groovy-menu' ); ?></h3>
+                  <div class="gm-welcome-header">
+                    <div class="gm-welcome-logo">
+                      <img src="" alt="">
                     </div>
-                    <div class="gm-welcome-body_inner">
-                            Welcome body
+                    <div class="gm-welcome-header__title">
+                      <h1><?php esc_html_e( 'Powerful Mega Menu Plugin  Thank you for choosing our plugin!', 'groovy-menu' ); ?></h1>
                     </div>
+                    <div class="gm-welcome-header__version">1.0.0</div>
+                  </div>
+                  <div class="gm-welcome-top-block">
+                    <div class="gm-welcome-top-block__txt">
+                      <h2>Groovy Mega Menu!</h2>
+                      <p>Thank you for choosing our plugin! Add an awesome mega menu on your site. Is an easy to customize, just need to upload your logo and fit your own colors, fonts and sizes. </p>
+                    </div>
+                    <div class="gm-welcome-top-block__img">
+                      <img src="" alt="">
+                    </div>
+                  </div>
+                  <div class="gm-welcome-tiles">
+                    <div class="gm-welcome-tile">
+                      <h2 class="gm-welcome-tile__title">First Steps</h2>
+                      <p class="gm-welcome-tile__txt">Thank you for choosing our plugin! Add an awesome mega menu on your site. Is an easy to customize, just need to upload </p>
+                      <a href="" class="gm-welcome-tile__link">READ MORE</a>
+                    </div>
+                    <div class="gm-welcome-tile">
+                      <h2 class="gm-welcome-tile__title">Integration</h2>
+                      <p class="gm-welcome-tile__txt">Thank you for choosing our plugin! Add an awesome mega menu on your site. Is an easy to customize, just need to upload </p>
+                      <a href="" class="gm-welcome-tile__link">READ MORE</a>
+                    </div>
+                    <div class="gm-welcome-tile">
+                      <h2 class="gm-welcome-tile__title">Need help?</h2>
+                      <p class="gm-welcome-tile__txt">Thank you for choosing our plugin! Add an awesome mega menu on your site. Is an easy to customize, just need to upload </p>
+                      <a href="" class="gm-welcome-tile__link">READ MORE</a>
+                    </div>
+                  </div>
+                  <div class="gm-welcome-comparision">
+                    <h2 class="gm-welcome-comparision-title">Free version vs PREMIUM</h2>
+                    <p class="gm-welcome-comparision-subtitle">Campare
+                      table</p>
+                    <div class="gm-welcome-comparision-grid">
+                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__title">FEATURE LIST</div>
+                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__title">FREE PLUGIN</div>
+                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__title
+                      gm-welcome-comparision-grid__title--premium"><span class="gm-gui-icon gm-icon-crown"></span>PREMIUM</div>
+                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid--feature">
+                        Mega menu
+                      </div>
+                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid--free">
+                        <img src="" alt="">
+                      </div>
+                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid--premium">
+                        <img src="" alt="">
+                      </div>
+                    </div>
+                  </div>
                 </div>
             </div>
 
