@@ -432,6 +432,11 @@ if ( ! function_exists( 'groovy_menu_scripts_admin' ) ) {
 			wp_enqueue_script( 'groovy-menu-js-appearance', GROOVY_MENU_URL . 'assets/js/debug.js', [], GROOVY_MENU_VERSION, true );
 		}
 
+		// Only Welcome page.
+		if ( in_array( $hook_suffix, array( 'groovy-menu_page_groovy_menu_welcome', 'toplevel_page_groovy_menu_welcome' ), true ) ) {
+			wp_enqueue_style( 'groovy-menu-style-welcome', GROOVY_MENU_URL . 'assets/style/welcome.css', [], GROOVY_MENU_VERSION );
+		}
+
 	}
 }
 
