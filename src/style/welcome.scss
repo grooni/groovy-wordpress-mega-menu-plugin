@@ -1,2 +1,135 @@
-body {
+.gm-welcome-container {
+  box-sizing: border-box;
+  margin: 35px 35px 35px 10px;
+
+  h1,
+  h2,
+  p {
+    margin: 0;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+.gm-welcome-body {
+  box-shadow: 0 0 21px rgba(1, 2, 2, 0.12);
+  background-color: #f7f7f7;
+  max-width: 1072px;
+  position: relative;
+}
+
+.gm-welcome-header {
+  padding: 45px 23px 0 39px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 118px;
+
+  &__logo {
+    position: relative;
+
+    span {
+      position: absolute;
+      left: 60px;
+      bottom: -4px;
+      color: #a51960;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1;
+    }
+  }
+
+  &__title {
+    color: #444;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 25px;
+
+    span {
+      font-weight: 600;
+    }
+  }
+
+  &__version {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1;
+    border-radius: 3px;
+    background-color: #0000;
+    background-image: linear-gradient(68deg, #ce203a 0%, #620ea0 100%);
+    padding: 4px 10px 4px 6px;
+    align-self: flex-start;
+  }
+}
+
+.gm-welcome-top-block {
+  display: flex;
+  position: relative;
+  padding-left: 45px;
+  margin-bottom: 126px;
+
+  &__txt {
+    color: #444;
+    max-width: 533px;
+
+    h2 {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 25px;
+      margin-bottom: 19px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 25px;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    right: 20px;
+    top: -130px;
+  }
+}
+
+.gm-welcome-tiles {
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 12px;
+}
+
+.gm-welcome-tile {
+  background-color: #ffffff;
+  padding: 45px 23px 20px 36px;
+  color: #444444;
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    font-weight: 700;
+    font-size: 19px;
+    margin-bottom: 21px;
+  }
+
+  p {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  &__link {
+    border-radius: 3px;
+    background-color: #448aff;
+    color: #fff !important;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 13px 15px;
+    align-self: flex-end;
+  }
 }

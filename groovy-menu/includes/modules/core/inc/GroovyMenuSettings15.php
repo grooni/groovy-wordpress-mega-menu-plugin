@@ -1244,21 +1244,24 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
             <div class="gm-welcome-container">
                 <div class="gm-welcome-body">
                   <div class="gm-welcome-header">
-                    <div class="gm-welcome-logo">
+                    <span class="gm-welcome-header__logo">
                       <img src="<?php echo GROOVY_MENU_URL; ?>assets/images/groovy-menu-alternative.svg" alt="">
-                    </div>
-                    <div class="gm-welcome-header__title">
-                      <h1><?php esc_html_e( 'Powerful Mega Menu Plugin  Thank you for choosing our plugin!', 'groovy-menu' ); ?></h1>
-                    </div>
-                    <div class="gm-welcome-header__version">1.0.0</div>
+                      <span>free version</span>
+                    </span>
+                    <h1 class="gm-welcome-header__title">
+                      <span>Powerful Mega Menu Plugin</span>
+                      Thank you for choosing our plugin!
+                    </h1>
+                    <span class="gm-welcome-header__version">1.0.0</span>
                   </div>
                   <div class="gm-welcome-top-block">
                     <div class="gm-welcome-top-block__txt">
                       <h2>Groovy Mega Menu!</h2>
-                      <p>Thank you for choosing our plugin! Add an awesome mega menu on your site. Is an easy to customize, just need to upload your logo and fit your own colors, fonts and sizes. </p>
+                      <p>Thank you for choosing our plugin! Add an awesome mega menu on your site. Is an easy to
+                        customize, just need to upload your <br> logo and fit your own colors, fonts and sizes. </p>
                     </div>
                     <div class="gm-welcome-top-block__img">
-                      <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/groovy-menu-alternative.svg" alt="">
+                      <img src="<?php echo GROOVY_MENU_URL; ?>assets/images/laptop-with-bg.png" alt="">
                     </div>
                   </div>
                   <div class="gm-welcome-tiles">
@@ -1268,8 +1271,8 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                       <a href="" class="gm-welcome-tile__link">READ MORE</a>
                     </div>
                     <div class="gm-welcome-tile">
-                      <h2 class="gm-welcome-tile__title">Integration</h2>
-                      <p class="gm-welcome-tile__txt">Thank you for choosing our plugin! Add an awesome mega menu on your site. Is an easy to customize, just need to upload </p>
+                      <h2>Integration</h2>
+                      <p>Thank you for choosing our plugin! Add an awesome mega menu on your site. Is an easy to customize, just need to upload </p>
                       <a href="" class="gm-welcome-tile__link">READ MORE</a>
                     </div>
                     <div class="gm-welcome-tile">
