@@ -75,6 +75,9 @@ cases the working way to implement Groovy Menu on your website. The principle of
 = How to upload logo? =
 Please read [this](https://grooni.com/docs/groovy-menu/global-settings-2/logo-settings/) article.
 
+== Additional Info ==
+The source code of the plugin can be found at [Bitbucket](https://bitbucket.org/grooni/groovy-menu-wp.org/src/master/)
+
 == Screenshots ==
 1. Classic dropdown menu.
 2. Dashboard.
