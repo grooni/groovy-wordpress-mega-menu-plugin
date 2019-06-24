@@ -225,6 +225,10 @@ GROOVY DASHBOARD PRESET
 }
 
 .preset-comparision {
+  a {
+    text-decoration: none;
+  }
+
   .preset-placeholder {
     background-image: url(../images/comparision-bg.png);
     background-size: cover;
