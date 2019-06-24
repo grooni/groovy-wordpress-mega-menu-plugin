@@ -1268,23 +1268,23 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                   <div class="gm-welcome-tiles">
                     <div class="gm-welcome-tile">
                       <h2 class="gm-welcome-tile__title">First Steps</h2>
-                      <p class="gm-welcome-tile__txt">To display the menu on the site, you need to add <a href="#">menu items</a>,
-                        do the <a href="#">integration</a>, and <a href="#">upload the logo</a>. And <a href="#">customize</a> the
+                      <p class="gm-welcome-tile__txt">To display the menu on the site, you need to add <a href="<?php echo admin_url( 'nav-menus.php' ) ?>">menu items</a>,
+                        do the <a href="<?php echo admin_url( 'admin.php?page=groovy_menu_integration' ) ?>">integration</a>, and <a href="<?php echo admin_url( 'admin.php?page=groovy_menu_settings' ) ?>">upload the logo</a>. And <a href="<?php echo admin_url( 'customize.php' ) ?>">customize</a> the
                         menu design for
                         your taste.</p>
-                      <a href="" class="gm-welcome-tile__link">dashboard</a>
+                      <a href="<?php echo admin_url( 'admin.php?page=groovy_menu_settings' ) ?>" class="gm-welcome-tile__link">dashboard</a>
                     </div>
                     <div class="gm-welcome-tile">
                       <h2>Integration</h2>
                       <p>The automatic integration option is the easiest and in most cases the working way to
                         implement Groovy Menu on your website...</p>
-                      <a href="" class="gm-welcome-tile__link">READ MORE</a>
+                      <a href="https://grooni.com/docs/groovy-menu/integration/" class="gm-welcome-tile__link" target="_blank">READ MORE</a>
                     </div>
                     <div class="gm-welcome-tile">
                       <h2 class="gm-welcome-tile__title">Need help?</h2>
                       <p class="gm-welcome-tile__txt">Our online documentation and FAQ consist of a lot of the most
                         important information about the plugin settings</p>
-                      <a href="" class="gm-welcome-tile__link">READ MORE</a>
+                      <a href="https://grooni.com/docs/groovy-menu/" class="gm-welcome-tile__link">READ MORE</a>
                     </div>
                   </div>
                   <div class="gm-welcome-comparision">
@@ -1494,7 +1494,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                       </div>
                     </div>
                   </div>
-                  <a href="https://groovymenu.grooni.com/" class="bg-welcome-buy-btn">UPGRADE TO PRO</a>
+                  <a href="https://codecanyon.net/item/groovy-menu-wordpress-mega-menu-plugin/23049456" class="bg-welcome-buy-btn">UPGRADE TO PRO</a>
                 </div>
             </div>
 
