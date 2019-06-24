@@ -1170,21 +1170,21 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 							</div>
 						<?php endif; ?>
 
-			  <?php if ( $this->lver ) : ?>
-                <div class="preset preset-comparision">
-                  <div class="preset-inner">
-                    <div class="preset-placeholder">
-                      <div class="preset-placeholder-inner">
-                        <span class="gm-gui-icon gm-icon-crown"></span>
-                        <span class="preset-title__alpha"><?php esc_html_e( 'FREE VS PRemium', 'groovy-menu' ); ?></span>
-                        <span class="preset-title__alpha-sub">
-                          <?php esc_html_e( 'Compare both plugins features', 'groovy-menu' ); ?>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-			  <?php endif; ?>
+						<?php if ( $this->lver ) : ?>
+                            <div class="preset preset-comparision">
+                                <a href="<?php echo admin_url( 'admin.php?page=groovy_menu_integration' ) ?>">
+                                    <div class="preset-inner">
+                                        <div class="preset-placeholder">
+                                            <div class="preset-placeholder-inner">
+                                                <span class="gm-gui-icon gm-icon-crown"></span>
+                                                <span class="preset-title__alpha"><?php esc_html_e( 'FREE VS Premium', 'groovy-menu' ); ?></span>
+                                                <span class="preset-title__alpha-sub"><?php esc_html_e( 'Compare both plugins features', 'groovy-menu' ); ?></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+						<?php endif; ?>
 
 					</div>
 				</div>
