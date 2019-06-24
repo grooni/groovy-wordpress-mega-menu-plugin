@@ -1274,32 +1274,27 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                     <div class="gm-welcome-tile">
                       <h2><?php esc_html_e( 'Integration', 'groovy-menu' ); ?></h2>
                       <p><?php esc_html_e( 'The automatic integration option is the easiest and in most cases the working way to implement Groovy Menu on your website...', 'groovy-menu' ); ?></p>
-                      <a href="https://grooni.com/docs/groovy-menu/integration/" class="gm-welcome-tile__link" target="_blank">READ MORE</a>
+                      <a href="https://grooni.com/docs/groovy-menu/integration/" class="gm-welcome-tile__link" target="_blank"><?php esc_html_e( 'READ MORE', 'groovy-menu' ); ?></a>
                     </div>
                     <div class="gm-welcome-tile">
-                      <h2 class="gm-welcome-tile__title">Need help?</h2>
-                      <p class="gm-welcome-tile__txt">Our online documentation and FAQ consist of a lot of the most
-                        important information about the plugin settings</p>
-                      <a href="https://grooni.com/docs/groovy-menu/" class="gm-welcome-tile__link">READ MORE</a>
+                      <h2 class="gm-welcome-tile__title"><?php esc_html_e( 'Need help?', 'groovy-menu' ); ?></h2>
+                      <p class="gm-welcome-tile__txt"><?php esc_html_e( 'Our online documentation and FAQ consist of a lot of the most important information about the plugin settings', 'groovy-menu' ); ?></p>
+                      <a href="https://grooni.com/docs/groovy-menu/" class="gm-welcome-tile__link"><?php esc_html_e( 'READ MORE', 'groovy-menu' ); ?></a>
                     </div>
                   </div>
                   <div class="gm-welcome-comparision">
-                    <h2>Free version vs <span>PREMIUM</span></h2>
-                    <p>Comparision table</p>
+                    <h2><?php esc_html_e( 'Free version vs', 'groovy-menu' ); ?> <span><?php esc_html_e( 'PREMIUM', 'groovy-menu' ); ?></span></h2>
+                    <p><?php esc_html_e( 'Comparision table', 'groovy-menu' ); ?></p>
                     <div class="gm-welcome-comparision-grid">
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__title
-                      gm-welcome-comparision-grid__feature">FEATURE
-                        LIST</div>
+                      gm-welcome-comparision-grid__feature"><?php esc_html_e( 'FEATURE LIST', 'groovy-menu' ); ?></div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__title
-                      gm-welcome-comparision-grid__free">FREE PLUGIN</div>
-                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__title
-                      gm-welcome-comparision-grid__premium"><span
-                          class="gm-gui-icon gm-icon-crown
-                      gm-welcome-align-center
-"></span>PREMIUM</div>
+                      gm-welcome-comparision-grid__free"><?php esc_html_e( 'FREE PLUGIN', 'groovy-menu' ); ?></div>
+                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__title gm-welcome-comparision-grid__premium">
+                          <span class="gm-gui-icon gm-icon-crown gm-welcome-align-center"></span><?php esc_html_e( 'PREMIUM', 'groovy-menu' ); ?></div>
 
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__feature">
-                        Mega menu
+	                      <?php esc_html_e( 'Mega menu', 'groovy-menu' ); ?>
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__free">
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
@@ -1309,7 +1304,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                       </div>
 
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__feature">
-                        Mega menu blocks
+	                      <?php esc_html_e( 'Mega menu blocks', 'groovy-menu' ); ?>
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__free">
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/no.svg" alt="">
@@ -1318,7 +1313,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__feature">
-                        Sticky menu
+	                      <?php esc_html_e( 'Sticky menu', 'groovy-menu' ); ?>
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__free">
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/no.svg" alt="">
@@ -1327,7 +1322,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__feature">
-                        Vertical menu
+	                      <?php esc_html_e( 'Vertical menu', 'groovy-menu' ); ?>
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__free">
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/no.svg" alt="">
@@ -1336,7 +1331,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__feature">
-                        Icon menu
+	                      <?php esc_html_e( 'Icon menu', 'groovy-menu' ); ?>
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__free">
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/no.svg" alt="">
@@ -1345,7 +1340,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__feature">
-                        Minimal menu
+	                      <?php esc_html_e( 'Minimal menu', 'groovy-menu' ); ?>
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__free">
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/no.svg" alt="">
@@ -1354,34 +1349,25 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__feature">
-                        Hovers
+	                      <?php esc_html_e( 'Hovers', 'groovy-menu' ); ?>
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__free">
-                        <span>Only 2 hover types</span>
+                        <span><?php esc_html_e( 'Only 2 hover types', 'groovy-menu' ); ?></span>
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__premium">
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__feature">
-                        Logotypes
+	                      <?php esc_html_e( 'Logotypes', 'groovy-menu' ); ?>
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__free">
-                        <span>Only 1 logo + mobile logo</span>
+                        <span><?php esc_html_e( 'Only 1 logo + mobile logo', 'groovy-menu' ); ?></span>
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__premium">
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__feature">
-                        Online presets library
-                      </div>
-                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__free">
-                        <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/no.svg" alt="">
-                      </div>
-                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__premium">
-                        <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
-                      </div>
-                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__feature">
-                        Different menus types on the one site
+	                      <?php esc_html_e( 'Online presets library', 'groovy-menu' ); ?>
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__free">
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/no.svg" alt="">
@@ -1390,7 +1376,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__feature">
-                        Export/import of settings
+	                      <?php esc_html_e( 'Different menus types on the one site', 'groovy-menu' ); ?>
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__free">
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/no.svg" alt="">
@@ -1399,7 +1385,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__feature">
-                        Badges
+	                      <?php esc_html_e( 'Export/import of settings', 'groovy-menu' ); ?>
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__free">
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/no.svg" alt="">
@@ -1408,43 +1394,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__feature">
-                        WooCommerce integration
-                      </div>
-                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__free">
-                        <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
-                      </div>
-                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__premium">
-                        <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
-                      </div>
-                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__feature">
-                        Google fonts
-                      </div>
-                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__free">
-                        <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
-                      </div>
-                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__premium">
-                        <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
-                      </div>
-                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__feature">
-                        Search feature
-                      </div>
-                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__free">
-                        <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
-                      </div>
-                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__premium">
-                        <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
-                      </div>
-                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__feature">
-                        Custom icons
-                      </div>
-                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__free">
-                        <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
-                      </div>
-                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__premium">
-                        <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
-                      </div>
-                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__feature">
-                        Premium support
+	                      <?php esc_html_e( 'Badges', 'groovy-menu' ); ?>
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__free">
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/no.svg" alt="">
@@ -1453,7 +1403,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__feature">
-                        Automatic integration
+	                      <?php esc_html_e( 'WooCommerce integration', 'groovy-menu' ); ?>
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__free">
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
@@ -1462,7 +1412,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__feature">
-                        Manual integration
+	                      <?php esc_html_e( 'Google fonts', 'groovy-menu' ); ?>
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__free">
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
@@ -1471,7 +1421,25 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__feature">
-                        Extended licese
+	                      <?php esc_html_e( 'Search feature', 'groovy-menu' ); ?>
+                      </div>
+                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__free">
+                        <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
+                      </div>
+                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__premium">
+                        <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
+                      </div>
+                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__feature">
+	                      <?php esc_html_e( 'Custom icons', 'groovy-menu' ); ?>
+                      </div>
+                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__free">
+                        <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
+                      </div>
+                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__premium">
+                        <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
+                      </div>
+                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__feature">
+	                      <?php esc_html_e( 'Premium support', 'groovy-menu' ); ?>
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__free">
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/no.svg" alt="">
@@ -1480,7 +1448,34 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__feature">
-                        Set specific menu for the taxonomies
+	                      <?php esc_html_e( 'Automatic integration', 'groovy-menu' ); ?>
+                      </div>
+                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__free">
+                        <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
+                      </div>
+                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__premium">
+                        <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
+                      </div>
+                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__feature">
+	                      <?php esc_html_e( 'Manual integration', 'groovy-menu' ); ?>
+                      </div>
+                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__free">
+                        <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
+                      </div>
+                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__premium">
+                        <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
+                      </div>
+                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__feature">
+	                      <?php esc_html_e( 'Extended license', 'groovy-menu' ); ?>
+                      </div>
+                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__free">
+                        <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/no.svg" alt="">
+                      </div>
+                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__premium">
+                        <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/yes.svg" alt="">
+                      </div>
+                      <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__feature">
+	                      <?php esc_html_e( 'Set specific menu for the taxonomies', 'groovy-menu' ); ?>
                       </div>
                       <div class="gm-welcome-comparision-grid__item gm-welcome-comparision-grid__free">
                         <img  src="<?php echo GROOVY_MENU_URL; ?>assets/images/no.svg" alt="">
@@ -1490,7 +1485,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                       </div>
                     </div>
                   </div>
-                  <a href="https://codecanyon.net/item/groovy-menu-wordpress-mega-menu-plugin/23049456" class="bg-welcome-buy-btn">UPGRADE TO PRO</a>
+                  <a href="https://codecanyon.net/item/groovy-menu-wordpress-mega-menu-plugin/23049456" class="bg-welcome-buy-btn"><?php esc_html_e( 'UPGRADE TO PRO', 'groovy-menu' ); ?></a>
                 </div>
             </div>
 
