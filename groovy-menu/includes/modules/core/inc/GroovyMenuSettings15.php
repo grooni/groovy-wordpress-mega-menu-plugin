@@ -1246,20 +1246,19 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                   <div class="gm-welcome-header">
                     <span class="gm-welcome-header__logo">
                       <img src="<?php echo GROOVY_MENU_URL; ?>assets/images/groovy-menu-alternative.svg" alt="">
-                      <span>free version</span>
+                      <span><?php esc_html_e( 'free version', 'groovy-menu' ); ?></span>
                     </span>
                     <h1 class="gm-welcome-header__title">
-                      <span>Enjoying GROOVY?</span>
+                      <span><?php esc_html_e( 'Enjoying GROOVY?', 'groovy-menu' ); ?></span>
                       <img src="<?php echo GROOVY_MENU_URL; ?>assets/images/5-stars.svg" alt=""><br>
-                      Why not leave a review on WordPress.org? We'd really appreciate it.
+	                    <?php esc_html_e( 'Why not leave a review on WordPress.org? We\'d really appreciate it.', 'groovy-menu' ); ?>
                     </h1>
                     <span class="gm-welcome-header__version">1.0.0</span>
                   </div>
                   <div class="gm-welcome-top-block">
                     <div class="gm-welcome-top-block__txt">
-                      <h2>Groovy Mega Menu!</h2>
-                      <p>Thank you for choosing our plugin! Add an awesome mega menu on your site. Is an easy to
-                        customize, just need to upload your <br> logo and fit your own colors, fonts and sizes. </p>
+                      <h2><?php esc_html_e( 'Groovy Mega Menu!', 'groovy-menu' ); ?></h2>
+                      <p><?php echo __( 'Thank you for choosing our plugin! Add an awesome mega menu on your site. Is an easy to customize, just need to upload your <br> logo and fit your own colors, fonts and sizes.', 'groovy-menu' ); ?></p>
                     </div>
                     <div class="gm-welcome-top-block__img">
                       <img src="<?php echo GROOVY_MENU_URL; ?>assets/images/laptop-with-bg.png" alt="">
@@ -1267,12 +1266,10 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                   </div>
                   <div class="gm-welcome-tiles">
                     <div class="gm-welcome-tile">
-                      <h2 class="gm-welcome-tile__title">First Steps</h2>
-                      <p class="gm-welcome-tile__txt">To display the menu on the site, you need to add <a href="<?php echo admin_url( 'nav-menus.php' ) ?>">menu items</a>,
-                        do the <a href="<?php echo admin_url( 'admin.php?page=groovy_menu_integration' ) ?>">integration</a>, and <a href="<?php echo admin_url( 'admin.php?page=groovy_menu_settings' ) ?>">upload the logo</a>. And <a href="<?php echo admin_url( 'customize.php' ) ?>">customize</a> the
-                        menu design for
-                        your taste.</p>
-                      <a href="<?php echo admin_url( 'admin.php?page=groovy_menu_settings' ) ?>" class="gm-welcome-tile__link">dashboard</a>
+                      <h2 class="gm-welcome-tile__title"><?php esc_html_e( 'First Steps', 'groovy-menu' ); ?></h2>
+                      <p class="gm-welcome-tile__txt"><?php esc_html_e( 'To display the menu on the site, you need to add', 'groovy-menu' ); ?> <a href="<?php echo admin_url( 'nav-menus.php' ) ?>"><?php esc_html_e( 'menu items', 'groovy-menu' ); ?></a>,
+	                      <?php esc_html_e( 'do the', 'groovy-menu' ); ?> <a href="<?php echo admin_url( 'admin.php?page=groovy_menu_integration' ) ?>"><?php esc_html_e( 'integration', 'groovy-menu' ); ?></a>, <?php esc_html_e( 'and', 'groovy-menu' ); ?> <a href="<?php echo admin_url( 'admin.php?page=groovy_menu_settings' ) ?>"><?php esc_html_e( 'upload the logo', 'groovy-menu' ); ?></a>. <?php esc_html_e( 'And', 'groovy-menu' ); ?> <a href="<?php echo admin_url( 'customize.php' ) ?>"><?php esc_html_e( 'customize', 'groovy-menu' ); ?></a> <?php esc_html_e( 'the menu design for your taste', 'groovy-menu' ); ?>.</p>
+                      <a href="<?php echo admin_url( 'admin.php?page=groovy_menu_settings' ) ?>" class="gm-welcome-tile__link"><?php esc_html_e( 'dashboard', 'groovy-menu' ); ?></a>
                     </div>
                     <div class="gm-welcome-tile">
                       <h2>Integration</h2>

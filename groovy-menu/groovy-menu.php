@@ -411,7 +411,7 @@ if ( ! function_exists( 'groovy_menu_scripts_admin' ) ) {
 		}
 
 		// Only dashboard.
-		if ( 'toplevel_page_groovy_menu_settings' === $hook_suffix && ! isset( $_GET['action'] ) ) {
+		if ( in_array( $hook_suffix, array( 'groovy-menu_page_groovy_menu_settings', 'toplevel_page_groovy_menu_settings' ), true ) && ! isset( $_GET['action'] ) ) {
 			wp_enqueue_script( 'groovy-menu-js-dashboard', GROOVY_MENU_URL . 'assets/js/dashboard.js', [], GROOVY_MENU_VERSION, true );
 			echo '<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">';
 		}
