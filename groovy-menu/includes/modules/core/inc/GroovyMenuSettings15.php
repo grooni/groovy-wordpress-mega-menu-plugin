@@ -1172,7 +1172,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 
 						<?php if ( $this->lver ) : ?>
                             <div class="preset preset-comparision">
-                                <a href="<?php echo admin_url( 'admin.php?page=groovy_menu_integration' ) ?>">
+                                <a href="<?php echo admin_url( 'admin.php?page=groovy_menu_welcome' ) ?>">
                                     <div class="preset-inner">
                                         <div class="preset-placeholder">
                                             <div class="preset-placeholder-inner">
@@ -1272,9 +1272,8 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                       <a href="<?php echo admin_url( 'admin.php?page=groovy_menu_settings' ) ?>" class="gm-welcome-tile__link"><?php esc_html_e( 'dashboard', 'groovy-menu' ); ?></a>
                     </div>
                     <div class="gm-welcome-tile">
-                      <h2>Integration</h2>
-                      <p>The automatic integration option is the easiest and in most cases the working way to
-                        implement Groovy Menu on your website...</p>
+                      <h2><?php esc_html_e( 'Integration', 'groovy-menu' ); ?></h2>
+                      <p><?php esc_html_e( 'The automatic integration option is the easiest and in most cases the working way to implement Groovy Menu on your website...', 'groovy-menu' ); ?></p>
                       <a href="https://grooni.com/docs/groovy-menu/integration/" class="gm-welcome-tile__link" target="_blank">READ MORE</a>
                     </div>
                     <div class="gm-welcome-tile">
