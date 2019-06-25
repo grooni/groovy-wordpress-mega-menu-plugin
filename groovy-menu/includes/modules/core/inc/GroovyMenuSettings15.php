@@ -1613,6 +1613,8 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 							</div>
 						<?php } ?>
 
+                        <?php if ( ! $this->lver ) { ?>
+
 						<div class="gm-dashboard-body-section">
 							<h3><?php esc_html_e( 'Support request', 'groovy-menu' ); ?></h3>
 							<p><?php
@@ -1620,6 +1622,9 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 									sprintf( '<a href="https://grooni.ticksy.com/" target="_blank">%s</a>', esc_html__( 'Support Portal', 'groovy-menu' ) )
 								); ?></p>
 						</div>
+
+                        <?php } ?>
+
 					</div>
 				</div>
 			</div>
