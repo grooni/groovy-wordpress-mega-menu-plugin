@@ -11,7 +11,7 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 Groovy menu is a modern customizable and flexible WordPress Mega Menu Plugin designed for creating mobile friendly menus with a lot of options.
 
 == Description ==
-Groovy Menu is a WordPress Mega Menu Plugin that will allow you easily add an awesome mega menu on your site. Is an easy to customize, just need to upload your logo and fit your own colors, fonts, and sizes. This plugin allows you to create mega menus, tabs menus, and carrousel menus in a simple and native way converting your existing menu into a powerful tool.
+Groovy Menu is a WordPress Mega Menu Plugin that will allows you easily add an awesome mega menu on your site. Is an easy to customize, just need to upload your logo and fit your own colors, fonts and sizes.
 
 = Features =
 * Mega Menu
