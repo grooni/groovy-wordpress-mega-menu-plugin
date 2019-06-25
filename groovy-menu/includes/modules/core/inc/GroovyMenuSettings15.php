@@ -1172,7 +1172,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 
 						<?php if ( $this->lver ) : ?>
                             <div class="preset preset-comparision">
-                                <a href="<?php echo admin_url( 'admin.php?page=groovy_menu_welcome' ) ?>">
+                                <a href="<?php echo admin_url( 'admin.php?page=groovy_menu_welcome' ); ?>">
                                     <div class="preset-inner">
                                         <div class="preset-placeholder">
                                             <div class="preset-placeholder-inner">
@@ -1253,7 +1253,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                       <img src="<?php echo GROOVY_MENU_URL; ?>assets/images/5-stars.svg" alt=""><br>
 	                    <?php esc_html_e( 'Why not leave a review on WordPress.org? We\'d really appreciate it.', 'groovy-menu' ); ?>
                     </h1>
-                    <span class="gm-welcome-header__version">1.0.0</span>
+                    <span class="gm-welcome-header__version"><?php echo GROOVY_MENU_VERSION; ?></span>
                   </div>
                   <div class="gm-welcome-top-block">
                     <div class="gm-welcome-top-block__txt">

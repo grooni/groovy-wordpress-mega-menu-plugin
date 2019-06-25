@@ -112,7 +112,18 @@ function groovy_menu_activation() {
 		GroovyMenuUtils::install_default_icon_packs( true );
 		update_option( 'gm_default_icon_packs_installed', true, false );
 	}
+
+	update_option( 'groovy_menu_do_activation_redirect', true );
+
 }
+
+function groovy_menu_welcome() {
+	if ( get_option( 'groovy_menu_do_activation_redirect', false ) ) {
+		delete_option( 'groovy_menu_do_activation_redirect' );
+		wp_safe_redirect( admin_url( 'admin.php?page=groovy_menu_welcome' ) );
+	}
+}
+add_action( 'admin_init', 'groovy_menu_welcome' );
 
 function groovy_menu_deactivation() {
 	global $gm_supported_module;
