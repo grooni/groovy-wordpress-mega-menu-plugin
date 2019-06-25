@@ -85,5 +85,6 @@ The source code of the plugin can be found at [Bitbucket](https://bitbucket.org/
 4. Preset options.
 5. Mega menu with menu blocks.
 
+== Changelog ==
 = 1.0.0 =
 * Initial release.
