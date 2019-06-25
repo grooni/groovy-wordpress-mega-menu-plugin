@@ -1245,7 +1245,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                 <div class="gm-welcome-body">
                   <div class="gm-welcome-header">
                     <span class="gm-welcome-header__logo">
-                      <img src="<?php echo GROOVY_MENU_URL; ?>assets/images/groovy-menu-alternative.svg" alt="">
+                      <img src="<?php echo GROOVY_MENU_URL; ?>assets/images/groovy-menu-repsonsive-logo.svg" alt="">
                       <span><?php esc_html_e( 'free version', 'groovy-menu' ); ?></span>
                     </span>
                     <h1 class="gm-welcome-header__title">
