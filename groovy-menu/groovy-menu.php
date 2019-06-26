@@ -4,7 +4,7 @@ Plugin Name: Groovy Mega Menu (free)
 Version: 1.0.0
 Description: Groovy menu is a modern adjustable and flexible menu designed for creating mobile-friendly menus with a lot of options.
 Plugin URI: https://groovymenu.grooni.com/
-Author: Grooni
+Author: Grooni.com
 Author URI: https://grooni.com
 Text Domain: groovy-menu
 Domain Path: /languages/
