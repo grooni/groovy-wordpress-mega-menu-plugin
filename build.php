@@ -11,8 +11,8 @@ $zippy = Zippy::load();
 // ---------------------------------------------------------------------------------------------------------------------
 // Create plugin ZIP
 
-$zippy->create( 'groovy-mega-menu-free.zip', array( 'groovy-menu' ), true );
-echo "groovy-menu.zip done\n";
+$zippy->create( 'groovy-mega-menu.zip', array( 'groovy-menu' ), true );
+echo "groovy-mega-menu.zip done\n";
 
 
 // ---------------------------------------------------------------------------------------------------------------------
