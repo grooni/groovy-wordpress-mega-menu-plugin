@@ -1,6 +1,6 @@
-=== Groovy Menu ===
+=== Groovy Mega Menu ===
 Contributors: Grooni
-Tags: drop down, dropdown, dropdown menu, mega dropdown menu, mega menu, megamenu, navigation, mobile menu, presets, translation ready, customizable
+Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive, responsive menu, sticky menu, vertical menu, horizontal menu, ajax cart
 Requires at least: 4.9.7
 Tested up to: 5.2
 Requires PHP: 7.0

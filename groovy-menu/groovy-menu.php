@@ -1,6 +1,6 @@
 <?php defined( 'ABSPATH' ) || die( 'This script cannot be accessed directly.' );
 /*
-Plugin Name: Groovy Menu (free)
+Plugin Name: Groovy Mega Menu (free)
 Version: 1.0.0
 Description: Groovy menu is a modern adjustable and flexible menu designed for creating mobile-friendly menus with a lot of options.
 Plugin URI: https://groovymenu.grooni.com/
