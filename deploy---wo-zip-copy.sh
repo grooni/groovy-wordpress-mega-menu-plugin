@@ -16,8 +16,8 @@ gulp build --production
 
 
 ### ////////////////////////////////////
-echo 'remove old groovy-menu.zip'
-rm groovy-menu.zip
+echo 'remove old groovy-mega-menu-free.zip'
+rm groovy-mega-menu-free.zip
 echo 'run build.php'
 php build.php
 

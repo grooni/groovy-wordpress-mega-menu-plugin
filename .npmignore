@@ -22,5 +22,5 @@ groovy-menu/*
 !groovy-menu/assets
 vendor
 wordpress
-groovy-menu*.zip
+groovy*.zip
 groovy-menu*.tgz
