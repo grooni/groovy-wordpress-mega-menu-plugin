@@ -1,4 +1,4 @@
-=== Groovy Mega Menu ===
+=== Groovy Menu (free) ===
 Contributors: Grooni
 Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive, responsive menu, sticky menu, vertical menu, horizontal menu, ajax cart
 Requires at least: 4.9.7
