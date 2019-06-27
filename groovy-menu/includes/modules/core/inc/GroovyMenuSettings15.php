@@ -1485,7 +1485,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                       </div>
                     </div>
                   </div>
-                  <a href="https://codecanyon.net/item/groovy-menu-wordpress-mega-menu-plugin/23049456" class="bg-welcome-buy-btn"><?php esc_html_e( 'UPGRADE TO PRO', 'groovy-menu' ); ?></a>
+                  <a href="https://1.envato.market/regular" class="bg-welcome-buy-btn"><?php esc_html_e( 'UPGRADE TO PRO', 'groovy-menu' ); ?></a>
                 </div>
             </div>
 

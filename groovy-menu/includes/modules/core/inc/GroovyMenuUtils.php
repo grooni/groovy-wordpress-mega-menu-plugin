@@ -1001,7 +1001,7 @@ class GroovyMenuUtils {
 
 		if ( $lver) {
 			$links[] = '<a href="https://grooni.com/docs/groovy-menu/" target="_blank">' . esc_html__( 'Docs', 'groovy-menu' ) . '</a>';
-			$links[] = '<a href="https://wordpress.org/groovy-mega-menu/" target="_blank"">' . esc_html__( 'Free support', 'groovy-menu' ) . '</a>';
+			$links[] = '<a href="https://wordpress.org/groovy-menu/" target="_blank"">' . esc_html__( 'Free support', 'groovy-menu' ) . '</a>';
 		} else {
 			$links[] = '<a href="https://grooni.com/docs/groovy-menu/" target="_blank">' . esc_html__( 'Docs', 'groovy-menu' ) . '</a>';
 			$links[] = '<a href="https://grooni.ticksy.com/" target="_blank"">' . esc_html__( 'Get Support', 'groovy-menu' ) . '</a>';
