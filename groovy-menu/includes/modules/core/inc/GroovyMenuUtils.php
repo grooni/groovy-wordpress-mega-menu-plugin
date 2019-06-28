@@ -1035,7 +1035,16 @@ class GroovyMenuUtils {
 		}
 
 		if ( $lver ) {
-			$upgrade_link = '<a href="https://groovymenu.grooni.com/upgrade/" target="_blank"><span style="color:#3e9e16; font-weight: bold;">' . esc_html__( 'Upgrade to Pro', 'groovy-menu' ) . '</span></a>';
+			$addcss_arr = array(
+				'color'       => '#3e9e16',
+				'font-weight' => 'bold',
+			);
+			$addcss     = '';
+			foreach ( $addcss_arr as $index => $item ) {
+				$addcss .= $index . ': ' . $item . ';';
+			}
+			$addcss = 'style' . '="' . $addcss . '"';
+			$upgrade_link = '<a href="https://groovymenu.grooni.com/upgrade/" target="_blank"><span ' . $addcss . '>' . esc_html__( 'Upgrade to Pro', 'groovy-menu' ) . '</span></a>';
 			array_unshift( $actions, $upgrade_link );
 		}
 

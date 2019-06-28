@@ -418,7 +418,7 @@ if ( ! function_exists( 'groovy_menu_scripts_admin' ) ) {
 				'toplevel_page_groovy_menu_integration'
 			), true ) && ! isset( $_GET['action'] ) ) {
 			wp_enqueue_script( 'groovy-menu-js-integration', GROOVY_MENU_URL . 'assets/js/integration.js', [], GROOVY_MENU_VERSION, true );
-			echo '<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">';
+			wp_enqueue_style( 'groovy-menu-style-font-roboto', 'https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap', [], GROOVY_MENU_VERSION );
 		}
 
 		// Only dashboard.
@@ -427,7 +427,7 @@ if ( ! function_exists( 'groovy_menu_scripts_admin' ) ) {
 				'toplevel_page_groovy_menu_settings'
 			), true ) && ! isset( $_GET['action'] ) ) {
 			wp_enqueue_script( 'groovy-menu-js-dashboard', GROOVY_MENU_URL . 'assets/js/dashboard.js', [], GROOVY_MENU_VERSION, true );
-			echo '<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">';
+			wp_enqueue_style( 'groovy-menu-style-font-roboto', 'https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap', [], GROOVY_MENU_VERSION );
 		}
 
 		// Only preset editor page.
@@ -604,9 +604,8 @@ function groovy_menu_add_gfonts_from_pre_storage() {
 				// Store for duplicate check.
 				$font_family_exist[] = $font_family;
 
-				echo '
-<link rel="stylesheet" id="gm-google-fonts-' . esc_attr( $index ) . '" href="https://fonts.googleapis.com/css?family=' . esc_attr( $font_family ) . '" type="text/css" media="all">
-';
+				wp_enqueue_style( 'groovy-menu-google-fonts-' . esc_attr( $index ), 'https://fonts.googleapis.com/css?family=' . esc_attr( $font_family ) );
+
 			}
 		}
 	}

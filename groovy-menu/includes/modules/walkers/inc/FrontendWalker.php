@@ -44,11 +44,12 @@ class FrontendWalker extends WalkerNavMenu {
 				$styles  .= 'background-image: url(' . $this->getBackgroundUrl( $this->currentItem, $size ) . ');';
 				$styles  .= 'background-repeat: ' . $this->getBackgroundRepeat( $this->currentItem ) . ';';
 				$styles  .= 'background-position: ' . $this->getBackgroundPosition( $this->currentItem ) . ';';
+				$styles   = 'style' . '="' . $styles . '"';
 				$classes .= " gm-dropdown-menu--background";
 			}
 		}
 
-		$output .= "\n$indent<div class='gm-dropdown-menu-wrapper'><ul class='{$classes}' style='{$styles}'>\n";
+		$output .= "\n$indent<div class=\"gm-dropdown-menu-wrapper\"><ul class=\"{$classes}\" {$styles}>\n";
 	}
 
 
@@ -446,10 +447,8 @@ class FrontendWalker extends WalkerNavMenu {
 				$this->megaMenuCnt ++;
 
 				if ( 1 === $this->megaMenuCnt ) {
-					$styles = '';
 					$class  = 'gm-mega-menu-wrapper';
-
-					$output .= '<li><div style="' . $styles . '" class="' . $class . '"><div class="gm-grid-container"><div class="gm-grid-row">';
+					$output .= '<li><div class="' . $class . '"><div class="gm-grid-container"><div class="gm-grid-row">';
 				}
 			}
 		}
