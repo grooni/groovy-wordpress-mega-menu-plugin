@@ -658,8 +658,9 @@ class GroovyMenuGFonts {
 		}
 
 		if ( empty( $_tmppath ) ) {
-			$_cpath   = ABSPATH . 'wp-content/uploads/';
-			$_tmppath = $_cpath . 'grooni-local-fonts/';
+			$upload_dir = wp_get_upload_dir();
+			$_cpath     = trailingslashit( $upload_dir['basedir'] );
+			$_tmppath   = $_cpath . 'grooni-local-fonts/';
 		}
 
 		if ( ! defined( 'FS_METHOD' ) ) {
