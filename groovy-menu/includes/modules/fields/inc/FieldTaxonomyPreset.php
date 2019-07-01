@@ -22,7 +22,8 @@ class FieldTaxonomyPreset extends \GroovyMenu\FieldField {
 		$default_arr = array( 'default' => '--- ' . esc_html__( 'Default', 'groovy-menu' ) . ' ---' );
 		$none_arr    = array( 'none' => '--- ' . esc_html__( 'Hide Groovy menu', 'groovy-menu' ) . ' ---' );
 		$post_types  = GroovyMenuUtils::getPostTypesExtended();
-		$saved_tax   = GroovyMenuUtils::getTaxonomiesPresets( is_string( $this->getValueRaw() ) ? $this->getValueRaw() : '' );
+		$value_raw   = $this->getValueRaw();
+		$saved_tax   = GroovyMenuUtils::getTaxonomiesPresets( is_string( $value_raw ) ? $value_raw : '', false );
 		$nav_menus   = $default_arr + GroovyMenuUtils::getNavMenus();
 		$presets     = $default_arr + $none_arr + GroovyMenuPreset::getAll( true );
 		$default     =
@@ -32,6 +33,10 @@ class FieldTaxonomyPreset extends \GroovyMenu\FieldField {
 					'menu'   => 'default',
 				)
 				: $this->getDefault();
+
+		if ( is_string( $value_raw ) && empty( $saved_tax ) ) {
+			$value_raw = '';
+		}
 
 		?>
 		<div class="gm-gui__module__ui gm-gui__module__taxonomy_preset">
@@ -68,7 +73,7 @@ class FieldTaxonomyPreset extends \GroovyMenu\FieldField {
 			<?php } ?>
 
 			<input type="hidden" class="switch gm-taxonomy_preset"
-				value="<?php echo esc_attr( is_string( $this->getValueRaw() ) ? $this->getValueRaw() : '' ); ?>"
+				value="<?php echo esc_attr( is_string( $value_raw ) ? $value_raw : '' ); ?>"
 				name="<?php echo esc_attr( $this->getName() ); ?>" data-default="">
 
 		</div>

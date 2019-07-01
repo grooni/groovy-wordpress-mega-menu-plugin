@@ -653,9 +653,11 @@ class GroovyMenuUtils {
 	 *
 	 * @param string $raw_value takes a value for processing as an argument.
 	 *
+	 * @param bool   $fill_empty_post_types
+	 *
 	 * @return array
 	 */
-	public static function getTaxonomiesPresets( $raw_value = '' ) {
+	public static function getTaxonomiesPresets( $raw_value = '', $fill_empty_post_types = true ) {
 
 		if ( empty( $raw_value ) ) {
 			$styles    = new GroovyMenuStyle();
@@ -698,11 +700,15 @@ class GroovyMenuUtils {
 			}
 		}
 
-		$post_types = self::getPostTypesExtended();
-		foreach ( $post_types as $type_name => $type_label ) {
-			if ( empty( $saved_tax[ $type_name ] ) ) {
-				$saved_tax[ $type_name ] = $default_values;
+		if ( $fill_empty_post_types ) {
+
+			$post_types = self::getPostTypesExtended();
+			foreach ( $post_types as $type_name => $type_label ) {
+				if ( empty( $saved_tax[ $type_name ] ) ) {
+					$saved_tax[ $type_name ] = $default_values;
+				}
 			}
+
 		}
 
 
