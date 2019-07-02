@@ -1068,7 +1068,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 					<div class="gm-dashboard-body__title">
 						<h3 class="gm-dashboard-body__title__alpha"><?php esc_html_e( 'Menu presets', 'groovy-menu' ); ?></h3>
 					</div>
-					<input type="hidden" id="gm-nonce-editor-field" value="<?php echo esc_attr( $gm_nonce ); ?>">
+					<input type="hidden" id="gm-nonce-editor-field" name="gm_nonce" value="<?php echo esc_attr( $gm_nonce ); ?>">
 					<div class="gm-dashboard-body_inner">
 						<?php foreach ( $presets as $preset ) {
 
@@ -1670,7 +1670,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 							<button type="button" class="btn gm-auto-integration-save">
 								<?php esc_html_e( 'Save changes', 'groovy-menu' ); ?>
 							</button>
-							<input type="hidden" id="gm-nonce-auto-integration-field"
+							<input type="hidden" id="gm-nonce-auto-integration-field" name="gm_nonce"
 								   value="<?php echo esc_attr( wp_create_nonce( 'gm_nonce_auto_integration' ) ); ?>">
 							<p><?php esc_html_e( 'If enabled, the Groovy menu markup will be displayed after &lt;body&gt; html tag.', 'groovy-menu' ); ?></p>
 						</div>
@@ -1905,10 +1905,9 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 						data-id="<?php echo esc_attr( $this->settings()->getPreset()->getId() ); ?>"
 						data-version="<?php echo esc_attr( GROOVY_MENU_VERSION ); ?>">
 					<div class="gm-gui__preset-name"><?php echo esc_html( $title ); ?></div>
-					<input
-							type="hidden"
-							name="groovy_menu_save_theme"
-							value="save"/>
+					<input type="hidden" name="groovy_menu_save_theme" value="save"/>
+					<input type="hidden" name="gm_nonce" id="gm-nonce-save-preset-action"
+						   value="<?php echo esc_attr( wp_create_nonce( 'gm_nonce_preset_save' ) ); ?>"/>
 					<?php
 					wp_nonce_field( 'groovy_menu_save_theme' );
 					$first = true;
@@ -1997,6 +1996,12 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 		}
 
 		function saveSettings() {
+
+			if ( ! isset( $_POST['gm_nonce'] ) || ! wp_verify_nonce( $_POST['gm_nonce'], 'gm_nonce_preset_save' ) ) {
+				// Send a JSON response back to an AJAX request, and die().
+				wp_send_json_error( esc_html__( 'Fail. Nonce field outdated. Try reload page.', 'groovy-menu' ) );
+			}
+
 			$cap_can = GroovyMenuRoleCapabilities::presetEdit( true );
 
 			if ( $cap_can && defined( 'DOING_AJAX' ) && DOING_AJAX && ! empty( $_POST ) && isset( $_POST['action'] ) && $_POST['action'] === 'gm_save' ) {
@@ -2081,6 +2086,10 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 
 		function saveStyles() {
 			$cap_can = true;
+
+			if ( ! isset( $_POST['gm_nonce'] ) || ! wp_verify_nonce( $_POST['gm_nonce'], 'gm_nonce_preset_save' ) ) {
+				$cap_can = false;
+			}
 
 			// Still can work from front-end.
 			if ( is_admin() && ! GroovyMenuRoleCapabilities::presetEdit( true ) ) {

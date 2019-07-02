@@ -1148,10 +1148,9 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 						data-id="<?php echo esc_attr( $this->settings()->getPreset()->getId() ); ?>"
 						data-version="<?php echo esc_attr( GROOVY_MENU_VERSION ); ?>">
 					<div class="gm-gui__preset-name"><?php echo esc_html( $title ); ?></div>
-					<input
-							type="hidden"
-							name="groovy_menu_save_theme"
-							value="save"/>
+					<input type="hidden" name="groovy_menu_save_theme" value="save"/>
+					<input type="hidden" name="gm_nonce" id="gm-nonce-save-preset-action"
+						   value="<?php echo esc_attr( wp_create_nonce( 'gm_nonce_preset_save' ) ); ?>"/>
 					<?php
 					wp_nonce_field( 'groovy_menu_save_theme' );
 					$first = true;
@@ -1239,6 +1238,11 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 		}
 
 		function saveSettings() {
+			if ( ! isset( $_POST['gm_nonce'] ) || ! wp_verify_nonce( $_POST['gm_nonce'], 'gm_nonce_preset_save' ) ) {
+				// Send a JSON response back to an AJAX request, and die().
+				wp_send_json_error( esc_html__( 'Fail. Nonce field outdated. Try reload page.', 'groovy-menu' ) );
+			}
+
 			if ( defined( 'DOING_AJAX' ) && DOING_AJAX && ! empty( $_POST ) && isset( $_POST['action'] ) && $_POST['action'] === 'gm_save' ) {
 
 				$ajax_data = [];
@@ -1304,7 +1308,14 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 		}
 
 		function saveStyles() {
-			if ( defined( 'DOING_AJAX' ) && DOING_AJAX && ! empty( $_POST ) && isset( $_POST['action'] ) && $_POST['action'] === 'gm_save_styles' ) {
+
+			$cap_can = true;
+
+			if ( ! isset( $_POST['gm_nonce'] ) || ! wp_verify_nonce( $_POST['gm_nonce'], 'gm_nonce_preset_save' ) ) {
+				$cap_can = false;
+			}
+
+			if ( $cap_can && defined( 'DOING_AJAX' ) && DOING_AJAX && ! empty( $_POST ) && isset( $_POST['action'] ) && $_POST['action'] === 'gm_save_styles' ) {
 
 				$ajax_data = empty( $_POST['data'] ) ? '' : trim( $_POST['data'] );
 				$direction = empty( $_POST['direction'] ) ? '' : trim( $_POST['direction'] );

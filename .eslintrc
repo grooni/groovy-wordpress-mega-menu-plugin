@@ -25,7 +25,8 @@
     "html2canvas": true,
     "groovyMenuLocalize": true,
     "groovyMenuSettings": true,
-    "groovyMenuHelper": true
+    "groovyMenuHelper": true,
+    "groovyMenuNonce": true
   },
   "extends": "eslint:recommended",
   "rules": {
