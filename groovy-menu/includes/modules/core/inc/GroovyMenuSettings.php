@@ -88,7 +88,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 			if ( isset( $_GET['export'] ) ) { // @codingStandardsIgnoreLine
 				$do_ob = true;
 			}
-			if ( isset( $_FILES['import'] ) && isset( $_FILES['import']['tmp_name'] ) ) {
+			if ( isset( $_FILES['import'] ) && isset( $_FILES['import']['tmp_name'] ) ) { // @codingStandardsIgnoreLine
 				$do_ob = true;
 			}
 			if ( ( isset( $_GET['action'] ) && in_array( $_GET['action'], $actions, true ) ) ) { // @codingStandardsIgnoreLine
@@ -110,7 +110,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 		 */
 		public function addToolbarLink( WP_Admin_Bar $wp_admin_bar ) {
 
-			if ( function_exists('is_user_logged_in') && is_user_logged_in() && current_user_can( 'edit_theme_options' ) ) {
+			if ( function_exists( 'is_user_logged_in' ) && is_user_logged_in() && current_user_can( 'edit_theme_options' ) ) {
 
 				global $groovyMenuSettings;
 
@@ -209,44 +209,44 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 			return $this->settings;
 		}
 
-	public function addThemesPage() {
+		public function addThemesPage() {
 
-		$show_integration = true;
+			$show_integration = true;
 
-		global $gm_supported_module;
-		if ( isset( $gm_supported_module['GroovyMenuShowIntegration'] ) && ! $gm_supported_module['GroovyMenuShowIntegration'] ) {
-			$show_integration = false;
-		}
+			global $gm_supported_module;
+			if ( isset( $gm_supported_module['GroovyMenuShowIntegration'] ) && ! $gm_supported_module['GroovyMenuShowIntegration'] ) {
+				$show_integration = false;
+			}
 
-		add_menu_page(
-			__( 'Groovy menu', 'groovy-menu' ),
-			__( 'Groovy menu', 'groovy-menu' ),
-			'edit_theme_options',
-			'groovy_menu_settings',
-			'',
-			'',
-			91
-		);
+			add_menu_page(
+				__( 'Groovy menu', 'groovy-menu' ),
+				__( 'Groovy menu', 'groovy-menu' ),
+				'edit_theme_options',
+				'groovy_menu_settings',
+				'',
+				'',
+				91
+			);
 
-		add_submenu_page(
-			'groovy_menu_settings',
-			__( 'Dashboard', 'groovy-menu' ),
-			__( 'Dashboard', 'groovy-menu' ),
-			'edit_theme_options',
-			'groovy_menu_settings',
-			array( $this, 'render' )
-		);
-
-		if ( $show_integration ) {
 			add_submenu_page(
 				'groovy_menu_settings',
-				__( 'Integration', 'groovy-menu' ),
-				__( 'Integration', 'groovy-menu' ),
+				__( 'Dashboard', 'groovy-menu' ),
+				__( 'Dashboard', 'groovy-menu' ),
 				'edit_theme_options',
-				'groovy_menu_integration',
-				array( $this, 'integrationDashboard' )
+				'groovy_menu_settings',
+				array( $this, 'render' )
 			);
-		}
+
+			if ( $show_integration ) {
+				add_submenu_page(
+					'groovy_menu_settings',
+					__( 'Integration', 'groovy-menu' ),
+					__( 'Integration', 'groovy-menu' ),
+					'edit_theme_options',
+					'groovy_menu_integration',
+					array( $this, 'integrationDashboard' )
+				);
+			}
 
 		}
 
@@ -278,25 +278,52 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 			}
 		}
 
+
 		public function create() {
+			if ( ! isset( $_GET['gm_nonce'] ) || ! wp_verify_nonce( $_GET['gm_nonce'], 'gm_nonce_editor' ) ) {
+				return;
+			}
+
 			$id = GroovyMenuPreset::create( 'new' );
 			GroovyMenuPreset::rename( $id, 'New #' . $id );
-			wp_safe_redirect( '?page=groovy_menu_settings&action=edit&id=' . $id );
+
+			$edit_url = add_query_arg(
+				array(
+					'page'   => 'groovy_menu_settings',
+					'action' => 'edit',
+					'id'     => $id,
+				),
+				admin_url( 'admin.php' )
+			);
+			wp_safe_redirect( esc_url( $edit_url ) );
+
 			exit;
 		}
 
 		public function setThumb() {
+			if ( ! isset( $_GET['gm_nonce'] ) || ! wp_verify_nonce( $_GET['gm_nonce'], 'gm_nonce_editor' ) ) {
+				return;
+			}
+
 			$id    = esc_attr( sanitize_text_field( wp_unslash( $_GET['id'] ) ) );
 			$image = esc_attr( sanitize_text_field( wp_unslash( $_GET['image'] ) ) );
 			GroovyMenuPreset::setThumb( $id, $image );
 		}
 
 		public function unsetThumb() {
+			if ( ! isset( $_GET['gm_nonce'] ) || ! wp_verify_nonce( $_GET['gm_nonce'], 'gm_nonce_editor' ) ) {
+				return;
+			}
+
 			$id = esc_attr( sanitize_text_field( wp_unslash( $_GET['id'] ) ) );
 			GroovyMenuPreset::setThumb( $id, null );
 		}
 
 		public function rename() {
+			if ( ! isset( $_GET['gm_nonce'] ) || ! wp_verify_nonce( $_GET['gm_nonce'], 'gm_nonce_editor' ) ) {
+				return;
+			}
+
 			$id   = esc_attr( sanitize_text_field( wp_unslash( $_GET['id'] ) ) );
 			$name = sanitize_text_field( wp_unslash( $_GET['name'] ) );
 			GroovyMenuPreset::rename( $id, $name );
@@ -351,12 +378,38 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 
 
 		public function defaultSet() {
+			if ( ! isset( $_GET['gm_nonce'] ) || ! wp_verify_nonce( $_GET['gm_nonce'], 'gm_nonce_editor' ) ) {
+				return;
+			}
+
 			GroovyMenuPreset::setDefaultPreset( $_GET['id'] );
-			wp_redirect( '?page=groovy_menu_settings' );
+			$redirect_url = add_query_arg(
+				array( 'page' => 'groovy_menu_settings' ),
+				admin_url( 'admin.php' )
+			);
+
+			wp_safe_redirect( esc_url( $redirect_url ) );
 			exit;
 		}
 
 		public function saveDashboardSettings() {
+
+			// Security check.
+			if (
+				isset( $_GET['action'] ) &&
+				isset( $_GET['nonce'] ) &&
+				$_GET['action'] === 'saveDashboardSettings' &&
+				! wp_verify_nonce( $_GET['nonce'], 'gm_nonce_saveDashboardSettings' )
+			) {
+				echo esc_html__( 'Fail. Nonce field outdated. Try reload page.', 'groovy-menu' );
+				exit;
+			}
+
+			if ( ! GroovyMenuRoleCapabilities::globalOptions( true ) ) {
+				echo esc_html__( 'Fail. Need more Capabilities.', 'groovy-menu' );
+				exit;
+			}
+
 			if ( ! empty( $_POST ) && ! empty( $_POST['menu'] ) ) {
 				if ( ! empty( $_POST['icons'] ) ) {
 					if ( class_exists( 'ZipArchive' ) ) {
@@ -397,13 +450,17 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 					groovy_menu_check_gfonts_params();
 				}
 
-				echo 'saved';
+				echo esc_html__( 'Saved', 'groovy-menu' );
 				exit;
 			}
 			exit;
 		}
 
 		public function deleteFont() {
+			if ( ! isset( $_GET['gm_nonce'] ) || ! wp_verify_nonce( $_GET['gm_nonce'], 'gm_nonce_editor' ) ) {
+				return;
+			}
+
 			$fonts = \GroovyMenu\FieldIcons::getFonts();
 			unset( $fonts[ $_GET['name'] ] );
 			\GroovyMenu\FieldIcons::setFonts( $fonts );
@@ -411,6 +468,10 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 		}
 
 		public function duplicate() {
+			if ( ! isset( $_GET['gm_nonce'] ) || ! wp_verify_nonce( $_GET['gm_nonce'], 'gm_nonce_editor' ) ) {
+				return;
+			}
+
 			if ( ! $this->lver ) {
 				return;
 			}
@@ -420,7 +481,12 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 			$styles    = new GroovyMenuStyle( $preset->id );
 			$styles->setPreset( $newPreset );
 			$styles->update();
-			wp_redirect( '?page=groovy_menu_settings' );
+			$redirect_url = add_query_arg(
+				array( 'page' => 'groovy_menu_settings' ),
+				admin_url( 'admin.php' )
+			);
+
+			wp_safe_redirect( esc_url( $redirect_url ) );
 			exit;
 		}
 
@@ -486,7 +552,12 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				groovy_menu_check_gfonts_params();
 			}
 
-			wp_redirect( '?page=groovy_menu_settings' );
+			$redirect_url = add_query_arg(
+				array( 'page' => 'groovy_menu_settings' ),
+				admin_url( 'admin.php' )
+			);
+
+			wp_safe_redirect( esc_url( $redirect_url ) );
 		}
 
 		/**
@@ -531,13 +602,23 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				groovy_menu_check_gfonts_params();
 			}
 
-			wp_redirect( '?page=groovy_menu_settings' );
+			$redirect_url = add_query_arg(
+				array( 'page' => 'groovy_menu_settings' ),
+				admin_url( 'admin.php' )
+			);
+
+			wp_safe_redirect( esc_url( $redirect_url ) );
 		}
 
 		public function delete() {
 			GroovyMenuPreset::deleteById( $_GET['id'] );
 
-			wp_redirect( '?page=groovy_menu_settings' );
+			$redirect_url = add_query_arg(
+				array( 'page' => 'groovy_menu_settings' ),
+				admin_url( 'admin.php' )
+			);
+
+			wp_safe_redirect( esc_url( $redirect_url ) );
 			exit;
 		}
 
@@ -547,10 +628,10 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 			<div class="gm-dashboard-header">
 				<div class="gm-dashboard-header__logo">
 					<a
-						href="?page=groovy_menu_settings">
+							href="?page=groovy_menu_settings">
 						<img
-							src="<?php echo GROOVY_MENU_URL; ?>assets/images/groovy_doc_white.svg"
-							alt="">
+								src="<?php echo GROOVY_MENU_URL; ?>assets/images/groovy_doc_white.svg"
+								alt="">
 					</a>
 				</div>
 				<div class="gm-dashboard-header__btn-group">
@@ -558,18 +639,18 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 						<span class="gm-gui-icon gm-icon-tools"></span>
 						<span class="global-settings-btn__txt-group">
 		                    <span
-			                    class="global-settings-btn-title"><?php esc_html_e( 'Global settings', 'groovy-menu' ); ?></span>
+									class="global-settings-btn-title"><?php esc_html_e( 'Global settings', 'groovy-menu' ); ?></span>
 		                    <span
-			                    class="global-settings-btn-subtitle"><?php esc_html_e( 'Upload logo here', 'groovy-menu' ); ?></span>
+									class="global-settings-btn-subtitle"><?php esc_html_e( 'Upload logo here', 'groovy-menu' ); ?></span>
 						</span>
 					</button>
 					<a
-						target="_blank"
-						href="https://grooni.com/docs/groovy-menu/"
-						class="gm-dashboard-header__help-link">
+							target="_blank"
+							href="https://grooni.com/docs/groovy-menu/"
+							class="gm-dashboard-header__help-link">
 						<span class="gm-gui-icon gm-icon-help"></span>
 						<span
-							class="gm-dashboard-header__help-link__txt"><?php esc_html_e( 'Need help?', 'groovy-menu' ); ?></span>
+								class="gm-dashboard-header__help-link__txt"><?php esc_html_e( 'Need help?', 'groovy-menu' ); ?></span>
 					</a>
 				</div>
 			</div>
@@ -580,6 +661,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 		public function dashboard() {
 			$presets = GroovyMenuPreset::getAll();
 			$default = GroovyMenuPreset::getDefaultPreset();
+			$gm_nonce = wp_create_nonce( 'gm_nonce_editor' );
 
 			/**
 			 * Fires before the groovy menu dashboard output.
@@ -599,6 +681,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 					<div class="gm-dashboard-body__title">
 						<h3 class="gm-dashboard-body__title__alpha"><?php esc_html_e( 'Menu presets', 'groovy-menu' ); ?></h3>
 					</div>
+					<input type="hidden" id="gm-nonce-editor-field" value="<?php echo esc_attr( $gm_nonce ); ?>">
 					<div class="gm-dashboard-body_inner">
 						<?php foreach ( $presets as $preset ) {
 
@@ -612,22 +695,22 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 							?>
 
 							<div
-								class="preset<?php echo( $needScreenshot ? ' preset--need-screenshot' : '' ); ?><?php echo ( intval( $default ) === intval( $preset->id ) ) ? ' preset--default' : ''; ?>"
-								data-id="<?php echo esc_attr( $preset->id ); ?>"
-								data-name="<?php echo htmlspecialchars( $preset->name ); ?>">
+									class="preset<?php echo( $needScreenshot ? ' preset--need-screenshot' : '' ); ?><?php echo ( intval( $default ) === intval( $preset->id ) ) ? ' preset--default' : ''; ?>"
+									data-id="<?php echo esc_attr( $preset->id ); ?>"
+									data-name="<?php echo htmlspecialchars( $preset->name ); ?>">
 
 								<div class="preset-inner">
 									<a class="preset-placeholder"
-										href="?page=groovy_menu_settings&action=edit&id=<?php echo esc_attr( $preset->id ); ?>">
+									   href="?page=groovy_menu_settings&action=edit&id=<?php echo esc_attr( $preset->id ); ?>">
 										<img src="<?php echo esc_attr( $preview ); ?>"/>
 									</a>
 
 									<div class="preset-info">
 										<div class="preset-title">
 											<input
-												class="preset-title__input"
-												value="<?php echo esc_attr( $preset->name ); ?>"
-												readonly>
+													class="preset-title__input"
+													value="<?php echo esc_attr( $preset->name ); ?>"
+													readonly>
 										</div>
 										<div class="preset-options">
 											<i class="fa fa-chevron-down"></i>
@@ -636,19 +719,19 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 												<li class="preset-opts__nav__item preset-rename">
 													<i class="fa fa-font"></i>
 													<span
-														class="preset-opts__nav__item__txt"><?php esc_html_e( 'Rename', 'groovy-menu' ); ?></span>
+															class="preset-opts__nav__item__txt"><?php esc_html_e( 'Rename', 'groovy-menu' ); ?></span>
 												</li>
 												<?php if ( GroovyMenuRoleCapabilities::globalOptions( true ) && ! $this->lver ) : ?>
-												<li class="preset-opts__nav__item preset-set-default">
-													<i class="fa fa-thumb-tack"></i>
-													<span
-														class="preset-opts__nav__item__txt"><?php esc_html_e( 'Set as default', 'groovy-menu' ); ?></span>
-												</li>
+													<li class="preset-opts__nav__item preset-set-default">
+														<i class="fa fa-thumb-tack"></i>
+														<span
+																class="preset-opts__nav__item__txt"><?php esc_html_e( 'Set as default', 'groovy-menu' ); ?></span>
+													</li>
 												<?php endif; ?>
 												<li class="preset-opts__nav__item preset-preview">
 													<i class="fa fa-search"></i>
 													<span
-														class="preset-opts__nav__item__txt"><?php esc_html_e( 'Preview', 'groovy-menu' ); ?></span>
+															class="preset-opts__nav__item__txt"><?php esc_html_e( 'Preview', 'groovy-menu' ); ?></span>
 												</li>
 												<?php if ( ! $this->lver ) : ?>
 													<?php
@@ -666,20 +749,20 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 													<li class="preset-opts__nav__item preset-thumbnail">
 														<i class="fa fa-plus"></i>
 														<span
-															class="preset-opts__nav__item__txt"><?php esc_html_e( 'Set thumbnail', 'groovy-menu' ); ?></span>
+																class="preset-opts__nav__item__txt"><?php esc_html_e( 'Set thumbnail', 'groovy-menu' ); ?></span>
 													</li>
 												<?php } else { ?>
 													<li class="preset-opts__nav__item preset-thumbnail-unset">
 														<i class="fa fa-times"></i>
 														<span
-															class="preset-opts__nav__item__txt"><?php esc_html_e( 'Unset thumbnail', 'groovy-menu' ); ?></span>
+																class="preset-opts__nav__item__txt"><?php esc_html_e( 'Unset thumbnail', 'groovy-menu' ); ?></span>
 													</li>
 												<?php } ?>
 												<?php if ( GroovyMenuRoleCapabilities::presetDelete( true ) && ! $this->lver ) : ?>
 													<li class="preset-opts__nav__item preset-delete">
 														<i class="fa fa-times"></i>
 														<span
-															class="preset-opts__nav__item__txt"><?php esc_html_e( 'Delete', 'groovy-menu' ); ?></span>
+																class="preset-opts__nav__item__txt"><?php esc_html_e( 'Delete', 'groovy-menu' ); ?></span>
 													</li>
 												<?php endif; ?>
 											</ul>
@@ -696,21 +779,21 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 						?>
 
 						<?php if ( $this->lver ) : ?>
-						<div class="preset preset--import">
-							<div class="preset-inner">
-								<div class="preset-placeholder">
-									<div class="preset-placeholder-inner">
-										<span class="gm-gui-icon gm-icon-download"></span>
-										<span class="preset-title__alpha">
+							<div class="preset preset--import">
+								<div class="preset-inner">
+									<div class="preset-placeholder">
+										<div class="preset-placeholder-inner">
+											<span class="gm-gui-icon gm-icon-download"></span>
+											<span class="preset-title__alpha">
 												<?php esc_html_e( 'IMPORT MENU PRESET', 'groovy-menu' ); ?>
 											</span>
-										<span class="preset-title__alpha-sub">
+											<span class="preset-title__alpha-sub">
 												<?php esc_html_e( 'Available in the PRO version', 'groovy-menu' ); ?>
 											</span>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
 						<?php else : ?>
 							<?php
 							if ( ! $this->lver && class_exists( '\GroovyMenu\Templates' ) ) {
@@ -834,7 +917,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 							<h3><?php esc_html_e( 'Automatic integration', 'groovy-menu' ); ?></h3>
 							<label>
 								<input class="gm-auto-integration-switcher" type="checkbox" class="switch"
-									value="1"<?php if ( $saved_auto_integration ) {
+									   value="1"<?php if ( $saved_auto_integration ) {
 									echo ' checked';
 								} ?>>
 								<?php esc_html_e( 'Enable automatic integration', 'groovy-menu' ); ?>
@@ -842,6 +925,8 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 							<button type="button" class="btn gm-auto-integration-save">
 								<?php esc_html_e( 'Save changes', 'groovy-menu' ); ?>
 							</button>
+							<input type="hidden" id="gm-nonce-auto-integration-field"
+								   value="<?php echo esc_attr( wp_create_nonce( 'gm_nonce_auto_integration' ) ); ?>">
 							<p><?php esc_html_e( 'If enabled, the Groovy menu markup will be displayed after &lt;body&gt; html tag.', 'groovy-menu' ); ?></p>
 						</div>
 
@@ -852,7 +937,8 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 							<p><?php esc_html_e( 'You can display the Groovy menu directly in the template by adding the following code to the template:', 'groovy-menu' ); ?></p>
 							<p>
 								<code
-									class="gm-integrate-php-sample">&lt;?php if ( function_exists( 'groovy_menu' ) ) { groovy_menu(); } ?&gt;</code>
+										class="gm-integrate-php-sample">&lt;?php if ( function_exists( 'groovy_menu' ) )
+									{ groovy_menu(); } ?&gt;</code>
 							</p>
 							<p><?php esc_html_e( 'The place where the code should be inserted depends on the theme. The most common place is the', 'groovy-menu' ); ?>
 								<code>header.php</code>.
@@ -945,9 +1031,9 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				<div class="gm-gui__brand-wrapper">
 					<a href="?page=groovy_menu_settings">
 						<img
-							class="gm-gui__brand-logo"
-							src="<?php echo GROOVY_MENU_URL; ?>assets/images/groovy_doc_white.svg"
-							alt="">
+								class="gm-gui__brand-logo"
+								src="<?php echo GROOVY_MENU_URL; ?>assets/images/groovy_doc_white.svg"
+								alt="">
 					</a>
 				</div>
 				<ul class="gm-gui__nav-tabs">
@@ -960,7 +1046,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 					?>
 					<button class="gm-gui__restore-btn">
 						<span
-							class="gm-gui__nav-tabs__item__txt"><?php _e( 'Restore <br>Defaults', 'groovy-menu' ); ?></span>
+								class="gm-gui__nav-tabs__item__txt"><?php _e( 'Restore <br>Defaults', 'groovy-menu' ); ?></span>
 					</button>
 				</ul>
 			</div>
@@ -969,37 +1055,39 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 
 
 		public function renderGlobalSettingModal() {
+
+			$form_action_url = add_query_arg(
+				array(
+					'page'   => 'groovy_menu_settings',
+					'action' => 'saveDashboardSettings',
+					'nonce'  => wp_create_nonce( 'gm_nonce_saveDashboardSettings' ),
+				),
+				admin_url( 'admin.php' )
+			);
+
 			?>
-			<div
-				class="gm-modal gm-hidden"
-				id="global-settings-modal"
-				<form
-							method="post"
-							action="?page=groovy_menu_settings&action=saveDashboardSettings"
-							enctype="multipart/form-data"
-							id="global-settings-form">
-							<?php echo wp_nonce_field(); ?>
-							<div class="gm-modal-body">
-								<?php
-								$this->renderTabsGlobal( $this->settings()->getSettingsGlobal() );
-								$first = true;
-								foreach ( $this->settings()->getSettingsGlobal() as $categoryName => $category ) {
-									$this->renderTabGlobal( $category, $categoryName, $first );
-									$first = false;
-								}
-								?>
-							</div>
-							<div class="gm-modal-footer">
-								<div class="btn-group">
-									<button
-										type="submit"
-										class="btn modal-btn"><?php esc_html_e( 'Save changes', 'groovy-menu' ); ?></button>
-									<button
-										type="button"
-										class="btn modal-btn gm-modal-close"><?php esc_html_e( 'Close', 'groovy-menu' ); ?></button>
-								</div>
-							</div>
-						</form>
+			<div class="gm-modal gm-hidden" id="global-settings-modal">
+				<form method="post" action="<?php echo esc_url( $form_action_url ); ?>" enctype="multipart/form-data"
+					  id="global-settings-form">
+					<div class="gm-modal-body">
+						<?php
+						$this->renderTabsGlobal( $this->settings()->getSettingsGlobal() );
+						$first = true;
+						foreach ( $this->settings()->getSettingsGlobal() as $categoryName => $category ) {
+							$this->renderTabGlobal( $category, $categoryName, $first );
+							$first = false;
+						}
+						?>
+					</div>
+					<div class="gm-modal-footer">
+						<div class="btn-group">
+							<button type="submit"
+									class="btn modal-btn"><?php esc_html_e( 'Save changes', 'groovy-menu' ); ?></button>
+							<button type="button"
+									class="btn modal-btn gm-modal-close"><?php esc_html_e( 'Close', 'groovy-menu' ); ?></button>
+						</div>
+					</div>
+				</form>
 			</div>
 			<?php
 		}
@@ -1036,7 +1124,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 			<ul class="gm-gui__nav-tabs__sublevel">
 				<?php foreach ( $this->settings()->getGroups( $categoryName ) as $sublevelKey => $sublevel ) { ?>
 					<li class="gm-gui__nav-tabs__sublevel__item"
-					    data-sublevel="<?php echo esc_attr( $sublevelKey ); ?>"
+						data-sublevel="<?php echo esc_attr( $sublevelKey ); ?>"
 						<?php echo ( isset( $sublevel['condition'] ) ) ? ' data-condition=\'' . wp_json_encode( $sublevel['condition'], JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE ) . '\'' : ''; ?>
 						<?php echo ( isset( $sublevel['condition_type'] ) ) ? ' data-condition_type="' . $sublevel['condition_type'] . '" ' : ''; ?>
 					>
@@ -1052,18 +1140,17 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 			?>
 			<div class="gm-gui__tab-panes gm-clearfix">
 				<form
-					action=""
-					method="post"
-					class="gm-form"
-					autocomplete="off"
-					enctype="multipart/form-data"
-					data-id="<?php echo esc_attr( $this->settings()->getPreset()->getId() ); ?>"
-					data-version="<?php echo esc_attr( GROOVY_MENU_VERSION ); ?>">
+						action=""
+						method="post"
+						class="gm-form"
+						autocomplete="off"
+						enctype="multipart/form-data"
+						data-id="<?php echo esc_attr( $this->settings()->getPreset()->getId() ); ?>"
+						data-version="<?php echo esc_attr( GROOVY_MENU_VERSION ); ?>">
 					<div class="gm-gui__preset-name"><?php echo esc_html( $title ); ?></div>
-					<input
-						type="hidden"
-						name="groovy_menu_save_theme"
-						value="save"/>
+					<input type="hidden" name="groovy_menu_save_theme" value="save"/>
+					<input type="hidden" name="gm_nonce" id="gm-nonce-save-preset-action"
+						   value="<?php echo esc_attr( wp_create_nonce( 'gm_nonce_preset_save' ) ); ?>"/>
 					<?php
 					wp_nonce_field( 'groovy_menu_save_theme' );
 					$first = true;
@@ -1085,26 +1172,26 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 		public function renderPane( $categoryName, $category, $isActive ) {
 			?>
 			<div
-				class="tab-pane <?php echo ( $isActive ) ? 'active' : ''; ?>"
-				id="<?php echo esc_attr( $categoryName ); ?>">
+					class="tab-pane <?php echo ( $isActive ) ? 'active' : ''; ?>"
+					id="<?php echo esc_attr( $categoryName ); ?>">
 				<span class="tab-pane__header"><?php echo esc_html( $category['title'] ); ?></span>
 
 				<div class="gm-gui-btn-group">
 					<button
-						class="gm-gui-btn gm-gui-preview-btn"
-						type="button">
+							class="gm-gui-btn gm-gui-preview-btn"
+							type="button">
 						<i class="fa fa-search"></i>
 						<?php esc_html_e( 'Preview', 'groovy-menu' ); ?>
 					</button>
 					<button
-						class="gm-gui-btn gm-gui-restore-section-btn"
-						type="submit">
+							class="gm-gui-btn gm-gui-restore-section-btn"
+							type="submit">
 						<i class="fa fa-undo"></i>
 						<?php esc_html_e( 'Restore', 'groovy-menu' ); ?>
 					</button>
 					<button
-						class="gm-gui-btn gm-gui-save-btn"
-						type="submit">
+							class="gm-gui-btn gm-gui-save-btn"
+							type="submit">
 						<i class="fa fa-floppy-o"></i><?php esc_html_e( 'Save', 'groovy-menu' ); ?>
 					</button>
 				</div>
@@ -1151,6 +1238,11 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 		}
 
 		function saveSettings() {
+			if ( ! isset( $_POST['gm_nonce'] ) || ! wp_verify_nonce( $_POST['gm_nonce'], 'gm_nonce_preset_save' ) ) {
+				// Send a JSON response back to an AJAX request, and die().
+				wp_send_json_error( esc_html__( 'Fail. Nonce field outdated. Try reload page.', 'groovy-menu' ) );
+			}
+
 			if ( defined( 'DOING_AJAX' ) && DOING_AJAX && ! empty( $_POST ) && isset( $_POST['action'] ) && $_POST['action'] === 'gm_save' ) {
 
 				$ajax_data = [];
@@ -1216,7 +1308,14 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 		}
 
 		function saveStyles() {
-			if ( defined( 'DOING_AJAX' ) && DOING_AJAX && ! empty( $_POST ) && isset( $_POST['action'] ) && $_POST['action'] === 'gm_save_styles' ) {
+
+			$cap_can = true;
+
+			if ( ! isset( $_POST['gm_nonce'] ) || ! wp_verify_nonce( $_POST['gm_nonce'], 'gm_nonce_preset_save' ) ) {
+				$cap_can = false;
+			}
+
+			if ( $cap_can && defined( 'DOING_AJAX' ) && DOING_AJAX && ! empty( $_POST ) && isset( $_POST['action'] ) && $_POST['action'] === 'gm_save_styles' ) {
 
 				$ajax_data = empty( $_POST['data'] ) ? '' : trim( $_POST['data'] );
 				$direction = empty( $_POST['direction'] ) ? '' : trim( $_POST['direction'] );
@@ -1267,6 +1366,13 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 		}
 
 		public function saveAutoIntegration() {
+
+			if ( ! isset( $_POST['gm_nonce'] ) || ! wp_verify_nonce( $_POST['gm_nonce'], 'gm_nonce_auto_integration' ) ) {
+				$respond = esc_html__( 'Fail. Nonce field outdated. Try reload page.', 'groovy-menu' );
+				// Send a JSON response back to an AJAX request, and die().
+				wp_send_json_success( $respond );
+			}
+
 			if ( defined( 'DOING_AJAX' ) && DOING_AJAX && ! empty( $_POST ) && isset( $_POST['action'] ) && $_POST['action'] === 'gm_save_auto_integration' ) {
 
 				$ajax_data = ( empty( $_POST['data'] ) || 'false' === $_POST['data'] ) ? false : true;

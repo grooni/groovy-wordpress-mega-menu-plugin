@@ -6,7 +6,8 @@ function saveStyles (options, cssGenerated) {
     'action': 'gm_save_styles',
     'data': cssGenerated,
     'direction': isRtl() ? 'rtl' : 'ltr',
-    'preset_id': options.preset.id
+    'preset_id': options.preset.id,
+    'gm_nonce': groovyMenuNonce.style
   };
   const params = new URLSearchParams(data);
   axios.post(groovyMenuHelper.ajaxurl, params);

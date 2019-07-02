@@ -8,9 +8,11 @@ export function gmSaveForm (form, subAction) {
   let presetObj = {};
   formData.forEach((value, key) => {presetObj[key] = value;});
   let presetData = JSON.stringify(presetObj);
+  let gmNonce = document.querySelector('#gm-nonce-save-preset-action');
   let data = {
     'action': 'gm_save',
     'sub_action': subAction,
+    'gm_nonce': gmNonce.value,
     'data': presetData
   };
   const params = new URLSearchParams(data);
@@ -43,12 +45,14 @@ function gmGetSettings (form, subAction) {
 }
 
 function gmSaveStyles (presetId, css, subAction) {
+  let gmNonce = document.querySelector('#gm-nonce-save-preset-action');
   const data = {
     'action': 'gm_save_styles',
     'sub_action': subAction,
     'data': css,
     'direction': isRtl() ? 'rtl' : 'ltr',
-    'preset_id': presetId
+    'preset_id': presetId,
+    'gm_nonce': gmNonce.value
   };
   const params = new URLSearchParams(data);
 
