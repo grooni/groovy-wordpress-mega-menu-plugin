@@ -120,7 +120,12 @@ function groovy_menu_activation() {
 function groovy_menu_welcome() {
 	if ( get_option( 'groovy_menu_do_activation_redirect', false ) ) {
 		delete_option( 'groovy_menu_do_activation_redirect' );
-		wp_safe_redirect( admin_url( 'admin.php?page=groovy_menu_welcome' ) );
+
+		$welcome_url = add_query_arg(
+			array( 'page'   => 'groovy_menu_welcome' ),
+			admin_url( 'admin.php' )
+		);
+		wp_safe_redirect( esc_url( $welcome_url ) );
 	}
 }
 add_action( 'admin_init', 'groovy_menu_welcome' );

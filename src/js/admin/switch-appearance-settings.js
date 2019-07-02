@@ -11,9 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
     let btnDo = btn.dataset.do;
+    let gmNonce = btn.dataset.gm_nonce;
     const data = {
       action: 'gm_admin_walker_priority_change',
-      do: btnDo
+      do: btnDo,
+      gm_nonce: gmNonce
     };
     const params = new URLSearchParams(data);
 

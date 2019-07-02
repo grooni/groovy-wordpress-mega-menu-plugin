@@ -4,6 +4,7 @@ import { resetPreviewModalState } from './modal';
 import { uploadMedia, removeMedia, changeMedia } from './media';
 
 document.addEventListener('DOMContentLoaded', () => {
+  let gmNonce = document.querySelector('#gm-nonce-editor-field');
   let dropDowns = document.querySelectorAll('.preset-options');
   let presetInners = document.querySelectorAll('.preset-inner');
   let dropdownIcons = document.querySelectorAll('.gm-dashboard-body_inner .preset-options > .fa');
@@ -126,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
       alert('Preset name cannot be empty');
     } else {
       let infoBox = document.querySelector('.gm-infobox');
-      let url = `${groovyMenuLocalize.GroovyMenuAdminUrl}&action=rename&id=${id}&name=${newName}`;
+      let url = `${groovyMenuLocalize.GroovyMenuAdminUrl}&action=rename&id=${id}&name=${newName}&gm_nonce=${gmNonce.value}`;
 
       infoBox.classList.remove('gm-hidden');
       preset.dataset.name = newName;
@@ -195,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Set as default
   function setPresetAsDefault () {
     let id = this.closest('.preset').dataset.id;
-    window.location = groovyMenuLocalize.GroovyMenuAdminUrl + '&action=defaultSet&id=' + id;
+    window.location = groovyMenuLocalize.GroovyMenuAdminUrl + '&action=defaultSet&id=' + id + '&gm_nonce='+ gmNonce.value;
   }
 
   presetSetDefaultBtns.forEach((btn) => {
@@ -269,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Duplicate
   function duplicatePreset () {
     let id = this.closest('.preset').dataset.id;
-    window.location = groovyMenuLocalize.GroovyMenuAdminUrl + '&action=duplicate&id=' + id;
+    window.location = groovyMenuLocalize.GroovyMenuAdminUrl + '&action=duplicate&id=' + id + '&gm_nonce=' + gmNonce.value;
   }
 
   presetDuplicateBtns.forEach((btn) => {
@@ -279,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Export
   function exportPreset () {
     let id = this.closest('.preset').dataset.id;
-    window.location = groovyMenuLocalize.GroovyMenuAdminUrl + '&action=edit&export&id=' + id;
+    window.location = groovyMenuLocalize.GroovyMenuAdminUrl + '&action=edit&export&id=' + id + '&gm_nonce=' + gmNonce.value;
   }
 
   presetExportBtns.forEach((btn) => {
@@ -313,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .querySelector('.preset-placeholder img')
         .setAttribute('src', uploadedImage.url);
 
-      let url = groovyMenuLocalize.GroovyMenuAdminUrl + '&action=setThumb&id=' + id + '&image=' + uploadedImage.id;
+      let url = groovyMenuLocalize.GroovyMenuAdminUrl + '&action=setThumb&id=' + id + '&image=' + uploadedImage.id + '&gm_nonce=' + gmNonce.value;
       axios.get(url);
     });
     image.open();
@@ -327,7 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function unsetThumbnail () {
     let preset = this.closest('.preset');
     let id = preset.dataset.id;
-    let url = groovyMenuLocalize.GroovyMenuAdminUrl + '&action=unsetThumb&id=' + id;
+    let url = groovyMenuLocalize.GroovyMenuAdminUrl + '&action=unsetThumb&id=' + id + '&gm_nonce=' + gmNonce.value;
 
     axios.get(url)
       .then(() => {
@@ -354,7 +355,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (confirm('Delete this preset?')) {
       let id = this.closest('.preset').dataset.id;
 
-      window.location = `${groovyMenuLocalize.GroovyMenuAdminUrl}&action=delete&id=${id}`;
+      window.location = `${groovyMenuLocalize.GroovyMenuAdminUrl}&action=delete&id=${id}&gm_nonce=${gmNonce.value}`;
     }
   }
 
@@ -365,7 +366,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Add New preset
   if (createNewPresetBtn !== null && !createNewPresetBtn.classList.contains('preset--only-in-pro')) {
     createNewPresetBtn.addEventListener('click', () => {
-      window.location = `${groovyMenuLocalize.GroovyMenuAdminUrl}&action=create`;
+      window.location = `${groovyMenuLocalize.GroovyMenuAdminUrl}&action=create&gm_nonce=${gmNonce.value}`;
     });
   }
 
