@@ -145,6 +145,7 @@ function groovy_menu_scripts() {
 	wp_style_add_data( 'groovy-menu-style', 'rtl', 'replace' );
 	wp_enqueue_script( 'groovy-menu-js', GROOVY_MENU_URL . 'assets/js/frontend.js', [], GROOVY_MENU_VERSION, true );
 	wp_localize_script( 'groovy-menu-js', 'groovyMenuHelper', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+	wp_localize_script( 'groovy-menu-js', 'groovyMenuNonce', array( 'style' => esc_attr( wp_create_nonce( 'gm_nonce_preset_save' ) ) ) );
 
 	foreach ( \GroovyMenu\FieldIcons::getFonts() as $name => $icon ) {
 		wp_enqueue_style( 'groovy-menu-style-fonts-' . $name, esc_url( GroovyMenuUtils::getUploadUri() . 'fonts/' . $name . '.css' ), [], GROOVY_MENU_VERSION );

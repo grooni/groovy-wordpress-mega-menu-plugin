@@ -438,7 +438,6 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 
 			if ( empty( $compiled_css ) ) {
 				$classes_navbar[] = 'gm-no-compiled-css';
-				wp_localize_script( 'groovy-menu-js', 'groovyMenuNonce', array( 'style' => esc_attr( wp_create_nonce( 'gm_nonce_preset_save' ) ) ) );
 			}
 
 			$custom_css_class = $this->getCustomHtmlClass();
