@@ -442,6 +442,7 @@ if ( ! function_exists( 'groovy_menu_scripts_admin' ) ) {
 				'toplevel_page_groovy_menu_settings'
 			), true ) && isset( $_GET['id'] ) && isset( $_GET['action'] ) && 'edit' === $_GET['action'] ) {
 			wp_enqueue_script( 'groovy-menu-js-preset', GROOVY_MENU_URL . 'assets/js/preset.js', [], GROOVY_MENU_VERSION, true );
+			wp_localize_script( 'groovy-menu-js-preset', 'groovyMenuNonce', array( 'style' => esc_attr( wp_create_nonce( 'gm_nonce_preset_save' ) ) ) );
 		}
 
 		// Only Appearance > Menus page.
