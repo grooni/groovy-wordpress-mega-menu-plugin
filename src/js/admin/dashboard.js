@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function savePresetName (preset, e) {
-    let nameInput = preset.querySelector('.preset-title__alpha');
+    let nameInput = preset.querySelector('.preset-title__input');
     let newName = nameInput.value.trim();
     let id = preset.dataset.id;
 
@@ -158,13 +158,15 @@ document.addEventListener('DOMContentLoaded', () => {
     e.stopPropagation();
 
     let preset = this.closest('.preset');
-    let nameInput = preset.querySelector('.preset-title__alpha');
+    let nameInput = preset.querySelector('.preset-title__input');
+    console.log(nameInput);
     let strLength = nameInput.value.length * 2;
     let icon = preset.querySelector('.preset-options > .fa');
 
-    nameInput.addEventListener('click', function (e) {
+    nameInput.addEventListener('click', (e) => {
       e.stopPropagation();
     });
+
     nameInput.setSelectionRange(strLength, strLength);
     nameInput.readOnly = false;
     nameInput.focus();
