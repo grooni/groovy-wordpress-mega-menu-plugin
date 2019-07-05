@@ -1454,4 +1454,21 @@ class GroovyMenuUtils {
 	}
 
 
+	public static function show_gm_php_version() {
+		?>
+
+		<div id="gm-upgrade-notice" class="notice-error settings-error notice is-dismissible">
+			<p class="gm-install-addons-text-block">
+				<?php
+				esc_html_e( 'Plugin Groovy Menu  is deactivated. Minimum required version for PHP 7.', 'groovy-menu' );
+				echo ' <a href="' . get_admin_url( null, 'plugins.php', 'relative' ) . '">';
+				esc_html_e( 'Plugins page', 'groovy-menu' );
+				echo '</a> ';
+				?>
+				<br>
+			</p>
+		</div>
+		<?php
+	}
+
 }

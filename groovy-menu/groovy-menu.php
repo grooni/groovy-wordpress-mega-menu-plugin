@@ -1,7 +1,7 @@
 <?php defined( 'ABSPATH' ) || die( 'This script cannot be accessed directly.' );
 /*
 Plugin Name: Groovy Menu (free)
-Version: 1.0.1
+Version: 1.0.2
 Description: Groovy menu is a modern adjustable and flexible menu designed for creating mobile-friendly menus with a lot of options.
 Plugin URI: https://groovymenu.grooni.com/
 Author: Grooni.com
@@ -25,7 +25,7 @@ along with Groovy Menu (free). If not, see http://www.gnu.org/licenses/gpl-3.0.h
 
 */
 
-define( 'GROOVY_MENU_VERSION', '1.0.1' );
+define( 'GROOVY_MENU_VERSION', '1.0.2' );
 define( 'GROOVY_MENU_DB_VER_OPTION', 'groovy_menu_db_version' );
 define( 'GROOVY_MENU_DIR', plugin_dir_path( __FILE__ ) );
 define( 'GROOVY_MENU_URL', plugin_dir_url( __FILE__ ) );
@@ -44,6 +44,8 @@ if ( ! $db_version ) {
 }
 if ( ! defined( 'GROOVY_MENU_LVER' ) ) {
 	define( 'GROOVY_MENU_LVER', '2' );
+} else {
+	return;
 }
 
 global $gm_supported_module;
@@ -58,6 +60,11 @@ $gm_supported_module = array(
 
 // Autoload modules and classes by composer.
 require_once GROOVY_MENU_DIR . 'vendor/autoload.php';
+
+if ( version_compare( PHP_VERSION, '7.0.0', '<' ) && class_exists( 'GroovyMenuUtils' ) && method_exists( 'GroovyMenuUtils', 'show_gm_php_version' ) ) {
+	add_action( 'admin_notices', array( 'GroovyMenuUtils', 'show_gm_php_version' ), 7 );
+	return;
+}
 
 register_activation_hook( __FILE__, 'groovy_menu_activation' );
 register_deactivation_hook( __FILE__, 'groovy_menu_deactivation' );
@@ -141,14 +148,14 @@ function groovy_menu_deactivation() {
 
 function groovy_menu_scripts() {
 
-	wp_enqueue_style( 'groovy-menu-style', GROOVY_MENU_URL . 'assets/style/frontend.css', [], GROOVY_MENU_VERSION );
+	wp_enqueue_style( 'groovy-menu-style', GROOVY_MENU_URL . 'assets/style/frontend.css', array(), GROOVY_MENU_VERSION );
 	wp_style_add_data( 'groovy-menu-style', 'rtl', 'replace' );
-	wp_enqueue_script( 'groovy-menu-js', GROOVY_MENU_URL . 'assets/js/frontend.js', [], GROOVY_MENU_VERSION, true );
+	wp_enqueue_script( 'groovy-menu-js', GROOVY_MENU_URL . 'assets/js/frontend.js', array(), GROOVY_MENU_VERSION, true );
 	wp_localize_script( 'groovy-menu-js', 'groovyMenuHelper', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 	wp_localize_script( 'groovy-menu-js', 'groovyMenuNonce', array( 'style' => esc_attr( wp_create_nonce( 'gm_nonce_preset_save' ) ) ) );
 
 	foreach ( \GroovyMenu\FieldIcons::getFonts() as $name => $icon ) {
-		wp_enqueue_style( 'groovy-menu-style-fonts-' . $name, esc_url( GroovyMenuUtils::getUploadUri() . 'fonts/' . $name . '.css' ), [], GROOVY_MENU_VERSION );
+		wp_enqueue_style( 'groovy-menu-style-fonts-' . $name, esc_url( GroovyMenuUtils::getUploadUri() . 'fonts/' . $name . '.css' ), array(), GROOVY_MENU_VERSION );
 	}
 
 	/**
@@ -162,7 +169,7 @@ function groovy_menu_scripts() {
 
 function groovy_menu_toolbar() {
 	if ( function_exists( 'is_user_logged_in' ) && is_user_logged_in() && current_user_can( 'edit_theme_options' ) ) {
-		wp_enqueue_style( 'groovy-menu-style-toolbar', GROOVY_MENU_URL . 'assets/style/toolbar.css', [], GROOVY_MENU_VERSION );
+		wp_enqueue_style( 'groovy-menu-style-toolbar', GROOVY_MENU_URL . 'assets/style/toolbar.css', array(), GROOVY_MENU_VERSION );
 		wp_style_add_data( 'groovy-menu-style-toolbar', 'rtl', 'replace' );
 	}
 }
@@ -423,8 +430,8 @@ if ( ! function_exists( 'groovy_menu_scripts_admin' ) ) {
 				'groovy-menu_page_groovy_menu_integration',
 				'toplevel_page_groovy_menu_integration'
 			), true ) && ! isset( $_GET['action'] ) ) {
-			wp_enqueue_script( 'groovy-menu-js-integration', GROOVY_MENU_URL . 'assets/js/integration.js', [], GROOVY_MENU_VERSION, true );
-			wp_enqueue_style( 'groovy-menu-style-font-roboto', 'https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap', [], GROOVY_MENU_VERSION );
+			wp_enqueue_script( 'groovy-menu-js-integration', GROOVY_MENU_URL . 'assets/js/integration.js', array(), GROOVY_MENU_VERSION, true );
+			wp_enqueue_style( 'groovy-menu-style-font-roboto', 'https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap', array(), GROOVY_MENU_VERSION );
 		}
 
 		// Only dashboard.
@@ -432,8 +439,8 @@ if ( ! function_exists( 'groovy_menu_scripts_admin' ) ) {
 				'groovy-menu_page_groovy_menu_settings',
 				'toplevel_page_groovy_menu_settings'
 			), true ) && ! isset( $_GET['action'] ) ) {
-			wp_enqueue_script( 'groovy-menu-js-dashboard', GROOVY_MENU_URL . 'assets/js/dashboard.js', [], GROOVY_MENU_VERSION, true );
-			wp_enqueue_style( 'groovy-menu-style-font-roboto', 'https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap', [], GROOVY_MENU_VERSION );
+			wp_enqueue_script( 'groovy-menu-js-dashboard', GROOVY_MENU_URL . 'assets/js/dashboard.js', array(), GROOVY_MENU_VERSION, true );
+			wp_enqueue_style( 'groovy-menu-style-font-roboto', 'https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap', array(), GROOVY_MENU_VERSION );
 		}
 
 		// Only preset editor page.
@@ -448,12 +455,12 @@ if ( ! function_exists( 'groovy_menu_scripts_admin' ) ) {
 		// Only Appearance > Menus page.
 		if ( 'nav-menus.php' === $hook_suffix ) {
 			wp_enqueue_media();
-			wp_enqueue_script( 'groovy-menu-js-appearance', GROOVY_MENU_URL . 'assets/js/appearance.js', [], GROOVY_MENU_VERSION, true );
+			wp_enqueue_script( 'groovy-menu-js-appearance', GROOVY_MENU_URL . 'assets/js/appearance.js', array(), GROOVY_MENU_VERSION, true );
 		}
 
 		// Only Debug page.
 		if ( 'tools_page_groovy_menu_debug_page' === $hook_suffix ) {
-			wp_enqueue_script( 'groovy-menu-js-appearance', GROOVY_MENU_URL . 'assets/js/debug.js', [], GROOVY_MENU_VERSION, true );
+			wp_enqueue_script( 'groovy-menu-js-appearance', GROOVY_MENU_URL . 'assets/js/debug.js', array(), GROOVY_MENU_VERSION, true );
 		}
 
 		// Only Welcome page.
@@ -461,7 +468,7 @@ if ( ! function_exists( 'groovy_menu_scripts_admin' ) ) {
 			'groovy-menu_page_groovy_menu_welcome',
 			'toplevel_page_groovy_menu_welcome'
 		), true ) ) {
-			wp_enqueue_style( 'groovy-menu-style-welcome', GROOVY_MENU_URL . 'assets/style/welcome.css', [], GROOVY_MENU_VERSION );
+			wp_enqueue_style( 'groovy-menu-style-welcome', GROOVY_MENU_URL . 'assets/style/welcome.css', array(), GROOVY_MENU_VERSION );
 		}
 
 	}
