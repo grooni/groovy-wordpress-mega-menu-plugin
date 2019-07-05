@@ -4,7 +4,7 @@ Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive,
 Requires at least: 4.9.7
 Tested up to: 5.2
 Requires PHP: 7.0
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -86,5 +86,5 @@ The source code of the plugin can be found at [Bitbucket](https://bitbucket.org/
 5. Mega menu with menu blocks.
 
 == Changelog ==
-= 1.0.0 =
+= 1.0.1 =
 * Initial release.
