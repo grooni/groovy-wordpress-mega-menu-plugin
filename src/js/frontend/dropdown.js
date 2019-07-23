@@ -29,15 +29,17 @@ function dropdownOpen (elem) {
 }
 
 function dropdownClose (elem) {
-  let elemChildren = elem.children;
-
-  elem.classList.remove('gm-open');
   let descendantsOpen = elem.querySelectorAll('.gm-open');
-  descendantsOpen.forEach(function (item) {
+
+  descendantsOpen.forEach((item) => {
     item.classList.remove('gm-open');
   });
 
+  elem.classList.remove('gm-open');
+
   if (elem.closest('.gm-navigation-drawer')) {
+    let elemChildren = elem.children;
+
     for (let el of elemChildren) {
       if (el.classList.contains('gm-dropdown-menu-wrapper')) {
         DOMAnimations.slideUp(el);
@@ -47,11 +49,10 @@ function dropdownClose (elem) {
 }
 
 export function dropdownToggle (elem) {
-  if (!elem.classList.contains('gm-open')) {
-    if (!elem.classList.contains('gm-dropdown-submenu')) {
-      // close all
-      dropdownCloseAll();
-    } else {
+  if (elem.classList.contains('gm-open')) {
+    dropdownClose(elem);
+  } else {
+    if (elem.classList.contains('gm-dropdown-submenu')) {
       // close only siblings
       let elParent = elem.closest('.gm-dropdown-menu');
       let elParentChildren = elParent.children;
@@ -61,17 +62,19 @@ export function dropdownToggle (elem) {
           dropdownClose(el);
         }
       }
+    } else {
+      // close all
+      dropdownCloseAll();
     }
+
     dropdownOpen(elem);
-  } else {
-    dropdownClose(elem);
   }
 }
 
 export function dropdownCloseAll () {
   let elems = document.querySelectorAll('.gm-open');
 
-  elems.forEach(function (el) {
+  elems.forEach((el) => {
     if (event.target.closest('.gm-open')) {
       return;
     }

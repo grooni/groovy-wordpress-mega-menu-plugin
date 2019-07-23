@@ -53,8 +53,6 @@ class GroovyMenu {
 
     const isPreview = body.classList.contains('gm-preview-body');
 
-    let dropdownItems = document.querySelectorAll('.gm-dropdown-toggle, .gm-minicart-link');
-
     let scrollOptions = {
       speed: 300,
       offset() {
@@ -167,6 +165,8 @@ class GroovyMenu {
         }
       }
     };
+
+    let dropdownItems = document.querySelectorAll('.gm-dropdown-toggle, .gm-minicart-link');
 
     if (options.showSubmenu === 'hover' && !isMobile()) {
       dropdownItems.forEach((dropdownItem) => {
