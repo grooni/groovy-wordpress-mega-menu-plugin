@@ -532,9 +532,9 @@ class AdminWalker extends WalkerNavMenu {
 									&#8595;</abbr></a>
 						</span>
 						<a class="item-edit" id="edit-<?php echo esc_attr( $item_id ); ?>"
-							title="<?php esc_attr_e( 'Edit Menu Item', 'groovy-menu' ); ?>" href="<?php
+							href="<?php
 						echo ( isset( $_GET['edit-menu-item'] ) && strval( $item_id ) === $_GET['edit-menu-item'] ) ? admin_url( 'nav-menus.php' ) : add_query_arg( 'edit-menu-item', $item_id, remove_query_arg( $removed_args, admin_url( 'nav-menus.php#menu-item-settings-' . $item_id ) ) ); // @codingStandardsIgnoreLine
-						?>"><?php esc_html_e( 'Edit Menu Item', 'groovy-menu' ); ?></a>
+						?>"><span class="screen-reader-text"><?php esc_html_e( 'Edit', 'groovy-menu' ); ?></span></a>
 					</span>
 			</dt>
 		</dl>
