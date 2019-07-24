@@ -2255,7 +2255,7 @@ export default class GmStyles {
     }
 
     // Mega menu show links bottom border
-    if (settings.megaMenuShowLinksBottomBorder) {
+    if (settings.megaMenuShowLinksBottomBorder === false) {
       css.push({
         '.gm-main-menu-wrapper .gm-mega-menu__item .gm-menu-item__link': 'border-bottom: none !important;',
         media: 'desktop'

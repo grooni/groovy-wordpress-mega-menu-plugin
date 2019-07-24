@@ -633,7 +633,7 @@ return array(
 				'condition' => array( 'header.style', 'in', array( '1' ) ),
 			),
 			'mega_menu_show_links_bottom_border'           => array(
-				'title'     => esc_html__( 'Mega menu links bottom border', 'groovy-menu' ),
+				'title'     => esc_html__( 'Show mega menu links bottom border', 'groovy-menu' ),
 				'type'      => 'checkbox',
 				'default'   => false,
 				'condition' => array( 'header.style', 'in', array( '1' ) ),
