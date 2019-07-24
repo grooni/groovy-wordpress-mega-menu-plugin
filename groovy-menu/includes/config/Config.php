@@ -462,7 +462,6 @@ return array(
 			'sub_level_background_color_hover'             => array(
 				'title'   => esc_html__( 'Submenu item hover background color', 'groovy-menu' ),
 				'type'    => 'colorpicker',
-				'default' => null,
 				'alpha'   => true,
 			),
 			'sub_item_text_start'                          => array(

@@ -208,7 +208,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function initColorPickers() {
     colorPickers.forEach((gmPicker) => {
-      const colorInput = gmPicker.closest('.gm-gui__module__colorpicker')
+      const colorInput = gmPicker
+        .closest('.gm-gui__module__colorpicker')
         .querySelector('.gm-colorpicker');
       let savedColor = colorInput.value;
       let defaultColor = colorInput.dataset.default;
@@ -252,6 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       pickr.on('save', () => {
         if (colorInput.value === '') {
+          pickr.getRoot().interaction.result.value = '';
           return;
         }
 
@@ -265,15 +267,23 @@ document.addEventListener('DOMContentLoaded', () => {
           .contains('clear');
 
         if (isClearBtn) {
-          pickr.setColor(defaultColor);
+          if (defaultColor === '') {
+            colorInput.value = '';
+            pickr.getRoot().interaction.result.value = '';
+            pickr.setColor(null, true);
+            return;
+          } else {
+            pickr.setColor(defaultColor);
+            return;
+          }
         }
 
         if (pickr.getRoot().interaction.result.value === '') {
           colorInput.value = '';
           pickr.setColor(null, true);
+          return;
         }
       });
-
 
       pickr.on('change', _.debounce(() => {
         colorInput.value = pickr.getColor()
