@@ -159,7 +159,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let preset = this.closest('.preset');
     let nameInput = preset.querySelector('.preset-title__input');
-    console.log(nameInput);
     let strLength = nameInput.value.length * 2;
     let icon = preset.querySelector('.preset-options > .fa');
 

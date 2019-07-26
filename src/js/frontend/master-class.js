@@ -53,8 +53,6 @@ class GroovyMenu {
 
     const isPreview = body.classList.contains('gm-preview-body');
 
-    let dropdownItems = document.querySelectorAll('.gm-dropdown-toggle, .gm-minicart-link');
-
     let scrollOptions = {
       speed: 300,
       offset() {
@@ -157,7 +155,9 @@ class GroovyMenu {
         return false;
       }
 
-      if (e.target.closest('.gm-dropdown-toggle') !== null) {
+      if (e.target.closest('.gm-dropdown-toggle') === null) {
+        dropdownCloseAll();
+      } else {
         if (e.target.closest('.gm-dropdown-toggle')
           .getAttribute('href') !== null
           || e.target.closest('.gm-dropdown-toggle')
@@ -167,6 +167,9 @@ class GroovyMenu {
         }
       }
     };
+
+    let dropdownItems = document.querySelectorAll('.gm-anchor, .gm-minicart-link');
+    let navbarNav = document.querySelector('.gm-navbar-nav');
 
     if (options.showSubmenu === 'hover' && !isMobile()) {
       dropdownItems.forEach((dropdownItem) => {
@@ -179,9 +182,7 @@ class GroovyMenu {
       });
 
       if (!isTouchDevice) {
-        navbar.addEventListener('mouseleave', function () {
-          dropdownCloseAll();
-        });
+        navbarNav.addEventListener('mouseleave', dropdownCloseAll);
       }
     }
 
