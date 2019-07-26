@@ -1372,8 +1372,8 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 								<?php esc_html_e( 'do the', 'groovy-menu' ); ?> <a
 										href="<?php echo admin_url( 'admin.php?page=groovy_menu_integration' ) ?>"><?php esc_html_e( 'integration', 'groovy-menu' ); ?></a>, <?php esc_html_e( 'and', 'groovy-menu' ); ?>
 								<a href="<?php echo admin_url( 'admin.php?page=groovy_menu_settings' ) ?>"><?php esc_html_e( 'upload the logo', 'groovy-menu' ); ?></a>. <?php esc_html_e( 'And', 'groovy-menu' ); ?>
-								<a href="<?php echo admin_url( 'customize.php' ) ?>"><?php esc_html_e( 'customize', 'groovy-menu' ); ?></a> <?php esc_html_e( 'the menu design for your taste', 'groovy-menu' ); ?>
-								.</p>
+								<a href="<?php echo admin_url( 'customize.php' ) ?>"><?php esc_html_e( 'customize', 'groovy-menu' );
+								?></a> <?php esc_html_e( 'the menu design for your taste', 'groovy-menu' ); ?> .</p>
 							<a href="<?php echo admin_url( 'admin.php?page=groovy_menu_settings' ) ?>"
 							   class="gm-welcome-tile__link"><?php esc_html_e( 'dashboard', 'groovy-menu' ); ?></a>
 						</div>
@@ -1385,13 +1385,62 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 						</div>
 						<div class="gm-welcome-tile">
 							<h2 class="gm-welcome-tile__title"><?php esc_html_e( 'Need help?', 'groovy-menu' ); ?></h2>
-							<p class="gm-welcome-tile__txt"><?php esc_html_e( 'Our online documentation and FAQ consist of a lot of the most important information about the plugin settings', 'groovy-menu' ); ?></p>
-							<a href="https://grooni.com/docs/groovy-menu/"
-							   class="gm-welcome-tile__link"><?php esc_html_e( 'READ MORE', 'groovy-menu' ); ?></a>
+							<p class="gm-welcome-tile__txt">
+                <?php esc_html_e( 'Our online', 'groovy-menu' ); ?>
+                <a target="_blank" href="http://grooni.com/docs/groovy-menu/"><?php esc_html_e( 'documentation', 'groovy-menu' ); ?></a>
+                <?php esc_html_e( 'and', 'groovy-menu' ); ?>
+                <a target="_blank" href="https://www.youtube.com/channel/UCpbGGAUnqSLwCAoNgm5uAKg"><?php esc_html_e( 'video tutorials', 'groovy-menu' ); ?></a>
+                <?php esc_html_e( 'consist of a lot of the most important information about the plugin settings.', 'groovy-menu' ); ?>
+              </p>
+              <div class="gm-welcome-tile__link-group">
+                <a href="https://grooni.com/docs/groovy-menu/"
+                   class="gm-welcome-tile__link"><?php esc_html_e( 'MANUAL', 'groovy-menu' ); ?></a>
+                <a href="https://www.youtube.com/channel/UCpbGGAUnqSLwCAoNgm5uAKg"
+                   class="gm-welcome-tile__link gm-welcome-tile__link--secondary-color"><?php esc_html_e( 'VIDEO', 'groovy-menu' );
+                   ?></a>
+              </div>
 						</div>
 					</div>
+          <div class="gm-tuts">
+            <h2 class="gm-welcome-title"><?php esc_html_e( 'Video', 'groovy-menu' ); ?>
+              <span><?php esc_html_e( 'Tutorials', 'groovy-menu' ); ?></span></h2>
+            <div class="gm-tuts-grid">
+              <a target="_blank" href="https://www.youtube.com/watch?v=w1SIBwMdfn8&t=7s" class="gm-tuts-grid-item
+              gm-tuts-grid-item--xl">
+                <img src="<?php echo GROOVY_MENU_URL; ?>assets/images/gmfree-howtoinstall.jpg" alt=""
+                     class="gm-tuts-grid-item__img">
+              </a>
+              <a target="_blank" href="https://www.youtube.com/watch?v=w1SIBwMdfn8&t=7s" class="gm-tuts-grid-item">
+                <img src="<?php echo GROOVY_MENU_URL; ?>assets/images/youtube-gmfree-how-to-create-mega-menu.jpg" alt=""
+                     class="gm-tuts-grid-item__img">
+              </a>
+              <a target="_blank" href="https://www.youtube.com/watch?v=LKSRL5TZkIU" class="gm-tuts-grid-item">
+                <img src="<?php echo GROOVY_MENU_URL; ?>assets/images/youtube-gmfree-hover-appearance-effects.jpg" alt=""
+                     class="gm-tuts-grid-item__img">
+              </a>
+              <a target="_blank" href="https://www.youtube.com/watch?v=V5MaXJ0CMx4" class="gm-tuts-grid-item">
+                <img src="<?php echo GROOVY_MENU_URL; ?>assets/images/youtube-gmfree-fullwidth-menu.jpg" alt=""
+                     class="gm-tuts-grid-item__img">
+              </a>
+              <a target="_blank" href="https://www.youtube.com/watch?v=jl34DRTw-9k" class="gm-tuts-grid-item">
+                <img src="<?php echo GROOVY_MENU_URL; ?>assets/images/youtube-gmfree-how-to-font-size-style.jpg" alt=""
+                     class="gm-tuts-grid-item__img">
+              </a>
+              <a target="_blank" href="https://www.youtube.com/watch?v=AKzqxE9OTY0" class="gm-tuts-grid-item">
+                <img src="<?php echo GROOVY_MENU_URL; ?>assets/images/youtube-gmfree-how-to-change-colors.jpg" alt=""
+                     class="gm-tuts-grid-item__img">
+              </a>
+              <a target="_blank" href="https://www.youtube.com/watch?v=hIZ3uHaMZGA" class="gm-tuts-grid-item">
+                <img src="<?php echo GROOVY_MENU_URL; ?>assets/images/Layer_881.jpg" alt=""
+                     class="gm-tuts-grid-item__img">
+              </a>
+            </div>
+            <a href="https://1.envato.market/regular"
+               class="bg-welcome-btn gm-tuts__btn"><?php esc_html_e( 'View all tutorials', 'groovy-menu' );
+               ?></a>
+          </div>
 					<div class="gm-welcome-comparision">
-						<h2><?php esc_html_e( 'Free version vs', 'groovy-menu' ); ?>
+						<h2 class="gm-welcome-title"><?php esc_html_e( 'Free version vs', 'groovy-menu' ); ?>
 							<span><?php esc_html_e( 'PREMIUM', 'groovy-menu' ); ?></span></h2>
 						<p><?php esc_html_e( 'Comparision table', 'groovy-menu' ); ?></p>
 						<div class="gm-welcome-comparision-grid">
@@ -1596,7 +1645,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 						</div>
 					</div>
 					<a href="https://1.envato.market/regular"
-					   class="bg-welcome-buy-btn"><?php esc_html_e( 'UPGRADE TO PRO', 'groovy-menu' ); ?></a>
+					   class="bg-welcome-btn"><?php esc_html_e( 'UPGRADE TO PRO', 'groovy-menu' ); ?></a>
 				</div>
 			</div>
 

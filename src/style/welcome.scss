@@ -132,6 +132,11 @@
     flex: 1;
   }
 
+  &__link-group {
+    display: flex;
+    justify-content: flex-end;
+  }
+
   &__link {
     border-radius: 3px;
     background-color: #448aff;
@@ -143,24 +148,71 @@
     text-decoration: none;
     padding: 13px 15px;
     align-self: flex-end;
+    text-align: center;
+
+    &:not(:last-of-type) {
+      margin-right: 7px;
+    }
+
+    &--secondary-color {
+      background-color: #ffb11a;
+    }
   }
+}
+
+.gm-welcome-title {
+  text-align: center;
+  color: #444;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 30px;
+  margin-bottom: 10px;
+
+  span {
+    color: #b11b55;
+  }
+}
+
+.gm-tuts {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+  &__btn {
+    padding: 24px 60px !important;
+  }
+}
+
+.gm-tuts-grid {
+  padding: 50px 0 54px 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 109px);
+  align-content: space-around;
+  justify-content: space-between;
+  grid-gap: 12px;
+}
+
+.gm-tuts-grid-item {
+
+  &--xl {
+    grid-column: 1 / 4;
+    grid-row: 1 / 4;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
 }
 
 .gm-welcome-comparision {
   padding: 0 20px;
-
-  h2 {
-    text-align: center;
-    color: #444;
-    font-size: 26px;
-    font-weight: 400;
-    line-height: 30px;
-    margin-bottom: 10px;
-
-    span {
-      color: #b11b55;
-    }
-  }
 
   p {
     text-align: center;
@@ -241,7 +293,7 @@
   }
 }
 
-.bg-welcome-buy-btn {
+.bg-welcome-btn {
   box-shadow: 0 14px 64px rgba(0, 0, 0, 0.21);
   border-radius: 38px;
   background-color: #fdfdfd;
@@ -252,7 +304,7 @@
   line-height: 16px;
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  padding: 32px 60px;
+  padding: 30px 60px;
   text-decoration: none;
   text-align: center;
   align-self: center;
