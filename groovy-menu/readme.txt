@@ -92,3 +92,6 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 == Changelog ==
 = 1.0.1 =
 * Initial release.
+
+= 1.0.3 =
+* Fix: dropdown menu not closing while hovering on simple menu links.
