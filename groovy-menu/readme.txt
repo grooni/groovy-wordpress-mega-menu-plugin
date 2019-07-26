@@ -4,7 +4,7 @@ Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive,
 Requires at least: 4.9.7
 Tested up to: 5.2
 Requires PHP: 7.0
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -96,3 +96,6 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 
 = 1.0.3 =
 * Fix: dropdown menu not closing while hovering on simple menu links.
+
+= 1.0.4 =
+* Updated: plugin Welcome page.
