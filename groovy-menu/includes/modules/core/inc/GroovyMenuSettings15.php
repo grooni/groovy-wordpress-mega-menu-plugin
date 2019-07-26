@@ -1435,7 +1435,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                      class="gm-tuts-grid-item__img">
               </a>
             </div>
-            <a href="https://1.envato.market/regular"
+            <a href="https://www.youtube.com/channel/UCpbGGAUnqSLwCAoNgm5uAKg"
                class="bg-welcome-btn gm-tuts__btn"><?php esc_html_e( 'View all tutorials', 'groovy-menu' );
                ?></a>
           </div>
