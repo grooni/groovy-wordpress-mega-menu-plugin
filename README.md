@@ -1,6 +1,9 @@
 # groovy-menu-wp
-Free Mega Menu for Wordpress
+Free Mega Menu Plugin for Wordpress
 https://wordpress.org/plugins/groovy-menu-free/
 
-Groovy Mega Menu Premium
+Groovy Mega Menu Plugin Premium
 https://groovymenu.grooni.com
+
+Mega Menu Video tutorials
+https://www.youtube.com/channel/UCpbGGAUnqSLwCAoNgm5uAKg
