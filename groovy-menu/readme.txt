@@ -98,3 +98,6 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 
 = 1.0.4 =
 * Updated: plugin Welcome page.
+
+= 1.0.5 =
+* Fix: Added an additional check on errors when getting the Groovy Menu metadata on WooCommerce product pages.
