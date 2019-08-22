@@ -1410,7 +1410,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                 <img src="<?php echo GROOVY_MENU_URL; ?>assets/images/gmfree-howtoinstall.jpg" alt=""
                      class="gm-tuts-grid-item__img">
               </a>
-              <a target="_blank" href="https://www.youtube.com/watch?v=w1SIBwMdfn8&t=7s" class="gm-tuts-grid-item">
+              <a target="_blank" href="https://www.youtube.com/watch?v=_f-11Ujp410" class="gm-tuts-grid-item">
                 <img src="<?php echo GROOVY_MENU_URL; ?>assets/images/youtube-gmfree-how-to-create-mega-menu.jpg" alt=""
                      class="gm-tuts-grid-item__img">
               </a>
