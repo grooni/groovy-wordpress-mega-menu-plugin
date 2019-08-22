@@ -317,7 +317,9 @@ class GroovyMenuSingleMetaPreset {
 			}
 		}
 
-		if ( ! $post_id && 'product' === get_query_var( 'post_type' ) ) {
+		global $wp_query;
+
+		if ( ! $post_id && ! empty( $wp_query ) && 'product' === get_query_var( 'post_type' ) ) {
 			if ( function_exists( 'wc_get_page_id' ) ) {
 				$post_id = wc_get_page_id( 'shop' );
 			}
