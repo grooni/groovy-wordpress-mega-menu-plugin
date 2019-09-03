@@ -2318,10 +2318,14 @@ export default class GmStyles {
       // Grid
       '.grid': 'flex-basis: 0; flex-grow: 1; max-width: 100%;',
       '.grid-5': 'max-width: 5%; flex: 0 0 5%;',
-      '.grid-10': 'max-width: 10%; flex: 0 0 10%;',
+      '.grid-10': 'max-width: 10%; flex: 0 0 10%;',             // 1/10 cols
+      '.grid-11': 'max-width: 11.11111%; flex: 0 0 11.11111%;', // 1/9 cols
+      '.grid-12': 'max-width: 12.5%; flex: 0 0 12.5%;',         // 1/8 cols
+      '.grid-14': 'max-width: 14.28571%; flex: 0 0 14.28571%;', // 1/7 cols
       '.grid-15': 'max-width: 15%; flex: 0 0 15%;',
-      '.grid-20': 'max-width: 20%; flex: 0 0 20%;',
-      '.grid-25': 'max-width: 25%; flex: 0 0 25%;',
+      '.grid-16': 'max-width: 16.66666%; flex: 0 0 16.66666%;', // 1/6 cols
+      '.grid-20': 'max-width: 20%; flex: 0 0 20%;',             // 1/5 cols
+      '.grid-25': 'max-width: 25%; flex: 0 0 25%;',             // 1/4 cols
       '.grid-30': 'max-width: 30%; flex: 0 0 30%;',
       '.grid-35': 'max-width: 35%; flex: 0 0 35%;',
       '.grid-40': 'max-width: 40%; flex: 0 0 40%;',
@@ -2336,7 +2340,7 @@ export default class GmStyles {
       '.grid-85': 'max-width: 85%; flex: 0 0 85%;',
       '.grid-90': 'max-width: 90%; flex: 0 0 90%;',
       '.grid-95': 'max-width: 95%; flex: 0 0 95%;',
-      '.grid-33': 'max-width: 33.33333%; flex: 0 0 33.33333%;',
+      '.grid-33': 'max-width: 33.33333%; flex: 0 0 33.33333%;', // 1/3 cols
       '.grid-66': 'max-width: 66.66667%; flex: 0 0 66.66667%;',
       '.grid-100': 'max-width: 100%; flex: 0 0 100%;',
 
@@ -2364,10 +2368,14 @@ export default class GmStyles {
       // Grid
       '.mobile-grid': 'flex-basis: 0; flex-grow: 1; max-width: 100%;',
       '.mobile-grid-5': 'max-width: 5%; flex: 0 0 5%;',
-      '.mobile-grid-10': 'max-width: 10%; flex: 0 0 10%;',
+      '.mobile-grid-10': 'max-width: 10%; flex: 0 0 10%;',             // 1/10 cols
+      '.mobile-grid-11': 'max-width: 11.11111%; flex: 0 0 11.11111%;', // 1/9 cols
+      '.mobile-grid-12': 'max-width: 12.5%; flex: 0 0 12.5%;',         // 1/8 cols
+      '.mobile-grid-14': 'max-width: 14.28571%; flex: 0 0 14.28571%;', // 1/7 cols
       '.mobile-grid-15': 'max-width: 15%; flex: 0 0 15%;',
-      '.mobile-grid-20': 'max-width: 20%; flex: 0 0 20%;',
-      '.mobile-grid-25': 'max-width: 25%; flex: 0 0 25%;',
+      '.mobile-grid-16': 'max-width: 16.66666%; flex: 0 0 16.66666%;', // 1/6 cols
+      '.mobile-grid-20': 'max-width: 20%; flex: 0 0 20%;',             // 1/5 cols
+      '.mobile-grid-25': 'max-width: 25%; flex: 0 0 25%;',             // 1/4 cols
       '.mobile-grid-30': 'max-width: 30%; flex: 0 0 30%;',
       '.mobile-grid-35': 'max-width: 35%; flex: 0 0 35%;',
       '.mobile-grid-40': 'max-width: 40%; flex: 0 0 40%;',
