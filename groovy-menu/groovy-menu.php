@@ -1,7 +1,7 @@
 <?php defined( 'ABSPATH' ) || die( 'This script cannot be accessed directly.' );
 /*
 Plugin Name: Groovy Menu (free)
-Version: 1.0.5
+Version: 1.0.6
 Description: Groovy menu is a modern adjustable and flexible menu designed for creating mobile-friendly menus with a lot of options.
 Plugin URI: https://groovymenu.grooni.com/
 Author: Grooni.com
@@ -25,7 +25,7 @@ along with Groovy Menu (free). If not, see http://www.gnu.org/licenses/gpl-3.0.h
 
 */
 
-define( 'GROOVY_MENU_VERSION', '1.0.5' );
+define( 'GROOVY_MENU_VERSION', '1.0.6' );
 define( 'GROOVY_MENU_DB_VER_OPTION', 'groovy_menu_db_version' );
 define( 'GROOVY_MENU_DIR', plugin_dir_path( __FILE__ ) );
 define( 'GROOVY_MENU_URL', plugin_dir_url( __FILE__ ) );
@@ -148,6 +148,8 @@ function groovy_menu_deactivation() {
 
 function groovy_menu_scripts() {
 
+	define( 'GROOVY_MENU_SCRIPTS_INIT', true );
+
 	wp_enqueue_style( 'groovy-menu-style', GROOVY_MENU_URL . 'assets/style/frontend.css', array(), GROOVY_MENU_VERSION );
 	wp_style_add_data( 'groovy-menu-style', 'rtl', 'replace' );
 	wp_enqueue_script( 'groovy-menu-js', GROOVY_MENU_URL . 'assets/js/frontend.js', array(), GROOVY_MENU_VERSION, true );
@@ -249,7 +251,7 @@ function groovy_menu_start_buffer() {
  * @since 1.0
  */
 function groovy_menu_pre_shutdown() {
-	if ( is_admin() || gm_is_wplogin() ) {
+	if ( is_admin() || gm_is_wplogin() || ! defined( 'GROOVY_MENU_SCRIPTS_INIT' ) ) {
 		return;
 	}
 
@@ -272,7 +274,7 @@ function groovy_menu_pre_shutdown() {
  * @return null|string
  */
 function groovy_menu_add_after_body( $output ) {
-	if ( is_admin() || gm_is_wplogin() ) {
+	if ( is_admin() || gm_is_wplogin() || ! defined( 'GROOVY_MENU_SCRIPTS_INIT' ) ) {
 		return $output;
 	}
 

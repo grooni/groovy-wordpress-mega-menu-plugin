@@ -101,3 +101,7 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 
 = 1.0.5 =
 * Fix: Added an additional check on errors when getting the Groovy Menu metadata on WooCommerce product pages.
+
+= 1.0.6 =
+* Fix: Cancels the display of the menu in maintenance mode when auto-integration is enabled
+* Fix: Anchor tracking for one page scrolls now works with any id
