@@ -55,6 +55,18 @@ return array(
 	'social'     => array(
 		'title'  => esc_html__( 'Social', 'groovy-menu' ),
 		'fields' => array(
+			'social_set_nofollow'   => array(
+				'type'        => 'checkbox',
+				'title'       => esc_html__( 'Set social links rel as [ nofollow noopener ]', 'groovy-menu' ),
+				'description' => esc_html__( 'Rel "nofollow" is used by search engines, to specify that the Google search spider should not follow that link. Rel "noopener" requires that any browsing context created by following the hyperlink must not have an opener browsing context. Most people create external links as target="_blank" and don’t know one thing that the page get in this way will gain partial control over the page that links to it through the js window.opener property. Rel "noopener" prevents this behavior.', 'groovy-menu' ),
+				'default'     => false,
+			),
+			'social_set_blank'      => array(
+				'type'        => 'checkbox',
+				'title'       => esc_html__( 'Set social links target as [ _blank ]', 'groovy-menu' ),
+				'description' => esc_html__( 'Opens the linked social in a new window or tab.', 'groovy-menu' ),
+				'default'     => false,
+			),
 			'social_twitter'        => array(
 				'type'    => 'checkbox',
 				'title'   => esc_html__( 'Twitter', 'groovy-menu' ),
