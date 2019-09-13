@@ -41,7 +41,11 @@ class AdminWalker extends WalkerNavMenu {
 		'20-20-20-40' => '20% + 20% + 20% + 40%',
 		'50-20-20-10' => '50% + 20% + 20% + 10%',
 		'10-20-20-50' => '10% + 20% + 20% + 50%',
-		'5'           => '20% + 20% + 20% + 20% + 20%', // 5
+		'5'           => '5 Columns with 20% each', // 5
+		'6'           => '6 Columns with 16.6% each', // 6
+		'7'           => '7 Columns with 14.2% each', // 7
+		'8'           => '8 Columns with 12.5% each', // 8
+		'9'           => '9 Columns with 11.1% each', // 8
 		'10'          => '10 Columns with 10% each', // 10
 	);
 
@@ -72,6 +76,21 @@ class AdminWalker extends WalkerNavMenu {
 	 */
 	static function megaMenuColsVariants() {
 		$cols_variants = self::$grooniColsVariants;
+		if ( isset( $cols_variants['5'] ) ) {
+			$cols_variants['5'] = esc_html__( '5 Columns with 20% each', 'groovy-menu' );
+		}
+		if ( isset( $cols_variants['6'] ) ) {
+			$cols_variants['6'] = esc_html__( '6 Columns with 16.6% each', 'groovy-menu' );
+		}
+		if ( isset( $cols_variants['7'] ) ) {
+			$cols_variants['7'] = esc_html__( '7 Columns with 14.2% each', 'groovy-menu' );
+		}
+		if ( isset( $cols_variants['8'] ) ) {
+			$cols_variants['8'] = esc_html__( '8 Columns with 12.5% each', 'groovy-menu' );
+		}
+		if ( isset( $cols_variants['9'] ) ) {
+			$cols_variants['9'] = esc_html__( '9 Columns with 11.1% each', 'groovy-menu' );
+		}
 		if ( isset( $cols_variants['10'] ) ) {
 			$cols_variants['10'] = esc_html__( '10 Columns with 10% each', 'groovy-menu' );
 		}

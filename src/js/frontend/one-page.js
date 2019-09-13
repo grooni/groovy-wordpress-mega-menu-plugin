@@ -51,7 +51,7 @@ export function setCurrentItem () {
     });
   }
 
-  if (mostVisibleRow.visibleHeight > window.innerHeight / 2) {
+  if (mostVisibleRow.visibleHeight) {
     let menuItem = menu
       .querySelector(`.gm-anchor[href="#${mostVisibleRow.id}"]`)
       .closest('.gm-menu-item');

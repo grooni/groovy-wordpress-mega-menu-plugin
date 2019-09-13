@@ -395,11 +395,23 @@ function groovyMenu( $args = array() ) {
 		$output_html .= '</div>';
 		$output_html .= '<div class="gm-toolbar-right">
 							<ul class="gm-toolbar-socials-list">';
+
+		$link_attr = '';
+		if ( ! empty( $styles->getGlobal( 'social', 'social_set_nofollow' ) ) ) {
+			$link_attr .= 'rel="nofollow noopener" ';
+		}
+		if ( ! empty( $styles->getGlobal( 'social', 'social_set_blank' ) ) ) {
+			$link_attr .= 'target="_blank" ';
+		}
+
 		foreach ( $socials as $social ) {
 			if ( $styles->getGlobal( 'social', 'social_' . $social ) ) {
 
-				$output_html .= '<li class="gm-toolbar-socials-list__item">
-											<a href="' . esc_url( $styles->getGlobal( 'social', 'social_' . $social . '_link' ) ) . '" class="gm-toolbar-social-link">';
+				$output_html .= '<li class="gm-toolbar-socials-list__item"><a href="' .
+					esc_url( $styles->getGlobal( 'social', 'social_' . $social . '_link' ) ) .
+					'" class="gm-toolbar-social-link" ' .
+					$link_attr .
+					'>';
 
 				$icon = $styles->getGlobal( 'social', 'social_' . $social . '_icon' );
 				if ( $icon ) {

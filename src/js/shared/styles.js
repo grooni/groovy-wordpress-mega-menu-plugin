@@ -2316,29 +2316,33 @@ export default class GmStyles {
     // Desktop styles
     css.push({
       // Grid
-      '.grid': 'flex-basis: 0; flex-grow: 1; max-width: 100%;',
-      '.grid-5': 'max-width: 5%; flex: 0 0 5%;',
-      '.grid-10': 'max-width: 10%; flex: 0 0 10%;',
-      '.grid-15': 'max-width: 15%; flex: 0 0 15%;',
-      '.grid-20': 'max-width: 20%; flex: 0 0 20%;',
-      '.grid-25': 'max-width: 25%; flex: 0 0 25%;',
-      '.grid-30': 'max-width: 30%; flex: 0 0 30%;',
-      '.grid-35': 'max-width: 35%; flex: 0 0 35%;',
-      '.grid-40': 'max-width: 40%; flex: 0 0 40%;',
-      '.grid-45': 'max-width: 45%; flex: 0 0 45%;',
-      '.grid-50': 'max-width: 50%; flex: 0 0 50%;',
-      '.grid-55': 'max-width: 55%; flex: 0 0 55%;',
-      '.grid-60': 'max-width: 60%; flex: 0 0 60%;',
-      '.grid-65': 'max-width: 65%; flex: 0 0 65%;',
-      '.grid-70': 'max-width: 70%; flex: 0 0 70%;',
-      '.grid-75': 'max-width: 75%; flex: 0 0 75%;',
-      '.grid-80': 'max-width: 80%; flex: 0 0 80%;',
-      '.grid-85': 'max-width: 85%; flex: 0 0 85%;',
-      '.grid-90': 'max-width: 90%; flex: 0 0 90%;',
-      '.grid-95': 'max-width: 95%; flex: 0 0 95%;',
-      '.grid-33': 'max-width: 33.33333%; flex: 0 0 33.33333%;',
-      '.grid-66': 'max-width: 66.66667%; flex: 0 0 66.66667%;',
-      '.grid-100': 'max-width: 100%; flex: 0 0 100%;',
+      '.gm-navbar .grid': 'flex-basis: 0; flex-grow: 1; max-width: 100%;',
+      '.gm-navbar .grid-5': 'max-width: 5%; flex: 0 0 5%;',
+      '.gm-navbar .grid-10': 'max-width: 10%; flex: 0 0 10%;',             // 1/10 cols
+      '.gm-navbar .grid-11': 'max-width: 11.11111%; flex: 0 0 11.11111%;', // 1/9 cols
+      '.gm-navbar .grid-12': 'max-width: 12.5%; flex: 0 0 12.5%;',         // 1/8 cols
+      '.gm-navbar .grid-14': 'max-width: 14.28571%; flex: 0 0 14.28571%;', // 1/7 cols
+      '.gm-navbar .grid-15': 'max-width: 15%; flex: 0 0 15%;',
+      '.gm-navbar .grid-16': 'max-width: 16.66666%; flex: 0 0 16.66666%;', // 1/6 cols
+      '.gm-navbar .grid-20': 'max-width: 20%; flex: 0 0 20%;',             // 1/5 cols
+      '.gm-navbar .grid-25': 'max-width: 25%; flex: 0 0 25%;',             // 1/4 cols
+      '.gm-navbar .grid-30': 'max-width: 30%; flex: 0 0 30%;',
+      '.gm-navbar .grid-35': 'max-width: 35%; flex: 0 0 35%;',
+      '.gm-navbar .grid-40': 'max-width: 40%; flex: 0 0 40%;',
+      '.gm-navbar .grid-45': 'max-width: 45%; flex: 0 0 45%;',
+      '.gm-navbar .grid-50': 'max-width: 50%; flex: 0 0 50%;',
+      '.gm-navbar .grid-55': 'max-width: 55%; flex: 0 0 55%;',
+      '.gm-navbar .grid-60': 'max-width: 60%; flex: 0 0 60%;',
+      '.gm-navbar .grid-65': 'max-width: 65%; flex: 0 0 65%;',
+      '.gm-navbar .grid-70': 'max-width: 70%; flex: 0 0 70%;',
+      '.gm-navbar .grid-75': 'max-width: 75%; flex: 0 0 75%;',
+      '.gm-navbar .grid-80': 'max-width: 80%; flex: 0 0 80%;',
+      '.gm-navbar .grid-85': 'max-width: 85%; flex: 0 0 85%;',
+      '.gm-navbar .grid-90': 'max-width: 90%; flex: 0 0 90%;',
+      '.gm-navbar .grid-95': 'max-width: 95%; flex: 0 0 95%;',
+      '.gm-navbar .grid-33': 'max-width: 33.33333%; flex: 0 0 33.33333%;', // 1/3 cols
+      '.gm-navbar .grid-66': 'max-width: 66.66667%; flex: 0 0 66.66667%;',
+      '.gm-navbar .grid-100': 'max-width: 100%; flex: 0 0 100%;',
 
       // Common
       '.gm-navbar .attachment-menu-thumb, .gm-main-menu-wrapper .attachment-menu-thumb': 'position: absolute; z-index: 1; top: 0; display: none; max-width: none; opacity: 0; transition: opacity 0.2s 0.5s;',
@@ -2362,29 +2366,33 @@ export default class GmStyles {
     // Mobile styles
     css.push({
       // Grid
-      '.mobile-grid': 'flex-basis: 0; flex-grow: 1; max-width: 100%;',
-      '.mobile-grid-5': 'max-width: 5%; flex: 0 0 5%;',
-      '.mobile-grid-10': 'max-width: 10%; flex: 0 0 10%;',
-      '.mobile-grid-15': 'max-width: 15%; flex: 0 0 15%;',
-      '.mobile-grid-20': 'max-width: 20%; flex: 0 0 20%;',
-      '.mobile-grid-25': 'max-width: 25%; flex: 0 0 25%;',
-      '.mobile-grid-30': 'max-width: 30%; flex: 0 0 30%;',
-      '.mobile-grid-35': 'max-width: 35%; flex: 0 0 35%;',
-      '.mobile-grid-40': 'max-width: 40%; flex: 0 0 40%;',
-      '.mobile-grid-45': 'max-width: 45%; flex: 0 0 45%;',
-      '.mobile-grid-50': 'max-width: 50%; flex: 0 0 50%;',
-      '.mobile-grid-55': 'max-width: 55%; flex: 0 0 55%;',
-      '.mobile-grid-60': 'max-width: 60%; flex: 0 0 60%;',
-      '.mobile-grid-65': 'max-width: 65%; flex: 0 0 65%;',
-      '.mobile-grid-70': 'max-width: 70%; flex: 0 0 70%;',
-      '.mobile-grid-75': 'max-width: 75%; flex: 0 0 75%;',
-      '.mobile-grid-80': 'max-width: 80%; flex: 0 0 80%;',
-      '.mobile-grid-85': 'max-width: 85%; flex: 0 0 85%;',
-      '.mobile-grid-90': 'max-width: 90%; flex: 0 0 90%;',
-      '.mobile-grid-95': 'max-width: 95%; flex: 0 0 95%;',
-      '.mobile-grid-33': 'max-width: 33.33333%; flex: 0 0 33.33333%;',
-      '.mobile-grid-66': 'max-width: 66.66667%; flex: 0 0 66.66667%;',
-      '.mobile-grid-100': 'max-width: 100%; flex: 0 0 100%;',
+      '.gm-navbar .mobile-grid': 'flex-basis: 0; flex-grow: 1; max-width: 100%;',
+      '.gm-navbar .mobile-grid-5': 'max-width: 5%; flex: 0 0 5%;',
+      '.gm-navbar .mobile-grid-10': 'max-width: 10%; flex: 0 0 10%;',             // 1/10 cols
+      '.gm-navbar .mobile-grid-11': 'max-width: 11.11111%; flex: 0 0 11.11111%;', // 1/9 cols
+      '.gm-navbar .mobile-grid-12': 'max-width: 12.5%; flex: 0 0 12.5%;',         // 1/8 cols
+      '.gm-navbar .mobile-grid-14': 'max-width: 14.28571%; flex: 0 0 14.28571%;', // 1/7 cols
+      '.gm-navbar .mobile-grid-15': 'max-width: 15%; flex: 0 0 15%;',
+      '.gm-navbar .mobile-grid-16': 'max-width: 16.66666%; flex: 0 0 16.66666%;', // 1/6 cols
+      '.gm-navbar .mobile-grid-20': 'max-width: 20%; flex: 0 0 20%;',             // 1/5 cols
+      '.gm-navbar .mobile-grid-25': 'max-width: 25%; flex: 0 0 25%;',             // 1/4 cols
+      '.gm-navbar .mobile-grid-30': 'max-width: 30%; flex: 0 0 30%;',
+      '.gm-navbar .mobile-grid-35': 'max-width: 35%; flex: 0 0 35%;',
+      '.gm-navbar .mobile-grid-40': 'max-width: 40%; flex: 0 0 40%;',
+      '.gm-navbar .mobile-grid-45': 'max-width: 45%; flex: 0 0 45%;',
+      '.gm-navbar .mobile-grid-50': 'max-width: 50%; flex: 0 0 50%;',
+      '.gm-navbar .mobile-grid-55': 'max-width: 55%; flex: 0 0 55%;',
+      '.gm-navbar .mobile-grid-60': 'max-width: 60%; flex: 0 0 60%;',
+      '.gm-navbar .mobile-grid-65': 'max-width: 65%; flex: 0 0 65%;',
+      '.gm-navbar .mobile-grid-70': 'max-width: 70%; flex: 0 0 70%;',
+      '.gm-navbar .mobile-grid-75': 'max-width: 75%; flex: 0 0 75%;',
+      '.gm-navbar .mobile-grid-80': 'max-width: 80%; flex: 0 0 80%;',
+      '.gm-navbar .mobile-grid-85': 'max-width: 85%; flex: 0 0 85%;',
+      '.gm-navbar .mobile-grid-90': 'max-width: 90%; flex: 0 0 90%;',
+      '.gm-navbar .mobile-grid-95': 'max-width: 95%; flex: 0 0 95%;',
+      '.gm-navbar .mobile-grid-33': 'max-width: 33.33333%; flex: 0 0 33.33333%;',
+      '.gm-navbar .mobile-grid-66': 'max-width: 66.66667%; flex: 0 0 66.66667%;',
+      '.gm-navbar .mobile-grid-100': 'max-width: 100%; flex: 0 0 100%;',
 
       // Common
       '.gm-toolbar-bg': 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; transition: opacity 0.2s; z-index: -1;',
