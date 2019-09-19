@@ -424,6 +424,12 @@ function groovyMenu( $args = array() ) {
 
 				}
 
+				$link_text = $styles->getGlobal( 'social', 'social_' . $social . '_text' );
+				$link_text = empty( $link_text ) ? '' : trim( $link_text );
+				if ( ! empty( $link_text ) ) {
+					$output_html .= '<span>' . $link_text . '</span>';
+				}
+
 				$output_html .= '</a>';
 				$output_html .= '</li>';
 

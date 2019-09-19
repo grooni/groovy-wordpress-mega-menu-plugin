@@ -52,21 +52,23 @@ return array(
 			),
 		),
 	),
-	'social'     => array(
+	'social' => array(
 		'title'  => esc_html__( 'Social', 'groovy-menu' ),
 		'fields' => array(
-			'social_set_nofollow'   => array(
+			'social_set_nofollow' => array(
 				'type'        => 'checkbox',
 				'title'       => esc_html__( 'Set social links rel as [ nofollow noopener ]', 'groovy-menu' ),
 				'description' => esc_html__( 'Rel "nofollow" is used by search engines, to specify that the Google search spider should not follow that link. Rel "noopener" requires that any browsing context created by following the hyperlink must not have an opener browsing context. Most people create external links as target="_blank" and don’t know one thing that the page get in this way will gain partial control over the page that links to it through the js window.opener property. Rel "noopener" prevents this behavior.', 'groovy-menu' ),
 				'default'     => false,
 			),
-			'social_set_blank'      => array(
+			'social_set_blank'    => array(
 				'type'        => 'checkbox',
 				'title'       => esc_html__( 'Set social links target as [ _blank ]', 'groovy-menu' ),
 				'description' => esc_html__( 'Opens the linked social in a new window or tab.', 'groovy-menu' ),
 				'default'     => false,
 			),
+
+
 			'social_twitter'        => array(
 				'type'    => 'checkbox',
 				'title'   => esc_html__( 'Twitter', 'groovy-menu' ),
@@ -77,6 +79,13 @@ return array(
 				'title'     => esc_html__( 'Twitter link', 'groovy-menu' ),
 				'default'   => '',
 				'condition' => array( 'social_twitter', '==', true ),
+			),
+			'social_twitter_text'   => array(
+				'type'        => 'text',
+				'title'       => esc_html__( 'Twitter link', 'groovy-menu' ) . ' ' . esc_html__( 'text', 'groovy-menu' ),
+				'default'     => '',
+				'description' => esc_html__( 'Leave blank to not display text', 'groovy-menu' ),
+				'condition'   => array( 'social_twitter', '==', true ),
 			),
 			'social_twitter_icon'   => array(
 				'type'      => 'icon',
@@ -95,6 +104,13 @@ return array(
 				'default'   => '',
 				'condition' => array( 'social_facebook', '==', true ),
 			),
+			'social_facebook_text'  => array(
+				'type'        => 'text',
+				'title'       => esc_html__( 'Facebook link', 'groovy-menu' ) . ' ' . esc_html__( 'text', 'groovy-menu' ),
+				'default'     => '',
+				'description' => esc_html__( 'Leave blank to not display text', 'groovy-menu' ),
+				'condition'   => array( 'social_facebook', '==', true ),
+			),
 			'social_facebook_icon'  => array(
 				'type'      => 'icon',
 				'title'     => esc_html__( 'Facebook icon', 'groovy-menu' ),
@@ -111,6 +127,13 @@ return array(
 				'title'     => esc_html__( 'Google+ link', 'groovy-menu' ),
 				'default'   => '',
 				'condition' => array( 'social_google', '==', true ),
+			),
+			'social_google_text'    => array(
+				'type'        => 'text',
+				'title'       => esc_html__( 'Google+ link', 'groovy-menu' ) . ' ' . esc_html__( 'text', 'groovy-menu' ),
+				'default'     => '',
+				'description' => esc_html__( 'Leave blank to not display text', 'groovy-menu' ),
+				'condition'   => array( 'social_google', '==', true ),
 			),
 			'social_google_icon'    => array(
 				'type'      => 'icon',
@@ -129,6 +152,13 @@ return array(
 				'default'   => '',
 				'condition' => array( 'social_vimeo', '==', true ),
 			),
+			'social_vimeo_text'     => array(
+				'type'        => 'text',
+				'title'       => esc_html__( 'Vimeo link', 'groovy-menu' ) . ' ' . esc_html__( 'text', 'groovy-menu' ),
+				'default'     => '',
+				'description' => esc_html__( 'Leave blank to not display text', 'groovy-menu' ),
+				'condition'   => array( 'social_vimeo', '==', true ),
+			),
 			'social_vimeo_icon'     => array(
 				'type'      => 'icon',
 				'title'     => esc_html__( 'Vimeo icon', 'groovy-menu' ),
@@ -145,6 +175,13 @@ return array(
 				'title'     => esc_html__( 'Dribbble link', 'groovy-menu' ),
 				'default'   => '',
 				'condition' => array( 'social_dribbble', '==', true ),
+			),
+			'social_dribbble_text'  => array(
+				'type'        => 'text',
+				'title'       => esc_html__( 'Dribbble link', 'groovy-menu' ) . ' ' . esc_html__( 'text', 'groovy-menu' ),
+				'default'     => '',
+				'description' => esc_html__( 'Leave blank to not display text', 'groovy-menu' ),
+				'condition'   => array( 'social_dribbble', '==', true ),
 			),
 			'social_dribbble_icon'  => array(
 				'type'      => 'icon',
@@ -163,6 +200,13 @@ return array(
 				'default'   => '',
 				'condition' => array( 'social_pinterest', '==', true ),
 			),
+			'social_pinterest_text' => array(
+				'type'        => 'text',
+				'title'       => esc_html__( 'Pinterest link', 'groovy-menu' ) . ' ' . esc_html__( 'text', 'groovy-menu' ),
+				'default'     => '',
+				'description' => esc_html__( 'Leave blank to not display text', 'groovy-menu' ),
+				'condition'   => array( 'social_pinterest', '==', true ),
+			),
 			'social_pinterest_icon' => array(
 				'type'      => 'icon',
 				'title'     => esc_html__( 'Pinterest icon', 'groovy-menu' ),
@@ -179,6 +223,13 @@ return array(
 				'title'     => esc_html__( 'Youtube link', 'groovy-menu' ),
 				'default'   => '',
 				'condition' => array( 'social_youtube', '==', true ),
+			),
+			'social_youtube_text'   => array(
+				'type'        => 'text',
+				'title'       => esc_html__( 'Youtube link', 'groovy-menu' ) . ' ' . esc_html__( 'text', 'groovy-menu' ),
+				'default'     => '',
+				'description' => esc_html__( 'Leave blank to not display text', 'groovy-menu' ),
+				'condition'   => array( 'social_youtube', '==', true ),
 			),
 			'social_youtube_icon'   => array(
 				'type'      => 'icon',
@@ -197,6 +248,13 @@ return array(
 				'default'   => '',
 				'condition' => array( 'social_linkedin', '==', true ),
 			),
+			'social_linkedin_text'  => array(
+				'type'        => 'text',
+				'title'       => esc_html__( 'Linkedin link', 'groovy-menu' ) . ' ' . esc_html__( 'text', 'groovy-menu' ),
+				'default'     => '',
+				'description' => esc_html__( 'Leave blank to not display text', 'groovy-menu' ),
+				'condition'   => array( 'social_linkedin', '==', true ),
+			),
 			'social_linkedin_icon'  => array(
 				'type'      => 'icon',
 				'title'     => esc_html__( 'Linkedin icon', 'groovy-menu' ),
@@ -213,6 +271,13 @@ return array(
 				'title'     => esc_html__( 'Instagram link', 'groovy-menu' ),
 				'default'   => '',
 				'condition' => array( 'social_instagram', '==', true ),
+			),
+			'social_instagram_text' => array(
+				'type'        => 'text',
+				'title'       => esc_html__( 'Instagram link', 'groovy-menu' ) . ' ' . esc_html__( 'text', 'groovy-menu' ),
+				'default'     => '',
+				'description' => esc_html__( 'Leave blank to not display text', 'groovy-menu' ),
+				'condition'   => array( 'social_instagram', '==', true ),
 			),
 			'social_instagram_icon' => array(
 				'type'      => 'icon',
@@ -231,6 +296,13 @@ return array(
 				'default'   => '',
 				'condition' => array( 'social_flickr', '==', true ),
 			),
+			'social_flickr_text'    => array(
+				'type'        => 'text',
+				'title'       => esc_html__( 'Flickr link', 'groovy-menu' ) . ' ' . esc_html__( 'text', 'groovy-menu' ),
+				'default'     => '',
+				'description' => esc_html__( 'Leave blank to not display text', 'groovy-menu' ),
+				'condition'   => array( 'social_flickr', '==', true ),
+			),
 			'social_flickr_icon'    => array(
 				'type'      => 'icon',
 				'title'     => esc_html__( 'Flickr icon', 'groovy-menu' ),
@@ -247,6 +319,13 @@ return array(
 				'title'     => esc_html__( 'VK link', 'groovy-menu' ),
 				'default'   => '',
 				'condition' => array( 'social_vk', '==', true ),
+			),
+			'social_vk_text'        => array(
+				'type'        => 'text',
+				'title'       => esc_html__( 'VK link', 'groovy-menu' ) . ' ' . esc_html__( 'text', 'groovy-menu' ),
+				'default'     => '',
+				'description' => esc_html__( 'Leave blank to not display text', 'groovy-menu' ),
+				'condition'   => array( 'social_vk', '==', true ),
 			),
 			'social_vk_icon'        => array(
 				'type'      => 'icon',
