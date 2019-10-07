@@ -1262,6 +1262,11 @@ return array(
 				'default' => 14,
 				'unit'    => 'px',
 			),
+			'hide_toolbar_icon_text_on_mobile' => array(
+				'title'   => esc_html__( 'Hide social icon link text on mobile devices', 'groovy-menu' ),
+				'type'    => 'checkbox',
+				'default' => false,
+			),
 			'toolbar_icon_size'                         => array(
 				'title'   => esc_html__( 'Toolbar social icon size', 'groovy-menu' ),
 				'type'    => 'number',

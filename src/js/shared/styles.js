@@ -1201,6 +1201,14 @@ export default class GmStyles {
         });
       }
 
+      // Hide social icon link text on mobile devices
+      if (settings.hideToolbarIconTextOnMobile) {
+        css.push({
+          '.gm-navbar .gm-toolbar-social-link span': 'display: none;',
+          media: 'mobile'
+        });
+      }
+
       // Toolbar top border thickness
       if (settings.toolbarTopThickness && settings.toolbarTopColor) {
         const {toolbarTopThickness, toolbarTopColor} = settings;
