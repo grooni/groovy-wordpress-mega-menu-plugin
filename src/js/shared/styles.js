@@ -339,6 +339,17 @@ export default class GmStyles {
         });
       }
 
+      if (
+        (settings.header.align === 'right' || settings.header.align === 'left') &&
+        settings.topLvlLinkAlign === 'center' &&
+        settings.topLvlLinkCenterConsideringLogo
+      ) {
+        css.push({
+          '.gm-navbar.gm-top-links-align-center .gm-logo': 'position: inherit;',
+          media: 'desktop'
+        });
+      }
+
       if (settings.woocommerceCart) {
         css.push({
           '.gm-navbar .gm-minicart-icon-wrapper i': 'display: block;',

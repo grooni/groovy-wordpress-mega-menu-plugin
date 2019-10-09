@@ -104,12 +104,13 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 
 = 1.0.6 =
 * Fix: Cancels the display of the menu in maintenance mode when auto-integration is enabled
-* Fix: prevent conflict with cornerstone plugin
+* Fix: Prevent conflict with cornerstone plugin
 * Fix: Anchor tracking for one page scrolls now works with any id
 * Fix: Output buffer conflict with some plugins
 * Fix: Overlay submenu of submenu with multi level dropdowns
 * Fix: Social icon link text font size
 * Add: Option for preset: social icon link text hide on mobile
 * Add: Target and rel options for social links
-* Add: new social icons default font pack
-* Add: the ability to display custom text in the social media link
+* Add: New social icons default font pack
+* Add: The ability to display custom text in the social media link
+* Add: Preset option: Top level links with align center must considering logo width.
