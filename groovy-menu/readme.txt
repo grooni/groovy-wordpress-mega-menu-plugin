@@ -2,9 +2,9 @@
 Contributors: Grooni
 Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive, responsive menu, sticky menu, vertical menu, horizontal menu, ajax cart
 Requires at least: 4.9.7
-Tested up to: 5.2.2
+Tested up to: 5.2.4
 Requires PHP: 7.0
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -90,17 +90,6 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
-= 1.0.1 =
-* Initial release.
-
-= 1.0.3 =
-* Fix: dropdown menu not closing while hovering on simple menu links.
-
-= 1.0.4 =
-* Updated: plugin Welcome page.
-
-= 1.0.5 =
-* Fix: Added an additional check on errors when getting the Groovy Menu metadata on WooCommerce product pages.
 
 = 1.0.6 =
 * Fix: Cancels the display of the menu in maintenance mode when auto-integration is enabled
@@ -114,3 +103,15 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 * Add: New social icons default font pack
 * Add: The ability to display custom text in the social media link
 * Add: Preset option: Top level links with align center must considering logo width.
+
+= 1.0.5 =
+* Fix: Added an additional check on errors when getting the Groovy Menu metadata on WooCommerce product pages.
+
+= 1.0.4 =
+* Updated: plugin Welcome page.
+
+= 1.0.3 =
+* Fix: dropdown menu not closing while hovering on simple menu links.
+
+= 1.0.1 =
+* Initial release.
