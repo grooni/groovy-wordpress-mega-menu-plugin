@@ -255,11 +255,7 @@ function groovy_menu_pre_shutdown() {
 		return;
 	}
 
-	$final  = '';
-	$levels = ob_get_level();
-	for ( $i = 0; $i < $levels; $i ++ ) {
-		$final .= ob_get_clean();
-	}
+	$final = ob_get_clean();
 
 	echo apply_filters( 'groovy_menu_final_output', $final );
 }

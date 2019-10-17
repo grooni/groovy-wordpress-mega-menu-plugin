@@ -38,6 +38,18 @@ return array(
 				)
 
 			),
+			'top_lvl_link_center_considering_logo' => array(
+				'title'       => esc_html__( 'Top level links with align center must considering logo width.', 'groovy-menu' ),
+				'description' => esc_html__( 'Calculation of the center position for nav including the width of the logo.', 'groovy-menu' ),
+				'type'        => 'checkbox',
+				'default'     => false,
+				'condition'   => array(
+					array( 'header.style', 'in', array( '1' ) ),
+					array( 'header.align', 'in', array( 'left', 'right' ) ),
+					array( 'top_lvl_link_align', '==', 'center' ),
+					array( 'logo_type', 'in', array( 'img', 'text' ) ),
+				)
+			),
 			'gap_between_logo_and_links'                   => array(
 				'title'     => esc_html__( 'Distance between logo and nav links', 'groovy-menu' ),
 				'type'      => 'number',
@@ -1261,6 +1273,11 @@ return array(
 				'range'   => array( 0, 100 ),
 				'default' => 14,
 				'unit'    => 'px',
+			),
+			'hide_toolbar_icon_text_on_mobile' => array(
+				'title'   => esc_html__( 'Hide social icon link text on mobile devices', 'groovy-menu' ),
+				'type'    => 'checkbox',
+				'default' => false,
 			),
 			'toolbar_icon_size'                         => array(
 				'title'   => esc_html__( 'Toolbar social icon size', 'groovy-menu' ),

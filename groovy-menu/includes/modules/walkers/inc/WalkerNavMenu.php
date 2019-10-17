@@ -303,6 +303,13 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 				return $mm_content;
 			}
 
+			// prevent conflict with cornerstone plugin
+			if ( isset( $_POST['cs_preview_state'] ) && isset( $_POST['_cs_nonce'] ) ) { // @codingStandardsIgnoreLine
+				// Recovery global $post exemplar.
+				$post = $_post;
+				return __( 'Cornerstone content', 'groovy-menu' );
+			}
+
 			if ( isset( $_GET['elementor-preview'] ) && isset( $_GET['gm_menu_block'] ) ) { // @codingStandardsIgnoreLine
 				if ( intval( $_GET['elementor-preview'] ) === intval( $post->ID ) ) { // @codingStandardsIgnoreLine
 					// Recovery global $post exemplar.

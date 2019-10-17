@@ -339,6 +339,17 @@ export default class GmStyles {
         });
       }
 
+      if (
+        (settings.header.align === 'right' || settings.header.align === 'left') &&
+        settings.topLvlLinkAlign === 'center' &&
+        settings.topLvlLinkCenterConsideringLogo
+      ) {
+        css.push({
+          '.gm-navbar.gm-top-links-align-center .gm-logo': 'position: inherit;',
+          media: 'desktop'
+        });
+      }
+
       if (settings.woocommerceCart) {
         css.push({
           '.gm-navbar .gm-minicart-icon-wrapper i': 'display: block;',
@@ -364,8 +375,8 @@ export default class GmStyles {
         '.gm-navbar .gm-container': 'padding-right: 15px; padding-left: 15px; flex: 1 100%;',
         '.gm-navbar .gm-menu-item:last-of-type:not(:only-of-type) > .gm-menu-item__link': 'border-bottom: none;',
         '.gm-navbar .gm-dropdown-menu-wrapper--left': 'right: 0; left: auto;',
-        '.gm-navbar .gm-dropdown-submenu .gm-dropdown-menu-wrapper': 'left: 100%;',
-        '.gm-navbar .gm-dropdown-submenu .gm-dropdown-menu-wrapper--left': 'right: 100%; left: auto;',
+        '.gm-navbar .gm-dropdown-submenu .gm-dropdown-menu-wrapper': 'left: 100%; z-index: 1;',
+        '.gm-navbar .gm-dropdown-submenu .gm-dropdown-menu-wrapper--left': 'right: 100%; left: auto; z-index: 1;',
         '.gm-navbar #gm-main-menu': 'flex-grow: 1; display: flex;',
         '.gm-navbar .gm-main-menu-wrapper': 'flex-grow: 1; align-items: stretch;',
         '.gm-navbar.gm-top-links-align-left #gm-main-menu': 'justify-content: flex-start;',
@@ -1197,6 +1208,14 @@ export default class GmStyles {
       if (settings.hideToolbarOnMobile) {
         css.push({
           '.gm-toolbar': 'display: none;',
+          media: 'mobile'
+        });
+      }
+
+      // Hide social icon link text on mobile devices
+      if (settings.hideToolbarIconTextOnMobile) {
+        css.push({
+          '.gm-navbar .gm-toolbar-social-link span': 'display: none;',
           media: 'mobile'
         });
       }

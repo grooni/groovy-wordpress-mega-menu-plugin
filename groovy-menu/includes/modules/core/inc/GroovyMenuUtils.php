@@ -313,6 +313,14 @@ class GroovyMenuUtils {
 			}
 		}
 
+		// support product woo, while not detect in some cases.
+		if ( empty( $post_types['product'] ) && class_exists( 'WooCommerce' ) ) {
+			$post_types_ext['product'] = array(
+				'title'     => esc_html__( 'Search in:', 'groovy-menu' ) . ' Products (product)',
+				'condition' => array( 'search_form', 'in', array( 'fullscreen', 'dropdown-without-ajax' ) ),
+			);
+		}
+
 		return $post_types_ext;
 
 	}
@@ -1237,6 +1245,11 @@ class GroovyMenuUtils {
 				'name'          => 'Simple-Line-Icons',
 				'url'           => 'https://updates.grooni.com/icon_packs/Simple-Line-Icons.zip',
 				'internal_name' => 'groovy-69018'
+			),
+			'socicon' => array(
+				'name'          => 'socicon',
+				'url'           => 'https://updates.grooni.com/icon_packs/socicon.zip',
+				'internal_name' => 'groovy-socicon'
 			),
 		);
 
