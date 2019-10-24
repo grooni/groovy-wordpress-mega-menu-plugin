@@ -180,7 +180,7 @@ function groovy_menu_load_textdomain() {
 	load_plugin_textdomain( 'groovy-menu', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 }
 
-add_action( 'init', 'groovy_menu_load_textdomain' );
+add_action( 'plugins_loaded', 'groovy_menu_load_textdomain' );
 
 add_action( 'wp_enqueue_scripts', 'groovy_menu_toolbar' );
 add_action( 'admin_enqueue_scripts', 'groovy_menu_toolbar' );
