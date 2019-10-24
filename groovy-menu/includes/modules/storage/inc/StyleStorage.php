@@ -26,6 +26,13 @@ class StyleStorage {
 	private $disable_storage_flag = false;
 
 	/**
+	 * Storage of preset options (configs)
+	 *
+	 * @var array
+	 */
+	private $preset_storage_config = array();
+
+	/**
 	 * Storage of preset settings
 	 *
 	 * @var array
@@ -38,6 +45,13 @@ class StyleStorage {
 	 * @var array
 	 */
 	private $preset_storage_serialize = array();
+
+	/**
+	 * Storage of global options (configs)
+	 *
+	 * @var array
+	 */
+	private $global_storage_config = array();
 
 	/**
 	 * Storage of global settings
@@ -71,6 +85,34 @@ class StyleStorage {
 
 	public function set_enable_storage() {
 		$this->disable_storage_flag = false;
+	}
+
+	public function set_preset_config( $configs ) {
+		if ( is_array( $configs ) ) {
+			$this->preset_storage_config = $configs;
+		}
+	}
+
+	public function get_preset_config() {
+		if ( ! empty( $this->preset_storage_config ) ) {
+			return $this->preset_storage_config;
+		}
+
+		return array();
+	}
+
+	public function set_global_config( $configs ) {
+		if ( is_array( $configs ) ) {
+			$this->global_storage_config = $configs;
+		}
+	}
+
+	public function get_global_config() {
+		if ( ! empty( $this->global_storage_config ) ) {
+			return $this->global_storage_config;
+		}
+
+		return array();
 	}
 
 	public function get_preset_settings( $preset_id ) {

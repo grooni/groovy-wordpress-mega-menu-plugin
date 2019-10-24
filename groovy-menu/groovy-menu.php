@@ -103,6 +103,10 @@ if ( method_exists( 'GroovyMenuUtils', 'install_default_icon_packs' ) ) {
 	add_action( 'wp_ajax_gm_install_default_icon_packs', array( 'GroovyMenuUtils', 'install_default_icon_packs' ) );
 }
 
+if ( method_exists( 'GroovyMenuUtils', 'update_config_text_domain' ) && is_admin() ) {
+	add_action( 'wp_loaded', array( 'GroovyMenuUtils', 'update_config_text_domain' ), 1000 );
+}
+
 function groovy_menu_activation() {
 	global $gm_supported_module;
 

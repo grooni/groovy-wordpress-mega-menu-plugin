@@ -1484,4 +1484,57 @@ class GroovyMenuUtils {
 		<?php
 	}
 
+
+	public static function update_config_text_domain() {
+		$config_global   = include GROOVY_MENU_DIR . 'includes/config/ConfigGlobal.php';
+		$settings_global = \GroovyMenu\StyleStorage::getInstance()->get_global_settings();
+
+		$updated = false;
+
+		if ( ! empty( $settings_global ) && is_array( $settings_global ) && is_array( $config_global ) ) {
+
+			foreach ( $config_global as $category_name => $category ) {
+
+				if ( isset( $category['title'] ) && isset( $settings_global[ $category_name ]['title'] ) ) {
+					if ( $settings_global[ $category_name ]['title'] !== $category['title'] ) {
+						$settings_global[ $category_name ]['title'] = $category['title'];
+
+						$updated = true;
+					}
+				}
+
+				if ( isset( $category['fields'] ) ) {
+					foreach ( $category['fields'] as $field => $config_value ) {
+						if ( isset( $settings_global[ $category_name ]['fields'][ $field ] ) ) {
+
+							$settings_global_value = $settings_global[ $category_name ]['fields'][ $field ];
+
+							if ( isset( $config_value['title'] ) && isset( $settings_global_value['title'] ) ) {
+								if ( $settings_global_value['title'] !== $config_value['title'] ) {
+									$settings_global[ $category_name ]['fields'][ $field ]['title'] = $config_value['title'];
+
+									$updated = true;
+								}
+							}
+							if ( isset( $config_value['description'] ) && isset( $settings_global_value['description'] ) ) {
+								if ( $settings_global_value['description'] !== $config_value['description'] ) {
+									$settings_global[ $category_name ]['fields'][ $field ]['description'] = $config_value['description'];
+
+									$updated = true;
+								}
+							}
+						}
+					}
+				}
+
+			}
+
+			if ( $updated ) {
+				\GroovyMenu\StyleStorage::getInstance()->set_global_settings( $settings_global );
+			}
+
+		}
+
+	}
+
 }

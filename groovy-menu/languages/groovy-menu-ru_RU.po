@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Groovy Menu 1.0.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-24 17:57+0300\n"
-"PO-Revision-Date: 2019-10-24 17:58+0300\n"
+"POT-Creation-Date: 2019-10-24 18:33+0300\n"
+"PO-Revision-Date: 2019-10-24 18:34+0300\n"
 "Last-Translator: Di_Skyer <diskyer@gmail.com>\n"
 "Language-Team: Русский\n"
 "Language: ru_RU\n"
@@ -26,28 +26,23 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: assets\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 
-#: groovy-menu.php:325
-#, fuzzy
+#: groovy-menu.php:329
 msgid "Groovy menu Primary"
 msgstr "Groovy основное меню"
 
 #: includes/config/Config.php:12
-#, fuzzy
 msgid "General"
 msgstr "Настройки"
 
 #: includes/config/Config.php:16
-#, fuzzy
 msgid "General settings"
 msgstr "Общие настройки"
 
 #: includes/config/Config.php:21
-#, fuzzy
 msgid "Groovy menu types"
 msgstr "Тип меню"
 
 #: includes/config/Config.php:22
-#, fuzzy
 msgid ""
 "By applying this option you can choose your menu style, elements align and "
 "toggle toolbar."
@@ -56,27 +51,22 @@ msgstr ""
 "активировать тулбар"
 
 #: includes/config/Config.php:27
-#, fuzzy
 msgid "Top level links align"
 msgstr "Выравнивание ссылок меню верхнего уровня"
 
 #: includes/config/Config.php:30
-#, fuzzy
 msgid "Align left"
 msgstr "Выровнять слева"
 
 #: includes/config/Config.php:31
-#, fuzzy
 msgid "Align center"
 msgstr "Выровнять по центру"
 
 #: includes/config/Config.php:32
-#, fuzzy
 msgid "Align right"
 msgstr "Выровнять справа"
 
 #: includes/config/Config.php:42
-#, fuzzy
 msgid "Top level links with align center must considering logo width."
 msgstr ""
 "Ссылки верхнего уровня с выравниванием по центру должны учитывать ширину лого"
@@ -87,17 +77,14 @@ msgid ""
 msgstr ""
 
 #: includes/config/Config.php:54
-#, fuzzy
 msgid "Distance between logo and nav links"
 msgstr "Расстояние между логотипом и навигационными ссылками"
 
 #: includes/config/Config.php:67
-#, fuzzy
 msgid "Enable Groovy menu to overlap the first block in the page"
 msgstr "Разрешить Groovy menu перекрывать первый блок на странице"
 
 #: includes/config/Config.php:68
-#, fuzzy
 msgid ""
 "This option will make menu overlap the first block in the page, switch it if "
 "you create a transparent menu (works with classic and minimalistic menu "
@@ -108,73 +95,59 @@ msgstr ""
 "для мобильного разрешения)."
 
 #: includes/config/Config.php:73
-#, fuzzy
 msgid "Menu height"
 msgstr "Высота меню"
 
 #: includes/config/Config.php:74
-#, fuzzy
 msgid "You can change menu height using this option. (by default:100px)."
 msgstr ""
 "Вы можете изменить высоту меню, используя эту опцию (по умолчанию: 100px)"
 
 #: includes/config/Config.php:81
-#, fuzzy
 msgid "Minimalistic menu open type"
 msgstr "Минимальное меню типа открытия"
 
 #: includes/config/Config.php:84 includes/config/Config.php:1663
-#, fuzzy
 msgid "Offcanvas slide from the left"
 msgstr "Смещение канваса слева"
 
 #: includes/config/Config.php:85 includes/config/Config.php:1664
-#, fuzzy
 msgid "Offcanvas slide from the right"
 msgstr "Смещение канваса справа"
 
 #: includes/config/Config.php:86 includes/config/Config.php:1665
-#, fuzzy
 msgid "Slide menu and container from the left"
 msgstr "Выподающее слева"
 
 #: includes/config/Config.php:87 includes/config/Config.php:1666
-#, fuzzy
 msgid "Slide menu and container from the right"
 msgstr "Выподающее справа"
 
 #: includes/config/Config.php:95
-#, fuzzy
 msgid "Menu canvas and container width"
 msgstr "Меню канвас и ширина контейнера"
 
 #: includes/config/Config.php:98
-#, fuzzy
 msgid "Canvas and container boxed"
 msgstr "Ширина канваса и контейнера фиксирована"
 
 #: includes/config/Config.php:99
-#, fuzzy
 msgid "Canvas wide - container boxed"
 msgstr "Канвас широкий - контейнер фиксированный"
 
 #: includes/config/Config.php:100
-#, fuzzy
 msgid "Canvas and container wide"
 msgstr "Широкое канвас и контейнер"
 
 #: includes/config/Config.php:105
-#, fuzzy
 msgid "Canvas and container wide right/left padding"
 msgstr "Канвас и контейнер широкий, отступ справа / слева"
 
 #: includes/config/Config.php:113
-#, fuzzy
 msgid "Canvas and container boxed width"
 msgstr "Канвас и контейнер фиксированы, ширина"
 
 #: includes/config/Config.php:115
-#, fuzzy
 msgid ""
 "Note that container will be 30px narrower (because of left/right 15px "
 "padding) than canvas. (default canvas width is 1200px)."
@@ -184,74 +157,60 @@ msgstr ""
 "1200 пикселей)."
 
 #: includes/config/Config.php:122
-#, fuzzy
 msgid "Canvas wide - container boxed width"
 msgstr "Канвас широкий - контейнер фиксированный, ширина"
 
 #: includes/config/Config.php:124
-#, fuzzy
 msgid "Container width by default is 1200px."
 msgstr "Ширина контейнера по умолчанию составляет 1200 пикселей."
 
 #: includes/config/Config.php:131
-#, fuzzy
 msgid "Search form type"
 msgstr "Тип формы поиска"
 
 #: includes/config/Config.php:135
-#, fuzzy
 msgid "Select a type of the search form"
 msgstr "Выберите тип формы поиска"
 
 #: includes/config/Config.php:140
-#, fuzzy
 msgid "Dropdown"
 msgstr "Выпадающий"
 
 #: includes/config/Config.php:143
-#, fuzzy
 msgid "Fullscreen"
 msgstr "Полноэкранный"
 
 #: includes/config/Config.php:144
-#, fuzzy
 msgid "Disable"
 msgstr "Выключен"
 
 #: includes/config/Config.php:149
-#, fuzzy
 msgid "Filter search result by"
 msgstr "Фильтровать поиск"
 
 #: includes/config/Config.php:154
-#, fuzzy
 msgid "Search in all post types"
 msgstr "Поиск по всем типам постов"
 
 #: includes/config/Config.php:164
-#, fuzzy
 msgid "Search form icon size"
 msgstr "Размер иконки формы поиска"
 
 #: includes/config/Config.php:169 includes/config/Config.php:206
 #: includes/config/Config.php:245
-#, fuzzy
 msgid "Desktop icon size"
 msgstr "Размер иконки"
 
 #: includes/config/Config.php:177 includes/config/Config.php:214
 #: includes/config/Config.php:253
-#, fuzzy
 msgid "Mobile icon size"
 msgstr "Размер мобильной иконки"
 
 #: includes/config/Config.php:188
-#, fuzzy
 msgid "Show WooCommerce minicart"
 msgstr "Показать WooCommerce мини-корзину"
 
 #: includes/config/Config.php:192
-#, fuzzy
 msgid "Toggle switch to show/hide WooCommerce minicart"
 msgstr "Переключите, чтобы показать / скрыть мини-корзину WooCommerce"
 
@@ -260,17 +219,14 @@ msgid "WooCommerce minicart icon size"
 msgstr ""
 
 #: includes/config/Config.php:222
-#, fuzzy
 msgid "wooCommerce cart icon size"
 msgstr "WooCommerce размер иконки"
 
 #: includes/config/Config.php:226
-#, fuzzy
 msgid "Show WPML language switcher"
 msgstr "Показать переключатель языка WPML"
 
 #: includes/config/Config.php:227
-#, fuzzy
 msgid ""
 "Note: switcher will be displayed only if WPML plugin is installed and "
 "activated."
@@ -279,32 +235,26 @@ msgstr ""
 "установлен и активирован."
 
 #: includes/config/Config.php:240
-#, fuzzy
 msgid "WPML language switcher icon size"
 msgstr "Размер иконки переключателя языка WPML"
 
 #: includes/config/Config.php:264
-#, fuzzy
 msgid "Show caret at the top level"
 msgstr "Показать \"V\" символ для меню верхнем уровня с подменю"
 
 #: includes/config/Config.php:270
-#, fuzzy
 msgid "Show divider between navigation and search/cart"
 msgstr "Показать разделитель навигацией и иконкой(ами) поиском/корзиной"
 
 #: includes/config/Config.php:279
-#, fuzzy
 msgid "Show divider between menu links"
 msgstr "Показать разделитель между пунктами меню"
 
 #: includes/config/Config.php:288
-#, fuzzy
 msgid "Hide icons at top level menu and submenu"
 msgstr "Скрыть иконки в меню верхнего уровня и подменю"
 
 #: includes/config/Config.php:291
-#, fuzzy
 msgid ""
 "You can switch between displaying or hiding icons added to menu items from "
 "&quot;Appearance > menus&quot;."
@@ -313,37 +263,30 @@ msgstr ""
 "к элементам меню здесь \"Внешний вид > Меню\""
 
 #: includes/config/Config.php:295
-#, fuzzy
 msgid "Submenu"
 msgstr "Подменю"
 
 #: includes/config/Config.php:300
-#, fuzzy
 msgid "Show submenu"
 msgstr "Показть подменю"
 
 #: includes/config/Config.php:301
-#, fuzzy
 msgid "Select behavior of opening the submenu."
 msgstr "Подменю открывать при"
 
 #: includes/config/Config.php:304
-#, fuzzy
 msgid "on hover"
 msgstr "наведение"
 
 #: includes/config/Config.php:305
-#, fuzzy
 msgid "on click"
 msgstr "клике"
 
 #: includes/config/Config.php:310
-#, fuzzy
 msgid "Submenu width"
 msgstr "Ширина подменю"
 
 #: includes/config/Config.php:311
-#, fuzzy
 msgid ""
 "By applying this option you can set width of submenu excluding mega menu. "
 "Note: this option works with default and icon menu types."
@@ -351,12 +294,10 @@ msgstr ""
 "Применяя эту опцию, вы можете установить ширину подменю, исключая мегаменю.  "
 
 #: includes/config/Config.php:318
-#, fuzzy
 msgid "Hide background image at submenu"
 msgstr "Скрыть фоновое изображение в подменю"
 
 #: includes/config/Config.php:319
-#, fuzzy
 msgid ""
 "You can hide background image at submenu settings in &quot;Appearance > "
 "Menus&quot;."
@@ -365,7 +306,6 @@ msgstr ""
 "\"Внешний вид > Меню\""
 
 #: includes/config/Config.php:324
-#, fuzzy
 msgid "Top level link bottom border"
 msgstr "Нижняя граница ссылки верхнего уровня"
 
@@ -373,14 +313,12 @@ msgstr "Нижняя граница ссылки верхнего уровня"
 #: includes/config/Config.php:785 includes/config/Config.php:842
 #: includes/config/Config.php:890 includes/config/Config.php:1087
 #: includes/config/Config.php:1217 includes/config/Config.php:1237
-#, fuzzy
 msgid "thickness"
 msgstr "толщина"
 
 #: includes/config/Config.php:337 includes/config/Config.php:418
 #: includes/config/Config.php:793 includes/config/Config.php:850
 #: includes/config/Config.php:898
-#, fuzzy
 msgid "style"
 msgstr "стиль"
 
@@ -388,7 +326,6 @@ msgstr "стиль"
 #: includes/config/Config.php:796 includes/config/Config.php:853
 #: includes/config/Config.php:901 includes/config/Config.php:1536
 #: includes/config/Config.php:1624
-#, fuzzy
 msgid "Dotted"
 msgstr "Точечная"
 
@@ -396,7 +333,6 @@ msgstr "Точечная"
 #: includes/config/Config.php:797 includes/config/Config.php:854
 #: includes/config/Config.php:902 includes/config/Config.php:1537
 #: includes/config/Config.php:1625
-#, fuzzy
 msgid "Dashed"
 msgstr "Штрих пункт."
 
@@ -404,7 +340,6 @@ msgstr "Штрих пункт."
 #: includes/config/Config.php:798 includes/config/Config.php:855
 #: includes/config/Config.php:903 includes/config/Config.php:1535
 #: includes/config/Config.php:1623
-#, fuzzy
 msgid "Solid"
 msgstr "Cплошная"
 
@@ -416,17 +351,14 @@ msgstr "Cплошная"
 #: includes/config/Config.php:1357 includes/config/Config.php:1390
 #: includes/config/Config.php:1410 includes/config/Config.php:1548
 #: includes/config/Config.php:1636
-#, fuzzy
 msgid "color"
 msgstr "цвет"
 
 #: includes/config/Config.php:359
-#, fuzzy
 msgid "Submenu active link color"
 msgstr "Подменю цвет активной ссылки"
 
 #: includes/config/Config.php:366 includes/config/Config.php:380
-#, fuzzy
 msgid "First level submenu background color"
 msgstr "Цвет фона подменю первого уровня"
 
@@ -435,7 +367,6 @@ msgid "Next level submenu background color"
 msgstr ""
 
 #: includes/config/Config.php:394
-#, fuzzy
 msgid "Submenu hover style"
 msgstr "Стиль наведения для появлении подменю"
 
@@ -447,167 +378,137 @@ msgstr "Стиль наведения для появлении подменю"
 #: includes/modules/core/inc/GroovyMenuSingleMetaPreset.php:109
 #: includes/modules/fields/inc/FieldTaxonomyPreset.php:22
 #: template/PreviewModal.php:9
-#, fuzzy
 msgid "Default"
 msgstr "По умолч."
 
 #: includes/config/Config.php:398
-#, fuzzy
 msgid "Shift right"
 msgstr "Сдвиг вправо"
 
 #: includes/config/Config.php:404
-#, fuzzy
 msgid "Submenu appearance style"
 msgstr "Стиль появления подменю"
 
 #: includes/config/Config.php:408
-#, fuzzy
 msgid "Animate from bottom"
 msgstr "Анимация снизу"
 
 #: includes/config/Config.php:414
-#, fuzzy
 msgid "Submenu bottom border"
 msgstr "Подменю нижняя граница"
 
 #: includes/config/Config.php:445
-#, fuzzy
 msgid "Submenu text color"
 msgstr "Цвет текста подменю"
 
 #: includes/config/Config.php:451
-#, fuzzy
 msgid "Submenu text hover color"
 msgstr "Цвет наведения текста подменю"
 
 #: includes/config/Config.php:457
-#, fuzzy
 msgid "Submenu active link text color"
 msgstr "Цвет активной ссылки подменю"
 
 #: includes/config/Config.php:463
-#, fuzzy
 msgid "Submenu box border top color"
 msgstr "Подменю цвет рамки "
 
 #: includes/config/Config.php:469
-#, fuzzy
 msgid "Submenu background color"
 msgstr "Цвет фона подменю"
 
 #: includes/config/Config.php:475
-#, fuzzy
 msgid "Submenu item hover background color"
 msgstr "Подменю цвет фона при наведении"
 
 #: includes/config/Config.php:480
-#, fuzzy
 msgid "Submenu text"
 msgstr "Текст подменю"
 
 #: includes/config/Config.php:484 includes/config/Config.php:540
 #: includes/config/Config.php:1147 includes/config/Config.php:1728
 #: includes/config/Config.php:1768
-#, fuzzy
 msgid "Size"
 msgstr "Размер"
 
 #: includes/config/Config.php:491 includes/config/Config.php:548
 #: includes/config/Config.php:1154 includes/config/Config.php:1735
 #: includes/config/Config.php:1775
-#, fuzzy
 msgid "Case"
 msgstr "Регистр"
 
 #: includes/config/Config.php:494 includes/config/Config.php:551
-#, fuzzy
 msgid "Select value"
 msgstr "Выбрать"
 
 #: includes/config/Config.php:496 includes/config/Config.php:553
 #: includes/config/Config.php:1158 includes/config/Config.php:1739
 #: includes/config/Config.php:1779
-#, fuzzy
 msgid "Uppercase"
 msgstr "C Большой "
 
 #: includes/config/Config.php:497 includes/config/Config.php:554
 #: includes/config/Config.php:1159 includes/config/Config.php:1740
 #: includes/config/Config.php:1780
-#, fuzzy
 msgid "Capitalize"
 msgstr "ЗАГЛАВНЫЕ"
 
 #: includes/config/Config.php:498 includes/config/Config.php:555
 #: includes/config/Config.php:1160 includes/config/Config.php:1741
 #: includes/config/Config.php:1781
-#, fuzzy
 msgid "Lowercase"
 msgstr "строчные"
 
 #: includes/config/Config.php:503 includes/config/Config.php:561
 #: includes/config/Config.php:1165 includes/config/Config.php:1746
 #: includes/config/Config.php:1786
-#, fuzzy
 msgid "Font variant"
 msgstr "Вариант шрифта"
 
 #: includes/config/Config.php:511 includes/config/Config.php:570
 #: includes/config/Config.php:1173
-#, fuzzy
 msgid "Subset"
 msgstr "Тип"
 
 #: includes/config/Config.php:519 includes/config/Config.php:579
 #: includes/config/Config.php:1181 includes/config/Config.php:1754
 #: includes/config/Config.php:1794
-#, fuzzy
 msgid "Letter spacing"
 msgstr "Межбукв. раст."
 
 #: includes/config/Config.php:529
-#, fuzzy
 msgid "Submenu shadow"
 msgstr "Тень подменю"
 
 #: includes/config/Config.php:535
-#, fuzzy
 msgid "Mega menu title text"
 msgstr "Текст заголовка мегаменю"
 
 #: includes/config/Config.php:590
-#, fuzzy
 msgid "Mega menu title text color"
 msgstr "Цвет текста заголовка мегаменю"
 
 #: includes/config/Config.php:597
-#, fuzzy
 msgid "Mega menu canvas and container width"
 msgstr "Мега меню канвас и контейнер, ширина"
 
 #: includes/config/Config.php:600
-#, fuzzy
 msgid "Mega menu canvas and container boxed"
 msgstr "Мега меню канвас и контейнер фиксированы"
 
 #: includes/config/Config.php:601
-#, fuzzy
 msgid "Mega menu canvas wide - container boxed"
 msgstr "Мега меню канвас широкий - и контейнер фиксированный"
 
 #: includes/config/Config.php:602
-#, fuzzy
 msgid "Mega menu canvas and container wide"
 msgstr "Мега меню канвас и контейнер широкие"
 
 #: includes/config/Config.php:608
-#, fuzzy
 msgid "Mega menu canvas and container boxed width"
 msgstr "Мега меню канвас и контейнер фиксированы, ширина"
 
 #: includes/config/Config.php:617
-#, fuzzy
 msgid ""
 "Note that container will be 30px narrower than canvas. (canvas width by "
 "default is 1200px)."
@@ -616,17 +517,14 @@ msgstr ""
 "(ширина канваса по умолчанию составляет 1200 пикселей)."
 
 #: includes/config/Config.php:624
-#, fuzzy
 msgid "Mega menu canvas wide - container boxed width"
 msgstr "Мега меню канвас широкий - контейнер фиксированный, ширина"
 
 #: includes/config/Config.php:633
-#, fuzzy
 msgid "Default container width is 1200px."
 msgstr "Ширина контейнера по умолчанию составляет 1200 пикселей."
 
 #: includes/config/Config.php:640
-#, fuzzy
 msgid "Mega menu columns divider color"
 msgstr "Мега меню цвет разделителя колонок"
 
@@ -635,63 +533,51 @@ msgid "Show mega menu links bottom border"
 msgstr ""
 
 #: includes/config/Config.php:653 includes/config/ConfigGlobal.php:18
-#, fuzzy
 msgid "Logo"
 msgstr "Логотип"
 
 #: includes/config/Config.php:658
-#, fuzzy
 msgid "Logo type"
 msgstr "Выберите тип логотипа "
 
 #: includes/config/Config.php:668
-#, fuzzy
 msgid "Logo height"
 msgstr "Высота логотипа"
 
 #: includes/config/Config.php:679
-#, fuzzy
 msgid "Mobile logo height"
 msgstr "Высота логотипа мобильной версии"
 
 #: includes/config/Config.php:687 includes/config/Config.php:1125
-#, fuzzy
 msgid "Google font family"
 msgstr "Google шрифты"
 
 #: includes/config/Config.php:688
-#, fuzzy
 msgid "Choose preferred Google font family for logo."
 msgstr "Выберите предпочитаемое семейство шрифтов Google для логотипа."
 
 #: includes/config/Config.php:697
-#, fuzzy
 msgid "Text logo"
 msgstr "Текстовый логотип"
 
 #: includes/config/Config.php:702 includes/config/Config.php:1477
 #: includes/config/Config.php:1565
-#, fuzzy
 msgid "font size"
 msgstr "размер шрифта"
 
 #: includes/config/Config.php:710
-#, fuzzy
 msgid "variant"
 msgstr "вариант"
 
 #: includes/config/Config.php:719
-#, fuzzy
 msgid "subset"
 msgstr "тип"
 
 #: includes/config/Config.php:735
-#, fuzzy
 msgid "hover color"
 msgstr "цвет наведения"
 
 #: includes/config/Config.php:745
-#, fuzzy
 msgid "Menu item preview"
 msgstr "Миниатюра для пункта меню"
 
@@ -701,19 +587,16 @@ msgstr "Миниатюра для пункта меню"
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1123
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1973
 #: template/PreviewModal.php:8
-#, fuzzy
 msgid "Preview"
 msgstr "Предпросмотр"
 
 #: includes/config/Config.php:754 includes/config/Config.php:1350
 #: includes/config/Config.php:1403 includes/config/Config.php:1542
 #: includes/config/Config.php:1630
-#, fuzzy
 msgid "width"
 msgstr "ширина"
 
 #: includes/config/Config.php:762
-#, fuzzy
 msgid "height"
 msgstr "высота"
 
@@ -727,33 +610,27 @@ msgid "Side border"
 msgstr ""
 
 #: includes/config/Config.php:780
-#, fuzzy
 msgid "Set left/right side border of menu. Side depends on menu align"
 msgstr ""
 "Установите левую / правую границу меню. Сторона зависит от выравнивания меню"
 
 #: includes/config/Config.php:815
-#, fuzzy
 msgid "Top level icon size"
 msgstr "Размер иконки меню верхнего уровня"
 
 #: includes/config/Config.php:823
-#, fuzzy
 msgid "Top level icon active & hover background color"
 msgstr "Цвет активной иконки и цвет фона при наведении верхнего уровня"
 
 #: includes/config/Config.php:830
-#, fuzzy
 msgid "Top level icon active & hover color"
 msgstr "Цвет активной иконки и цвет наведения верхнего уровня"
 
 #: includes/config/Config.php:837
-#, fuzzy
 msgid "Top level items bottom border"
 msgstr "Верхний уровень элементов нижней границы"
 
 #: includes/config/Config.php:872
-#, fuzzy
 msgid "Top level link background color"
 msgstr "Цвет фона ссылки верхнего уровня"
 
@@ -762,258 +639,207 @@ msgid "Sidebar menu"
 msgstr ""
 
 #: includes/config/Config.php:920
-#, fuzzy
 msgid "Minimalistic menu"
 msgstr "Минимальное меню"
 
 #: includes/config/Config.php:926 includes/config/Config.php:1010
-#, fuzzy
 msgid "Top level menu background color"
 msgstr "Цвет фона меню верхнего уровня"
 
 #: includes/config/Config.php:933 includes/config/Config.php:938
-#, fuzzy
 msgid "Custom CSS"
 msgstr "Пользовательский CSS"
 
 #: includes/config/Config.php:957 includes/config/Config.php:962
-#, fuzzy
 msgid "Custom JS"
 msgstr "Пользовательский JS"
 
 #: includes/config/Config.php:975
-#, fuzzy
 msgid "Custom code"
 msgstr "Пользов-ский код"
 
 #: includes/config/Config.php:980
-#, fuzzy
 msgid "Custom CSS class"
 msgstr "Пользовательский CSS класс"
 
 #: includes/config/Config.php:987
-#, fuzzy
 msgid "Styles"
 msgstr "Стили"
 
 #: includes/config/Config.php:992
-#, fuzzy
 msgid "Hover styles"
 msgstr "Стили наведения"
 
 #: includes/config/Config.php:997
-#, fuzzy
 msgid "Top level hover Style"
 msgstr "Стиль наведения верхнего уровня меню"
 
 #: includes/config/Config.php:1006 includes/config/Config.php:1074
-#, fuzzy
 msgid "Background"
 msgstr "Фон"
 
 #: includes/config/Config.php:1016
-#, fuzzy
 msgid "Top level menu background Image"
 msgstr "Фоновое изображение меню верхнего уровня"
 
 #: includes/config/Config.php:1023
-#, fuzzy
 msgid "Top level menu background image size"
 msgstr "Размер фоновое изображение меню верхнего уровня"
 
 #: includes/config/Config.php:1029
-#, fuzzy
 msgid "Top level menu background"
 msgstr "Фон меню верхнего уровня"
 
 #: includes/config/Config.php:1033 includes/config/Config.php:1037
-#, fuzzy
 msgid "repeat"
 msgstr "повторение"
 
 #: includes/config/Config.php:1036
-#, fuzzy
 msgid "no-repeat"
 msgstr "не повторять"
 
 #: includes/config/Config.php:1038
-#, fuzzy
 msgid "repeat-x"
 msgstr "повторение-x"
 
 #: includes/config/Config.php:1039
-#, fuzzy
 msgid "repeat-y"
 msgstr "повторение-н"
 
 #: includes/config/Config.php:1044
-#, fuzzy
 msgid "attachment"
 msgstr "фиксация"
 
 #: includes/config/Config.php:1047
-#, fuzzy
 msgid "fixed"
 msgstr "фиксир-ное"
 
 #: includes/config/Config.php:1048
-#, fuzzy
 msgid "scroll"
 msgstr "прокрутка"
 
 #: includes/config/Config.php:1053
-#, fuzzy
 msgid "position"
 msgstr "расположение"
 
 #: includes/config/Config.php:1056
-#, fuzzy
 msgid "center center"
 msgstr "центр центр"
 
 #: includes/config/Config.php:1057
-#, fuzzy
 msgid "top left"
 msgstr "сверху слева"
 
 #: includes/config/Config.php:1058
-#, fuzzy
 msgid "top center"
 msgstr "сверху в центре"
 
 #: includes/config/Config.php:1059
-#, fuzzy
 msgid "top right"
 msgstr "сверху справа"
 
 #: includes/config/Config.php:1060
-#, fuzzy
 msgid "center left"
 msgstr "вцентре слева"
 
 #: includes/config/Config.php:1061
-#, fuzzy
 msgid "center right"
 msgstr "в центре справа"
 
 #: includes/config/Config.php:1062
-#, fuzzy
 msgid "bottom left"
 msgstr "внизу слева"
 
 #: includes/config/Config.php:1063
-#, fuzzy
 msgid "bottom center"
 msgstr "снизу в центре"
 
 #: includes/config/Config.php:1064
-#, fuzzy
 msgid "bottom right"
 msgstr "внизу справа"
 
 #: includes/config/Config.php:1069
-#, fuzzy
 msgid "Cover background"
 msgstr "Фоновая обложка"
 
 #: includes/config/Config.php:1078
-#, fuzzy
 msgid "Border"
 msgstr "Линия"
 
 #: includes/config/Config.php:1083
-#, fuzzy
 msgid "Menu bottom border"
 msgstr "Нижняя граница меню"
 
 #: includes/config/Config.php:1104
-#, fuzzy
 msgid "Colors"
 msgstr "Цвета"
 
 #: includes/config/Config.php:1108
-#, fuzzy
 msgid "Top level link text color"
 msgstr "Цвет текста пунктов меню верхнего уровня"
 
 #: includes/config/Config.php:1114
-#, fuzzy
 msgid "Top level hover and active link color"
 msgstr "Вверхнего меню - цвет наведения и цвет активной ссылки "
 
 #: includes/config/Config.php:1121 includes/config/Config.php:1719
-#, fuzzy
 msgid "Typography"
 msgstr "Шрифты"
 
 #: includes/config/Config.php:1126
-#, fuzzy
 msgid "Choose preferred Google font family for menu."
 msgstr "Выберите предпочтительный шрифт для меню"
 
 #: includes/config/Config.php:1136
-#, fuzzy
 msgid "Top level menu items gutter space"
 msgstr "Растояние между пунктами меню верхнего уровня"
 
 #: includes/config/Config.php:1138
-#, fuzzy
 msgid "This value will be applied as padding to left and right of the item."
 msgstr "Это значение будет применено как отступ слева и справа от элемента."
 
 #: includes/config/Config.php:1143 includes/config/Config.php:1724
-#, fuzzy
 msgid "Top level text"
 msgstr "Текст верхнего уровня меню"
 
 #: includes/config/Config.php:1192
-#, fuzzy
 msgid "Shadow"
 msgstr "Тень"
 
 #: includes/config/Config.php:1196
-#, fuzzy
 msgid "Menu shadow"
 msgstr "Тень меню"
 
 #: includes/config/Config.php:1203 includes/config/ConfigGlobal.php:339
 #: includes/modules/fields/inc/FieldHeader.php:52
-#, fuzzy
 msgid "Toolbar"
 msgstr "Тулбар"
 
 #: includes/config/Config.php:1208
-#, fuzzy
 msgid "Hide toolbar on mobile devices"
 msgstr "Скрыть тулбар на мобильных"
 
 #: includes/config/Config.php:1213
-#, fuzzy
 msgid "Toolbar top border"
 msgstr "Верхняя граница панели инструментов"
 
 #: includes/config/Config.php:1233
-#, fuzzy
 msgid "Toolbar bottom border"
 msgstr "Нижняя граница панели инструментов"
 
 #: includes/config/Config.php:1253
-#, fuzzy
 msgid "Toolbar background color"
 msgstr "Тулбар цвет фона"
 
 #: includes/config/Config.php:1259
-#, fuzzy
 msgid "Toolbar additional information color"
 msgstr "Цвет панели дополнительной информации"
 
 #: includes/config/Config.php:1265
-#, fuzzy
 msgid "WPML dropdown background color"
 msgstr "Цвет фона раскрывающегося списка WPML"
 
 #: includes/config/Config.php:1271
-#, fuzzy
 msgid "Toolbar additional information font size"
 msgstr "Размер шрифта тулбара"
 
@@ -1022,59 +848,48 @@ msgid "Hide social icon link text on mobile devices"
 msgstr ""
 
 #: includes/config/Config.php:1283
-#, fuzzy
 msgid "Toolbar social icon size"
 msgstr "Тулбар размер соц. иконок"
 
 #: includes/config/Config.php:1290
-#, fuzzy
 msgid "Toolbar social icon color"
 msgstr "Тулбар цвет соц. иконок"
 
 #: includes/config/Config.php:1296
-#, fuzzy
 msgid "Toolbar social icon hover color"
 msgstr "Тулбар цвет наведения иконок"
 
 #: includes/config/Config.php:1302
-#, fuzzy
 msgid "Add left/right border to social icons"
 msgstr "Добавить левую / правую границу для социальных иконок"
 
 #: includes/config/Config.php:1309 includes/config/Config.php:1313
 #: includes/config/ConfigGlobal.php:388
-#, fuzzy
 msgid "Side icon"
 msgstr "Боковая иконка"
 
 #: includes/config/Config.php:1317 includes/config/Config.php:1370
-#, fuzzy
 msgid "size"
 msgstr "размер"
 
 #: includes/config/Config.php:1324 includes/config/Config.php:1377
-#, fuzzy
 msgid "padding area"
 msgstr "отступ"
 
 #: includes/config/Config.php:1331 includes/config/Config.php:1384
 #: includes/config/Config.php:1512 includes/config/Config.php:1600
-#, fuzzy
 msgid "background color"
 msgstr "цвет фона"
 
 #: includes/config/Config.php:1346
-#, fuzzy
 msgid "Side icon border"
 msgstr "Боковая икона граница"
 
 #: includes/config/Config.php:1366
-#, fuzzy
 msgid "Side icon mobile"
 msgstr "Боковая иконка мобильное меню"
 
 #: includes/config/Config.php:1399
-#, fuzzy
 msgid "Side icon mobile border"
 msgstr "Боковая иконка мобильное меню граница"
 
@@ -1095,7 +910,6 @@ msgid "Drop"
 msgstr ""
 
 #: includes/config/Config.php:1433
-#, fuzzy
 msgid "Circle"
 msgstr "Круг"
 
@@ -1104,12 +918,10 @@ msgid "Square"
 msgstr ""
 
 #: includes/config/Config.php:1439 includes/config/Config.php:1458
-#, fuzzy
 msgid "Background color"
 msgstr "Цвет фона"
 
 #: includes/config/Config.php:1445 includes/config/Config.php:1464
-#, fuzzy
 msgid "Text color"
 msgstr "Цвет текста"
 
@@ -1118,12 +930,10 @@ msgid "WooCommerce minicart dropdown"
 msgstr ""
 
 #: includes/config/Config.php:1473
-#, fuzzy
 msgid "Checkout button"
 msgstr "Кнопка заказа"
 
 #: includes/config/Config.php:1484 includes/config/Config.php:1572
-#, fuzzy
 msgid "font weight"
 msgstr "толщина шрифта"
 
@@ -1132,12 +942,10 @@ msgid "100"
 msgstr ""
 
 #: includes/config/Config.php:1489 includes/config/Config.php:1577
-#, fuzzy
 msgid "300 (Light)"
 msgstr "300 (Тонкий)"
 
 #: includes/config/Config.php:1490 includes/config/Config.php:1578
-#, fuzzy
 msgid "400 (Normal)"
 msgstr "400 (Норм)"
 
@@ -1150,7 +958,6 @@ msgid "600"
 msgstr ""
 
 #: includes/config/Config.php:1493 includes/config/Config.php:1581
-#, fuzzy
 msgid "700 (Bold)"
 msgstr "700 (Жир)"
 
@@ -1163,7 +970,6 @@ msgid "900"
 msgstr ""
 
 #: includes/config/Config.php:1500 includes/config/Config.php:1588
-#, fuzzy
 msgid "text color"
 msgstr "цвет текста"
 
@@ -1172,17 +978,14 @@ msgid "text color on hover"
 msgstr ""
 
 #: includes/config/Config.php:1518 includes/config/Config.php:1606
-#, fuzzy
 msgid "background color on hover"
 msgstr "цвет фона при наведении"
 
 #: includes/config/Config.php:1527
-#, fuzzy
 msgid "Checkout button border"
 msgstr "Кнопка заказа границы"
 
 #: includes/config/Config.php:1531 includes/config/Config.php:1619
-#, fuzzy
 msgid "Border style"
 msgstr "Стиль границ"
 
@@ -1203,57 +1006,46 @@ msgid "View cart button border"
 msgstr ""
 
 #: includes/config/Config.php:1651
-#, fuzzy
 msgid "Mobile menu"
 msgstr "Моб. меню"
 
 #: includes/config/Config.php:1655
-#, fuzzy
 msgid "Mobile options"
 msgstr "Мобильные опции"
 
 #: includes/config/Config.php:1660
-#, fuzzy
 msgid "Mobile navigation drawer open type"
 msgstr "Мобильнаое меню тип открытия"
 
 #: includes/config/Config.php:1671
-#, fuzzy
 msgid "Mobile navigation drawer background color"
 msgstr "Мобильное меню цвет фона "
 
 #: includes/config/Config.php:1677
-#, fuzzy
 msgid "Mobile navigation drawer text color"
 msgstr "Мобильная меню цвет фона "
 
 #: includes/config/Config.php:1683
-#, fuzzy
 msgid "Mobile navigation drawer text hover and current skin color"
 msgstr "Мобильное меню, цвет наведения"
 
 #: includes/config/Config.php:1689
-#, fuzzy
 msgid "Mobile navigation menu item vertical padding"
 msgstr "Мобильное меню, вертикальный отступ"
 
 #: includes/config/Config.php:1690
-#, fuzzy
 msgid "This value will applied as padding to top and bottom of the item"
 msgstr "Это значение будет применено как отступ сверху и снизу пункта"
 
 #: includes/config/Config.php:1697
-#, fuzzy
 msgid "Mobile navigation drawer width"
 msgstr "Мобильное меню, ширина"
 
 #: includes/config/Config.php:1704
-#, fuzzy
 msgid "Mobile version switch"
 msgstr "Переключение на мобильное меню "
 
 #: includes/config/Config.php:1705
-#, fuzzy
 msgid ""
 "You can change switch to mobile breakpoint using this option. "
 "(default:1023px)."
@@ -1262,7 +1054,6 @@ msgstr ""
 "1023px)."
 
 #: includes/config/Config.php:1712
-#, fuzzy
 msgid "Mobile header height"
 msgstr "Мобильное меню, высота шапки"
 
@@ -1271,22 +1062,18 @@ msgid "Sublevel text"
 msgstr ""
 
 #: includes/config/ConfigGlobal.php:21
-#, fuzzy
 msgid "Logo text"
 msgstr "Текст лого"
 
 #: includes/config/ConfigGlobal.php:22
-#, fuzzy
 msgid "Just plain text logo:)"
 msgstr "Простой текстовый логотип :)"
 
 #: includes/config/ConfigGlobal.php:27
-#, fuzzy
 msgid "Logo URL"
 msgstr "Логотип URL"
 
 #: includes/config/ConfigGlobal.php:28
-#, fuzzy
 msgid ""
 "If this field left blank - then the URL will point to homepage, set in "
 "Settings > Reading"
@@ -1295,27 +1082,22 @@ msgstr ""
 "страницу, установите в \"Настройки > Чтение\""
 
 #: includes/config/ConfigGlobal.php:33
-#, fuzzy
 msgid "Open logo URL in"
 msgstr "Открывать URL логотипа в "
 
 #: includes/config/ConfigGlobal.php:36
-#, fuzzy
 msgid "Same window"
 msgstr "В том же окне"
 
 #: includes/config/ConfigGlobal.php:37
-#, fuzzy
 msgid "New window"
 msgstr "В новом окне"
 
 #: includes/config/ConfigGlobal.php:43
-#, fuzzy
 msgid "Default logo"
 msgstr "Логотип по умолчанию"
 
 #: includes/config/ConfigGlobal.php:44
-#, fuzzy
 msgid ""
 "The option sets logo by default which will be applied to each state if any "
 "other doesn't exists."
@@ -1324,12 +1106,10 @@ msgstr ""
 "каждому состоянию, если любое другое не существует."
 
 #: includes/config/ConfigGlobal.php:49
-#, fuzzy
 msgid "Mobile logo"
 msgstr "Логотип для мобильного меню"
 
 #: includes/config/ConfigGlobal.php:50
-#, fuzzy
 msgid ""
 "Mobile menu has less space to operate with. So you can adjust your logo "
 "smaller or simplified for that reason in mobile state menu."
@@ -1339,7 +1119,6 @@ msgstr ""
 "компании."
 
 #: includes/config/ConfigGlobal.php:56
-#, fuzzy
 msgid "Social"
 msgstr "Социалки"
 
@@ -1378,7 +1157,6 @@ msgid "Twitter"
 msgstr ""
 
 #: includes/config/ConfigGlobal.php:79 includes/config/ConfigGlobal.php:85
-#, fuzzy
 msgid "Twitter link"
 msgstr "Twitter ссылка"
 
@@ -1388,7 +1166,6 @@ msgstr "Twitter ссылка"
 #: includes/config/ConfigGlobal.php:229 includes/config/ConfigGlobal.php:253
 #: includes/config/ConfigGlobal.php:277 includes/config/ConfigGlobal.php:301
 #: includes/config/ConfigGlobal.php:325
-#, fuzzy
 msgid "text"
 msgstr "текст"
 
@@ -1402,37 +1179,30 @@ msgid "Leave blank to not display text"
 msgstr ""
 
 #: includes/config/ConfigGlobal.php:92
-#, fuzzy
 msgid "Twitter icon"
 msgstr "Twitter иконка"
 
 #: includes/config/ConfigGlobal.php:98
-#, fuzzy
 msgid "Facebook"
 msgstr "Facebook"
 
 #: includes/config/ConfigGlobal.php:103 includes/config/ConfigGlobal.php:109
-#, fuzzy
 msgid "Facebook link"
 msgstr "Facebook ссылка"
 
 #: includes/config/ConfigGlobal.php:116
-#, fuzzy
 msgid "Facebook icon"
 msgstr "Facebook иконка"
 
 #: includes/config/ConfigGlobal.php:122
-#, fuzzy
 msgid "Google+"
 msgstr "Google+"
 
 #: includes/config/ConfigGlobal.php:127 includes/config/ConfigGlobal.php:133
-#, fuzzy
 msgid "Google+ link"
 msgstr "Google+ ссылка"
 
 #: includes/config/ConfigGlobal.php:140
-#, fuzzy
 msgid "Google+ icon"
 msgstr "Google+ иконка"
 
@@ -1441,87 +1211,70 @@ msgid "Vimeo"
 msgstr ""
 
 #: includes/config/ConfigGlobal.php:151 includes/config/ConfigGlobal.php:157
-#, fuzzy
 msgid "Vimeo link"
 msgstr "Vimeo ссылка"
 
 #: includes/config/ConfigGlobal.php:164
-#, fuzzy
 msgid "Vimeo icon"
 msgstr "Vimeo иконка"
 
 #: includes/config/ConfigGlobal.php:170
-#, fuzzy
 msgid "Dribbble"
 msgstr "Dribbble"
 
 #: includes/config/ConfigGlobal.php:175 includes/config/ConfigGlobal.php:181
-#, fuzzy
 msgid "Dribbble link"
 msgstr "Dribbble ссылка"
 
 #: includes/config/ConfigGlobal.php:188
-#, fuzzy
 msgid "Dribbble icon"
 msgstr "Dribbble иконка"
 
 #: includes/config/ConfigGlobal.php:194
-#, fuzzy
 msgid "Pinterest"
 msgstr "Pinterest"
 
 #: includes/config/ConfigGlobal.php:199 includes/config/ConfigGlobal.php:205
-#, fuzzy
 msgid "Pinterest link"
 msgstr "Pinterest ссылка"
 
 #: includes/config/ConfigGlobal.php:212
-#, fuzzy
 msgid "Pinterest icon"
 msgstr "Pinterest иконка"
 
 #: includes/config/ConfigGlobal.php:218
-#, fuzzy
 msgid "Youtube"
 msgstr "YouTube"
 
 #: includes/config/ConfigGlobal.php:223 includes/config/ConfigGlobal.php:229
-#, fuzzy
 msgid "Youtube link"
 msgstr "YouTube ссылка"
 
 #: includes/config/ConfigGlobal.php:236
-#, fuzzy
 msgid "Youtube icon"
 msgstr "YouTube иконка"
 
 #: includes/config/ConfigGlobal.php:242
-#, fuzzy
 msgid "Linkedin"
 msgstr "Linkedin"
 
 #: includes/config/ConfigGlobal.php:247 includes/config/ConfigGlobal.php:253
-#, fuzzy
 msgid "Linkedin link"
 msgstr "Linkedin ссылка"
 
 #: includes/config/ConfigGlobal.php:260
-#, fuzzy
 msgid "Linkedin icon"
 msgstr "Linkedin иконка"
 
 #: includes/config/ConfigGlobal.php:266
-#, fuzzy
 msgid "Instagram"
 msgstr "Instagram"
 
 #: includes/config/ConfigGlobal.php:271 includes/config/ConfigGlobal.php:277
-#, fuzzy
 msgid "Instagram link"
 msgstr "Instagram ссылка"
 
 #: includes/config/ConfigGlobal.php:284
-#, fuzzy
 msgid "Instagram icon"
 msgstr "Instagram иконка"
 
@@ -1530,12 +1283,10 @@ msgid "Flickr"
 msgstr ""
 
 #: includes/config/ConfigGlobal.php:295 includes/config/ConfigGlobal.php:301
-#, fuzzy
 msgid "Flickr link"
 msgstr "Flickr ссылка"
 
 #: includes/config/ConfigGlobal.php:308
-#, fuzzy
 msgid "Flickr icon"
 msgstr "Flickr иконка"
 
@@ -1544,72 +1295,58 @@ msgid "VK"
 msgstr ""
 
 #: includes/config/ConfigGlobal.php:319 includes/config/ConfigGlobal.php:325
-#, fuzzy
 msgid "VK link"
 msgstr "VK ссылка"
 
 #: includes/config/ConfigGlobal.php:332
-#, fuzzy
 msgid "VK icon"
 msgstr "VK иконка"
 
 #: includes/config/ConfigGlobal.php:343
-#, fuzzy
 msgid "E-mail icon"
 msgstr "Емэйл иконка"
 
 #: includes/config/ConfigGlobal.php:348
-#, fuzzy
 msgid "E-mail address"
 msgstr "Емэйл адрес"
 
 #: includes/config/ConfigGlobal.php:353
-#, fuzzy
 msgid "Show e-mail as link"
 msgstr "Показать емэйл как линк"
 
 #: includes/config/ConfigGlobal.php:358
-#, fuzzy
 msgid "Phone icon"
 msgstr "Телефон иконка"
 
 #: includes/config/ConfigGlobal.php:363
-#, fuzzy
 msgid "Phone number"
 msgstr "Телефонный номер"
 
 #: includes/config/ConfigGlobal.php:368
-#, fuzzy
 msgid "Show phone number as link"
 msgstr "Показать номер как ссылку для звонка"
 
 #: includes/config/ConfigGlobal.php:374
-#, fuzzy
 msgid "Misc icons"
 msgstr "Др. иконки"
 
 #: includes/config/ConfigGlobal.php:378
-#, fuzzy
 msgid "Search icon"
 msgstr "Иконка поиска"
 
 #: includes/config/ConfigGlobal.php:383
-#, fuzzy
 msgid "Cart icon"
 msgstr "Иконка корзины"
 
 #: includes/config/ConfigGlobal.php:394
-#, fuzzy
 msgid "Icon packs"
 msgstr "Иконки"
 
 #: includes/config/ConfigGlobal.php:398
-#, fuzzy
 msgid "Icons"
 msgstr "Иконки"
 
 #: includes/config/ConfigGlobal.php:404
-#, fuzzy
 msgid "Tools"
 msgstr "Инструменты"
 
@@ -1618,7 +1355,6 @@ msgid "Wrapper HTML tag for Groovy Menu"
 msgstr "HTML-тег Wrapper для Groovy Menu"
 
 #: includes/config/ConfigGlobal.php:410
-#, fuzzy
 msgid "HEADER"
 msgstr "ЗАГОЛОВОК"
 
@@ -1627,12 +1363,10 @@ msgid "DIV"
 msgstr ""
 
 #: includes/config/ConfigGlobal.php:417
-#, fuzzy
 msgid "Toggle visibility of Groovy menu settings at Appearance &gt; Menus"
 msgstr "Переключить видимость настроек меню Groovy в разделе Внешний вид> Меню"
 
 #: includes/config/ConfigGlobal.php:419
-#, fuzzy
 msgid ""
 "The theme or another plugin can override the visibility of the Groovy menu "
 "settings at Appearance &gt; Menus. To show up Groovy menus settings instead, "
@@ -1643,12 +1377,10 @@ msgstr ""
 "используйте эту опцию."
 
 #: includes/config/ConfigGlobal.php:423
-#, fuzzy
 msgid "Use local google fonts"
 msgstr "Использовать локальные шрифты Google"
 
 #: includes/config/ConfigGlobal.php:425
-#, fuzzy
 msgid ""
 "For presets settings. When turning on, the Google fonts will be connected "
 "from local upload folder. Turning off option for use the Google CDN service."
@@ -1657,25 +1389,21 @@ msgstr ""
 "Отключение опции для использования сервиса Google CDN."
 
 #: includes/config/ConfigGlobal.php:429
-#, fuzzy
 msgid "Remove All Data after uninstall"
 msgstr "Удалить все данные после удаления"
 
 #: includes/config/ConfigGlobal.php:431
-#, fuzzy
 msgid ""
 "This tool will remove Groovy menu, Presets and other data when using the "
 "\"Delete\" link on the plugins screen."
 msgstr "Этот инструмент удалит Groovy меню, пресеты и другие данные"
 
 #: includes/migration/migrate.php:118
-#, fuzzy
 msgid "You already have the latest version. No update required."
 msgstr "У вас уже есть последняя версия. Обновление не требуется."
 
 #: includes/migration/migrate.php:128 includes/migration/migrate.php:444
 #: includes/migration/migrate.php:457 includes/migration/migrate.php:525
-#, fuzzy
 msgid "Groovy menu data update:"
 msgstr "Groovy menu обновление данных:"
 
@@ -1707,22 +1435,21 @@ msgid "Updating still in the background job."
 msgstr ""
 
 #: includes/migration/migrate.php:469
-#, fuzzy, php-format
+#, php-format
 msgid "Automatic background migration: compleate. Version: %s"
 msgstr "Автоматическая фоновая миграция: завершена. Версия:% s"
 
 #: includes/migration/migrate.php:527
-#, fuzzy, php-format
+#, php-format
 msgid "Update DB version %s compleate."
 msgstr "Обновление базы %s завершено."
 
 #: includes/migration/migrate.php:546
-#, fuzzy, php-format
+#, php-format
 msgid "New DB version: %s"
 msgstr "Новая ДБ версия: %s"
 
 #: includes/migration/migrate.php:549
-#, fuzzy
 msgid "ERROR. Migration complete, but DB version is not set!"
 msgstr "ОШИБКА. Миграция завершена, но версия БД не установлена!"
 
@@ -1752,12 +1479,10 @@ msgid "Switch Off"
 msgstr ""
 
 #: includes/migration/migrate_debug.php:221
-#, fuzzy
 msgid "Show"
 msgstr "Показать"
 
 #: includes/migration/migrate_debug.php:223
-#, fuzzy
 msgid "Hide"
 msgstr "Скрыть"
 
@@ -1766,7 +1491,6 @@ msgid "Switch"
 msgstr ""
 
 #: includes/migration/migrate_debug.php:236
-#, fuzzy
 msgid "Status of migrations"
 msgstr "Состояние миграции"
 
@@ -1775,22 +1499,18 @@ msgid "Remove flag"
 msgstr ""
 
 #: includes/migration/migrate_debug.php:258
-#, fuzzy
 msgid "Log"
 msgstr "Журнал"
 
 #: includes/migration/migrate_debug.php:261
-#, fuzzy
 msgid "Set as current DB Version"
 msgstr "Установить в качестве текущей версии БД"
 
 #: includes/migration/migrate_debug.php:273
-#, fuzzy
 msgid "Log data for migrate version:"
 msgstr "Данные журнала для версии миграции:"
 
 #: includes/migration/migrate_debug.php:278
-#, fuzzy
 msgid "Available migrations"
 msgstr "Доступны миграции"
 
@@ -1798,19 +1518,16 @@ msgstr "Доступны миграции"
 #: includes/modules/core/inc/GroovyMenuCategoryPreset.php:51
 #: includes/modules/core/inc/GroovyMenuSettings.php:119
 #: includes/modules/core/inc/GroovyMenuSettings15.php:327
-#, fuzzy
 msgid "Groovy Menu"
 msgstr "Groovy Menu"
 
 #: includes/modules/core/inc/GroovyMenuCategoryPreset.php:38
 #: includes/modules/fields/inc/FieldTaxonomyPreset.php:49
-#, fuzzy
 msgid "Preset"
 msgstr "Пресет"
 
 #: includes/modules/core/inc/GroovyMenuCategoryPreset.php:41
 #: includes/modules/core/inc/GroovyMenuCategoryPreset.php:54
-#, fuzzy
 msgid "default"
 msgstr "по умолч."
 
@@ -1829,7 +1546,6 @@ msgstr "Выбрать иконку"
 #: includes/modules/core/inc/GroovyMenuIcons.php:10
 #: includes/modules/core/inc/GroovyMenuSettings.php:1087
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1892
-#, fuzzy
 msgid "Close"
 msgstr "Закрыть"
 
@@ -1838,7 +1554,6 @@ msgstr "Закрыть"
 #: includes/modules/core/inc/GroovyMenuSettings15.php:487
 #: includes/modules/core/inc/GroovyMenuSettings15.php:488
 #: includes/modules/core/inc/GroovyMenuSingleMetaPreset.php:67
-#, fuzzy
 msgid "Groovy menu"
 msgstr "Groovy Menu"
 
@@ -1883,7 +1598,6 @@ msgstr ""
 #: includes/modules/core/inc/GroovyMenuSettings.php:1351
 #: includes/modules/core/inc/GroovyMenuSettings15.php:787
 #: includes/modules/core/inc/GroovyMenuSettings15.php:2177
-#, fuzzy
 msgid "Saved"
 msgstr "Сохранен"
 
@@ -1910,7 +1624,6 @@ msgstr "Застряли?"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:679
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1066
-#, fuzzy
 msgid "Preset name saved"
 msgstr "Имя сохранено"
 
@@ -1921,19 +1634,16 @@ msgstr "Пресеты"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:722
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1110
-#, fuzzy
 msgid "Rename"
 msgstr "Переименовать"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:728
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1117
-#, fuzzy
 msgid "Set as default"
 msgstr "Уст. по умолч."
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:752
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1144
-#, fuzzy
 msgid "Set thumbnail"
 msgstr "Доб. табнейл"
 
@@ -1944,7 +1654,6 @@ msgstr ""
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:765
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1170
-#, fuzzy
 msgid "Delete"
 msgstr "Удалить"
 
@@ -1964,13 +1673,12 @@ msgstr "Добавить из библиотеки"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:821
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1253
-#, fuzzy
 msgid ""
 "To enable presets from the online library, please enable the option in "
 "\"Global settings > Tools > Allow fetching presets from online library\""
 msgstr ""
 "Чтобы включить пресеты из онлайн-библиотеки, включите опцию в \"Глобальные "
-"настройки > Инструменты > Разрешить выбор пресетов из онлайн-библиотеки\"\n"
+"настройки > Инструменты > Разрешить выбор пресетов из онлайн-библиотеки\""
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:827
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1191
@@ -2050,13 +1758,11 @@ msgstr ""
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:952
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1746
-#, fuzzy
 msgid "Integration through Child Theme"
 msgstr "Интеграция с помощью дочерней темы"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:954
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1748
-#, fuzzy
 msgid ""
 "According to the information from the Groovy Menu integration database, your "
 "current theme fully supports integration of Groovy Menu."
@@ -2066,7 +1772,6 @@ msgstr ""
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:963
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1757
-#, fuzzy
 msgid ""
 "The currently activated theme is in the Groovy Menu integration database. "
 "That means you do not have to manually integrate the Groovy menu and find "
@@ -2080,7 +1785,6 @@ msgstr ""
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:965
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1760
-#, fuzzy
 msgid ""
 "For the correct operation of the plugin, you should create a Child theme or "
 "add to existing one the following code to functions.php."
@@ -2090,7 +1794,6 @@ msgstr ""
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:968
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1763
-#, fuzzy
 msgid ""
 "For the correct operation of the plugin, you should create a Child theme "
 "with header.php and add the support code to it. Following code just example. "
@@ -2102,7 +1805,6 @@ msgstr ""
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:976
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1771
-#, fuzzy
 msgid ""
 "Or we suggest downloading already prepared Child theme from the following "
 "link"
@@ -2111,12 +1813,11 @@ msgstr ""
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:987
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1784
-#, fuzzy
 msgid "Support request"
 msgstr "Запрос в поддержку"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:989
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "If you encounter integration problems or find any bugs, please create a "
 "ticket on our %s"
@@ -2132,7 +1833,6 @@ msgstr ""
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:1049
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1854
-#, fuzzy
 msgid "Restore <br>Defaults"
 msgstr "Востан-ть <br>по умолч."
 
@@ -2140,7 +1840,6 @@ msgstr "Востан-ть <br>по умолч."
 #: includes/modules/core/inc/GroovyMenuSettings.php:1291
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1980
 #: includes/modules/core/inc/GroovyMenuSettings15.php:2117
-#, fuzzy
 msgid "Restore"
 msgstr "Востановить"
 
@@ -2154,7 +1853,6 @@ msgstr "Востановить"
 #: includes/modules/core/inc/GroovyMenuSettings15.php:2114
 #: includes/modules/core/inc/GroovyMenuSettings15.php:2173
 #: includes/modules/core/inc/GroovyMenuSettings15.php:2216
-#, fuzzy
 msgid "Save"
 msgstr "Сохранить"
 
@@ -2189,18 +1887,16 @@ msgstr ""
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:1354
 #: includes/modules/core/inc/GroovyMenuSettings15.php:2180
-#, fuzzy
 msgid "Current section restored to default"
 msgstr "Текущий раздел восстановлен по умолчанию"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:1357
 #: includes/modules/core/inc/GroovyMenuSettings15.php:2183
-#, fuzzy
 msgid "All Settings restored to default"
 msgstr "Все настройки востановлены по умолчанию"
 
 #: includes/modules/core/inc/GroovyMenuSettings15.php:146
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "You need to update %s. There are major improvements related to Groovy Menu "
 "settings."
@@ -2213,12 +1909,10 @@ msgid "Crane theme"
 msgstr ""
 
 #: includes/modules/core/inc/GroovyMenuSettings15.php:154
-#, fuzzy
 msgid "Dismiss this notice"
 msgstr "Закрыть это уведомление"
 
 #: includes/modules/core/inc/GroovyMenuSettings15.php:167
-#, fuzzy
 msgid ""
 "The theme or another plugin overrides the visibility of the Groovy menu "
 "settings. To display the Groovy menus settings, please click on the button"
@@ -2227,12 +1921,10 @@ msgstr ""
 "отображения настроек меню Groovy, пожалуйста, нажмите на кнопку"
 
 #: includes/modules/core/inc/GroovyMenuSettings15.php:169
-#, fuzzy
 msgid "Show Groovy Menu settings"
 msgstr "Показать настройки Groovy Menu "
 
 #: includes/modules/core/inc/GroovyMenuSettings15.php:181
-#, fuzzy
 msgid ""
 "Groovy menu settings are currently displayed. To display the settings from a "
 "theme or another plugin, please click on the button"
@@ -2241,7 +1933,6 @@ msgstr ""
 "настройки из темы или другого плагина, пожалуйста, нажмите на кнопку"
 
 #: includes/modules/core/inc/GroovyMenuSettings15.php:184
-#, fuzzy
 msgid "Show Theme/plugin settings"
 msgstr "Показать настройки темы / плагина"
 
@@ -2254,7 +1945,6 @@ msgid "Error. Undefined post param \"do\""
 msgstr ""
 
 #: includes/modules/core/inc/GroovyMenuSettings15.php:225
-#, fuzzy
 msgid "Setting changed"
 msgstr "Настройки изменены"
 
@@ -2263,7 +1953,6 @@ msgid "The changes you made will be lost if you navigate away from this page."
 msgstr ""
 
 #: includes/modules/core/inc/GroovyMenuSettings15.php:381
-#, fuzzy
 msgid "Menu Blocks"
 msgstr "Блоки меню"
 
@@ -2526,7 +2215,7 @@ msgid "UPGRADE TO PRO"
 msgstr "ОБНОВИТЬ ДО PRO"
 
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1786
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "If you encounter integration problems, find any bugs, or want to suggest new "
 "feature please create a ticket on our %s"
@@ -2535,24 +2224,20 @@ msgstr ""
 "хотите предложить новую функцию, пожалуйста, создайте заявку на нашем %s"
 
 #: includes/modules/core/inc/GroovyMenuSingleMetaPreset.php:92
-#, fuzzy
 msgid "Menu preset"
 msgstr "Меню пресет"
 
 #: includes/modules/core/inc/GroovyMenuSingleMetaPreset.php:97
 #: includes/modules/fields/inc/FieldTaxonomyPreset.php:23
-#, fuzzy
 msgid "Hide Groovy menu"
 msgstr "Скрыть Groovy"
 
 #: includes/modules/core/inc/GroovyMenuUtils.php:29
 #: includes/modules/core/inc/GroovyMenuUtils.php:30
-#, fuzzy
 msgid "Groovy Menu Preset"
 msgstr "Groovy Menu пресет"
 
 #: includes/modules/core/inc/GroovyMenuUtils.php:31
-#, fuzzy
 msgid "Add New Groovy Menu Preset"
 msgstr "Добавить новый GM пресет"
 
@@ -2570,18 +2255,15 @@ msgid "single pages"
 msgstr ""
 
 #: includes/modules/core/inc/GroovyMenuUtils.php:262
-#, fuzzy
 msgid "Search page"
 msgstr "Страница поиска"
 
 #: includes/modules/core/inc/GroovyMenuUtils.php:263
-#, fuzzy
 msgid "404 Not Found Page"
 msgstr "404 Страница не найдена"
 
 #: includes/modules/core/inc/GroovyMenuUtils.php:310
 #: includes/modules/core/inc/GroovyMenuUtils.php:319
-#, fuzzy
 msgid "Search in:"
 msgstr "Искать в:"
 
@@ -2625,7 +2307,6 @@ msgstr ""
 #: includes/modules/debugpage/inc/DebugPage.php:52
 #: includes/modules/debugpage/inc/DebugPage.php:53
 #: includes/modules/debugpage/inc/DebugPage.php:159
-#, fuzzy
 msgid "Groovy Menu debug page"
 msgstr "Groovy Menu страница дебага"
 
@@ -2646,7 +2327,6 @@ msgstr ""
 
 #: includes/modules/fields/inc/FieldCheckbox.php:18
 #: includes/modules/fields/inc/FieldPostTypes.php:35
-#, fuzzy
 msgid "off"
 msgstr "Выкл."
 
@@ -2656,122 +2336,84 @@ msgid "on"
 msgstr ""
 
 #: includes/modules/fields/inc/FieldHeader.php:33
-#, fuzzy
 msgid "Type"
 msgstr "Тип"
 
 #: includes/modules/fields/inc/FieldHeader.php:35
-#, fuzzy
 msgid "Classic"
 msgstr "Классический"
 
 #: includes/modules/fields/inc/FieldHeader.php:36
-#, fuzzy
 msgid "Minimalistic"
 msgstr "Минимальный"
 
 #: includes/modules/fields/inc/FieldHeader.php:38
-#, fuzzy
 msgid "Sidebar"
 msgstr "Боковое меню"
 
 #: includes/modules/fields/inc/FieldHeader.php:39
-#, fuzzy
 msgid "Icon sidebar"
 msgstr "Иконочное боковое"
 
 #: includes/modules/fields/inc/FieldHeader.php:45
-#, fuzzy
 msgid "Logo Align"
 msgstr "Логотип"
 
 #: includes/modules/fields/inc/FieldIcons.php:33
-#, fuzzy
 msgid "Upload icon pack"
 msgstr "Загрузить иконки"
 
 #: includes/modules/fields/inc/FieldIcons.php:37
-#, fuzzy
 msgid "Install default icon packs"
 msgstr "Установить набор иконок"
 
 #: includes/modules/fields/inc/FieldIcons.php:47
-#, fuzzy
 msgid "delete"
 msgstr "удалить"
 
 #: includes/modules/fields/inc/FieldMedia.php:43
-#, fuzzy
 msgid "Upload Image"
 msgstr "Загрузить изображение"
 
 #: includes/modules/fields/inc/FieldMedia.php:44
-#, fuzzy
 msgid "Remove Image"
 msgstr "Удалить картинку"
 
 #: includes/modules/fields/inc/FieldTaxonomyPreset.php:61
-#, fuzzy
 msgid "Menu"
 msgstr "Меню"
 
 #: includes/modules/virtualpages/virtualpages.php:56
-#, fuzzy
 msgid "Preset Preview"
 msgstr "Предпросмотр"
 
 #: includes/modules/walkers/inc/AdminWalker.php:80
-#, php-format
-msgid "5 Columns with 20% each"
-msgstr ""
-
 #: includes/modules/walkers/inc/AdminWalker.php:83
-#, php-format
-msgid "6 Columns with 16.6% each"
-msgstr ""
-
 #: includes/modules/walkers/inc/AdminWalker.php:86
-#, php-format
-msgid "7 Columns with 14.2% each"
-msgstr ""
-
 #: includes/modules/walkers/inc/AdminWalker.php:89
-#, php-format
-msgid "8 Columns with 12.5% each"
-msgstr ""
-
 #: includes/modules/walkers/inc/AdminWalker.php:92
-#, fuzzy, php-format
-msgid "9 Columns with 11.1% each"
-msgstr "9 Колонок с 11.1% каждая"
-
 #: includes/modules/walkers/inc/AdminWalker.php:95
-#, fuzzy, php-format
-msgid "10 Columns with 10% each"
-msgstr "10 Колонок с 10% каждая"
+#, php-format
+msgid "%1$d Columns with %2$s each"
+msgstr "%1$d Колонок по %2$s каждая"
 
 #: includes/modules/walkers/inc/AdminWalker.php:106
-#, fuzzy
 msgid "Icon Badge"
 msgstr "Бейдж Иконка"
 
 #: includes/modules/walkers/inc/AdminWalker.php:107
-#, fuzzy
 msgid "Image Badge"
 msgstr "Бейдж Картинка"
 
 #: includes/modules/walkers/inc/AdminWalker.php:108
-#, fuzzy
 msgid "Text Badge"
 msgstr "Текстовый Бейдж"
 
 #: includes/modules/walkers/inc/AdminWalker.php:119
-#, fuzzy
 msgid "Left"
 msgstr "Слева"
 
 #: includes/modules/walkers/inc/AdminWalker.php:120
-#, fuzzy
 msgid "Right"
 msgstr "Справа"
 
@@ -2780,7 +2422,6 @@ msgid "Relative"
 msgstr ""
 
 #: includes/modules/walkers/inc/AdminWalker.php:132
-#, fuzzy
 msgid "Absolute"
 msgstr "Абсолютное"
 
@@ -2799,7 +2440,6 @@ msgid "%s (Pending)"
 msgstr ""
 
 #: includes/modules/walkers/inc/AdminWalker.php:509
-#, fuzzy
 msgid "Mega Menu"
 msgstr "Мега Меню"
 
@@ -2808,12 +2448,10 @@ msgid "sub item"
 msgstr ""
 
 #: includes/modules/walkers/inc/AdminWalker.php:537
-#, fuzzy
 msgid "Move up"
 msgstr "Переместить вверх"
 
 #: includes/modules/walkers/inc/AdminWalker.php:550
-#, fuzzy
 msgid "Move down"
 msgstr "Переместить вниз"
 
@@ -2822,17 +2460,14 @@ msgid "Edit"
 msgstr ""
 
 #: includes/modules/walkers/inc/AdminWalker.php:565
-#, fuzzy
 msgid "URL"
 msgstr "URL"
 
 #: includes/modules/walkers/inc/AdminWalker.php:576
-#, fuzzy
 msgid "Navigation Label (\"-\" to hide)"
 msgstr "Навигационная метка (\"-\" скрыть)"
 
 #: includes/modules/walkers/inc/AdminWalker.php:578
-#, fuzzy
 msgid "Navigation Label"
 msgstr "Навигационная метка"
 
@@ -2841,17 +2476,14 @@ msgid "Title Attribute"
 msgstr ""
 
 #: includes/modules/walkers/inc/AdminWalker.php:606
-#, fuzzy
 msgid "Menu block URL"
 msgstr "Меню Блок URL"
 
 #: includes/modules/walkers/inc/AdminWalker.php:619
-#, fuzzy
 msgid "Open link in a new window/tab"
 msgstr "Открыть в новом окне/"
 
 #: includes/modules/walkers/inc/AdminWalker.php:625
-#, fuzzy
 msgid "CSS Classes (optional)"
 msgstr "CSS классы (опционально)"
 
@@ -2860,7 +2492,6 @@ msgid "Link Relationship (XFN)"
 msgstr ""
 
 #: includes/modules/walkers/inc/AdminWalker.php:645
-#, fuzzy
 msgid "Description"
 msgstr "Описание"
 
@@ -2871,27 +2502,22 @@ msgid ""
 msgstr ""
 
 #: includes/modules/walkers/inc/AdminWalker.php:658
-#, fuzzy
 msgid "Icon"
 msgstr "Иконка"
 
 #: includes/modules/walkers/inc/AdminWalker.php:694
-#, fuzzy
 msgid "Enable badge"
 msgstr "Включить Бейджи"
 
 #: includes/modules/walkers/inc/AdminWalker.php:703
-#, fuzzy
 msgid "Badge placement"
 msgstr "Размещение Бейджа"
 
 #: includes/modules/walkers/inc/AdminWalker.php:723
-#, fuzzy
 msgid "Badge position."
 msgstr "Позиция Бейджа"
 
 #: includes/modules/walkers/inc/AdminWalker.php:723
-#, fuzzy
 msgid ""
 "Absolutely positioned Badge take no space in the page layout. Relatively "
 "positioned Badge acts as normal element taking space."
@@ -2901,12 +2527,10 @@ msgstr ""
 "место."
 
 #: includes/modules/walkers/inc/AdminWalker.php:743
-#, fuzzy
 msgid "Badge X offset."
 msgstr "Бейдж X смещение"
 
 #: includes/modules/walkers/inc/AdminWalker.php:743
-#, fuzzy
 msgid "Negative value will push badge left, positive right."
 msgstr ""
 "Отрицательное значение будет толкать значок влево, положительное право."
@@ -2914,159 +2538,129 @@ msgstr ""
 #: includes/modules/walkers/inc/AdminWalker.php:743
 #: includes/modules/walkers/inc/AdminWalker.php:759
 #: includes/modules/walkers/inc/AdminWalker.php:791
-#, fuzzy, php-format
+#, php-format
 msgid "Any valid CSS units accepted e.q. % or px."
 msgstr "Любые действительные единицы CSS, например % или px"
 
 #: includes/modules/walkers/inc/AdminWalker.php:759
-#, fuzzy
 msgid "Badge Y offset."
 msgstr "Бейдж Y смещение"
 
 #: includes/modules/walkers/inc/AdminWalker.php:759
-#, fuzzy
 msgid "Negative value will push badge up, positive down."
 msgstr "Отрицательное значение будет толкать значок вверх, положительное вниз."
 
 #: includes/modules/walkers/inc/AdminWalker.php:775
-#, fuzzy
 msgid "Badge container padding."
 msgstr "Бейдж контейнер отступ"
 
 #: includes/modules/walkers/inc/AdminWalker.php:775
 #: includes/modules/walkers/inc/AdminWalker.php:791
-#, fuzzy
 msgid "One, two, three or four values accepted."
 msgstr "Одно, два, три или четыре значения."
 
 #: includes/modules/walkers/inc/AdminWalker.php:775
-#, fuzzy
 msgid "Any valid CSS units accepted e.q. rem or px."
 msgstr "Любые действительные единицы CSS, например rem или px"
 
 #: includes/modules/walkers/inc/AdminWalker.php:791
-#, fuzzy
 msgid "Badge container border radius."
 msgstr "Бейдж радиус границы контейнера "
 
 #: includes/modules/walkers/inc/AdminWalker.php:806
-#, fuzzy
 msgid "Badge container background color"
 msgstr "Цвет фона контейнера Бейджа"
 
 #: includes/modules/walkers/inc/AdminWalker.php:822
-#, fuzzy
 msgid "Badge content type"
 msgstr "Тип содержимого Бейджа"
 
 #: includes/modules/walkers/inc/AdminWalker.php:840
-#, fuzzy
 msgid "Badge Image"
 msgstr "Бейдж картинка"
 
 #: includes/modules/walkers/inc/AdminWalker.php:860
-#, fuzzy
 msgid "Select Badge Image"
 msgstr "Выберите изображение"
 
 #: includes/modules/walkers/inc/AdminWalker.php:861
-#, fuzzy
 msgid "Insert image"
 msgstr "Вставить изобр."
 
 #: includes/modules/walkers/inc/AdminWalker.php:863
-#, fuzzy
 msgid "Select image"
 msgstr "Выберите картинку"
 
 #: includes/modules/walkers/inc/AdminWalker.php:868
-#, fuzzy
 msgid "Remove image"
 msgstr "Удалить картинку"
 
 #: includes/modules/walkers/inc/AdminWalker.php:882
-#, fuzzy
 msgid "Badge Icon"
 msgstr "Бейдж Иконка"
 
 #: includes/modules/walkers/inc/AdminWalker.php:909
-#, fuzzy
 msgid "Badge icon size"
 msgstr "Размер иконки бейджа"
 
 #: includes/modules/walkers/inc/AdminWalker.php:924
-#, fuzzy
 msgid "Badge icon color"
 msgstr "Цвет иконки бейджа"
 
 #: includes/modules/walkers/inc/AdminWalker.php:940
-#, fuzzy
 msgid "Badge text"
 msgstr "Бейдж текст"
 
 #: includes/modules/walkers/inc/AdminWalker.php:956
-#, fuzzy
 msgid "Badge text font family"
 msgstr "Бейдж текст шрифт"
 
 #: includes/modules/walkers/inc/AdminWalker.php:963
 #: includes/modules/walkers/inc/AdminWalker.php:983
-#, fuzzy
 msgid "Inherit from parent"
 msgstr "Наследовать от родителя"
 
 #: includes/modules/walkers/inc/AdminWalker.php:978
-#, fuzzy
 msgid "Badge text font variant"
 msgstr "Бейдж текст тип шрифта"
 
 #: includes/modules/walkers/inc/AdminWalker.php:993
-#, fuzzy
 msgid "Badge text font size"
 msgstr "Бейдж текст размер шрифта"
 
 #: includes/modules/walkers/inc/AdminWalker.php:1008
-#, fuzzy
 msgid "Badge text font color"
 msgstr "Бейдж текст цвет шрифта"
 
 #: includes/modules/walkers/inc/AdminWalker.php:1035
-#, fuzzy
 msgid "Do not show menu item title and link"
 msgstr "Не показывать заголовок и ссылку"
 
 #: includes/modules/walkers/inc/AdminWalker.php:1056
-#, fuzzy
 msgid "Do not show Menu block content on mobile"
 msgstr "Не показывать содержимое Блока на мобильном"
 
 #: includes/modules/walkers/inc/AdminWalker.php:1089
-#, fuzzy
 msgid "Mega menu columns"
 msgstr "Мега меню колонки"
 
 #: includes/modules/walkers/inc/AdminWalker.php:1112
-#, fuzzy
 msgid "Set background image"
 msgstr "Установите фоновую картинку "
 
 #: includes/modules/walkers/inc/AdminWalker.php:1115
-#, fuzzy
 msgid "Remove background image"
 msgstr "Удалить фоновое изображение"
 
 #: includes/modules/walkers/inc/AdminWalker.php:1122
-#, fuzzy
 msgid "Background position"
 msgstr "Положение фона"
 
 #: includes/modules/walkers/inc/AdminWalker.php:1133
-#, fuzzy
 msgid "Background repeat"
 msgstr "Повторение фона"
 
 #: includes/modules/walkers/inc/AdminWalker.php:1145
-#, fuzzy
 msgid "Background image size"
 msgstr "Размер фонового изображения"
 
@@ -3075,7 +2669,6 @@ msgid "Show featured image on hover"
 msgstr ""
 
 #: includes/modules/walkers/inc/AdminWalker.php:1180
-#, fuzzy
 msgid "Move"
 msgstr "Переместить"
 
@@ -3088,7 +2681,6 @@ msgid "Down one"
 msgstr ""
 
 #: includes/modules/walkers/inc/AdminWalker.php:1188
-#, fuzzy
 msgid "To the top"
 msgstr "сверху в центре"
 
@@ -3098,12 +2690,10 @@ msgid "Original: %s"
 msgstr ""
 
 #: includes/modules/walkers/inc/AdminWalker.php:1208
-#, fuzzy
 msgid "Remove"
 msgstr "Удалить"
 
 #: includes/modules/walkers/inc/AdminWalker.php:1215
-#, fuzzy
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -3112,51 +2702,45 @@ msgid "Cornerstone content"
 msgstr ""
 
 #: includes/theme_support/crane.php:9
-#, fuzzy
 msgid "Portfolios"
 msgstr "Портфолио"
 
 #: includes/theme_support/crane.php:10
-#, fuzzy
 msgid "Products"
 msgstr "Продукты"
 
 #: includes/theme_support/crane.php:19
-#, fuzzy
 msgid "Search in portfolio"
 msgstr "Искать в портфолио"
 
 #: template/Header.php:526
-#, fuzzy
 msgid "Please add image or text logo"
 msgstr "Добавьте логотип или текст"
 
 #: template/Header.php:573
-#, fuzzy
 msgid "Please assign a menu to the primary menu location under Menus."
 msgstr "Пожалуйста, назначьте меню для основного меню в \"Внешний вид > Меню\""
 
 #: template/Header.php:614 template/Header.php:747
-#, fuzzy
 msgid "Search"
 msgstr "Поиск"
 
 #: template/Header.php:623
-#, fuzzy
 msgid "Search..."
 msgstr "Искать..."
 
 #: template/Header.php:639
-#, fuzzy
 msgid "START TYPING AND PRESS ENTER TO SEARCH"
 msgstr "Начните вводить и нажмите ввод для поиска"
 
 #: template/Header.php:676 template/Header.php:772
-#, fuzzy
 msgid "My cart"
 msgstr "Моя корзина"
 
 #: template/PreviewModal.php:10
-#, fuzzy
 msgid "Sticky"
 msgstr "Липкое"
+
+#, fuzzy
+#~ msgid "9 Columns with 11.1% each"
+#~ msgstr "9 Колонок с 11.1% каждая"
