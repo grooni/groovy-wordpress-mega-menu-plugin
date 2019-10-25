@@ -4,24 +4,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Groovy Menu 1.0.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-24 18:33+0300\n"
-"PO-Revision-Date: 2019-10-24 18:34+0300\n"
-"Last-Translator: Di_Skyer <diskyer@gmail.com>\n"
+"POT-Creation-Date: 2019-10-25 16:42+0300\n"
+"PO-Revision-Date: 2019-10-25 14:14+0000\n"
+"Last-Translator: Dennis <qdir01@gmail.com>\n"
 "Language-Team: Русский\n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && n"
-"%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && "
+"n%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
 "X-Textdomain-Support: yesX-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;esc_html_e;esc_html_x:1,2c;esc_html__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;"
-"_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"esc_attr_e;esc_attr_x:1,2c;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:"
+"1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
+"X-Generator: Loco https://localise.biz/\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ..\n"
-"X-Loco-Version: 2.3.1; wp-5.2.2\n"
+"X-Loco-Version: 2.3.1; wp-5.2.4\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: assets\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
@@ -74,7 +74,7 @@ msgstr ""
 #: includes/config/Config.php:43
 msgid ""
 "Calculation of the center position for nav including the width of the logo."
-msgstr ""
+msgstr "Расчет центральной позиции для навигации, включая ширину логотипа."
 
 #: includes/config/Config.php:54
 msgid "Distance between logo and nav links"
@@ -152,9 +152,9 @@ msgid ""
 "Note that container will be 30px narrower (because of left/right 15px "
 "padding) than canvas. (default canvas width is 1200px)."
 msgstr ""
-"Обратите внимание, что контейнер будет на 30px уже (из-за отступа 15px "
-"влево / вправо), чем ширина канваса. (ширина канваса по умолчанию составляет "
-"1200 пикселей)."
+"Обратите внимание, что контейнер будет на 30px уже (из-за отступа 15px влево "
+"/ вправо), чем ширина канваса. (ширина канваса по умолчанию составляет 1200 "
+"пикселей)."
 
 #: includes/config/Config.php:122
 msgid "Canvas wide - container boxed width"
@@ -216,7 +216,7 @@ msgstr "Переключите, чтобы показать / скрыть ми�
 
 #: includes/config/Config.php:201
 msgid "WooCommerce minicart icon size"
-msgstr ""
+msgstr "Woo размер иконки корзины"
 
 #: includes/config/Config.php:222
 msgid "wooCommerce cart icon size"
@@ -364,7 +364,7 @@ msgstr "Цвет фона подменю первого уровня"
 
 #: includes/config/Config.php:373 includes/config/Config.php:387
 msgid "Next level submenu background color"
-msgstr ""
+msgstr "Цвет фона подменю следующего уровня"
 
 #: includes/config/Config.php:394
 msgid "Submenu hover style"
@@ -579,7 +579,7 @@ msgstr "цвет наведения"
 
 #: includes/config/Config.php:745
 msgid "Menu item preview"
-msgstr "Миниатюра для пункта меню"
+msgstr "Миниатюра пункта"
 
 #: includes/config/Config.php:750
 #: includes/modules/core/inc/GroovyMenuSettings.php:734
@@ -607,7 +607,7 @@ msgstr "Иконочное меню"
 
 #: includes/config/Config.php:779 includes/config/Config.php:885
 msgid "Side border"
-msgstr ""
+msgstr "Боковая граница"
 
 #: includes/config/Config.php:780
 msgid "Set left/right side border of menu. Side depends on menu align"
@@ -636,7 +636,7 @@ msgstr "Цвет фона ссылки верхнего уровня"
 
 #: includes/config/Config.php:879
 msgid "Sidebar menu"
-msgstr ""
+msgstr "Боковое меню"
 
 #: includes/config/Config.php:920
 msgid "Minimalistic menu"
@@ -648,11 +648,11 @@ msgstr "Цвет фона меню верхнего уровня"
 
 #: includes/config/Config.php:933 includes/config/Config.php:938
 msgid "Custom CSS"
-msgstr "Пользовательский CSS"
+msgstr "Пользов-ский CSS"
 
 #: includes/config/Config.php:957 includes/config/Config.php:962
 msgid "Custom JS"
-msgstr "Пользовательский JS"
+msgstr "Пользов-ский JS"
 
 #: includes/config/Config.php:975
 msgid "Custom code"
@@ -660,7 +660,7 @@ msgstr "Пользов-ский код"
 
 #: includes/config/Config.php:980
 msgid "Custom CSS class"
-msgstr "Пользовательский CSS класс"
+msgstr "Пользов-ский CSS класс"
 
 #: includes/config/Config.php:987
 msgid "Styles"
@@ -845,7 +845,7 @@ msgstr "Размер шрифта тулбара"
 
 #: includes/config/Config.php:1278
 msgid "Hide social icon link text on mobile devices"
-msgstr ""
+msgstr "Скрыть текст ссылки социальных сетей на мобильных устройствах"
 
 #: includes/config/Config.php:1283
 msgid "Toolbar social icon size"
@@ -895,11 +895,11 @@ msgstr "Боковая иконка мобильное меню граница"
 
 #: includes/config/Config.php:1421
 msgid "Woo minicart"
-msgstr ""
+msgstr "Woo корзина"
 
 #: includes/config/Config.php:1425
 msgid "WooCommerce minicart count"
-msgstr ""
+msgstr "Woo счетчик товара в корзине"
 
 #: includes/config/Config.php:1429
 msgid "Shape"
@@ -907,7 +907,7 @@ msgstr ""
 
 #: includes/config/Config.php:1432
 msgid "Drop"
-msgstr ""
+msgstr "Сбросить"
 
 #: includes/config/Config.php:1433
 msgid "Circle"
@@ -927,7 +927,7 @@ msgstr "Цвет текста"
 
 #: includes/config/Config.php:1454
 msgid "WooCommerce minicart dropdown"
-msgstr ""
+msgstr "Woo корзина выподающее меню"
 
 #: includes/config/Config.php:1473
 msgid "Checkout button"
@@ -975,7 +975,7 @@ msgstr "цвет текста"
 
 #: includes/config/Config.php:1506 includes/config/Config.php:1594
 msgid "text color on hover"
-msgstr ""
+msgstr "цвет текста при наведении"
 
 #: includes/config/Config.php:1518 includes/config/Config.php:1606
 msgid "background color on hover"
@@ -995,15 +995,15 @@ msgstr ""
 
 #: includes/config/Config.php:1553 includes/config/Config.php:1641
 msgid "color on hover"
-msgstr ""
+msgstr "цвет наведения"
 
 #: includes/config/Config.php:1561
 msgid "View cart button"
-msgstr ""
+msgstr "Посмотреть кнопку корзины"
 
 #: includes/config/Config.php:1615
 msgid "View cart button border"
-msgstr ""
+msgstr "Посмотреть границу кнопки корзины"
 
 #: includes/config/Config.php:1651
 msgid "Mobile menu"
@@ -1047,8 +1047,8 @@ msgstr "Переключение на мобильное меню "
 
 #: includes/config/Config.php:1705
 msgid ""
-"You can change switch to mobile breakpoint using this option. "
-"(default:1023px)."
+"You can change switch to mobile breakpoint using this option. (default:"
+"1023px)."
 msgstr ""
 "Вы можете установить значение появления мобильного меню. (По умолчанию: "
 "1023px)."
@@ -1059,7 +1059,7 @@ msgstr "Мобильное меню, высота шапки"
 
 #: includes/config/Config.php:1764
 msgid "Sublevel text"
-msgstr ""
+msgstr "Текст подуровня"
 
 #: includes/config/ConfigGlobal.php:21
 msgid "Logo text"
@@ -1131,10 +1131,10 @@ msgid ""
 "Rel \"nofollow\" is used by search engines, to specify that the Google "
 "search spider should not follow that link. Rel \"noopener\" requires that "
 "any browsing context created by following the hyperlink must not have an "
-"opener browsing context. Most people create external links as target=\"_blank"
-"\" and don’t know one thing that the page get in this way will gain partial "
-"control over the page that links to it through the js window.opener "
-"property. Rel \"noopener\" prevents this behavior."
+"opener browsing context. Most people create external links as "
+"target=\"_blank\" and don’t know one thing that the page get in this way "
+"will gain partial control over the page that links to it through the js "
+"window.opener property. Rel \"noopener\" prevents this behavior."
 msgstr ""
 "Rel \"nofollow\" используется поисковыми системами, чтобы указать, что "
 "поисковый паук Google не должен переходить по этой ссылке. Rel \"noopener\" "
@@ -1177,6 +1177,9 @@ msgstr "текст"
 #: includes/config/ConfigGlobal.php:327
 msgid "Leave blank to not display text"
 msgstr ""
+"\n"
+"31/5000\n"
+"Оставьте пустым, чтобы не отображать текст"
 
 #: includes/config/ConfigGlobal.php:92
 msgid "Twitter icon"
@@ -1409,30 +1412,30 @@ msgstr "Groovy menu обновление данных:"
 
 #: includes/migration/migrate.php:129
 msgid "Updating start in the background job."
-msgstr ""
+msgstr "Обновление запущено в фоновом режиме."
 
 #: includes/migration/migrate.php:253
 #, php-format
 msgid "Every %d minute"
-msgstr ""
+msgstr "Кажду. %d минуту"
 
 #: includes/migration/migrate.php:398
 #, php-format
 msgid "Start migration DB version: %s"
-msgstr ""
+msgstr "Миграция версии БД: %s"
 
 #: includes/migration/migrate.php:445
 msgid ""
 "We need to update your plugin database to the latest version of template."
-msgstr ""
+msgstr "Нам нужно обновить базу данных ваших плагинов до последней версий."
 
 #: includes/migration/migrate.php:447
 msgid "Update groovy-menu DB Data"
-msgstr ""
+msgstr "Обновить Базу данных Groovy Мenu"
 
 #: includes/migration/migrate.php:458
 msgid "Updating still in the background job."
-msgstr ""
+msgstr "Обновление еще идет в фоновом режиме."
 
 #: includes/migration/migrate.php:469
 #, php-format
@@ -1456,11 +1459,11 @@ msgstr "ОШИБКА. Миграция завершена, но версия Б�
 #: includes/migration/migrate.php:595
 #, php-format
 msgid "FORCE WRITE. New DB version: %s"
-msgstr ""
+msgstr " Новая версия БД: %s"
 
 #: includes/migration/migrate.php:599
 msgid "FORCE WRITE. Clear all version reports"
-msgstr ""
+msgstr "Очистить все отчеты о версиях"
 
 #: includes/migration/migrate_debug.php:174
 msgid "Security check error. Try refresh that page, please."
@@ -1468,15 +1471,15 @@ msgstr ""
 
 #: includes/migration/migrate_debug.php:215
 msgid "Sleep (not active)"
-msgstr ""
+msgstr "Спящий (не активный)"
 
 #: includes/migration/migrate_debug.php:217
 msgid "On the run (active)"
-msgstr ""
+msgstr "Запущен (Активно)"
 
 #: includes/migration/migrate_debug.php:218
 msgid "Switch Off"
-msgstr ""
+msgstr "Выключить"
 
 #: includes/migration/migrate_debug.php:221
 msgid "Show"
@@ -1488,7 +1491,7 @@ msgstr "Скрыть"
 
 #: includes/migration/migrate_debug.php:226
 msgid "Switch"
-msgstr ""
+msgstr "Переключить"
 
 #: includes/migration/migrate_debug.php:236
 msgid "Status of migrations"
@@ -1496,7 +1499,7 @@ msgstr "Состояние миграции"
 
 #: includes/migration/migrate_debug.php:255
 msgid "Remove flag"
-msgstr ""
+msgstr "Удалить значение"
 
 #: includes/migration/migrate_debug.php:258
 msgid "Log"
@@ -1534,7 +1537,7 @@ msgstr "по умолч."
 #: includes/modules/core/inc/GroovyMenuCategoryPreset.php:51
 #: includes/modules/core/inc/GroovyMenuSingleMetaPreset.php:107
 msgid "Navigation menu (from Appearance > Menus)"
-msgstr ""
+msgstr "Меню навигации (из меню «Внешний вид»> «Меню»)"
 
 #: includes/modules/core/inc/GroovyMenuIcons.php:9
 #: includes/modules/fields/inc/FieldIcon.php:22
@@ -1592,7 +1595,7 @@ msgstr ""
 #: includes/modules/core/inc/GroovyMenuSettings15.php:778
 #: includes/modules/core/inc/GroovyMenuUtils.php:1168
 msgid "Wasn't able to work with Zip Archive. Missing php-zip extension."
-msgstr ""
+msgstr "Не смог обработать Zip архив. Отсутствует расширение php-zip."
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:453
 #: includes/modules/core/inc/GroovyMenuSettings.php:1351
@@ -1604,7 +1607,7 @@ msgstr "Сохранен"
 #: includes/modules/core/inc/GroovyMenuSettings.php:514
 #: includes/modules/core/inc/GroovyMenuSettings15.php:863
 msgid "Error. When get uploaded file. Or wrong file format."
-msgstr ""
+msgstr "Ошибка. Неверный формат файла."
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:642
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1028
@@ -1650,7 +1653,7 @@ msgstr "Доб. табнейл"
 #: includes/modules/core/inc/GroovyMenuSettings.php:758
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1152
 msgid "Unset thumbnail"
-msgstr ""
+msgstr "Убрать табнейл"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:765
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1170
@@ -1829,7 +1832,7 @@ msgstr ""
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1787
 #: includes/modules/debugpage/inc/DebugPage.php:180
 msgid "Support Portal"
-msgstr ""
+msgstr "Сайт поддержки"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:1049
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1854
@@ -1863,27 +1866,27 @@ msgstr "Сохранить"
 #: includes/modules/core/inc/GroovyMenuSettings15.php:2080
 #: includes/modules/core/inc/GroovyMenuSettings15.php:2166
 msgid "Error. Missing id of the current menu"
-msgstr ""
+msgstr "Ошибка. Отсутствует идентификатор текущего меню"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:1252
 #: includes/modules/core/inc/GroovyMenuSettings15.php:2072
 msgid "Error. Bad form data"
-msgstr ""
+msgstr "Ошибка. Плохая форма данные"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:1305
 #: includes/modules/core/inc/GroovyMenuSettings15.php:2131
 msgid "Error. Wrong form data for save"
-msgstr ""
+msgstr "Ошибка. Неправильные данные формы для сохранения"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:1326
 #: includes/modules/core/inc/GroovyMenuSettings15.php:2156
 msgid "Error. Bad style data"
-msgstr ""
+msgstr "Ошибка. Плохой стиль данных "
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:1331
 #: includes/modules/core/inc/GroovyMenuSettings15.php:2161
 msgid "Error. Missing direction of the current menu"
-msgstr ""
+msgstr "Ошибка. Отсутствует направление текущего меню"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:1354
 #: includes/modules/core/inc/GroovyMenuSettings15.php:2180
@@ -1906,7 +1909,7 @@ msgstr ""
 
 #: includes/modules/core/inc/GroovyMenuSettings15.php:146
 msgid "Crane theme"
-msgstr ""
+msgstr "Crane тема"
 
 #: includes/modules/core/inc/GroovyMenuSettings15.php:154
 msgid "Dismiss this notice"
@@ -1942,7 +1945,7 @@ msgstr ""
 
 #: includes/modules/core/inc/GroovyMenuSettings15.php:207
 msgid "Error. Undefined post param \"do\""
-msgstr ""
+msgstr "Ошибка. Неопределенный пост парам. \"до\""
 
 #: includes/modules/core/inc/GroovyMenuSettings15.php:225
 msgid "Setting changed"
@@ -1951,6 +1954,7 @@ msgstr "Настройки изменены"
 #: includes/modules/core/inc/GroovyMenuSettings15.php:302
 msgid "The changes you made will be lost if you navigate away from this page."
 msgstr ""
+"Внесенные вами изменения будут потеряны, если вы уйдете с этой страницы."
 
 #: includes/modules/core/inc/GroovyMenuSettings15.php:381
 msgid "Menu Blocks"
@@ -1974,7 +1978,7 @@ msgstr "Перейти на Pro"
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1160
 #, php-format
 msgid "%d uses"
-msgstr ""
+msgstr "%d исп."
 
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1189
 msgid "CREATE NEW PRESET"
@@ -2196,7 +2200,7 @@ msgstr "Функция поиска"
 
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1592
 msgid "Custom icons"
-msgstr "Пользовательские иконки"
+msgstr "Пользов-ские иконки"
 
 #: includes/modules/core/inc/GroovyMenuSettings15.php:1601
 msgid "Premium support"
@@ -2243,11 +2247,11 @@ msgstr "Добавить новый GM пресет"
 
 #: includes/modules/core/inc/GroovyMenuUtils.php:32
 msgid "Edit Groovy Menu Preset"
-msgstr ""
+msgstr "Редактировать пресет"
 
 #: includes/modules/core/inc/GroovyMenuUtils.php:33
 msgid "View Groovy Menu Preset"
-msgstr ""
+msgstr "Посмотреть пресет"
 
 #: includes/modules/core/inc/GroovyMenuUtils.php:259
 #: includes/modules/core/inc/GroovyMenuUtils.php:269
@@ -2269,7 +2273,7 @@ msgstr "Искать в:"
 
 #: includes/modules/core/inc/GroovyMenuUtils.php:833
 msgid "Original full size"
-msgstr ""
+msgstr "Ориг-ный размер"
 
 #: includes/modules/core/inc/GroovyMenuUtils.php:1017
 #: includes/modules/core/inc/GroovyMenuUtils.php:1020
@@ -2282,7 +2286,7 @@ msgstr "Бесплатная поддержка"
 
 #: includes/modules/core/inc/GroovyMenuUtils.php:1021
 msgid "Get Support"
-msgstr ""
+msgstr "Помощь"
 
 #: includes/modules/core/inc/GroovyMenuUtils.php:1043
 msgid "Settings"
@@ -2294,7 +2298,7 @@ msgstr "Обновить до Pro"
 
 #: includes/modules/core/inc/GroovyMenuUtils.php:1111
 msgid "WP_Filesystem() load library error"
-msgstr ""
+msgstr "WP_Filesystem() шибка загрузки библиотеки"
 
 #: includes/modules/core/inc/GroovyMenuUtils.php:1476
 msgid "Plugin Groovy Menu  is deactivated. Minimum required version for PHP 7."
@@ -2312,11 +2316,11 @@ msgstr "Groovy Menu страница дебага"
 
 #: includes/modules/debugpage/inc/DebugPage.php:140
 msgid "Versions info"
-msgstr ""
+msgstr "Информация о версиях"
 
 #: includes/modules/debugpage/inc/DebugPage.php:177
 msgid "Support"
-msgstr ""
+msgstr "Поддержка"
 
 #: includes/modules/debugpage/inc/DebugPage.php:179
 #, php-format
@@ -2324,6 +2328,8 @@ msgid ""
 "If you encounter migration problems or find any bugs, please create a ticket "
 "on our %s"
 msgstr ""
+"Если вы столкнулись с проблемами миграции или нашли ошибки, создайте заявку "
+"на нашем %s"
 
 #: includes/modules/fields/inc/FieldCheckbox.php:18
 #: includes/modules/fields/inc/FieldPostTypes.php:35
@@ -2419,7 +2425,7 @@ msgstr "Справа"
 
 #: includes/modules/walkers/inc/AdminWalker.php:131
 msgid "Relative"
-msgstr ""
+msgstr "Связанный"
 
 #: includes/modules/walkers/inc/AdminWalker.php:132
 msgid "Absolute"
@@ -2432,12 +2438,12 @@ msgstr ""
 #: includes/modules/walkers/inc/AdminWalker.php:470
 #, php-format
 msgid "%s (Invalid)"
-msgstr ""
+msgstr "%s (Неверно)"
 
 #: includes/modules/walkers/inc/AdminWalker.php:474
 #, php-format
 msgid "%s (Pending)"
-msgstr ""
+msgstr "%s (В одидании)"
 
 #: includes/modules/walkers/inc/AdminWalker.php:509
 msgid "Mega Menu"
@@ -2445,7 +2451,7 @@ msgstr "Мега Меню"
 
 #: includes/modules/walkers/inc/AdminWalker.php:522
 msgid "sub item"
-msgstr ""
+msgstr "подпункт"
 
 #: includes/modules/walkers/inc/AdminWalker.php:537
 msgid "Move up"
@@ -2473,7 +2479,7 @@ msgstr "Навигационная метка"
 
 #: includes/modules/walkers/inc/AdminWalker.php:589
 msgid "Title Attribute"
-msgstr ""
+msgstr "Заголовок "
 
 #: includes/modules/walkers/inc/AdminWalker.php:606
 msgid "Menu block URL"
@@ -2500,6 +2506,7 @@ msgid ""
 "The description will be displayed in the menu if the current theme supports "
 "it."
 msgstr ""
+"Описание будет отображаться в меню, если текущая тема поддерживает его."
 
 #: includes/modules/walkers/inc/AdminWalker.php:658
 msgid "Icon"
@@ -2666,7 +2673,7 @@ msgstr "Размер фонового изображения"
 
 #: includes/modules/walkers/inc/AdminWalker.php:1173
 msgid "Show featured image on hover"
-msgstr ""
+msgstr "Показывать \"featured image\" при наведении"
 
 #: includes/modules/walkers/inc/AdminWalker.php:1180
 msgid "Move"
@@ -2674,11 +2681,11 @@ msgstr "Переместить"
 
 #: includes/modules/walkers/inc/AdminWalker.php:1182
 msgid "Up one"
-msgstr ""
+msgstr "Вверх "
 
 #: includes/modules/walkers/inc/AdminWalker.php:1184
 msgid "Down one"
-msgstr ""
+msgstr "Вниз"
 
 #: includes/modules/walkers/inc/AdminWalker.php:1188
 msgid "To the top"
@@ -2687,7 +2694,7 @@ msgstr "сверху в центре"
 #: includes/modules/walkers/inc/AdminWalker.php:1195
 #, php-format
 msgid "Original: %s"
-msgstr ""
+msgstr "Ориг.: %s"
 
 #: includes/modules/walkers/inc/AdminWalker.php:1208
 msgid "Remove"
@@ -2699,7 +2706,7 @@ msgstr "Отмена"
 
 #: includes/modules/walkers/inc/WalkerNavMenu.php:310
 msgid "Cornerstone content"
-msgstr ""
+msgstr "Контент Cornerstone"
 
 #: includes/theme_support/crane.php:9
 msgid "Portfolios"
@@ -2740,7 +2747,3 @@ msgstr "Моя корзина"
 #: template/PreviewModal.php:10
 msgid "Sticky"
 msgstr "Липкое"
-
-#, fuzzy
-#~ msgid "9 Columns with 11.1% each"
-#~ msgstr "9 Колонок с 11.1% каждая"
