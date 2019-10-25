@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Groovy Menu 1.0.6\n"
-"POT-Creation-Date: 2019-10-17 13:28+0300\n"
+"POT-Creation-Date: 2019-10-25 17:21+0300\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,7 +24,7 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: assets\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 
-#: groovy-menu.php:325
+#: groovy-menu.php:329
 msgid "Groovy menu Primary"
 msgstr ""
 
@@ -2354,33 +2354,13 @@ msgid "Preset Preview"
 msgstr ""
 
 #: includes/modules/walkers/inc/AdminWalker.php:80
-#, php-format
-msgid "5 Columns with 20% each"
-msgstr ""
-
 #: includes/modules/walkers/inc/AdminWalker.php:83
-#, php-format
-msgid "6 Columns with 16.6% each"
-msgstr ""
-
 #: includes/modules/walkers/inc/AdminWalker.php:86
-#, php-format
-msgid "7 Columns with 14.2% each"
-msgstr ""
-
 #: includes/modules/walkers/inc/AdminWalker.php:89
-#, php-format
-msgid "8 Columns with 12.5% each"
-msgstr ""
-
 #: includes/modules/walkers/inc/AdminWalker.php:92
-#, php-format
-msgid "9 Columns with 11.1% each"
-msgstr ""
-
 #: includes/modules/walkers/inc/AdminWalker.php:95
 #, php-format
-msgid "10 Columns with 10% each"
+msgid "%1$d Columns with %2$s each"
 msgstr ""
 
 #: includes/modules/walkers/inc/AdminWalker.php:106
