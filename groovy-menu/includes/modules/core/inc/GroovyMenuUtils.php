@@ -1523,6 +1523,15 @@ class GroovyMenuUtils {
 									$updated = true;
 								}
 							}
+							if ( isset( $config_value['options'] ) && isset( $settings_global_value['options'] ) && is_array( $config_value['options'] ) ) {
+								foreach ( $config_value['options'] as $index => $option ) {
+									if ( $settings_global_value['options'][ $index ] !== $config_value['options'][ $index ] ) {
+										$settings_global[ $category_name ]['fields'][ $field ]['options'][ $index ] = $config_value['options'][ $index ];
+
+										$updated = true;
+									}
+								}
+							}
 						}
 					}
 				}
