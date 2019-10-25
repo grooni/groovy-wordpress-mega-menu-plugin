@@ -69,7 +69,19 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 		 * @param null $presetId if not null construct for specific preset.
 		 */
 		public function __construct( $presetId = null ) {
-			$this->optionsGlobal = include GROOVY_MENU_DIR . 'includes/config/ConfigGlobal.php';
+
+			if ( empty( $this->optionsGlobal ) ) {
+				// Try to restore loaded config from cache.
+				$cache_config = \GroovyMenu\StyleStorage::getInstance()->get_global_config();
+				if ( ! empty( $cache_config ) ) {
+					$this->optionsGlobal = $cache_config;
+				} else {
+					$this->optionsGlobal = include GROOVY_MENU_DIR . 'includes/config/ConfigGlobal.php';
+					\GroovyMenu\StyleStorage::getInstance()->set_global_config( $this->optionsGlobal );
+				}
+			}
+
+
 			$this->options       = include GROOVY_MENU_DIR . 'includes/config/Config.php';
 			$preset              = GroovyMenuPreset::getById( $presetId );
 
