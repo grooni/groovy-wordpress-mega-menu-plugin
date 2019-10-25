@@ -93,7 +93,7 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 
 = 1.0.7 =
 * Add: ru_RU language
-* Fix: an error that did not allow translating phrases in the Global config
+* Fix: Fixed an error that did not allow translating phrases in the Global settings
 
 = 1.0.6 =
 * Fix: Cancels the display of the menu in maintenance mode when auto-integration is enabled

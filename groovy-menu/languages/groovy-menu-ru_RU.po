@@ -2,10 +2,10 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Groovy Menu 1.0.6\n"
+"Project-Id-Version: Groovy Menu 1.0.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-25 17:22+0300\n"
-"PO-Revision-Date: 2019-10-25 17:22+0300\n"
+"POT-Creation-Date: 2019-10-25 17:37+0300\n"
+"PO-Revision-Date: 2019-10-25 17:37+0300\n"
 "Last-Translator: Di_Skyer <diskyer@gmail.com>\n"
 "Language-Team: Русский\n"
 "Language: ru_RU\n"
@@ -1304,15 +1304,15 @@ msgstr "VK иконка"
 
 #: includes/config/ConfigGlobal.php:343
 msgid "E-mail icon"
-msgstr "Емэйл иконка"
+msgstr "E-mail иконка"
 
 #: includes/config/ConfigGlobal.php:348
 msgid "E-mail address"
-msgstr "Емэйл адрес"
+msgstr "E-mail адрес"
 
 #: includes/config/ConfigGlobal.php:353
 msgid "Show e-mail as link"
-msgstr "Показать емэйл как линк"
+msgstr "Показать E-mail как линк"
 
 #: includes/config/ConfigGlobal.php:358
 msgid "Phone icon"
