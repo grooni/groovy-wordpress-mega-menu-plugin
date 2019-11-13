@@ -2,9 +2,9 @@
 Contributors: Grooni, di_skyer
 Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive, responsive menu, sticky menu, vertical menu, horizontal menu, ajax cart
 Requires at least: 4.9.7
-Tested up to: 5.2.4
+Tested up to: 5.3
 Requires PHP: 7.0
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -90,6 +90,9 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.0.8 =
+* Fix: check empty nav_menu list when get Global settings translations
 
 = 1.0.7 =
 * Add: ru_RU language
