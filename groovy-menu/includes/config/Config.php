@@ -228,7 +228,7 @@ return array(
 				'type'        => 'inlineStart',
 			),
 			'show_wpml'                                    => array(
-				'title'       => 'Toggle switch to show/hide WPML language switcher',
+				'title'       => esc_html__( 'Toggle switch to show/hide WPML language switcher', 'groovy-menu' ),
 				'description' => '',
 				'type'        => 'checkbox',
 				'default'     => false,
@@ -310,7 +310,7 @@ return array(
 				'title'       => esc_html__( 'Submenu width', 'groovy-menu' ),
 				'description' => esc_html__( 'By applying this option you can set width of submenu excluding mega menu. Note: this option works with default and icon menu types.', 'groovy-menu' ),
 				'type'        => 'number',
-				'range'       => array( 0, 500 ),
+				'range'       => array( 100, 500 ),
 				'default'     => 230,
 				'unit'        => 'px',
 			),
@@ -474,6 +474,7 @@ return array(
 			'sub_level_background_color_hover'             => array(
 				'title'   => esc_html__( 'Submenu item hover background color', 'groovy-menu' ),
 				'type'    => 'colorpicker',
+				'default' => null,
 				'alpha'   => true,
 			),
 			'sub_item_text_start'                          => array(
@@ -483,7 +484,7 @@ return array(
 			'sub_level_item_text_size'                     => array(
 				'title'   => esc_html__( 'Size', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 0, 100 ),
+				'range'   => array( 10, 50 ),
 				'default' => 11,
 				'unit'    => 'px',
 			),
@@ -503,7 +504,7 @@ return array(
 				'title'   => esc_html__( 'Font variant', 'groovy-menu' ),
 				'type'    => 'select',
 				'options' => array(
-					'none' => 'Select value'
+					'none' => 'Select variant'
 				),
 				'default' => 'none',
 			),
@@ -511,14 +512,14 @@ return array(
 				'title'   => esc_html__( 'Subset', 'groovy-menu' ),
 				'type'    => 'select',
 				'options' => array(
-					'none' => 'Select value'
+					'none' => 'Select subset'
 				),
 				'default' => 'none',
 			),
 			'sub_item_letter_spacing'                      => array(
 				'title'   => esc_html__( 'Letter spacing', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 0, 100 ),
+				'range'   => array( 0, 5 ),
 				'default' => 0,
 				'unit'    => 'px',
 			),
@@ -539,7 +540,7 @@ return array(
 			'megamenu_title_text_size'                     => array(
 				'title'     => esc_html__( 'Size', 'groovy-menu' ),
 				'type'      => 'number',
-				'range'     => array( 0, 100 ),
+				'range'     => array( 10, 50 ),
 				'default'   => 13,
 				'unit'      => 'px',
 				'condition' => array( 'header.style', 'in', array( '1' ) ),
@@ -561,7 +562,7 @@ return array(
 				'title'     => esc_html__( 'Font variant', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
-					'none' => 'Select value'
+					'none' => 'Select variant'
 				),
 				'default'   => 'none',
 				'condition' => array( 'header.style', 'in', array( '1' ) ),
@@ -570,7 +571,7 @@ return array(
 				'title'     => esc_html__( 'Subset', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
-					'none' => 'Select value'
+					'none' => 'Select subset'
 				),
 				'default'   => 'none',
 				'condition' => array( 'header.style', 'in', array( '1' ) ),
@@ -585,6 +586,12 @@ return array(
 			),
 			'megamenu_title_text_end'                      => array(
 				'type' => 'inlineEnd'
+			),
+			'megamenu_title_as_link' => array(
+				'title'       => esc_html__( 'Show Mega Menu titles as a regular menu items', 'groovy-menu' ),
+				'description' => esc_html__( 'For sub mega menu items.', 'groovy-menu' ) . ' ' . esc_html__( 'Show with links and badges.', 'groovy-menu' ),
+				'type'        => 'checkbox',
+				'default'     => false,
 			),
 			'menu_title_color'                             => array(
 				'title'     => esc_html__( 'Mega menu title text color', 'groovy-menu' ),
@@ -633,7 +640,7 @@ return array(
 				'description' => esc_html__( 'Default container width is 1200px.', 'groovy-menu' ),
 				'type'        => 'number',
 				'default'     => '1200',
-				'range'       => array( 0, 2000 ),
+				'range'       => array( 900, 2000 ),
 				'unit'        => 'px',
 			),
 			'mega_menu_divider_color'                      => array(
@@ -644,7 +651,7 @@ return array(
 				'condition' => array( 'header.style', 'in', array( '1' ) ),
 			),
 			'mega_menu_show_links_bottom_border'           => array(
-				'title'     => esc_html__( 'Show mega menu links bottom border', 'groovy-menu' ),
+				'title'     => esc_html__( 'Mega menu links bottom border', 'groovy-menu' ),
 				'type'      => 'checkbox',
 				'default'   => false,
 				'condition' => array( 'header.style', 'in', array( '1' ) ),
@@ -656,7 +663,7 @@ return array(
 			),
 			'logo_type'                                    => array(
 				'title'   => esc_html__( 'Logo type', 'groovy-menu' ),
-				'type'    => 'logoType',
+				'type'    => 'logotype',
 				'default' => 'text',
 				'options' => array(
 					'img'  => 'image',
@@ -701,7 +708,7 @@ return array(
 			'logo_txt_font_size'                           => array(
 				'title'     => esc_html__( 'font size', 'groovy-menu' ),
 				'type'      => 'number',
-				'range'     => array( 0, 100 ),
+				'range'     => array( 10, 50 ),
 				'default'   => 20,
 				'unit'      => 'px',
 				'condition' => array( 'logo_type', '==', 'text' ),
@@ -710,7 +717,7 @@ return array(
 				'title'     => esc_html__( 'variant', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
-					'none' => 'Select value'
+					'none' => 'Select variant'
 				),
 				'default'   => 'none',
 				'condition' => array( 'logo_type', '==', 'text' ),
@@ -719,7 +726,7 @@ return array(
 				'title'     => esc_html__( 'subset', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
-					'none' => 'Select value'
+					'none' => 'Select subset'
 				),
 				'default'   => 'none',
 				'condition' => array( 'logo_type', '==', 'text' ),
@@ -953,6 +960,11 @@ return array(
 				'type'    => 'hiddenInput',
 				'default' => '',
 			),
+			'preset_key' => array(
+				'title'   => '',
+				'type'    => 'hiddenInput',
+				'default' => '',
+			),
 			'js_group'                                     => array(
 				'title'     => esc_html__( 'Custom JS', 'groovy-menu' ),
 				'type'      => 'group',
@@ -1086,7 +1098,7 @@ return array(
 			'bottom_border_thickness'                   => array(
 				'title'   => esc_html__( 'thickness', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 0, 100 ),
+				'range'   => array( 0, 10 ),
 				'default' => 0,
 				'unit'    => 'px',
 			),
@@ -1146,7 +1158,7 @@ return array(
 			'item_text_size'                            => array(
 				'title'   => esc_html__( 'Size', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 0, 100 ),
+				'range'   => array( 10, 50 ),
 				'default' => 14,
 				'unit'    => 'px',
 			),
@@ -1165,7 +1177,7 @@ return array(
 				'title'   => esc_html__( 'Font variant', 'groovy-menu' ),
 				'type'    => 'select',
 				'options' => array(
-					'none' => 'Select value'
+					'none' => 'Select variant'
 				),
 				'default' => 'none',
 			),
@@ -1173,14 +1185,14 @@ return array(
 				'title'   => esc_html__( 'Subset', 'groovy-menu' ),
 				'type'    => 'select',
 				'options' => array(
-					'none' => 'Select value'
+					'none' => 'Select subset'
 				),
 				'default' => 'none',
 			),
 			'item_letter_spacing'                       => array(
 				'title'   => esc_html__( 'Letter spacing', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 0, 10 ),
+				'range'   => array( 0, 5 ),
 				'default' => 0,
 				'unit'    => 'px',
 			),
@@ -1270,7 +1282,7 @@ return array(
 			'toolbar_additional_info_font_size'         => array(
 				'title'   => esc_html__( 'Toolbar additional information font size', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 0, 100 ),
+				'range'   => array( 10, 50 ),
 				'default' => 14,
 				'unit'    => 'px',
 			),
@@ -1282,7 +1294,7 @@ return array(
 			'toolbar_icon_size'                         => array(
 				'title'   => esc_html__( 'Toolbar social icon size', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 0, 100 ),
+				'range'   => array( 10, 50 ),
 				'default' => 16,
 				'unit'    => 'px',
 			),
@@ -1316,14 +1328,14 @@ return array(
 			'hamburger_icon_size'                       => array(
 				'title'   => esc_html__( 'size', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 0, 100 ),
+				'range'   => array( 10, 50 ),
 				'default' => 24,
 				'unit'    => 'px',
 			),
 			'hamburger_icon_padding'                    => array(
 				'title'   => esc_html__( 'padding area', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 0, 50 ),
+				'range'   => array( 0, 20 ),
 				'default' => 0,
 				'unit'    => 'px',
 			),
@@ -1349,7 +1361,7 @@ return array(
 			'hamburger_icon_border_width'               => array(
 				'title'   => esc_html__( 'width', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 0, 10 ),
+				'range'   => array( 0, 5 ),
 				'default' => 0,
 				'unit'    => 'px',
 			),
@@ -1369,7 +1381,7 @@ return array(
 			'hamburger_icon_size_mobile'                => array(
 				'title'   => esc_html__( 'size', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 0, 100 ),
+				'range'   => array( 10, 50 ),
 				'default' => 24,
 				'unit'    => 'px',
 			),
@@ -1697,7 +1709,7 @@ return array(
 				'title'   => esc_html__( 'Mobile navigation drawer width', 'groovy-menu' ),
 				'type'    => 'number',
 				'default' => '250',
-				'range'   => array( 0, 1000 ),
+				'range'   => array( 150, 1000 ),
 				'unit'    => 'px',
 			),
 			'mobile_width'                           => array(
@@ -1705,14 +1717,14 @@ return array(
 				'description' => esc_html__( 'You can change switch to mobile breakpoint using this option. (default:1023px).', 'groovy-menu' ),
 				'type'        => 'number',
 				'default'     => '1023',
-				'range'       => array( 0, 2000 ),
+				'range'       => array( 360, 1700 ),
 				'unit'        => 'px',
 			),
 			'mobile_header_height'                   => array(
 				'title'   => esc_html__( 'Mobile header height', 'groovy-menu' ),
 				'type'    => 'number',
 				'default' => '70',
-				'range'   => array( 0, 200 ),
+				'range'   => array( 50, 200 ),
 				'unit'    => 'px',
 			),
 			'mobile_group_typography'                           => array(
@@ -1727,7 +1739,7 @@ return array(
 			'mobile_item_text_size'                            => array(
 				'title'   => esc_html__( 'Size', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 0, 100 ),
+				'range'   => array( 6, 50 ),
 				'default' => 11,
 				'unit'    => 'px',
 			),
@@ -1746,7 +1758,7 @@ return array(
 				'title'   => esc_html__( 'Font variant', 'groovy-menu' ),
 				'type'    => 'select',
 				'options' => array(
-					'none' => 'Select value'
+					'none' => 'Select variant'
 				),
 				'default' => '700',
 			),
@@ -1767,7 +1779,7 @@ return array(
 			'mobile_subitem_text_size'                            => array(
 				'title'   => esc_html__( 'Size', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 0, 100 ),
+				'range'   => array( 6, 50 ),
 				'default' => 11,
 				'unit'    => 'px',
 			),
@@ -1786,7 +1798,7 @@ return array(
 				'title'   => esc_html__( 'Font variant', 'groovy-menu' ),
 				'type'    => 'select',
 				'options' => array(
-					'none' => 'Select value'
+					'none' => 'Select variant'
 				),
 				'default' => 'none',
 			),

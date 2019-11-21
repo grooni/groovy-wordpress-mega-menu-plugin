@@ -26,7 +26,7 @@ class PreStorage {
 	 *
 	 * @var array
 	 */
-	private $disable_storage_flag = false;
+	private static $disable_storage_flag = false;
 
 	/**
 	 * Storage of Groovy Menu (gm) compiled html
@@ -48,8 +48,13 @@ class PreStorage {
 	 * @return PreStorage
 	 */
 	public static function get_instance() {
+
 		if ( null === self::$instance ) {
 			self::$instance = new self();
+		}
+
+		if ( defined( 'GROOVY_MENU_DISABLE_STYLE_STORAGE_CACHE' ) && GROOVY_MENU_DISABLE_STYLE_STORAGE_CACHE ) {
+			self::$disable_storage_flag = true;
 		}
 
 		return self::$instance;
@@ -62,15 +67,19 @@ class PreStorage {
 	}
 
 	public function set_disable_storage() {
-		$this->disable_storage_flag = true;
+		self::$disable_storage_flag = true;
 	}
 
 	public function set_enable_storage() {
-		$this->disable_storage_flag = false;
+		self::$disable_storage_flag = false;
 	}
 
 	public function start_pre_storage() {
-		$this->collect_current_page_data_by_default();
+
+		if ( ! self::$disable_storage_flag ) {
+			$this->collect_current_page_data_by_default();
+		}
+
 	}
 
 	public function collect_current_page_data_by_default() {
@@ -201,6 +210,10 @@ class PreStorage {
 	public function search_ids_by_location( $args ) {
 		$return_value = array();
 
+		if ( self::$disable_storage_flag ) {
+			return $return_value;
+		}
+
 		$theme_location = isset( $args['theme_location'] ) ? $args['theme_location'] : 'gm_primary';
 
 		if ( ! empty( $this->gm_storage ) ) {
@@ -224,7 +237,7 @@ class PreStorage {
 	public function get_gm( $id ) {
 		$return_value = null;
 
-		if ( $this->disable_storage_flag ) {
+		if ( self::$disable_storage_flag ) {
 			return $return_value;
 		}
 
@@ -247,7 +260,7 @@ class PreStorage {
 	public function check_is_stored_gm( $id ) {
 		$return_value = false;
 
-		if ( $this->disable_storage_flag ) {
+		if ( self::$disable_storage_flag ) {
 			return $return_value;
 		}
 
@@ -271,7 +284,10 @@ class PreStorage {
 			$gm_data['theme_location'] = '-';
 		}
 
-		$this->gm_storage[ $id ] = $gm_data;
+		if ( ! self::$disable_storage_flag ) {
+			$this->gm_storage[ $id ] = $gm_data;
+		}
+
 	}
 
 

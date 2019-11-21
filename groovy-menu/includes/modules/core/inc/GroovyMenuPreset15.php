@@ -12,7 +12,7 @@ if ( ! class_exists( 'GroovyMenuPreset' ) ) {
 		protected $name;
 		protected $lver = false;
 
-		const TABLE                 = 'groovy_preset';
+		const TABLE = 'groovy_preset';
 		const DEFAULT_PRESET_OPTION = 'groovy_menu_default_preset';
 
 
@@ -141,6 +141,8 @@ if ( ! class_exists( 'GroovyMenuPreset' ) ) {
 		 */
 		public static function setDefaultPreset( $id ) {
 
+			$return_val = false;
+
 			$global = get_option( GroovyMenuStyle::OPTION_NAME );
 
 			if ( isset( $global['taxonomies'] ) && isset( $global['taxonomies']['default_master_preset'] ) ) {
@@ -233,7 +235,7 @@ if ( ! class_exists( 'GroovyMenuPreset' ) ) {
 		 * @param $string
 		 * @param $encoding
 		 *
-		 * @return string
+		 * @return mixed|null|string|string[]
 		 */
 		public static function sanityStringUTF( $string, $encoding = 'UTF-8' ) {
 
@@ -321,6 +323,13 @@ if ( ! class_exists( 'GroovyMenuPreset' ) ) {
 					$wp_filesystem->delete( $upload_dir . $upload_filename, false, true );
 					delete_post_meta( intval( $post_id ), 'gm_preset_screenshot' );
 				}
+
+				$upload_filename = 'preset_' . $post_id . '.css';
+				$file_path       = $upload_dir . $upload_filename;
+
+				if ( is_file( $file_path ) ) {
+					$wp_filesystem->delete( $upload_dir . $upload_filename, false, true );
+				}
 			}
 
 			// delete post.
@@ -336,7 +345,7 @@ if ( ! class_exists( 'GroovyMenuPreset' ) ) {
 		public static function getAll( $key_value = false, $disable_cache = false ) {
 
 			static $cache_enable = true;
-			static $cache        = array(
+			static $cache = array(
 				'obj'       => array(),
 				'key_value' => array(),
 			);

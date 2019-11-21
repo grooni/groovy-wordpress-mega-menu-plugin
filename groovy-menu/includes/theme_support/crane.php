@@ -220,13 +220,13 @@ if ( ! function_exists( 'gm_debug_value' ) ) {
 			return;
 		}
 
-		$data         = '';
-		static $first = true;
+		$data = '';
+		static $auto_append = false;
 
 		$data .= '[' . date( 'm/d/Y h:i:s a', time() ) . ']' . "\n";
 
 		if ( $with_backtrace ) {
-			$backtrace = debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS );
+			$backtrace = debug_backtrace();
 			array_shift( $backtrace );
 			$data .= print_r( $backtrace, true ) . ":\n";
 		}
@@ -245,21 +245,21 @@ if ( ! function_exists( 'gm_debug_value' ) ) {
 
 		ob_start();
 		var_dump( $value );
-		$data .= ob_get_clean() . "\n\n";
-		$is_append = $append ? : $first;
+		$data      .= ob_get_clean() . "\n\n";
+		$is_append = $append ? : $auto_append;
+
 
 		if ( is_writable( $filename ) || ( ! file_exists( $filename ) && is_writable( dirname( $filename ) ) ) ) {
-
-			if ( ! $is_append ) {
+			if ( $is_append ) {
 				$data = $wp_filesystem->get_contents( $filename ) . $data;
 			}
 
-			$wp_filesystem->put_contents( $filename, $data, FS_CHMOD_FILE );
+			$wp_filesystem->put_contents( $filename, $data );
 
 		}
 
 
-		$first = false;
+		$auto_append = true;
 	}
 }
 

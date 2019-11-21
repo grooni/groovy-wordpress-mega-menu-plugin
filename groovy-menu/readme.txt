@@ -91,6 +91,12 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 
 == Changelog ==
 
+= 1.0.9 =
+* Add: Added an option "General" > "Submenu" > "Show Mega Menu titles as regular menu items" to the preset settings. Which will allow you to display the links and badges for Mega Menu titles.
+* Add: Integration into the "Theme Locations"
+* Fix: Now the output of echo when the Actions from Header.php are working will be displayed in the markup location match to the action
+* Add: Added 4 new actions for working in the toolbar
+
 = 1.0.8 =
 * Fix: check empty nav_menu list when get Global settings translations
 

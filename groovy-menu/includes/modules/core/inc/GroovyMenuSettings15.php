@@ -29,6 +29,11 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 
 			add_action( 'wp_ajax_gm_save_auto_integration', array( $this, 'saveAutoIntegration' ) );
 
+			add_action( 'wp_ajax_gm_save_single_location_integration', array(
+				$this,
+				'saveSingleLocationIntegration'
+			) );
+
 			add_action( 'wp_ajax_gm_get_setting', array( $this, 'getSettings' ) );
 			add_action( 'wp_ajax_nopriv_gm_get_setting', array( $this, 'getSettings' ) );
 
@@ -38,8 +43,13 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 
 			add_action( 'wp_ajax_gm_get_google_fonts', array( $this, 'getGoogleFonts' ) );
 
-			add_image_size( 'menu-thumb', $style->get( 'general', 'preview_width' ),
-				$style->get( 'general', 'preview_height' ), true );
+			add_image_size(
+				'menu-thumb',
+				$style->get( 'general', 'preview_width' ),
+				$style->get( 'general', 'preview_height' ),
+				true
+			);
+
 			if ( ! is_admin() ) {
 				add_action( 'admin_bar_menu', array( $this, 'addToolbarLink' ), 100001 );
 			} else {
@@ -1697,8 +1707,10 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				}
 			}
 
-			$saved_auto_integration = GroovyMenuUtils::getAutoIntegration();
-			$saved_auto_integration = GroovyMenuUtils::getAutoIntegration();
+			$saved_auto_integration     = GroovyMenuUtils::getAutoIntegration();
+			$saved_location_integration = GroovyMenuUtils::getSingleLocationIntegration();
+
+			$admin_nav_menu_page = '<a href="' . admin_url( 'nav-menus.php?action=locations' ) . '">' . esc_html__( 'Manage Locations', 'groovy-menu' ) . '</a>';
 
 			?>
 
@@ -1716,7 +1728,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 								} ?>>
 								<?php esc_html_e( 'Enable automatic integration', 'groovy-menu' ); ?>
 							</label>
-							<button type="button" class="btn gm-auto-integration-save">
+							<button type="button" class="btn gm-integration-button gm-auto-integration-save">
 								<?php esc_html_e( 'Save changes', 'groovy-menu' ); ?>
 							</button>
 							<input type="hidden" id="gm-nonce-auto-integration-field" name="gm_nonce"
@@ -1724,6 +1736,40 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 							<p><?php esc_html_e( 'If enabled, the Groovy menu markup will be displayed after &lt;body&gt; html tag.', 'groovy-menu' ); ?></p>
 						</div>
 
+						<div class="gm-dashboard-body-section">
+							<h3><?php esc_html_e( 'Choose the location for the integration menu into pre-defined areas in your theme.', 'groovy-menu' ); ?></h3>
+							<p><?php esc_html_e( 'If chosen then the Groovy Menu will display its own markup instead of the standard code from the function wp_nav_menu().', 'groovy-menu' ); ?></p>
+							<p>
+								<label for="gm-integration-location">
+									<?php esc_html_e( 'Theme Location', 'groovy-menu' ); ?><br/>
+									<select class="gm-integration-location"
+										id="gm-integration-location"
+										name="gm-integration-location">
+										<option
+											value="" <?php echo ( empty( $saved_location_integration ) ) ? ' selected' : '' ?>>--- <?php esc_html_e( 'Select a Location', 'groovy-menu' ); ?> ---
+										</option>
+										<?php
+										foreach ( GroovyMenuUtils::getNavMenuLocations( false, true ) as $location => $name ) {
+											// Prevent select Groovy Menu virtual location.
+											if ( 'gm_primary' === $location ) {
+												continue;
+											}
+
+											?>
+											<option
+												value="<?php echo esc_attr( $location ); ?>"<?php echo ( strval( $saved_location_integration ) === strval( $location ) ) ? ' selected' : '' ?>><?php echo esc_attr( $name ); ?></option>
+											<?php
+										}
+										?>
+									</select>
+								</label>
+							</p>
+							<p><?php esc_html_e( 'Note:', 'groovy-menu' ); ?> <?php echo sprintf( __( 'Make sure the menu is assigned on the %s page. Otherwise, the location selection list will be empty.', 'groovy-menu' ), $admin_nav_menu_page ); ?> <?php esc_html_e( 'Groovy menu Primary location will be ignored.', 'groovy-menu' ); ?> <?php esc_html_e( 'This integration successfully works only with those locations that are displayed on the front of the site.', 'groovy-menu' ); ?></p>
+							<p>
+							<button type="button" class="btn gm-integration-button gm-integration-location-save">
+								<?php esc_html_e( 'Save changes', 'groovy-menu' ); ?>
+							</button>
+						</div>
 
 						<div class="gm-dashboard-body-section">
 							<h3><?php esc_html_e( 'Manual integration', 'groovy-menu' ); ?></h3>
@@ -2166,9 +2212,16 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 					wp_send_json_error( esc_html__( 'Error. Missing id of the current menu', 'groovy-menu' ) );
 				}
 
+
+				$preset_key = md5( rand() . uniqid() . time() );
+
 				update_post_meta( intval( $preset_id ), 'gm_compiled_css', $ajax_data );
+				update_post_meta( intval( $preset_id ), 'gm_preset_key', $preset_key );
 				update_post_meta( intval( $preset_id ), 'gm_direction', $direction );
 				update_post_meta( intval( $preset_id ), 'gm_version', GROOVY_MENU_VERSION );
+
+				// Save compiled_css to file
+				$this->save_compiled_css( $preset_id, $ajax_data );
 
 				$respond = esc_html__( 'Save', 'groovy-menu' );
 				if ( ! empty( $_POST['sub_action'] ) ) {
@@ -2190,6 +2243,59 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 
 			}
 		}
+
+
+		/**
+		 * Save preset compiled style to the file
+		 *
+		 * @param string|integer $preset_id    preset id.
+		 * @param string         $compiled_css styles.
+		 * @param string         $_tmppath     path for download.
+		 *
+		 * @return bool
+		 */
+		private function save_compiled_css( $preset_id, $compiled_css = '' ) {
+
+
+			$preset_id = intval( $preset_id );
+
+			if ( empty( $preset_id ) ) {
+				// if err.
+				return false;
+			}
+
+			if ( empty( $compiled_css ) ) {
+				$compiled_css = '';
+			}
+
+			if ( ! defined( 'FS_METHOD' ) ) {
+				define( 'FS_METHOD', 'direct' );
+			}
+
+			global $wp_filesystem;
+			if ( empty( $wp_filesystem ) ) {
+				if ( file_exists( ABSPATH . '/wp-admin/includes/file.php' ) ) {
+					require_once ABSPATH . '/wp-admin/includes/file.php';
+					WP_Filesystem();
+				}
+			}
+			if ( empty( $wp_filesystem ) ) {
+				// if err.
+				return false;
+			}
+
+			$styles_dir = GroovyMenuUtils::getUploadDir();
+			if ( ! is_dir( $styles_dir ) ) {
+				@mkdir( $styles_dir, 0755 );
+			}
+
+			$css_filename = 'preset_' . esc_attr( strval( $preset_id ) ) . '.css';
+
+			$handled_compiled_css = trim( stripcslashes( $compiled_css ) );
+
+			$wp_filesystem->put_contents( $styles_dir . $css_filename, $handled_compiled_css, FS_CHMOD_FILE );
+		}
+
 
 		public function saveAutoIntegration() {
 
@@ -2214,6 +2320,43 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				update_option( GroovyMenuUtils::getAutoIntegrationOptionName() . $theme_name, $ajax_data, true );
 
 				$respond = esc_html__( 'Save', 'groovy-menu' );
+
+				// Send a JSON response back to an AJAX request, and die().
+				wp_send_json_success( $respond );
+
+			}
+		}
+
+		public function saveSingleLocationIntegration() {
+			if ( ! GroovyMenuRoleCapabilities::globalOptions( true ) ) {
+				return;
+			}
+
+			if ( defined( 'DOING_AJAX' ) && DOING_AJAX && ! empty( $_POST ) && isset( $_POST['action'] ) && $_POST['action'] === 'gm_save_single_location_integration' ) {
+
+				$ajax_data = ( empty( $_POST['data'] ) || '' === $_POST['data'] ) ? '' : esc_attr( $_POST['data'] );
+
+				global $gm_supported_module;
+				$theme_name = empty( $gm_supported_module['theme'] ) ? wp_get_theme()->get_template() : $gm_supported_module['theme'];
+
+				$saved_config = get_option( GroovyMenuUtils::getIntegrationConfigOptionName() . $theme_name );
+
+				if ( empty( $saved_config ) || ! is_array( $saved_config ) ) {
+					$saved_config = array(
+						'single_location' => '',
+					);
+				}
+
+				$saved_config['single_location'] = esc_sql( $ajax_data );
+
+				// Save automatic integrations settings
+				$saved = update_option( GroovyMenuUtils::getIntegrationConfigOptionName() . $theme_name, $saved_config, true );
+
+				if ( $saved ) {
+					$respond = esc_html__( 'Save', 'groovy-menu' );
+				} else {
+					$respond = esc_html__( 'Save Error', 'groovy-menu' );
+				}
 
 				// Send a JSON response back to an AJAX request, and die().
 				wp_send_json_success( $respond );

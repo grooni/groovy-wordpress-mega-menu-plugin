@@ -1,10 +1,13 @@
 .gm-dashboard__integration {
   .gm-dashboard-body-section {
+    border-bottom: dashed 1px #bbb;
+    padding-bottom: 12px;
+
     label {
       margin-right: 5px;
     }
 
-    .gm-auto-integration-save {
+    .gm-integration-button {
       margin-top: 15px;
     }
   }

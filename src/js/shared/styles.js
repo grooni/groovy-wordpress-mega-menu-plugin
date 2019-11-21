@@ -1814,7 +1814,7 @@ export default class GmStyles {
     // Menu title color
     if (settings.menuTitleColor) {
       css.push({
-        '.gm-main-menu-wrapper .gm-mega-menu__item__title': 'color:' + settings.menuTitleColor,
+        '.gm-main-menu-wrapper .gm-mega-menu__item__title, .gm-main-menu-wrapper .gm-mega-menu__item__title .gm-menu-item__txt': 'color:' + settings.menuTitleColor,
         media: 'desktop'
       });
     }
@@ -2019,7 +2019,7 @@ export default class GmStyles {
       const {megamenuTitleTextCase} = settings;
 
       css.push({
-        '.gm-main-menu-wrapper .gm-mega-menu__item__title': `text-transform: ${megamenuTitleTextCase}`,
+        '.gm-main-menu-wrapper .gm-mega-menu__item__title, .gm-main-menu-wrapper .gm-mega-menu__item__title .gm-menu-item__txt': `text-transform: ${megamenuTitleTextCase}`,
         media: 'desktop'
       });
     }
@@ -2029,7 +2029,7 @@ export default class GmStyles {
       const {megamenuTitleTextSize} = settings;
 
       css.push({
-        '.gm-main-menu-wrapper .gm-mega-menu__item__title': `font-size: ${megamenuTitleTextSize}px`,
+        '.gm-main-menu-wrapper .gm-mega-menu__item__title, .gm-main-menu-wrapper .gm-mega-menu__item__title .gm-menu-item__txt': `font-size: ${megamenuTitleTextSize}px`,
         media: 'desktop'
       });
     }
@@ -2044,13 +2044,13 @@ export default class GmStyles {
 
         if (isItalic) {
           css.push({
-            '.gm-main-menu-wrapper .gm-mega-menu__item__title': 'font-style: italic',
+            '.gm-main-menu-wrapper .gm-mega-menu__item__title, .gm-main-menu-wrapper .gm-mega-menu__item__title .gm-menu-item__txt': 'font-style: italic',
             media: 'desktop'
           });
         }
 
         css.push({
-          '.gm-main-menu-wrapper .gm-mega-menu__item__title': `font-weight: ${filteredTextWeight}`,
+          '.gm-main-menu-wrapper .gm-mega-menu__item__title, .gm-main-menu-wrapper .gm-mega-menu__item__title .gm-menu-item__txt': `font-weight: ${filteredTextWeight}`,
           media: 'desktop'
         });
       }
