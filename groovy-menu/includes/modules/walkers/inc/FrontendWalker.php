@@ -113,8 +113,9 @@ class FrontendWalker extends WalkerNavMenu {
 		if ( 1 === $depth && $this->isMegaMenu && ! $show_in_mobile ) {
 
 			global $groovyMenuSettings;
-			$styles      = new GroovyMenuStyle();
-			$headerStyle = intval( $groovyMenuSettings['header']['style'] );
+			$styles          = new GroovyMenuStyle();
+			$headerStyle     = intval( $groovyMenuSettings['header']['style'] );
+			$is_title_as_url = $groovyMenuSettings['megamenuTitleAsLink'];
 
 			if ( $headerStyle && in_array( $headerStyle, array( 2, 3 ), true ) ) {
 
@@ -150,7 +151,7 @@ class FrontendWalker extends WalkerNavMenu {
 				}
 
 				if ( empty( $colNumder ) ) {
-					$colNumder = '20'; // 20 by default.
+					$colNumder = '20'; // 20 by default. 5 cols
 				}
 
 				$gridClass = 'mobile-grid-100 grid-' . $colNumder;
@@ -159,7 +160,186 @@ class FrontendWalker extends WalkerNavMenu {
 			$output .= '<div class="gm-mega-menu__item ' . $gridClass . '">';
 
 			if ( ! $this->doNotShowTitle( $item ) ) {
-				$output .= '<div class="gm-mega-menu__item__title">' . apply_filters( 'the_title', $item->title, $item->ID ) . '</div>';
+
+				$item_link  = '';
+				$item_title = '';
+
+				if ( $is_title_as_url ) {
+					$atts           = array();
+					$atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';
+					$atts['target'] = ! empty( $item->target ) ? $item->target : '';
+					$atts['rel']    = ! empty( $item->xfn ) ? $item->xfn : '';
+					$atts['href']   = ! empty( $item->url ) ? $item->url : '';
+					$atts['class']  = 'gm-anchor';
+
+					$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args, $depth );
+
+					$attributes = '';
+					foreach ( $atts as $attr => $value ) {
+						if ( ! empty( $value ) ) {
+							if ( 'href' === $attr ) {
+								$value = esc_url( $value );
+								if ( $gm_menu_block ) {
+									$value = $this->menuBlockURL( $item, $value );
+								}
+							} else {
+								$value = esc_attr( $value );
+							}
+							$attributes .= ' ' . $attr . '="' . $value . '"';
+						}
+					}
+
+					$item_link .= '<a' . $attributes . '>';
+					if ( $this->getIcon( $item ) ) {
+						$item_link .= '<span class="gm-menu-item__icon ' . $this->getIcon( $item ) . '"></span>';
+					}
+
+					$badge = array(
+						'left'  => '',
+						'right' => '',
+					);
+
+					$badge_enable = $this->getBadgeEnable( $item );
+					if ( ! empty( $badge_enable ) && $badge_enable ) {
+
+						$attr                    = 'style';
+						$badge_type              = $this->getBadgeType( $item );
+						$badge_placement         = $this->getBadgePlacement( $item );
+						$badge_position          = $this->getBadgeGeneralPosition( $item );
+						$badge_y_position        = $this->getBadgeYPosition( $item ) ? : 0;
+						$badge_x_position        = $this->getBadgeXPosition( $item ) ? : 0;
+						$badge_container_radius  = $this->getBadgeContainerRadius( $item );
+						$badge_container_padding = $this->getBadgeContainerPadding( $item );
+						$badge_container_bg      = $this->getBadgeContainerBg( $item );
+						$badge_in_style          = '';
+						$badge_out_style         = '';
+
+						if ( ! empty( $badge_position ) ) {
+							$badge_out_style .= 'position: ' . $badge_position . ';';
+						}
+						if ( ! empty( $badge_y_position ) || ! empty( $badge_x_position ) ) {
+							$badge_out_style .= 'transform: translate(' . $badge_x_position . ', ' . $badge_y_position . ');';
+						}
+
+						if ( ! empty( $badge_container_bg ) ) {
+							$badge_in_style .= 'background-color: ' . $badge_container_bg . ';';
+						}
+						if ( ! empty( $badge_container_padding ) ) {
+							$badge_in_style .= 'padding: ' . $badge_container_padding . ';';
+						}
+						if ( ! empty( $badge_container_radius ) ) {
+							$badge_in_style .= 'border-radius: ' . $badge_container_radius . ';';
+						}
+
+
+						switch ( $badge_type ) {
+							case 'image':
+								$badge_image       = $this->getBadgeImage( $item );
+								$badge_image_sizes = $this->getBadgeImageWidthHeight( $item );
+
+								if ( ! empty( $badge_in_style ) ) {
+									$badge_in_style = $attr . '="' . $badge_in_style . '" ';
+								}
+
+								if ( ! empty( $badge_image ) ) {
+									$badge_html = '<span ' . $badge_in_style . '><img src="' . $this->getBadgeImage( $item ) . '" alt="" ' . $badge_image_sizes . '></span>';
+								}
+								break;
+
+							case 'icon':
+								$badge_icon       = $this->getBadgeIcon( $item );
+								$badge_icon_size  = $this->getBadgeIconSize( $item );
+								$badge_icon_color = $this->getBadgeIconColor( $item );
+
+								if ( ! empty( $badge_icon_color ) ) {
+									$badge_in_style .= 'color: ' . $badge_icon_color . ';';
+								}
+								if ( ! empty( $badge_icon_size ) ) {
+									$badge_in_style .= 'font-size: ' . $badge_icon_size . 'px;';
+								}
+
+								if ( ! empty( $badge_icon ) ) {
+									if ( ! empty( $badge_in_style ) ) {
+										$badge_in_style = $attr . '="' . $badge_in_style . '" ';
+									}
+									$badge_html = '<span ' . $badge_in_style . '><i class="' . $badge_icon . '"></i></span>';
+								}
+								break;
+
+
+							case 'text':
+								$badge_text         = $this->getBadgeText( $item );
+								$badge_text_family  = $this->getBadgeTextFontFamily( $item );
+								$badge_text_variant = $this->getBadgeTextFontVariant( $item );
+								$badge_text_size    = $this->getBadgeTextFontSize( $item );
+								$badge_text_color   = $this->getBadgeTextFontColor( $item );
+								if ( ! empty( $badge_text_family ) ) {
+									$fontClass           = new GroovyMenuGFonts();
+									$common_font_variant = $badge_text_variant;
+									if ( 'inherit' === $common_font_variant ) {
+										$common_font_variant = 'regular';
+									}
+									$fontClass->add_gfont_face_simple( $badge_text_family, $common_font_variant, true );
+
+									$badge_in_style .= 'font-family: \'' . $badge_text_family . '\';';
+								}
+								if ( ! empty( $badge_text_variant ) ) {
+									$common_font_variant = intval( $badge_text_variant );
+									if ( empty( $common_font_variant ) || 'regular' === $badge_text_variant || 'italic' === $badge_text_variant ) {
+										$common_font_variant = 400;
+									}
+									$badge_in_style .= 'font-weight: ' . $common_font_variant . ';';
+									$pos             = strpos( $badge_text_variant, 'italic' );
+									if ( false !== $pos ) {
+										$badge_in_style .= 'font-style: italic;';
+									}
+								}
+								if ( ! empty( $badge_text_color ) ) {
+									$badge_in_style .= 'color: ' . $badge_text_color . ';';
+								}
+								if ( ! empty( $badge_text_size ) ) {
+									$badge_in_style .= 'font-size: ' . $badge_text_size . 'px;';
+								}
+
+								if ( ! empty( $badge_text ) ) {
+									if ( ! empty( $badge_in_style ) ) {
+										$badge_in_style = $attr . '="' . $badge_in_style . '" ';
+									}
+									$badge_html = '<span ' . $badge_in_style . '>' . $badge_text . '</span>';
+								}
+								break;
+						}
+
+
+						if ( ! empty( $badge_out_style ) ) {
+							$badge_out_style = $attr . '="' . $badge_out_style . '" ';
+						}
+
+						if ( ! empty( $badge_placement ) && ! empty( $badge_html ) ) {
+							$badge[ $badge_placement ] = '<span class="gm-badge" ' . $badge_out_style . '>' . $badge_html . '</span>';
+						}
+					}
+
+					$item_link .= '<span class="gm-menu-item__txt-wrapper">';
+					$item_link .= $badge['left'];
+					$item_link .= '<span class="gm-menu-item__txt">';
+					$item_link .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+					$item_link .= '</span>'; // .gm-menu-item__txt
+					$item_link .= $badge['right'];
+					$item_link .= '</span>'; // .gm-menu-item__txt-wrapper
+					$item_link .= '</a>';
+
+
+					$item_title .= $item_link;
+
+				} else {
+
+					$item_title .= apply_filters( 'the_title', $item->title, $item->ID );
+
+				}
+
+				$output .= '<div class="gm-mega-menu__item__title">' . $item_title . '</div>';
+
 			}
 
 			if ( $postContent ) {

@@ -166,11 +166,14 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * Get meta data about option "Mega Menu"
+	 *
+	 * @param object $item Object with menu item meta data.
+	 * @param bool   $check_parent Check data for parent item.
 	 *
 	 * @return bool
 	 */
-	protected function isMegaMenu( $item ) {
+	protected function isMegaMenu( $item, $check_parent = false ) {
 		global $groovyMenuSettings;
 
 		if (
@@ -180,7 +183,12 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 			return false;
 		}
 
-		$item_id = $this->getId( $item );
+		if ( $check_parent ) {
+			$item_id = empty( $item->menu_item_parent ) ? null : intval( $item->menu_item_parent );
+		} else {
+			$item_id = $this->getId( $item );
+		}
+
 		if ( empty( $item_id ) ) {
 			return false;
 		}
@@ -194,7 +202,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return bool
 	 */
@@ -213,7 +221,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return int
 	 */
@@ -232,7 +240,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return int|null
 	 */
@@ -257,7 +265,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param        $item
+	 * @param object $item Object with menu item meta data.
 	 * @param string $reserveUrl
 	 *
 	 * @return int|null
@@ -310,12 +318,10 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 				return __( 'Cornerstone content', 'groovy-menu' );
 			}
 
-			if ( isset( $_GET['elementor-preview'] ) && isset( $_GET['gm_menu_block'] ) ) { // @codingStandardsIgnoreLine
-				if ( intval( $_GET['elementor-preview'] ) === intval( $post->ID ) ) { // @codingStandardsIgnoreLine
-					// Recovery global $post exemplar.
-					$post = $_post;
-					return $mm_content;
-				}
+			if ( isset( $_GET['elementor-preview'] ) ) { // @codingStandardsIgnoreLine
+				// Recovery global $post exemplar.
+				$post = $_post;
+				return __( 'Elementor content', 'groovy-menu' );
 			}
 
 			if (
@@ -353,7 +359,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return int|mixed
 	 */
@@ -372,7 +378,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return mixed
 	 */
@@ -386,7 +392,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return mixed
 	 */
@@ -400,7 +406,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return mixed
 	 */
@@ -414,7 +420,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return mixed|string
 	 */
@@ -433,7 +439,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return mixed
 	 */
@@ -447,7 +453,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param        $item
+	 * @param object $item Object with menu item meta data.
 	 * @param string $size
 	 *
 	 * @return false|mixed|string
@@ -477,7 +483,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param        $item
+	 * @param object $item Object with menu item meta data.
 	 * @param string $size
 	 *
 	 * @return false|mixed|string
@@ -497,7 +503,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return bool
 	 */
@@ -517,7 +523,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return bool
 	 */
@@ -540,7 +546,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return bool
 	 */
@@ -559,7 +565,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return mixed
 	 */
@@ -579,7 +585,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return mixed
 	 */
@@ -602,7 +608,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return mixed
 	 */
@@ -626,7 +632,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return string
 	 */
@@ -648,7 +654,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return mixed
 	 */
@@ -667,7 +673,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return mixed
 	 */
@@ -686,7 +692,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return mixed
 	 */
@@ -705,7 +711,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return mixed
 	 */
@@ -724,7 +730,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return mixed
 	 */
@@ -743,7 +749,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return mixed
 	 */
@@ -762,7 +768,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return mixed
 	 */
@@ -781,7 +787,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return mixed
 	 */
@@ -800,7 +806,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return mixed
 	 */
@@ -819,7 +825,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return mixed
 	 */
@@ -838,7 +844,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return mixed
 	 */
@@ -857,7 +863,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return mixed
 	 */
@@ -876,7 +882,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return mixed
 	 */
@@ -895,7 +901,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return mixed
 	 */
@@ -914,7 +920,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	}
 
 	/**
-	 * @param $item
+	 * @param object $item Object with menu item meta data.
 	 *
 	 * @return mixed
 	 */

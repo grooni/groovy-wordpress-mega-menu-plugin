@@ -78,6 +78,8 @@ class GroovyMenuUtils {
 	 * @return array
 	 */
 	public static function get_preset_used_in() {
+		$preset_used_in = array();
+
 		$preset_used_in = get_option( 'groovy_menu_preset_used_in_storage' );
 
 		if ( ! is_array( $preset_used_in ) ) {
@@ -184,6 +186,24 @@ class GroovyMenuUtils {
 		$scheme    = is_ssl() ? 'https' : 'http';
 
 		return set_url_scheme( $uploadDir['baseurl'] . '/groovy/', $scheme );
+	}
+
+
+	public static function addPresetCssFile() {
+
+		global $groovyMenuSettings;
+		$css_file_params = isset( $groovyMenuSettings['css_file_params'] ) ? $groovyMenuSettings['css_file_params'] : array();
+
+		if ( ! empty( $css_file_params ) && is_file( $css_file_params['upload_dir'] . $css_file_params['css_filename'] ) ) {
+
+			wp_enqueue_style(
+				'groovy-menu-preset-style-' . $css_file_params['preset_id'],
+				$css_file_params['upload_uri'] . $css_file_params['css_filename'],
+				[ 'groovy-menu-style' ],
+				$css_file_params['preset_key']
+			);
+
+		}
 	}
 
 
@@ -403,7 +423,6 @@ class GroovyMenuUtils {
 		}
 
 
-
 		return $type;
 	}
 
@@ -557,17 +576,27 @@ class GroovyMenuUtils {
 
 
 	/**
-	 * @param bool $return_first
+	 * Retrieves all registered navigation menu locations and the menus assigned to them.
+	 *
+	 * @param bool $return_first return only first of them, or 'gm_primary' if exists.
+	 *
+	 * @param bool $loc_name_first return list with location name first as value.
 	 *
 	 * @return array|int|null|string
 	 */
-	public static function getNavMenuLocations( $return_first = false ) {
+	public static function getNavMenuLocations( $return_first = false, $loc_name_first = false ) {
 
 		$locations      = array();
 		$menu_locations = get_nav_menu_locations();
 
 		foreach ( $menu_locations as $location => $location_id ) {
-			$locations[ $location ] = wp_get_nav_menu_name( $location ) . ' (' . $location . ')';
+			if ( $loc_name_first ) {
+				$value = $location . ' (' . wp_get_nav_menu_name( $location ) . ')';
+			} else {
+				$value = wp_get_nav_menu_name( $location ) . ' (' . $location . ')';
+			}
+
+			$locations[ $location ] = $value;
 		}
 
 		if ( $return_first ) {
@@ -861,6 +890,10 @@ class GroovyMenuUtils {
 		return 'gm_auto_integrate_locations_';
 	}
 
+	public static function getIntegrationConfigOptionName() {
+		return 'gm_integrate_config_';
+	}
+
 	/**
 	 * Check if in auto-integration mode
 	 *
@@ -880,6 +913,26 @@ class GroovyMenuUtils {
 		$theme_name     = empty( $gm_supported_module['theme'] ) ? wp_get_theme()->get_template() : $gm_supported_module['theme'];
 		$integrate_data = get_option( self::getAutoIntegrationOptionName() . $theme_name );
 		$return_value   = ( ! empty( $integrate_data ) && $integrate_data ) ? true : false;
+
+		return $return_value;
+	}
+
+	/**
+	 * Check if in integration location selected
+	 *
+	 * @return bool
+	 */
+	public static function getSingleLocationIntegration() {
+		global $gm_supported_module;
+
+		$theme_name       = empty( $gm_supported_module['theme'] ) ? wp_get_theme()->get_template() : $gm_supported_module['theme'];
+		$integrate_config = get_option( self::getIntegrationConfigOptionName() . $theme_name );
+
+		$return_value = '';
+
+		if ( ! empty( $integrate_config ) && ! empty( $integrate_config['single_location'] ) ) {
+			$return_value = esc_attr( $integrate_config['single_location'] );
+		}
 
 		return $return_value;
 	}
@@ -1246,7 +1299,7 @@ class GroovyMenuUtils {
 				'url'           => 'https://updates.grooni.com/icon_packs/Simple-Line-Icons.zip',
 				'internal_name' => 'groovy-69018'
 			),
-			'socicon' => array(
+			'socicon'           => array(
 				'name'          => 'socicon',
 				'url'           => 'https://updates.grooni.com/icon_packs/socicon.zip',
 				'internal_name' => 'groovy-socicon'
@@ -1310,7 +1363,7 @@ class GroovyMenuUtils {
 		if ( $menu && ! is_wp_error( $menu ) && ! isset( $menu_items ) ) {
 			// DiS. GM cache condition.
 			if ( empty( $gm_nav_menu_items[ $menu->term_id ] ) ) {
-				$menu_items        = wp_get_nav_menu_items( $menu->term_id, array( 'update_post_term_cache' => false ) );
+				$menu_items                          = wp_get_nav_menu_items( $menu->term_id, array( 'update_post_term_cache' => false ) );
 				$gm_nav_menu_items[ $menu->term_id ] = $menu_items;
 				global $groovyMenuSettings;
 				$groovyMenuSettings['nav_menu_data']['data'][ $menu->term_id ] = $menu_items;
@@ -1482,6 +1535,59 @@ class GroovyMenuUtils {
 			</p>
 		</div>
 		<?php
+	}
+
+
+	/**
+	 * Short-circuit the wp_nav_menu() output if we have cached Groovy Menu markup ready.
+	 *
+	 * Returning a non-null value to the filter will short-circuit
+	 * wp_nav_menu(), echoing that value if $args->echo is true,
+	 * returning that value otherwise.
+	 *
+	 * @see wp_nav_menu()
+	 *
+	 * @param string|null $output Nav menu output to short-circuit with. Default null.
+	 * @param stdClass    $args   An object containing wp_nav_menu() arguments.
+	 *
+	 * @return string|null Nav menu output to short-circuit with. Passthrough (default null) if we don’t have a cached version.
+	 */
+	public static function add_groovy_menu_as_wp_nav_menu( $output, $args ) {
+
+		// Prevent recursion by call wp_nav_menu()
+		if ( ( isset( $args->groovy_menu ) && $args->groovy_menu ) || isset( $args->gm_pre_storage ) && $args->gm_pre_storage ) {
+			return $output;
+		}
+
+		$gm_html = '';
+
+		$saved_integration_location = self::getSingleLocationIntegration();
+
+		if ( ! $output && ! empty( $saved_integration_location ) && isset( $args->theme_location ) && esc_attr( $saved_integration_location ) === $args->theme_location ) {
+
+			$gm_ids = \GroovyMenu\PreStorage::get_instance()->search_ids_by_location( array( 'theme_location' => 'gm_primary' ) );
+
+			if ( ! empty( $gm_ids ) ) {
+				foreach ( $gm_ids as $gm_id ) {
+					$gm_data = \GroovyMenu\PreStorage::get_instance()->get_gm( $gm_id );
+					$gm_html .= $gm_data['gm_html'];
+
+				}
+			} else {
+				$gm_html .= groovy_menu( [
+					'gm_echo'        => false,
+					'theme_location' => 'gm_primary',
+				] );
+			}
+
+		}
+
+		if ( ! empty( $gm_html ) ) {
+			$output = $gm_html;
+		}
+
+		return $output;
+
 	}
 
 

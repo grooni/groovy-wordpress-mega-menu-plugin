@@ -2,10 +2,10 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Groovy Menu 1.0.7\n"
+"Project-Id-Version: Groovy Menu 1.0.9\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-25 17:37+0300\n"
-"PO-Revision-Date: 2019-10-25 17:37+0300\n"
+"POT-Creation-Date: 2019-11-21 18:43+0300\n"
+"PO-Revision-Date: 2019-11-21 18:44+0300\n"
 "Last-Translator: Di_Skyer <diskyer@gmail.com>\n"
 "Language-Team: Русский\n"
 "Language: ru_RU\n"
@@ -26,7 +26,7 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: assets\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 
-#: groovy-menu.php:329
+#: groovy-menu.php:331
 msgid "Groovy menu Primary"
 msgstr "Groovy основное меню"
 
@@ -107,19 +107,19 @@ msgstr ""
 msgid "Minimalistic menu open type"
 msgstr "Минимальное меню типа открытия"
 
-#: includes/config/Config.php:84 includes/config/Config.php:1663
+#: includes/config/Config.php:84 includes/config/Config.php:1675
 msgid "Offcanvas slide from the left"
 msgstr "Смещение канваса слева"
 
-#: includes/config/Config.php:85 includes/config/Config.php:1664
+#: includes/config/Config.php:85 includes/config/Config.php:1676
 msgid "Offcanvas slide from the right"
 msgstr "Смещение канваса справа"
 
-#: includes/config/Config.php:86 includes/config/Config.php:1665
+#: includes/config/Config.php:86 includes/config/Config.php:1677
 msgid "Slide menu and container from the left"
 msgstr "Выподающее слева"
 
-#: includes/config/Config.php:87 includes/config/Config.php:1666
+#: includes/config/Config.php:87 includes/config/Config.php:1678
 msgid "Slide menu and container from the right"
 msgstr "Выподающее справа"
 
@@ -234,6 +234,10 @@ msgstr ""
 "Примечание: переключатель будет отображаться, только если плагин WPML "
 "установлен и активирован."
 
+#: includes/config/Config.php:231
+msgid "Toggle switch to show/hide WPML language switcher"
+msgstr "Переключите, чтобы показать / скрыть мини-корзину WooCommerce"
+
 #: includes/config/Config.php:240
 msgid "WPML language switcher icon size"
 msgstr "Размер иконки переключателя языка WPML"
@@ -310,47 +314,47 @@ msgid "Top level link bottom border"
 msgstr "Нижняя граница ссылки верхнего уровня"
 
 #: includes/config/Config.php:329 includes/config/Config.php:428
-#: includes/config/Config.php:785 includes/config/Config.php:842
-#: includes/config/Config.php:890 includes/config/Config.php:1087
-#: includes/config/Config.php:1217 includes/config/Config.php:1237
+#: includes/config/Config.php:792 includes/config/Config.php:849
+#: includes/config/Config.php:897 includes/config/Config.php:1099
+#: includes/config/Config.php:1229 includes/config/Config.php:1249
 msgid "thickness"
 msgstr "толщина"
 
 #: includes/config/Config.php:337 includes/config/Config.php:418
-#: includes/config/Config.php:793 includes/config/Config.php:850
-#: includes/config/Config.php:898
+#: includes/config/Config.php:800 includes/config/Config.php:857
+#: includes/config/Config.php:905
 msgid "style"
 msgstr "стиль"
 
 #: includes/config/Config.php:340 includes/config/Config.php:423
-#: includes/config/Config.php:796 includes/config/Config.php:853
-#: includes/config/Config.php:901 includes/config/Config.php:1536
-#: includes/config/Config.php:1624
+#: includes/config/Config.php:803 includes/config/Config.php:860
+#: includes/config/Config.php:908 includes/config/Config.php:1548
+#: includes/config/Config.php:1636
 msgid "Dotted"
 msgstr "Точечная"
 
 #: includes/config/Config.php:341 includes/config/Config.php:422
-#: includes/config/Config.php:797 includes/config/Config.php:854
-#: includes/config/Config.php:902 includes/config/Config.php:1537
-#: includes/config/Config.php:1625
+#: includes/config/Config.php:804 includes/config/Config.php:861
+#: includes/config/Config.php:909 includes/config/Config.php:1549
+#: includes/config/Config.php:1637
 msgid "Dashed"
 msgstr "Штрих пункт."
 
 #: includes/config/Config.php:342 includes/config/Config.php:421
-#: includes/config/Config.php:798 includes/config/Config.php:855
-#: includes/config/Config.php:903 includes/config/Config.php:1535
-#: includes/config/Config.php:1623
+#: includes/config/Config.php:805 includes/config/Config.php:862
+#: includes/config/Config.php:910 includes/config/Config.php:1547
+#: includes/config/Config.php:1635
 msgid "Solid"
 msgstr "Cплошная"
 
 #: includes/config/Config.php:348 includes/config/Config.php:435
-#: includes/config/Config.php:728 includes/config/Config.php:804
-#: includes/config/Config.php:861 includes/config/Config.php:909
-#: includes/config/Config.php:1094 includes/config/Config.php:1224
-#: includes/config/Config.php:1244 includes/config/Config.php:1337
-#: includes/config/Config.php:1357 includes/config/Config.php:1390
-#: includes/config/Config.php:1410 includes/config/Config.php:1548
-#: includes/config/Config.php:1636
+#: includes/config/Config.php:735 includes/config/Config.php:811
+#: includes/config/Config.php:868 includes/config/Config.php:916
+#: includes/config/Config.php:1106 includes/config/Config.php:1236
+#: includes/config/Config.php:1256 includes/config/Config.php:1349
+#: includes/config/Config.php:1369 includes/config/Config.php:1402
+#: includes/config/Config.php:1422 includes/config/Config.php:1560
+#: includes/config/Config.php:1648
 msgid "color"
 msgstr "цвет"
 
@@ -371,9 +375,9 @@ msgid "Submenu hover style"
 msgstr "Стиль наведения для появлении подменю"
 
 #: includes/config/Config.php:397 includes/config/Config.php:407
-#: includes/config/Config.php:495 includes/config/Config.php:552
-#: includes/config/Config.php:1157 includes/config/Config.php:1738
-#: includes/config/Config.php:1778
+#: includes/config/Config.php:496 includes/config/Config.php:553
+#: includes/config/Config.php:1169 includes/config/Config.php:1750
+#: includes/config/Config.php:1790
 #: includes/modules/core/inc/GroovyMenuSingleMetaPreset.php:95
 #: includes/modules/core/inc/GroovyMenuSingleMetaPreset.php:109
 #: includes/modules/fields/inc/FieldTaxonomyPreset.php:22
@@ -421,94 +425,106 @@ msgstr "Цвет фона подменю"
 msgid "Submenu item hover background color"
 msgstr "Подменю цвет фона при наведении"
 
-#: includes/config/Config.php:480
+#: includes/config/Config.php:481
 msgid "Submenu text"
 msgstr "Текст подменю"
 
-#: includes/config/Config.php:484 includes/config/Config.php:540
-#: includes/config/Config.php:1147 includes/config/Config.php:1728
-#: includes/config/Config.php:1768
+#: includes/config/Config.php:485 includes/config/Config.php:541
+#: includes/config/Config.php:1159 includes/config/Config.php:1740
+#: includes/config/Config.php:1780
 msgid "Size"
 msgstr "Размер"
 
-#: includes/config/Config.php:491 includes/config/Config.php:548
-#: includes/config/Config.php:1154 includes/config/Config.php:1735
-#: includes/config/Config.php:1775
+#: includes/config/Config.php:492 includes/config/Config.php:549
+#: includes/config/Config.php:1166 includes/config/Config.php:1747
+#: includes/config/Config.php:1787
 msgid "Case"
 msgstr "Регистр"
 
-#: includes/config/Config.php:494 includes/config/Config.php:551
+#: includes/config/Config.php:495 includes/config/Config.php:552
 msgid "Select value"
 msgstr "Выбрать"
 
-#: includes/config/Config.php:496 includes/config/Config.php:553
-#: includes/config/Config.php:1158 includes/config/Config.php:1739
-#: includes/config/Config.php:1779
+#: includes/config/Config.php:497 includes/config/Config.php:554
+#: includes/config/Config.php:1170 includes/config/Config.php:1751
+#: includes/config/Config.php:1791
 msgid "Uppercase"
 msgstr "C Большой "
 
-#: includes/config/Config.php:497 includes/config/Config.php:554
-#: includes/config/Config.php:1159 includes/config/Config.php:1740
-#: includes/config/Config.php:1780
+#: includes/config/Config.php:498 includes/config/Config.php:555
+#: includes/config/Config.php:1171 includes/config/Config.php:1752
+#: includes/config/Config.php:1792
 msgid "Capitalize"
 msgstr "ЗАГЛАВНЫЕ"
 
-#: includes/config/Config.php:498 includes/config/Config.php:555
-#: includes/config/Config.php:1160 includes/config/Config.php:1741
-#: includes/config/Config.php:1781
+#: includes/config/Config.php:499 includes/config/Config.php:556
+#: includes/config/Config.php:1172 includes/config/Config.php:1753
+#: includes/config/Config.php:1793
 msgid "Lowercase"
 msgstr "строчные"
 
-#: includes/config/Config.php:503 includes/config/Config.php:561
-#: includes/config/Config.php:1165 includes/config/Config.php:1746
-#: includes/config/Config.php:1786
+#: includes/config/Config.php:504 includes/config/Config.php:562
+#: includes/config/Config.php:1177 includes/config/Config.php:1758
+#: includes/config/Config.php:1798
 msgid "Font variant"
 msgstr "Вариант шрифта"
 
-#: includes/config/Config.php:511 includes/config/Config.php:570
-#: includes/config/Config.php:1173
+#: includes/config/Config.php:512 includes/config/Config.php:571
+#: includes/config/Config.php:1185
 msgid "Subset"
 msgstr "Тип"
 
-#: includes/config/Config.php:519 includes/config/Config.php:579
-#: includes/config/Config.php:1181 includes/config/Config.php:1754
-#: includes/config/Config.php:1794
+#: includes/config/Config.php:520 includes/config/Config.php:580
+#: includes/config/Config.php:1193 includes/config/Config.php:1766
+#: includes/config/Config.php:1806
 msgid "Letter spacing"
 msgstr "Межбукв. раст."
 
-#: includes/config/Config.php:529
+#: includes/config/Config.php:530
 msgid "Submenu shadow"
 msgstr "Тень подменю"
 
-#: includes/config/Config.php:535
+#: includes/config/Config.php:536
 msgid "Mega menu title text"
 msgstr "Текст заголовка мегаменю"
 
-#: includes/config/Config.php:590
+#: includes/config/Config.php:591
+msgid "Show Mega Menu titles as regular menu items"
+msgstr "Показывать заголовки Мега Меню как обычные пункты меню"
+
+#: includes/config/Config.php:592
+msgid "For sub mega menu items."
+msgstr "Для элементов под Мега Меню."
+
+#: includes/config/Config.php:592
+msgid "Show with links and badges."
+msgstr "Показывать со сслыками и бейджами."
+
+#: includes/config/Config.php:597
 msgid "Mega menu title text color"
 msgstr "Цвет текста заголовка мегаменю"
 
-#: includes/config/Config.php:597
+#: includes/config/Config.php:604
 msgid "Mega menu canvas and container width"
 msgstr "Мега меню канвас и контейнер, ширина"
 
-#: includes/config/Config.php:600
+#: includes/config/Config.php:607
 msgid "Mega menu canvas and container boxed"
 msgstr "Мега меню канвас и контейнер фиксированы"
 
-#: includes/config/Config.php:601
+#: includes/config/Config.php:608
 msgid "Mega menu canvas wide - container boxed"
 msgstr "Мега меню канвас широкий - и контейнер фиксированный"
 
-#: includes/config/Config.php:602
+#: includes/config/Config.php:609
 msgid "Mega menu canvas and container wide"
 msgstr "Мега меню канвас и контейнер широкие"
 
-#: includes/config/Config.php:608
+#: includes/config/Config.php:615
 msgid "Mega menu canvas and container boxed width"
 msgstr "Мега меню канвас и контейнер фиксированы, ширина"
 
-#: includes/config/Config.php:617
+#: includes/config/Config.php:624
 msgid ""
 "Note that container will be 30px narrower than canvas. (canvas width by "
 "default is 1200px)."
@@ -516,536 +532,536 @@ msgstr ""
 "Обратите внимание, что контейнер будет на 30 пикселей уже, чем канвас . "
 "(ширина канваса по умолчанию составляет 1200 пикселей)."
 
-#: includes/config/Config.php:624
+#: includes/config/Config.php:631
 msgid "Mega menu canvas wide - container boxed width"
 msgstr "Мега меню канвас широкий - контейнер фиксированный, ширина"
 
-#: includes/config/Config.php:633
+#: includes/config/Config.php:640
 msgid "Default container width is 1200px."
 msgstr "Ширина контейнера по умолчанию составляет 1200 пикселей."
 
-#: includes/config/Config.php:640
+#: includes/config/Config.php:647
 msgid "Mega menu columns divider color"
 msgstr "Мега меню цвет разделителя колонок"
 
-#: includes/config/Config.php:647
-msgid "Show mega menu links bottom border"
-msgstr ""
+#: includes/config/Config.php:654
+msgid "Mega menu links bottom border"
+msgstr "Мена меню ссылки нижняя граница"
 
-#: includes/config/Config.php:653 includes/config/ConfigGlobal.php:18
+#: includes/config/Config.php:660 includes/config/ConfigGlobal.php:18
 msgid "Logo"
 msgstr "Логотип"
 
-#: includes/config/Config.php:658
+#: includes/config/Config.php:665
 msgid "Logo type"
 msgstr "Выберите тип логотипа "
 
-#: includes/config/Config.php:668
+#: includes/config/Config.php:675
 msgid "Logo height"
 msgstr "Высота логотипа"
 
-#: includes/config/Config.php:679
+#: includes/config/Config.php:686
 msgid "Mobile logo height"
 msgstr "Высота логотипа мобильной версии"
 
-#: includes/config/Config.php:687 includes/config/Config.php:1125
+#: includes/config/Config.php:694 includes/config/Config.php:1137
 msgid "Google font family"
 msgstr "Google шрифты"
 
-#: includes/config/Config.php:688
+#: includes/config/Config.php:695
 msgid "Choose preferred Google font family for logo."
 msgstr "Выберите предпочитаемое семейство шрифтов Google для логотипа."
 
-#: includes/config/Config.php:697
+#: includes/config/Config.php:704
 msgid "Text logo"
 msgstr "Текстовый логотип"
 
-#: includes/config/Config.php:702 includes/config/Config.php:1477
-#: includes/config/Config.php:1565
+#: includes/config/Config.php:709 includes/config/Config.php:1489
+#: includes/config/Config.php:1577
 msgid "font size"
 msgstr "размер шрифта"
 
-#: includes/config/Config.php:710
+#: includes/config/Config.php:717
 msgid "variant"
 msgstr "вариант"
 
-#: includes/config/Config.php:719
+#: includes/config/Config.php:726
 msgid "subset"
 msgstr "тип"
 
-#: includes/config/Config.php:735
+#: includes/config/Config.php:742
 msgid "hover color"
 msgstr "цвет наведения"
 
-#: includes/config/Config.php:745
+#: includes/config/Config.php:752
 msgid "Menu item preview"
 msgstr "Миниатюра пункта"
 
-#: includes/config/Config.php:750
+#: includes/config/Config.php:757
 #: includes/modules/core/inc/GroovyMenuSettings.php:734
 #: includes/modules/core/inc/GroovyMenuSettings.php:1184
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1123
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1973
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1133
+#: includes/modules/core/inc/GroovyMenuSettings15.php:2019
 #: template/PreviewModal.php:8
 msgid "Preview"
 msgstr "Предпросмотр"
 
-#: includes/config/Config.php:754 includes/config/Config.php:1350
-#: includes/config/Config.php:1403 includes/config/Config.php:1542
-#: includes/config/Config.php:1630
+#: includes/config/Config.php:761 includes/config/Config.php:1362
+#: includes/config/Config.php:1415 includes/config/Config.php:1554
+#: includes/config/Config.php:1642
 msgid "width"
 msgstr "ширина"
 
-#: includes/config/Config.php:762
+#: includes/config/Config.php:769
 msgid "height"
 msgstr "высота"
 
-#: includes/config/Config.php:773
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1493
+#: includes/config/Config.php:780
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1503
 msgid "Icon menu"
 msgstr "Иконочное меню"
 
-#: includes/config/Config.php:779 includes/config/Config.php:885
+#: includes/config/Config.php:786 includes/config/Config.php:892
 msgid "Side border"
 msgstr "Боковая граница"
 
-#: includes/config/Config.php:780
+#: includes/config/Config.php:787
 msgid "Set left/right side border of menu. Side depends on menu align"
 msgstr ""
 "Установите левую / правую границу меню. Сторона зависит от выравнивания меню"
 
-#: includes/config/Config.php:815
+#: includes/config/Config.php:822
 msgid "Top level icon size"
 msgstr "Размер иконки меню верхнего уровня"
 
-#: includes/config/Config.php:823
+#: includes/config/Config.php:830
 msgid "Top level icon active & hover background color"
 msgstr "Цвет активной иконки и цвет фона при наведении верхнего уровня"
 
-#: includes/config/Config.php:830
+#: includes/config/Config.php:837
 msgid "Top level icon active & hover color"
 msgstr "Цвет активной иконки и цвет наведения верхнего уровня"
 
-#: includes/config/Config.php:837
+#: includes/config/Config.php:844
 msgid "Top level items bottom border"
 msgstr "Верхний уровень элементов нижней границы"
 
-#: includes/config/Config.php:872
+#: includes/config/Config.php:879
 msgid "Top level link background color"
 msgstr "Цвет фона ссылки верхнего уровня"
 
-#: includes/config/Config.php:879
+#: includes/config/Config.php:886
 msgid "Sidebar menu"
 msgstr "Боковое меню"
 
-#: includes/config/Config.php:920
+#: includes/config/Config.php:927
 msgid "Minimalistic menu"
 msgstr "Минимальное меню"
 
-#: includes/config/Config.php:926 includes/config/Config.php:1010
+#: includes/config/Config.php:933 includes/config/Config.php:1022
 msgid "Top level menu background color"
 msgstr "Цвет фона меню верхнего уровня"
 
-#: includes/config/Config.php:933 includes/config/Config.php:938
+#: includes/config/Config.php:940 includes/config/Config.php:945
 msgid "Custom CSS"
 msgstr "Пользов-ский CSS"
 
-#: includes/config/Config.php:957 includes/config/Config.php:962
+#: includes/config/Config.php:969 includes/config/Config.php:974
 msgid "Custom JS"
 msgstr "Пользов-ский JS"
 
-#: includes/config/Config.php:975
+#: includes/config/Config.php:987
 msgid "Custom code"
 msgstr "Пользов-ский код"
 
-#: includes/config/Config.php:980
+#: includes/config/Config.php:992
 msgid "Custom CSS class"
 msgstr "Пользов-ский CSS класс"
 
-#: includes/config/Config.php:987
+#: includes/config/Config.php:999
 msgid "Styles"
 msgstr "Стили"
 
-#: includes/config/Config.php:992
+#: includes/config/Config.php:1004
 msgid "Hover styles"
 msgstr "Стили наведения"
 
-#: includes/config/Config.php:997
+#: includes/config/Config.php:1009
 msgid "Top level hover Style"
 msgstr "Стиль наведения верхнего уровня меню"
 
-#: includes/config/Config.php:1006 includes/config/Config.php:1074
+#: includes/config/Config.php:1018 includes/config/Config.php:1086
 msgid "Background"
 msgstr "Фон"
 
-#: includes/config/Config.php:1016
+#: includes/config/Config.php:1028
 msgid "Top level menu background Image"
 msgstr "Фоновое изображение меню верхнего уровня"
 
-#: includes/config/Config.php:1023
+#: includes/config/Config.php:1035
 msgid "Top level menu background image size"
 msgstr "Размер фоновое изображение меню верхнего уровня"
 
-#: includes/config/Config.php:1029
+#: includes/config/Config.php:1041
 msgid "Top level menu background"
 msgstr "Фон меню верхнего уровня"
 
-#: includes/config/Config.php:1033 includes/config/Config.php:1037
+#: includes/config/Config.php:1045 includes/config/Config.php:1049
 msgid "repeat"
 msgstr "повторение"
 
-#: includes/config/Config.php:1036
+#: includes/config/Config.php:1048
 msgid "no-repeat"
 msgstr "не повторять"
 
-#: includes/config/Config.php:1038
+#: includes/config/Config.php:1050
 msgid "repeat-x"
 msgstr "повторение-x"
 
-#: includes/config/Config.php:1039
+#: includes/config/Config.php:1051
 msgid "repeat-y"
 msgstr "повторение-н"
 
-#: includes/config/Config.php:1044
+#: includes/config/Config.php:1056
 msgid "attachment"
 msgstr "фиксация"
 
-#: includes/config/Config.php:1047
+#: includes/config/Config.php:1059
 msgid "fixed"
 msgstr "фиксир-ное"
 
-#: includes/config/Config.php:1048
+#: includes/config/Config.php:1060
 msgid "scroll"
 msgstr "прокрутка"
 
-#: includes/config/Config.php:1053
+#: includes/config/Config.php:1065
 msgid "position"
 msgstr "расположение"
 
-#: includes/config/Config.php:1056
+#: includes/config/Config.php:1068
 msgid "center center"
 msgstr "центр центр"
 
-#: includes/config/Config.php:1057
+#: includes/config/Config.php:1069
 msgid "top left"
 msgstr "сверху слева"
 
-#: includes/config/Config.php:1058
+#: includes/config/Config.php:1070
 msgid "top center"
 msgstr "сверху в центре"
 
-#: includes/config/Config.php:1059
+#: includes/config/Config.php:1071
 msgid "top right"
 msgstr "сверху справа"
 
-#: includes/config/Config.php:1060
+#: includes/config/Config.php:1072
 msgid "center left"
 msgstr "вцентре слева"
 
-#: includes/config/Config.php:1061
+#: includes/config/Config.php:1073
 msgid "center right"
 msgstr "в центре справа"
 
-#: includes/config/Config.php:1062
+#: includes/config/Config.php:1074
 msgid "bottom left"
 msgstr "внизу слева"
 
-#: includes/config/Config.php:1063
+#: includes/config/Config.php:1075
 msgid "bottom center"
 msgstr "снизу в центре"
 
-#: includes/config/Config.php:1064
+#: includes/config/Config.php:1076
 msgid "bottom right"
 msgstr "внизу справа"
 
-#: includes/config/Config.php:1069
+#: includes/config/Config.php:1081
 msgid "Cover background"
 msgstr "Фоновая обложка"
 
-#: includes/config/Config.php:1078
+#: includes/config/Config.php:1090
 msgid "Border"
 msgstr "Линия"
 
-#: includes/config/Config.php:1083
+#: includes/config/Config.php:1095
 msgid "Menu bottom border"
 msgstr "Нижняя граница меню"
 
-#: includes/config/Config.php:1104
+#: includes/config/Config.php:1116
 msgid "Colors"
 msgstr "Цвета"
 
-#: includes/config/Config.php:1108
+#: includes/config/Config.php:1120
 msgid "Top level link text color"
 msgstr "Цвет текста пунктов меню верхнего уровня"
 
-#: includes/config/Config.php:1114
+#: includes/config/Config.php:1126
 msgid "Top level hover and active link color"
 msgstr "Вверхнего меню - цвет наведения и цвет активной ссылки "
 
-#: includes/config/Config.php:1121 includes/config/Config.php:1719
+#: includes/config/Config.php:1133 includes/config/Config.php:1731
 msgid "Typography"
 msgstr "Шрифты"
 
-#: includes/config/Config.php:1126
+#: includes/config/Config.php:1138
 msgid "Choose preferred Google font family for menu."
 msgstr "Выберите предпочтительный шрифт для меню"
 
-#: includes/config/Config.php:1136
+#: includes/config/Config.php:1148
 msgid "Top level menu items gutter space"
 msgstr "Растояние между пунктами меню верхнего уровня"
 
-#: includes/config/Config.php:1138
+#: includes/config/Config.php:1150
 msgid "This value will be applied as padding to left and right of the item."
 msgstr "Это значение будет применено как отступ слева и справа от элемента."
 
-#: includes/config/Config.php:1143 includes/config/Config.php:1724
+#: includes/config/Config.php:1155 includes/config/Config.php:1736
 msgid "Top level text"
 msgstr "Текст верхнего уровня меню"
 
-#: includes/config/Config.php:1192
+#: includes/config/Config.php:1204
 msgid "Shadow"
 msgstr "Тень"
 
-#: includes/config/Config.php:1196
+#: includes/config/Config.php:1208
 msgid "Menu shadow"
 msgstr "Тень меню"
 
-#: includes/config/Config.php:1203 includes/config/ConfigGlobal.php:339
+#: includes/config/Config.php:1215 includes/config/ConfigGlobal.php:339
 #: includes/modules/fields/inc/FieldHeader.php:52
 msgid "Toolbar"
 msgstr "Тулбар"
 
-#: includes/config/Config.php:1208
+#: includes/config/Config.php:1220
 msgid "Hide toolbar on mobile devices"
 msgstr "Скрыть тулбар на мобильных"
 
-#: includes/config/Config.php:1213
+#: includes/config/Config.php:1225
 msgid "Toolbar top border"
 msgstr "Верхняя граница панели инструментов"
 
-#: includes/config/Config.php:1233
+#: includes/config/Config.php:1245
 msgid "Toolbar bottom border"
 msgstr "Нижняя граница панели инструментов"
 
-#: includes/config/Config.php:1253
+#: includes/config/Config.php:1265
 msgid "Toolbar background color"
 msgstr "Тулбар цвет фона"
 
-#: includes/config/Config.php:1259
+#: includes/config/Config.php:1271
 msgid "Toolbar additional information color"
 msgstr "Цвет панели дополнительной информации"
 
-#: includes/config/Config.php:1265
+#: includes/config/Config.php:1277
 msgid "WPML dropdown background color"
 msgstr "Цвет фона раскрывающегося списка WPML"
 
-#: includes/config/Config.php:1271
+#: includes/config/Config.php:1283
 msgid "Toolbar additional information font size"
 msgstr "Размер шрифта тулбара"
 
-#: includes/config/Config.php:1278
+#: includes/config/Config.php:1290
 msgid "Hide social icon link text on mobile devices"
 msgstr "Скрыть текст ссылки социальных сетей на мобильных устройствах"
 
-#: includes/config/Config.php:1283
+#: includes/config/Config.php:1295
 msgid "Toolbar social icon size"
 msgstr "Тулбар размер соц. иконок"
 
-#: includes/config/Config.php:1290
+#: includes/config/Config.php:1302
 msgid "Toolbar social icon color"
 msgstr "Тулбар цвет соц. иконок"
 
-#: includes/config/Config.php:1296
+#: includes/config/Config.php:1308
 msgid "Toolbar social icon hover color"
 msgstr "Тулбар цвет наведения иконок"
 
-#: includes/config/Config.php:1302
+#: includes/config/Config.php:1314
 msgid "Add left/right border to social icons"
 msgstr "Добавить левую / правую границу для социальных иконок"
 
-#: includes/config/Config.php:1309 includes/config/Config.php:1313
+#: includes/config/Config.php:1321 includes/config/Config.php:1325
 #: includes/config/ConfigGlobal.php:388
 msgid "Side icon"
 msgstr "Боковая иконка"
 
-#: includes/config/Config.php:1317 includes/config/Config.php:1370
+#: includes/config/Config.php:1329 includes/config/Config.php:1382
 msgid "size"
 msgstr "размер"
 
-#: includes/config/Config.php:1324 includes/config/Config.php:1377
+#: includes/config/Config.php:1336 includes/config/Config.php:1389
 msgid "padding area"
 msgstr "отступ"
 
-#: includes/config/Config.php:1331 includes/config/Config.php:1384
-#: includes/config/Config.php:1512 includes/config/Config.php:1600
+#: includes/config/Config.php:1343 includes/config/Config.php:1396
+#: includes/config/Config.php:1524 includes/config/Config.php:1612
 msgid "background color"
 msgstr "цвет фона"
 
-#: includes/config/Config.php:1346
+#: includes/config/Config.php:1358
 msgid "Side icon border"
 msgstr "Боковая икона граница"
 
-#: includes/config/Config.php:1366
+#: includes/config/Config.php:1378
 msgid "Side icon mobile"
 msgstr "Боковая иконка мобильное меню"
 
-#: includes/config/Config.php:1399
+#: includes/config/Config.php:1411
 msgid "Side icon mobile border"
 msgstr "Боковая иконка мобильное меню граница"
 
-#: includes/config/Config.php:1421
+#: includes/config/Config.php:1433
 msgid "Woo minicart"
 msgstr "Woo корзина"
 
-#: includes/config/Config.php:1425
+#: includes/config/Config.php:1437
 msgid "WooCommerce minicart count"
 msgstr "Woo счетчик товара в корзине"
 
-#: includes/config/Config.php:1429
+#: includes/config/Config.php:1441
 msgid "Shape"
 msgstr ""
 
-#: includes/config/Config.php:1432
+#: includes/config/Config.php:1444
 msgid "Drop"
 msgstr "Сбросить"
 
-#: includes/config/Config.php:1433
+#: includes/config/Config.php:1445
 msgid "Circle"
 msgstr "Круг"
 
-#: includes/config/Config.php:1434
+#: includes/config/Config.php:1446
 msgid "Square"
 msgstr ""
 
-#: includes/config/Config.php:1439 includes/config/Config.php:1458
+#: includes/config/Config.php:1451 includes/config/Config.php:1470
 msgid "Background color"
 msgstr "Цвет фона"
 
-#: includes/config/Config.php:1445 includes/config/Config.php:1464
+#: includes/config/Config.php:1457 includes/config/Config.php:1476
 msgid "Text color"
 msgstr "Цвет текста"
 
-#: includes/config/Config.php:1454
+#: includes/config/Config.php:1466
 msgid "WooCommerce minicart dropdown"
 msgstr "Woo корзина выподающее меню"
 
-#: includes/config/Config.php:1473
+#: includes/config/Config.php:1485
 msgid "Checkout button"
 msgstr "Кнопка заказа"
 
-#: includes/config/Config.php:1484 includes/config/Config.php:1572
+#: includes/config/Config.php:1496 includes/config/Config.php:1584
 msgid "font weight"
 msgstr "толщина шрифта"
 
-#: includes/config/Config.php:1488 includes/config/Config.php:1576
+#: includes/config/Config.php:1500 includes/config/Config.php:1588
 msgid "100"
 msgstr ""
 
-#: includes/config/Config.php:1489 includes/config/Config.php:1577
+#: includes/config/Config.php:1501 includes/config/Config.php:1589
 msgid "300 (Light)"
 msgstr "300 (Тонкий)"
 
-#: includes/config/Config.php:1490 includes/config/Config.php:1578
+#: includes/config/Config.php:1502 includes/config/Config.php:1590
 msgid "400 (Normal)"
 msgstr "400 (Норм)"
 
-#: includes/config/Config.php:1491 includes/config/Config.php:1579
+#: includes/config/Config.php:1503 includes/config/Config.php:1591
 msgid "500"
 msgstr ""
 
-#: includes/config/Config.php:1492 includes/config/Config.php:1580
+#: includes/config/Config.php:1504 includes/config/Config.php:1592
 msgid "600"
 msgstr ""
 
-#: includes/config/Config.php:1493 includes/config/Config.php:1581
+#: includes/config/Config.php:1505 includes/config/Config.php:1593
 msgid "700 (Bold)"
 msgstr "700 (Жир)"
 
-#: includes/config/Config.php:1494 includes/config/Config.php:1582
+#: includes/config/Config.php:1506 includes/config/Config.php:1594
 msgid "800"
 msgstr ""
 
-#: includes/config/Config.php:1495 includes/config/Config.php:1583
+#: includes/config/Config.php:1507 includes/config/Config.php:1595
 msgid "900"
 msgstr ""
 
-#: includes/config/Config.php:1500 includes/config/Config.php:1588
+#: includes/config/Config.php:1512 includes/config/Config.php:1600
 msgid "text color"
 msgstr "цвет текста"
 
-#: includes/config/Config.php:1506 includes/config/Config.php:1594
+#: includes/config/Config.php:1518 includes/config/Config.php:1606
 msgid "text color on hover"
 msgstr "цвет текста при наведении"
 
-#: includes/config/Config.php:1518 includes/config/Config.php:1606
+#: includes/config/Config.php:1530 includes/config/Config.php:1618
 msgid "background color on hover"
 msgstr "цвет фона при наведении"
 
-#: includes/config/Config.php:1527
+#: includes/config/Config.php:1539
 msgid "Checkout button border"
 msgstr "Кнопка заказа границы"
 
-#: includes/config/Config.php:1531 includes/config/Config.php:1619
+#: includes/config/Config.php:1543 includes/config/Config.php:1631
 msgid "Border style"
 msgstr "Стиль границ"
 
-#: includes/config/Config.php:1534 includes/config/Config.php:1622
+#: includes/config/Config.php:1546 includes/config/Config.php:1634
 msgid "None"
 msgstr ""
 
-#: includes/config/Config.php:1553 includes/config/Config.php:1641
+#: includes/config/Config.php:1565 includes/config/Config.php:1653
 msgid "color on hover"
 msgstr "цвет наведения"
 
-#: includes/config/Config.php:1561
+#: includes/config/Config.php:1573
 msgid "View cart button"
 msgstr "Посмотреть кнопку корзины"
 
-#: includes/config/Config.php:1615
+#: includes/config/Config.php:1627
 msgid "View cart button border"
 msgstr "Посмотреть границу кнопки корзины"
 
-#: includes/config/Config.php:1651
+#: includes/config/Config.php:1663
 msgid "Mobile menu"
 msgstr "Моб. меню"
 
-#: includes/config/Config.php:1655
+#: includes/config/Config.php:1667
 msgid "Mobile options"
 msgstr "Мобильные опции"
 
-#: includes/config/Config.php:1660
+#: includes/config/Config.php:1672
 msgid "Mobile navigation drawer open type"
 msgstr "Мобильнаое меню тип открытия"
 
-#: includes/config/Config.php:1671
+#: includes/config/Config.php:1683
 msgid "Mobile navigation drawer background color"
 msgstr "Мобильное меню цвет фона "
 
-#: includes/config/Config.php:1677
+#: includes/config/Config.php:1689
 msgid "Mobile navigation drawer text color"
 msgstr "Мобильная меню цвет фона "
 
-#: includes/config/Config.php:1683
+#: includes/config/Config.php:1695
 msgid "Mobile navigation drawer text hover and current skin color"
 msgstr "Мобильное меню, цвет наведения"
 
-#: includes/config/Config.php:1689
+#: includes/config/Config.php:1701
 msgid "Mobile navigation menu item vertical padding"
 msgstr "Мобильное меню, вертикальный отступ"
 
-#: includes/config/Config.php:1690
+#: includes/config/Config.php:1702
 msgid "This value will applied as padding to top and bottom of the item"
 msgstr "Это значение будет применено как отступ сверху и снизу пункта"
 
-#: includes/config/Config.php:1697
+#: includes/config/Config.php:1709
 msgid "Mobile navigation drawer width"
 msgstr "Мобильное меню, ширина"
 
-#: includes/config/Config.php:1704
+#: includes/config/Config.php:1716
 msgid "Mobile version switch"
 msgstr "Переключение на мобильное меню "
 
-#: includes/config/Config.php:1705
+#: includes/config/Config.php:1717
 msgid ""
 "You can change switch to mobile breakpoint using this option. "
 "(default:1023px)."
@@ -1053,11 +1069,11 @@ msgstr ""
 "Вы можете установить значение появления мобильного меню. (По умолчанию: "
 "1023px)."
 
-#: includes/config/Config.php:1712
+#: includes/config/Config.php:1724
 msgid "Mobile header height"
 msgstr "Мобильное меню, высота шапки"
 
-#: includes/config/Config.php:1764
+#: includes/config/Config.php:1776
 msgid "Sublevel text"
 msgstr "Текст подуровня"
 
@@ -1517,7 +1533,7 @@ msgstr "Доступны миграции"
 #: includes/modules/core/inc/GroovyMenuCategoryPreset.php:38
 #: includes/modules/core/inc/GroovyMenuCategoryPreset.php:51
 #: includes/modules/core/inc/GroovyMenuSettings.php:119
-#: includes/modules/core/inc/GroovyMenuSettings15.php:327
+#: includes/modules/core/inc/GroovyMenuSettings15.php:337
 msgid "Groovy Menu"
 msgstr "Groovy Menu"
 
@@ -1538,127 +1554,127 @@ msgstr "Меню навигации (из меню «Внешний вид»> «
 
 #: includes/modules/core/inc/GroovyMenuIcons.php:9
 #: includes/modules/fields/inc/FieldIcon.php:22
-#: includes/modules/walkers/inc/AdminWalker.php:673
-#: includes/modules/walkers/inc/AdminWalker.php:899
+#: includes/modules/walkers/inc/AdminWalker.php:679
+#: includes/modules/walkers/inc/AdminWalker.php:905
 msgid "Select icon"
 msgstr "Выбрать иконку"
 
 #: includes/modules/core/inc/GroovyMenuIcons.php:10
 #: includes/modules/core/inc/GroovyMenuSettings.php:1087
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1892
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1938
 msgid "Close"
 msgstr "Закрыть"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:222
 #: includes/modules/core/inc/GroovyMenuSettings.php:223
-#: includes/modules/core/inc/GroovyMenuSettings15.php:487
-#: includes/modules/core/inc/GroovyMenuSettings15.php:488
+#: includes/modules/core/inc/GroovyMenuSettings15.php:497
+#: includes/modules/core/inc/GroovyMenuSettings15.php:498
 #: includes/modules/core/inc/GroovyMenuSingleMetaPreset.php:67
 msgid "Groovy menu"
 msgstr "Groovy Menu"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:233
 #: includes/modules/core/inc/GroovyMenuSettings.php:234
-#: includes/modules/core/inc/GroovyMenuSettings15.php:508
-#: includes/modules/core/inc/GroovyMenuSettings15.php:509
+#: includes/modules/core/inc/GroovyMenuSettings15.php:518
 #: includes/modules/core/inc/GroovyMenuSettings15.php:519
-#: includes/modules/core/inc/GroovyMenuSettings15.php:520
+#: includes/modules/core/inc/GroovyMenuSettings15.php:529
+#: includes/modules/core/inc/GroovyMenuSettings15.php:530
 msgid "Dashboard"
 msgstr "Приборная панель"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:243
 #: includes/modules/core/inc/GroovyMenuSettings.php:244
-#: includes/modules/core/inc/GroovyMenuSettings15.php:531
-#: includes/modules/core/inc/GroovyMenuSettings15.php:532
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1381
+#: includes/modules/core/inc/GroovyMenuSettings15.php:541
+#: includes/modules/core/inc/GroovyMenuSettings15.php:542
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1391
 msgid "Integration"
 msgstr "Интеграция"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:404
 #: includes/modules/core/inc/GroovyMenuSettings.php:1243
 #: includes/modules/core/inc/GroovyMenuSettings.php:1371
-#: includes/modules/core/inc/GroovyMenuSettings15.php:738
-#: includes/modules/core/inc/GroovyMenuSettings15.php:2051
-#: includes/modules/core/inc/GroovyMenuSettings15.php:2197
+#: includes/modules/core/inc/GroovyMenuSettings15.php:748
+#: includes/modules/core/inc/GroovyMenuSettings15.php:2097
+#: includes/modules/core/inc/GroovyMenuSettings15.php:2303
 msgid "Fail. Nonce field outdated. Try reload page."
 msgstr ""
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:409
-#: includes/modules/core/inc/GroovyMenuSettings15.php:743
+#: includes/modules/core/inc/GroovyMenuSettings15.php:753
 msgid "Fail. Need more Capabilities."
 msgstr ""
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:444
-#: includes/modules/core/inc/GroovyMenuSettings15.php:778
-#: includes/modules/core/inc/GroovyMenuUtils.php:1168
+#: includes/modules/core/inc/GroovyMenuSettings15.php:788
+#: includes/modules/core/inc/GroovyMenuUtils.php:1221
 msgid "Wasn't able to work with Zip Archive. Missing php-zip extension."
 msgstr "Не смог обработать Zip архив. Отсутствует расширение php-zip."
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:453
 #: includes/modules/core/inc/GroovyMenuSettings.php:1351
-#: includes/modules/core/inc/GroovyMenuSettings15.php:787
-#: includes/modules/core/inc/GroovyMenuSettings15.php:2177
+#: includes/modules/core/inc/GroovyMenuSettings15.php:797
+#: includes/modules/core/inc/GroovyMenuSettings15.php:2230
 msgid "Saved"
 msgstr "Сохранен"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:514
-#: includes/modules/core/inc/GroovyMenuSettings15.php:863
+#: includes/modules/core/inc/GroovyMenuSettings15.php:873
 msgid "Error. When get uploaded file. Or wrong file format."
 msgstr "Ошибка. Неверный формат файла."
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:642
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1028
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1038
 msgid "Global settings"
 msgstr "Настройки"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:644
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1030
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1040
 msgid "Upload logo here"
 msgstr "Загрузить лого"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:653
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1040
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1387
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1050
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1397
 msgid "Need help?"
 msgstr "Застряли?"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:679
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1066
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1076
 msgid "Preset name saved"
 msgstr "Имя сохранено"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:682
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1069
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1079
 msgid "Menu presets"
 msgstr "Пресеты"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:722
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1110
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1120
 msgid "Rename"
 msgstr "Переименовать"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:728
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1117
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1127
 msgid "Set as default"
 msgstr "Уст. по умолч."
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:752
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1144
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1154
 msgid "Set thumbnail"
 msgstr "Доб. табнейл"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:758
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1152
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1162
 msgid "Unset thumbnail"
 msgstr "Убрать табнейл"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:765
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1170
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1180
 msgid "Delete"
 msgstr "Удалить"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:788
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1215
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1225
 msgid "IMPORT MENU PRESET"
 msgstr "ИМПОРТ ПРЕСЕТА МЕНЮ"
 
@@ -1667,12 +1683,12 @@ msgid "Available in the PRO version"
 msgstr "Доступна в PRO версии"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:818
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1249
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1259
 msgid "Add preset from library"
 msgstr "Добавить из библиотеки"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:821
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1253
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1263
 msgid ""
 "To enable presets from the online library, please enable the option in "
 "\"Global settings > Tools > Allow fetching presets from online library\""
@@ -1681,39 +1697,40 @@ msgstr ""
 "настройки > Инструменты > Разрешить выбор пресетов из онлайн-библиотеки\""
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:827
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1191
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1218
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1260
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1201
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1228
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1270
 msgid "Available in the"
 msgstr "Доступна в"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:829
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1192
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1219
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1262
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1202
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1229
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1272
 msgid "PRO version"
 msgstr "PRO версии"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:917
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1610
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1711
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1620
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1723
 msgid "Automatic integration"
 msgstr "Автоматическая интеграция"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:923
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1717
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1729
 msgid "Enable automatic integration"
 msgstr "Включить автоматическую интеграцию"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:926
 #: includes/modules/core/inc/GroovyMenuSettings.php:1085
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1720
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1890
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1732
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1770
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1936
 msgid "Save changes"
 msgstr "Сохранить изменения"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:930
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1724
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1736
 msgid ""
 "If enabled, the Groovy menu markup will be displayed after &lt;body&gt; html "
 "tag."
@@ -1722,13 +1739,13 @@ msgstr ""
 "body&gt;."
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:935
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1619
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1729
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1629
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1775
 msgid "Manual integration"
 msgstr "Ручная интеграция"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:936
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1730
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1776
 msgid ""
 "Attention! We strongly recommend that you insert the following code into a "
 "child theme. Therefore, the changes you make will not affect the files of "
@@ -1739,7 +1756,7 @@ msgstr ""
 "темы."
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:937
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1731
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1777
 msgid ""
 "You can display the Groovy menu directly in the template by adding the "
 "following code to the template:"
@@ -1748,7 +1765,7 @@ msgstr ""
 "следующий код в шаблон:"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:943
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1737
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1783
 msgid ""
 "The place where the code should be inserted depends on the theme. The most "
 "common place is the"
@@ -1757,12 +1774,12 @@ msgstr ""
 "распространенным местом является"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:952
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1746
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1792
 msgid "Integration through Child Theme"
 msgstr "Интеграция с помощью дочерней темы"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:954
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1748
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1794
 msgid ""
 "According to the information from the Groovy Menu integration database, your "
 "current theme fully supports integration of Groovy Menu."
@@ -1771,7 +1788,7 @@ msgstr ""
 "полностью поддерживает интеграцию Groovy Menu."
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:963
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1757
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1803
 msgid ""
 "The currently activated theme is in the Groovy Menu integration database. "
 "That means you do not have to manually integrate the Groovy menu and find "
@@ -1784,7 +1801,7 @@ msgstr ""
 "и подготовили решение в дочерней теме"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:965
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1760
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1806
 msgid ""
 "For the correct operation of the plugin, you should create a Child theme or "
 "add to existing one the following code to functions.php."
@@ -1793,7 +1810,7 @@ msgstr ""
 "существующей следующий код в functions.php."
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:968
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1763
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1809
 msgid ""
 "For the correct operation of the plugin, you should create a Child theme "
 "with header.php and add the support code to it. Following code just example. "
@@ -1804,7 +1821,7 @@ msgstr ""
 "скачать нашу дочернюю тему ниже."
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:976
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1771
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1817
 msgid ""
 "Or we suggest downloading already prepared Child theme from the following "
 "link"
@@ -1812,7 +1829,7 @@ msgstr ""
 "Или предлагаем скачать уже подготовленную дочернюю тему по следующей ссылке"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:987
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1784
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1830
 msgid "Support request"
 msgstr "Запрос в поддержку"
 
@@ -1826,20 +1843,20 @@ msgstr ""
 "пожалуйста, создайте заявку на нашем %s"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:990
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1787
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1833
 #: includes/modules/debugpage/inc/DebugPage.php:180
 msgid "Support Portal"
 msgstr "Сайт поддержки"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:1049
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1854
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1900
 msgid "Restore <br>Defaults"
 msgstr "Востан-ть <br>по умолч."
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:1190
 #: includes/modules/core/inc/GroovyMenuSettings.php:1291
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1980
-#: includes/modules/core/inc/GroovyMenuSettings15.php:2117
+#: includes/modules/core/inc/GroovyMenuSettings15.php:2026
+#: includes/modules/core/inc/GroovyMenuSettings15.php:2163
 msgid "Restore"
 msgstr "Востановить"
 
@@ -1848,54 +1865,55 @@ msgstr "Востановить"
 #: includes/modules/core/inc/GroovyMenuSettings.php:1288
 #: includes/modules/core/inc/GroovyMenuSettings.php:1347
 #: includes/modules/core/inc/GroovyMenuSettings.php:1386
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1985
-#: includes/modules/core/inc/GroovyMenuSettings15.php:2110
-#: includes/modules/core/inc/GroovyMenuSettings15.php:2114
-#: includes/modules/core/inc/GroovyMenuSettings15.php:2173
-#: includes/modules/core/inc/GroovyMenuSettings15.php:2216
+#: includes/modules/core/inc/GroovyMenuSettings15.php:2031
+#: includes/modules/core/inc/GroovyMenuSettings15.php:2156
+#: includes/modules/core/inc/GroovyMenuSettings15.php:2160
+#: includes/modules/core/inc/GroovyMenuSettings15.php:2226
+#: includes/modules/core/inc/GroovyMenuSettings15.php:2322
+#: includes/modules/core/inc/GroovyMenuSettings15.php:2356
 msgid "Save"
 msgstr "Сохранить"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:1225
 #: includes/modules/core/inc/GroovyMenuSettings.php:1260
 #: includes/modules/core/inc/GroovyMenuSettings.php:1336
-#: includes/modules/core/inc/GroovyMenuSettings15.php:2032
-#: includes/modules/core/inc/GroovyMenuSettings15.php:2080
-#: includes/modules/core/inc/GroovyMenuSettings15.php:2166
+#: includes/modules/core/inc/GroovyMenuSettings15.php:2078
+#: includes/modules/core/inc/GroovyMenuSettings15.php:2126
+#: includes/modules/core/inc/GroovyMenuSettings15.php:2212
 msgid "Error. Missing id of the current menu"
 msgstr "Ошибка. Отсутствует идентификатор текущего меню"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:1252
-#: includes/modules/core/inc/GroovyMenuSettings15.php:2072
+#: includes/modules/core/inc/GroovyMenuSettings15.php:2118
 msgid "Error. Bad form data"
 msgstr "Ошибка. Плохая форма данные"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:1305
-#: includes/modules/core/inc/GroovyMenuSettings15.php:2131
+#: includes/modules/core/inc/GroovyMenuSettings15.php:2177
 msgid "Error. Wrong form data for save"
 msgstr "Ошибка. Неправильные данные формы для сохранения"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:1326
-#: includes/modules/core/inc/GroovyMenuSettings15.php:2156
+#: includes/modules/core/inc/GroovyMenuSettings15.php:2202
 msgid "Error. Bad style data"
 msgstr "Ошибка. Плохой стиль данных "
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:1331
-#: includes/modules/core/inc/GroovyMenuSettings15.php:2161
+#: includes/modules/core/inc/GroovyMenuSettings15.php:2207
 msgid "Error. Missing direction of the current menu"
 msgstr "Ошибка. Отсутствует направление текущего меню"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:1354
-#: includes/modules/core/inc/GroovyMenuSettings15.php:2180
+#: includes/modules/core/inc/GroovyMenuSettings15.php:2233
 msgid "Current section restored to default"
 msgstr "Текущий раздел восстановлен по умолчанию"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:1357
-#: includes/modules/core/inc/GroovyMenuSettings15.php:2183
+#: includes/modules/core/inc/GroovyMenuSettings15.php:2236
 msgid "All Settings restored to default"
 msgstr "Все настройки востановлены по умолчанию"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:146
+#: includes/modules/core/inc/GroovyMenuSettings15.php:156
 #, php-format
 msgid ""
 "You need to update %s. There are major improvements related to Groovy Menu "
@@ -1904,15 +1922,15 @@ msgstr ""
 "You need to update %s. There are major improvements related to Groovy Menu "
 "settings."
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:146
+#: includes/modules/core/inc/GroovyMenuSettings15.php:156
 msgid "Crane theme"
 msgstr "Crane тема"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:154
+#: includes/modules/core/inc/GroovyMenuSettings15.php:164
 msgid "Dismiss this notice"
 msgstr "Закрыть это уведомление"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:167
+#: includes/modules/core/inc/GroovyMenuSettings15.php:177
 msgid ""
 "The theme or another plugin overrides the visibility of the Groovy menu "
 "settings. To display the Groovy menus settings, please click on the button"
@@ -1920,11 +1938,11 @@ msgstr ""
 "Тема или другой плагин отменяет видимость настроек меню Groovy. Для "
 "отображения настроек меню Groovy, пожалуйста, нажмите на кнопку"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:169
+#: includes/modules/core/inc/GroovyMenuSettings15.php:179
 msgid "Show Groovy Menu settings"
 msgstr "Показать настройки Groovy Menu "
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:181
+#: includes/modules/core/inc/GroovyMenuSettings15.php:191
 msgid ""
 "Groovy menu settings are currently displayed. To display the settings from a "
 "theme or another plugin, please click on the button"
@@ -1932,80 +1950,80 @@ msgstr ""
 "Настройки Groovy меню в настоящее время отображаются. Чтобы отобразить "
 "настройки из темы или другого плагина, пожалуйста, нажмите на кнопку"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:184
+#: includes/modules/core/inc/GroovyMenuSettings15.php:194
 msgid "Show Theme/plugin settings"
 msgstr "Показать настройки темы / плагина"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:197
+#: includes/modules/core/inc/GroovyMenuSettings15.php:207
 msgid "Error. Nonce field outdated. Try reload page."
 msgstr ""
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:207
+#: includes/modules/core/inc/GroovyMenuSettings15.php:217
 msgid "Error. Undefined post param \"do\""
 msgstr "Ошибка. Неопределенный пост парам. \"до\""
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:225
+#: includes/modules/core/inc/GroovyMenuSettings15.php:235
 msgid "Setting changed"
 msgstr "Настройки изменены"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:302
+#: includes/modules/core/inc/GroovyMenuSettings15.php:312
 msgid "The changes you made will be lost if you navigate away from this page."
 msgstr ""
 "Внесенные вами изменения будут потеряны, если вы уйдете с этой страницы."
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:381
+#: includes/modules/core/inc/GroovyMenuSettings15.php:391
 msgid "Menu Blocks"
 msgstr "Блоки меню"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:500
-#: includes/modules/core/inc/GroovyMenuSettings15.php:501
+#: includes/modules/core/inc/GroovyMenuSettings15.php:510
+#: includes/modules/core/inc/GroovyMenuSettings15.php:511
 msgid "Welcome"
 msgstr "Добро пожаловать!"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:542
-#: includes/modules/core/inc/GroovyMenuSettings15.php:543
+#: includes/modules/core/inc/GroovyMenuSettings15.php:552
+#: includes/modules/core/inc/GroovyMenuSettings15.php:553
 msgid "Menus"
 msgstr "Структура меню"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:550
-#: includes/modules/core/inc/GroovyMenuSettings15.php:551
+#: includes/modules/core/inc/GroovyMenuSettings15.php:560
+#: includes/modules/core/inc/GroovyMenuSettings15.php:561
 msgid "Premium"
 msgstr "Перейти на Pro"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1160
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1170
 #, php-format
 msgid "%d uses"
 msgstr "%d исп."
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1189
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1199
 msgid "CREATE NEW PRESET"
 msgstr "СОЗДАТЬ НОВЫЙ ПРЕСЕТ"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1280
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1290
 msgid "FREE VS Premium"
 msgstr "Бесплатная VS PRO"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1281
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1291
 msgid "Compare both plugins features"
 msgstr "Сравните возможности обоих плагинов"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1349
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1359
 msgid "free version"
 msgstr "бесплатная версия"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1352
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1362
 msgid "Enjoying GROOVY?"
 msgstr "Понравился продукт?"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1354
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1364
 msgid "Why not leave a review on WordPress.org? We'd really appreciate it."
 msgstr "Почему бы не оставить отзыв на WordPress.org? Мы были бы благодарны!"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1360
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1370
 msgid "Groovy Mega Menu!"
 msgstr "Груви Мега Меню!"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1361
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1371
 msgid ""
 "Thank you for choosing our plugin! Add an awesome mega menu on your site. Is "
 "an easy to customize, just need to upload your <br> logo and fit your own "
@@ -2015,52 +2033,52 @@ msgstr ""
 "настроить, просто нужно загрузить свой <br>\n"
 "логотип и настроить цвета, шрифты и размеры"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1369
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1379
 msgid "First Steps"
 msgstr "С чего начать?"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1370
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1380
 msgid "To display the menu on the site, you need to add"
 msgstr "Для отображения меню необходимо добавить"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1371
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1381
 msgid "menu items"
 msgstr "пункты меню"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1372
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1382
 msgid "do the"
 msgstr "сделать"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1373
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1383
 msgid "integration"
 msgstr "интеграцию"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1373
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1391
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1383
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1401
 msgid "and"
 msgstr "и"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1374
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1384
 msgid "upload the logo"
 msgstr "загрузить лого"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1374
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1384
 msgid "And"
 msgstr "И"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1375
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1385
 msgid "customize"
 msgstr "настроить"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1376
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1386
 msgid "the menu design for your taste"
 msgstr "меню под свои потребности"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1378
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1388
 msgid "dashboard"
 msgstr "Приборная панель"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1382
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1392
 msgid ""
 "The automatic integration option is the easiest and in most cases the "
 "working way to implement Groovy Menu on your website..."
@@ -2068,154 +2086,207 @@ msgstr ""
 "Авто интеграция - самый простой, и в большинстве случаев, рабочий способ "
 "внедрения Groovy Menu на вашем веб-сайте ..."
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1384
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1394
 msgid "READ MORE"
 msgstr "ПОДРОБНЕЕ"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1389
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1399
 msgid "Our online"
 msgstr "Наша онлайн"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1390
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1400
 msgid "documentation"
 msgstr "документация"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1392
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1402
 msgid "video tutorials"
 msgstr "видео уроки"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1393
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1403
 msgid ""
 "consist of a lot of the most important information about the plugin settings."
 msgstr "состоит из множества самой важной информации о настройках плагина."
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1397
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1407
 msgid "MANUAL"
 msgstr "РУКОВОДСТВО"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1399
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1409
 msgid "VIDEO"
 msgstr "ВИДЕО УРОКИ"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1405
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1415
 msgid "Video"
 msgstr "Видео"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1406
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1416
 msgid "Tutorials"
 msgstr "Уроки"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1439
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1449
 msgid "View all tutorials"
 msgstr "Посмотреть все уроки"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1443
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1453
 msgid "Free version vs"
 msgstr "Бесплатная vs"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1444
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1452
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1454
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1462
 msgid "PREMIUM"
 msgstr "Groovy PRO"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1445
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1455
 msgid "Comparision table"
 msgstr "Сравнительная таблица"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1448
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1458
 msgid "FEATURE LIST"
 msgstr "СПИСОК ВОЗМОЖНОСТЕЙ"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1450
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1460
 msgid "FREE PLUGIN"
 msgstr "БЕСПЛАТНЫЙ ПЛАГИН"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1456
-#: includes/modules/walkers/inc/AdminWalker.php:1078
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1466
+#: includes/modules/walkers/inc/AdminWalker.php:1084
 msgid "Mega menu"
 msgstr "Мега меню"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1466
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1476
 msgid "Mega menu blocks"
 msgstr "Мега меню блоки"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1475
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1485
 msgid "Sticky menu"
 msgstr "Стики меню"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1484
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1494
 msgid "Vertical menu"
 msgstr "Вертикальное меню"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1502
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1512
 msgid "Minimal menu"
 msgstr "Минимальное меню"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1511
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1521
 msgid "Hovers"
 msgstr "Стили наведения (ховеры)"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1514
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1524
 msgid "Only 2 hover types"
 msgstr "Только 2 типа"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1520
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1530
 msgid "Logotypes"
 msgstr "Логотипы"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1523
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1533
 msgid "Only 1 logo + mobile logo"
 msgstr "Только 1 лого + моб. лого"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1529
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1539
 msgid "Online presets library"
 msgstr "Онлайн библиотека пресетов"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1538
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1548
 msgid "Different menus types on the one site"
 msgstr "Различные типы меню на одном сайте"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1547
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1557
 msgid "Export/import of settings"
 msgstr "Экспорт / импорт настроек"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1556
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1566
 msgid "Badges"
 msgstr "Бейджи"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1565
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1575
 msgid "WooCommerce integration"
 msgstr "Интеграция  с WooCommerce "
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1574
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1584
 msgid "Google fonts"
 msgstr "Google шрифты"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1583
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1593
 msgid "Search feature"
 msgstr "Функция поиска"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1592
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1602
 msgid "Custom icons"
 msgstr "Пользов-ские иконки"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1601
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1611
 msgid "Premium support"
 msgstr "Персональная поддержка"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1628
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1638
 msgid "Extended license"
 msgstr "Расширенная лицензия"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1637
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1647
 msgid "Set specific menu for the taxonomies"
 msgstr "Установить специальное(ые) меню для таксономий"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1648
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1658
 msgid "UPGRADE TO PRO"
 msgstr "ОБНОВИТЬ ДО PRO"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:1786
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1713
+msgid "Manage Locations"
+msgstr "Управление Локациями"
+
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1740
+msgid ""
+"Choose the location for the integration menu into pre-defined areas in your "
+"theme."
+msgstr ""
+"Выберите место для интеграции меню в предварительно определенные области "
+"(локации) в вашей теме."
+
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1741
+msgid ""
+"If chosen then the Groovy Menu will display its own markup instead of the "
+"standard code from the function wp_nav_menu()."
+msgstr ""
+"Если выбрано, тогда Groovy Menu будет показывать свою разметку вместо "
+"стандартной во время работы функции wp_nav_menu()"
+
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1744
+msgid "Theme Location"
+msgstr "Локация Темы"
+
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1749
+msgid "Select a Location"
+msgstr "Выбрать локацию"
+
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1767
+msgid "Note:"
+msgstr "Заметка:"
+
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1767
+#, php-format
+msgid ""
+"Make sure the menu is assigned on the %s page. Otherwise, the location "
+"selection list will be empty."
+msgstr ""
+"Убедитесь, что меню назначено на странице %s. Иначе список выбора локации "
+"будет пустым."
+
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1767
+msgid "Groovy menu Primary location will be ignored."
+msgstr "Локация Groovy menu Primary игнорируется."
+
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1767
+msgid ""
+"This integration successfully works only with those locations that are "
+"displayed on the front of the site."
+msgstr ""
+"Эта интеграция успешно работает только с теми локациями, которые "
+"отображаются на фронт части сайта."
+
+#: includes/modules/core/inc/GroovyMenuSettings15.php:1832
 #, php-format
 msgid ""
 "If you encounter integration problems, find any bugs, or want to suggest new "
@@ -2223,6 +2294,10 @@ msgid ""
 msgstr ""
 "Если вы столкнулись с проблемами интеграции, нашли какие-либо ошибки или "
 "хотите предложить новую функцию, пожалуйста, создайте заявку на нашем %s"
+
+#: includes/modules/core/inc/GroovyMenuSettings15.php:2358
+msgid "Save Error"
+msgstr "Ошибка Сохранения"
 
 #: includes/modules/core/inc/GroovyMenuSingleMetaPreset.php:92
 msgid "Menu preset"
@@ -2250,58 +2325,58 @@ msgstr "Редактировать пресет"
 msgid "View Groovy Menu Preset"
 msgstr "Посмотреть пресет"
 
-#: includes/modules/core/inc/GroovyMenuUtils.php:259
-#: includes/modules/core/inc/GroovyMenuUtils.php:269
+#: includes/modules/core/inc/GroovyMenuUtils.php:279
+#: includes/modules/core/inc/GroovyMenuUtils.php:289
 msgid "single pages"
 msgstr ""
 
-#: includes/modules/core/inc/GroovyMenuUtils.php:262
+#: includes/modules/core/inc/GroovyMenuUtils.php:282
 msgid "Search page"
 msgstr "Страница поиска"
 
-#: includes/modules/core/inc/GroovyMenuUtils.php:263
+#: includes/modules/core/inc/GroovyMenuUtils.php:283
 msgid "404 Not Found Page"
 msgstr "404 Страница не найдена"
 
-#: includes/modules/core/inc/GroovyMenuUtils.php:310
-#: includes/modules/core/inc/GroovyMenuUtils.php:319
+#: includes/modules/core/inc/GroovyMenuUtils.php:330
+#: includes/modules/core/inc/GroovyMenuUtils.php:339
 msgid "Search in:"
 msgstr "Искать в:"
 
-#: includes/modules/core/inc/GroovyMenuUtils.php:833
+#: includes/modules/core/inc/GroovyMenuUtils.php:862
 msgid "Original full size"
 msgstr "Ориг-ный размер"
 
-#: includes/modules/core/inc/GroovyMenuUtils.php:1017
-#: includes/modules/core/inc/GroovyMenuUtils.php:1020
+#: includes/modules/core/inc/GroovyMenuUtils.php:1070
+#: includes/modules/core/inc/GroovyMenuUtils.php:1073
 msgid "Docs"
 msgstr ""
 
-#: includes/modules/core/inc/GroovyMenuUtils.php:1018
+#: includes/modules/core/inc/GroovyMenuUtils.php:1071
 msgid "Free support"
 msgstr "Бесплатная поддержка"
 
-#: includes/modules/core/inc/GroovyMenuUtils.php:1021
+#: includes/modules/core/inc/GroovyMenuUtils.php:1074
 msgid "Get Support"
 msgstr "Помощь"
 
-#: includes/modules/core/inc/GroovyMenuUtils.php:1043
+#: includes/modules/core/inc/GroovyMenuUtils.php:1096
 msgid "Settings"
 msgstr "Настроить"
 
-#: includes/modules/core/inc/GroovyMenuUtils.php:1061
+#: includes/modules/core/inc/GroovyMenuUtils.php:1114
 msgid "Upgrade to Pro"
 msgstr "Обновить до Pro"
 
-#: includes/modules/core/inc/GroovyMenuUtils.php:1111
+#: includes/modules/core/inc/GroovyMenuUtils.php:1164
 msgid "WP_Filesystem() load library error"
 msgstr "WP_Filesystem() шибка загрузки библиотеки"
 
-#: includes/modules/core/inc/GroovyMenuUtils.php:1476
+#: includes/modules/core/inc/GroovyMenuUtils.php:1529
 msgid "Plugin Groovy Menu  is deactivated. Minimum required version for PHP 7."
 msgstr ""
 
-#: includes/modules/core/inc/GroovyMenuUtils.php:1478
+#: includes/modules/core/inc/GroovyMenuUtils.php:1531
 msgid "Plugins page"
 msgstr ""
 
@@ -2443,85 +2518,90 @@ msgid "%s (Pending)"
 msgstr "%s (В одидании)"
 
 #: includes/modules/walkers/inc/AdminWalker.php:509
+#: includes/modules/walkers/inc/AdminWalker.php:519
 msgid "Mega Menu"
 msgstr "Мега Меню"
 
-#: includes/modules/walkers/inc/AdminWalker.php:522
+#: includes/modules/walkers/inc/AdminWalker.php:519
+msgid "Sub"
+msgstr ""
+
+#: includes/modules/walkers/inc/AdminWalker.php:528
 msgid "sub item"
 msgstr "подпункт"
 
-#: includes/modules/walkers/inc/AdminWalker.php:537
+#: includes/modules/walkers/inc/AdminWalker.php:543
 msgid "Move up"
 msgstr "Переместить вверх"
 
-#: includes/modules/walkers/inc/AdminWalker.php:550
+#: includes/modules/walkers/inc/AdminWalker.php:556
 msgid "Move down"
 msgstr "Переместить вниз"
 
-#: includes/modules/walkers/inc/AdminWalker.php:556
+#: includes/modules/walkers/inc/AdminWalker.php:562
 msgid "Edit"
 msgstr ""
 
-#: includes/modules/walkers/inc/AdminWalker.php:565
+#: includes/modules/walkers/inc/AdminWalker.php:571
 msgid "URL"
 msgstr "URL"
 
-#: includes/modules/walkers/inc/AdminWalker.php:576
+#: includes/modules/walkers/inc/AdminWalker.php:582
 msgid "Navigation Label (\"-\" to hide)"
 msgstr "Навигационная метка (\"-\" скрыть)"
 
-#: includes/modules/walkers/inc/AdminWalker.php:578
+#: includes/modules/walkers/inc/AdminWalker.php:584
 msgid "Navigation Label"
 msgstr "Навигационная метка"
 
-#: includes/modules/walkers/inc/AdminWalker.php:589
+#: includes/modules/walkers/inc/AdminWalker.php:595
 msgid "Title Attribute"
 msgstr "Заголовок "
 
-#: includes/modules/walkers/inc/AdminWalker.php:606
+#: includes/modules/walkers/inc/AdminWalker.php:612
 msgid "Menu block URL"
 msgstr "Меню Блок URL"
 
-#: includes/modules/walkers/inc/AdminWalker.php:619
+#: includes/modules/walkers/inc/AdminWalker.php:625
 msgid "Open link in a new window/tab"
 msgstr "Открыть в новом окне/"
 
-#: includes/modules/walkers/inc/AdminWalker.php:625
+#: includes/modules/walkers/inc/AdminWalker.php:631
 msgid "CSS Classes (optional)"
 msgstr "CSS классы (опционально)"
 
-#: includes/modules/walkers/inc/AdminWalker.php:635
+#: includes/modules/walkers/inc/AdminWalker.php:641
 msgid "Link Relationship (XFN)"
 msgstr ""
 
-#: includes/modules/walkers/inc/AdminWalker.php:645
+#: includes/modules/walkers/inc/AdminWalker.php:651
 msgid "Description"
 msgstr "Описание"
 
-#: includes/modules/walkers/inc/AdminWalker.php:649
+#: includes/modules/walkers/inc/AdminWalker.php:655
 msgid ""
 "The description will be displayed in the menu if the current theme supports "
 "it."
 msgstr ""
 "Описание будет отображаться в меню, если текущая тема поддерживает его."
 
-#: includes/modules/walkers/inc/AdminWalker.php:658
+#: includes/modules/walkers/inc/AdminWalker.php:664
 msgid "Icon"
 msgstr "Иконка"
 
-#: includes/modules/walkers/inc/AdminWalker.php:694
+#: includes/modules/walkers/inc/AdminWalker.php:700
 msgid "Enable badge"
 msgstr "Включить Бейджи"
 
-#: includes/modules/walkers/inc/AdminWalker.php:703
+#: includes/modules/walkers/inc/AdminWalker.php:709
 msgid "Badge placement"
 msgstr "Размещение Бейджа"
 
-#: includes/modules/walkers/inc/AdminWalker.php:723
+#: includes/modules/walkers/inc/AdminWalker.php:729
 msgid "Badge position."
 msgstr "Позиция Бейджа"
 
-#: includes/modules/walkers/inc/AdminWalker.php:723
+#: includes/modules/walkers/inc/AdminWalker.php:729
 msgid ""
 "Absolutely positioned Badge take no space in the page layout. Relatively "
 "positioned Badge acts as normal element taking space."
@@ -2530,180 +2610,184 @@ msgstr ""
 "Относительно расположенный бейдж  действует как обычный элемент, занимающий "
 "место."
 
-#: includes/modules/walkers/inc/AdminWalker.php:743
+#: includes/modules/walkers/inc/AdminWalker.php:749
 msgid "Badge X offset."
 msgstr "Бейдж X смещение"
 
-#: includes/modules/walkers/inc/AdminWalker.php:743
+#: includes/modules/walkers/inc/AdminWalker.php:749
 msgid "Negative value will push badge left, positive right."
 msgstr ""
 "Отрицательное значение будет толкать значок влево, положительное право."
 
-#: includes/modules/walkers/inc/AdminWalker.php:743
-#: includes/modules/walkers/inc/AdminWalker.php:759
-#: includes/modules/walkers/inc/AdminWalker.php:791
+#: includes/modules/walkers/inc/AdminWalker.php:749
+#: includes/modules/walkers/inc/AdminWalker.php:765
+#: includes/modules/walkers/inc/AdminWalker.php:797
 #, php-format
 msgid "Any valid CSS units accepted e.q. % or px."
 msgstr "Любые действительные единицы CSS, например % или px"
 
-#: includes/modules/walkers/inc/AdminWalker.php:759
+#: includes/modules/walkers/inc/AdminWalker.php:765
 msgid "Badge Y offset."
 msgstr "Бейдж Y смещение"
 
-#: includes/modules/walkers/inc/AdminWalker.php:759
+#: includes/modules/walkers/inc/AdminWalker.php:765
 msgid "Negative value will push badge up, positive down."
 msgstr "Отрицательное значение будет толкать значок вверх, положительное вниз."
 
-#: includes/modules/walkers/inc/AdminWalker.php:775
+#: includes/modules/walkers/inc/AdminWalker.php:781
 msgid "Badge container padding."
 msgstr "Бейдж контейнер отступ"
 
-#: includes/modules/walkers/inc/AdminWalker.php:775
-#: includes/modules/walkers/inc/AdminWalker.php:791
+#: includes/modules/walkers/inc/AdminWalker.php:781
+#: includes/modules/walkers/inc/AdminWalker.php:797
 msgid "One, two, three or four values accepted."
 msgstr "Одно, два, три или четыре значения."
 
-#: includes/modules/walkers/inc/AdminWalker.php:775
+#: includes/modules/walkers/inc/AdminWalker.php:781
 msgid "Any valid CSS units accepted e.q. rem or px."
 msgstr "Любые действительные единицы CSS, например rem или px"
 
-#: includes/modules/walkers/inc/AdminWalker.php:791
+#: includes/modules/walkers/inc/AdminWalker.php:797
 msgid "Badge container border radius."
 msgstr "Бейдж радиус границы контейнера "
 
-#: includes/modules/walkers/inc/AdminWalker.php:806
+#: includes/modules/walkers/inc/AdminWalker.php:812
 msgid "Badge container background color"
 msgstr "Цвет фона контейнера Бейджа"
 
-#: includes/modules/walkers/inc/AdminWalker.php:822
+#: includes/modules/walkers/inc/AdminWalker.php:828
 msgid "Badge content type"
 msgstr "Тип содержимого Бейджа"
 
-#: includes/modules/walkers/inc/AdminWalker.php:840
+#: includes/modules/walkers/inc/AdminWalker.php:846
 msgid "Badge Image"
 msgstr "Бейдж картинка"
 
-#: includes/modules/walkers/inc/AdminWalker.php:860
+#: includes/modules/walkers/inc/AdminWalker.php:866
 msgid "Select Badge Image"
 msgstr "Выберите изображение"
 
-#: includes/modules/walkers/inc/AdminWalker.php:861
+#: includes/modules/walkers/inc/AdminWalker.php:867
 msgid "Insert image"
 msgstr "Вставить изобр."
 
-#: includes/modules/walkers/inc/AdminWalker.php:863
+#: includes/modules/walkers/inc/AdminWalker.php:869
 msgid "Select image"
 msgstr "Выберите картинку"
 
-#: includes/modules/walkers/inc/AdminWalker.php:868
+#: includes/modules/walkers/inc/AdminWalker.php:874
 msgid "Remove image"
 msgstr "Удалить картинку"
 
-#: includes/modules/walkers/inc/AdminWalker.php:882
+#: includes/modules/walkers/inc/AdminWalker.php:888
 msgid "Badge Icon"
 msgstr "Бейдж Иконка"
 
-#: includes/modules/walkers/inc/AdminWalker.php:909
+#: includes/modules/walkers/inc/AdminWalker.php:915
 msgid "Badge icon size"
 msgstr "Размер иконки бейджа"
 
-#: includes/modules/walkers/inc/AdminWalker.php:924
+#: includes/modules/walkers/inc/AdminWalker.php:930
 msgid "Badge icon color"
 msgstr "Цвет иконки бейджа"
 
-#: includes/modules/walkers/inc/AdminWalker.php:940
+#: includes/modules/walkers/inc/AdminWalker.php:946
 msgid "Badge text"
 msgstr "Бейдж текст"
 
-#: includes/modules/walkers/inc/AdminWalker.php:956
+#: includes/modules/walkers/inc/AdminWalker.php:962
 msgid "Badge text font family"
 msgstr "Бейдж текст шрифт"
 
-#: includes/modules/walkers/inc/AdminWalker.php:963
-#: includes/modules/walkers/inc/AdminWalker.php:983
+#: includes/modules/walkers/inc/AdminWalker.php:969
+#: includes/modules/walkers/inc/AdminWalker.php:989
 msgid "Inherit from parent"
 msgstr "Наследовать от родителя"
 
-#: includes/modules/walkers/inc/AdminWalker.php:978
+#: includes/modules/walkers/inc/AdminWalker.php:984
 msgid "Badge text font variant"
 msgstr "Бейдж текст тип шрифта"
 
-#: includes/modules/walkers/inc/AdminWalker.php:993
+#: includes/modules/walkers/inc/AdminWalker.php:999
 msgid "Badge text font size"
 msgstr "Бейдж текст размер шрифта"
 
-#: includes/modules/walkers/inc/AdminWalker.php:1008
+#: includes/modules/walkers/inc/AdminWalker.php:1014
 msgid "Badge text font color"
 msgstr "Бейдж текст цвет шрифта"
 
-#: includes/modules/walkers/inc/AdminWalker.php:1035
+#: includes/modules/walkers/inc/AdminWalker.php:1041
 msgid "Do not show menu item title and link"
 msgstr "Не показывать заголовок и ссылку"
 
-#: includes/modules/walkers/inc/AdminWalker.php:1056
+#: includes/modules/walkers/inc/AdminWalker.php:1062
 msgid "Do not show Menu block content on mobile"
 msgstr "Не показывать содержимое Блока на мобильном"
 
-#: includes/modules/walkers/inc/AdminWalker.php:1089
+#: includes/modules/walkers/inc/AdminWalker.php:1095
 msgid "Mega menu columns"
 msgstr "Мега меню колонки"
 
-#: includes/modules/walkers/inc/AdminWalker.php:1112
+#: includes/modules/walkers/inc/AdminWalker.php:1118
 msgid "Set background image"
 msgstr "Установите фоновую картинку "
 
-#: includes/modules/walkers/inc/AdminWalker.php:1115
+#: includes/modules/walkers/inc/AdminWalker.php:1121
 msgid "Remove background image"
 msgstr "Удалить фоновое изображение"
 
-#: includes/modules/walkers/inc/AdminWalker.php:1122
+#: includes/modules/walkers/inc/AdminWalker.php:1128
 msgid "Background position"
 msgstr "Положение фона"
 
-#: includes/modules/walkers/inc/AdminWalker.php:1133
+#: includes/modules/walkers/inc/AdminWalker.php:1139
 msgid "Background repeat"
 msgstr "Повторение фона"
 
-#: includes/modules/walkers/inc/AdminWalker.php:1145
+#: includes/modules/walkers/inc/AdminWalker.php:1151
 msgid "Background image size"
 msgstr "Размер фонового изображения"
 
-#: includes/modules/walkers/inc/AdminWalker.php:1173
+#: includes/modules/walkers/inc/AdminWalker.php:1179
 msgid "Show featured image on hover"
 msgstr "Показывать \"featured image\" при наведении"
 
-#: includes/modules/walkers/inc/AdminWalker.php:1180
+#: includes/modules/walkers/inc/AdminWalker.php:1186
 msgid "Move"
 msgstr "Переместить"
 
-#: includes/modules/walkers/inc/AdminWalker.php:1182
+#: includes/modules/walkers/inc/AdminWalker.php:1188
 msgid "Up one"
 msgstr "Вверх "
 
-#: includes/modules/walkers/inc/AdminWalker.php:1184
+#: includes/modules/walkers/inc/AdminWalker.php:1190
 msgid "Down one"
 msgstr "Вниз"
 
-#: includes/modules/walkers/inc/AdminWalker.php:1188
+#: includes/modules/walkers/inc/AdminWalker.php:1194
 msgid "To the top"
 msgstr "сверху в центре"
 
-#: includes/modules/walkers/inc/AdminWalker.php:1195
+#: includes/modules/walkers/inc/AdminWalker.php:1201
 #, php-format
 msgid "Original: %s"
 msgstr "Ориг.: %s"
 
-#: includes/modules/walkers/inc/AdminWalker.php:1208
+#: includes/modules/walkers/inc/AdminWalker.php:1214
 msgid "Remove"
 msgstr "Удалить"
 
-#: includes/modules/walkers/inc/AdminWalker.php:1215
+#: includes/modules/walkers/inc/AdminWalker.php:1221
 msgid "Cancel"
 msgstr "Отмена"
 
-#: includes/modules/walkers/inc/WalkerNavMenu.php:310
+#: includes/modules/walkers/inc/WalkerNavMenu.php:318
 msgid "Cornerstone content"
 msgstr "Контент Cornerstone"
+
+#: includes/modules/walkers/inc/WalkerNavMenu.php:324
+msgid "Elementor content"
+msgstr "Контент Elementor"
 
 #: includes/theme_support/crane.php:9
 msgid "Portfolios"
@@ -2717,27 +2801,27 @@ msgstr "Продукты"
 msgid "Search in portfolio"
 msgstr "Искать в портфолио"
 
-#: template/Header.php:526
+#: template/Header.php:591
 msgid "Please add image or text logo"
 msgstr "Добавьте логотип или текст"
 
-#: template/Header.php:573
+#: template/Header.php:640
 msgid "Please assign a menu to the primary menu location under Menus."
 msgstr "Пожалуйста, назначьте меню для основного меню в \"Внешний вид > Меню\""
 
-#: template/Header.php:614 template/Header.php:747
+#: template/Header.php:681 template/Header.php:814
 msgid "Search"
 msgstr "Поиск"
 
-#: template/Header.php:623
+#: template/Header.php:690
 msgid "Search..."
 msgstr "Искать..."
 
-#: template/Header.php:639
+#: template/Header.php:706
 msgid "START TYPING AND PRESS ENTER TO SEARCH"
 msgstr "Начните вводить и нажмите ввод для поиска"
 
-#: template/Header.php:676 template/Header.php:772
+#: template/Header.php:743 template/Header.php:839
 msgid "My cart"
 msgstr "Моя корзина"
 

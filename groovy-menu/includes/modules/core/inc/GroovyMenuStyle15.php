@@ -81,9 +81,10 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 				}
 			}
 
+			$this->options = include GROOVY_MENU_DIR . 'includes/config/Config.php';
+			\GroovyMenu\StyleStorage::getInstance()->set_preset_config( $this->options );
 
-			$this->options       = include GROOVY_MENU_DIR . 'includes/config/Config.php';
-			$preset              = GroovyMenuPreset::getById( $presetId );
+			$preset = GroovyMenuPreset::getById( $presetId );
 
 			if ( is_null( $presetId ) || empty( $presetId ) || ! $preset ) {
 				$preset = GroovyMenuPreset::getCurrentPreset();
@@ -313,6 +314,7 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 			\GroovyMenu\StyleStorage::getInstance()->set_global_settings( $this->settingsGlobal );
 
 		}
+
 
 		/**
 		 * Serialize config with values for front-end
@@ -696,16 +698,22 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 		 */
 		public function getField( $category, $name ) {
 			if ( isset( $this->settings[ $category ]['fields'][ $name ] ) ) {
-				$field = $this->settings[ $category ]['fields'][ $name ];
-				$class = '\GroovyMenu\Field' . ucfirst( $field['type'] );
+				$field    = $this->settings[ $category ]['fields'][ $name ];
+				$subClass = isset( $field['type'] ) ? ucfirst( $field['type'] ) : '';
+				$class    = '\GroovyMenu\Field' . $subClass;
 
-				return new $class( $category, $name, $field );
+				if ( class_exists( $class ) ) {
+					return new $class( $category, $name, $field );
+				}
 			}
 			if ( isset( $this->settingsGlobal[ $category ]['fields'][ $name ] ) ) {
-				$field = $this->settingsGlobal[ $category ]['fields'][ $name ];
-				$class = '\GroovyMenu\Field' . ucfirst( $field['type'] );
+				$field    = $this->settingsGlobal[ $category ]['fields'][ $name ];
+				$subClass = isset( $field['type'] ) ? ucfirst( $field['type'] ) : '';
+				$class    = '\GroovyMenu\Field' . $subClass;
 
-				return new $class( $category, $name, $field );
+				if ( class_exists( $class ) ) {
+					return new $class( $category, $name, $field );
+				}
 			}
 
 			return null;
@@ -830,9 +838,11 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 			}
 
 			$preset_settings = wp_json_encode( $preset_settings );
+			$preset_key      = md5( rand() . uniqid() . time() );
 
 			update_post_meta( self::getPresetPostId( $this->preset ), 'gm_preset_settings', $preset_settings );
 			update_post_meta( self::getPresetPostId( $this->preset ), 'gm_compiled_css', $compiled_css );
+			update_post_meta( self::getPresetPostId( $this->preset ), 'gm_preset_key', $preset_key );
 			update_post_meta( self::getPresetPostId( $this->preset ), 'gm_direction', $direction );
 			update_post_meta( self::getPresetPostId( $this->preset ), 'gm_version', GROOVY_MENU_VERSION );
 		}
@@ -913,9 +923,10 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 		protected function loadPresetCssFromPost( $post_id ) {
 
 			$options = array(
-				'compiled_css' => '',
-				'direction'    => '',
-				'version'      => '',
+				'compiled_css'  => '',
+				'preset_key'    => '',
+				'direction'     => '',
+				'version'       => '',
 			);
 
 			$post_id = intval( $post_id );
@@ -925,9 +936,10 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 			}
 
 			$options = array(
-				'compiled_css' => get_post_meta( $post_id, 'gm_compiled_css', true ),
-				'direction'    => get_post_meta( $post_id, 'gm_direction', true ),
-				'version'      => get_post_meta( $post_id, 'gm_version', true ),
+				'compiled_css'  => get_post_meta( $post_id, 'gm_compiled_css', true ),
+				'preset_key'    => get_post_meta( $post_id, 'gm_preset_key', true ),
+				'direction'     => get_post_meta( $post_id, 'gm_direction', true ),
+				'version'       => get_post_meta( $post_id, 'gm_version', true ),
 			);
 
 			if ( empty( $options['compiled_css'] ) || ! is_string( $options['compiled_css'] ) ) {

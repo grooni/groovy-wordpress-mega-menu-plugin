@@ -514,6 +514,12 @@ class AdminWalker extends WalkerNavMenu {
 			$gm_menu_block = true;
 		}
 
+		if ( 1 === $depth && ! empty( $item->menu_item_parent ) ) {
+			if ( $this->isMegaMenu( $item, true ) ) {
+				$itemTypeLabel .= ' [' . esc_html__( 'Sub', 'groovy-menu' ) . ' ' . esc_html__( 'Mega Menu', 'groovy-menu' ) . ']';
+			}
+		}
+
 		?>
 	<li id="menu-item-<?php echo esc_attr( $item_id ); ?>" class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 		<dl class="menu-item-bar">

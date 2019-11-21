@@ -8,13 +8,13 @@
  *
  * @type int|string|WP_Term $menu           Desired menu. Accepts (matching in order) id, slug, name, menu object. Default empty.
  * @type string             $gm_preset_id   Groovy menu preset id.
- * @type bool               $wp_echo        Whether to echo the menu or return it. Default true.
+ * @type bool               $gm_echo        Whether to echo the menu or return it. Default true.
  * @type int                $depth          How many levels of the hierarchy are to be included. 0 means all. Default 0.
  * @type string             $theme_location Theme location to be used. Must be registered with register_nav_menu()
  *                                          in order to be selectable by the user.
  * @type bool               $is_disable     If true - menu do not show
  *
- * @return string|null  if  $wp_echo is true then return void (by default)
+ * @return string|null  if  $gm_echo is true then return void (by default)
  */
 function groovyMenu( $args = array() ) {
 
@@ -290,6 +290,16 @@ function groovyMenu( $args = array() ) {
 	}
 
 	if ( ! $groovyMenuPreview ) {
+		$css_file_params = array(
+			'upload_dir'   => GroovyMenuUtils::getUploadDir(),
+			'upload_uri'   => GroovyMenuUtils::getUploadUri(),
+			'css_filename' => 'preset_' . $preset_id . '.css',
+			'preset_id'    => strval( $preset_id ),
+			'preset_key'   => empty( $groovyMenuSettings['presetKey'] ) ? GROOVY_MENU_VERSION : $groovyMenuSettings['presetKey'],
+		);
+
+		$groovyMenuSettings['css_file_params'] = $css_file_params;
+
 		$output_html .= groovy_menu_add_preset_style( $preset_id, $compiled_css, $args['gm_echo'] );
 	}
 
@@ -312,17 +322,18 @@ function groovyMenu( $args = array() ) {
 
 
 
-	// Clean output;
+	// Clean output, first parent level;
 	ob_start();
 
 
-
+	ob_start();
 	/**
 	 * Fires before the groovy menu output.
 	 *
 	 * @since 1.0
 	 */
 	do_action( 'gm_before_main_header' );
+	$output_html .= ob_get_clean();
 
 	$output_html .= '
 	<' . esc_html( $wrapper_tag ) . ' class="gm-navbar gm-preset-id-' . esc_attr( $preset_id ) . esc_attr( $additional_html_class ) . '"
@@ -342,7 +353,7 @@ function groovyMenu( $args = array() ) {
 			'linkedin',
 			'instagram',
 			'flickr',
-			'vk'
+			'vk',
 		);
 
 		$toolbar_email = '';
@@ -361,8 +372,20 @@ function groovyMenu( $args = array() ) {
 				<div class="gm-toolbar">
 					<div class="gm-toolbar-bg"></div>
 					<div class="gm-container">
-						<div class="gm-toolbar-left">
-							<div class="gm-toolbar-contacts">';
+						<div class="gm-toolbar-left">';
+
+
+		ob_start();
+		/**
+		 * Fires at the toolbar left as first element output.
+		 *
+		 * @since 1.0.9
+		 */
+		do_action( 'gm_toolbar_left_first' );
+		$output_html .= ob_get_clean();
+
+
+		$output_html .= '<div class="gm-toolbar-contacts">';
 		if ( ! empty( $toolbar_email ) ) {
 			$output_html .= '<span class="gm-toolbar-email">';
 			if ( $styles->getGlobal( 'toolbar', 'toolbar_email_icon' ) ) {
@@ -392,9 +415,33 @@ function groovyMenu( $args = array() ) {
 			$output_html .= '</span>';
 		}
 		$output_html .= '</div>';
+
+
+		ob_start();
+		/**
+		 * Fires at the toolbar left as last element output.
+		 *
+		 * @since 1.0.9
+		 */
+		do_action( 'gm_toolbar_left_last' );
+		$output_html .= ob_get_clean();
+
+
 		$output_html .= '</div>';
-		$output_html .= '<div class="gm-toolbar-right">
-							<ul class="gm-toolbar-socials-list">';
+		$output_html .= '<div class="gm-toolbar-right">';
+
+
+		ob_start();
+		/**
+		 * Fires at the toolbar right as first element output.
+		 *
+		 * @since 1.0.9
+		 */
+		do_action( 'gm_toolbar_right_first' );
+		$output_html .= ob_get_clean();
+
+
+		$output_html .= '<ul class="gm-toolbar-socials-list">';
 
 		$link_attr = '';
 		if ( ! empty( $styles->getGlobal( 'social', 'social_set_nofollow' ) ) ) {
@@ -442,6 +489,18 @@ function groovyMenu( $args = array() ) {
 			do_action( 'wpml_add_language_selector' );
 			$output_html .= ob_get_clean();
 		}
+
+
+		ob_start();
+		/**
+		 * Fires at the toolbar right as last element output.
+		 *
+		 * @since 1.0.9
+		 */
+		do_action( 'gm_toolbar_right_last' );
+		$output_html .= ob_get_clean();
+
+
 		$output_html .= '</div>';
 		$output_html .= '</div>';
 		$output_html .= '</div>';
@@ -452,17 +511,23 @@ function groovyMenu( $args = array() ) {
 					<div class="gm-logo">';
 
 
+	ob_start();
 	/**
 	 * Fires before the groovy menu Logo output.
 	 *
 	 * @since 1.0
 	 */
 	do_action( 'gm_before_logo' );
+	$output_html .= ob_get_clean();
+
 
 	$logo_url = trailingslashit( network_site_url() );
 	if ( ! empty( $styles->getGlobal( 'logo', 'logo_url' ) ) ) {
 		$logo_url = $styles->getGlobal( 'logo', 'logo_url' );
+	} elseif ( defined( 'WPML_PLUGIN_FOLDER' ) && WPML_PLUGIN_FOLDER ) {
+		$logo_url = apply_filters( 'wpml_home_url', $logo_url );
 	}
+
 	$logo_url_open_type = '';
 	if ( ! empty( $styles->getGlobal( 'logo', 'logo_url_open_type' ) ) ) {
 		$logo_url_open_type = $styles->getGlobal( 'logo', 'logo_url_open_type' );
@@ -510,7 +575,7 @@ function groovyMenu( $args = array() ) {
 
 			switch ( $key ) {
 				case 'default':
-					$additionl_class = 'default';
+					$additionl_class = ( intval( $groovyMenuSettings['header']['style'] ) === 4 ) ? 'header-4' : 'default';
 					$logo_html       .= '<img src="' . $img_src . '"' . $img_width . $img_height . ' class="gm-logo__img gm-logo__img-' . $additionl_class . '" alt="" />';
 					break;
 
@@ -543,12 +608,14 @@ function groovyMenu( $args = array() ) {
 	}
 
 
+	ob_start();
 	/**
 	 * Fires after the groovy menu Logo output.
 	 *
 	 * @since 1.0
 	 */
 	do_action( 'gm_after_logo' );
+	$output_html .= ob_get_clean();
 
 
 	$output_html .= '</div>';
@@ -609,7 +676,7 @@ function groovyMenu( $args = array() ) {
 
 
 			$output_html .= '<div class="gm-search ' . ( ( 'fullscreen' === $searchForm ) ? 'fullscreen' : 'gm-dropdown' ) . '">
-										<i class="' . esc_attr( $searchIcon ) . '"></i>
+										<i class="nav-search ' . esc_attr( $searchIcon ) . '"></i>
 										<span class="gm-search__txt">'
 			                . esc_html__( 'Search', 'groovy-menu' ) .
 			                '</span>';
@@ -779,12 +846,14 @@ function groovyMenu( $args = array() ) {
 	$output_html .= '</div>';
 	$output_html .= '</aside>';
 
+	ob_start();
 	/**
 	 * Fires after the groovy menu output.
 	 *
 	 * @since 1.0
 	 */
 	do_action( 'gm_after_main_header' );
+	$output_html .= ob_get_clean();
 
 
 	// Required if the action returns unexpected content.

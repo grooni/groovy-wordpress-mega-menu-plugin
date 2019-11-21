@@ -1,7 +1,7 @@
 <?php defined( 'ABSPATH' ) || die( 'This script cannot be accessed directly.' );
 /*
 Plugin Name: Groovy Menu (free)
-Version: 1.0.8
+Version: 1.0.9
 Description: Groovy menu is a modern adjustable and flexible menu designed for creating mobile-friendly menus with a lot of options.
 Plugin URI: https://groovymenu.grooni.com/
 Author: Grooni.com
@@ -25,7 +25,7 @@ along with Groovy Menu (free). If not, see http://www.gnu.org/licenses/gpl-3.0.h
 
 */
 
-define( 'GROOVY_MENU_VERSION', '1.0.8' );
+define( 'GROOVY_MENU_VERSION', '1.0.9' );
 define( 'GROOVY_MENU_DB_VER_OPTION', 'groovy_menu_db_version' );
 define( 'GROOVY_MENU_DIR', plugin_dir_path( __FILE__ ) );
 define( 'GROOVY_MENU_URL', plugin_dir_url( __FILE__ ) );
@@ -97,6 +97,10 @@ if ( class_exists( '\GroovyMenu\AdminWalker' ) ) {
 
 if ( method_exists( 'GroovyMenuUtils', 'cache_pre_wp_nav_menu' ) ) {
 	add_filter( 'pre_wp_nav_menu', array( 'GroovyMenuUtils', 'cache_pre_wp_nav_menu' ), 10, 2 );
+}
+
+if ( method_exists( 'GroovyMenuUtils', 'add_groovy_menu_as_wp_nav_menu' ) ) {
+	add_filter( 'pre_wp_nav_menu', array( 'GroovyMenuUtils', 'add_groovy_menu_as_wp_nav_menu' ), 30, 2 );
 }
 
 if ( method_exists( 'GroovyMenuUtils', 'install_default_icon_packs' ) ) {
@@ -306,13 +310,11 @@ function groovy_menu_add_markup( $after_body ) {
 		$gm_ids = \GroovyMenu\PreStorage::get_instance()->search_ids_by_location( array( 'theme_location' => 'gm_primary' ) );
 
 		if ( ! empty( $gm_ids ) ) {
-
 			foreach ( $gm_ids as $gm_id ) {
 				$gm_data = \GroovyMenu\PreStorage::get_instance()->get_gm( $gm_id );
 
 				$after_body .= $gm_data['gm_html'];
 			}
-
 		} else {
 			$after_body .= groovy_menu( [
 				'gm_echo'        => false,
@@ -377,6 +379,7 @@ function groovy_menu_js_request( $uniqid, $return_string = false ) {
 
 	if ( $return_string ) {
 		$tag_name = 'script';
+
 		return "\n" . '<' . esc_attr( $tag_name ) . '>' . $additional_js . '</' . esc_attr( $tag_name ) . '>';
 	} else {
 		if ( function_exists( 'wp_add_inline_script' ) ) {
@@ -398,6 +401,19 @@ function groovy_menu_js_request( $uniqid, $return_string = false ) {
  * @return string
  */
 function groovy_menu_add_preset_style( $preset_id, $compiled_css, $return_string = false ) {
+
+	global $groovyMenuSettings;
+	$css_file_params = isset( $groovyMenuSettings['css_file_params'] ) ? $groovyMenuSettings['css_file_params'] : array();
+
+	// If we have CSS preset style file - then enqueue it and return.
+	if ( ! empty( $css_file_params ) && is_file( $css_file_params['upload_dir'] . $css_file_params['css_filename'] ) ) {
+		if ( method_exists( 'GroovyMenuUtils', 'addPresetCssFile' ) ) {
+
+			GroovyMenuUtils::addPresetCssFile();
+
+			return '';
+		}
+	}
 
 	if ( empty( $compiled_css ) ) {
 		$styles       = new GroovyMenuStyle( $preset_id );
