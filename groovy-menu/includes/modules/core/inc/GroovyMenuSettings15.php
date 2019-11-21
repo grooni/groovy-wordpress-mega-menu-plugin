@@ -2328,6 +2328,13 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 		}
 
 		public function saveSingleLocationIntegration() {
+
+			if ( ! isset( $_POST['gm_nonce'] ) || ! wp_verify_nonce( $_POST['gm_nonce'], 'gm_nonce_auto_integration' ) ) {
+				$respond = esc_html__( 'Fail. Nonce field outdated. Try reload page.', 'groovy-menu' );
+				// Send a JSON response back to an AJAX request, and die().
+				wp_send_json_success( $respond );
+			}
+
 			if ( ! GroovyMenuRoleCapabilities::globalOptions( true ) ) {
 				return;
 			}

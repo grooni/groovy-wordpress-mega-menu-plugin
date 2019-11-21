@@ -1,6 +1,8 @@
 import axios from 'axios';
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  // Save auto-integration button
   let integrationSaveBtn = document.querySelector('.gm-auto-integration-save');
   integrationSaveBtn.addEventListener('click', function () {
     let autoIntegrate = document.querySelector('.gm-auto-integration-switcher').checked;
@@ -21,4 +23,29 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Error occurred, please contact Groovy menu Support');
       });
   });
+
+
+  // Save location integration button
+  let integrationLocationSaveBtn = document.querySelector('.gm-integration-location-save');
+  integrationLocationSaveBtn.addEventListener('click', function () {
+    let locationIntegrate = document.querySelector('.gm-integration-location').value;
+    let gmNonce = document.querySelector('#gm-nonce-auto-integration-field');
+
+    const data = {
+      action: 'gm_save_single_location_integration',
+      data: locationIntegrate,
+      gm_nonce: gmNonce.value
+    };
+    const params = new URLSearchParams(data);
+
+    axios.post(ajaxurl, params)
+      .then(function (response) {
+        alert(response.data.data);
+      })
+      .catch(function () {
+        alert('Error occurred, please contact Groovy menu Support');
+      });
+  });
+
+
 });
