@@ -588,7 +588,7 @@ return array(
 				'type' => 'inlineEnd'
 			),
 			'megamenu_title_as_link' => array(
-				'title'       => esc_html__( 'Show Mega Menu titles as a regular menu items', 'groovy-menu' ),
+				'title'       => esc_html__( 'Show Mega Menu titles as regular menu items', 'groovy-menu' ),
 				'description' => esc_html__( 'For sub mega menu items.', 'groovy-menu' ) . ' ' . esc_html__( 'Show with links and badges.', 'groovy-menu' ),
 				'type'        => 'checkbox',
 				'default'     => false,
@@ -663,7 +663,7 @@ return array(
 			),
 			'logo_type'                                    => array(
 				'title'   => esc_html__( 'Logo type', 'groovy-menu' ),
-				'type'    => 'logotype',
+				'type'    => 'logoType',
 				'default' => 'text',
 				'options' => array(
 					'img'  => 'image',
