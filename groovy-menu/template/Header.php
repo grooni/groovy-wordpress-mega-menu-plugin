@@ -120,6 +120,7 @@ function groovyMenu( $args = array() ) {
 	}
 
 	$presets_list = GroovyMenuPreset::getAll();
+	// Get first preset id only.
 	if ( is_array( $presets_list ) ) {
 		foreach ( $presets_list as $item ) {
 			if ( isset( $item->id ) && $args['gm_preset_id'] = $item->id ) {

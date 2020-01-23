@@ -3,6 +3,7 @@
 namespace GroovyMenu;
 
 use \GroovyMenuUtils as GroovyMenuUtils;
+use \GroovyMenuPreset as GroovyMenuPreset;
 use \GroovyMenuSingleMetaPreset as GroovyMenuSingleMetaPreset;
 use \GroovyMenuCategoryPreset as GroovyMenuCategoryPreset;
 
@@ -152,6 +153,18 @@ class PreStorage {
 		if ( $category_options && isset( $category_options['custom_options'] ) && '1' === $category_options['custom_options'] ) {
 			if ( GroovyMenuCategoryPreset::getCurrentPreset() ) {
 				$args['gm_preset_id'] = GroovyMenuCategoryPreset::getCurrentPreset();
+			}
+		}
+
+		if ( defined( 'GROOVY_MENU_LVER' ) && '2' === GROOVY_MENU_LVER ) {
+			// Get first preset id only.
+			$presets_list = GroovyMenuPreset::getAll();
+			if ( is_array( $presets_list ) ) {
+				foreach ( $presets_list as $item ) {
+					if ( isset( $item->id ) && $args['gm_preset_id'] = $item->id ) {
+						break;
+					}
+				}
 			}
 		}
 

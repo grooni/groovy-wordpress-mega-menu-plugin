@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Groovy Menu 1.0.9\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-21 18:43+0300\n"
-"PO-Revision-Date: 2019-11-21 18:44+0300\n"
+"POT-Creation-Date: 2020-01-16 17:29+0300\n"
+"PO-Revision-Date: 2020-01-16 17:34+0300\n"
 "Last-Translator: Di_Skyer <diskyer@gmail.com>\n"
 "Language-Team: Русский\n"
 "Language: ru_RU\n"
@@ -1007,7 +1007,7 @@ msgstr "Стиль границ"
 
 #: includes/config/Config.php:1546 includes/config/Config.php:1634
 msgid "None"
-msgstr ""
+msgstr "Не задано"
 
 #: includes/config/Config.php:1565 includes/config/Config.php:1653
 msgid "color on hover"
@@ -1481,6 +1481,7 @@ msgstr "Очистить все отчеты о версиях"
 #: includes/migration/migrate_debug.php:174
 msgid "Security check error. Try refresh that page, please."
 msgstr ""
+"Ошибка проверки безопасности. Пожалуйста, попробуйте перезагрузить страницу."
 
 #: includes/migration/migrate_debug.php:215
 msgid "Sleep (not active)"
@@ -1596,13 +1597,15 @@ msgstr "Интеграция"
 #: includes/modules/core/inc/GroovyMenuSettings15.php:748
 #: includes/modules/core/inc/GroovyMenuSettings15.php:2097
 #: includes/modules/core/inc/GroovyMenuSettings15.php:2303
+#: includes/modules/core/inc/GroovyMenuSettings15.php:2333
 msgid "Fail. Nonce field outdated. Try reload page."
 msgstr ""
+"Неудачно. Поле безопасности просрочено. Попробуйте перезагрузить страницу."
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:409
 #: includes/modules/core/inc/GroovyMenuSettings15.php:753
 msgid "Fail. Need more Capabilities."
-msgstr ""
+msgstr "Неудачно. Необходимо больше прав."
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:444
 #: includes/modules/core/inc/GroovyMenuSettings15.php:788
@@ -1870,7 +1873,7 @@ msgstr "Востановить"
 #: includes/modules/core/inc/GroovyMenuSettings15.php:2160
 #: includes/modules/core/inc/GroovyMenuSettings15.php:2226
 #: includes/modules/core/inc/GroovyMenuSettings15.php:2322
-#: includes/modules/core/inc/GroovyMenuSettings15.php:2356
+#: includes/modules/core/inc/GroovyMenuSettings15.php:2363
 msgid "Save"
 msgstr "Сохранить"
 
@@ -1957,6 +1960,7 @@ msgstr "Показать настройки темы / плагина"
 #: includes/modules/core/inc/GroovyMenuSettings15.php:207
 msgid "Error. Nonce field outdated. Try reload page."
 msgstr ""
+"Ошибка. Поле безопасности просрочено. Попробуйте перезагрузить страницу."
 
 #: includes/modules/core/inc/GroovyMenuSettings15.php:217
 msgid "Error. Undefined post param \"do\""
@@ -2295,7 +2299,7 @@ msgstr ""
 "Если вы столкнулись с проблемами интеграции, нашли какие-либо ошибки или "
 "хотите предложить новую функцию, пожалуйста, создайте заявку на нашем %s"
 
-#: includes/modules/core/inc/GroovyMenuSettings15.php:2358
+#: includes/modules/core/inc/GroovyMenuSettings15.php:2365
 msgid "Save Error"
 msgstr "Ошибка Сохранения"
 
@@ -2328,7 +2332,7 @@ msgstr "Посмотреть пресет"
 #: includes/modules/core/inc/GroovyMenuUtils.php:279
 #: includes/modules/core/inc/GroovyMenuUtils.php:289
 msgid "single pages"
-msgstr ""
+msgstr "отдельные страницы"
 
 #: includes/modules/core/inc/GroovyMenuUtils.php:282
 msgid "Search page"
@@ -2374,11 +2378,11 @@ msgstr "WP_Filesystem() шибка загрузки библиотеки"
 
 #: includes/modules/core/inc/GroovyMenuUtils.php:1529
 msgid "Plugin Groovy Menu  is deactivated. Minimum required version for PHP 7."
-msgstr ""
+msgstr "Плагин Groovy Menu деактивирован. Необходим PHP 7 версии минимум."
 
 #: includes/modules/core/inc/GroovyMenuUtils.php:1531
 msgid "Plugins page"
-msgstr ""
+msgstr "Страница плагинов"
 
 #: includes/modules/debugpage/inc/DebugPage.php:52
 #: includes/modules/debugpage/inc/DebugPage.php:53
@@ -2505,7 +2509,7 @@ msgstr "Абсолютное"
 
 #: includes/modules/walkers/inc/AdminWalker.php:142
 msgid "none"
-msgstr ""
+msgstr "не задано"
 
 #: includes/modules/walkers/inc/AdminWalker.php:470
 #, php-format
@@ -2524,7 +2528,7 @@ msgstr "Мега Меню"
 
 #: includes/modules/walkers/inc/AdminWalker.php:519
 msgid "Sub"
-msgstr ""
+msgstr "Sub"
 
 #: includes/modules/walkers/inc/AdminWalker.php:528
 msgid "sub item"
@@ -2540,7 +2544,7 @@ msgstr "Переместить вниз"
 
 #: includes/modules/walkers/inc/AdminWalker.php:562
 msgid "Edit"
-msgstr ""
+msgstr "Править"
 
 #: includes/modules/walkers/inc/AdminWalker.php:571
 msgid "URL"
@@ -2572,7 +2576,7 @@ msgstr "CSS классы (опционально)"
 
 #: includes/modules/walkers/inc/AdminWalker.php:641
 msgid "Link Relationship (XFN)"
-msgstr ""
+msgstr "Link Relationship (XFN)"
 
 #: includes/modules/walkers/inc/AdminWalker.php:651
 msgid "Description"
