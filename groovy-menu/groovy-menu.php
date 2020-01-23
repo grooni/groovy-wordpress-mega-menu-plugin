@@ -1,7 +1,7 @@
 <?php defined( 'ABSPATH' ) || die( 'This script cannot be accessed directly.' );
 /*
 Plugin Name: Groovy Menu (free)
-Version: 1.0.9
+Version: 1.1.0
 Description: Groovy menu is a modern adjustable and flexible menu designed for creating mobile-friendly menus with a lot of options.
 Plugin URI: https://groovymenu.grooni.com/
 Author: Grooni.com
@@ -25,7 +25,13 @@ along with Groovy Menu (free). If not, see http://www.gnu.org/licenses/gpl-3.0.h
 
 */
 
-define( 'GROOVY_MENU_VERSION', '1.0.9' );
+if ( ! defined( 'GROOVY_MENU_LVER' ) ) {
+	define( 'GROOVY_MENU_LVER', '2' );
+} else {
+	return;
+}
+
+define( 'GROOVY_MENU_VERSION', '1.1.0' );
 define( 'GROOVY_MENU_DB_VER_OPTION', 'groovy_menu_db_version' );
 define( 'GROOVY_MENU_DIR', plugin_dir_path( __FILE__ ) );
 define( 'GROOVY_MENU_URL', plugin_dir_url( __FILE__ ) );
@@ -38,14 +44,9 @@ if ( ! defined( 'AUTH_COOKIE' ) && function_exists( 'is_multisite' ) && is_multi
 }
 
 $db_version = get_option( GROOVY_MENU_DB_VER_OPTION );
-if ( ! $db_version ) {
-	update_option( GROOVY_MENU_DB_VER_OPTION, GROOVY_MENU_VERSION );
-	$db_version = GROOVY_MENU_VERSION;
-}
-if ( ! defined( 'GROOVY_MENU_LVER' ) ) {
-	define( 'GROOVY_MENU_LVER', '2' );
-} else {
-	return;
+if ( ! $db_version || version_compare( $db_version, '2.0.0', '<' ) ) {
+	$db_version = version_compare( GROOVY_MENU_VERSION, '2.0.0', '<' ) ? '2.0.0' : GROOVY_MENU_VERSION;
+	update_option( GROOVY_MENU_DB_VER_OPTION, $db_version );
 }
 
 global $gm_supported_module;
