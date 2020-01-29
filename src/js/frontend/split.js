@@ -35,12 +35,36 @@ function setPaddingsAlignCenter () {
   const navRight = document.querySelector('.nav--right');
   const navLeft = document.querySelector('.nav--left');
 
+  var widthMenuActions = 0;
+  var widthMiniCart = 0;
+  var widthSearchIcon = 0;
+  var widthDivider = 0;
+
+  if (settings.showDivider) {
+    widthDivider = 10 + 1 + 10;
+  }
+
+  if (settings.searchForm !== 'disable') {
+    const searchIconFontSize = settings.searchFormIconSizeDesktop;
+    widthSearchIcon = 13 + Number.parseInt(searchIconFontSize) + 13;
+  }
+
+  if (settings.woocommerceCart) {
+    const cartIconFontSize = settings.woocommerceCartIconSizeDesktop;
+    widthMiniCart = 17 + 15 + Number.parseInt(cartIconFontSize) + 15 + 17;
+  }
+
+  widthMenuActions = widthDivider + widthSearchIcon + widthMiniCart;
+  widthMenuActions = Math.floor(widthMenuActions / 2);
+
   if (isRtl()) {
     navRight.style.paddingRight = `${logoHalfWidthWithPadding}px`;
     navLeft.style.paddingLeft = `${logoHalfWidthWithPadding}px`;
+    logo.style.right = `calc(50% - ${widthMenuActions}px)`;
   } else {
     navRight.style.paddingLeft = `${logoHalfWidthWithPadding}px`;
     navLeft.style.paddingRight = `${logoHalfWidthWithPadding}px`;
+    logo.style.left = `calc(50% - ${widthMenuActions}px)`;
   }
 
   mainMenuWrapper.style.opacity = '1';

@@ -32,6 +32,32 @@ function getStickyMenuOffset () {
   let toolbarHeight = toolbar === null ? 0 : toolbar.offsetHeight;
   let stickyMenuOffset;
 
+  // Mobile width
+  if (
+    isMobile(options.mobileWidth) &&
+    options.header &&
+    (options.hideToolbarOnMobile ||
+      (
+        options.stickyToolbar &&
+        options.stickyHeaderMobile === 'fixed-sticky'
+      )
+    )
+  ) {
+    toolbarHeight = 0;
+  }
+
+  // Desktop width
+  if (
+    !isMobile(options.mobileWidth) &&
+    options.header &&
+    (
+      options.stickyToolbar &&
+      options.stickyHeader === 'fixed-sticky'
+    )
+  ) {
+    toolbarHeight = 0;
+  }
+
   if (isMobile(options.mobileWidth) &&
     options.header &&
     options.hideToolbarOnMobile) {

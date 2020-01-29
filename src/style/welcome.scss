@@ -50,6 +50,10 @@
     }
   }
 
+  &__subversion_full {
+    margin-left: 14px;
+  }
+
   &__title {
     color: #444;
     font-size: 18px;
@@ -77,7 +81,7 @@
 .gm-welcome-top-block {
   display: flex;
   position: relative;
-  padding-left: 45px;
+  padding-left: 58px;
   margin-bottom: 126px;
 
   &__txt {
@@ -102,6 +106,10 @@
     right: 20px;
     top: -130px;
   }
+}
+
+.gm-welcome-full .gm-welcome-top-block {
+  padding-left: 43px;
 }
 
 .gm-welcome-tiles {
@@ -158,6 +166,10 @@
       background-color: #ffb11a;
     }
   }
+}
+
+.gm-welcome-full .gm-welcome-tile {
+  padding: 45px 23px 20px 23px;
 }
 
 .gm-welcome-title {
@@ -293,6 +305,27 @@
   }
 }
 
+.gm-welcome-margintop {
+  margin-top: 28px !important;
+}
+
+.gm-welcome-purchase-key--wrapper {
+  width: 490px;
+  overflow: visible;
+  margin: 18px 0 18px 0;
+}
+
+.gm-welcome-purchase-key--hidden {
+  background: #dbdbdb;
+  padding: 14px;
+  font-size: 17px;
+  color: #454545;
+}
+
+.gm-welcome-purchase-key {
+  text-align: center;
+}
+
 .bg-welcome-btn {
   box-shadow: 0 14px 64px rgba(0, 0, 0, 0.21);
   border-radius: 38px;
@@ -309,4 +342,263 @@
   text-align: center;
   align-self: center;
   margin-bottom: 60px;
+}
+
+.gm-welcome-full .gm-welcome-top-block__txt {
+  max-width: 400px;
+  z-index: 10;
+}
+
+.gm-welcome-registered__txt {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.gm-welcome-top-block .gm-welcome-registered__p {
+  margin: 0 0 24px 0;
+  font-size: 16px;
+}
+
+.gm-welcome-registered__lock {
+  color: #b31b56;
+}
+
+.gm-lic-ok {
+  font-size: 40px;
+  margin: -14px 28px 0 0;
+  color: #85b33f;
+}
+
+.gm-lic-lock {
+  font-size: 70px;
+  margin: -36px 52px 0 -12px;
+  color: #b31b56;
+}
+
+.gm-welcome-tile__link--lic {
+  padding-top: 50px;
+  padding-left: 14px;
+  padding-bottom: 50px;
+  padding-right: 14px;
+}
+
+.gm-welcome-simple-link {
+  font-size: 16px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+}
+
+.gm-welcome-tabs {
+  display: block;
+  padding: 32px 20px 12px 20px;
+  z-index: 10;
+}
+
+.gm-welcome-grid-wrapper2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 12px;
+  position: relative;
+}
+
+.gm-welcome-grid-wrapper2-1 {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-column-gap: 6px;
+  position: relative;
+}
+
+.gm-welcome-grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.gm-welcome-content-66 {
+  width: 66.66%;
+  padding: 2px 8px;
+  float: left;
+  clear: right;
+}
+
+.gm-welcome-content-33 {
+  width: 33.33%;
+  padding: 2px 8px;
+  float: left;
+  clear: right;
+}
+
+.gm-welcome-content-50 {
+  width: 50%;
+  padding: 2px 8px;
+  float: left;
+  clear: right;
+}
+
+.gm-welcome-content-100 {
+  padding: 2px 8px;
+  width: 100%;
+  clear: both;
+}
+
+.gm-welcome-big-button {
+  color: #fff;
+  background: #83b441;
+  font-size: 13px;
+  padding: 14px 14px;
+  text-decoration: none;
+  text-transform: uppercase;
+  box-shadow: 0 2px 0 #719335;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.gm-welcome-big-button:hover {
+  color: #fff;
+  background: #7fc229;
+  box-shadow: 0 1px 0 #577a1a;
+}
+
+.gm-welcome-big-button--blue {
+  color: #fff;
+  background: #458aff;
+  box-shadow: 0 2px 0 #3060b2;
+}
+
+.gm-welcome-big-button--blue:hover {
+  color: #fff;
+  background: #2b79ff;
+  box-shadow: 0 1px 0 #0e54cc;
+}
+
+.gm-welcome-notice {
+  margin: 12px 0 0 0;
+  background: #ececec;
+  padding: 30px 23px;
+}
+
+.gm-welcome-notice p {
+  font-size: 14px;
+  line-height: 24px;
+  padding: 0;
+}
+
+.gm-welcome-notice__important {
+  background: #fff3dd;
+}
+
+.gm-welcome-tab__big-text p {
+  font-size: 18px;
+  margin: 0 0 18px 0;
+}
+
+.gm-welcome-tab-text {
+  padding: 0 0 0 20px;
+}
+
+.gm-welcome-tab-text p {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.gm-welcome-integration__wrapper,
+.gm-welcome-support__wrapper {
+  background-color: #fff;
+
+  p {
+    line-height: 24px;
+  }
+}
+
+.gm-welcome-integration,
+.gm-welcome-support,
+.gm-welcome-sysinfo {
+  padding: 45px 23px 40px 23px;
+
+  h2 {
+    font-weight: 700;
+    font-size: 19px;
+    margin-bottom: 21px;
+  }
+}
+
+.gm-welcome-sysinfo {
+  padding: 45px 5px 40px 5px;
+
+  h2 {
+    padding-left: 18px;
+  }
+}
+
+.gm-welcome-support .gm-welcome-support--active-text,
+.gm-welcome-support .gm-welcome-support--expired-text {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 0 24px 0;
+}
+
+.gm-welcome-support .gm-welcome-support--active-text {
+  color: #83b240;
+
+  .dashicons {
+    font-size: 28px;
+    margin: -2px 6px 0 0;
+  }
+}
+
+.gm-welcome-support .gm-welcome-support--expired-text {
+  color: #b31b56;
+
+  .dashicons {
+    font-size: 28px;
+    margin: -2px 6px 0 0;
+  }
+}
+
+/*  ---  System info --- */
+.gm-welcome-sysinfo__wrapper {
+  background-color: #fff;
+  margin-left: 5px;
+}
+
+.gm-sysinfo--wrapper {
+  display: table;
+  font-size: 14px;
+  margin-top: 16px;
+}
+
+.gm-sysinfo--row {
+  display: table-row;
+}
+
+.gm-sysinfo--title,
+.gm-sysinfo--pass,
+.gm-sysinfo--value {
+  display: table-cell;
+  padding: 6px 6px 6px 20px;
+
+  span {
+    font-weight: bold;
+  }
+}
+
+.gm-sysinfo--value {
+  padding-right: 18px;
+}
+
+.gm-sysinfo--row-even {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.gm-sysinfo--pass-ok {
+  color: #00d000;
+}
+
+.gm-sysinfo--pass-fail {
+  color: #fd0000;
+}
+
+.gm-sysinfo--pass-warn {
+  color: #fca300;
 }

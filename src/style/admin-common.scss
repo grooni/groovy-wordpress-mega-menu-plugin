@@ -1,0 +1,30 @@
+#toplevel_page_groovy_menu_settings .dashicons-admin-generic::before,
+#toplevel_page_groovy_menu_welcome .dashicons-admin-generic::before {
+  content: '';
+  background-image: url('../images/groovy.svg');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+#gm-need-license-notice {
+  display: grid;
+  grid-column-gap: 12px;
+  grid-template-columns: auto 1fr;
+}
+
+.gm-notice-column-img {
+  margin: 12px 0 12px 0;
+}
+
+#gm-need-license-notice .gm-need-license-text-block {
+  margin: 2px 0 2px 0;
+  padding: 0 0 0 0;
+}
+
+#gm-need-license-notice .gm-need-license-text-block--buttons {
+  margin: 12px 0 2px 0;
+
+  a {
+    margin: 0 6px 0 0;
+  }
+}

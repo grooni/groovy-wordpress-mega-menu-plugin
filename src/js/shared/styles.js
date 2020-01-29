@@ -53,6 +53,36 @@ export default class GmStyles {
       ? hoverStyleNumber
       : 1;
 
+    let headerToolbar = settings.header.toolbar;
+    
+    // z-index param
+    if (settings.menuZIndex > 0) {
+      const menuZIndex = settings.menuZIndex;
+      const menuZIndexToolbar = menuZIndex + 12;
+      const menuZIndexMobile = menuZIndex + 32; // Mobile wrapper must be more the desktop.
+
+      css.push({
+        '.gm-navbar': `z-index: ${menuZIndex} !important`,
+      });
+      css.push({
+        '.gm-main-menu-wrapper': `z-index: ${menuZIndex} !important`,
+      });
+      css.push({
+        '.gm-navigation-drawer': `z-index: ${menuZIndexMobile} !important`,
+      });
+      css.push({
+        '.gm-navbar--style-3 .gm-toolbar': `z-index: ${menuZIndexToolbar} !important`,
+      });
+      css.push({
+        '.gm-navbar .gm-toolbar .wpml-ls': `z-index: ${menuZIndexToolbar} !important`,
+      });
+      css.push({
+        '.gm-navbar .gm-logo': `z-index: ${menuZIndexToolbar} !important`,
+        media: 'desktop'
+      });
+    }
+
+
     if (settings.header.style === 1) {
       if (
         settings.submenuBorderStyle &&
@@ -201,7 +231,7 @@ export default class GmStyles {
 
         css.push({
           '.gm-container, #gm-main-menu': 'justify-content: center;',
-          '.gm-navbar .gm-logo': 'position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;',
+          '.gm-navbar .gm-logo': 'position: absolute; top: 50%; left: 50%; right: auto; transform: translate(-50%, -50%); z-index: 9999;',
           '.gm-main-menu-wrapper .gm-navbar-nav.nav--left': 'justify-content: flex-end;',
           '.gm-main-menu-wrapper .gm-navbar-nav.nav--right': 'justify-content: flex-start;',
           media: 'desktop'
@@ -1200,6 +1230,17 @@ export default class GmStyles {
       css.push({
         '.gm-padding': `padding-top: ${settings.mobileHeaderHeight}px`,
         media: 'mobile'
+      });
+    }
+
+    // Sticky toolbar.
+    if (
+      headerToolbar &&
+      (settings.header.style === 1 || settings.header.style === 2) &&
+      settings.stickyToolbar
+    ) {
+      css.push({
+        '.gm-navbar .gm-container': `opacity: 1 !important`
       });
     }
 

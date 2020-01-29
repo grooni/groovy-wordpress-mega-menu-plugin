@@ -68,3 +68,8 @@ GROOVY TOOLBAR
     }
   }
 }
+
+.gm-navbar--style-4 .gm-toolbar .gm-toolbar-social-link > span,
+.gm-navbar--style-3 .gm-toolbar .gm-toolbar-social-link > span {
+  display: none;
+}
