@@ -26,6 +26,10 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	const MEGAMENU_BACKGROUND_POSITION  = 'groovy_menu_megamenu_background_position';
 	const MEGAMENU_BACKGROUND_REPEAT    = 'groovy_menu_megamenu_background_repeat';
 	const MEGAMENU_BACKGROUND_SIZE      = 'groovy_menu_megamenu_background_size';
+	const GM_THUMB_ENABLE               = 'groovy_menu_thumb_enable';
+	const GM_THUMB_POSITION             = 'groovy_menu_thumb_position';
+	const GM_THUMB_MAX_HEIGHT           = 'groovy_menu_thumb_max_height';
+	const GM_THUMB_IMAGE                = 'groovy_menu_thumb_image';
 	const GM_BADGE_ENABLE               = 'groovy_menu_badge_enable';
 	const GM_BADGE_TYPE                 = 'groovy_menu_badge_type';
 	const GM_BADGE_PLACEMENT            = 'groovy_menu_badge_placement';
@@ -308,6 +312,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 			if ( empty( $post->ID ) ) {
 				// Recovery global $post exemplar.
 				$post = $_post;
+
 				return $mm_content;
 			}
 
@@ -315,11 +320,11 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 			if ( isset( $_POST['cs_preview_state'] ) && isset( $_POST['_cs_nonce'] ) ) { // @codingStandardsIgnoreLine
 				// Recovery global $post exemplar.
 				$post = $_post;
+
 				return __( 'Cornerstone content', 'groovy-menu' );
 			}
 
 			if ( isset( $_GET['elementor-preview'] ) ) { // @codingStandardsIgnoreLine
-				// Recovery global $post exemplar.
 				$post = $_post;
 				return __( 'Elementor content', 'groovy-menu' );
 			}
@@ -516,6 +521,85 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 		$val = $this->getGMNavMenuMetaWithCheck( $item_id, self::IS_SHOW_FEATURED_IMAGE, true );
 		if ( '' === $val ) {
 			$val = false;
+		}
+
+		return $val;
+	}
+
+	/**
+	 * @param object $item Object with menu item meta data.
+	 *
+	 * @return bool
+	 */
+	protected function getThumbEnable( $item ) {
+		$item_id = $this->getId( $item );
+		if ( empty( $item_id ) ) {
+			return '';
+		}
+
+		$val = $this->getGMNavMenuMeta( $item_id, self::GM_THUMB_ENABLE, true );
+		if ( empty( $val ) || ! $val || 'none' === $val || 'false' === $val ) {
+			$val = false;
+		}
+
+		return $val;
+	}
+
+
+	/**
+	 * @param object $item Object with menu item meta data.
+	 *
+	 * @return mixed
+	 */
+	protected function getThumbPosition( $item ) {
+		$item_id = $this->getId( $item );
+		if ( empty( $item_id ) ) {
+			return '';
+		}
+
+		$val = $this->getGMNavMenuMeta( $item_id, self::GM_THUMB_POSITION, true );
+		if ( ! $val ) {
+			$val = '';
+		}
+
+		return $val;
+	}
+
+
+	/**
+	 * @param object $item Object with menu item meta data.
+	 *
+	 * @return mixed
+	 */
+	protected function getThumbMaxHeight( $item ) {
+		$item_id = $this->getId( $item );
+		if ( empty( $item_id ) ) {
+			return '';
+		}
+
+		$val = $this->getGMNavMenuMeta( $item_id, self::GM_THUMB_MAX_HEIGHT, true );
+		if ( ! $val ) {
+			$val = '';
+		}
+
+		return $val;
+	}
+
+
+	/**
+	 * @param object $item Object with menu item meta data.
+	 *
+	 * @return mixed
+	 */
+	protected function getThumbImage( $item ) {
+		$item_id = $this->getId( $item );
+		if ( empty( $item_id ) ) {
+			return '';
+		}
+
+		$val = $this->getGMNavMenuMeta( $item_id, self::GM_THUMB_IMAGE, true );
+		if ( ! $val ) {
+			$val = '';
 		}
 
 		return $val;
@@ -1019,7 +1103,6 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 
 		return $font;
 	}
-
 
 
 }

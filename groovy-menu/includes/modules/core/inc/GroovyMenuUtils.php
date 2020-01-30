@@ -510,10 +510,18 @@ class GroovyMenuUtils {
 	 */
 	public static function getNavMenus() {
 
+		static $cached_nav_menu = array();
+
 		$nav_menus = array();
-		$menus     = wp_get_nav_menus();
+
+		if ( ! empty( $cached_nav_menu ) ) {
+			$menus = $cached_nav_menu;
+		} else {
+			$menus = wp_get_nav_menus();
+		}
 
 		if ( ! empty( $menus ) ) {
+			$cached_nav_menu = $menus;
 			foreach ( $menus as $menu ) {
 				if ( isset( $menu->term_id ) && isset( $menu->name ) ) {
 					$nav_menus[ $menu->term_id ] = $menu->name;
@@ -578,7 +586,7 @@ class GroovyMenuUtils {
 	/**
 	 * Retrieves all registered navigation menu locations and the menus assigned to them.
 	 *
-	 * @param bool $return_first return only first of them, or 'gm_primary' if exists.
+	 * @param bool $return_first   return only first of them, or 'gm_primary' if exists.
 	 *
 	 * @param bool $loc_name_first return list with location name first as value.
 	 *
@@ -1565,11 +1573,11 @@ class GroovyMenuUtils {
 
 		if ( ! $output && ! empty( $saved_integration_location ) && isset( $args->theme_location ) && esc_attr( $saved_integration_location ) === $args->theme_location ) {
 
-			$gm_ids = \GroovyMenu\PreStorage::get_instance()->search_ids_by_location( array( 'theme_location' => 'gm_primary' ) );
+			$gm_ids = GroovyMenuPreStorage::get_instance()->search_ids_by_location( array( 'theme_location' => 'gm_primary' ) );
 
 			if ( ! empty( $gm_ids ) ) {
 				foreach ( $gm_ids as $gm_id ) {
-					$gm_data = \GroovyMenu\PreStorage::get_instance()->get_gm( $gm_id );
+					$gm_data = GroovyMenuPreStorage::get_instance()->get_gm( $gm_id );
 					$gm_html .= $gm_data['gm_html'];
 
 				}
@@ -1656,5 +1664,332 @@ class GroovyMenuUtils {
 		}
 
 	}
+
+	
+	public static function l10n( $for_admin = true ) {
+		$groovyMenuL10n = array();
+
+		if ( $for_admin ) {
+			$groovyMenuL10n['save_alert'] = esc_html__( 'The changes you made will be lost if you navigate away from this page.', 'groovy-menu' );
+		} else {
+			// yet empty ...
+		}
+
+		return $groovyMenuL10n;
+	}
+	
+
+	public static function clean_output( $text ) {
+		$text = trim( $text );
+
+		return $text;
+	}
+
+
+	/**
+	 * Lic checker.
+	 *
+	 * @return bool|string
+	 */
+	public static function check_lic() {
+		if ( get_transient( GROOVY_MENU_DB_VER_OPTION . '__lic_cache' ) ) {
+			$lic_opt = get_option( GROOVY_MENU_DB_VER_OPTION . '__lic' );
+			if ( empty( $lic_opt ) || ! $lic_opt ) {
+				return false;
+			} else {
+				return $lic_opt;
+			}
+		}
+
+		$transient_timer = 2 * MINUTE_IN_SECONDS;
+
+
+		global $gm_supported_module;
+
+		$check_url = 'https://license.grooni.com/user-dashboard/?glm_action=check&glm_page=product';
+
+		$check_url .= '&glm_product=groovy-menu';
+		$check_url .= '&glm_theme=' . $gm_supported_module['theme'];
+		$check_url .= '&glm_rs=' . rawurlencode( get_site_url() );
+
+		$body = wp_remote_get( $check_url );
+
+		if ( is_wp_error( $body ) ) {
+			$error_msg = $body->get_error_code() . ' * ' . $body->get_error_message() . ' * ' . $body->get_error_data();
+			$body      = '{}';
+
+			$gm_supported_module['lic_check_error'] = $error_msg;
+
+			add_action( 'gm_before_welcome_output', function () {
+				global $gm_supported_module;
+				if ( ! empty( $gm_supported_module['lic_check_error'] ) ) {
+					echo '<div class="gm-lic-check-error">' . $gm_supported_module['lic_check_error'] . '</div>';
+				}
+			} );
+
+			$transient_timer = 5 * MINUTE_IN_SECONDS;
+
+		} elseif ( isset( $body['body'] ) ) {
+			$body = $body['body'];
+		} else {
+			$body = '{}';
+		}
+
+		$body    = json_decode( $body, true );
+		$lic_opt = false; // by default.
+
+		if ( is_array( $body ) && isset( $body['approve'] ) ) {
+			if ( $body['approve'] === true ) {
+				update_option( GROOVY_MENU_DB_VER_OPTION . '__lic', GROOVY_MENU_VERSION );
+				$lic_opt = true;
+				$transient_timer = 4 * HOUR_IN_SECONDS;
+			} elseif ( $body['approve'] === false ) {
+				update_option( GROOVY_MENU_DB_VER_OPTION . '__lic', false );
+				$lic_opt = false;
+				$transient_timer = 3 * MINUTE_IN_SECONDS;
+			}
+
+			$body['gm_version'] = GROOVY_MENU_VERSION;
+
+			update_option( GROOVY_MENU_DB_VER_OPTION . '__lic_data', $body );
+		} else {
+			update_option( GROOVY_MENU_DB_VER_OPTION . '__lic_data', array( 'gm_version' => GROOVY_MENU_VERSION ) );
+		}
+
+		set_transient( GROOVY_MENU_DB_VER_OPTION . '__lic_cache', true, $transient_timer );
+
+		return $lic_opt;
+	}
+
+
+	public static function get_lic_data( $field ) {
+		$answer = '';
+
+		/*
+		array (size=7)
+		  'product' => string 'groovy-menu'
+		  'item_id' => string '99999999'
+		  'active_site' => string 'http://site.domain/'
+		  'active_theme' => string ''
+		  'type' => string 'regular'
+		  'supported_until' => string '2022-05-19T21:07:58+10:00'
+		  'purchase_key' => string '77777777-3333-4444-8000-eeeefffff55899'
+		  'approve' => boolean true
+		  'gm_version' => string '1.9.9'
+		 */
+
+		$data = get_option( GROOVY_MENU_DB_VER_OPTION . '__lic_data' );
+		if ( ! empty( $field ) && is_array( $data ) && isset( $data[ $field ] ) ) {
+			$answer = $data[ $field ];
+		}
+
+		if ( 'type' === $field && empty( $answer ) ) {
+			$answer = 'regular';
+		}
+
+		return $answer;
+	}
+
+
+	/**
+	 * Check license supported until param.
+	 *
+	 * @return bool|int
+	 */
+	public static function check_lic_supported_until() {
+		$answer = false; // by default
+
+		$supported_until = self::get_lic_data( 'supported_until' );
+
+		if ( ! empty( $supported_until ) ) {
+
+			$until_date   = strtotime( date( "c", strtotime( $supported_until ) ) );
+			$current_date = strtotime( date( "c" ) );
+
+			if ( $until_date >= $current_date ) {
+				$answer = $until_date;
+			}
+
+		}
+
+		return $answer;
+	}
+
+
+	/**
+	 * Notation to numbers.
+	 *
+	 * This function transforms the php.ini notation for numbers (like '2M') to an integer.
+	 *
+	 * @param  string $size Size value.
+	 *
+	 * @return int
+	 */
+	public static function let_to_num( $size ) {
+		$l   = substr( $size, - 1 );
+		$ret = (int) substr( $size, 0, - 1 );
+		switch ( strtoupper( $l ) ) {
+			case 'P':
+				$ret *= 1024;
+			// No break.
+			case 'T':
+				$ret *= 1024;
+			// No break.
+			case 'G':
+				$ret *= 1024;
+			// No break.
+			case 'M':
+				$ret *= 1024;
+			// No break.
+			case 'K':
+				$ret *= 1024;
+			// No break.
+		}
+
+		return $ret;
+	}
+
+
+	/**
+	 * Numbers to Notation.
+	 *
+	 * @param     $bytes
+	 * @param int $precision
+	 *
+	 * @return int
+	 */
+	public static function num_to_let( $bytes, $precision = 2 ) {
+		$units = array( 'B', 'KB', 'MB', 'GB', 'TB' );
+
+		$bytes = max( $bytes, 0 );
+		$pow   = floor( ( $bytes ? log( $bytes ) : 0 ) / log( 1024 ) );
+		$pow   = min( $pow, count( $units ) - 1 );
+
+		$bytes /= ( 1 << ( 10 * $pow ) );
+
+		return round( $bytes, $precision ) . $units[ $pow ];
+	}
+
+
+	/**
+	 * Get system info
+	 *
+	 * @param string $return_type wait 'array' or 'html'.
+	 * @param array  $params      list of params for output (filter), or leave empty for all.
+	 *
+	 * @return array|string
+	 */
+	public static function get_environment_info( $return_type = 'array', $params = array() ) {
+		$info = array();
+
+		// PHP version
+		$php_version = phpversion();
+		$str_pos     = strpos( $php_version, '-' );
+		if ( $str_pos ) {
+			$php_version = substr( $php_version, 0, $str_pos );
+		}
+
+		// PHP version.
+		$info['php_version'] = array(
+			'title' => __( 'PHP 7.0 or greater', 'groovy-menu' ),
+			'value' => $php_version,
+			'pass'  => ( version_compare( $php_version, '7.0', '>' ) ) ? true : false // more then 7.0
+		);
+
+		// ZipArchive php module.
+		$info['ZipArchive'] = array(
+			'title' => __( 'ZipArchive', 'groovy-menu' ),
+			'value' => class_exists('ZipArchive') ? __( 'Installed', 'groovy-menu' ) : __( 'Fail', 'groovy-menu' ),
+			'pass'  => class_exists( 'ZipArchive' ) ? true : false,
+		);
+
+		// Memory limit.
+		$wp_memory_limit = self::let_to_num( WP_MEMORY_LIMIT );
+		if ( function_exists( 'memory_get_usage' ) ) {
+			$wp_memory_limit = max( $wp_memory_limit, self::let_to_num( @ini_get( 'memory_limit' ) ) );
+		}
+
+		$info['memory_limit'] = array(
+			'title' => 'PHP Memory limit',
+			'value' => self::num_to_let( $wp_memory_limit ),
+			'pass'  => ( $wp_memory_limit > 67107864 ) ? true : false, // more then 64M
+		);
+
+		// php_max_input_vars
+		$php_max_input_vars         = intval( @ini_get( 'max_input_vars' ) );
+		$info['php_max_input_vars'] = array(
+			'title'          => __( 'PHP Max input vars', 'groovy-menu' ),
+			'value'          => $php_max_input_vars,
+			'desc'           => __( 'Matters to the Appearance - Menus editor', 'groovy-menu' ),
+			'recommend_desc' => __( 'Current Max input vars is OK, however 10000 is recommended for the correct operation of all the function.', 'groovy-menu' ),
+			'recommend'      => ( $php_max_input_vars >= 1000 ) ? true : false, // minimum 1000
+			'pass'           => ( $php_max_input_vars >= 10000 ) ? true : false, // minimum 10000
+		);
+
+		// php_max_input_vars
+		$php_max_execution_time         = intval( @ini_get( 'max_execution_time' ) );
+		$info['php_max_execution_time'] = array(
+			'title'          => __( 'PHP Max execution time', 'groovy-menu' ),
+			'value'          => $php_max_execution_time,
+			'desc'           => __( 'php.ini values show above. Real values may vary.', 'groovy-menu' ),
+			'recommend_desc' => __( 'Current max execution time is OK, however 180 is recommended.', 'groovy-menu' ),
+			'recommend'      => ( $php_max_execution_time >= 30 ) ? true : false, // minimum 60
+			'pass'           => ( $php_max_execution_time >= 180 ) ? true : false, // minimum 180
+		);
+
+		// Filter.
+		if ( ! empty( $params ) ) {
+			$_info = array();
+			foreach ( $params as $param ) {
+				if ( isset( $info[ $param ] ) ) {
+					$_info[ $param ] = $info[ $param ];
+				}
+			}
+			$info = $_info;
+		}
+
+		// Sent HTML if so
+		if ( 'html' === $return_type ) {
+			$evenodd = 1;
+			$html    = '<div class="gm-sysinfo--wrapper">';
+
+			foreach ( $info as $index => $item ) {
+				// Description.
+				$desc = '';
+				if ( ! $item['pass'] && ! empty( $item['recommend'] ) && $item['recommend'] && ! empty( $item['recommend_desc'] ) ) {
+					$desc .= '<p class="gm-sysinfo--desc">' . $item['recommend_desc'] . '</p>';
+				}
+				if ( ! empty( $item['desc'] ) ) {
+					$desc .= '<p class="gm-sysinfo--desc">' . $item['desc'] . '</p>';
+				}
+
+				// Check true or false.
+				$pass = '<span class="gm-sysinfo--pass-ok dashicons dashicons-yes"></span>';
+				if ( ! $item['pass'] ) {
+					$pass = '<span class="gm-sysinfo--pass-fail dashicons dashicons-dismiss"></span>';
+				}
+				if ( ! $item['pass'] && ! empty( $item['recommend'] ) && $item['recommend'] ) {
+					$pass = '<span class="gm-sysinfo--pass-warn dashicons dashicons-warning"></span>';
+				}
+
+				$html .= '<div class="gm-sysinfo--row' . ( ( $evenodd % 2 === 0 ) ? ' gm-sysinfo--row-even' : '' ) . '">';
+				$html .= '	<div class="gm-sysinfo--title"><span>' . $item['title'] . '</span>' . $desc . '</div>';
+				$html .= '	<div class="gm-sysinfo--pass">' . $pass . '</div>';
+				$html .= '	<div class="gm-sysinfo--value">' . $item['value'] . '</div>';
+				$html .= '</div>';
+
+				$evenodd ++;
+			}
+
+			$html .= '</div>';
+
+			return $html;
+		}
+
+
+		// return array by default
+		return $info;
+	}
+
 
 }

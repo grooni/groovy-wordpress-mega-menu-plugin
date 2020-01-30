@@ -126,6 +126,18 @@ class AdminWalker extends WalkerNavMenu {
 	/**
 	 * @return array
 	 */
+	static function gmThumbPositionVariants() {
+		$variants = array(
+			'above' => esc_html__( 'Above menu text item', 'groovy-menu' ),
+			'under' => esc_html__( 'Under menu text item', 'groovy-menu' ),
+		);
+
+		return $variants;
+	}
+
+	/**
+	 * @return array
+	 */
 	static function gmBadgeGeneralPositionVariants() {
 		$variants = array(
 			'relative' => esc_html__( 'Relative', 'groovy-menu' ),
@@ -284,6 +296,23 @@ class AdminWalker extends WalkerNavMenu {
 			),
 			'groovymenu-megamenu-post-not-mobile' => array(
 				'meta_name' => self::MEGAMENU_META_POST_NOT_MOBILE,
+				'mass'      => self::GM_NAV_MENU_META,
+			),
+			// Thumb
+			'gm-thumb-enable'                     => array(
+				'meta_name' => self::GM_THUMB_ENABLE,
+				'mass'      => self::GM_NAV_MENU_META,
+			),
+			'gm-thumb-position'                   => array(
+				'meta_name' => self::GM_THUMB_POSITION,
+				'mass'      => self::GM_NAV_MENU_META,
+			),
+			'gm-thumb-max-height'                 => array(
+				'meta_name' => self::GM_THUMB_MAX_HEIGHT,
+				'mass'      => self::GM_NAV_MENU_META,
+			),
+			'gm-thumb-image'                      => array(
+				'meta_name' => self::GM_THUMB_IMAGE,
 				'mass'      => self::GM_NAV_MENU_META,
 			),
 			// Badge.
@@ -556,10 +585,9 @@ class AdminWalker extends WalkerNavMenu {
 							?>" class="item-move-down"><abbr title="<?php esc_attr_e( 'Move down', 'groovy-menu' ); ?>">
 									&#8595;</abbr></a>
 						</span>
-						<a class="item-edit" id="edit-<?php echo esc_attr( $item_id ); ?>"
-							href="<?php
-						echo ( isset( $_GET['edit-menu-item'] ) && strval( $item_id ) === $_GET['edit-menu-item'] ) ? admin_url( 'nav-menus.php' ) : add_query_arg( 'edit-menu-item', $item_id, remove_query_arg( $removed_args, admin_url( 'nav-menus.php#menu-item-settings-' . $item_id ) ) ); // @codingStandardsIgnoreLine
-						?>"><span class="screen-reader-text"><?php esc_html_e( 'Edit', 'groovy-menu' ); ?></span></a>
+						<a class="item-edit" id="edit-<?php echo esc_attr( $item_id ); ?>" href="<?php
+						echo ( isset( $_GET['edit-menu-item'] ) && strval( $item_id ) === $_GET['edit-menu-item'] ) ? admin_url( 'nav-menus.php' ) : add_query_arg( 'edit-menu-item', $item_id, remove_query_arg( $removed_args, admin_url( 'nav-menus.php#menu-item-settings-' . $item_id ) ) );
+						?>"><span class="screen-reader-text"><?php esc_html_e( 'Edit Menu Item', 'groovy-menu' ); ?></span></a>
 					</span>
 			</dt>
 		</dl>
@@ -680,7 +708,101 @@ class AdminWalker extends WalkerNavMenu {
 					</button>
 				</label>
 			</p>
-			<?php if ( $badges_show ) : ?>
+
+			<!-- // Thumbnail settings -->
+
+			<p class="description description-wide">
+				<?php
+				$value = '';
+				if ( $this->getThumbEnable( $item ) ) {
+					$value = 'checked=checked';
+				}
+				?>
+				<label for="gm-thumb-enable-<?php echo esc_attr( $item_id ); ?>">
+					<input
+						type="checkbox"
+						value="enabled"
+						class="gm-thumb-enable"
+						id="gm-thumb-enable-<?php echo esc_attr( $item_id ); ?>"
+						name="gm-thumb-enable[<?php echo esc_attr( $item_id ); ?>]"
+						<?php echo esc_attr( $value ); ?>
+					/>
+					<?php esc_html_e( 'Enable thumbnail', 'groovy-menu' ); ?>
+				</label>
+			</p>
+
+			<p class="description description-wide gm-thumb-field">
+				<?php
+				$value = $this->getThumbPosition( $item ) ? : 'above';
+				?>
+				<label for="gm-thumb-position-<?php echo esc_attr( $item_id ); ?>">
+					<?php esc_html_e( 'Thumbnail position.', 'groovy-menu' ); ?>
+					<br/>
+					<select class="gm-thumb-position"
+						id="gm-thumb-position-<?php echo esc_attr( $item_id ); ?>"
+						name="gm-thumb-position[<?php echo esc_attr( $item_id ); ?>]">
+						<?php
+						foreach ( self::gmThumbPositionVariants() as $position => $position_name ) {
+							?>
+							<option
+								value="<?php echo esc_attr( $position ); ?>"<?php echo ( strval( $position ) === strval( $value ) ) ? ' selected' : '' ?>><?php echo esc_attr( $position_name ); ?></option>
+							<?php
+						}
+						?>
+					</select>
+				</label>
+			</p>
+
+			<p class="description description-wide gm-thumb-field">
+				<?php
+				$value = $this->getThumbMaxHeight( $item ) ? : '128';
+				?>
+				<label for="gm-thumb-max-height-<?php echo esc_attr( $item_id ); ?>">
+					<?php esc_html_e( 'Thumbnail image maximum height.', 'groovy-menu' ); ?><br/>
+					<input
+						type="number"
+						min="0" max="3200"
+						value="<?php echo esc_attr( $value ); ?>"
+						class="gm-thumb-max-height"
+						id="gm-thumb-max-height-<?php echo esc_attr( $item_id ); ?>"
+						name="gm-thumb-max-height[<?php echo esc_attr( $item_id ); ?>]"
+					/> px
+				</label>
+			</p>
+
+			<p class="description description-wide gm-thumb-field gm-thumb--image">
+				<?php $value = $this->getThumbImage( $item ); ?>
+				<?php esc_html_e( 'Thumbnail Image', 'groovy-menu' ); ?>
+				<br>
+				<input
+					type="hidden"
+					value="<?php echo esc_attr( $value ); ?>"
+					class="gm-thumb-image"
+					id="gm-thumb-image-<?php echo esc_attr( $item_id ); ?>"
+					name="gm-thumb-image[<?php echo esc_attr( $item_id ); ?>]">
+				<button
+					type="button"
+					class="button button-primary gm-select-thumb-image"
+					data-item_id="<?php echo esc_attr( $item_id ); ?>"
+					data-uploader_title="<?php esc_html_e( 'Select thumb Image', 'groovy-menu' ); ?>"
+					data-uploader_button_text="<?php esc_html_e( 'Insert image', 'groovy-menu' ); ?>"
+				>
+					<?php esc_html_e( 'Select image', 'groovy-menu' ); ?>
+				</button>
+				<button type="button"
+					class="button gm-remove-thumb-img"
+				>
+					<?php esc_html_e( 'Remove image', 'groovy-menu' ); ?>
+				</button>
+				<span class="gm-thumb-image-preview" id="gm-thumb-image-preview-<?php echo esc_attr( $item_id ); ?>">
+					<?php if ( ! empty( $value ) ) : ?>
+						<img src="<?php echo esc_attr( $value ); ?>" alt="">
+					<?php endif; ?>
+				</span>
+			</p>
+
+			<!-- // Badge settings -->
+
 			<p class="description description-wide">
 				<?php
 				$value = '';
@@ -1021,7 +1143,7 @@ class AdminWalker extends WalkerNavMenu {
 					name="gm-badge-text-font-color[<?php echo esc_attr( $item_id ); ?>]"
 				/>
 			</p>
-			<?php endif; /* $badges_show */ ?>
+
 			<p class="description description-wide">
 				<?php
 				$value = '';

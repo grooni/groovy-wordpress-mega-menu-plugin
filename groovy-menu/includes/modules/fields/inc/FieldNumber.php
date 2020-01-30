@@ -35,13 +35,15 @@ class FieldNumber extends \GroovyMenu\FieldField {
 	}
 
 	public function renderField() {
+		$unit = isset( $this->field['unit'] ) ? $this->field['unit'] : '';
+
 		?>
 		<div class="gm-gui__module__ui gm-gui__module__number-wrapper">
 			<input data-name="<?php echo esc_attr( $this->name ); ?>" class="gm-gui__module__number__input"
 			       name="<?php echo esc_attr( $this->getName() ); ?>" type="number" value="<?php echo esc_attr( $this->getValue() ); ?>"
 			       data-default="<?php echo esc_attr( $this->getDefault() ); ?>" max="<?php echo esc_attr( $this->getMax() ); ?>"
 			       min="<?php echo esc_attr( $this->getMin() ); ?>" step="<?php echo esc_attr( $this->getStep() ); ?>">
-			<span class="value">px</span>
+			<?php if ( ! empty( $unit ) ) : ?><span class="value"><?php echo esc_attr( $unit ); ?></span><?php endif; ?>
 		</div>
 		<?php
 	}
@@ -53,6 +55,9 @@ class FieldNumber extends \GroovyMenu\FieldField {
 	 */
 	public function getValue() {
 		$value = intval( parent::getValue() );
+		if ( empty( $value ) && 0 !== $value ) {
+			$value = $this->getDefault();
+		}
 
 		return $value;
 	}
