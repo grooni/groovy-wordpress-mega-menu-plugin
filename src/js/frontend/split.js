@@ -40,17 +40,17 @@ function setPaddingsAlignCenter () {
   var widthSearchIcon = 0;
   var widthDivider = 0;
 
-  if (settings.showDivider) {
+  if (options.showDivider) {
     widthDivider = 10 + 1 + 10;
   }
 
-  if (settings.searchForm !== 'disable') {
-    const searchIconFontSize = settings.searchFormIconSizeDesktop;
+  if (options.searchForm !== 'disable') {
+    const searchIconFontSize = options.searchFormIconSizeDesktop;
     widthSearchIcon = 13 + Number.parseInt(searchIconFontSize) + 13;
   }
 
-  if (settings.woocommerceCart) {
-    const cartIconFontSize = settings.woocommerceCartIconSizeDesktop;
+  if (options.woocommerceCart) {
+    const cartIconFontSize = options.woocommerceCartIconSizeDesktop;
     widthMiniCart = 17 + 15 + Number.parseInt(cartIconFontSize) + 15 + 17;
   }
 
@@ -70,6 +70,16 @@ function setPaddingsAlignCenter () {
   mainMenuWrapper.style.opacity = '1';
 }
 
+function removePaddingsAlignCenter () {
+  const navRight = document.querySelector('.nav--right');
+  const navLeft = document.querySelector('.nav--left');
+
+  navRight.style.paddingRight = '';
+  navRight.style.paddingLeft = '';
+  navLeft.style.paddingRight = '';
+  navLeft.style.paddingLeft = '';
+}
+
 export function recalculatePaddingsAlignCenter (args) {
   if (args && args.options) {
     options = args.options;
@@ -77,6 +87,10 @@ export function recalculatePaddingsAlignCenter (args) {
 
   if (!isMobile(options.mobileWidth) && options.header.align === 'center') {
     setPaddingsAlignCenter();
+  }
+
+  if (isMobile(options.mobileWidth) && options.header.align === 'center') {
+    removePaddingsAlignCenter();
   }
 }
 

@@ -444,6 +444,19 @@ if ( ! function_exists( 'groovy_menu_scripts_admin' ) ) {
 	 */
 	function groovy_menu_scripts_admin( $hook_suffix ) {
 
+		// For any admin page.
+		wp_enqueue_style( 'groovy-css-admin-menu', GROOVY_MENU_URL . 'assets/style/admin-common.css', [], GROOVY_MENU_VERSION );
+		wp_enqueue_script( 'groovy-js-admin-migrate', GROOVY_MENU_URL . 'assets/js/admin-common.js', [ 'jquery' ], GROOVY_MENU_VERSION, true );
+
+		// Only Welcome page.
+		if ( in_array( $hook_suffix, array(
+			'toplevel_page_groovy_menu_settings',
+			'groovy-menu_page_groovy_menu_welcome',
+			'toplevel_page_groovy_menu_welcome',
+		), true ) ) {
+			wp_enqueue_style( 'groovy-menu-style-welcome', GROOVY_MENU_URL . 'assets/style/welcome.css', array(), GROOVY_MENU_VERSION );
+		}
+
 		// Only integration.
 		if ( in_array( $hook_suffix, array(
 				'groovy-menu_page_groovy_menu_integration',
@@ -482,12 +495,44 @@ if ( ! function_exists( 'groovy_menu_scripts_admin' ) ) {
 			wp_enqueue_script( 'groovy-menu-js-appearance', GROOVY_MENU_URL . 'assets/js/debug.js', array(), GROOVY_MENU_VERSION, true );
 		}
 
-		// Only Welcome page.
-		if ( in_array( $hook_suffix, array(
+		$allow_pages = array(
+			'toplevel_page_groovy_menu_settings',
+			'groovy_menu_integration',
+			'groovy_menu_welcome',
+			'groovy_menu_license',
+			'groovy-menu_page_groovy_menu_settings',
+			'groovy-menu_page_groovy_menu_integration',
 			'groovy-menu_page_groovy_menu_welcome',
-			'toplevel_page_groovy_menu_welcome'
-		), true ) ) {
-			wp_enqueue_style( 'groovy-menu-style-welcome', GROOVY_MENU_URL . 'assets/style/welcome.css', array(), GROOVY_MENU_VERSION );
+			'toplevel_page_groovy_menu_welcome',
+			'groovy-menu_page_groovy_menu_license',
+			'tools_page_groovy_menu_debug_page',
+			'nav-menus.php',
+		);
+
+		// Only Allowed pages.
+		if ( in_array( $hook_suffix, $allow_pages, true ) ) {
+			wp_enqueue_script(
+				'groovy-js-admin',
+				GROOVY_MENU_URL . 'assets/js/admin.js',
+				[ 'jquery', 'wp-color-picker' ],
+				GROOVY_MENU_VERSION,
+				true
+			);
+
+			wp_add_inline_script( 'groovy-js-admin', 'var groovyMenuL10n = ' . wp_json_encode( GroovyMenuUtils::l10n( true ) ) . ';' );
+
+			$groovy_menu_localize = array(
+				'GroovyMenuAdminUrl' => get_admin_url( null, 'admin.php?page=groovy_menu_settings', 'relative' ),
+				'GroovyMenuSiteUrl'  => get_site_url(),
+			);
+			wp_localize_script( 'groovy-js-admin', 'groovyMenuLocalize', $groovy_menu_localize );
+
+			wp_enqueue_style( 'groovy-css-admin', GROOVY_MENU_URL . 'assets/style/admin.css', [], GROOVY_MENU_VERSION );
+			wp_style_add_data( 'groovy-css-admin', 'rtl', 'replace' );
+
+			foreach ( \GroovyMenu\FieldIcons::getFonts() as $name => $icon ) {
+				wp_enqueue_style( 'groovy-menu-style-fonts-' . $name, GroovyMenuUtils::getUploadUri() . 'fonts/' . $name . '.css', [], GROOVY_MENU_VERSION );
+			}
 		}
 
 	}
