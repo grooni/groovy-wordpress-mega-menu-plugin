@@ -148,10 +148,11 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				}
 			}
 
-			$lic_opt = get_option( GROOVY_MENU_DB_VER_OPTION . '__lic' );
-
-			if ( ! $lic_opt && 'toplevel_page_groovy_menu_welcome' !== $screen->id ) {
-				add_action( 'admin_notices', array( $this, 'show_gm_admin_need_license' ), 4 );
+			if ( ! $this->lver ) {
+				$lic_opt = get_option( GROOVY_MENU_DB_VER_OPTION . '__lic' );
+				if ( ! $lic_opt && 'toplevel_page_groovy_menu_welcome' !== $screen->id ) {
+					add_action( 'admin_notices', array( $this, 'show_gm_admin_need_license' ), 4 );
+				}
 			}
 
 		}
