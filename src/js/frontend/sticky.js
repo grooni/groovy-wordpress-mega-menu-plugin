@@ -136,11 +136,11 @@ export function enableStickyNav () {
   adminbarHeight = wpAdminBar === null ? 0 : wpAdminBar.offsetHeight;
 
   let headerStickyHeight = isMobile(options.mobileWidth) ? options.mobileHeaderStickyHeight : options.headerHeightSticky;
-  let $toolbarHeight = toolbar.outerHeight() || 0;
+  let toolbarHeight = toolbar === null ? 0 : toolbar.offsetHeight;
   let translateHeight = adminbarHeight;
 
   if (
-    $toolbarHeight &&
+    toolbarHeight &&
     (!isMobile(options.mobileWidth) || !options.hideToolbarOnMobile) &&
     (options.header.style === 1 || options.header.style === 2) &&
     options.stickyToolbar
