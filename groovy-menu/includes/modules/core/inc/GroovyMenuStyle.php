@@ -897,6 +897,10 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 				$options = array();
 			}
 
+			if ( empty( $options['menu_z_index'] ) ) {
+				$options['menu_z_index'] = '9999';
+			}
+
 			if ( defined( 'GROOVY_MENU_LVER' ) && '2' === GROOVY_MENU_LVER ) {
 				$this->lver = true;
 			}

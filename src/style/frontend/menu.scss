@@ -57,6 +57,11 @@ NAVBAR GENERAL STYLES
   transition: background-color 0.2s;
 }
 
+.gm-navbar .gm-inner,
+.gm-navbar .gm-inner-bg {
+  width: 100%;
+}
+
 .gm-container {
   display: flex;
   margin-right: auto;

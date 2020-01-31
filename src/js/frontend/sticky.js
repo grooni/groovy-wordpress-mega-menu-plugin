@@ -82,9 +82,20 @@ function handleSlideDown () {
     let toolbarHeight = toolbar === null ? 0 : toolbar.offsetHeight;
     let headerStickyHeight = isMobile(options.mobileWidth) ? options.mobileHeaderStickyHeight : options.headerHeightSticky;
 
+    let topOffsetWrapper = headerStickyHeight + toolbarHeight;
+
+    if (
+      toolbarHeight &&
+      (!isMobile(options.mobileWidth) || !options.hideToolbarOnMobile) &&
+      (options.header.style === 1 || options.header.style === 2) &&
+      options.stickyToolbar
+    ) {
+      topOffsetWrapper = headerStickyHeight;
+    }
+
     navbar.classList.add('gm-navbar-sticky-toggle');
 
-    navbarWrapper.style.top = `-${headerStickyHeight + toolbarHeight}px`;
+    navbarWrapper.style.top = `-${topOffsetWrapper}px`;
     navbarWrapper.style.transform = `translateY(${headerStickyHeight + getStickyMenuOffset() + toolbarHeight}px)`;
 
     recalculatePaddingsAlignCenter({options});
@@ -124,13 +135,27 @@ export function enableStickyNav () {
 
   adminbarHeight = wpAdminBar === null ? 0 : wpAdminBar.offsetHeight;
 
+  let headerStickyHeight = isMobile(options.mobileWidth) ? options.mobileHeaderStickyHeight : options.headerHeightSticky;
+  let $toolbarHeight = toolbar.outerHeight() || 0;
+  let translateHeight = adminbarHeight;
+
+  if (
+    $toolbarHeight &&
+    (!isMobile(options.mobileWidth) || !options.hideToolbarOnMobile) &&
+    (options.header.style === 1 || options.header.style === 2) &&
+    options.stickyToolbar
+  ) {
+    translateHeight = adminbarHeight + headerStickyHeight;
+  }
+
+
   if (stickySettings.type === 'slide-down') {
     navbar.classList.add('gm-navbar-sticky');
     handleSlideDown({data: {options}});
     window.addEventListener('scroll', lodash.throttle(handleSlideDown, 50));
   } else if (stickySettings.type === 'fixed-sticky') {
     navbar.classList.add('gm-navbar-fixed-sticky');
-    navbarWrapper.style.transform = `translate3d(0,' + (${adminbarHeight}) + 'px,0)`;
+    navbarWrapper.style.transform = `translate3d(0,' + (${translateHeight}) + 'px,0)`;
     handleFixedSticky();
     window.addEventListener('scroll', lodash.throttle(handleFixedSticky, 50));
   }

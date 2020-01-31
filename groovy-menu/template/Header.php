@@ -794,7 +794,13 @@ function groovyMenu( $args = array() ) {
 			<div>';
 
 	$args['gm_navigation_mobile'] = true;
-	$output_html                 .= wp_nav_menu( $args );
+
+	if ( isset( $groovyMenuSettings['mobileNavMenu'] ) && is_numeric( $groovyMenuSettings['mobileNavMenu'] ) ) {
+		// Re-assign nav_menu for the mobile view.
+		$args['menu'] = intval( $groovyMenuSettings['mobileNavMenu'] );
+	}
+
+	$output_html .= wp_nav_menu( $args );
 
 	$output_html .= '</div>';
 	$output_html .= '<div class="flex-grow-1"></div>';
