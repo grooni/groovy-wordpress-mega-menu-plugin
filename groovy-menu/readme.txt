@@ -2,9 +2,9 @@
 Contributors: Grooni
 Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive, responsive menu, sticky menu, vertical menu, horizontal menu, ajax cart
 Requires at least: 4.9.7
-Tested up to: 5.3
+Tested up to: 5.3.2
 Requires PHP: 7.0
-Stable tag: 1.0.9
+Stable tag: 1.1.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 Groovy menu is a responsive and free Mega Menu WordPress plugin designed for creating mobile friendly menus with a lot of options.
@@ -91,6 +91,19 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.1.0 =
+* Fix: Error in determining preset ID in some cases of manual integration for the free version of the plugin. The error affected the inability to display the dropdown menu.
+* Fix: Improved compatibility of created presets in the free version with the premium version of the plugin.
+* Fix: Fixed display of multi-level menus that did not fit the width of the screen.
+* Fix: Logo centering when a search and a WooCommerce mini-basket were simultaneously displayed in a menu block.
+* Fix: Added fixes from the premium version.
+* Improve: Added reset styles for greater compatibility with different templates.
+* Improve: Implemented cache for displaying and processing nav_menu items.
+* Improve: Remove files with old version support.
+* Add: Added CSS z-index for preset settings.
+* Add: Added the ability to display another navigation menu for the mobile version. Adjustable through the preset editor.
+* Updated: NPM modules.
 
 = 1.0.9 =
 * Add: Added an option "General" > "Submenu" > "Show Mega Menu titles as regular menu items" to the preset settings. Which will allow you to display the links and badges for Mega Menu titles.
