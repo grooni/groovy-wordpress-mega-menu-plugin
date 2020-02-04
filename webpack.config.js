@@ -28,6 +28,7 @@ module.exports = {
     preview: './src/js/preview.js',
     preset: './src/js/preset.js',
     dashboard: './src/js/dashboard.js',
+    welcome: './src/js/welcome.js',
     appearance: './src/js/appearance.js',
     integration: './src/js/integration.js',
     debug: './src/js/debug.js',

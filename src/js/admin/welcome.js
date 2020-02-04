@@ -69,4 +69,27 @@
   });
 
 
+  $(function () {
+    $(this).on('click', '.gm-welcome-check--lic', function () {
+      $.ajax({
+        type: 'POST',
+        url: ajaxurl,
+        dataType: 'json',
+        data: {
+          action: 'gm_check_current_license'
+        },
+        error: function (result) {
+          console.log('ajax error or action not implemented: gm_check_current_license');
+          alert('ajax error');
+        },
+        success: function (result) {
+          window.location.reload(false);
+        }.bind(this)
+      });
+    });
+  });
+
+
+
+
 })(jQuery);
