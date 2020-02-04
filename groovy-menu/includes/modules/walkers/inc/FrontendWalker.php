@@ -103,12 +103,19 @@ class FrontendWalker extends WalkerNavMenu {
 			if ( function_exists( 'groovy_menu_add_custom_styles' ) ) {
 				groovy_menu_add_custom_styles( $this->megaMenuPost );
 			}
+			if ( function_exists( 'groovy_menu_add_custom_styles_support' ) ) {
+				groovy_menu_add_custom_styles_support( $this->megaMenuPost );
+			}
 		}
 
 		$gm_menu_block = false;
 		if ( isset( $item->object ) && 'gm_menu_block' === $item->object ) {
 			$gm_menu_block = true;
 		}
+
+
+		$gm_thumb_settings = $this->gmGetThumbSettings( $item );
+
 
 		if ( 1 === $depth && $this->isMegaMenu && ! $show_in_mobile ) {
 
@@ -158,6 +165,10 @@ class FrontendWalker extends WalkerNavMenu {
 			}
 
 			$output .= '<div class="gm-mega-menu__item ' . $gridClass . '">';
+
+			if ( $gm_thumb_settings['display'] && 'above' === $gm_thumb_settings['position'] ) {
+				$output .= $gm_thumb_settings['html'];
+			}
 
 			if ( ! $this->doNotShowTitle( $item ) ) {
 
@@ -347,6 +358,11 @@ class FrontendWalker extends WalkerNavMenu {
 			}
 
 		} else {
+
+			if ( $gm_thumb_settings['display'] && 'above' === $gm_thumb_settings['position'] ) {
+				$output .= $gm_thumb_settings['html'];
+			}
+
 			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
 			$thumb   = null;
 			if ( $depth > 0 && $this->isShowFeaturedImage( $item ) ) {
@@ -415,7 +431,7 @@ class FrontendWalker extends WalkerNavMenu {
 				}
 			}
 
-			$item_output = $args->before;
+			$item_output .= $args->before;
 			if ( ! $this->doNotShowTitle( $item ) ) {
 				$item_output .= '<a' . $attributes . '>';
 				if ( $this->getIcon( $item ) ) {
@@ -587,9 +603,21 @@ class FrontendWalker extends WalkerNavMenu {
 
 		$show_in_mobile = ( isset( $args->gm_navigation_mobile ) && $args->gm_navigation_mobile );
 
+		$gm_thumb_settings = $this->gmGetThumbSettings( $item );
+
 		if ( 1 === $depth && $this->isMegaMenu && ! $show_in_mobile ) {
+
+			if ( $gm_thumb_settings['display'] && 'under' === $gm_thumb_settings['position'] ) {
+				$output .= $gm_thumb_settings['html'];
+			}
+
 			$output .= '</div>';
 		} else {
+
+			if ( $gm_thumb_settings['display'] && 'under' === $gm_thumb_settings['position'] ) {
+				$output .= $gm_thumb_settings['html'];
+			}
+
 			parent::end_el( $output, $item, $depth, $args );
 		}
 
@@ -647,5 +675,59 @@ class FrontendWalker extends WalkerNavMenu {
 
 	}
 
+
+	/**
+	 * @param $item
+	 *
+	 * @return array
+	 */
+	protected function gmGetThumbSettings( $item ) {
+
+		$gm_thumb_settings = array(
+			'display'      => false,
+			'menu_item_id' => $this->getId( $item ),
+			'object_id'    => $item->object_id,
+			'position'     => 'above',
+			'max_height'   => '128',
+			'image'        => '',
+			'html'         => '',
+		);
+		if ( $this->getThumbEnable( $item ) ) {
+			$gm_thumb_settings['display']    = true;
+			$gm_thumb_settings['position']   = $this->getThumbPosition( $item ) ? esc_attr( $this->getThumbPosition( $item ) ) : 'above';
+			$gm_thumb_settings['max_height'] = $this->getThumbMaxHeight( $item ) ? esc_attr( $this->getThumbMaxHeight( $item ) ) : '128';
+			$gm_thumb_settings['image']      = $this->getThumbImage( $item ) ? esc_attr( $this->getThumbImage( $item ) ) : '';
+
+			$gm_thumb_html = '';
+
+			if ( ! empty( $gm_thumb_settings['image'] ) ) {
+				$thumb_css = $gm_thumb_settings['max_height'] ? ' style' : '';
+				if ( $thumb_css ) {
+					$thumb_css .= '="max-height:' . $gm_thumb_settings['max_height'] . 'px;" ';
+				}
+
+				$thumb_classes = array(
+					'gm-thumb-menu-item-wrapper',
+					'gm-thumb-menu-item-position--' . $gm_thumb_settings['position'],
+				);
+
+				$gm_thumb_html .= '<div class="' . implode( ' ', $thumb_classes ) . '"' . $thumb_css . '>';
+				$gm_thumb_html .= '<img class="gm-thumb-menu-item" src="' . $gm_thumb_settings['image'] . '">';
+				$gm_thumb_html .= '</div>';
+			}
+
+			$gm_thumb_settings['html'] = strval( apply_filters( 'groovy_menu_item_thumb_html', $gm_thumb_html, $gm_thumb_settings ) );
+
+		}
+
+		$gm_thumb_settings = apply_filters( 'groovy_menu_item_thumb_settings', $gm_thumb_settings );
+
+		// if not array - set thumb disabled.
+		if ( ! is_array( $gm_thumb_settings ) ) {
+			$gm_thumb_settings = array( 'display' => false );
+		}
+
+		return $gm_thumb_settings;
+	}
 
 }

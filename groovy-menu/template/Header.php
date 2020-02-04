@@ -120,6 +120,7 @@ function groovyMenu( $args = array() ) {
 	}
 
 	$presets_list = GroovyMenuPreset::getAll();
+	// Get first preset id only.
 	if ( is_array( $presets_list ) ) {
 		foreach ( $presets_list as $item ) {
 			if ( isset( $item->id ) && $args['gm_preset_id'] = $item->id ) {
@@ -793,7 +794,13 @@ function groovyMenu( $args = array() ) {
 			<div>';
 
 	$args['gm_navigation_mobile'] = true;
-	$output_html                 .= wp_nav_menu( $args );
+
+	if ( isset( $groovyMenuSettings['mobileNavMenu'] ) && is_numeric( $groovyMenuSettings['mobileNavMenu'] ) ) {
+		// Re-assign nav_menu for the mobile view.
+		$args['menu'] = intval( $groovyMenuSettings['mobileNavMenu'] );
+	}
+
+	$output_html .= wp_nav_menu( $args );
 
 	$output_html .= '</div>';
 	$output_html .= '<div class="flex-grow-1"></div>';

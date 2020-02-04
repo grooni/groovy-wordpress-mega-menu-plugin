@@ -59,8 +59,8 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 		 *
 		 * @return string
 		 */
-		public static function getOptionName( GroovyMenuPreset $preset ) {
-			return self::OPTION_NAME . '_preset_' . $preset->getId();
+		public static function getPresetPostId( GroovyMenuPreset $preset ) {
+			return $preset->getId();
 		}
 
 		/**
@@ -69,9 +69,22 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 		 * @param null $presetId if not null construct for specific preset.
 		 */
 		public function __construct( $presetId = null ) {
-			$this->optionsGlobal = include GROOVY_MENU_DIR . 'includes/config/ConfigGlobal.php';
-			$this->options       = include GROOVY_MENU_DIR . 'includes/config/Config.php';
-			$preset              = GroovyMenuPreset::getById( $presetId );
+
+			if ( empty( $this->optionsGlobal ) ) {
+				// Try to restore loaded config from cache.
+				$cache_config = \GroovyMenu\StyleStorage::getInstance()->get_global_config();
+				if ( ! empty( $cache_config ) ) {
+					$this->optionsGlobal = $cache_config;
+				} else {
+					$this->optionsGlobal = include GROOVY_MENU_DIR . 'includes/config/ConfigGlobal.php';
+					\GroovyMenu\StyleStorage::getInstance()->set_global_config( $this->optionsGlobal );
+				}
+			}
+
+			$this->options = include GROOVY_MENU_DIR . 'includes/config/Config.php';
+			\GroovyMenu\StyleStorage::getInstance()->set_preset_config( $this->options );
+
+			$preset = GroovyMenuPreset::getById( $presetId );
 
 			if ( is_null( $presetId ) || empty( $presetId ) || ! $preset ) {
 				$preset = GroovyMenuPreset::getCurrentPreset();
@@ -79,7 +92,7 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 				$preset = new GroovyMenuPreset( $presetId );
 			}
 
-			$this->preset           = $preset;
+			$this->setPreset( $preset );
 			$this->presetScreenshot = $preset::getPreviewById( $preset->getId() );
 			$this->loadPresetSettings();
 			$this->loadGlobalSettings();
@@ -101,7 +114,7 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 		/**
 		 * Get preset
 		 *
-		 * @return GroovyMenuPreset
+		 * @return array
 		 */
 		public function getPreset() {
 			return $this->preset;
@@ -137,12 +150,179 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 			return $groups;
 		}
 
+
+		protected function loadPresetSettings() {
+
+			// If the parameter is compiled earlier, it will be restored.
+			if ( \GroovyMenu\StyleStorage::getInstance()->get_preset_settings( self::getPresetPostId( $this->preset ) ) ) {
+				$this->settings = \GroovyMenu\StyleStorage::getInstance()->get_preset_settings( self::getPresetPostId( $this->preset ) );
+
+				return;
+			}
+
+			$this->settings   = $this->options;
+			$settings         = $this->loadPresetOptionsFromPost( self::getPresetPostId( $this->preset ) );
+			$compiled_css_opt = $this->loadPresetCssFromPost( self::getPresetPostId( $this->preset ) );
+
+			if ( ! empty( $settings ) ) {
+
+				$exclude_types   = array( 'inlineStart', 'inlineEnd' );
+				$can_empty_types = array( 'number', 'slider', 'colorpicker', 'text', 'textarea' );
+
+				foreach ( $this->settings as $categoryName => $category ) {
+					if ( isset( $category['fields'] ) ) {
+						foreach ( $category['fields'] as $field => $value ) {
+							if ( isset( $this->options[ $categoryName ]['fields'][ $field ] ) ) {
+
+								$saved_value = isset( $settings[ $field ] ) ? $settings[ $field ] : null;
+								if ( isset( $value['type'] ) && 'checkbox' === $value['type'] ) {
+									if ( 'false' === $saved_value || '0' === $saved_value ) {
+										$saved_value = '';
+									}
+									$saved_value = empty( $saved_value ) ? false : true;
+								} elseif ( isset( $value['type'] ) && 'number' === $value['type'] ) {
+									$saved_value = intval( $saved_value );
+								}
+
+								if ( isset( $value['type'] ) && 'header' === $value['type'] ) {
+									if ( is_string( $saved_value ) ) {
+										$_val = json_decode( stripslashes( $saved_value ), true );
+										if ( is_array( $_val ) ) {
+											$saved_value = $_val;
+										}
+									}
+								}
+
+								if ( isset( $value['type'] ) && in_array( $value['type'], $exclude_types, true ) ) {
+									$value = '';
+								} elseif ( is_array( $saved_value ) ) {
+									$value = $saved_value;
+								} elseif ( empty( $saved_value ) && in_array( $value['type'], $can_empty_types, true ) ) {
+									$value = $saved_value;
+								} elseif ( ! is_bool( $saved_value ) && empty( $saved_value ) && isset( $value['default'] ) ) {
+									$value = $value['default'];
+								} elseif ( ! empty( $saved_value ) || is_bool( $saved_value ) ) {
+									$value = $saved_value;
+								} else {
+									$value = '';
+								}
+
+								$this->set( $field, $value );
+
+							}
+						}
+					} else {
+						foreach ( $category as $field => $value ) {
+							if ( isset( $this->options[ $categoryName ]['fields'][ $field ] ) ) {
+
+								$saved_value = isset( $settings[ $field ] ) ? $settings[ $field ] : null;
+								if ( isset( $value['type'] ) && 'checkbox' === $value['type'] ) {
+									if ( 'false' === $saved_value || '0' === $saved_value ) {
+										$saved_value = '';
+									}
+									$saved_value = empty( $saved_value ) ? false : true;
+								} elseif ( isset( $value['type'] ) && 'number' === $value['type'] ) {
+									$saved_value = intval( $saved_value );
+								}
+
+								if ( isset( $value['type'] ) && 'header' === $value['type'] ) {
+									if ( is_string( $saved_value ) ) {
+										$_val = json_decode( stripslashes( $saved_value ), true );
+										if ( is_array( $_val ) ) {
+											$saved_value = $_val;
+										}
+									}
+								}
+
+								if ( is_array( $saved_value ) ) {
+									$value = $saved_value;
+								} elseif ( empty( $saved_value ) && in_array( $value['type'], $can_empty_types, true ) ) {
+									$value = $saved_value;
+								} elseif ( ! is_bool( $saved_value ) && empty( $saved_value ) && isset( $value['default'] ) ) {
+									$value = $value['default'];
+								} elseif ( ! empty( $saved_value ) || is_bool( $saved_value ) ) {
+									$value = $saved_value;
+								} else {
+									$value = '';
+								}
+
+								$this->set( $field, $value );
+							}
+						}
+					}
+				}
+			} else {
+				// set all values from default sub field.
+				foreach ( $this->options as $categoryName => $category ) {
+					foreach ( $category['fields'] as $field => $parameters ) {
+						if ( empty( $parameters['value'] ) && isset( $parameters['default'] ) ) {
+							$this->set( $field, $parameters['default'] );
+						}
+					}
+				}
+			}
+
+			// update meta compiled_css.
+			foreach ( $compiled_css_opt as $index => $item ) {
+				$this->settings['general']['fields'][ $index ]['value'] = $item;
+			}
+
+			// Store compiled settings for cache.
+			\GroovyMenu\StyleStorage::getInstance()->set_preset_settings( $this->preset->getId(), $this->settings );
+
+		}
+
+		public function loadGlobalSettings() {
+
+			// If the parameter is compiled earlier, it will be restored.
+			if ( \GroovyMenu\StyleStorage::getInstance()->get_global_settings() ) {
+				$this->settingsGlobal = \GroovyMenu\StyleStorage::getInstance()->get_global_settings();
+
+				return;
+			}
+
+			$this->settingsGlobal = $this->optionsGlobal;
+			$settings             = get_option( self::OPTION_NAME );
+
+			if ( is_array( $settings ) ) {
+				foreach ( $settings as $categoryName => $category ) {
+					if ( isset( $category['fields'] ) ) {
+						foreach ( $category['fields'] as $field => $value ) {
+							if ( isset( $this->optionsGlobal[ $categoryName ]['fields'][ $field ] ) ) {
+								$this->settingsGlobal[ $categoryName ]['fields'][ $field ]['value'] = $value;
+							}
+						}
+					} else {
+						foreach ( $category as $field => $value ) {
+							if ( isset( $this->optionsGlobal[ $categoryName ]['fields'][ $field ] ) ) {
+								$this->settingsGlobal[ $categoryName ]['fields'][ $field ]['value'] = $value;
+							}
+						}
+					}
+				}
+			} else {
+				foreach ( $this->optionsGlobal as $categoryName => $category ) {
+					foreach ( $category['fields'] as $field => $parameters ) {
+						if ( isset( $parameters['default'] ) ) {
+							$this->settingsGlobal[ $categoryName ]['fields'][ $field ]['value'] = $parameters['default'];
+						}
+					}
+				}
+			}
+
+			// Store compiled settings for cache.
+			\GroovyMenu\StyleStorage::getInstance()->set_global_settings( $this->settingsGlobal );
+
+		}
+
+
 		/**
 		 * Serialize config with values for front-end
 		 *
-		 * @param bool $get_all  if need ignore serialize sub-param.
-		 *
-		 * @param bool $camelize if need camelize keys name.
+		 * @param bool $get_all     if need ignore serialize sub-param.
+		 * @param bool $camelize    if need camelize keys name.
+		 * @param bool $get_global  if need append global setting.
+		 * @param bool $get_storage if need use cache storage.
 		 *
 		 * @return array
 		 */
@@ -161,8 +341,8 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 			}
 
 			// If the parameter is compiled earlier, it will be restored.
-			if ( $get_storage && \GroovyMenu\StyleStorage::getInstance()->get_preset_settings_serialized( $this->preset->getId() ) ) {
-				return \GroovyMenu\StyleStorage::getInstance()->get_preset_settings_serialized( $this->preset->getId() );
+			if ( $get_storage && \GroovyMenu\StyleStorage::getInstance()->get_preset_settings_serialized( $this->preset->getId(), $get_all, $camelize, $get_global ) ) {
+				return \GroovyMenu\StyleStorage::getInstance()->get_preset_settings_serialized( $this->preset->getId(), $get_all, $camelize, $get_global );
 			}
 
 			if ( $get_global ) {
@@ -172,13 +352,17 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 				$all_settings = $this->getSettings();
 			}
 
+			$exclude_types = array( 'group', 'inlineStart', 'inlineEnd' );
+
 			foreach ( $all_settings as $categoryName => $group ) {
 				foreach ( $group['fields'] as $name => $field ) {
 					if ( ! $get_all && isset( $field['serialize'] ) && ! $field['serialize'] ) {
 						continue;
 					}
-
 					if ( $get_all && isset( $field['type'] ) && 'group' === $field['type'] ) {
+						continue;
+					}
+					if ( $camelize && isset( $field['type'] ) && in_array( $field['type'], $exclude_types, true ) ) {
 						continue;
 					}
 
@@ -186,12 +370,8 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 					$value = $this->getField( $categoryName, $name )->getValue();
 
 
-					if ( $get_all && is_array( $value ) && isset( $field['type'] ) && 'header' !== $field['type'] ) {
-						$value = addslashes( wp_json_encode( $value ) );
-					}
-
 					if ( $get_all && isset( $field['type'] ) && ( 'textarea' === $field['type'] || 'text' === $field['type'] ) ) {
-						$value = $this->escapeJsonString( trim( $value ) );
+						$value = $this->escapeJsonString( $value );
 					}
 
 					if ( $camelize && 'media' === $field['type'] && ! empty( $field['image_size_field'] ) ) {
@@ -219,7 +399,7 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 				}
 			}
 
-			\GroovyMenu\StyleStorage::getInstance()->set_preset_settings_serialized( $this->preset->getId(), $settings );
+			\GroovyMenu\StyleStorage::getInstance()->set_preset_settings_serialized( $this->preset->getId(), $settings, $get_all, $camelize, $get_global );
 
 			return $settings;
 		}
@@ -230,12 +410,13 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 		 * @return mixed
 		 */
 		public function escapeJsonString( $value ) { # list from www.json.org: (\b backspace, \f formfeed)
-			$escapers     = array( "\'", "\\",   "/",   "\"",   "\n",  "\r",  "\t",  "\x08", "\x0c", '\r\n' );
-			$replacements = array( "'", "\\\\",  "\\/", "\\\"", "\\n", "\\r", "\\t", "\\f",  "\\b",  '\n' );
+			$escapers     = array( "\'", "\\", "/", "\"", "\n", "\r", "\t", "\x08", "\x0c", '\r\n' );
+			$replacements = array( "'", "\\\\", "\\/", "\\\"", "\\n", "\\r", "\\t", "\\f", "\\b", '\n' );
 			$result       = str_replace( $escapers, $replacements, $value );
 
 			return $result;
 		}
+
 
 		/**
 		 * Get and return custom css class from preset.
@@ -255,6 +436,7 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 
 			return $return_string;
 		}
+
 
 		/**
 		 * Return array of html classes for GM wrapper
@@ -350,6 +532,13 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 			$settings = array();
 			foreach ( $this->getSettings() as $categoryName => $group ) {
 				foreach ( $group['fields'] as $name => $field ) {
+
+					$exclude_types = array( 'group', 'inlineStart', 'inlineEnd' );
+
+					if ( isset( $field['type'] ) && in_array( $field['type'], $exclude_types, true ) ) {
+						continue;
+					}
+
 					$settings[ $name ] = $this->getField( $categoryName, $name )->getValue();
 					if ( $withFiles && $field['type'] === 'media' ) {
 						$attachmentId = $settings[ $name ];
@@ -372,6 +561,52 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 							}
 
 							$settings[ $name ] = array(
+								'type'           => 'media',
+								'data'           => $data,
+								'post_mime_type' => get_post_mime_type( $attachmentId )
+							);
+						}
+
+					}
+				}
+			}
+
+			return $settings;
+		}
+
+
+		/**
+		 * @param bool $withFiles
+		 *
+		 * @return array
+		 */
+		public function getSettingsArrayCategorized( $withFiles = false ) {
+			$settings = array();
+			foreach ( $this->getSettings() as $categoryName => $group ) {
+				$settings[ $categoryName ] = array();
+				foreach ( $group['fields'] as $name => $field ) {
+					$settings[ $categoryName ][ $name ] = $this->getField( $categoryName, $name )->getValue();
+					if ( $withFiles && $field['type'] === 'media' ) {
+						$attachmentId = $settings[ $categoryName ][ $name ];
+
+						if ( get_attached_file( $attachmentId ) ) {
+							$data = '';
+							global $wp_filesystem;
+							if ( empty( $wp_filesystem ) ) {
+								if ( file_exists( ABSPATH . '/wp-admin/includes/file.php' ) ) {
+									require_once ABSPATH . '/wp-admin/includes/file.php';
+									WP_Filesystem();
+								}
+							}
+							if ( empty( $wp_filesystem ) ) {
+								if ( function_exists( 'file_get_contents' ) ) {
+									$data = base64_encode( file_get_contents( get_attached_file( $attachmentId ) ) );
+								}
+							} else {
+								$data = base64_encode( $wp_filesystem->get_contents( get_attached_file( $attachmentId ) ) );
+							}
+
+							$settings[ $categoryName ][ $name ] = array(
 								'type'           => 'media',
 								'data'           => $data,
 								'post_mime_type' => get_post_mime_type( $attachmentId )
@@ -427,6 +662,8 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 			if ( isset( $this->settings[ $category ]['fields'][ $name ] ) ) {
 				return $this->getField( $category, $name )->getValue();
 			}
+
+			return null;
 		}
 
 		/**
@@ -448,8 +685,9 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 				} else {
 					return $field->getValue();
 				}
-
 			}
+
+			return null;
 		}
 
 		/**
@@ -461,28 +699,152 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 		public function getField( $category, $name ) {
 			if ( isset( $this->settings[ $category ]['fields'][ $name ] ) ) {
 				$field = $this->settings[ $category ]['fields'][ $name ];
-				$class = '\GroovyMenu\Field' . ucfirst( $field['type'] );
+				$subClass = isset( $field['type'] ) ? ucfirst( $field['type'] ) : '';
+				$class = '\GroovyMenu\Field' . $subClass;
 
-				return new $class( $category, $name, $field );
+				if ( class_exists( $class ) ) {
+					return new $class( $category, $name, $field );
+				}
 			}
 			if ( isset( $this->settingsGlobal[ $category ]['fields'][ $name ] ) ) {
 				$field = $this->settingsGlobal[ $category ]['fields'][ $name ];
-				$class = '\GroovyMenu\Field' . ucfirst( $field['type'] );
+				$subClass = isset( $field['type'] ) ? ucfirst( $field['type'] ) : '';
+				$class = '\GroovyMenu\Field' . $subClass;
 
-				return new $class( $category, $name, $field );
+				if ( class_exists( $class ) ) {
+					return new $class( $category, $name, $field );
+				}
 			}
 
 			return null;
 		}
 
 		/**
-		 * @param null $data
+		 * @param null|array $data
 		 */
 		public function update( $data = null ) {
-			if ( ! is_null( $data ) ) {
-				$this->settings = $data;
+
+			if ( empty( $data ) ) {
+				$data = $this->getSettingsArrayCategorized( true );
 			}
-			update_option( self::getOptionName( $this->preset ), $this->settings );
+
+			$this->settings = $this->options;
+
+			if ( ! empty( $data ) && is_array( $data ) ) {
+
+				$exclude_types   = array( 'inlineStart', 'inlineEnd' );
+				$can_empty_types = array( 'number', 'slider', 'colorpicker', 'text', 'textarea', 'media' );
+
+				foreach ( $data as $categoryName => $category ) {
+					if ( isset( $category['fields'] ) ) {
+						foreach ( $category['fields'] as $field => $value ) {
+							if ( isset( $this->options[ $categoryName ]['fields'][ $field ] ) ) {
+
+								$field_opt = $this->options[ $categoryName ]['fields'][ $field ];
+								$new_value = isset( $data[ $categoryName ]['fields'][ $field ]['value'] ) ? $data[ $categoryName ]['fields'][ $field ]['value'] : null;
+								if ( isset( $field_opt['type'] ) && 'checkbox' === $field_opt['type'] ) {
+									if ( 'false' === $new_value || '0' === $new_value ) {
+										$new_value = '';
+									}
+									$new_value = empty( $new_value ) ? false : true;
+								}
+
+								if ( isset( $field_opt['type'] ) && 'header' === $field_opt['type'] ) {
+									if ( is_string( $new_value ) ) {
+										$_val = json_decode( stripslashes( $new_value ), true );
+										if ( is_array( $_val ) ) {
+											$new_value = $_val;
+										}
+									}
+								}
+
+								if ( isset( $field_opt['type'] ) && in_array( $field_opt['type'], $exclude_types, true ) ) {
+									$value = '';
+								} elseif ( is_array( $new_value ) ) {
+									$value = $new_value;
+								} elseif ( empty( $new_value ) && in_array( $field_opt['type'], $can_empty_types, true ) ) {
+									$value = $new_value;
+								} elseif ( ! is_bool( $new_value ) && empty( $new_value ) && isset( $field_opt['default'] ) ) {
+									$value = $field_opt['default'];
+								} elseif ( ! empty( $new_value ) || is_bool( $new_value ) ) {
+									$value = $new_value;
+								} else {
+									$value = '';
+								}
+
+								$this->set( $field, $value );
+							}
+						}
+					} else {
+						foreach ( $category as $field => $value ) {
+							if ( isset( $this->options[ $categoryName ]['fields'][ $field ] ) ) {
+
+								$field_opt = $this->options[ $categoryName ]['fields'][ $field ];
+								$new_value = isset( $data[ $categoryName ][ $field ] ) ? $data[ $categoryName ][ $field ] : null;
+
+								if ( isset( $field_opt['type'] ) && 'checkbox' === $field_opt['type'] ) {
+									if ( 'false' === $new_value || '0' === $new_value ) {
+										$new_value = '';
+									}
+									$new_value = empty( $new_value ) ? false : true;
+								}
+
+								if ( isset( $field_opt['type'] ) && 'header' === $field_opt['type'] ) {
+									if ( is_string( $new_value ) ) {
+										$_val = json_decode( stripslashes( $new_value ), true );
+										if ( is_array( $_val ) ) {
+											$new_value = $_val;
+										}
+									}
+								}
+
+								if ( is_array( $new_value ) ) {
+									$value = $new_value;
+								} elseif ( empty( $new_value ) && in_array( $field_opt['type'], $can_empty_types, true ) ) {
+									$value = $new_value;
+								} elseif ( ! is_bool( $new_value ) && empty( $new_value ) && isset( $field_opt['default'] ) ) {
+									$value = $field_opt['default'];
+								} elseif ( ! empty( $new_value ) || is_bool( $new_value ) ) {
+									$value = $new_value;
+								} else {
+									$value = '';
+								}
+
+								$this->set( $field, $value );
+							}
+						}
+					}
+				}
+			} else {
+				// set all values from default sub field.
+				foreach ( $this->options as $categoryName => $category ) {
+					foreach ( $category['fields'] as $field => $parameters ) {
+						if ( empty( $parameters['value'] ) && isset( $parameters['default'] ) ) {
+							$this->set( $field, $parameters['default'] );
+						}
+					}
+				}
+			}
+
+			$preset_settings = $this->serialize( true, false, false, false );
+			$compiled_css    = '';
+
+			if ( isset( $preset_settings['compiled_css'] ) ) {
+				$compiled_css = $preset_settings['compiled_css'];
+				unset( $preset_settings['compiled_css'] );
+			}
+			if ( isset( $preset_settings['direction'] ) ) {
+				$direction = $preset_settings['direction'];
+			}
+
+			$preset_settings = wp_json_encode( $preset_settings );
+			$preset_key      = md5( rand() . uniqid() . time() );
+
+			update_post_meta( self::getPresetPostId( $this->preset ), 'gm_preset_settings', $preset_settings );
+			update_post_meta( self::getPresetPostId( $this->preset ), 'gm_compiled_css', $compiled_css );
+			update_post_meta( self::getPresetPostId( $this->preset ), 'gm_preset_key', $preset_key );
+			update_post_meta( self::getPresetPostId( $this->preset ), 'gm_direction', $direction );
+			update_post_meta( self::getPresetPostId( $this->preset ), 'gm_version', GROOVY_MENU_VERSION );
 		}
 
 		/**
@@ -518,144 +880,113 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 			update_option( self::OPTION_NAME, $this->settingsGlobal );
 		}
 
-		protected function loadPresetSettings() {
+		protected function loadPresetOptionsFromPost( $post_id ) {
 
-			// If the parameter is compiled earlier, it will be restored.
-			if ( \GroovyMenu\StyleStorage::getInstance()->get_preset_settings( $this->preset->getId() ) ) {
-				$this->settings = \GroovyMenu\StyleStorage::getInstance()->get_preset_settings( $this->preset->getId() );
+			$options = array();
 
-				return;
+			$post_id = intval( $post_id );
+
+			if ( empty( $post_id ) ) {
+				return $options;
 			}
 
-			$this->settings = $this->options;
-			$settings       = get_option( self::getOptionName( $this->preset ) );
+			$options = get_post_meta( $post_id, 'gm_preset_settings', true );
+			$options = json_decode( $options, true );
 
-			if ( is_array( $settings ) ) {
-
-				$exclude_types = array( 'inlineStart', 'inlineEnd' );
-
-				foreach ( $settings as $categoryName => $category ) {
-					if ( isset( $category['fields'] ) ) {
-						foreach ( $category['fields'] as $field => $value ) {
-							if ( isset( $this->options[ $categoryName ]['fields'][ $field ] ) ) {
-
-								$field_opt = $this->options[ $categoryName ]['fields'][ $field ];
-
-								if ( isset( $value['type'] ) && in_array( $value['type'], $exclude_types ) ) {
-									$value = '';
-								} elseif ( is_array( $value ) && isset( $value['value']['type'] ) ) {
-									$value = '';
-								} elseif ( is_array( $value ) && isset( $value['value'] ) ) {
-									$value = $value['value'];
-								} elseif ( ! isset( $value['value'] ) && isset( $value['default'] ) ) {
-									$value = $value['default'];
-								} else {
-									$value = '';
-								}
-
-								if ( ! empty( $value ) && isset( $field_opt['type'] ) && 'header' !== $field_opt['type'] ) {
-									$_test_val = json_decode( stripslashes( $value ), true );
-									if ( is_array( $_test_val ) && isset( $_test_val['value'] ) ) {
-										$value = is_null( $_test_val['value'] ) ? '' : $_test_val['value'];
-									} elseif ( is_array( $_test_val ) && isset( $_test_val['type'] ) ) {
-										$value = '';
-									} elseif ( is_array( $_test_val ) ) {
-										$value = addslashes( $value );
-									}
-								}
-
-								$this->settings[ $categoryName ]['fields'][ $field ]['value'] = $value;
-							}
-						}
-					} else {
-						foreach ( $category as $field => $value ) {
-							if ( isset( $this->options[ $categoryName ]['fields'][ $field ] ) ) {
-
-								$field_opt = $this->options[ $categoryName ]['fields'][ $field ];
-
-								if ( is_array( $value ) && isset( $value['value']['type'] ) ) {
-									$value = '';
-								} elseif ( is_array( $value ) && isset( $value['value'] ) ) {
-									$value = $value['value'];
-								} elseif ( ! isset( $value['value'] ) && isset( $value['default'] ) ) {
-									$value = $value['default'];
-								}
-
-								if ( ! empty( $value ) && isset( $field_opt['type'] ) && 'header' !== $field_opt['type'] ) {
-									$_test_val = json_decode( stripslashes( $value ), true );
-									if ( is_array( $_test_val ) && isset( $_test_val['value'] ) ) {
-										$value = is_null( $_test_val['value'] ) ? '' : $_test_val['value'];
-									} elseif ( is_array( $_test_val ) && isset( $_test_val['type'] ) ) {
-										$value = '';
-									} elseif ( is_array( $_test_val ) ) {
-										$value = addslashes( $value );
-									}
-								}
-
-								$this->settings[ $categoryName ]['fields'][ $field ]['value'] = $value;
-							}
-						}
-					}
-
-				}
-			} else {
-				// set all values from default sub field.
-				foreach ( $this->options as $categoryName => $category ) {
-					foreach ( $category['fields'] as $field => $parameters ) {
-						if ( isset( $parameters['default'] ) ) {
-							$this->settings[ $categoryName ]['fields'][ $field ]['value'] = $parameters['default'];
-						}
-					}
-				}
+			if ( empty( $options ) || ! is_array( $options ) ) {
+				$options = array();
 			}
 
-			// Store compiled settings for cache.
-			\GroovyMenu\StyleStorage::getInstance()->set_preset_settings( $this->preset->getId(), $this->settings );
+			// fill missing fields with default values.
+			$options = $this->setEmptyOptionsAsDefault( $options );
 
+			if ( empty( $options['menu_z_index'] ) ) {
+				$options['menu_z_index'] = '9999';
+			}
+
+			if ( defined( 'GROOVY_MENU_LVER' ) && '2' === GROOVY_MENU_LVER ) {
+				$this->lver = true;
+			}
+
+			if ( $this->lver ) {
+				if ( isset( $options['header']['style'] ) &&
+				     in_array( $options['header']['style'], [ 3, 4 ], true )
+				) {
+					$options['header']['style'] = 1;
+				}
+
+				if ( isset( $options['hover_style'] ) &&
+				     in_array( $options['hover_style'], [ '3', '4', '5', '6', '7' ], true )
+				) {
+					$options['hover_style'] = '1';
+				}
+
+			}
+
+			return $options;
 		}
 
-		public function loadGlobalSettings() {
+		/**
+		 * @param array $options
+		 *
+		 * @return array
+		 */
+		protected function setEmptyOptionsAsDefault( $options ) {
 
-			// If the parameter is compiled earlier, it will be restored.
-			if ( \GroovyMenu\StyleStorage::getInstance()->get_global_settings() ) {
-				$this->settingsGlobal = \GroovyMenu\StyleStorage::getInstance()->get_global_settings();
-
-				return;
+			if ( empty( $options ) || ! is_array( $options ) ) {
+				$options = array();
 			}
 
-			$this->settingsGlobal = $this->optionsGlobal;
-			$settings             = get_option( self::OPTION_NAME );
+			$settings         = array();
+			$settings_default = array();
+			$ignore_fields    = array(
+				'group',
+				'inlineStart',
+				'inlineEnd',
+			);
 
-			if ( is_array( $settings ) ) {
-				foreach ( $settings as $categoryName => $category ) {
-					if ( isset( $category['fields'] ) ) {
-						foreach ( $category['fields'] as $field => $value ) {
-							if ( isset( $this->optionsGlobal[ $categoryName ]['fields'][ $field ] ) ) {
-								$this->settingsGlobal[ $categoryName ]['fields'][ $field ]['value'] = $value;
-							}
-						}
-					} else {
-						foreach ( $category as $field => $value ) {
-							if ( isset( $this->optionsGlobal[ $categoryName ]['fields'][ $field ] ) ) {
-								$this->settingsGlobal[ $categoryName ]['fields'][ $field ]['value'] = $value;
-							}
-						}
+			foreach ( $this->getSettings() as $categoryName => $group ) {
+				foreach ( $group['fields'] as $name => $fields ) {
+					if ( ! empty( $fields['type'] ) && in_array( $fields['type'], $ignore_fields, true ) ) {
+						continue;
 					}
 
-				}
-			} else {
-				foreach ( $this->optionsGlobal as $categoryName => $category ) {
-					foreach ( $category['fields'] as $field => $parameters ) {
-						if ( isset( $parameters['default'] ) ) {
-							$this->settingsGlobal[ $categoryName ]['fields'][ $field ]['value'] = $parameters['default'];
-						}
+					if ( empty( $options[ $name ] ) && isset( $fields['default'] ) ) {
+						$options[ $name ] = $fields['default'];
 					}
 				}
 			}
 
-			// Store compiled settings for cache.
-			\GroovyMenu\StyleStorage::getInstance()->set_global_settings( $this->settingsGlobal );
+			return $options;
+		}
 
+		protected function loadPresetCssFromPost( $post_id ) {
+
+			$options = array(
+				'compiled_css'  => '',
+				'preset_key'    => '',
+				'direction'     => '',
+				'version'       => '',
+			);
+
+			$post_id = intval( $post_id );
+
+			if ( empty( $post_id ) ) {
+				return $options;
+			}
+
+			$options = array(
+				'compiled_css'  => get_post_meta( $post_id, 'gm_compiled_css', true ),
+				'preset_key'    => get_post_meta( $post_id, 'gm_preset_key', true ),
+				'direction'     => get_post_meta( $post_id, 'gm_direction', true ),
+				'version'       => get_post_meta( $post_id, 'gm_version', true ),
+			);
+
+			if ( empty( $options['compiled_css'] ) || ! is_string( $options['compiled_css'] ) ) {
+				$options['compiled_css'] = '';
+			}
+
+			return $options;
 		}
 
 	}

@@ -87,6 +87,7 @@ class StyleStorage {
 		$this->disable_storage_flag = false;
 	}
 
+
 	public function set_preset_config( $configs ) {
 		if ( is_array( $configs ) ) {
 			$this->preset_storage_config = $configs;

@@ -23,7 +23,7 @@
       "type": "package",
       "package": {
         "name": "groovymenu/core",
-        "version": "1.8",
+        "version": "2.0",
         "dist": {
           "url": "./zip_modules/core.zip",
           "type": "zip"

@@ -197,7 +197,38 @@ a:focus {
   }
 }
 
-.gm-gui-save-btn:hover {
+.gm-gui__export-button,
+.gm-gui__import-button {
+  display: block;
+  padding: 7px 20px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color linear 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: white;
+  border: none;
+  background-color: #393b3f;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4 !important;
+
+  &:hover,
+  &:focus {
+    color: white;
+  }
+}
+
+.gm-gui__import-button {
+  margin-top: 15px;
+}
+
+.gm-gui-save-btn:hover,
+.gm-gui__export-button:hover {
   background-color: #448aff;
 }
 
@@ -1136,6 +1167,12 @@ RESPONSIVE
 
   .gm-gui__nav-tabs__item__anchor {
     background-color: #242930;
+  }
+}
+
+@media (max-width: 1178px) {
+  .gm-gui__module__range__input {
+    margin-top: 20px;
   }
 }
 

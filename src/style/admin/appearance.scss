@@ -28,6 +28,12 @@
   font-size: 19px;
 }
 
+.gm-badge-image-preview img,
+.gm-thumb-image-preview img {
+  max-width: 390px;
+  max-height: 390px;
+}
+
 .menu-item-depth-0 .menu-item-settings .gm-show-featured-image-wrapper {
   display: none;
 }
@@ -53,6 +59,17 @@
 }
 
 .gm-msg-link-widgets {
+  display: none;
+}
+
+.gm-badge-image-preview,
+.gm-thumb-image-preview {
+  display: block;
+  margin-top: 10px;
+}
+
+.gm-badge-field,
+.gm-thumb-field {
   display: none;
 }
 

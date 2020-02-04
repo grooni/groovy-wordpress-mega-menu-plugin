@@ -62,6 +62,33 @@ class FieldIcons extends \GroovyMenu\FieldField {
 	}
 
 	/**
+	 * @return array
+	 */
+	public static function getIcons() {
+		$icons = array();
+		foreach ( self::getFonts() as $name => $font ) {
+			foreach ( $font['icons'] as $icon ) {
+				$icon['class'] = $name . '-' . $icon['name'];
+				$icons[]       = $icon;
+			}
+		}
+
+		return $icons;
+	}
+
+	/**
+	 * @return string
+	 */
+	public static function getStyles() {
+		$styles = '';
+		foreach ( self::getFonts() as $name => $font ) {
+			$styles .= '<link rel="stylesheet" href="' . esc_url( GroovyMenuUtils::getUploadUri() . 'fonts/' . $name . '.css' ) . '?fontname=1" />';
+		}
+
+		return $styles;
+	}
+
+	/**
 	 * @return mixed
 	 */
 	public static function getFonts() {

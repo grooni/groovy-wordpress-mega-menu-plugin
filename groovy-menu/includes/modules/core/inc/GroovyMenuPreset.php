@@ -4,20 +4,23 @@ if ( ! class_exists( 'GroovyMenuPreset' ) ) {
 
 	/**
 	 * Class GroovyMenuPreset
+	 *
+	 * @since 1.5
 	 */
 	class GroovyMenuPreset {
 		protected $id;
 		protected $name;
+		protected $lver = false;
 
-		const TABLE = 'groovy_preset';
+		const TABLE                 = 'groovy_preset';
 		const DEFAULT_PRESET_OPTION = 'groovy_menu_default_preset';
 
 
 		/**
 		 * GroovyMenuPreset constructor.
 		 *
-		 * @param null $id      id.
-		 * @param bool $install is install table.
+		 * @param mixed $id      id.
+		 * @param bool  $install is install table.
 		 */
 		public function __construct( $id = null, $install = false ) {
 
@@ -29,9 +32,18 @@ if ( ! class_exists( 'GroovyMenuPreset' ) ) {
 
 			$preset = $this->getById( $id );
 
-			$this->id = $id;
+			if ( empty( $id ) && ! empty( $preset->id ) ) {
+				$this->id = $preset->id;
+			} else {
+				$this->id = $id;
+			}
+
 			if ( isset( $preset->name ) ) {
 				$this->name = $preset->name;
+			}
+
+			if ( defined( 'GROOVY_MENU_LVER' ) && '2' === GROOVY_MENU_LVER ) {
+				$this->lver = true;
 			}
 		}
 
@@ -46,22 +58,21 @@ if ( ! class_exists( 'GroovyMenuPreset' ) ) {
 
 		public static function initialize() {
 
-			global $wpdb;
+			$posts = get_posts(
+				array(
+					'post_type'      => 'groovy_menu_preset',
+					'numberposts'    => 1,
+					'posts_per_page' => 1,
+					'fields'         => 'ids',
+				)
+			);
 
-			$table_name = $wpdb->prefix . self::TABLE;
+			// if no one groovy_menu_preset.
+			if ( empty( $posts ) ) {
 
-			if ( $wpdb->get_var( "SHOW TABLES LIKE '$table_name'" ) !== $table_name ) {
-
-				$charset_collate = "DEFAULT CHARACTER SET {$wpdb->charset} COLLATE {$wpdb->collate}";
-
-				$sql = "CREATE TABLE {$table_name} ( id mediumint(9) NOT NULL AUTO_INCREMENT, name text NOT NULL, UNIQUE KEY id (id) ) {$charset_collate};";
-
-				require_once ABSPATH . 'wp-admin/includes/upgrade.php';
-				dbDelta( $sql );
-
+				// create first.
 				$preset = self::create( 'first preset' );
 				update_option( self::DEFAULT_PRESET_OPTION, $preset, true );
-
 			}
 
 
@@ -130,6 +141,8 @@ if ( ! class_exists( 'GroovyMenuPreset' ) ) {
 		 */
 		public static function setDefaultPreset( $id ) {
 
+			$return_val = false;
+
 			$global = get_option( GroovyMenuStyle::OPTION_NAME );
 
 			if ( isset( $global['taxonomies'] ) && isset( $global['taxonomies']['default_master_preset'] ) ) {
@@ -158,23 +171,6 @@ if ( ! class_exists( 'GroovyMenuPreset' ) ) {
 
 
 		/**
-		 * @param $name
-		 *
-		 * @return bool
-		 */
-		protected static function checkName( $name ) {
-			global $wpdb;
-			$table        = esc_sql( $wpdb->prefix . self::TABLE );
-			$name_escaped = esc_sql( $name );
-			$row          = $wpdb->get_row(
-				"SELECT count(1) AS cnt FROM {$table} WHERE name = \"{$name_escaped}\";"
-			);
-
-			return empty( $row->cnt );
-		}
-
-
-		/**
 		 * @param      $name
 		 * @param bool $force
 		 * @param null $preset_id
@@ -182,132 +178,227 @@ if ( ! class_exists( 'GroovyMenuPreset' ) ) {
 		 * @return int
 		 */
 		public static function create( $name, $force = false, $preset_id = null ) {
-			global $wpdb;
 
-			$fields = [
-				'name' => $name
-			];
-			if ( ! is_null( $preset_id ) ) {
-				$fields['id'] = $preset_id;
-			}
-			if ( $force ) {
+			$name = self::sanityStringUTF( $name, 'UTF-8' );
 
-				$wpdb->insert( $wpdb->prefix . self::TABLE, $fields );
+			$new_post_args = array(
+				'post_author'  => get_current_user_id(),
+				'post_content' => '',
+				'post_excerpt' => '',
+				'post_name'    => $name,
+				'post_status'  => 'publish',
+				'post_title'   => $name,
+				'post_type'    => 'groovy_menu_preset',
+				'post_date'    => date( 'Y-m-d H:i:s', intval( current_time( 'timestamp' ) ) ),
+			);
 
-			} elseif ( self::checkName( $name ) ) {
+			// Inset post.
+			$new_post_id = wp_insert_post( $new_post_args );
 
-				$wpdb->insert( $wpdb->prefix . self::TABLE, $fields );
-
-			} else {
-
-				for ( $i = 1; $i < 100; $i ++ ) {
-					$newName = $name . ' #' . $i;
-					if ( self::checkName( $newName ) ) {
-						$wpdb->insert( $wpdb->prefix . self::TABLE, $fields );
-						$i = 101;
-					}
-				}
-
+			if ( ! empty( $preset_id ) && $new_post_id ) {
+				update_post_meta( $new_post_id, 'gm_old_id', strval( $preset_id ) );
 			}
 
-			return $wpdb->insert_id;
-
+			return $new_post_id;
 		}
 
 
 		/**
-		 * @param $id
-		 * @param $name
+		 * @param $post_id
+		 * @param $new_title
 		 */
-		public static function rename( $id, $name ) {
-			global $wpdb;
-			$wpdb->update( $wpdb->prefix . self::TABLE, array( 'name' => $name ), array( 'id' => $id ) );
+		public static function rename( $post_id, $new_title ) {
+
+			// if new_title isn't defined, return.
+			if ( empty( $new_title ) ) {
+				return;
+			}
+
+			// ensure title case of $new_title.
+			$new_title = self::sanityStringUTF( $new_title, 'UTF-8' );
+
+			// if $new_title is defined, but it matches the current title, return.
+			if ( $post_id === $new_title ) {
+				return;
+			}
+
+			// place the current post and $new_title into array.
+			$post_update = array(
+				'ID'         => $post_id,
+				'post_title' => $new_title,
+			);
+
+			wp_update_post( $post_update );
 		}
 
-
 		/**
-		 * @param $id
+		 * @param $string
+		 * @param $encoding
 		 *
-		 * @return array|null|object|void
+		 * @return string
 		 */
-		public static function getById( $id ) {
-			if ( ! $id || 'default' === $id ) {
-				$id = self::getDefaultPreset();
+		public static function sanityStringUTF( $string, $encoding = 'UTF-8' ) {
+
+			if ( function_exists( 'mb_convert_case' ) ) {
+
+				// ensure title case of $new_title.
+				$string = mb_convert_case( $string, MB_CASE_TITLE, $encoding );
+
+			} elseif ( function_exists( 'ucfirst' ) ) {
+
+				$string = ucfirst( $string );
+
 			}
 
-			if ( ! $id ) {
-				$id = self::getFirstDbPreset();
+			return $string;
+		}
+
+		/**
+		 * @param $post_id
+		 *
+		 * @return array|null|object
+		 */
+		public static function getById( $post_id ) {
+			if ( ! $post_id || 'default' === $post_id ) {
+				$post_id = self::getDefaultPreset();
 			}
 
-			if ( ! $id ) {
+			if ( ! $post_id ) {
+				$post_id = self::getFirstDbPreset();
+			}
+
+			if ( ! $post_id ) {
 				return null;
 			}
 
-			global $wpdb;
-			$result = $wpdb->get_row( 'select * from ' . $wpdb->prefix . self::TABLE . ' where id = ' . esc_sql( $id ) );
+			$result  = null;
+			$presets = self::getAll();
+
+			foreach ( $presets as $preset ) {
+				if ( isset( $preset->id ) && intval( $preset->id ) === intval( $post_id ) ) {
+					$result = $preset;
+				}
+			}
 
 			return $result;
 		}
 
 
 		/**
-		 * @param $id
+		 * @param      $post_id
+		 * @param bool $force
 		 *
-		 * @return array|null|object|void
+		 * @return array|null|bool
 		 */
-		public static function deleteById( $id ) {
-			if ( ! $id ) {
+		public static function deleteById( $post_id, $force_delete = false ) {
+
+			$post_id = empty( $post_id ) ? null : intval( $post_id );
+
+			if ( empty( $post_id ) ) {
 				return null;
 			}
 
-			global $wpdb;
+			$used_in = GroovyMenuUtils::get_preset_used_in_by_id( $post_id );
 
-			return $wpdb->get_row( 'delete from ' . $wpdb->prefix . self::TABLE . ' where id = ' . esc_sql( $id ) );
+			if ( ! empty( $used_in ) && ! $force_delete ) {
+				return $used_in;
+			}
+
+			// Delete thumb image.
+			global $wp_filesystem;
+			if ( empty( $wp_filesystem ) ) {
+				if ( file_exists( ABSPATH . '/wp-admin/includes/file.php' ) ) {
+					require_once ABSPATH . '/wp-admin/includes/file.php';
+					WP_Filesystem();
+				}
+			}
+			if ( empty( $wp_filesystem ) ) {
+				delete_post_meta( intval( $post_id ), 'gm_preset_screenshot' );
+			} else {
+				$upload_dir      = GroovyMenuUtils::getUploadDir();
+				$upload_filename = 'preset_' . $post_id . '.png';
+				$file_path       = $upload_dir . $upload_filename;
+
+				if ( is_file( $file_path ) ) {
+					$wp_filesystem->delete( $upload_dir . $upload_filename, false, true );
+					delete_post_meta( intval( $post_id ), 'gm_preset_screenshot' );
+				}
+
+				$upload_filename = 'preset_' . $post_id . '.css';
+				$file_path       = $upload_dir . $upload_filename;
+
+				if ( is_file( $file_path ) ) {
+					$wp_filesystem->delete( $upload_dir . $upload_filename, false, true );
+				}
+			}
+
+			// delete post.
+			return wp_delete_post( $post_id, $force_delete );
 		}
 
 
 		/**
-		 * @param bool $key_lalue
+		 * @param bool $key_value if true return simple array key value.
 		 *
 		 * @return array|null|object
 		 */
-		public static function getAll( $key_lalue = false ) {
-			global $wpdb;
+		public static function getAll( $key_value = false, $disable_cache = false ) {
 
+			static $cache_enable = true;
+			static $cache        = array(
+				'obj'       => array(),
+				'key_value' => array(),
+			);
+
+			if ( $disable_cache ) {
+				$cache_enable = false;
+
+				return null;
+			}
+
+			if ( $cache_enable && $key_value && ! empty( $cache['key_value'] ) ) {
+				return $cache['key_value'];
+			} elseif ( $cache_enable && ! $key_value && ! empty( $cache['obj'] ) ) {
+				return $cache['obj'];
+			}
 			$lver = false;
 			if ( defined( 'GROOVY_MENU_LVER' ) && '2' === GROOVY_MENU_LVER ) {
 				$lver = true;
 			}
-			$default_preset = get_option( self::DEFAULT_PRESET_OPTION );
-			$default_preset = empty( $default_preset ) ? 0 : intval( $default_preset );
-			$default_preset = empty( $default_preset ) ? 0 : $default_preset;
 
-			$presets       = array();
-			$raw_base_data = $wpdb->get_results( 'select * from ' . $wpdb->prefix . self::TABLE );
+			// get posts.
+			$args          = array(
+				'fields' => array( 'ID', 'post_title' ),
+				'order'  => 'ASC',
+			);
+			$raw_base_data = GroovyMenuUtils::get_posts_fields( $args );
 
 			if ( empty( $raw_base_data ) ) {
 				$raw_base_data = array();
 			}
 
-			$raw_base_sorted = array();
-
+			// load cache with data.
 			foreach ( $raw_base_data as $preset ) {
-				if ( $lver && $default_preset && intval( $preset->ID ) !== $default_preset ) {
-					continue;
-				} elseif ( $lver && 0 === $default_preset ) {
-					$default_preset = intval( $preset->ID );
-				}
+				// as key_value.
+				$cache['key_value'][ strval( $preset->ID ) ] = $preset->post_title;
 
-				$raw_base_sorted[] = $preset;
+				// as object.
+				$preset_obj       = new stdClass();
+				$preset_obj->id   = strval( $preset->ID );
+				$preset_obj->name = $preset->post_title;
+				$cache['obj'][]   = $preset_obj;
+
+				if ( $lver ) {
+					break;
+				}
 			}
 
+			$presets = array();
 
-			if ( $key_lalue ) {
-				foreach ( $raw_base_sorted as $preset ) {
-					$presets[ strval( $preset->id ) ] = $preset->name;
-				}
+			if ( $key_value ) {
+				$presets = $cache['key_value'];
 			} else {
-				$presets = $raw_base_sorted;
+				$presets = $cache['obj'];
 			}
 
 			return $presets;
@@ -323,47 +414,51 @@ if ( ! class_exists( 'GroovyMenuPreset' ) ) {
 
 
 		/**
-		 * @param $id
+		 * @param $post_id
 		 * @param $img
 		 */
-		public static function setPreviewById( $id, $img ) {
-			update_option( GroovyMenuStyle::OPTION_NAME . '_preview_' . $id, $img, false );
+		public static function setPreviewById( $post_id, $img ) {
+			update_post_meta( $post_id, 'gm_preset_preview', $img );
 		}
 
 
 		/**
-		 * @param $id
+		 * @param $post_id
 		 *
 		 * @return bool
 		 */
-		public static function isPreviewThumb( $id ) {
-			return ( self::getThumb( $id ) != false );
+		public static function isPreviewThumb( $post_id ) {
+			return ( self::getThumb( $post_id ) != false );
 		}
 
 
 		/**
-		 * @param $id
+		 * @param $post_id
 		 *
-		 * @return bool|mixed|void
+		 * @return bool|mixed
 		 */
-		public static function getPreviewById( $id ) {
-			$preview = GroovyMenuPreset::getThumb( $id );
+		public static function getPreviewById( $post_id ) {
+
+			$preview = GroovyMenuPreset::getThumb( $post_id );
+
 			if ( ! $preview ) {
-				$preview = get_option( GroovyMenuStyle::OPTION_NAME . '_preview_' . $id );
+
+				$preview = get_post_meta( $post_id, 'gm_preset_preview', true );
 
 				if ( strlen( $preview ) > 1024 ) {
-					delete_option( GroovyMenuStyle::OPTION_NAME . '_preview_' . $id );
+					update_post_meta( $post_id, 'gm_preset_preview', '' );
 				} elseif (
-					'api.groovy.grooni.com' !== parse_url( $preview, PHP_URL_HOST )
+					'api.groovy.grooni.com' !== wp_parse_url( $preview, PHP_URL_HOST )
 					&&
-					$_SERVER['SERVER_NAME'] !== parse_url( $preview, PHP_URL_HOST )
+					$_SERVER['SERVER_NAME'] !== wp_parse_url( $preview, PHP_URL_HOST )
 				) {
-					delete_option( GroovyMenuStyle::OPTION_NAME . '_preview_' . $id );
+					update_post_meta( $post_id, 'gm_preset_preview', '' );
 				}
 
 			}
+
 			if ( ! $preview ) {
-				$preview = get_option( GroovyMenuStyle::OPTION_NAME . '_screenshot_' . $id );
+				$preview = get_post_meta( $post_id, 'gm_preset_screenshot', true );
 			}
 
 			return $preview;
@@ -372,21 +467,20 @@ if ( ! class_exists( 'GroovyMenuPreset' ) ) {
 
 
 		/**
-		 * @param $id
+		 * @param $post_id
 		 * @param $img
 		 */
-		public static function setThumb( $id, $img ) {
-			update_option( GroovyMenuStyle::OPTION_NAME . '_thumb_' . $id, $img, false );
+		public static function setThumb( $post_id, $img ) {
+			update_post_meta( $post_id, 'gm_preset_thumb', $img );
 		}
 
-
 		/**
-		 * @param $id
+		 * @param $post_id
 		 *
 		 * @return bool
 		 */
-		public static function getThumb( $id ) {
-			$thumbId = get_option( GroovyMenuStyle::OPTION_NAME . '_thumb_' . $id );
+		public static function getThumb( $post_id ) {
+			$thumbId = intval( get_post_meta( $post_id, 'gm_preset_thumb', true ) );
 			if ( ! $thumbId ) {
 				return false;
 			}

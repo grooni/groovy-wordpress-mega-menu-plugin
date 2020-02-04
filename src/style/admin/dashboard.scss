@@ -88,7 +88,7 @@ GROOVY DASHBOARD HEADER
 
 .gm-dashboard__global-settings-btn {
   height: 52px;
-  width: 196px;
+  width: 210px;
   margin: 0;
   padding: 0 13px 0 19px;
   cursor: pointer;
@@ -308,11 +308,33 @@ GROOVY DASHBOARD PRESET
   background-image: url(../images/pattern-preview.png);
 }
 
+.crane-groovy-menu-select-wrapper {
+  .preset-title {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .preset-opts__dropdown {
+    width: 35px !important;
+  }
+}
+
 .groovy-menu-redux-current {
   > .preset {
     padding: 0;
     width: auto;
     max-width: 390px;
+  }
+}
+
+.preset--add-template.preset--not-allowed {
+  .preset-title__alpha {
+    white-space: normal;
+    text-transform: initial !important;
+    font-weight: normal !important;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -335,6 +357,19 @@ GROOVY DASHBOARD PRESET
   .preset-placeholder-inner a {
     text-decoration: none;
     color: #686868;
+  }
+
+  .gm-gui-icon {
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .preset-title__alpha {
+    text-transform: uppercase;
+    color: #686868;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 15px;
   }
 
   .preset-title__beta {

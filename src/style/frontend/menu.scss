@@ -57,6 +57,11 @@ NAVBAR GENERAL STYLES
   transition: background-color 0.2s;
 }
 
+.gm-navbar .gm-inner,
+.gm-navbar .gm-inner-bg {
+  width: 100%;
+}
+
 .gm-container {
   display: flex;
   margin-right: auto;
@@ -212,7 +217,6 @@ NAVBAR GENERAL STYLES
 
 .gm-caret {
   position: relative;
-  z-index: 10;
   font-size: 16px;
   line-height: 1;
 }

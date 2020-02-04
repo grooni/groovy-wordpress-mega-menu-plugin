@@ -1,10 +1,19 @@
 import { DOMAnimations, getCoords } from '../shared/helpers';
 
-function dropdownOpen (elem) {
+function dropdownOpen (elem, options) {
   let dropdownWrapper = elem.querySelector('.gm-dropdown-menu-wrapper');
 
   if (dropdownWrapper !== null) {
-    var hasParentLeft = dropdownWrapper.classList.contains('gm-dropdown-menu-wrapper--left');
+    var hasParentLeft = elem.closest('.gm-dropdown-menu-wrapper');
+    hasParentLeft = hasParentLeft !== null && hasParentLeft.classList.contains('gm-dropdown-menu-wrapper--left');
+  }
+  var isVerticalNavDrawer =
+    options.header.style === 2 ||
+    options.header.style === 3 ||
+    options.header.style === 4;
+
+  if (elem.classList.contains('gm-minicart') && isVerticalNavDrawer) {
+    return false;
   }
 
   if (dropdownWrapper !== null &&
@@ -48,7 +57,7 @@ function dropdownClose (elem) {
   }
 }
 
-export function dropdownToggle (elem) {
+export function dropdownToggle (elem, options) {
   if (elem.classList.contains('gm-open')) {
     dropdownClose(elem);
   } else {
@@ -67,7 +76,7 @@ export function dropdownToggle (elem) {
       dropdownCloseAll();
     }
 
-    dropdownOpen(elem);
+    dropdownOpen(elem, options);
   }
 }
 

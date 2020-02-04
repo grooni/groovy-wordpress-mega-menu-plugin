@@ -6,6 +6,8 @@ if ( ! empty( $gm_supported_module['search_post_type_additional'] ) && is_array(
 	$theme_search_additional = $gm_supported_module['search_post_type_additional'];
 }
 
+$default_arr = array( 'default' => '--- ' . esc_html__( 'Same as desktop', 'groovy-menu' ) . ' ---' );
+$nav_menus = $default_arr + GroovyMenuUtils::getNavMenus();
 
 return array(
 	'general' => array(
@@ -58,7 +60,7 @@ return array(
 				'unit'      => 'px',
 				'condition' => array(
 					array( 'header.style', 'in', array( '1' ) ),
-					array( 'header.align', 'in', array( 'left' ) ),
+					array( 'header.align', 'in', array( 'left', 'right' ) ),
 					array( 'top_lvl_link_align', '==', 'left' ),
 					array( 'logo_type', 'in', array( 'img', 'text' ) ),
 				)
@@ -290,6 +292,14 @@ return array(
 				'type'        => 'checkbox',
 				'description' => esc_html__( 'You can switch between displaying or hiding icons added to menu items from &quot;Appearance > menus&quot;.', 'groovy-menu' ),
 				'default'     => true,
+			),
+			'menu_z_index' => array(
+				'title'       => esc_html__( 'Menu z-index', 'groovy-menu' ),
+				'description' => esc_html__( 'Set the z-index to ensure the menu are higher than other site content.', 'groovy-menu' ),
+				'type'        => 'number',
+				'default'     => '9999',
+				'range'       => array( 1, 2147483600 ),
+				'unit'        => '',
 			),
 			'submenu_group'                                => array(
 				'title'     => esc_html__( 'Submenu', 'groovy-menu' ),
@@ -588,7 +598,7 @@ return array(
 				'type' => 'inlineEnd'
 			),
 			'megamenu_title_as_link' => array(
-				'title'       => esc_html__( 'Show Mega Menu titles as regular menu items', 'groovy-menu' ),
+				'title'       => esc_html__( 'Show Mega Menu titles as a regular menu items', 'groovy-menu' ),
 				'description' => esc_html__( 'For sub mega menu items.', 'groovy-menu' ) . ' ' . esc_html__( 'Show with links and badges.', 'groovy-menu' ),
 				'type'        => 'checkbox',
 				'default'     => false,
@@ -1668,6 +1678,13 @@ return array(
 				'type'      => 'group',
 				'serialize' => false,
 			),
+			'mobile_nav_menu' => array(
+				'title'       => esc_html__( 'Mobile navigation menu', 'groovy-menu' ),
+				'description' => esc_html__( 'If for some reason you need to show another menu in the mobile version, then assign it here.', 'groovy-menu' ),
+				'type'        => 'select',
+				'options'     => $nav_menus,
+				'default'     => '',
+			),
 			'mobile_nav_drawer_open_type'            => array(
 				'title'   => esc_html__( 'Mobile navigation drawer open type', 'groovy-menu' ),
 				'type'    => 'select',
@@ -1717,7 +1734,7 @@ return array(
 				'description' => esc_html__( 'You can change switch to mobile breakpoint using this option. (default:1023px).', 'groovy-menu' ),
 				'type'        => 'number',
 				'default'     => '1023',
-				'range'       => array( 360, 1700 ),
+				'range'       => array( 0, 2000 ),
 				'unit'        => 'px',
 			),
 			'mobile_header_height'                   => array(

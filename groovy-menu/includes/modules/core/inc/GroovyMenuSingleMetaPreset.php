@@ -39,7 +39,7 @@ class GroovyMenuSingleMetaPreset {
 			add_action( 'add_meta_boxes', array( $this, 'add_meta_box', ) );
 
 		} else {
-			$this->post_types = $this->get_all_post_types();
+			$this->post_types = apply_filters( 'groovy_menu_single_post_add_meta_box_post_types', $this->get_all_post_types() );
 		}
 
 		add_action( 'save_post', array( $this, 'save_post_meta' ), 10, 2 );
@@ -60,6 +60,10 @@ class GroovyMenuSingleMetaPreset {
 		$show_meta_box = apply_filters( 'groovy_menu_single_post_show_meta_box', true );
 		if ( ! $show_meta_box ) {
 			return;
+		}
+
+		if ( ! is_array( $this->post_types ) ) {
+			$this->post_types = array();
 		}
 
 		add_meta_box(
