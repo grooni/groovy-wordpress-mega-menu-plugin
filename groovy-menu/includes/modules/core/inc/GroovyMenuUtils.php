@@ -1689,10 +1689,12 @@ class GroovyMenuUtils {
 	/**
 	 * Lic checker.
 	 *
+	 * @param bool $immediately Check without long timer
+	 *
 	 * @return bool|string
 	 */
-	public static function check_lic() {
-		if ( get_transient( GROOVY_MENU_DB_VER_OPTION . '__lic_cache' ) ) {
+	public static function check_lic( $immediately = false ) {
+		if ( ! $immediately && get_transient( GROOVY_MENU_DB_VER_OPTION . '__lic_cache' ) ) {
 			$lic_opt = get_option( GROOVY_MENU_DB_VER_OPTION . '__lic' );
 			if ( empty( $lic_opt ) || ! $lic_opt ) {
 				return false;
@@ -1701,8 +1703,7 @@ class GroovyMenuUtils {
 			}
 		}
 
-		$transient_timer = 2 * MINUTE_IN_SECONDS;
-
+		$transient_timer = 2 * MINUTE_IN_SECONDS; // by default
 
 		global $gm_supported_module;
 

@@ -34,6 +34,8 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				'saveSingleLocationIntegration'
 			) );
 
+			add_action( 'wp_ajax_gm_check_current_license', array( $this, 'checkCurrentLicense' ) );
+
 			add_action( 'wp_ajax_gm_get_setting', array( $this, 'getSettings' ) );
 			add_action( 'wp_ajax_nopriv_gm_get_setting', array( $this, 'getSettings' ) );
 
@@ -1167,9 +1169,13 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 							</div>
 							<?php if ( ! $lic_opt ) { ?>
 								<p class="gm-welcome-registered__p"><?php esc_html_e( 'You need to register your copy of Groovy Menu to activate the plugin features', 'groovy-menu' ); ?></p>
+								<p class="gm-welcome-registered__p"><?php esc_html_e( 'Need to register on URL', 'groovy-menu' ); ?>:
+									<code><?php echo esc_url( get_site_url() ); ?></code></p>
 								<a class="gm-welcome-big-button gm-welcome-big-button--blue gm-welcome-tile__link--lic"
 									href="https://license.grooni.com/"
 									target="_blank"><?php esc_html_e( 'License site', 'groovy-menu' ); ?></a>
+								<span
+									class="gm-welcome-big-button gm-welcome-big-button--green gm-welcome-check--lic"><?php esc_html_e( 'Check license', 'groovy-menu' ); ?></span>
 							<?php } elseif ( $lic_opt && ! $lic_opt_old ) { ?>
 								<p class="gm-welcome-registered__p"><?php esc_html_e( 'A new license for current site is registered.', 'groovy-menu' ); ?></p>
 								<p class="gm-welcome-registered__p">
@@ -1246,7 +1252,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 											<p><?php esc_html_e( 'If automatic integration does not work properly, and for manual integration you do not have enough time and experience.', 'groovy-menu' ); ?></p>
 											<p class="gm-welcome-margintop"><a
 													class="gm-welcome-big-button gm-welcome-big-button--green"
-													href="#"
+													href="https://gum.co/groovy-integration"
 													target="_blank"><?php esc_html_e( 'Manual integration', 'groovy-menu' ); ?> $35</a>
 											</p>
 										</div>
@@ -2639,6 +2645,24 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 					$respond = esc_html__( 'Save', 'groovy-menu' );
 				} else {
 					$respond = esc_html__( 'Save Error', 'groovy-menu' );
+				}
+
+				// Send a JSON response back to an AJAX request, and die().
+				wp_send_json_success( $respond );
+
+			}
+		}
+
+		public function checkCurrentLicense() {
+
+			if ( defined( 'DOING_AJAX' ) && DOING_AJAX && ! empty( $_POST ) && isset( $_POST['action'] ) && $_POST['action'] === 'gm_check_current_license' ) {
+
+				$lic_opt = GroovyMenuUtils::check_lic( true );
+
+				if ( $lic_opt ) {
+					$respond = esc_html__( 'true', 'groovy-menu' );
+				} else {
+					$respond = esc_html__( 'false', 'groovy-menu' );
 				}
 
 				// Send a JSON response back to an AJAX request, and die().
