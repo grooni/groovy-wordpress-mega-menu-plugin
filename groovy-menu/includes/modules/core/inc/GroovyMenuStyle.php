@@ -897,6 +897,9 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 				$options = array();
 			}
 
+			// fill missing fields with default values.
+			$options = $this->setEmptyOptionsAsDefault( $options );
+
 			if ( empty( $options['menu_z_index'] ) ) {
 				$options['menu_z_index'] = '9999';
 			}
@@ -923,6 +926,39 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 			return $options;
 		}
 
+		/**
+		 * @param array $options
+		 *
+		 * @return array
+		 */
+		protected function setEmptyOptionsAsDefault( $options ) {
+
+			if ( empty( $options ) || ! is_array( $options ) ) {
+				$options = array();
+			}
+
+			$settings         = array();
+			$settings_default = array();
+			$ignore_fields    = array(
+				'group',
+				'inlineStart',
+				'inlineEnd',
+			);
+
+			foreach ( $this->getSettings() as $categoryName => $group ) {
+				foreach ( $group['fields'] as $name => $fields ) {
+					if ( ! empty( $fields['type'] ) && in_array( $fields['type'], $ignore_fields, true ) ) {
+						continue;
+					}
+
+					if ( empty( $options[ $name ] ) && isset( $fields['default'] ) ) {
+						$options[ $name ] = $fields['default'];
+					}
+				}
+			}
+
+			return $options;
+		}
 
 		protected function loadPresetCssFromPost( $post_id ) {
 

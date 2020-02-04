@@ -1299,17 +1299,17 @@ class GroovyMenuUtils {
 		$packs = array(
 			'wp-Ingenicons'     => array(
 				'name'          => 'wp-Ingenicons',
-				'url'           => 'https://updates.grooni.com/icon_packs/wp-Ingenicons.zip',
+				'url'           => 'https://license.grooni.com/wp-update-server/icon_packs/wp-Ingenicons.zip',
 				'internal_name' => 'groovy-28328'
 			),
 			'Simple-Line-Icons' => array(
 				'name'          => 'Simple-Line-Icons',
-				'url'           => 'https://updates.grooni.com/icon_packs/Simple-Line-Icons.zip',
+				'url'           => 'https://license.grooni.com/wp-update-server/icon_packs/Simple-Line-Icons.zip',
 				'internal_name' => 'groovy-69018'
 			),
 			'socicon'           => array(
 				'name'          => 'socicon',
-				'url'           => 'https://updates.grooni.com/icon_packs/socicon.zip',
+				'url'           => 'https://license.grooni.com/wp-update-server/icon_packs/socicon.zip',
 				'internal_name' => 'groovy-socicon'
 			),
 		);
