@@ -168,7 +168,8 @@ export default class GmStyles {
             width: 100vw;
             margin-left  : calc( -100vw / 2 + 100% / 2 );
             margin-right : calc( -100vw / 2 + 100% / 2 );
-            max-width : 100vw;`
+            max-width : 100vw;
+            position: absolute;`
         });
       }
 
@@ -177,7 +178,10 @@ export default class GmStyles {
         const maxWidth = `${settings.megaMenuCanvasBoxedContainerBoxedWidth}px`;
 
         css.push({
-          '.gm-main-menu-wrapper .mega-gm-dropdown .gm-dropdown-menu, .gm-main-menu-wrapper .mega-gm-dropdown .gm-dropdown-menu-wrapper': `max-width: ${maxWidth}`
+          '.gm-main-menu-wrapper .mega-gm-dropdown > .gm-dropdown-menu, .gm-main-menu-wrapper .mega-gm-dropdown > .gm-dropdown-menu-wrapper': `
+            width: ${maxWidth};
+            max-width : ${maxWidth};
+            position: absolute;`
         });
       }
 
@@ -2409,8 +2413,9 @@ export default class GmStyles {
       '.gm-navbar:not(.gm-navbar--align-right) .attachment-menu-thumb': 'left: calc(100% - 30px);',
       '.gm-navbar.gm-navbar--align-right .attachment-menu-thumb': 'right: 100%;',
       '.gm-menu-item.gm-has-featured-img:hover .attachment-menu-thumb': 'display: block;',
-      // '.gm-main-menu-wrapper .gm-dropdown-menu': 'position: absolute;',
-      // '.gm-dropdown-submenu': 'overflow: hidden;',
+      //'.gm-main-menu-wrapper .gm-dropdown-menu': 'position: absolute;',
+      //'.gm-main-menu-wrapper .gm-dropdown-menu-wrapper': 'position: absolute; left: 0; visibility: hidden;',
+      //'.gm-dropdown-submenu': 'overflow: hidden;',
       '[dir=\'rtl\'] .gm-caret i': 'transform: rotate(180deg);',
       '.gm-caret': 'padding-left: 5px',
       media: 'desktop'

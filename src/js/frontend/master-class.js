@@ -144,14 +144,14 @@ class GroovyMenu {
         }
 
         e.preventDefault();
-        dropdownToggle(closestDropdown);
+        dropdownToggle(closestDropdown, options);
         return false;
       }
 
       if (e.target.closest('.gm-caret')) {
         e.preventDefault();
         e.stopPropagation();
-        dropdownToggle(closestDropdown);
+        dropdownToggle(closestDropdown, options);
         return false;
       }
 
@@ -162,7 +162,7 @@ class GroovyMenu {
           .getAttribute('href') !== null
           || e.target.closest('.gm-dropdown-toggle')
             .getAttribute('href') === '#') {
-          dropdownToggle(closestDropdown);
+          dropdownToggle(closestDropdown, options);
           return false;
         }
       }
@@ -319,7 +319,7 @@ class GroovyMenu {
         }
 
         if (headerStyle !== 3 && headerStyle !== 4) {
-          dropdownToggle(item.closest('.gm-search'));
+          dropdownToggle(item.closest('.gm-search'), options);
           setTimeout(() => {
             item.querySelector('.gm-search__input')
               .focus();
