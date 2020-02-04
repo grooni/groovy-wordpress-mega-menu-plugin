@@ -503,9 +503,9 @@ class AdminWalker extends WalkerNavMenu {
 			$title = sprintf( esc_html__( '%s (Pending)', 'groovy-menu' ), $item->title );
 		}
 
-		$badges_show = true;
+		$lver = false;
 		if ( defined( 'GROOVY_MENU_LVER' ) && '2' === GROOVY_MENU_LVER ) {
-			$badges_show = false;
+			$lver = true;
 		}
 
 		$title = ( ! isset( $item->label ) || '' === $item->label ) ? $title : $item->label;
@@ -710,7 +710,7 @@ class AdminWalker extends WalkerNavMenu {
 			</p>
 
 			<!-- // Thumbnail settings -->
-
+			<?php if ( ! $lver ) : ?>
 			<p class="description description-wide">
 				<?php
 				$value = '';
@@ -800,9 +800,10 @@ class AdminWalker extends WalkerNavMenu {
 					<?php endif; ?>
 				</span>
 			</p>
+			<?php endif; // if ( ! $lver ) ?>
 
 			<!-- // Badge settings -->
-
+			<?php if ( ! $lver ) : ?>
 			<p class="description description-wide">
 				<?php
 				$value = '';
@@ -1143,6 +1144,7 @@ class AdminWalker extends WalkerNavMenu {
 					name="gm-badge-text-font-color[<?php echo esc_attr( $item_id ); ?>]"
 				/>
 			</p>
+			<?php endif; // if ( ! $lver ) ?>
 
 			<p class="description description-wide">
 				<?php
