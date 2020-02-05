@@ -19,11 +19,11 @@ export function uploadMedia (e) {
         .toJSON();
 
       var thumbImage = uploadedImage.url;
-      if (uploadedImage.sizes.medium !== undefined && uploadedImage.sizes.medium.url !== undefined) {
+      /*if (uploadedImage.sizes.medium !== undefined && uploadedImage.sizes.medium.url !== undefined) {
         thumbImage = uploadedImage.sizes.medium.url;
       } else {
         thumbImage = uploadedImage.sizes.full.url;
-      }
+      }*/
 
       uploadInput.value = uploadedImage.id;
       uploadInput.setAttribute('data-url', uploadedImage.url);

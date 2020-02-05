@@ -863,9 +863,9 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				}
 
 				echo esc_html__( 'Saved', 'groovy-menu' );
-				exit;
 			}
-			exit;
+
+			echo ( $this->hardRedirectToDashboard() );
 		}
 
 		public function deleteFont() {
@@ -1083,6 +1083,24 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				wp_safe_redirect( esc_url( $redirect_url ) );
 			}
 			exit;
+		}
+
+
+		public function hardRedirectToDashboard() {
+			$redirect_url = add_query_arg(
+				array( 'page' => 'groovy_menu_settings' ),
+				admin_url( 'admin.php' )
+			);
+			$html         = '';
+			$tag_type     = array(
+				'name' => 'script',
+				'type' => 'text/javascript'
+			);
+			$html         .= '<' . $tag_type['name'] . ' type="' . $tag_type['type'] . '">';
+			$html         .= 'window.location.replace("' . $redirect_url . '");';
+			$html         .= '</' . $tag_type['name'] . '>';
+
+			return $html;
 		}
 
 

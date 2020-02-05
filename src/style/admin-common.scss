@@ -28,3 +28,33 @@
     margin: 0 6px 0 0;
   }
 }
+
+#groovy_menu_metabox .groovy-meta-box-item--select select {
+  width: 204px;
+  max-width: 204px;
+}
+
+#toplevel_page_groovy_menu_welcome li:last-child {
+  position: relative;
+  a {
+    padding-left: 35px !important;
+  }
+  &::after {
+    position: absolute;
+    left: 14px;
+    top: 5px;
+    color: #f9b000;
+    font-size: 14px;
+    text-transform: none;
+    font-family: 'groovy-gui' !important;
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    speak: none;
+    content: "\e900";
+  }
+}
