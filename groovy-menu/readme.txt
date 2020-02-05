@@ -100,9 +100,10 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 * Fix: Added some minor fixes from the previous premium version 1.8.x and 1.9.x.
 * Add: Added CSS setting for z-index in the presets settings
 * Add: Added the ability to display another navigation menu for the mobile version.
-* Add:  New Actions that can be called immediately above menu, under the menu, and after the menu layout.
-* Fix:  Minor CSS changes have been made to fix the appearance of the text at the social links.
-* Add:  The ability to disable the internal pre-cache for presets.
+* Add: New Actions that can be called immediately above menu, under the menu, and after the menu layout.
+* Fix: Minor CSS changes have been made to fix the appearance of the text at the social links.
+* Fix: Bug with the cutting the Logotype appearance in the Global settings
+* Add: The ability to disable the internal pre-cache for presets.
 * Improve: Added reset styles feature for better compatibility with different themes.
 * Improve: Implemented cache for displaying and processing nav_menu items.
 * Improve: Removed files that were added to support older versions of the plugin.

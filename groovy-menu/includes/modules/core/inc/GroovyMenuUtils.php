@@ -1109,7 +1109,7 @@ class GroovyMenuUtils {
 			$lver = true;
 		}
 
-		if ( $lver ) {
+		if ( $lver && 'groovy-menu-free/groovy-menu.php' === $plugin_file ) {
 			$addcss_arr = array(
 				'color'       => '#3e9e16',
 				'font-weight' => 'bold',
