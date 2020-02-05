@@ -93,16 +93,21 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 == Changelog ==
 
 = 1.1.0 =
-* Fix: Error in determining preset ID in some cases of manual integration for the free version of the plugin. The error affected the inability to display the dropdown menu.
+* Fix: Error in determining preset ID in some cases of manual integration. This error affected the possibility to show the dropdown menu.
 * Fix: Improved compatibility of created presets in the free version with the premium version of the plugin.
 * Fix: Fixed display of multi-level menus that did not fit the width of the screen.
-* Fix: Logo centering when a search and a WooCommerce mini-basket were simultaneously displayed in a menu block.
-* Fix: Added fixes from the premium version.
-* Improve: Added reset styles for greater compatibility with different templates.
+* Fix: Logo centering when a search and a WooCommerce mini-cart were simultaneously displayed in a menu block.
+* Fix: Added some minor fixes from the previous premium version 1.8.x and 1.9.x.
+* Add: Added CSS setting for z-index in the presets settings
+* Add: Added the ability to display another navigation menu for the mobile version.
+* Add:  New Actions that can be called immediately above menu, under the menu, and after the menu layout.
+* Fix:  Minor CSS changes have been made to fix the appearance of the text at the social links.
+* Add:  The ability to disable the internal pre-cache for presets.
+* Improve: Added reset styles feature for better compatibility with different themes.
 * Improve: Implemented cache for displaying and processing nav_menu items.
-* Improve: Remove files with old version support.
-* Add: Added CSS z-index for preset settings.
-* Add: Added the ability to display another navigation menu for the mobile version. Adjustable through the preset editor.
+* Improve: Removed files that were added to support older versions of the plugin.
+* Improve: The minimum value for the setting "Mobile version switch" is can set to 0 for disabling the appearance of the menu on mobile devices.
+* Improve: Minor appearance changes for the Dasboard> Apperance> Menus page
 * Updated: NPM modules.
 
 = 1.0.9 =

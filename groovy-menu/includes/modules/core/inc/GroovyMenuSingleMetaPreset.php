@@ -93,29 +93,38 @@ class GroovyMenuSingleMetaPreset {
 		<div class="groovy-meta-box-wrapper">
 			<?php if ( ! $this->lver ) { ?>
 				<div class="groovy-meta-box-item">
-					<label for="groovy-preset"><?php esc_html_e( 'Menu preset', 'groovy-menu' ); ?></label>
-					<select id="groovy-preset" name="<?php echo esc_attr( self::meta_name ); ?>"
-						class="groovy-select-maxwidth">
-						<option value=""><?php esc_html_e( 'Default', 'groovy-menu' ); ?></option>
-						<option
-							value="none" <?php echo ( ! empty( $saved_preset ) && $saved_preset === 'none' ) ? 'selected' : '' ?>><?php _e( 'Hide Groovy menu', 'groovy-menu' ); ?></option>
-						<?php foreach ( $presets as $preset ) { ?>
-							<option <?php echo ( ! empty( $saved_preset ) && $saved_preset === $preset->id ) ? 'selected' : '' ?>
-								value="<?php echo esc_attr( $preset->id ); ?>"><?php echo esc_html( $preset->name ); ?></option>
-						<?php } ?>
-					</select>
+					<div class="groovy-meta-box-item--label">
+						<label for="groovy-preset"><?php esc_html_e( 'Menu preset', 'groovy-menu' ); ?></label>
+					</div>
+					<div class="groovy-meta-box-item--select">
+						<select id="groovy-preset" name="<?php echo esc_attr( self::meta_name ); ?>"
+							class="groovy-select-maxwidth">
+							<option value=""><?php esc_html_e( 'Default', 'groovy-menu' ); ?></option>
+							<option
+								value="none" <?php echo ( ! empty( $saved_preset ) && $saved_preset === 'none' ) ? 'selected' : '' ?>><?php _e( 'Hide Groovy menu', 'groovy-menu' ); ?></option>
+							<?php foreach ( $presets as $preset ) { ?>
+								<option <?php echo ( ! empty( $saved_preset ) && $saved_preset === $preset->id ) ? 'selected' : '' ?>
+									value="<?php echo esc_attr( $preset->id ); ?>"><?php echo esc_html( $preset->name ); ?></option>
+							<?php } ?>
+						</select>
+					</div>
 				</div>
 			<?php } ?>
 			<div class="groovy-meta-box-item">
-				<label
-					for="groovy-menu-name"><?php esc_html_e( 'Navigation menu (from Appearance > Menus)', 'groovy-menu' ); ?></label>
-				<select id="groovy-menu-name" name="<?php echo self::meta_menu_name; ?>" class="groovy-select-maxwidth">
-					<option value=""><?php esc_html_e( 'Default', 'groovy-menu' ); ?></option>
-					<?php foreach ( $menus as $menu ) { ?>
-						<option <?php echo ( ! empty( $saved_menu ) && $saved_menu === $menu->slug ) ? 'selected' : '' ?>
-							value="<?php echo esc_attr( $menu->slug ); ?>"><?php echo esc_html( $menu->name ); ?></option>
-					<?php } ?>
-				</select>
+				<div class="groovy-meta-box-item--label">
+					<label
+						for="groovy-menu-name"><?php esc_html_e( 'Navigation menu (from Appearance > Menus)', 'groovy-menu' ); ?></label>
+				</div>
+				<div class="groovy-meta-box-item--select">
+					<select id="groovy-menu-name" name="<?php echo self::meta_menu_name; ?>"
+						class="groovy-select-maxwidth">
+						<option value=""><?php esc_html_e( 'Default', 'groovy-menu' ); ?></option>
+						<?php foreach ( $menus as $menu ) { ?>
+							<option <?php echo ( ! empty( $saved_menu ) && $saved_menu === $menu->slug ) ? 'selected' : '' ?>
+								value="<?php echo esc_attr( $menu->slug ); ?>"><?php echo esc_html( $menu->name ); ?></option>
+						<?php } ?>
+					</select>
+				</div>
 			</div>
 		</div>
 		<?php

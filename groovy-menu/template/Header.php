@@ -635,11 +635,31 @@ function groovyMenu( $args = array() ) {
 	$output_html .= '<div class="gm-main-menu-wrapper">
 						<nav id="gm-main-menu">';
 
+	ob_start();
+	/**
+	 * Fires at the main menu nav.
+	 *
+	 * @since 1.1.0
+	 */
+	do_action( 'gm_main_menu_nav_first' );
+	$output_html .= ob_get_clean();
+
+
 	$output_html .= wp_nav_menu( $args );
 
 	if ( $is_menu_empty ) {
 		$output_html .= '<div class="gm-menu-empty">' . esc_html__( 'Please assign a menu to the primary menu location under Menus.', 'groovy-menu' ) . '</div>';
 	}
+
+
+	ob_start();
+	/**
+	 * Fires at the main menu nav.
+	 *
+	 * @since 1.1.0
+	 */
+	do_action( 'gm_main_menu_nav_last' );
+	$output_html .= ob_get_clean();
 
 
 	$output_html .= '</nav>';
@@ -655,9 +675,23 @@ function groovyMenu( $args = array() ) {
 	if ( ! empty( $searchForm ) && 'all' !== $searchFormFrom ) {
 		$searchFilter = '<input type="hidden" name="post_type" value="' . $searchFormFrom . '">';
 	}
+
+	$searchFilter = apply_filters( 'gm_search_filter_hidden_input', $searchFilter );
+
 	if ( ! gm_get_shop_is_catalog() && $groovyMenuSettings['woocommerceCart'] && class_exists( 'WooCommerce' ) ) {
 		$show_gm_action = true;
 	}
+
+
+	ob_start();
+	/**
+	 * Fires after main menu nav.
+	 *
+	 * @since 1.1.0
+	 */
+	do_action( 'gm_after_main_menu_nav' );
+	$output_html .= ob_get_clean();
+
 
 	if ( $show_gm_action ) {
 
@@ -800,10 +834,42 @@ function groovyMenu( $args = array() ) {
 		$args['menu'] = intval( $groovyMenuSettings['mobileNavMenu'] );
 	}
 
+
+	ob_start();
+	/**
+	 * Fires at the mobile main menu nav.
+	 *
+	 * @since 1.1.0
+	 */
+	do_action( 'gm_mobile_main_menu_nav_first' );
+	$output_html .= ob_get_clean();
+
+
 	$output_html .= wp_nav_menu( $args );
+
+
+	ob_start();
+	/**
+	 * Fires at the mobile main menu nav.
+	 *
+	 * @since 1.1.0
+	 */
+	do_action( 'gm_mobile_main_menu_nav_last' );
+	$output_html .= ob_get_clean();
 
 	$output_html .= '</div>';
 	$output_html .= '<div class="flex-grow-1"></div>';
+
+	ob_start();
+	/**
+	 * Fires after main menu nav for mobile.
+	 *
+	 * @since 1.1.0
+	 */
+	do_action( 'gm_mobile_after_main_menu_nav' );
+	$output_html .= ob_get_clean();
+
+
 	$output_html .= '<div class="d-flex justify-content-center align-items-center text-center mb-4 mt-5">';
 
 	$searchForm = $groovyMenuSettings['searchForm'];
