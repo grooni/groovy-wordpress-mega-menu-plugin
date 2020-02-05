@@ -11,7 +11,7 @@ Groovy menu is a responsive and free Mega Menu WordPress plugin designed for cre
 
 == Description ==
 [Mega Menu Pro](https://codecanyon.net/item/groovy-menu-wordpress-mega-menu-plugin/23049456) | [Demo](https://groovymenu.grooni.com/) | [Documentation](https://grooni.com/docs/groovy-menu/) | [Video tutorials](https://www.youtube.com/channel/UCpbGGAUnqSLwCAoNgm5uAKg)
-Groovy Menu is a responsive and free [Mega Menu WordPress plugin] (https://groovymenu.grooni.com/) that will allow you easily to add an awesome menu on your site and improve website navigation. Is an easy to customize, just need to upload your logo and fit your own colors, fonts and sizes.
+Groovy Menu is a responsive and free [Mega Menu WordPress plugin](https://groovymenu.grooni.com/) that will allow you easily to add an awesome menu on your site and improve website navigation. Is an easy to customize, just need to upload your logo and fit your own colors, fonts and sizes.
 https://youtu.be/w1SIBwMdfn8
 View more video tutorials: [Mega Menu Tutorials](https://www.youtube.com/channel/UCpbGGAUnqSLwCAoNgm5uAKg)
 
@@ -23,7 +23,7 @@ View more video tutorials: [Mega Menu Tutorials](https://www.youtube.com/channel
 * Submenu
 * Toolbar menu
 * Ajax Cart
-* [WooCommerce Mega menu] (https://groovymenu.grooni.com/shop/)
+* [WooCommerce Mega menu](https://groovymenu.grooni.com/shop/)
 * Responsive menu
 * Fullwidth mega menu
 * Mobile menu
@@ -58,7 +58,7 @@ WPBakery (Visual Composer), Beaver Builder, Gutenberg
 * Set specific menu for the taxonomies
 * Premium Support
 * Theme Developers features
-* [Elementor Mega Menu] (https://groovymenu.grooni.com/standard-wordpress-menu-plugin/)
+* [Elementor Mega Menu](https://groovymenu.grooni.com/standard-wordpress-menu-plugin/)
 * WPBakery Mega Menu
 * Mega menu for Visual Composer
 Get max from your site menu with the Groovy Mega Menu PRO for WP.
