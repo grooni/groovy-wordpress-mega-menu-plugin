@@ -1573,11 +1573,11 @@ class GroovyMenuUtils {
 
 		if ( ! $output && ! empty( $saved_integration_location ) && isset( $args->theme_location ) && esc_attr( $saved_integration_location ) === $args->theme_location ) {
 
-			$gm_ids = GroovyMenuPreStorage::get_instance()->search_ids_by_location( array( 'theme_location' => 'gm_primary' ) );
+			$gm_ids = \GroovyMenu\PreStorage::get_instance()->search_ids_by_location( array( 'theme_location' => 'gm_primary' ) );
 
 			if ( ! empty( $gm_ids ) ) {
 				foreach ( $gm_ids as $gm_id ) {
-					$gm_data = GroovyMenuPreStorage::get_instance()->get_gm( $gm_id );
+					$gm_data = \GroovyMenu\PreStorage::get_instance()->get_gm( $gm_id );
 					$gm_html .= $gm_data['gm_html'];
 
 				}
