@@ -29,6 +29,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	const GM_THUMB_ENABLE               = 'groovy_menu_thumb_enable';
 	const GM_THUMB_POSITION             = 'groovy_menu_thumb_position';
 	const GM_THUMB_MAX_HEIGHT           = 'groovy_menu_thumb_max_height';
+	const GM_THUMB_WITH_URL             = 'groovy_menu_thumb_with_url';
 	const GM_THUMB_IMAGE                = 'groovy_menu_thumb_image';
 	const GM_BADGE_ENABLE               = 'groovy_menu_badge_enable';
 	const GM_BADGE_TYPE                 = 'groovy_menu_badge_type';
@@ -121,7 +122,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 		}
 
 		if ( empty( $this->gm_mass_meta[ $item_id ][ self::GM_NAV_MENU_META ] ) ) {
-			$meta_data = get_post_meta( $item_id, self::GM_NAV_MENU_META, true );
+			$meta_data = get_post_meta( $item_id, self::GM_NAV_MENU_META, $flag );
 
 			if ( is_string( $meta_data ) ) {
 				$meta_data = json_decode( $meta_data, true );
@@ -526,6 +527,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 		return $val;
 	}
 
+
 	/**
 	 * @param object $item Object with menu item meta data.
 	 *
@@ -538,6 +540,26 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 		}
 
 		$val = $this->getGMNavMenuMeta( $item_id, self::GM_THUMB_ENABLE, true );
+		if ( empty( $val ) || ! $val || 'none' === $val || 'false' === $val ) {
+			$val = false;
+		}
+
+		return $val;
+	}
+
+
+	/**
+	 * @param object $item Object with menu item meta data.
+	 *
+	 * @return bool
+	 */
+	protected function getThumbWithUrl( $item ) {
+		$item_id = $this->getId( $item );
+		if ( empty( $item_id ) ) {
+			return '';
+		}
+
+		$val = $this->getGMNavMenuMeta( $item_id, self::GM_THUMB_WITH_URL, true );
 		if ( empty( $val ) || ! $val || 'none' === $val || 'false' === $val ) {
 			$val = false;
 		}

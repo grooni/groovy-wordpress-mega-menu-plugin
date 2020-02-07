@@ -166,7 +166,7 @@ class FrontendWalker extends WalkerNavMenu {
 
 			$output .= '<div class="gm-mega-menu__item ' . $gridClass . '">';
 
-			if ( $gm_thumb_settings['display'] && 'above' === $gm_thumb_settings['position'] ) {
+			if ( ! $gm_thumb_settings['with_url'] && $gm_thumb_settings['display'] && 'above' === $gm_thumb_settings['position'] ) {
 				$output .= $gm_thumb_settings['html'];
 			}
 
@@ -185,7 +185,8 @@ class FrontendWalker extends WalkerNavMenu {
 
 					$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args, $depth );
 
-					$attributes = '';
+					$attributes       = '';
+					$attributes_thumb = '';
 					foreach ( $atts as $attr => $value ) {
 						if ( ! empty( $value ) ) {
 							if ( 'href' === $attr ) {
@@ -197,7 +198,16 @@ class FrontendWalker extends WalkerNavMenu {
 								$value = esc_attr( $value );
 							}
 							$attributes .= ' ' . $attr . '="' . $value . '"';
+							if ( 'class' !== $attr ) {
+								$attributes_thumb .= ' ' . $attr . '="' . $value . '"';
+							} else {
+								$attributes_thumb .= ' class="gm-menu-item__thumbnail"';
+							}
 						}
+					}
+
+					if ( $gm_thumb_settings['with_url'] && $gm_thumb_settings['display'] && 'above' === $gm_thumb_settings['position'] ) {
+						$item_link .= '<a' . $attributes_thumb . '>' . $gm_thumb_settings['html'] . '</a>';
 					}
 
 					$item_link .= '<a' . $attributes . '>';
@@ -340,8 +350,11 @@ class FrontendWalker extends WalkerNavMenu {
 					$item_link .= '</span>'; // .gm-menu-item__txt-wrapper
 					$item_link .= '</a>';
 
-
 					$item_title .= $item_link;
+
+					if ( $gm_thumb_settings['with_url'] && $gm_thumb_settings['display'] && 'under' === $gm_thumb_settings['position'] ) {
+						$item_title .= '<a' . $attributes_thumb . '>' . $gm_thumb_settings['html'] . '</a>';
+					}
 
 				} else {
 
@@ -358,10 +371,6 @@ class FrontendWalker extends WalkerNavMenu {
 			}
 
 		} else {
-
-			if ( $gm_thumb_settings['display'] && 'above' === $gm_thumb_settings['position'] ) {
-				$output .= $gm_thumb_settings['html'];
-			}
 
 			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
 			$thumb   = null;
@@ -400,7 +409,12 @@ class FrontendWalker extends WalkerNavMenu {
 			$id = apply_filters( 'nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args, $depth );
 			$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
 
-			$output        .= $indent . '<li' . $id . $class_names . '>';
+			$output .= $indent . '<li' . $id . $class_names . '>';
+
+			if ( ! $gm_thumb_settings['with_url'] && $gm_thumb_settings['display'] && 'above' === $gm_thumb_settings['position'] ) {
+				$output .= $gm_thumb_settings['html'];
+			}
+
 			$atts           = array();
 			$atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';
 			$atts['target'] = ! empty( $item->target ) ? $item->target : '';
@@ -416,7 +430,8 @@ class FrontendWalker extends WalkerNavMenu {
 
 			$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args, $depth );
 
-			$attributes = '';
+			$attributes       = '';
+			$attributes_thumb = '';
 			foreach ( $atts as $attr => $value ) {
 				if ( ! empty( $value ) ) {
 					if ( 'href' === $attr ) {
@@ -428,12 +443,23 @@ class FrontendWalker extends WalkerNavMenu {
 						$value = esc_attr( $value );
 					}
 					$attributes .= ' ' . $attr . '="' . $value . '"';
+					if ( 'class' !== $attr ) {
+						$attributes_thumb .= ' ' . $attr . '="' . $value . '"';
+					} else {
+						$attributes_thumb .= ' class="gm-menu-item-thumbnail"';
+					}
 				}
 			}
 
 			$item_output .= $args->before;
 			if ( ! $this->doNotShowTitle( $item ) ) {
+
+				if ( $gm_thumb_settings['with_url'] && $gm_thumb_settings['display'] && 'above' === $gm_thumb_settings['position'] ) {
+					$item_output .= '<a' . $attributes_thumb . '>' . $gm_thumb_settings['html'] . '</a>';
+				}
+
 				$item_output .= '<a' . $attributes . '>';
+
 				if ( $this->getIcon( $item ) ) {
 					$item_output .= '<span class="gm-menu-item__icon ' . $this->getIcon( $item ) . '"></span>';
 				}
@@ -578,6 +604,11 @@ class FrontendWalker extends WalkerNavMenu {
 				}
 				$item_output .= $thumb;
 				$item_output .= '</a>';
+
+				if ( $gm_thumb_settings['with_url'] && $gm_thumb_settings['display'] && 'under' === $gm_thumb_settings['position'] ) {
+					$item_output .= '<a' . $attributes_thumb . '>' . $gm_thumb_settings['html'] . '</a>';
+				}
+
 			} else {
 				if ( $this->hasParents() && $this->hasChildren( $classes ) ) {
 					$item_output .= '<span class="gm-caret ' . $atts['class'] . '"><i class="fa fa-fw fa-angle-right"></i></span>';
@@ -607,14 +638,14 @@ class FrontendWalker extends WalkerNavMenu {
 
 		if ( 1 === $depth && $this->isMegaMenu && ! $show_in_mobile ) {
 
-			if ( $gm_thumb_settings['display'] && 'under' === $gm_thumb_settings['position'] ) {
+			if ( ! $gm_thumb_settings['with_url'] && $gm_thumb_settings['display'] && 'under' === $gm_thumb_settings['position'] ) {
 				$output .= $gm_thumb_settings['html'];
 			}
 
 			$output .= '</div>';
 		} else {
 
-			if ( $gm_thumb_settings['display'] && 'under' === $gm_thumb_settings['position'] ) {
+			if ( ! $gm_thumb_settings['with_url'] && $gm_thumb_settings['display'] && 'under' === $gm_thumb_settings['position'] ) {
 				$output .= $gm_thumb_settings['html'];
 			}
 
@@ -689,6 +720,7 @@ class FrontendWalker extends WalkerNavMenu {
 			'object_id'    => $item->object_id,
 			'position'     => 'above',
 			'max_height'   => '128',
+			'with_url'     => false,
 			'image'        => '',
 			'html'         => '',
 		);
@@ -696,6 +728,7 @@ class FrontendWalker extends WalkerNavMenu {
 			$gm_thumb_settings['display']    = true;
 			$gm_thumb_settings['position']   = $this->getThumbPosition( $item ) ? esc_attr( $this->getThumbPosition( $item ) ) : 'above';
 			$gm_thumb_settings['max_height'] = $this->getThumbMaxHeight( $item ) ? esc_attr( $this->getThumbMaxHeight( $item ) ) : '128';
+			$gm_thumb_settings['with_url']   = $this->getThumbWithUrl( $item ) ? true : false;
 			$gm_thumb_settings['image']      = $this->getThumbImage( $item ) ? esc_attr( $this->getThumbImage( $item ) ) : '';
 
 			$gm_thumb_html = '';

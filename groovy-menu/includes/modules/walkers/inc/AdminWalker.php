@@ -311,6 +311,10 @@ class AdminWalker extends WalkerNavMenu {
 				'meta_name' => self::GM_THUMB_MAX_HEIGHT,
 				'mass'      => self::GM_NAV_MENU_META,
 			),
+			'gm-thumb-with-url'                   => array(
+				'meta_name' => self::GM_THUMB_WITH_URL,
+				'mass'      => self::GM_NAV_MENU_META,
+			),
 			'gm-thumb-image'                      => array(
 				'meta_name' => self::GM_THUMB_IMAGE,
 				'mass'      => self::GM_NAV_MENU_META,
@@ -767,6 +771,26 @@ class AdminWalker extends WalkerNavMenu {
 						id="gm-thumb-max-height-<?php echo esc_attr( $item_id ); ?>"
 						name="gm-thumb-max-height[<?php echo esc_attr( $item_id ); ?>]"
 					/> px
+				</label>
+			</p>
+
+			<p class="description description-wide gm-thumb-field">
+				<?php
+				$value = '';
+				if ( $this->getThumbWithUrl( $item ) ) {
+					$value = 'checked=checked';
+				}
+				?>
+				<label for="gm-thumb-with-url-<?php echo esc_attr( $item_id ); ?>">
+					<input
+						type="checkbox"
+						value="enabled"
+						class="gm-thumb-with-url"
+						id="gm-thumb-with-url-<?php echo esc_attr( $item_id ); ?>"
+						name="gm-thumb-with-url[<?php echo esc_attr( $item_id ); ?>]"
+						<?php echo esc_attr( $value ); ?>
+					/>
+					<?php esc_html_e( 'Wrap thumbnail with menu item URL', 'groovy-menu' ); ?>
 				</label>
 			</p>
 
