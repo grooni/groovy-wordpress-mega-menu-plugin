@@ -15,12 +15,12 @@ defined( 'ABSPATH' ) || die( 'This script cannot be accessed directly.' );
  */
 class FrontendWalker extends WalkerNavMenu {
 
-	protected $currentLvl            = 0;
-	protected $isMegaMenu            = false;
-	protected $megaMenuCnt           = 0;
-	protected $megaMenuColStarted    = false;
-	protected $megaMenuCols          = 5;
-	protected $megaMenuPost          = null;
+	protected $currentLvl = 0;
+	protected $isMegaMenu = false;
+	protected $megaMenuCnt = 0;
+	protected $megaMenuColStarted = false;
+	protected $megaMenuCols = 5;
+	protected $megaMenuPost = null;
 	protected $megaMenuPostNotMobile = null;
 	protected $currentItem;
 
@@ -33,23 +33,33 @@ class FrontendWalker extends WalkerNavMenu {
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$indent = str_repeat( "\t", $depth );
 		$this->currentLvl ++;
-		$classes = '';
-		$styles  = '';
+		$classes       = '';
+		$styles        = '';
+		$wrapper_class = 'gm-dropdown-menu-wrapper';
 
 		if ( ! $this->isMegaMenu || ( $this->isMegaMenu && 2 !== $this->currentLvl ) ) {
-			$classes = "gm-dropdown-menu gm-dropdown-menu--lvl-{$this->currentLvl}";
+
+			if ( $this->isMegaMenu && $depth >= 2 ) {
+				$classes       = "gm-plain-list-menu gm-plain-list-menu--lvl-{$this->currentLvl}";
+				$wrapper_class = 'gm-plain-list-menu-wrapper';
+			} else {
+				$classes = "gm-dropdown-menu gm-dropdown-menu--lvl-{$this->currentLvl}";
+			}
 
 			if ( $this->getBackgroundId( $this->currentItem ) ) {
-				$size     = $this->getBackgroundSize( $this->currentItem );
-				$styles  .= 'background-image: url(' . $this->getBackgroundUrl( $this->currentItem, $size ) . ');';
-				$styles  .= 'background-repeat: ' . $this->getBackgroundRepeat( $this->currentItem ) . ';';
-				$styles  .= 'background-position: ' . $this->getBackgroundPosition( $this->currentItem ) . ';';
-				$styles   = 'style' . '="' . $styles . '"';
-				$classes .= " gm-dropdown-menu--background";
+				$size   = $this->getBackgroundSize( $this->currentItem );
+				$styles .= 'background-image: url(' . $this->getBackgroundUrl( $this->currentItem, $size ) . ');';
+				$styles .= 'background-repeat: ' . $this->getBackgroundRepeat( $this->currentItem ) . ';';
+				$styles .= 'background-position: ' . $this->getBackgroundPosition( $this->currentItem ) . ';';
+
+				// wrap with html param.
+				$styles = 'style' . '="' . $styles . '"';
+
+				$classes .= ' gm-dropdown-menu--background';
 			}
 		}
 
-		$output .= "\n$indent<div class=\"gm-dropdown-menu-wrapper\"><ul class=\"{$classes}\" {$styles}>\n";
+		$output .= "\n$indent<div class=\"{$wrapper_class}\"><ul class=\"{$classes}\" {$styles}>\n";
 	}
 
 
@@ -66,7 +76,7 @@ class FrontendWalker extends WalkerNavMenu {
 			$this->megamenuWrapperEnd( $output );
 			$this->megaMenuCnt = 0;
 		}
-		$indent  = str_repeat( "\t", $depth );
+		$indent = str_repeat( "\t", $depth );
 		$output .= "$indent</ul></div>\n";
 		$this->currentLvl --;
 
@@ -76,11 +86,11 @@ class FrontendWalker extends WalkerNavMenu {
 	/**
 	 * Begin of element
 	 *
-	 * @param string  $output
+	 * @param string   $output
 	 * @param \WP_Post $item
-	 * @param int     $depth
-	 * @param array   $args
-	 * @param int     $id
+	 * @param int      $depth
+	 * @param array    $args
+	 * @param int      $id
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		global $groovyMenuSettings;
@@ -597,10 +607,12 @@ class FrontendWalker extends WalkerNavMenu {
 				$item_output .= '</span>'; // .gm-menu-item__txt
 				$item_output .= $badge['right'];
 				$item_output .= '</span>'; // .gm-menu-item__txt-wrapper
-				if ( $this->hasParents() && $this->hasChildren( $classes ) ) {
-					$item_output .= '<span class="gm-caret"><i class="fa fa-fw fa-angle-right"></i></span>';
-				} elseif ( $this->hasChildren( $classes ) ) {
-					$item_output .= '<span class="gm-caret"><i class="fa fa-fw fa-angle-down"></i></span>';
+				if ( ! $this->isMegaMenu || $depth < 1 ) {
+					if ( $this->hasParents() && $this->hasChildren( $classes ) ) {
+						$item_output .= '<span class="gm-caret"><i class="fa fa-fw fa-angle-right"></i></span>';
+					} elseif ( $this->hasChildren( $classes ) ) {
+						$item_output .= '<span class="gm-caret"><i class="fa fa-fw fa-angle-down"></i></span>';
+					}
 				}
 				$item_output .= $thumb;
 				$item_output .= '</a>';
@@ -610,10 +622,12 @@ class FrontendWalker extends WalkerNavMenu {
 				}
 
 			} else {
-				if ( $this->hasParents() && $this->hasChildren( $classes ) ) {
-					$item_output .= '<span class="gm-caret ' . $atts['class'] . '"><i class="fa fa-fw fa-angle-right"></i></span>';
-				} elseif ( $this->hasChildren( $classes ) ) {
-					$item_output .= '<span class="gm-caret ' . $atts['class'] . '"><i class="fa fa-fw fa-angle-down"></i></span>';
+				if ( ! $this->isMegaMenu || $depth < 1 ) {
+					if ( $this->hasParents() && $this->hasChildren( $classes ) ) {
+						$item_output .= '<span class="gm-caret ' . $atts['class'] . '"><i class="fa fa-fw fa-angle-right"></i></span>';
+					} elseif ( $this->hasChildren( $classes ) ) {
+						$item_output .= '<span class="gm-caret ' . $atts['class'] . '"><i class="fa fa-fw fa-angle-down"></i></span>';
+					}
 				}
 				$item_output .= $thumb;
 			}
@@ -625,10 +639,10 @@ class FrontendWalker extends WalkerNavMenu {
 
 
 	/**
-	 * @param string  $output
+	 * @param string   $output
 	 * @param \WP_Post $item
-	 * @param int     $depth
-	 * @param array   $args
+	 * @param int      $depth
+	 * @param array    $args
 	 */
 	public function end_el( &$output, $item, $depth = 0, $args = array() ) {
 
