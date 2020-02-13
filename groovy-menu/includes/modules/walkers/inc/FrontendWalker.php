@@ -98,6 +98,10 @@ class FrontendWalker extends WalkerNavMenu {
 
 		$this->currentItem = $item;
 		$indent            = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+		$link_before       = empty( $args->link_before ) ? '' : $args->link_before;
+		$link_after        = empty( $args->link_after ) ? '' : $args->link_after;
+		$item_before       = empty( $args->before ) ? '' : $args->before;
+		$item_after        = empty( $args->after ) ? '' : $args->after;
 
 		$show_in_mobile = ( isset( $args->gm_navigation_mobile ) && $args->gm_navigation_mobile );
 
@@ -217,10 +221,19 @@ class FrontendWalker extends WalkerNavMenu {
 					}
 
 					if ( $gm_thumb_settings['with_url'] && $gm_thumb_settings['display'] && 'above' === $gm_thumb_settings['position'] ) {
-						$item_link .= '<a' . $attributes_thumb . '>' . $gm_thumb_settings['html'] . '</a>';
+						if ( empty( $item->url ) ) {
+							$item_link .= $gm_thumb_settings['html'];
+						} else {
+							$item_link .= '<a' . $attributes_thumb . '>' . $gm_thumb_settings['html'] . '</a>';
+						}
 					}
 
-					$item_link .= '<a' . $attributes . '>';
+					if ( ! empty( $item->url ) ) {
+						$item_link .= '<a' . $attributes . '>';
+					} else {
+						$item_link .= '<div class="' . $atts['class'] . '">';
+					}
+
 					if ( $this->getIcon( $item ) ) {
 						$item_link .= '<span class="gm-menu-item__icon ' . $this->getIcon( $item ) . '"></span>';
 					}
@@ -320,7 +333,7 @@ class FrontendWalker extends WalkerNavMenu {
 										$common_font_variant = 400;
 									}
 									$badge_in_style .= 'font-weight: ' . $common_font_variant . ';';
-									$pos             = strpos( $badge_text_variant, 'italic' );
+									$pos            = strpos( $badge_text_variant, 'italic' );
 									if ( false !== $pos ) {
 										$badge_in_style .= 'font-style: italic;';
 									}
@@ -353,17 +366,26 @@ class FrontendWalker extends WalkerNavMenu {
 
 					$item_link .= '<span class="gm-menu-item__txt-wrapper">';
 					$item_link .= $badge['left'];
-					$item_link .= '<span class="gm-menu-item__txt">';
-					$item_link .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+					$item_link .= '<span class="gm-menu-item__txt' . ( empty( $item->url ) ? ' gm-menu-item__txt-empty-url' : '' ) . '">';
+					$item_link .= $link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $link_after;
 					$item_link .= '</span>'; // .gm-menu-item__txt
 					$item_link .= $badge['right'];
 					$item_link .= '</span>'; // .gm-menu-item__txt-wrapper
-					$item_link .= '</a>';
+
+					if ( ! empty( $item->url ) ) {
+						$item_link .= '</a>';
+					} else {
+						$item_link .= '</div>';
+					}
 
 					$item_title .= $item_link;
 
 					if ( $gm_thumb_settings['with_url'] && $gm_thumb_settings['display'] && 'under' === $gm_thumb_settings['position'] ) {
-						$item_title .= '<a' . $attributes_thumb . '>' . $gm_thumb_settings['html'] . '</a>';
+						if ( empty( $item->url ) ) {
+							$item_title .= $gm_thumb_settings['html'];
+						} else {
+							$item_title .= '<a' . $attributes_thumb . '>' . $gm_thumb_settings['html'] . '</a>';
+						}
 					}
 
 				} else {
@@ -461,14 +483,22 @@ class FrontendWalker extends WalkerNavMenu {
 				}
 			}
 
-			$item_output .= $args->before;
+			$item_output .= $item_before;
 			if ( ! $this->doNotShowTitle( $item ) ) {
 
 				if ( $gm_thumb_settings['with_url'] && $gm_thumb_settings['display'] && 'above' === $gm_thumb_settings['position'] ) {
-					$item_output .= '<a' . $attributes_thumb . '>' . $gm_thumb_settings['html'] . '</a>';
+					if ( empty( $item->url ) ) {
+						$item_output .= $gm_thumb_settings['html'];
+					} else {
+						$item_output .= '<a' . $attributes_thumb . '>' . $gm_thumb_settings['html'] . '</a>';
+					}
 				}
 
-				$item_output .= '<a' . $attributes . '>';
+				if ( ! empty( $item->url ) ) {
+					$item_output .= '<a' . $attributes . '>';
+				} else {
+					$item_output .= '<div class="' . $atts['class'] . '">';
+				}
 
 				if ( $this->getIcon( $item ) ) {
 					$item_output .= '<span class="gm-menu-item__icon ' . $this->getIcon( $item ) . '"></span>';
@@ -569,7 +599,7 @@ class FrontendWalker extends WalkerNavMenu {
 									$common_font_variant = 400;
 								}
 								$badge_in_style .= 'font-weight: ' . $common_font_variant . ';';
-								$pos             = strpos( $badge_text_variant, 'italic' );
+								$pos            = strpos( $badge_text_variant, 'italic' );
 								if ( false !== $pos ) {
 									$badge_in_style .= 'font-style: italic;';
 								}
@@ -602,8 +632,8 @@ class FrontendWalker extends WalkerNavMenu {
 
 				$item_output .= '<span class="gm-menu-item__txt-wrapper">';
 				$item_output .= $badge['left'];
-				$item_output .= '<span class="gm-menu-item__txt">';
-				$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+				$item_output .= '<span class="gm-menu-item__txt' . ( empty( $item->url ) ? ' gm-menu-item__txt-empty-url' : '' ) . '">';
+				$item_output .= $link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $link_after;
 				$item_output .= '</span>'; // .gm-menu-item__txt
 				$item_output .= $badge['right'];
 				$item_output .= '</span>'; // .gm-menu-item__txt-wrapper
@@ -615,10 +645,19 @@ class FrontendWalker extends WalkerNavMenu {
 					}
 				}
 				$item_output .= $thumb;
-				$item_output .= '</a>';
+
+				if ( ! empty( $item->url ) ) {
+					$item_output .= '</a>';
+				} else {
+					$item_output .= '</div>';
+				}
 
 				if ( $gm_thumb_settings['with_url'] && $gm_thumb_settings['display'] && 'under' === $gm_thumb_settings['position'] ) {
-					$item_output .= '<a' . $attributes_thumb . '>' . $gm_thumb_settings['html'] . '</a>';
+					if ( empty( $item->url ) ) {
+						$item_output .= $gm_thumb_settings['html'];
+					} else {
+						$item_output .= '<a' . $attributes_thumb . '>' . $gm_thumb_settings['html'] . '</a>';
+					}
 				}
 
 			} else {
@@ -632,7 +671,7 @@ class FrontendWalker extends WalkerNavMenu {
 				$item_output .= $thumb;
 			}
 			$item_output .= $postContent;
-			$item_output .= $args->after;
+			$item_output .= $item_after;
 		}
 		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 	}
