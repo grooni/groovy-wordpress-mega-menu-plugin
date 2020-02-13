@@ -67,16 +67,16 @@ gulp.task('style:build', function () {
   return gulp.src(path.src.style)
     .pipe(sass().on('error', sass.logError))
     .pipe(prefixer())
-    // .pipe(save('for-rtl')) // Save the current stream for RTL
+    .pipe(save('for-rtl')) // Save the current stream for RTL
     // .pipe(envConfig.production ? cleanCSS() : gutil.noop())
     .pipe(gulp.dest(path.build.css))
 
     // RTL
-    // .pipe(save.restore('for-rtl'))
-    // .pipe(rtlcss())
-    // .pipe(rename({suffix: '-rtl'}))
-    // .pipe(envConfig.production ? cleanCSS() : gutil.noop())
-    // .pipe(gulp.dest(path.build.css))
+    .pipe(save.restore('for-rtl'))
+    .pipe(rtlcss())
+    .pipe(rename({suffix: '-rtl'}))
+    .pipe(envConfig.production ? cleanCSS() : gutil.noop())
+    .pipe(gulp.dest(path.build.css))
 
     .pipe(reload({ stream: true }));
 });

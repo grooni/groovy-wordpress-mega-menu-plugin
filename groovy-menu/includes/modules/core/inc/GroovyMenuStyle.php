@@ -951,7 +951,7 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 						continue;
 					}
 
-					if ( empty( $options[ $name ] ) && isset( $fields['default'] ) ) {
+					if ( ! isset( $options[ $name ] ) && isset( $fields['default'] ) ) {
 						$options[ $name ] = $fields['default'];
 					}
 				}

@@ -23,14 +23,15 @@ module.exports = {
   //   // ],
   // },
   entry: {
-    frontend: './src/js/frontend.js',
     admin: './src/js/admin.js',
-    preview: './src/js/preview.js',
-    preset: './src/js/preset.js',
-    dashboard: './src/js/dashboard.js',
     appearance: './src/js/appearance.js',
-    integration: './src/js/integration.js',
+    dashboard: './src/js/dashboard.js',
+    //welcome: './src/js/welcome.js',
     debug: './src/js/debug.js',
+    frontend: './src/js/frontend.js',
+    integration: './src/js/integration.js',
+    preset: './src/js/preset.js',
+    preview: './src/js/preview.js',
   },
 
   output: {

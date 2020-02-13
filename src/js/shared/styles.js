@@ -1823,7 +1823,7 @@ export default class GmStyles {
       const color = settings.subLevelTextColor;
 
       css.push({
-        '.gm-main-menu-wrapper .gm-navbar-nav .gm-dropdown-menu .gm-menu-item__link': `color: ${color}`,
+        '.gm-main-menu-wrapper .gm-navbar-nav .gm-dropdown-menu .gm-menu-item__link, .gm-main-menu-wrapper .gm-navbar-nav .gm-menu-item__txt-empty-url': `color: ${color}`,
         media: 'desktop'
       });
     }

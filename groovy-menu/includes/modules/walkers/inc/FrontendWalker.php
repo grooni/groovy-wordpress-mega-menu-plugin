@@ -15,12 +15,12 @@ defined( 'ABSPATH' ) || die( 'This script cannot be accessed directly.' );
  */
 class FrontendWalker extends WalkerNavMenu {
 
-	protected $currentLvl            = 0;
-	protected $isMegaMenu            = false;
-	protected $megaMenuCnt           = 0;
-	protected $megaMenuColStarted    = false;
-	protected $megaMenuCols          = 5;
-	protected $megaMenuPost          = null;
+	protected $currentLvl = 0;
+	protected $isMegaMenu = false;
+	protected $megaMenuCnt = 0;
+	protected $megaMenuColStarted = false;
+	protected $megaMenuCols = 5;
+	protected $megaMenuPost = null;
 	protected $megaMenuPostNotMobile = null;
 	protected $currentItem;
 
@@ -33,23 +33,33 @@ class FrontendWalker extends WalkerNavMenu {
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$indent = str_repeat( "\t", $depth );
 		$this->currentLvl ++;
-		$classes = '';
-		$styles  = '';
+		$classes       = '';
+		$styles        = '';
+		$wrapper_class = 'gm-dropdown-menu-wrapper';
 
 		if ( ! $this->isMegaMenu || ( $this->isMegaMenu && 2 !== $this->currentLvl ) ) {
-			$classes = "gm-dropdown-menu gm-dropdown-menu--lvl-{$this->currentLvl}";
+
+			if ( $this->isMegaMenu && $depth >= 2 ) {
+				$classes       = "gm-plain-list-menu gm-plain-list-menu--lvl-{$this->currentLvl}";
+				$wrapper_class = 'gm-plain-list-menu-wrapper';
+			} else {
+				$classes = "gm-dropdown-menu gm-dropdown-menu--lvl-{$this->currentLvl}";
+			}
 
 			if ( $this->getBackgroundId( $this->currentItem ) ) {
-				$size     = $this->getBackgroundSize( $this->currentItem );
-				$styles  .= 'background-image: url(' . $this->getBackgroundUrl( $this->currentItem, $size ) . ');';
-				$styles  .= 'background-repeat: ' . $this->getBackgroundRepeat( $this->currentItem ) . ';';
-				$styles  .= 'background-position: ' . $this->getBackgroundPosition( $this->currentItem ) . ';';
-				$styles   = 'style' . '="' . $styles . '"';
-				$classes .= " gm-dropdown-menu--background";
+				$size   = $this->getBackgroundSize( $this->currentItem );
+				$styles .= 'background-image: url(' . $this->getBackgroundUrl( $this->currentItem, $size ) . ');';
+				$styles .= 'background-repeat: ' . $this->getBackgroundRepeat( $this->currentItem ) . ';';
+				$styles .= 'background-position: ' . $this->getBackgroundPosition( $this->currentItem ) . ';';
+
+				// wrap with html param.
+				$styles = 'style' . '="' . $styles . '"';
+
+				$classes .= ' gm-dropdown-menu--background';
 			}
 		}
 
-		$output .= "\n$indent<div class=\"gm-dropdown-menu-wrapper\"><ul class=\"{$classes}\" {$styles}>\n";
+		$output .= "\n$indent<div class=\"{$wrapper_class}\"><ul class=\"{$classes}\" {$styles}>\n";
 	}
 
 
@@ -66,7 +76,7 @@ class FrontendWalker extends WalkerNavMenu {
 			$this->megamenuWrapperEnd( $output );
 			$this->megaMenuCnt = 0;
 		}
-		$indent  = str_repeat( "\t", $depth );
+		$indent = str_repeat( "\t", $depth );
 		$output .= "$indent</ul></div>\n";
 		$this->currentLvl --;
 
@@ -76,11 +86,11 @@ class FrontendWalker extends WalkerNavMenu {
 	/**
 	 * Begin of element
 	 *
-	 * @param string  $output
+	 * @param string   $output
 	 * @param \WP_Post $item
-	 * @param int     $depth
-	 * @param array   $args
-	 * @param int     $id
+	 * @param int      $depth
+	 * @param array    $args
+	 * @param int      $id
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		global $groovyMenuSettings;
@@ -88,6 +98,10 @@ class FrontendWalker extends WalkerNavMenu {
 
 		$this->currentItem = $item;
 		$indent            = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+		$link_before       = empty( $args->link_before ) ? '' : $args->link_before;
+		$link_after        = empty( $args->link_after ) ? '' : $args->link_after;
+		$item_before       = empty( $args->before ) ? '' : $args->before;
+		$item_after        = empty( $args->after ) ? '' : $args->after;
 
 		$show_in_mobile = ( isset( $args->gm_navigation_mobile ) && $args->gm_navigation_mobile );
 
@@ -166,7 +180,7 @@ class FrontendWalker extends WalkerNavMenu {
 
 			$output .= '<div class="gm-mega-menu__item ' . $gridClass . '">';
 
-			if ( $gm_thumb_settings['display'] && 'above' === $gm_thumb_settings['position'] ) {
+			if ( ! $gm_thumb_settings['with_url'] && $gm_thumb_settings['display'] && 'above' === $gm_thumb_settings['position'] ) {
 				$output .= $gm_thumb_settings['html'];
 			}
 
@@ -185,7 +199,8 @@ class FrontendWalker extends WalkerNavMenu {
 
 					$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args, $depth );
 
-					$attributes = '';
+					$attributes       = '';
+					$attributes_thumb = '';
 					foreach ( $atts as $attr => $value ) {
 						if ( ! empty( $value ) ) {
 							if ( 'href' === $attr ) {
@@ -197,10 +212,28 @@ class FrontendWalker extends WalkerNavMenu {
 								$value = esc_attr( $value );
 							}
 							$attributes .= ' ' . $attr . '="' . $value . '"';
+							if ( 'class' !== $attr ) {
+								$attributes_thumb .= ' ' . $attr . '="' . $value . '"';
+							} else {
+								$attributes_thumb .= ' class="gm-menu-item__thumbnail"';
+							}
 						}
 					}
 
-					$item_link .= '<a' . $attributes . '>';
+					if ( $gm_thumb_settings['with_url'] && $gm_thumb_settings['display'] && 'above' === $gm_thumb_settings['position'] ) {
+						if ( empty( $item->url ) ) {
+							$item_link .= $gm_thumb_settings['html'];
+						} else {
+							$item_link .= '<a' . $attributes_thumb . '>' . $gm_thumb_settings['html'] . '</a>';
+						}
+					}
+
+					if ( ! empty( $item->url ) ) {
+						$item_link .= '<a' . $attributes . '>';
+					} else {
+						$item_link .= '<div class="' . $atts['class'] . '">';
+					}
+
 					if ( $this->getIcon( $item ) ) {
 						$item_link .= '<span class="gm-menu-item__icon ' . $this->getIcon( $item ) . '"></span>';
 					}
@@ -300,7 +333,7 @@ class FrontendWalker extends WalkerNavMenu {
 										$common_font_variant = 400;
 									}
 									$badge_in_style .= 'font-weight: ' . $common_font_variant . ';';
-									$pos             = strpos( $badge_text_variant, 'italic' );
+									$pos            = strpos( $badge_text_variant, 'italic' );
 									if ( false !== $pos ) {
 										$badge_in_style .= 'font-style: italic;';
 									}
@@ -333,15 +366,27 @@ class FrontendWalker extends WalkerNavMenu {
 
 					$item_link .= '<span class="gm-menu-item__txt-wrapper">';
 					$item_link .= $badge['left'];
-					$item_link .= '<span class="gm-menu-item__txt">';
-					$item_link .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+					$item_link .= '<span class="gm-menu-item__txt' . ( empty( $item->url ) ? ' gm-menu-item__txt-empty-url' : '' ) . '">';
+					$item_link .= $link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $link_after;
 					$item_link .= '</span>'; // .gm-menu-item__txt
 					$item_link .= $badge['right'];
 					$item_link .= '</span>'; // .gm-menu-item__txt-wrapper
-					$item_link .= '</a>';
 
+					if ( ! empty( $item->url ) ) {
+						$item_link .= '</a>';
+					} else {
+						$item_link .= '</div>';
+					}
 
 					$item_title .= $item_link;
+
+					if ( $gm_thumb_settings['with_url'] && $gm_thumb_settings['display'] && 'under' === $gm_thumb_settings['position'] ) {
+						if ( empty( $item->url ) ) {
+							$item_title .= $gm_thumb_settings['html'];
+						} else {
+							$item_title .= '<a' . $attributes_thumb . '>' . $gm_thumb_settings['html'] . '</a>';
+						}
+					}
 
 				} else {
 
@@ -358,10 +403,6 @@ class FrontendWalker extends WalkerNavMenu {
 			}
 
 		} else {
-
-			if ( $gm_thumb_settings['display'] && 'above' === $gm_thumb_settings['position'] ) {
-				$output .= $gm_thumb_settings['html'];
-			}
 
 			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
 			$thumb   = null;
@@ -400,7 +441,12 @@ class FrontendWalker extends WalkerNavMenu {
 			$id = apply_filters( 'nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args, $depth );
 			$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
 
-			$output        .= $indent . '<li' . $id . $class_names . '>';
+			$output .= $indent . '<li' . $id . $class_names . '>';
+
+			if ( ! $gm_thumb_settings['with_url'] && $gm_thumb_settings['display'] && 'above' === $gm_thumb_settings['position'] ) {
+				$output .= $gm_thumb_settings['html'];
+			}
+
 			$atts           = array();
 			$atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';
 			$atts['target'] = ! empty( $item->target ) ? $item->target : '';
@@ -416,7 +462,8 @@ class FrontendWalker extends WalkerNavMenu {
 
 			$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args, $depth );
 
-			$attributes = '';
+			$attributes       = '';
+			$attributes_thumb = '';
 			foreach ( $atts as $attr => $value ) {
 				if ( ! empty( $value ) ) {
 					if ( 'href' === $attr ) {
@@ -428,12 +475,31 @@ class FrontendWalker extends WalkerNavMenu {
 						$value = esc_attr( $value );
 					}
 					$attributes .= ' ' . $attr . '="' . $value . '"';
+					if ( 'class' !== $attr ) {
+						$attributes_thumb .= ' ' . $attr . '="' . $value . '"';
+					} else {
+						$attributes_thumb .= ' class="gm-menu-item-thumbnail"';
+					}
 				}
 			}
 
-			$item_output .= $args->before;
+			$item_output .= $item_before;
 			if ( ! $this->doNotShowTitle( $item ) ) {
-				$item_output .= '<a' . $attributes . '>';
+
+				if ( $gm_thumb_settings['with_url'] && $gm_thumb_settings['display'] && 'above' === $gm_thumb_settings['position'] ) {
+					if ( empty( $item->url ) ) {
+						$item_output .= $gm_thumb_settings['html'];
+					} else {
+						$item_output .= '<a' . $attributes_thumb . '>' . $gm_thumb_settings['html'] . '</a>';
+					}
+				}
+
+				if ( ! empty( $item->url ) ) {
+					$item_output .= '<a' . $attributes . '>';
+				} else {
+					$item_output .= '<div class="' . $atts['class'] . '">';
+				}
+
 				if ( $this->getIcon( $item ) ) {
 					$item_output .= '<span class="gm-menu-item__icon ' . $this->getIcon( $item ) . '"></span>';
 				}
@@ -533,7 +599,7 @@ class FrontendWalker extends WalkerNavMenu {
 									$common_font_variant = 400;
 								}
 								$badge_in_style .= 'font-weight: ' . $common_font_variant . ';';
-								$pos             = strpos( $badge_text_variant, 'italic' );
+								$pos            = strpos( $badge_text_variant, 'italic' );
 								if ( false !== $pos ) {
 									$badge_in_style .= 'font-style: italic;';
 								}
@@ -566,38 +632,56 @@ class FrontendWalker extends WalkerNavMenu {
 
 				$item_output .= '<span class="gm-menu-item__txt-wrapper">';
 				$item_output .= $badge['left'];
-				$item_output .= '<span class="gm-menu-item__txt">';
-				$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+				$item_output .= '<span class="gm-menu-item__txt' . ( empty( $item->url ) ? ' gm-menu-item__txt-empty-url' : '' ) . '">';
+				$item_output .= $link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $link_after;
 				$item_output .= '</span>'; // .gm-menu-item__txt
 				$item_output .= $badge['right'];
 				$item_output .= '</span>'; // .gm-menu-item__txt-wrapper
-				if ( $this->hasParents() && $this->hasChildren( $classes ) ) {
-					$item_output .= '<span class="gm-caret"><i class="fa fa-fw fa-angle-right"></i></span>';
-				} elseif ( $this->hasChildren( $classes ) ) {
-					$item_output .= '<span class="gm-caret"><i class="fa fa-fw fa-angle-down"></i></span>';
+				if ( ! $this->isMegaMenu || $depth < 1 ) {
+					if ( $this->hasParents() && $this->hasChildren( $classes ) ) {
+						$item_output .= '<span class="gm-caret"><i class="fa fa-fw fa-angle-right"></i></span>';
+					} elseif ( $this->hasChildren( $classes ) ) {
+						$item_output .= '<span class="gm-caret"><i class="fa fa-fw fa-angle-down"></i></span>';
+					}
 				}
 				$item_output .= $thumb;
-				$item_output .= '</a>';
+
+				if ( ! empty( $item->url ) ) {
+					$item_output .= '</a>';
+				} else {
+					$item_output .= '</div>';
+				}
+
+				if ( $gm_thumb_settings['with_url'] && $gm_thumb_settings['display'] && 'under' === $gm_thumb_settings['position'] ) {
+					if ( empty( $item->url ) ) {
+						$item_output .= $gm_thumb_settings['html'];
+					} else {
+						$item_output .= '<a' . $attributes_thumb . '>' . $gm_thumb_settings['html'] . '</a>';
+					}
+				}
+
 			} else {
-				if ( $this->hasParents() && $this->hasChildren( $classes ) ) {
-					$item_output .= '<span class="gm-caret ' . $atts['class'] . '"><i class="fa fa-fw fa-angle-right"></i></span>';
-				} elseif ( $this->hasChildren( $classes ) ) {
-					$item_output .= '<span class="gm-caret ' . $atts['class'] . '"><i class="fa fa-fw fa-angle-down"></i></span>';
+				if ( ! $this->isMegaMenu || $depth < 1 ) {
+					if ( $this->hasParents() && $this->hasChildren( $classes ) ) {
+						$item_output .= '<span class="gm-caret ' . $atts['class'] . '"><i class="fa fa-fw fa-angle-right"></i></span>';
+					} elseif ( $this->hasChildren( $classes ) ) {
+						$item_output .= '<span class="gm-caret ' . $atts['class'] . '"><i class="fa fa-fw fa-angle-down"></i></span>';
+					}
 				}
 				$item_output .= $thumb;
 			}
 			$item_output .= $postContent;
-			$item_output .= $args->after;
+			$item_output .= $item_after;
 		}
 		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 	}
 
 
 	/**
-	 * @param string  $output
+	 * @param string   $output
 	 * @param \WP_Post $item
-	 * @param int     $depth
-	 * @param array   $args
+	 * @param int      $depth
+	 * @param array    $args
 	 */
 	public function end_el( &$output, $item, $depth = 0, $args = array() ) {
 
@@ -607,14 +691,14 @@ class FrontendWalker extends WalkerNavMenu {
 
 		if ( 1 === $depth && $this->isMegaMenu && ! $show_in_mobile ) {
 
-			if ( $gm_thumb_settings['display'] && 'under' === $gm_thumb_settings['position'] ) {
+			if ( ! $gm_thumb_settings['with_url'] && $gm_thumb_settings['display'] && 'under' === $gm_thumb_settings['position'] ) {
 				$output .= $gm_thumb_settings['html'];
 			}
 
 			$output .= '</div>';
 		} else {
 
-			if ( $gm_thumb_settings['display'] && 'under' === $gm_thumb_settings['position'] ) {
+			if ( ! $gm_thumb_settings['with_url'] && $gm_thumb_settings['display'] && 'under' === $gm_thumb_settings['position'] ) {
 				$output .= $gm_thumb_settings['html'];
 			}
 
@@ -689,6 +773,7 @@ class FrontendWalker extends WalkerNavMenu {
 			'object_id'    => $item->object_id,
 			'position'     => 'above',
 			'max_height'   => '128',
+			'with_url'     => false,
 			'image'        => '',
 			'html'         => '',
 		);
@@ -696,6 +781,7 @@ class FrontendWalker extends WalkerNavMenu {
 			$gm_thumb_settings['display']    = true;
 			$gm_thumb_settings['position']   = $this->getThumbPosition( $item ) ? esc_attr( $this->getThumbPosition( $item ) ) : 'above';
 			$gm_thumb_settings['max_height'] = $this->getThumbMaxHeight( $item ) ? esc_attr( $this->getThumbMaxHeight( $item ) ) : '128';
+			$gm_thumb_settings['with_url']   = $this->getThumbWithUrl( $item ) ? true : false;
 			$gm_thumb_settings['image']      = $this->getThumbImage( $item ) ? esc_attr( $this->getThumbImage( $item ) ) : '';
 
 			$gm_thumb_html = '';

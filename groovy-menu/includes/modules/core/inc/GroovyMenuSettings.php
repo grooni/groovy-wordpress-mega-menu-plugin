@@ -121,7 +121,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 
 			$screen = get_current_screen();
 
-			if ( 'nav-menus' === $screen->id ) {
+			if ( ! empty( $screen->id ) && 'nav-menus' === $screen->id ) {
 				global $wp_filter;
 				if ( isset( $wp_filter['wp_edit_nav_menu_walker'] ) ) {
 
