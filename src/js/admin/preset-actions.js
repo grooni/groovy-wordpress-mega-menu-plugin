@@ -4,6 +4,10 @@ import { isRtl } from '../shared/helpers';
 import axios from 'axios/index';
 
 export function gmSaveForm (form, subAction) {
+
+  let saveBtnElem = document.querySelector('.gm-gui-save-btn .fa');
+  saveBtnElem.classList ? saveBtnElem.classList.add('gm-three-quarters-spinner') : saveBtnElem.className += ' gm-three-quarters-spinner';
+
   let formData = new FormData(document.forms.preset);
   let presetObj = {};
   formData.forEach((value, key) => {presetObj[key] = value;});
@@ -56,14 +60,19 @@ function gmSaveStyles (presetId, css, subAction) {
   };
   const params = new URLSearchParams(data);
 
+  let saveBtnElem = document.querySelector('.gm-gui-save-btn .fa');
+  let spinnerClassName = 'gm-three-quarters-spinner';
+
   window.onbeforeunload = null;
 
   axios.post(ajaxurl, params)
     .then(function (response) {
       showMessage(response.data.data);
+      saveBtnElem.className = saveBtnElem.className.replace(spinnerClassName, '');
     })
     .catch(function (response) {
       showMessage(`Error: ${response.data.data}`);
+      saveBtnElem.className = saveBtnElem.className.replace(spinnerClassName, '');
     });
 }
 
