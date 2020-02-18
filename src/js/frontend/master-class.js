@@ -134,6 +134,7 @@ class GroovyMenu {
 
     let initDropdownAction = (e) => {
       let closestDropdown = e.target.closest('.gm-dropdown');
+      let closestDropdownToogle = e.target.closest('.gm-dropdown-toggle');
 
       if (e.target.closest('.gm-minicart') && e.type === 'click') {
         if (headerStyle !== 1 || isMobile()) {
@@ -155,13 +156,16 @@ class GroovyMenu {
         return false;
       }
 
-      if (e.target.closest('.gm-dropdown-toggle') === null) {
+      if (closestDropdownToogle === null) {
         dropdownCloseAll();
       } else {
-        if (e.target.closest('.gm-dropdown-toggle')
-          .getAttribute('href') !== null
-          || e.target.closest('.gm-dropdown-toggle')
-            .getAttribute('href') === '#') {
+        if (
+          closestDropdownToogle.getAttribute('href') !== null
+          || closestDropdownToogle.getAttribute('href') === '#'
+          || closestDropdownToogle
+            .classList
+            .contains('gm-anchor--empty')
+        ) {
           dropdownToggle(closestDropdown, options);
           return false;
         }
