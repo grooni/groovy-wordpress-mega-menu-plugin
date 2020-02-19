@@ -92,6 +92,11 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 
 == Changelog ==
 
+= 1.1.3 =
+* Fix: Mobile menu button click issue after window resize.
+* Fix: Some preset editor style fixes.
+* Add: An animation that shows the process of saving a preset.
+
 = 1.1.2 =
 * Fix: Save preset defaults when value is 0.
 * Fix: RTL support.
