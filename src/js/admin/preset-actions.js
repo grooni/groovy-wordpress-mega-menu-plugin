@@ -6,7 +6,8 @@ import axios from 'axios/index';
 export function gmSaveForm (form, subAction) {
 
   let saveBtnElem = document.querySelector('.gm-gui-save-btn .fa');
-  saveBtnElem.classList ? saveBtnElem.classList.add('gm-three-quarters-spinner') : saveBtnElem.className += ' gm-three-quarters-spinner';
+  let spinnerClassName = 'gm-three-quarters-spinner';
+  saveBtnElem.classList ? saveBtnElem.classList.add(spinnerClassName) : saveBtnElem.className += ' gm-three-quarters-spinner';
 
   let formData = new FormData(document.forms.preset);
   let presetObj = {};
@@ -27,6 +28,7 @@ export function gmSaveForm (form, subAction) {
     })
     .catch(function (response) {
       showMessage(`Error: ${response.data.data}`);
+      saveBtnElem.className = saveBtnElem.className.replace(spinnerClassName, '');
     });
 }
 
@@ -37,6 +39,10 @@ function gmGetSettings (form, subAction) {
     'preset_id': presetId
   };
   const params = new URLSearchParams(data);
+
+  let saveBtnElem = document.querySelector('.gm-gui-save-btn .fa');
+  let spinnerClassName = 'gm-three-quarters-spinner';
+
   axios.post(ajaxurl, params)
     .then(function (response) {
       const settings = response.data.data;
@@ -45,6 +51,7 @@ function gmGetSettings (form, subAction) {
     })
     .catch(function (response) {
       showMessage(`Error: ${response.data.data}`);
+      saveBtnElem.className = saveBtnElem.className.replace(spinnerClassName, '');
     });
 }
 

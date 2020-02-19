@@ -114,18 +114,11 @@ export function offcanvasSlide (navDrawer, side, slide) {
   makeHiddenVisible();
   navDrawer.classList.add(`gm-navigation-drawer--${side}`);
 
-  function someFunc () {
-    offcanvasToggle(navDrawer);
-    return false;
-  }
-
-  hamburgerMenu.addEventListener('click', someFunc);
-
   offcanvasClickOutside(navDrawer);
 
   window.addEventListener('resize', () => {
     offcanvasClose(navDrawer);
-  });
+  }, {once: true});
 
   closeIfNoChildren(navDrawer);
 }
@@ -134,4 +127,11 @@ export function initOffcanvas (args) {
   options = args.options;
   navDrawer = args.navDrawer;
   hamburgerMenu = args.hamburgerMenu;
+
+  function clickEventOffcanvasToggle() {
+    offcanvasToggle(navDrawer);
+    return false;
+  }
+
+  hamburgerMenu.addEventListener('click', clickEventOffcanvasToggle);
 }

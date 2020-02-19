@@ -59,8 +59,9 @@ export default class GmStyles {
     if (settings.menuZIndex > 0) {
       const menuZIndex = settings.menuZIndex;
       const menuZIndexToolbar = menuZIndex + 12;
-      const menuZIndexMobile = menuZIndex + 32; // Mobile wrapper must be more then desktop.
-      const adminBarZIndex = (menuZIndex < 99949) ? 0 : menuZIndex + 50;
+      const menuZIndexMobile = menuZIndexToolbar + 12; // Mobile wrapper must be more then desktop.
+      const menuZIndexSearch = menuZIndexMobile + 12; // Search wrapper must be more then mobile.
+      const adminBarZIndex = (menuZIndex < 99949) ? 0 : menuZIndexSearch + 12;
 
       css.push({
         '.gm-navbar': `z-index: ${menuZIndex} !important`,
@@ -81,9 +82,12 @@ export default class GmStyles {
         '.gm-navbar .gm-logo': `z-index: ${menuZIndexToolbar} !important`,
         media: 'desktop'
       });
+      css.push({
+        '.gm-search__fullscreen-container': `z-index: ${menuZIndexSearch} !important`
+      });
       if (adminBarZIndex > 0) {
         css.push({
-          '#wpadminbar': `z-index: ${adminBarZIndex}`,
+          '#wpadminbar': `z-index: ${adminBarZIndex}`
         });
       }
     }
