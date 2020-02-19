@@ -76,3 +76,13 @@
 .gm-fat-label {
   font-weight: bold;
 }
+
+.gm-badge-field .wp-picker-container .color-alpha,
+.gm-badge-field .wp-picker-container .wp-color-result-text {
+  min-height: 28px;
+}
+
+.gm-badge-field .wp-picker-container .wp-picker-clear {
+  min-height: 28px;
+  margin: 1px 0 0 6px;
+}

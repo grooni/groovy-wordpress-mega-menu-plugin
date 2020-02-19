@@ -4,6 +4,11 @@ import { isRtl } from '../shared/helpers';
 import axios from 'axios/index';
 
 export function gmSaveForm (form, subAction) {
+
+  let saveBtnElem = document.querySelector('.gm-gui-save-btn .fa');
+  let spinnerClassName = 'gm-three-quarters-spinner';
+  saveBtnElem.classList ? saveBtnElem.classList.add(spinnerClassName) : saveBtnElem.className += ' gm-three-quarters-spinner';
+
   let formData = new FormData(document.forms.preset);
   let presetObj = {};
   formData.forEach((value, key) => {presetObj[key] = value;});
@@ -23,6 +28,7 @@ export function gmSaveForm (form, subAction) {
     })
     .catch(function (response) {
       showMessage(`Error: ${response.data.data}`);
+      saveBtnElem.className = saveBtnElem.className.replace(spinnerClassName, '');
     });
 }
 
@@ -33,6 +39,10 @@ function gmGetSettings (form, subAction) {
     'preset_id': presetId
   };
   const params = new URLSearchParams(data);
+
+  let saveBtnElem = document.querySelector('.gm-gui-save-btn .fa');
+  let spinnerClassName = 'gm-three-quarters-spinner';
+
   axios.post(ajaxurl, params)
     .then(function (response) {
       const settings = response.data.data;
@@ -41,6 +51,7 @@ function gmGetSettings (form, subAction) {
     })
     .catch(function (response) {
       showMessage(`Error: ${response.data.data}`);
+      saveBtnElem.className = saveBtnElem.className.replace(spinnerClassName, '');
     });
 }
 
@@ -56,14 +67,19 @@ function gmSaveStyles (presetId, css, subAction) {
   };
   const params = new URLSearchParams(data);
 
+  let saveBtnElem = document.querySelector('.gm-gui-save-btn .fa');
+  let spinnerClassName = 'gm-three-quarters-spinner';
+
   window.onbeforeunload = null;
 
   axios.post(ajaxurl, params)
     .then(function (response) {
       showMessage(response.data.data);
+      saveBtnElem.className = saveBtnElem.className.replace(spinnerClassName, '');
     })
     .catch(function (response) {
       showMessage(`Error: ${response.data.data}`);
+      saveBtnElem.className = saveBtnElem.className.replace(spinnerClassName, '');
     });
 }
 

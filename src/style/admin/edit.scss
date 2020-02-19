@@ -763,6 +763,10 @@ $select-height: 40px;
   font-size: 16px;
 }
 
+.gm-gui__module .gm-gui__header-types__options__list .select {
+  min-width: 150px;
+}
+
 .select-styled {
   position: static;
   top: 0;
@@ -831,6 +835,18 @@ $select-height: 40px;
     &[rel='hide'] {
       display: none;
     }
+  }
+}
+
+@media (max-width: 1178px) {
+  #gm-gui__header-types .gm-gui__header-types__options__list .select {
+    min-width: 250px;
+    margin-right: 60px;
+    margin-bottom: 4px;
+  }
+
+  #gm-gui__header-types .gm-gui__header-types__options__align {
+    margin-left: 0;
   }
 }
 
@@ -1153,7 +1169,7 @@ RESPONSIVE
 
 @media (max-width: 768px) {
   .gm-gui__tab-panes {
-    margin-left: auto;
+    margin-left: 137px;
   }
 
   .gm-gui-nav-wrapper {
@@ -1287,4 +1303,32 @@ CHOICES
 
 .choices__list--dropdown .choices__item--selectable {
   padding: 10px;
+}
+
+/***************************************
+SAVE SPINNER
+***************************************/
+@keyframes gm-three-quarters-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* :not(:required) hides this rule from IE9 and below */
+.gm-three-quarters-spinner:not(:required) {
+  animation: gm-three-quarters-spinner 1750ms infinite linear;
+  border: 3px solid #ff4;
+  border-right-color: transparent;
+  border-radius: 14px;
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  text-indent: -9999px;
+  width: 18px;
+  height: 18px;
 }

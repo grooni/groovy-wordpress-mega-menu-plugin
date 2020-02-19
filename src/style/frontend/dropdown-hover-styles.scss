@@ -3,7 +3,7 @@ DROPDOWN HOVER STYLES
 ***********************************/
 
 .gm-dropdown-hover-style-shift-right {
-  .gm-dropdown-menu .gm-menu-item:hover > a .gm-menu-item__txt-wrapper {
+  .gm-dropdown-menu .gm-menu-item:hover > .gm-anchor .gm-menu-item__txt-wrapper {
     transform: translateX(25px);
   }
 

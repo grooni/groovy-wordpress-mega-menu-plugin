@@ -231,7 +231,7 @@ class FrontendWalker extends WalkerNavMenu {
 					if ( ! empty( $item->url ) ) {
 						$item_link .= '<a' . $attributes . '>';
 					} else {
-						$item_link .= '<div class="' . $atts['class'] . '">';
+						$item_link .= '<div class="' . $atts['class'] . ' gm-anchor--empty">';
 					}
 
 					if ( $this->getIcon( $item ) ) {
@@ -497,7 +497,7 @@ class FrontendWalker extends WalkerNavMenu {
 				if ( ! empty( $item->url ) ) {
 					$item_output .= '<a' . $attributes . '>';
 				} else {
-					$item_output .= '<div class="' . $atts['class'] . '">';
+					$item_output .= '<div class="' . $atts['class'] . ' gm-anchor--empty">';
 				}
 
 				if ( $this->getIcon( $item ) ) {

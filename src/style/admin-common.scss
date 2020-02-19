@@ -34,6 +34,13 @@
   max-width: 204px;
 }
 
+@font-face {
+  font-family: 'groovy-gui';
+  font-weight: normal;
+  font-style: normal;
+  src: url("../fonts/groovy-gui.woff") format("woff");
+}
+
 #toplevel_page_groovy_menu_welcome li:last-child {
   position: relative;
   a {
