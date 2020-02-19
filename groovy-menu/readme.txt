@@ -95,6 +95,8 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 = 1.1.3 =
 * Fix: Mobile menu button click issue after window resize.
 * Fix: Some preset editor style fixes.
+* Fix: Fixed display of WP AdminBar in cases when Groovy Menu Z-index is set more than WP AdminBar.
+* Add: Added styles for menu items without a link (with an empty URL).
 * Add: An animation that shows the process of saving a preset.
 
 = 1.1.2 =
