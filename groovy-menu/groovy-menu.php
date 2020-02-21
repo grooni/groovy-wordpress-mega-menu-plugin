@@ -418,7 +418,7 @@ function groovy_menu_add_preset_style( $preset_id, $compiled_css, $return_string
 
 	if ( empty( $compiled_css ) ) {
 		$styles       = new GroovyMenuStyle( $preset_id );
-		$compiled_css = $styles->get( 'general', 'compiled_css' );
+		$compiled_css = $styles->get( 'general', 'compiled_css' . ( is_rtl() ? '_rtl' : '' ) );
 	}
 
 	if ( $return_string ) {

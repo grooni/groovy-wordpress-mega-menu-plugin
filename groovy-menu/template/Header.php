@@ -184,7 +184,7 @@ function groovyMenu( $args = array() ) {
 
 	$preset_id = isset( $groovyMenuSettings['preset']['id'] ) ? $groovyMenuSettings['preset']['id'] : 'all';
 
-	$compiled_css = $styles->get( 'general', 'compiled_css' );
+	$compiled_css = $styles->get( 'general', 'compiled_css' . ( is_rtl() ? '_rtl' : '' ) );
 
 	$additional_html_class = '';
 	if ( ! empty( $groovyMenuSettings['extra_navbar_classes'] ) ) {
@@ -294,7 +294,7 @@ function groovyMenu( $args = array() ) {
 		$css_file_params = array(
 			'upload_dir'   => GroovyMenuUtils::getUploadDir(),
 			'upload_uri'   => GroovyMenuUtils::getUploadUri(),
-			'css_filename' => 'preset_' . $preset_id . '.css',
+			'css_filename' => 'preset_' . $preset_id . ( is_rtl() ? '_rtl' : '' ) . '.css',
 			'preset_id'    => strval( $preset_id ),
 			'preset_key'   => empty( $groovyMenuSettings['presetKey'] ) ? GROOVY_MENU_VERSION : $groovyMenuSettings['presetKey'],
 		);

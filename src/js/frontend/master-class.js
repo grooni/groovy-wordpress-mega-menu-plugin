@@ -114,8 +114,7 @@ class GroovyMenu {
 
     if (!isPreview) {
       if (navbar.classList.contains('gm-no-compiled-css')
-        || options.version !== navbar.getAttribute('data-version')
-        || direction !== options.direction) {
+        || options.version !== navbar.getAttribute('data-version')) {
         gmStyles.addToHeader(cssGenerated);
         reinsertCompiledStyles(gmStyles, options, cssGenerated);
       }

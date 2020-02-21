@@ -965,7 +965,7 @@ return array(
 				'default'   => '',
 				'serialize' => false,
 			),
-			'direction'                                    => array(
+			'compiled_css_rtl'                             => array(
 				'title'   => '',
 				'type'    => 'hiddenInput',
 				'default' => '',

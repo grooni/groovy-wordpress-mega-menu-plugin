@@ -200,7 +200,7 @@ class GroovyMenuUtils {
 				'groovy-menu-preset-style-' . $css_file_params['preset_id'],
 				$css_file_params['upload_uri'] . $css_file_params['css_filename'],
 				[ 'groovy-menu-style' ],
-				$css_file_params['preset_key']
+				$css_file_params['preset_key'] . ( is_rtl() ? '_rtl' : '' )
 			);
 
 		}
