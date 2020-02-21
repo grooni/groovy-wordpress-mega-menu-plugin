@@ -190,3 +190,15 @@ GROOVY CART
 }
 
 /* rtl:end:ignore */
+
+/* mobile counter view fix */
+.gm-navigation-drawer {
+  .gm-badge {
+    position: relative;
+    overflow: visible;
+  }
+
+  .gm-badge .gm-cart-counter {
+    right: -20px;
+  }
+}
