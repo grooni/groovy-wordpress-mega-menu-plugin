@@ -1187,7 +1187,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 							</div>
 							<?php if ( ! $lic_opt ) { ?>
 								<p class="gm-welcome-registered__p"><?php esc_html_e( 'You need to register your copy of Groovy Menu to activate the plugin features', 'groovy-menu' ); ?></p>
-								<p class="gm-welcome-registered__p"><?php esc_html_e( 'Need to register on URL', 'groovy-menu' ); ?>:
+								<p class="gm-welcome-registered__p"><?php esc_html_e( 'Need to register on URL', 'groovy-menu' ); ?>:<br>
 									<code><?php echo esc_url( get_site_url() ); ?></code></p>
 								<a class="gm-welcome-big-button gm-welcome-big-button--blue gm-welcome-tile__link--lic"
 									href="https://license.grooni.com/"
@@ -2677,20 +2677,23 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 
 		public function checkCurrentLicense() {
 
+			// By default.
+			$respond = 'none';
+
 			if ( defined( 'DOING_AJAX' ) && DOING_AJAX && ! empty( $_POST ) && isset( $_POST['action'] ) && $_POST['action'] === 'gm_check_current_license' ) {
 
 				$lic_opt = GroovyMenuUtils::check_lic( true );
 
 				if ( $lic_opt ) {
-					$respond = esc_html__( 'true', 'groovy-menu' );
+					$respond = 'true';
 				} else {
-					$respond = esc_html__( 'false', 'groovy-menu' );
+					$respond = 'false';
 				}
 
-				// Send a JSON response back to an AJAX request, and die().
-				wp_send_json_success( $respond );
-
 			}
+
+			// Send a JSON response back to an AJAX request, and die().
+			wp_send_json_success( $respond );
 		}
 
 		/**
