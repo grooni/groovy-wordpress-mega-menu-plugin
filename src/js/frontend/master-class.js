@@ -13,7 +13,7 @@ import { scrollToId, setCurrentItem } from './one-page';
 
 import { initPaddingsAlignCenter, splitMenu } from './split';
 import { disableStickyNav, enableStickyNav, initStickyNav } from './sticky';
-import { initOffcanvas, offcanvasSlide } from './offcanvas';
+import { initOffcanvas, offcanvasSlide, offcanvasWrap } from './offcanvas';
 import { initMenuThumbnails } from './thumbnails';
 
 import SmoothScroll from 'smooth-scroll';
@@ -225,42 +225,47 @@ class GroovyMenu {
     initOffcanvas({
       options: options,
       navDrawer,
+      mainMenuWrapper,
       hamburgerMenu
     });
 
     function setOffcanvas () {
       if (!isMobile() && headerStyle === 2) {
         if (options.minimalisticMenuOpenType === 'offcanvasSlideSlide') {
-          offcanvasSlide(mainMenuWrapper, 'left', true);
+          offcanvasWrap(mainMenuWrapper, 'left', true);
         } else if (options.minimalisticMenuOpenType === 'offcanvasSlideSlideRight') {
-          offcanvasSlide(mainMenuWrapper, 'right', true);
+          offcanvasWrap(mainMenuWrapper, 'right', true);
         } else if (options.minimalisticMenuOpenType === 'offcanvasSlideLeft') {
-          offcanvasSlide(mainMenuWrapper, 'left');
+          offcanvasWrap(mainMenuWrapper, 'left');
         } else if (options.minimalisticMenuOpenType === 'offcanvasSlideRight') {
-          offcanvasSlide(mainMenuWrapper, 'right');
+          offcanvasWrap(mainMenuWrapper, 'right');
         } else {
-          offcanvasSlide(mainMenuWrapper, 'left');
+          offcanvasWrap(mainMenuWrapper, 'left');
         }
       }
 
       if (isMobile()) {
         if (options.mobileNavDrawerOpenType === 'offcanvasSlideLeft') {
-          offcanvasSlide(navDrawer, 'left');
+          offcanvasWrap(navDrawer, 'left');
         } else if (options.mobileNavDrawerOpenType === 'offcanvasSlideRight') {
-          offcanvasSlide(navDrawer, 'right');
+          offcanvasWrap(navDrawer, 'right');
         } else if (options.mobileNavDrawerOpenType === 'offcanvasSlideSlide') {
-          offcanvasSlide(navDrawer, 'left', true);
+          offcanvasWrap(navDrawer, 'left', true);
         } else if (options.mobileNavDrawerOpenType === 'offcanvasSlideSlideRight') {
-          offcanvasSlide(navDrawer, 'right', true);
+          offcanvasWrap(navDrawer, 'right', true);
         } else {
-          offcanvasSlide(navDrawer, 'left');
+          offcanvasWrap(navDrawer, 'left');
         }
       }
     }
 
+
     setOffcanvas();
+    offcanvasSlide();
+
 
     window.addEventListener('resize', _.debounce(() => {
+
       overlapMenu(options);
 
       if (headerStyle === 1 && options.header.align !== 'center') {
@@ -293,7 +298,7 @@ class GroovyMenu {
         mainMenuWrapper.classList.remove('gm-navbar-animated');
       }
 
-    }, 50));
+    }, 100));
 
     // Append .gm-main-menu-wrapper css class to body
     if (headerStyle === 2) {
