@@ -93,7 +93,10 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 == Changelog ==
 
 = 1.1.4 =
-* Fix: Minimalistic style issue.
+* Fix: Issue with minimalistic menu type.
+* Fix: Styles for Woocommerce mini-cart.
+* Fix: Issue with preview mode.
+* Add: Created a separate stylesheet for RTL. Increased performance during transition from LTR to RTL and back.
 
 = 1.1.3 =
 * Fix: Mobile menu button click issue after window resize.
