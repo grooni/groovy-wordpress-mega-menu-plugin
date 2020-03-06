@@ -3,6 +3,11 @@ import tingle from 'tingle.js';
 
 export function resetPreviewModalState () {
   let modal = this.modal;
+
+  if (!modal) {
+    return;
+  }
+
   let links = modal.querySelectorAll('.preview-size-change a');
 
   links.forEach((link) => {
