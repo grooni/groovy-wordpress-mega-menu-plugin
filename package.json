@@ -18,7 +18,7 @@
     "not ie < 11"
   ],
   "dependencies": {
-    "@babel/polyfill": "^7.8.3",
+    "@babel/polyfill": "^7.8.7",
     "@simonwep/pickr": "^0.5.0",
     "axios": "^0.18.0",
     "choices.js": "^7.1.5",
@@ -31,9 +31,9 @@
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.4",
+    "@babel/core": "^7.8.7",
     "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
-    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-env": "^7.8.7",
     "assets-webpack-plugin": "^3.9.10",
     "autoprefixer": "^9.7.4",
     "babel-loader": "^8.0.5",
@@ -64,7 +64,7 @@
     "stylelint-config-wordpress": "^13.1.0",
     "terser-webpack-plugin": "^1.4.3",
     "uglifyjs-webpack-plugin": "^2.2.0",
-    "webpack": "^4.41.6",
+    "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11",
     "webpack-stream": "^5.2.1"
   }
