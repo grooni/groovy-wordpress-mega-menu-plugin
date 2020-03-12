@@ -1851,7 +1851,7 @@ export default class GmStyles {
     // Sub level active link text color
     if (settings.subLevelTextActiveColor) {
       css.push({
-        '.gm-main-menu-wrapper .gm-navbar-nav .gm-dropdown-menu .current-menu-ancestor > .gm-menu-item__link, .gm-main-menu-wrapper .gm-navbar-nav .gm-dropdown-menu .current-menu-item .gm-menu-item__link ': `color: ${settings.subLevelTextActiveColor}`,
+        '.gm-main-menu-wrapper .gm-navbar-nav .gm-dropdown-menu li.current-menu-ancestor > .gm-menu-item__link, .gm-main-menu-wrapper .gm-navbar-nav .gm-dropdown-menu li.current-menu-item > .gm-menu-item__link ': `color: ${settings.subLevelTextActiveColor}`,
         media: 'desktop'
       });
     }
@@ -1897,7 +1897,7 @@ export default class GmStyles {
     // Mobile navigation text hover & current skin color
     if (settings.responsiveNavigationHoverTextColor) {
       css.push({
-        '.gm-navigation-drawer .gm-anchor:hover, .gm-navigation-drawer .current-menu-parent > .gm-anchor, .gm-navigation-drawer .current-menu-item > .gm-anchor': `color: ${settings.responsiveNavigationHoverTextColor}`
+        '.gm-navigation-drawer .gm-anchor:hover, .gm-navigation-drawer .current-menu-parent > .gm-anchor, .gm-navigation-drawer li.current-menu-item > .gm-anchor': `color: ${settings.responsiveNavigationHoverTextColor}`
       });
     }
 

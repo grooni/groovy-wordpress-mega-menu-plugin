@@ -541,7 +541,7 @@ if ( ! function_exists( 'gm_include_code_editor' ) ) {
 	 */
 	function gm_include_code_editor( $hook_suffix ) {
 
-		if ( 'toplevel_page_groovy_menu_settings' !== $hook_suffix ) {
+		if ( 'toplevel_page_groovy_menu_settings' !== $hook_suffix && 'groovy-menu_page_groovy_menu_settings' !== $hook_suffix ) {
 			return;
 		}
 
