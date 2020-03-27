@@ -1,6 +1,6 @@
 {
   "name": "groovy-menu-free",
-  "version": "1.1.24",
+  "version": "1.1.25",
   "description": "Groovy menu, WordPress menu plugin.",
   "author": "Grooni",
   "license": "GPLv3",
@@ -31,12 +31,12 @@
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.7",
-    "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
-    "@babel/preset-env": "^7.8.7",
-    "assets-webpack-plugin": "^3.9.10",
-    "autoprefixer": "^9.7.4",
-    "babel-loader": "^8.0.5",
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "assets-webpack-plugin": "^3.9.12",
+    "autoprefixer": "^9.7.5",
+    "babel-loader": "^8.1.0",
     "browser-sync": "^2.26.3",
     "browser-sync-webpack-plugin": "^2.2.2",
     "clean-webpack-plugin": "^2.0.1",
@@ -64,7 +64,7 @@
     "stylelint-config-wordpress": "^13.1.0",
     "terser-webpack-plugin": "^1.4.3",
     "uglifyjs-webpack-plugin": "^2.2.0",
-    "webpack": "^4.42.0",
+    "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-stream": "^5.2.1"
   }

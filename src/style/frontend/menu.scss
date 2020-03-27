@@ -122,6 +122,11 @@ NAVBAR GENERAL STYLES
     line-height: 25px;
     align-items: center;
     justify-content: space-between;
+    cursor: pointer;
+  }
+
+  .gm-anchor {
+    cursor: pointer;
   }
 
   .gm-menu-item__txt-wrapper {

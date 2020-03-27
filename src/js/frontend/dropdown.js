@@ -1,6 +1,6 @@
 import { DOMAnimations, getCoords } from '../shared/helpers';
 
-function dropdownOpen (elem, options) {
+export function dropdownOpen (elem, options) {
   let dropdownWrapper = elem.querySelector('.gm-dropdown-menu-wrapper');
 
   if (dropdownWrapper !== null) {
@@ -37,7 +37,7 @@ function dropdownOpen (elem, options) {
   }
 }
 
-function dropdownClose (elem) {
+export function dropdownClose (elem) {
   let descendantsOpen = elem.querySelectorAll('.gm-open');
 
   descendantsOpen.forEach((item) => {
@@ -84,9 +84,16 @@ export function dropdownCloseAll () {
   let elems = document.querySelectorAll('.gm-open');
 
   elems.forEach((el) => {
+
     if (event.target.closest('.gm-open')) {
       return;
     }
+
+    clearTimeout(el.getAttribute('data-timeout-open'));
+    el.setAttribute('data-timeout-open', null);
+    el.setAttribute('data-close', true);
+    clearTimeout(el.getAttribute('data-timeout-close'));
+    el.setAttribute('data-timeout-close', null);
 
     if (el.closest('.gm-navigation-drawer')) {
       let elChildren = el.children;

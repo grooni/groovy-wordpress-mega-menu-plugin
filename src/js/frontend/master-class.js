@@ -7,7 +7,8 @@ import _ from 'lodash';
 import fixMenuCloseOnIOS, {
   isMobile as isMobileHelper,
   isRtl,
-  isTargetScrollbar
+  isTargetScrollbar,
+  getElemParents
 } from '../shared/helpers';
 import { scrollToId, setCurrentItem } from './one-page';
 
@@ -19,7 +20,9 @@ import { initMenuThumbnails } from './thumbnails';
 import SmoothScroll from 'smooth-scroll';
 import {
   dropdownCloseAll,
-  dropdownToggle
+  dropdownToggle,
+  dropdownOpen,
+  dropdownClose
 } from './dropdown';
 import { overlapMenu } from './overlap';
 import { reinsertCompiledStyles } from './save-styles';
@@ -131,9 +134,12 @@ class GroovyMenu {
       }
     });
 
+
     let initDropdownAction = (e) => {
+      let delay = 210;
       let closestDropdown = e.target.closest('.gm-dropdown');
-      let closestDropdownToogle = e.target.closest('.gm-dropdown-toggle');
+      let dropdownMenus = document.querySelectorAll('.gm-dropdown');
+      let hasOpenedElems = false;
 
       if (e.target.closest('.gm-minicart') && e.type === 'click') {
         if (headerStyle !== 1 || isMobile()) {
@@ -155,20 +161,138 @@ class GroovyMenu {
         return false;
       }
 
-      if (closestDropdownToogle === null) {
-        dropdownCloseAll();
-      } else {
-        if (
-          closestDropdownToogle.getAttribute('href') !== null
-          || closestDropdownToogle.getAttribute('href') === '#'
-          || closestDropdownToogle
-            .classList
-            .contains('gm-anchor--empty')
-        ) {
-          dropdownToggle(closestDropdown, options);
+      if (dropdownMenus.length > 0) {
+        dropdownMenus.forEach((el) => {
+          clearTimeout(el.getAttribute('data-timeout-open'));
+          if (el.classList.contains('gm-open')) {
+            hasOpenedElems = true;
+          }
+        });
+      }
+
+
+      if (closestDropdown) {
+
+        if (!hasOpenedElems) {
+          delay = 0;
+        }
+
+        let openParents = getElemParents(closestDropdown, 'gm-open');
+        if (openParents.length > 0) {
+          openParents.forEach((el) => {
+            el.setAttribute('data-close', false);
+            clearTimeout(el.getAttribute('data-timeout-close'));
+            el.setAttribute('data-timeout-close', null);
+          });
+        }
+
+        // Don't open on hover search and minicart dropdown
+        if (closestDropdown.classList.contains('gm-search') ||
+          closestDropdown.classList.contains('gm-minicart')) {
           return false;
         }
+
+        closestDropdown.setAttribute('data-close', false);
+
+        // smooth switching between adjacent dropdowns
+        closestDropdown.setAttribute('data-timeout-open', setTimeout(function () {
+
+          if (closestDropdown.querySelectorAll('.gm-open').length === 0) {
+
+            // Close woocommerce cart and search dropdowns.
+            let cartElements = document.querySelectorAll('.gm-search.gm-open, .gm-minicart.gm-open');
+            if (cartElements.length > 0) {
+              cartElements.forEach((el) => {
+                dropdownClose(el);
+              });
+            }
+
+            // Collect all parents opened dropdowns and prevent close it.
+            let parentsIds = [closestDropdown.id];
+            if (openParents.length > 0) {
+              openParents.forEach((el) => {
+                parentsIds.push(el.id);
+                el.setAttribute('data-close', false);
+                clearTimeout(el.getAttribute('data-timeout-close'));
+                el.setAttribute('data-timeout-close', null);
+              });
+            }
+
+            dropdownOpen(closestDropdown, options);
+
+            // Close all not parents dropdowns.
+            if (dropdownMenus.length > 0) {
+              dropdownMenus.forEach((el) => {
+                if (parentsIds.indexOf(el.id) === -1) {
+                  dropdownClose(el);
+                }
+              });
+            }
+
+          } else { // menu item without children dropdown. Just close all others opened dropdown.
+
+            // Collect all parents opened dropdowns and prevent close it.
+            let parentsIds = [closestDropdown.id];
+            if (openParents.length > 0) {
+              openParents.forEach((el) => {
+                parentsIds.push(el.id);
+                el.setAttribute('data-close', false);
+                clearTimeout(el.getAttribute('data-timeout-close'));
+                el.setAttribute('data-timeout-close', null);
+              });
+            }
+
+            // Close all not parents dropdowns.
+            if (dropdownMenus.length > 0) {
+              dropdownMenus.forEach((el) => {
+                if (parentsIds.indexOf(el.id) === -1) {
+                  dropdownClose(el);
+                }
+              });
+            }
+          }
+
+        }, delay));
+
       }
+    };
+
+
+    let leaveDropdownAction = (e) => {
+
+      let closestDropdown = e.target.closest('.gm-dropdown');
+
+      // parent dropdown not exist.
+      if (!closestDropdown) {
+        return;
+      }
+
+      // exclude first level of the nav menu.
+      if (!closestDropdown.classList.contains('gm-dropdown-submenu')) {
+        return;
+      }
+
+      // parent dropdown is open.
+      if (closestDropdown.classList.contains('gm-open')) {
+        return;
+      }
+
+      let delay = 230;
+
+      // disable for search and WooCommerce buttons.
+      if (closestDropdown.classList.contains('gm-search')
+        || closestDropdown.classList.contains('gm-minicart')) {
+        return;
+      }
+
+      closestDropdown.setAttribute('data-close', true);
+
+      // smooth switching between adjacent dropdowns
+      closestDropdown.setAttribute('data-timeout-close', setTimeout(function () {
+        if (closestDropdown.getAttribute('data-close')) {
+          dropdownClose(closestDropdown);
+        }
+      }, delay));
     };
 
     let dropdownItems = document.querySelectorAll('.gm-anchor, .gm-minicart-link');
@@ -181,6 +305,7 @@ class GroovyMenu {
         } else {
           dropdownItem.addEventListener('click', initDropdownAction);
           dropdownItem.addEventListener('mouseenter', initDropdownAction);
+          dropdownItem.addEventListener('mouseleave', leaveDropdownAction);
         }
       });
 
