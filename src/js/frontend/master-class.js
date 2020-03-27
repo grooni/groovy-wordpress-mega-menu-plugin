@@ -161,15 +161,11 @@ class GroovyMenu {
         return false;
       }
 
-      console.log('------------ ENTER ------------'); // TODO debug ---.
-
       if (dropdownMenus.length > 0) {
         dropdownMenus.forEach((el) => {
           clearTimeout(el.getAttribute('data-timeout-open'));
           if (el.classList.contains('gm-open')) {
             hasOpenedElems = true;
-
-            console.log(el.id); // TODO debug ---.
           }
         });
       }
@@ -197,11 +193,6 @@ class GroovyMenu {
         }
 
         closestDropdown.setAttribute('data-close', false);
-
-
-        console.log(hasOpenedElems); // TODO debug ---.
-        console.log(delay); // TODO debug ---.
-
 
         // smooth switching between adjacent dropdowns
         closestDropdown.setAttribute('data-timeout-open', setTimeout(function () {
