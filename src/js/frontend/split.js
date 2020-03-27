@@ -58,26 +58,44 @@ function setPaddingsAlignCenter () {
   widthMenuActions = Math.floor(widthMenuActions / 2);
 
   if (isRtl()) {
-    navRight.style.paddingRight = `${logoHalfWidthWithPadding}px`;
-    navLeft.style.paddingLeft = `${logoHalfWidthWithPadding}px`;
-    logo.style.right = `calc(50% - ${widthMenuActions}px)`;
+    if (navRight) {
+      navRight.style.paddingRight = `${logoHalfWidthWithPadding}px`;
+    }
+    if (navLeft) {
+      navLeft.style.paddingLeft = `${logoHalfWidthWithPadding}px`;
+    }
+    if (logo) {
+      logo.style.right = `calc(50% - ${widthMenuActions}px)`;
+    }
   } else {
-    navRight.style.paddingLeft = `${logoHalfWidthWithPadding}px`;
-    navLeft.style.paddingRight = `${logoHalfWidthWithPadding}px`;
-    logo.style.left = `calc(50% - ${widthMenuActions}px)`;
+    if (navRight) {
+      navRight.style.paddingLeft = `${logoHalfWidthWithPadding}px`;
+    }
+    if (navLeft) {
+      navLeft.style.paddingRight = `${logoHalfWidthWithPadding}px`;
+    }
+    if (logo) {
+      logo.style.left = `calc(50% - ${widthMenuActions}px)`;
+    }
   }
 
-  mainMenuWrapper.style.opacity = '1';
+  if (mainMenuWrapper) {
+    mainMenuWrapper.style.opacity = '1';
+  }
 }
 
 function removePaddingsAlignCenter () {
   const navRight = document.querySelector('.nav--right');
   const navLeft = document.querySelector('.nav--left');
 
-  navRight.style.paddingRight = '';
-  navRight.style.paddingLeft = '';
-  navLeft.style.paddingRight = '';
-  navLeft.style.paddingLeft = '';
+  if (navRight) {
+    navRight.style.paddingRight = '';
+    navRight.style.paddingLeft = '';
+  }
+  if (navLeft) {
+    navLeft.style.paddingRight = '';
+    navLeft.style.paddingLeft = '';
+  }
 }
 
 export function recalculatePaddingsAlignCenter (args) {
