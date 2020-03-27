@@ -808,7 +808,7 @@ export default class GmStyles {
 
       css.push({
         // Minicart
-        '.gm-main-menu-wrapper .gm-minicart > a': 'padding-left: 0;',
+        '.gm-main-menu-wrapper .gm-minicart > a': 'padding-left: 0 !important;',
         media: 'desktop'
       });
 
