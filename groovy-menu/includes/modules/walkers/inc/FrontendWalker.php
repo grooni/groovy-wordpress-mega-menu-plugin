@@ -15,12 +15,12 @@ defined( 'ABSPATH' ) || die( 'This script cannot be accessed directly.' );
  */
 class FrontendWalker extends WalkerNavMenu {
 
-	protected $currentLvl = 0;
-	protected $isMegaMenu = false;
-	protected $megaMenuCnt = 0;
-	protected $megaMenuColStarted = false;
-	protected $megaMenuCols = 5;
-	protected $megaMenuPost = null;
+	protected $currentLvl            = 0;
+	protected $isMegaMenu            = false;
+	protected $megaMenuCnt           = 0;
+	protected $megaMenuColStarted    = false;
+	protected $megaMenuCols          = 5;
+	protected $megaMenuPost          = null;
 	protected $megaMenuPostNotMobile = null;
 	protected $currentItem;
 
@@ -47,7 +47,7 @@ class FrontendWalker extends WalkerNavMenu {
 			}
 
 			if ( $this->getBackgroundId( $this->currentItem ) ) {
-				$size   = $this->getBackgroundSize( $this->currentItem );
+				$size    = $this->getBackgroundSize( $this->currentItem );
 				$styles .= 'background-image: url(' . $this->getBackgroundUrl( $this->currentItem, $size ) . ');';
 				$styles .= 'background-repeat: ' . $this->getBackgroundRepeat( $this->currentItem ) . ';';
 				$styles .= 'background-position: ' . $this->getBackgroundPosition( $this->currentItem ) . ';';
@@ -76,7 +76,7 @@ class FrontendWalker extends WalkerNavMenu {
 			$this->megamenuWrapperEnd( $output );
 			$this->megaMenuCnt = 0;
 		}
-		$indent = str_repeat( "\t", $depth );
+		$indent  = str_repeat( "\t", $depth );
 		$output .= "$indent</ul></div>\n";
 		$this->currentLvl --;
 
@@ -333,7 +333,7 @@ class FrontendWalker extends WalkerNavMenu {
 										$common_font_variant = 400;
 									}
 									$badge_in_style .= 'font-weight: ' . $common_font_variant . ';';
-									$pos            = strpos( $badge_text_variant, 'italic' );
+									$pos             = strpos( $badge_text_variant, 'italic' );
 									if ( false !== $pos ) {
 										$badge_in_style .= 'font-style: italic;';
 									}
@@ -599,7 +599,7 @@ class FrontendWalker extends WalkerNavMenu {
 									$common_font_variant = 400;
 								}
 								$badge_in_style .= 'font-weight: ' . $common_font_variant . ';';
-								$pos            = strpos( $badge_text_variant, 'italic' );
+								$pos             = strpos( $badge_text_variant, 'italic' );
 								if ( false !== $pos ) {
 									$badge_in_style .= 'font-style: italic;';
 								}
@@ -739,7 +739,7 @@ class FrontendWalker extends WalkerNavMenu {
 				$this->megaMenuCnt ++;
 
 				if ( 1 === $this->megaMenuCnt ) {
-					$class  = 'gm-mega-menu-wrapper';
+					$class   = 'gm-mega-menu-wrapper';
 					$output .= '<li><div class="' . $class . '"><div class="gm-grid-container"><div class="gm-grid-row">';
 				}
 			}

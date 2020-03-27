@@ -28,6 +28,13 @@ GROOVY CART
   }
 }
 
+.gm-navbar--align-right .gm-main-menu-wrapper .gm-minicart .gm-minicart-dropdown {
+  position: absolute;
+  right: auto;
+  left: 5px;
+  width: 280px;
+}
+
 .gm-cart-counter {
   position: absolute;
   top: -23px;
@@ -67,7 +74,6 @@ GROOVY CART
     min-height: 85px;
     box-sizing: content-box;
     line-height: 1.5;
-    margin-bottom: 0 !important;
 
     &:not(:last-of-type) {
       margin-bottom: 20px !important;
@@ -99,6 +105,13 @@ GROOVY CART
         top: 0;
         left: 0;
       }
+    }
+
+    > img {
+      width: 68px;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
 
     .variation {
@@ -190,3 +203,15 @@ GROOVY CART
 }
 
 /* rtl:end:ignore */
+
+/* mobile counter view fix */
+.gm-navigation-drawer {
+  .gm-badge {
+    position: relative;
+    overflow: visible;
+  }
+
+  .gm-badge .gm-cart-counter {
+    right: -20px;
+  }
+}

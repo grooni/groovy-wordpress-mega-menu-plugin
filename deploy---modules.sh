@@ -2,15 +2,12 @@
 
 ### update modules with composer
 #echo '-----=[ update modules with composer ]==-----'
-#composer --working-dir=groovy-menu/includes/modules/core update
-#composer --working-dir=groovy-menu/includes/modules/walkers update
-#composer --working-dir=groovy-menu/includes/modules/storage update
-#composer --working-dir=groovy-menu/includes/modules/templates update
-#composer --working-dir=groovy-menu/includes/modules/debugpage update
-#composer --working-dir=groovy-menu/includes/modules/fields update
-#composer --working-dir=groovy-menu/includes/modules/menublocks update
-#composer --working-dir=groovy-menu/includes/modules/virtualpages update
-#composer --working-dir=groovy-menu/includes/modules/widgetinmenu update
+composer --working-dir=groovy-menu/includes/modules/core update
+composer --working-dir=groovy-menu/includes/modules/walkers update
+composer --working-dir=groovy-menu/includes/modules/storage update
+composer --working-dir=groovy-menu/includes/modules/debugpage update
+composer --working-dir=groovy-menu/includes/modules/fields update
+composer --working-dir=groovy-menu/includes/modules/virtualpages update
 
 
 ### ////////////////////////////////////

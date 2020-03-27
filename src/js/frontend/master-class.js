@@ -7,19 +7,22 @@ import _ from 'lodash';
 import fixMenuCloseOnIOS, {
   isMobile as isMobileHelper,
   isRtl,
-  isTargetScrollbar
+  isTargetScrollbar,
+  getElemParents
 } from '../shared/helpers';
 import { scrollToId, setCurrentItem } from './one-page';
 
 import { initPaddingsAlignCenter, splitMenu } from './split';
 import { disableStickyNav, enableStickyNav, initStickyNav } from './sticky';
-import { initOffcanvas, offcanvasSlide } from './offcanvas';
+import { initOffcanvas, offcanvasSlide, offcanvasWrap } from './offcanvas';
 import { initMenuThumbnails } from './thumbnails';
 
 import SmoothScroll from 'smooth-scroll';
 import {
   dropdownCloseAll,
-  dropdownToggle
+  dropdownToggle,
+  dropdownOpen,
+  dropdownClose
 } from './dropdown';
 import { overlapMenu } from './overlap';
 import { reinsertCompiledStyles } from './save-styles';
@@ -114,8 +117,7 @@ class GroovyMenu {
 
     if (!isPreview) {
       if (navbar.classList.contains('gm-no-compiled-css')
-        || options.version !== navbar.getAttribute('data-version')
-        || direction !== options.direction) {
+        || options.version !== navbar.getAttribute('data-version')) {
         gmStyles.addToHeader(cssGenerated);
         reinsertCompiledStyles(gmStyles, options, cssGenerated);
       }
@@ -132,9 +134,12 @@ class GroovyMenu {
       }
     });
 
+
     let initDropdownAction = (e) => {
+      let delay = 210;
       let closestDropdown = e.target.closest('.gm-dropdown');
-      let closestDropdownToogle = e.target.closest('.gm-dropdown-toggle');
+      let dropdownMenus = document.querySelectorAll('.gm-dropdown');
+      let hasOpenedElems = false;
 
       if (e.target.closest('.gm-minicart') && e.type === 'click') {
         if (headerStyle !== 1 || isMobile()) {
@@ -156,20 +161,141 @@ class GroovyMenu {
         return false;
       }
 
-      if (closestDropdownToogle === null) {
-        dropdownCloseAll();
-      } else {
-        if (
-          closestDropdownToogle.getAttribute('href') !== null
-          || closestDropdownToogle.getAttribute('href') === '#'
-          || closestDropdownToogle
-            .classList
-            .contains('gm-anchor--empty')
-        ) {
-          dropdownToggle(closestDropdown, options);
+      if (dropdownMenus.length > 0) {
+        dropdownMenus.forEach((el) => {
+          clearTimeout(el.getAttribute('data-timeout-open'));
+          if (el.classList.contains('gm-open')) {
+            hasOpenedElems = true;
+          }
+        });
+      }
+
+
+      if (closestDropdown) {
+
+        if (!hasOpenedElems) {
+          delay = 0;
+        }
+
+        let openParents = getElemParents(closestDropdown, 'gm-open');
+        if (openParents.length > 0) {
+          openParents.forEach((el) => {
+            el.setAttribute('data-close', false);
+            clearTimeout(el.getAttribute('data-timeout-close'));
+            el.setAttribute('data-timeout-close', null);
+          });
+        }
+
+        // Don't open on hover search and minicart dropdown
+        if (closestDropdown.classList.contains('gm-search') ||
+          closestDropdown.classList.contains('gm-minicart')) {
           return false;
         }
+
+        closestDropdown.setAttribute('data-close', false);
+
+        // smooth switching between adjacent dropdowns
+        closestDropdown.setAttribute('data-timeout-open', setTimeout(function () {
+
+          if (closestDropdown.querySelectorAll('.gm-open').length === 0) {
+
+            // Close woocommerce cart and search dropdowns.
+            let cartElements = document.querySelectorAll('.gm-search.gm-open, .gm-minicart.gm-open');
+            if (cartElements.length > 0) {
+              cartElements.forEach((el) => {
+                dropdownClose(el);
+              });
+            }
+
+            // Collect all parents opened dropdowns and prevent close it.
+            let parentsIds = [closestDropdown.id];
+            if (openParents.length > 0) {
+              openParents.forEach((el) => {
+                parentsIds.push(el.id);
+                el.setAttribute('data-close', false);
+                clearTimeout(el.getAttribute('data-timeout-close'));
+                el.setAttribute('data-timeout-close', null);
+              });
+            }
+
+            dropdownOpen(closestDropdown, options);
+
+            // Close all not parents dropdowns.
+            if (dropdownMenus.length > 0) {
+              dropdownMenus.forEach((el) => {
+                if (parentsIds.indexOf(el.id) === -1) {
+                  dropdownClose(el);
+                }
+              });
+            }
+
+          } else { // menu item without children dropdown. Just close all others opened dropdown.
+
+            // Collect all parents opened dropdowns and prevent close it.
+            let parentsIds = [closestDropdown.id];
+            if (openParents.length > 0) {
+              openParents.forEach((el) => {
+                parentsIds.push(el.id);
+                el.setAttribute('data-close', false);
+                clearTimeout(el.getAttribute('data-timeout-close'));
+                el.setAttribute('data-timeout-close', null);
+              });
+            }
+
+            // Close all not parents dropdowns.
+            if (dropdownMenus.length > 0) {
+              dropdownMenus.forEach((el) => {
+                if (parentsIds.indexOf(el.id) === -1) {
+                  dropdownClose(el);
+                }
+              });
+            }
+          }
+
+        }, delay));
+
+      } else { // apparently this is the top level menu without dropdown.
+        // Close all dropdowns.
+        dropdownCloseAll();
       }
+    };
+
+
+    let leaveDropdownAction = (e) => {
+
+      let closestDropdown = e.target.closest('.gm-dropdown');
+
+      // parent dropdown not exist.
+      if (!closestDropdown) {
+        return;
+      }
+
+      // exclude first level of the nav menu.
+      if (!closestDropdown.classList.contains('gm-dropdown-submenu')) {
+        return;
+      }
+
+      // parent dropdown is open.
+      if (closestDropdown.classList.contains('gm-open')) {
+        return;
+      }
+
+      let delay = 230;
+
+      // disable for search and WooCommerce buttons.
+      if (closestDropdown.classList.contains('gm-search')
+        || closestDropdown.classList.contains('gm-minicart')) {
+        return;
+      }
+
+      closestDropdown.setAttribute('data-close', true);
+
+      // smooth switching between adjacent dropdowns
+      closestDropdown.setAttribute('data-timeout-close', setTimeout(function () {
+        if (closestDropdown.getAttribute('data-close')) {
+          dropdownClose(closestDropdown);
+        }
+      }, delay));
     };
 
     let dropdownItems = document.querySelectorAll('.gm-anchor, .gm-minicart-link');
@@ -182,6 +308,7 @@ class GroovyMenu {
         } else {
           dropdownItem.addEventListener('click', initDropdownAction);
           dropdownItem.addEventListener('mouseenter', initDropdownAction);
+          dropdownItem.addEventListener('mouseleave', leaveDropdownAction);
         }
       });
 
@@ -226,42 +353,47 @@ class GroovyMenu {
     initOffcanvas({
       options: options,
       navDrawer,
+      mainMenuWrapper,
       hamburgerMenu
     });
 
     function setOffcanvas () {
       if (!isMobile() && headerStyle === 2) {
         if (options.minimalisticMenuOpenType === 'offcanvasSlideSlide') {
-          offcanvasSlide(mainMenuWrapper, 'left', true);
+          offcanvasWrap(mainMenuWrapper, 'left', true);
         } else if (options.minimalisticMenuOpenType === 'offcanvasSlideSlideRight') {
-          offcanvasSlide(mainMenuWrapper, 'right', true);
+          offcanvasWrap(mainMenuWrapper, 'right', true);
         } else if (options.minimalisticMenuOpenType === 'offcanvasSlideLeft') {
-          offcanvasSlide(mainMenuWrapper, 'left');
+          offcanvasWrap(mainMenuWrapper, 'left');
         } else if (options.minimalisticMenuOpenType === 'offcanvasSlideRight') {
-          offcanvasSlide(mainMenuWrapper, 'right');
+          offcanvasWrap(mainMenuWrapper, 'right');
         } else {
-          offcanvasSlide(mainMenuWrapper, 'left');
+          offcanvasWrap(mainMenuWrapper, 'left');
         }
       }
 
       if (isMobile()) {
         if (options.mobileNavDrawerOpenType === 'offcanvasSlideLeft') {
-          offcanvasSlide(navDrawer, 'left');
+          offcanvasWrap(navDrawer, 'left');
         } else if (options.mobileNavDrawerOpenType === 'offcanvasSlideRight') {
-          offcanvasSlide(navDrawer, 'right');
+          offcanvasWrap(navDrawer, 'right');
         } else if (options.mobileNavDrawerOpenType === 'offcanvasSlideSlide') {
-          offcanvasSlide(navDrawer, 'left', true);
+          offcanvasWrap(navDrawer, 'left', true);
         } else if (options.mobileNavDrawerOpenType === 'offcanvasSlideSlideRight') {
-          offcanvasSlide(navDrawer, 'right', true);
+          offcanvasWrap(navDrawer, 'right', true);
         } else {
-          offcanvasSlide(navDrawer, 'left');
+          offcanvasWrap(navDrawer, 'left');
         }
       }
     }
 
+
     setOffcanvas();
+    offcanvasSlide();
+
 
     window.addEventListener('resize', _.debounce(() => {
+
       overlapMenu(options);
 
       if (headerStyle === 1 && options.header.align !== 'center') {
@@ -294,7 +426,7 @@ class GroovyMenu {
         mainMenuWrapper.classList.remove('gm-navbar-animated');
       }
 
-    }, 50));
+    }, 100));
 
     // Append .gm-main-menu-wrapper css class to body
     if (headerStyle === 2) {

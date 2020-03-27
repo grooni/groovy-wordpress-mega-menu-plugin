@@ -4,7 +4,7 @@ Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive,
 Requires at least: 4.9.7
 Tested up to: 5.3.2
 Requires PHP: 7.0
-Stable tag: 1.1.3
+Stable tag: 1.1.5
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 Groovy menu is a responsive and free Mega Menu WordPress plugin designed for creating mobile friendly menus with a lot of options.
@@ -92,6 +92,24 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 
 == Changelog ==
 
+= 1.1.5 =
+* Fix: Text color for the active top-level menu item
+* Fix: Mega menu wrapper padding.
+* Add: a "soft" transition between adjacent sub-menus of the 3rd level.
+
+= 1.1.4 =
+* Fix: Issue with minimalistic menu type.
+* Fix: Styles for Woocommerce mini-cart.
+* Fix: Issue with preview mode.
+* Add: Created a separate stylesheet for RTL. Increased performance during transition from LTR to RTL and back.
+
+= 1.1.3 =
+* Fix: Mobile menu button click issue after window resize.
+* Fix: Some preset editor style fixes.
+* Fix: Fixed display of WP AdminBar in cases when Groovy Menu Z-index is set more than WP AdminBar.
+* Add: Added styles for menu items without a link (with an empty URL).
+* Add: An animation that shows the process of saving a preset.
+
 = 1.1.2 =
 * Fix: Save preset defaults when value is 0.
 * Fix: RTL support.
@@ -116,7 +134,7 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 * Improve: Implemented cache for displaying and processing nav_menu items.
 * Improve: Removed files that were added to support older versions of the plugin.
 * Improve: The minimum value for the setting "Mobile version switch" is can set to 0 for disabling the appearance of the menu on mobile devices.
-* Improve: Minor appearance changes for the Dasboard> Apperance> Menus page
+* Improve: Minor appearance changes for the Dashboard> Appearance> Menus page
 * Updated: NPM modules.
 
 = 1.0.9 =

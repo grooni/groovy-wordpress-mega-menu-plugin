@@ -1,7 +1,7 @@
 <?php defined( 'ABSPATH' ) || die( 'This script cannot be accessed directly.' );
 /*
 Plugin Name: Groovy Menu (free)
-Version: 1.1.3
+Version: 1.1.5
 Description: Groovy menu is a modern adjustable and flexible menu designed for creating mobile-friendly menus with a lot of options.
 Plugin URI: https://groovymenu.grooni.com/
 Author: Grooni.com
@@ -31,7 +31,7 @@ if ( ! defined( 'GROOVY_MENU_LVER' ) ) {
 	return;
 }
 
-define( 'GROOVY_MENU_VERSION', '1.1.3' );
+define( 'GROOVY_MENU_VERSION', '1.1.5' );
 define( 'GROOVY_MENU_DB_VER_OPTION', 'groovy_menu_db_version' );
 define( 'GROOVY_MENU_DIR', plugin_dir_path( __FILE__ ) );
 define( 'GROOVY_MENU_URL', plugin_dir_url( __FILE__ ) );
@@ -418,7 +418,7 @@ function groovy_menu_add_preset_style( $preset_id, $compiled_css, $return_string
 
 	if ( empty( $compiled_css ) ) {
 		$styles       = new GroovyMenuStyle( $preset_id );
-		$compiled_css = $styles->get( 'general', 'compiled_css' );
+		$compiled_css = $styles->get( 'general', 'compiled_css' . ( is_rtl() ? '_rtl' : '' ) );
 	}
 
 	if ( $return_string ) {
@@ -541,7 +541,7 @@ if ( ! function_exists( 'gm_include_code_editor' ) ) {
 	 */
 	function gm_include_code_editor( $hook_suffix ) {
 
-		if ( 'toplevel_page_groovy_menu_settings' !== $hook_suffix ) {
+		if ( 'toplevel_page_groovy_menu_settings' !== $hook_suffix && 'groovy-menu_page_groovy_menu_settings' !== $hook_suffix ) {
 			return;
 		}
 

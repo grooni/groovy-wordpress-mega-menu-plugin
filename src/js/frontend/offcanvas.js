@@ -3,6 +3,7 @@ import _ from 'lodash';
 
 var options;
 var navDrawer;
+var mainMenuWrapper;
 var hamburgerMenu;
 
 let offcanvasIsOpen = function (navDrawer) {
@@ -36,13 +37,14 @@ function offcanvasToggle (navDrawer) {
   }
 }
 
-function offcanvasClickOutside (navDrawer) {
+function offcanvasClickOutside () {
   document.addEventListener('click', function (event) {
     if (event.target.closest('.gm-menu-btn')) {
       return;
     }
 
-    if (event.target.closest('.gm-navbar-nav, .gm-navigation-drawer') === null) {
+    if (event.target.closest('.gm-navbar-nav, .gm-navigation-drawer, .gm-main-menu-wrapper') === null) {
+      offcanvasClose(mainMenuWrapper);
       offcanvasClose(navDrawer);
     }
   });
@@ -98,40 +100,50 @@ function closeIfNoChildren (navDrawer) {
   });
 }
 
-export function offcanvasSlide (navDrawer, side, slide) {
+
+export function offcanvasSlide() {
+  let headerStyle = parseInt(options.header.style, 10);
+
+  window.addEventListener('resize', _.debounce(() => {
+    if (!isMobile(options.mobileWidth) && options.header.style !== 2 && document.querySelector('.gm-nav-content-wrapper') !== null) {
+      unwrapInner('.gm-nav-content-wrapper');
+    }
+  }, 250));
+
+  function clickHandler() {
+    if (!isMobile(options.mobileWidth) && headerStyle === 2) {
+      offcanvasToggle(mainMenuWrapper);
+    } else {
+      offcanvasToggle(navDrawer);
+    }
+  }
+
+  hamburgerMenu.addEventListener('click', clickHandler);
+
+  offcanvasClickOutside();
+
+  window.addEventListener('resize', _.debounce(() => {
+    makeHiddenVisible();
+    offcanvasClose(navDrawer);
+  }, 750));
+
+  closeIfNoChildren(navDrawer);
+}
+
+export function offcanvasWrap(navDrawer, side, slide) {
   slide = slide || false;
 
   if (slide) {
     wrapContent();
   }
 
-  window.addEventListener('resize', _.debounce(() => {
-    if (!isMobile(options.mobileWidth) && options.header.style !== 2 && document.querySelector('.gm-nav-content-wrapper') !== null) {
-      unwrapInner('.gm-nav-content-wrapper');
-    }
-  }, 100));
-
   makeHiddenVisible();
   navDrawer.classList.add(`gm-navigation-drawer--${side}`);
-
-  offcanvasClickOutside(navDrawer);
-
-  window.addEventListener('resize', () => {
-    offcanvasClose(navDrawer);
-  }, {once: true});
-
-  closeIfNoChildren(navDrawer);
 }
 
-export function initOffcanvas (args) {
+export function initOffcanvas(args) {
   options = args.options;
   navDrawer = args.navDrawer;
+  mainMenuWrapper = args.mainMenuWrapper;
   hamburgerMenu = args.hamburgerMenu;
-
-  function clickEventOffcanvasToggle() {
-    offcanvasToggle(navDrawer);
-    return false;
-  }
-
-  hamburgerMenu.addEventListener('click', clickEventOffcanvasToggle);
 }

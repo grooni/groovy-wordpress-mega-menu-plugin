@@ -865,7 +865,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				echo esc_html__( 'Saved', 'groovy-menu' );
 			}
 
-			echo ( $this->hardRedirectToDashboard() );
+			echo $this->hardRedirectToDashboard();
 		}
 
 		public function deleteFont() {
@@ -1187,7 +1187,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 							</div>
 							<?php if ( ! $lic_opt ) { ?>
 								<p class="gm-welcome-registered__p"><?php esc_html_e( 'You need to register your copy of Groovy Menu to activate the plugin features', 'groovy-menu' ); ?></p>
-								<p class="gm-welcome-registered__p"><?php esc_html_e( 'Need to register on URL', 'groovy-menu' ); ?>:
+								<p class="gm-welcome-registered__p"><?php esc_html_e( 'Need to register on URL', 'groovy-menu' ); ?>:<br>
 									<code><?php echo esc_url( get_site_url() ); ?></code></p>
 								<a class="gm-welcome-big-button gm-welcome-big-button--blue gm-welcome-tile__link--lic"
 									href="https://license.grooni.com/"
@@ -2493,11 +2493,6 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				$cap_can = false;
 			}
 
-			// Still can work from front-end.
-			if ( is_admin() && ! GroovyMenuRoleCapabilities::presetEdit( true ) ) {
-				$cap_can = false;
-			}
-
 			if ( $cap_can && defined( 'DOING_AJAX' ) && DOING_AJAX && ! empty( $_POST ) && isset( $_POST['action'] ) && $_POST['action'] === 'gm_save_styles' ) {
 
 				$ajax_data = empty( $_POST['data'] ) ? '' : trim( $_POST['data'] );
@@ -2522,13 +2517,16 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 
 				$preset_key = md5( rand() . uniqid() . time() );
 
-				update_post_meta( intval( $preset_id ), 'gm_compiled_css', $ajax_data );
+				if ( 'rtl' === $direction ) {
+					update_post_meta( intval( $preset_id ), 'gm_compiled_css_rtl', $ajax_data );
+				} else {
+					update_post_meta( intval( $preset_id ), 'gm_compiled_css', $ajax_data );
+				}
 				update_post_meta( intval( $preset_id ), 'gm_preset_key', $preset_key );
-				update_post_meta( intval( $preset_id ), 'gm_direction', $direction );
 				update_post_meta( intval( $preset_id ), 'gm_version', GROOVY_MENU_VERSION );
 
 				// Save compiled_css to file
-				$this->save_compiled_css( $preset_id, $ajax_data );
+				$this->save_compiled_css( $preset_id, $ajax_data, $direction );
 
 				$respond = esc_html__( 'Save', 'groovy-menu' );
 				if ( ! empty( $_POST['sub_action'] ) ) {
@@ -2557,11 +2555,11 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 		 *
 		 * @param string|integer $preset_id    preset id.
 		 * @param string         $compiled_css styles.
-		 * @param string         $_tmppath     path for download.
+		 * @param string         $direction    wait 'rtl'
 		 *
 		 * @return bool
 		 */
-		private function save_compiled_css( $preset_id, $compiled_css = '' ) {
+		private function save_compiled_css( $preset_id, $compiled_css = '', $direction = '' ) {
 
 
 			$preset_id = intval( $preset_id );
@@ -2573,6 +2571,12 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 
 			if ( empty( $compiled_css ) ) {
 				$compiled_css = '';
+			}
+
+			if ( 'rtl' === $direction ) {
+				$direction = '_rtl';
+			} else {
+				$direction = '';
 			}
 
 			if ( ! defined( 'FS_METHOD' ) ) {
@@ -2596,7 +2600,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				@mkdir( $styles_dir, 0755 );
 			}
 
-			$css_filename = 'preset_' . esc_attr( strval( $preset_id ) ) . '.css';
+			$css_filename = 'preset_' . esc_attr( strval( $preset_id ) ) . $direction . '.css';
 
 			$handled_compiled_css = trim( stripcslashes( $compiled_css ) );
 
@@ -2673,20 +2677,23 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 
 		public function checkCurrentLicense() {
 
+			// By default.
+			$respond = 'none';
+
 			if ( defined( 'DOING_AJAX' ) && DOING_AJAX && ! empty( $_POST ) && isset( $_POST['action'] ) && $_POST['action'] === 'gm_check_current_license' ) {
 
 				$lic_opt = GroovyMenuUtils::check_lic( true );
 
 				if ( $lic_opt ) {
-					$respond = esc_html__( 'true', 'groovy-menu' );
+					$respond = 'true';
 				} else {
-					$respond = esc_html__( 'false', 'groovy-menu' );
+					$respond = 'false';
 				}
 
-				// Send a JSON response back to an AJAX request, and die().
-				wp_send_json_success( $respond );
-
 			}
+
+			// Send a JSON response back to an AJAX request, and die().
+			wp_send_json_success( $respond );
 		}
 
 		/**

@@ -320,7 +320,7 @@ if ( ! class_exists( 'GroovyMenuPreset' ) ) {
 				$file_path       = $upload_dir . $upload_filename;
 
 				if ( is_file( $file_path ) ) {
-					$wp_filesystem->delete( $upload_dir . $upload_filename, false, true );
+					$wp_filesystem->delete( $file_path, false, true );
 					delete_post_meta( intval( $post_id ), 'gm_preset_screenshot' );
 				}
 
@@ -328,7 +328,14 @@ if ( ! class_exists( 'GroovyMenuPreset' ) ) {
 				$file_path       = $upload_dir . $upload_filename;
 
 				if ( is_file( $file_path ) ) {
-					$wp_filesystem->delete( $upload_dir . $upload_filename, false, true );
+					$wp_filesystem->delete( $file_path, false, true );
+				}
+
+				$upload_filename = 'preset_' . $post_id . '_rtl.css';
+				$file_path       = $upload_dir . $upload_filename;
+
+				if ( is_file( $file_path ) ) {
+					$wp_filesystem->delete( $file_path, false, true );
 				}
 			}
 

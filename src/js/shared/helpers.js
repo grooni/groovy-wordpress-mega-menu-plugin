@@ -1,19 +1,19 @@
-export function isRtl () {
+export function isRtl() {
   return document.documentElement.getAttribute('dir') === 'rtl';
 }
 
-export function isMobile (mobileWidth) {
+export function isMobile(mobileWidth) {
   return window.matchMedia(`(max-width: ${mobileWidth}px)`).matches;
 }
 
-export function isTargetScrollbar (target) {
+export function isTargetScrollbar(target) {
   const isScrollRail = target.classList.contains('ps__rail-y');
   const isScrollThumb = target.classList.contains('ps__thumb-y');
 
   return isScrollRail || isScrollThumb;
 }
 
-export function getCoords (elem) {
+export function getCoords(elem) {
   let box = elem.getBoundingClientRect();
 
   return {
@@ -23,7 +23,7 @@ export function getCoords (elem) {
 }
 
 // helper function, analog of jQuery wrapInner
-export function wrapInner (parent, wrapper, attribute, attributevalue) {
+export function wrapInner(parent, wrapper, attribute, attributevalue) {
   if (typeof wrapper === 'string') {
     wrapper = document.createElement(wrapper);
   }
@@ -36,7 +36,7 @@ export function wrapInner (parent, wrapper, attribute, attributevalue) {
 }
 
 // helper function, analog of jQuery unwrap
-export function unwrapInner (selector) {
+export function unwrapInner(selector) {
   let el = document.querySelector(selector);
   let parent = el.parentNode;
 
@@ -46,7 +46,7 @@ export function unwrapInner (selector) {
   parent.removeChild(el);
 }
 
-export function wrap (context, query, tag, attribute, attributevalue) {
+export function wrap(context, query, tag, attribute, attributevalue) {
   context.querySelectorAll(query)
     .forEach(elem => {
       const div = document.createElement(tag);
@@ -63,7 +63,7 @@ export class DOMAnimations {
   * @param {Number} duration
   * @returns {Promise <boolean>}
   */
-  static slideUp (element, duration = 300) {
+  static slideUp(element, duration = 300) {
     return new Promise(function (resolve, reject) {
       element.style.height = element.offsetHeight + 'px';
       element.style.transitionProperty = `height, margin, padding`;
@@ -97,7 +97,7 @@ export class DOMAnimations {
   * @param {Number} duration
   * @returns {Promise <boolean>}
   */
-  static slideDown (element, duration = 300) {
+  static slideDown(element, duration = 300) {
     return new Promise(function (resolve, reject) {
       element.style.removeProperty('display');
       let display = window.getComputedStyle(element).display;
@@ -136,7 +136,7 @@ export class DOMAnimations {
   * @param {Number} duration
   * @returns {Promise <boolean>}
   */
-  static slideToggle (element, duration = 300) {
+  static slideToggle(element, duration = 300) {
     if (window.getComputedStyle(element).display === 'none') {
       return this.slideDown(element, duration);
     } else {
@@ -145,7 +145,7 @@ export class DOMAnimations {
   }
 }
 
-export default function fixMenuCloseOnIOS () {
+export default function fixMenuCloseOnIOS() {
 
   let iOS = /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
   let config = {attributes: true};
@@ -170,7 +170,7 @@ export default function fixMenuCloseOnIOS () {
   observer.observe(target, config);
 }
 
-export function getAllUrlParams (url) {
+export function getAllUrlParams(url) {
   var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
   var obj = {};
 
@@ -207,4 +207,22 @@ export function getAllUrlParams (url) {
   }
 
   return obj;
+}
+
+
+export function getElemParents(node, selector) {
+
+  let current = node,
+    list = [];
+
+  while (current.parentNode != null && current.parentNode !== document.documentElement) {
+
+    if (current.parentNode.classList.contains(selector)) {
+      list.push(current.parentNode);
+    }
+
+    current = current.parentNode;
+  }
+
+  return list;
 }

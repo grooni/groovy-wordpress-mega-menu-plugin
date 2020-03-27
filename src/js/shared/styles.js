@@ -261,7 +261,7 @@ export default class GmStyles {
           });
 
           css.push({
-            '.gm-main-menu-wrapper .gm-navbar-nav > .current-menu-ancestor > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > .current-menu-item > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor:hover, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item.gm-open > .gm-anchor': `color: ${settings.topLevelTextColorHover}`,
+            '.gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > .current-menu-item > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor:hover, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item.gm-open > .gm-anchor': `color: ${settings.topLevelTextColorHover}`,
             media: 'desktop'
           });
         }
@@ -277,12 +277,12 @@ export default class GmStyles {
         // hover style 4
         if (settings.hoverStyle === '4') {
           css.push({
-            '.gm-main-menu-wrapper .gm-navbar-nav > .current-menu-ancestor > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > .current-menu-item > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor:hover, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item.gm-open > .gm-anchor': `background-color: ${settings.topLevelTextColorHover}`,
+            '.gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > .current-menu-item > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor:hover, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item.gm-open > .gm-anchor': `background-color: ${settings.topLevelTextColorHover}`,
             media: 'desktop'
           });
 
           css.push({
-            '.gm-main-menu-wrapper .gm-navbar-nav > .current-menu-ancestor > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > .current-menu-item > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor:hover, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item.gm-open > .gm-anchor': `border-color: ${settings.topLevelTextColorHover}`,
+            '.gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > .current-menu-item > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor:hover, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item.gm-open > .gm-anchor': `border-color: ${settings.topLevelTextColorHover}`,
             media: 'desktop'
           });
         }
@@ -290,7 +290,7 @@ export default class GmStyles {
         // hover style 5
         if (settings.hoverStyle === '5') {
           css.push({
-            '.gm-main-menu-wrapper .gm-navbar-nav > .current-menu-ancestor > .gm-anchor .gm-menu-item__txt:after, .gm-main-menu-wrapper .gm-navbar-nav > .current-menu-item > .gm-anchor .gm-menu-item__txt:after, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor:hover .gm-menu-item__txt:after, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item.gm-open > .gm-anchor .gm-menu-item__txt:after': `background-color: ${settings.topLevelTextColorHover}`,
+            '.gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor .gm-menu-item__txt:after, .gm-main-menu-wrapper .gm-navbar-nav > .current-menu-item > .gm-anchor .gm-menu-item__txt:after, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor:hover .gm-menu-item__txt:after, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item.gm-open > .gm-anchor .gm-menu-item__txt:after': `background-color: ${settings.topLevelTextColorHover}`,
             media: 'desktop'
           });
         }
@@ -298,7 +298,7 @@ export default class GmStyles {
         // hover style 6
         if (settings.hoverStyle === '6') {
           css.push({
-            '.gm-main-menu-wrapper .gm-navbar-nav > .current-menu-item > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > .current-menu-ancestor > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor:hover, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item.gm-open > .gm-anchor': `background-color: ${settings.topLevelTextColorHover}`,
+            '.gm-main-menu-wrapper .gm-navbar-nav > .current-menu-item > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor:hover, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item.gm-open > .gm-anchor': `background-color: ${settings.topLevelTextColorHover}`,
             media: 'desktop'
           });
         }
@@ -806,6 +806,12 @@ export default class GmStyles {
         });
       }
 
+      css.push({
+        // Minicart
+        '.gm-main-menu-wrapper .gm-minicart > a': 'padding-left: 0 !important;',
+        media: 'desktop'
+      });
+
       // Desktop styles
       css.push({
         '.gm-navbar': 'position: fixed; z-index: 1041; box-sizing: content-box; width: 300px;',
@@ -910,7 +916,7 @@ export default class GmStyles {
       //Icon menu top level border thickness
       if (settings.iconMenuBorderTopThickness) {
         css.push({
-          '.gm-navbar .gm-main-menu-wrapper .gm-navbar-nav > .gm-menu-item > .gm-anchor, gm-navbar .gm-logo, gm-navbar .gm-search, gm-navbar .gm-minicart, gm-navbar .gm-toolbar-social-link': `border-bottom-width: ${settings.iconMenuBorderTopThickness}px`,
+          '.gm-navbar .gm-main-menu-wrapper .gm-navbar-nav > .gm-menu-item > .gm-anchor, .gm-navbar .gm-logo, .gm-navbar .gm-search, .gm-navbar .gm-minicart, .gm-navbar .gm-toolbar-social-link': `border-bottom-width: ${settings.iconMenuBorderTopThickness}px`,
           media: 'desktop'
         });
       }
@@ -918,7 +924,7 @@ export default class GmStyles {
       // Icon menu top level border color
       if (settings.iconMenuBorderTopColor) {
         css.push({
-          '.gm-navbar .gm-main-menu-wrapper .gm-navbar-nav > .gm-menu-item > .gm-anchor, gm-navbar .gm-logo, gm-navbar .gm-search, gm-navbar .gm-minicart, gm-navbar .gm-toolbar-social-link': `border-bottom-color: ${settings.iconMenuBorderTopColor}`,
+          '.gm-navbar .gm-main-menu-wrapper .gm-navbar-nav > .gm-menu-item > .gm-anchor, .gm-navbar .gm-logo, .gm-navbar .gm-search, .gm-navbar .gm-minicart, .gm-navbar .gm-toolbar-social-link': `border-bottom-color: ${settings.iconMenuBorderTopColor}`,
           media: 'desktop'
         });
       }
@@ -926,7 +932,7 @@ export default class GmStyles {
       // Icon menu top level border style
       if (settings.iconMenuBorderTopStyle) {
         css.push({
-          '.gm-navbar .gm-main-menu-wrapper .gm-navbar-nav > .gm-menu-item > .gm-anchor, gm-navbar .gm-logo, gm-navbar .gm-search, gm-navbar .gm-minicart, gm-navbar .gm-toolbar-social-link': `border-bottom-style: ${settings.iconMenuBorderTopStyle}`,
+          '.gm-navbar .gm-main-menu-wrapper .gm-navbar-nav > .gm-menu-item > .gm-anchor, .gm-navbar .gm-logo, .gm-navbar .gm-search, .gm-navbar .gm-minicart, .gm-navbar .gm-toolbar-social-link': `border-bottom-style: ${settings.iconMenuBorderTopStyle}`,
           media: 'desktop'
         });
       }
@@ -964,14 +970,14 @@ export default class GmStyles {
       // Icon menu top level border style
       if (settings.iconMenuBorderTopStyle) {
         css.push({
-          '.gm-navbar .gm-main-menu-wrapper .gm-navbar-nav > .gm-menu-item > .gm-anchor, gm-navbar .gm-logo': `border-bottom-style: ${settings.iconMenuBorderTopStyle}`,
+          '.gm-navbar .gm-main-menu-wrapper .gm-navbar-nav > .gm-menu-item > .gm-anchor, .gm-navbar .gm-logo': `border-bottom-style: ${settings.iconMenuBorderTopStyle}`,
           media: 'desktop'
         });
       }
 
       if (settings.iconMenuBorderTopStyle) {
         css.push({
-          '.gm-navbar .gm-main-menu-wrapper .gm-navbar-nav > .gm-menu-item > .gm-anchor, gm-navbar .gm-logo': `border-bottom-style: ${settings.iconMenuBorderTopStyle}`,
+          '.gm-navbar .gm-main-menu-wrapper .gm-navbar-nav > .gm-menu-item > .gm-anchor, .gm-navbar .gm-logo': `border-bottom-style: ${settings.iconMenuBorderTopStyle}`,
           media: 'desktop'
         });
       }
@@ -1014,7 +1020,7 @@ export default class GmStyles {
         '.gm-navbar .navbar.gm-navbar--align-right .gm-cart-counter': 'top: -2px; right: -25px; left: auto; border-radius: 50% 50% 50% 0;',
         '.gm-navbar .gm-mega-menu__item__title': 'display: block; clear: both; padding: 12px 20px; cursor: pointer; white-space: nowrap; text-transform: uppercase; color: #5a5a5a; border-bottom: none; font-size: 11px; font-weight: 700; line-height: 25px;',
         '.gm-navbar .gm-minicart-dropdown': 'top: 0;',
-        '.admin-bar gm-navbar' : 'top: 32px; height: calc(100vh - 32px);',
+        '.admin-bar .gm-navbar' : 'top: 32px; height: calc(100vh - 32px);',
         '.gm-navbar .gm-dropdown-submenu .gm-dropdown-menu-wrapper': 'top: -3px;',
         media: 'desktop'
       });
@@ -1146,7 +1152,7 @@ export default class GmStyles {
 
       if (settings.header.style === 2) {
         css.push({
-          '.gm-navbar:not(.gm-navbar-sticky-toggle) ~ .gm-main-menu-wrapper .gm-navbar-nav > .current-menu-item > .gm-anchor, .gm-navbar:not(.gm-navbar-sticky-toggle) ~ .gm-main-menu-wrapper .gm-navbar-nav > .current-menu-ancestor > .gm-anchor, .gm-navbar:not(.gm-navbar-sticky-toggle) ~ .gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor:hover, .gm-navbar:not(.gm-navbar-sticky-toggle) ~ .gm-main-menu-wrapper .gm-navbar-nav > .menu-item.gm-open > .gm-anchor': `color: ${settings.topLevelTextColorHover}`
+          '.gm-navbar:not(.gm-navbar-sticky-toggle) ~ .gm-main-menu-wrapper .gm-navbar-nav > .current-menu-item > .gm-anchor, .gm-navbar:not(.gm-navbar-sticky-toggle) ~ .gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor, .gm-navbar:not(.gm-navbar-sticky-toggle) ~ .gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor:hover, .gm-navbar:not(.gm-navbar-sticky-toggle) ~ .gm-main-menu-wrapper .gm-navbar-nav > .menu-item.gm-open > .gm-anchor': `color: ${settings.topLevelTextColorHover}`
         });
       } else {
         css.push({
@@ -1851,7 +1857,7 @@ export default class GmStyles {
     // Sub level active link text color
     if (settings.subLevelTextActiveColor) {
       css.push({
-        '.gm-main-menu-wrapper .gm-navbar-nav .gm-dropdown-menu .current-menu-ancestor > .gm-menu-item__link, .gm-main-menu-wrapper .gm-navbar-nav .gm-dropdown-menu .current-menu-item .gm-menu-item__link ': `color: ${settings.subLevelTextActiveColor}`,
+        '.gm-main-menu-wrapper .gm-navbar-nav .gm-dropdown-menu li.current-menu-ancestor > .gm-menu-item__link, .gm-main-menu-wrapper .gm-navbar-nav .gm-dropdown-menu li.current-menu-item > .gm-menu-item__link ': `color: ${settings.subLevelTextActiveColor}`,
         media: 'desktop'
       });
     }
@@ -1897,7 +1903,7 @@ export default class GmStyles {
     // Mobile navigation text hover & current skin color
     if (settings.responsiveNavigationHoverTextColor) {
       css.push({
-        '.gm-navigation-drawer .gm-anchor:hover, .gm-navigation-drawer .current-menu-parent > .gm-anchor, .gm-navigation-drawer .current-menu-item > .gm-anchor': `color: ${settings.responsiveNavigationHoverTextColor}`
+        '.gm-navigation-drawer .gm-anchor:hover, .gm-navigation-drawer .current-menu-parent > .gm-anchor, .gm-navigation-drawer li.current-menu-item > .gm-anchor': `color: ${settings.responsiveNavigationHoverTextColor}`
       });
     }
 

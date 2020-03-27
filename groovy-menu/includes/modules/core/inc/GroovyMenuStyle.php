@@ -448,7 +448,7 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 
 			$settings = $this->serialize( true );
 
-			$compiled_css = $this->get( 'general', 'compiled_css' );
+			$compiled_css = $this->get( 'general', 'compiled_css' . ( is_rtl() ? '_rtl' : '' ) );
 
 			if ( empty( $compiled_css ) ) {
 				$classes_navbar[] = 'gm-no-compiled-css';
@@ -826,24 +826,26 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 				}
 			}
 
-			$preset_settings = $this->serialize( true, false, false, false );
-			$compiled_css    = '';
+			$preset_settings  = $this->serialize( true, false, false, false );
+			$compiled_css     = '';
+			$compiled_css_rtl = '';
 
 			if ( isset( $preset_settings['compiled_css'] ) ) {
 				$compiled_css = $preset_settings['compiled_css'];
 				unset( $preset_settings['compiled_css'] );
 			}
-			if ( isset( $preset_settings['direction'] ) ) {
-				$direction = $preset_settings['direction'];
+			if ( isset( $preset_settings['compiled_css_rtl'] ) ) {
+				$compiled_css_rtl = $preset_settings['compiled_css_rtl'];
+				unset( $preset_settings['compiled_css_rtl'] );
 			}
 
 			$preset_settings = wp_json_encode( $preset_settings );
 			$preset_key      = md5( rand() . uniqid() . time() );
 
-			update_post_meta( self::getPresetPostId( $this->preset ), 'gm_preset_settings', $preset_settings );
 			update_post_meta( self::getPresetPostId( $this->preset ), 'gm_compiled_css', $compiled_css );
+			update_post_meta( self::getPresetPostId( $this->preset ), 'gm_compiled_css_rtl', $compiled_css_rtl );
+			update_post_meta( self::getPresetPostId( $this->preset ), 'gm_preset_settings', $preset_settings );
 			update_post_meta( self::getPresetPostId( $this->preset ), 'gm_preset_key', $preset_key );
-			update_post_meta( self::getPresetPostId( $this->preset ), 'gm_direction', $direction );
 			update_post_meta( self::getPresetPostId( $this->preset ), 'gm_version', GROOVY_MENU_VERSION );
 		}
 
@@ -963,10 +965,10 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 		protected function loadPresetCssFromPost( $post_id ) {
 
 			$options = array(
-				'compiled_css'  => '',
-				'preset_key'    => '',
-				'direction'     => '',
-				'version'       => '',
+				'version'          => '',
+				'preset_key'       => '',
+				'compiled_css'     => '',
+				'compiled_css_rtl' => '',
 			);
 
 			$post_id = intval( $post_id );
@@ -976,14 +978,17 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 			}
 
 			$options = array(
-				'compiled_css'  => get_post_meta( $post_id, 'gm_compiled_css', true ),
-				'preset_key'    => get_post_meta( $post_id, 'gm_preset_key', true ),
-				'direction'     => get_post_meta( $post_id, 'gm_direction', true ),
-				'version'       => get_post_meta( $post_id, 'gm_version', true ),
+				'version'          => get_post_meta( $post_id, 'gm_version', true ),
+				'preset_key'       => get_post_meta( $post_id, 'gm_preset_key', true ),
+				'compiled_css'     => get_post_meta( $post_id, 'gm_compiled_css', true ),
+				'compiled_css_rtl' => get_post_meta( $post_id, 'gm_compiled_css_rtl', true ),
 			);
 
 			if ( empty( $options['compiled_css'] ) || ! is_string( $options['compiled_css'] ) ) {
 				$options['compiled_css'] = '';
+			}
+			if ( empty( $options['compiled_css_rtl'] ) || ! is_string( $options['compiled_css_rtl'] ) ) {
+				$options['compiled_css_rtl'] = '';
 			}
 
 			return $options;
