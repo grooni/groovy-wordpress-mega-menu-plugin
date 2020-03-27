@@ -93,9 +93,9 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 == Changelog ==
 
 = 1.1.5 =
-* Fix: Text color for the active top-level menu item
+* Fix: Fixed text color for active top-level menu item
 * Fix: Mega menu wrapper padding.
-* Add: a "soft" transition between adjacent sub-menus of the 3rd level.
+* Add: Added a smooth transition between dropdowns of the 3rd level.
 
 = 1.1.4 =
 * Fix: Issue with minimalistic menu type.
