@@ -92,8 +92,6 @@ export function dropdownCloseAll () {
     clearTimeout(el.getAttribute('data-timeout-open'));
     el.setAttribute('data-timeout-open', null);
     el.setAttribute('data-close', true);
-    clearTimeout(el.getAttribute('data-timeout-close'));
-    el.setAttribute('data-timeout-close', null);
 
     if (el.closest('.gm-navigation-drawer')) {
       let elChildren = el.children;
