@@ -1292,7 +1292,7 @@ return array(
 			'toolbar_additional_info_font_size'         => array(
 				'title'   => esc_html__( 'Toolbar additional information font size', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 10, 50 ),
+				'range'   => array( 8, 50 ),
 				'default' => 14,
 				'unit'    => 'px',
 			),
@@ -1304,7 +1304,7 @@ return array(
 			'toolbar_icon_size'                         => array(
 				'title'   => esc_html__( 'Toolbar social icon size', 'groovy-menu' ),
 				'type'    => 'number',
-				'range'   => array( 10, 50 ),
+				'range'   => array( 8, 50 ),
 				'default' => 16,
 				'unit'    => 'px',
 			),
