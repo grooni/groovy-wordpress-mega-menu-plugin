@@ -389,7 +389,7 @@ export default class GmStyles {
         settings.topLvlLinkCenterConsideringLogo
       ) {
         css.push({
-          '.gm-navbar.gm-top-links-align-center .gm-logo': 'position: inherit;',
+          '.gm-navbar.gm-top-links-align-center .gm-logo': 'position: inherit !important;',
           media: 'desktop'
         });
       }
