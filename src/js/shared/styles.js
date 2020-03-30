@@ -389,7 +389,7 @@ export default class GmStyles {
         settings.topLvlLinkCenterConsideringLogo
       ) {
         css.push({
-          '.gm-navbar.gm-top-links-align-center .gm-logo': 'position: inherit;',
+          '.gm-navbar.gm-top-links-align-center .gm-logo': 'position: inherit !important;',
           media: 'desktop'
         });
       }
@@ -1365,7 +1365,7 @@ export default class GmStyles {
       // Toolbar social icon size
       if (settings.toolbarIconSize) {
         css.push({
-          '.gm-navbar .gm-toolbar-social-link i': `font-size: ${settings.toolbarIconSize}px`
+          '.gm-navbar .gm-toolbar-social-link, .gm-navbar .gm-toolbar-social-link i': `font-size: ${settings.toolbarIconSize}px`
         });
       }
     }

@@ -890,7 +890,7 @@ function groovyMenu( $args = array() ) {
 
 	}
 	$output_html .= '<div class="gm-divider--vertical mx-4"></div>';
-	if ( ! gm_get_shop_is_catalog() && $groovyMenuSettings['woocommerceCart'] && class_exists( 'WooCommerce' ) && class_exists( 'wc_get_page_id' ) ) {
+	if ( ! gm_get_shop_is_catalog() && $groovyMenuSettings['woocommerceCart'] && class_exists( 'WooCommerce' ) && function_exists( 'wc_get_page_id' ) ) {
 		global $woocommerce;
 
 		$qty = 0;

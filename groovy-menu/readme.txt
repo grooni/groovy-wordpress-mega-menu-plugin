@@ -2,9 +2,9 @@
 Contributors: Grooni
 Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive, responsive menu, sticky menu, vertical menu, horizontal menu, ajax cart
 Requires at least: 4.9.7
-Tested up to: 5.3.2
+Tested up to: 5.4
 Requires PHP: 7.0
-Stable tag: 1.1.6
+Stable tag: 1.1.7
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 Groovy menu is a responsive and free Mega Menu WordPress plugin designed for creating mobile friendly menus with a lot of options.
@@ -91,6 +91,11 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.1.7 =
+* Fix: Fixed a bug when the option "Top level links with align center must considering logo width" has been ignored
+* Fix: Text size for social icons in the toolbar now also depends on the preset option "Toolbar social icon size"
+* Fix: Fixed a bug when Woocommerce mini-cart aren't displayed in the mobile version
 
 = 1.1.6 =
 * Fix: Fixed minimalistic menu bug with centered logo.
