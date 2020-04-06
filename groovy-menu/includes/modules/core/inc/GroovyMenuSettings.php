@@ -694,7 +694,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 					),
 					admin_url( 'admin.php' )
 				);
-				wp_safe_redirect( esc_url( $edit_url ) );
+				GroovyMenuUtils::safe_redirect( $edit_url );
 			}
 			exit;
 		}
@@ -799,7 +799,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 					admin_url( 'admin.php' )
 				);
 
-				wp_safe_redirect( esc_url( $redirect_url ) );
+				GroovyMenuUtils::safe_redirect( $redirect_url );
 			}
 			exit;
 		}
@@ -886,9 +886,10 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				return;
 			}
 
-			if ( ! $this->lver ) {
+			if ( $this->lver ) {
 				return;
 			}
+
 			if ( GroovyMenuRoleCapabilities::presetCreate( true ) ) {
 				$id = esc_attr( sanitize_text_field( wp_unslash( $_GET['id'] ) ) );
 
@@ -903,7 +904,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 					admin_url( 'admin.php' )
 				);
 
-				wp_safe_redirect( esc_url( $redirect_url ) );
+				GroovyMenuUtils::safe_redirect( $redirect_url );
 			}
 			exit;
 		}
@@ -989,7 +990,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				admin_url( 'admin.php' )
 			);
 
-			wp_safe_redirect( esc_url( $redirect_url ) );
+			GroovyMenuUtils::safe_redirect( $redirect_url );
 		}
 
 		/**
@@ -1062,7 +1063,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				admin_url( 'admin.php' )
 			);
 
-			wp_safe_redirect( esc_url( $redirect_url ) );
+			GroovyMenuUtils::safe_redirect( $redirect_url );
 		}
 
 		public function delete() {
@@ -1080,7 +1081,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 					admin_url( 'admin.php' )
 				);
 
-				wp_safe_redirect( esc_url( $redirect_url ) );
+				GroovyMenuUtils::safe_redirect( $redirect_url );
 			}
 			exit;
 		}

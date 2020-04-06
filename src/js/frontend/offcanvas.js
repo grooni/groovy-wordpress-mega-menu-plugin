@@ -91,6 +91,10 @@ function wrapContent () {
 }
 
 function closeIfNoChildren (navDrawer) {
+  if (!navDrawer) {
+    return;
+  }
+
   let anchors = navDrawer.querySelectorAll('.gm-anchor');
 
   anchors.forEach(function (anchor) {
@@ -120,7 +124,9 @@ export function offcanvasSlide() {
     }
   }
 
-  hamburgerMenu.addEventListener('click', clickHandler);
+  if (hamburgerMenu) {
+    hamburgerMenu.addEventListener('click', clickHandler);
+  }
 
   offcanvasClickOutside();
 

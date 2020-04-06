@@ -1993,4 +1993,26 @@ class GroovyMenuUtils {
 	}
 
 
+	/**
+	 * Redirect page.
+	 *
+	 * @param string $url
+	 *
+	 */
+	public static function safe_redirect( $url ) {
+		$url = empty( $url ) ? '' : esc_url( $url );
+
+		if ( empty( $url ) ) {
+			wp_die();
+		}
+
+		$tagn = 'script type="text/javascript"';
+		$tagt = 'type="text/javascript"';
+		$text = 'window.location.replace("' . $url . '");';
+
+		echo '<' . $tagn . ' ' . $tagt . '>' . $text . '</' . $tagn . '>';
+
+	}
+
+
 }
