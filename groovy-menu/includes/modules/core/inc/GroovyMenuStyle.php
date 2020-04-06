@@ -830,14 +830,8 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 			$compiled_css     = '';
 			$compiled_css_rtl = '';
 
-			if ( isset( $preset_settings['compiled_css'] ) ) {
-				$compiled_css = $preset_settings['compiled_css'];
-				unset( $preset_settings['compiled_css'] );
-			}
-			if ( isset( $preset_settings['compiled_css_rtl'] ) ) {
-				$compiled_css_rtl = $preset_settings['compiled_css_rtl'];
-				unset( $preset_settings['compiled_css_rtl'] );
-			}
+			unset( $preset_settings['compiled_css'] );
+			unset( $preset_settings['compiled_css_rtl'] );
 
 			$preset_settings = wp_json_encode( $preset_settings );
 			$preset_key      = md5( rand() . uniqid() . time() );

@@ -111,15 +111,17 @@ class GroovyMenu {
       overlapMenu(options);
     }
 
-    if (navbar.classList.contains('gm-no-compiled-css') || isPreview) {
-      gmStyles.addToHeader(cssGenerated);
-    }
-
-    if (!isPreview) {
-      if (navbar.classList.contains('gm-no-compiled-css')
-        || options.version !== navbar.getAttribute('data-version')) {
+    if (navbar) {
+      if (navbar.classList.contains('gm-no-compiled-css') || isPreview) {
         gmStyles.addToHeader(cssGenerated);
-        reinsertCompiledStyles(gmStyles, options, cssGenerated);
+      }
+
+      if (!isPreview) {
+        if (navbar.classList.contains('gm-no-compiled-css')
+          || options.version !== navbar.getAttribute('data-version')) {
+          gmStyles.addToHeader(cssGenerated);
+          reinsertCompiledStyles(gmStyles, options, cssGenerated);
+        }
       }
     }
 
@@ -312,7 +314,7 @@ class GroovyMenu {
         }
       });
 
-      if (!isTouchDevice) {
+      if (!isTouchDevice && navbarNav) {
         navbarNav.addEventListener('mouseleave', dropdownCloseAll);
       }
     }
@@ -342,12 +344,14 @@ class GroovyMenu {
       }
     }
 
-    if (isMobile() || headerStyle === 2) {
-      window.addEventListener('load', function () {
-        mainMenuWrapper.classList.add('gm-navbar-animated');
-      });
-    } else {
-      mainMenuWrapper.classList.remove('gm-navbar-animated');
+    if (mainMenuWrapper) {
+      if (isMobile() || headerStyle === 2) {
+        window.addEventListener('load', function () {
+          mainMenuWrapper.classList.add('gm-navbar-animated');
+        });
+      } else {
+        mainMenuWrapper.classList.remove('gm-navbar-animated');
+      }
     }
 
     initOffcanvas({
@@ -420,10 +424,12 @@ class GroovyMenu {
         }
       }
 
-      if (isMobile() || headerStyle === 2) {
-        mainMenuWrapper.classList.add('gm-navbar-animated');
-      } else {
-        mainMenuWrapper.classList.remove('gm-navbar-animated');
+      if (mainMenuWrapper) {
+        if (isMobile() || headerStyle === 2) {
+          mainMenuWrapper.classList.add('gm-navbar-animated');
+        } else {
+          mainMenuWrapper.classList.remove('gm-navbar-animated');
+        }
       }
 
     }, 100));

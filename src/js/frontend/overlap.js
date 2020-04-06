@@ -23,6 +23,8 @@ export function overlapMenu (options) {
   if (!options.overlap && headerToolbar) {
     let paddingTopVal = isMobile(options.mobileWidth) ? navbarHeightMobile : navbarHeightDesktop;
 
-    padding.style.paddingTop = `${paddingTopVal}px`;
+    if (padding) {
+      padding.style.paddingTop = `${paddingTopVal}px`;
+    }
   }
 }
