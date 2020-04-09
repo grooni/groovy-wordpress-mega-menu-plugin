@@ -295,7 +295,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	 *
 	 * @return string
 	 */
-	protected function getMenuBlockPostContent( $post_id ) {
+	public function getMenuBlockPostContent( $post_id ) {
 		global $post;
 
 		$mm_content = '';

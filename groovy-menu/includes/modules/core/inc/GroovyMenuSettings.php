@@ -400,6 +400,14 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 
 				}
 
+				$searchForm = isset( $groovyMenuSettings['searchForm'] ) ? $groovyMenuSettings['searchForm'] : 'fullscreen';
+				if ( 'custom' === $searchForm ) {
+					$searchFormCustomId = isset( $groovyMenuSettings['searchFormCustomId'] ) ? intval( $groovyMenuSettings['searchFormCustomId'] ) : 0;
+					if ( $searchFormCustomId ) {
+						$menu_blocks[ $searchFormCustomId ] = true;
+					}
+				}
+
 				if ( empty( $menu_blocks ) ) {
 					return;
 				}
@@ -577,8 +585,13 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				$show_integration = false;
 			}
 
-			$main_slug = 'groovy_menu_welcome';
-			$lic_opt   = get_option( GROOVY_MENU_DB_VER_OPTION . '__lic' );
+			$main_slug    = 'groovy_menu_welcome';
+			$lic_opt      = get_option( GROOVY_MENU_DB_VER_OPTION . '__lic' );
+			$lic_type     = GroovyMenuUtils::get_lic_data( 'type' );
+			$welcome_page = 'welcome_full';
+			if ( 'extended' === $lic_type ) {
+				$welcome_page = 'welcome_ext';
+			}
 
 			add_menu_page(
 				__( 'Groovy menu', 'groovy-menu' ),
@@ -596,7 +609,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				__( 'Welcome', 'groovy-menu' ),
 				'edit_theme_options',
 				'groovy_menu_welcome',
-				array( $this, 'welcome_full' )
+				array( $this, $welcome_page )
 			);
 
 
@@ -1258,7 +1271,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 													target="_blank"><?php esc_html_e( 'Get support', 'groovy-menu' ); ?></a>
 												<?php if ( ! $supported_until ) { ?>
 													<a
-														class="gm-welcome-big-button gm-welcome-big-button--green"
+														class="gm-welcome-big-button gm-welcome-big-button--green gm-welcome-button--renew"
 														href="https://codecanyon.net/checkout/from_item/23049456?license=regular&size=source&support=renew_6month&ref=grooni"
 														target="_blank"><?php esc_html_e( 'Renew support', 'groovy-menu' ); ?></a>
 												<?php } ?>
@@ -1286,7 +1299,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 										</div>
 										<p>
 											<strong><?php esc_html_e( 'Important!', 'groovy-menu' ); ?></strong> <?php esc_html_e( 'One standard license is valid only for', 'groovy-menu' ); ?>
-											<strong><?php esc_html_e( '1 website', 'groovy-menu' ); ?></strong>. <?php esc_html_e( 'Including multiple, you need to have own license on each individual site within your MultiSite installation.', 'groovy-menu' ); ?>
+											<strong><?php esc_html_e( '1 website', 'groovy-menu' ); ?></strong>. <?php esc_html_e( 'Including multiple, you need to have own license on each individual site within your MultiSite installation organized on sub-domains.', 'groovy-menu' ); ?>
 										</p>
 										<p><?php esc_html_e( 'When moving a site from one domain to another please deregister the plugin first.', 'groovy-menu' ); ?></p>
 										<p class="gm-welcome-margintop"><a
@@ -1344,6 +1357,104 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 									class="gm-welcome-tile__link gm-welcome-tile__link--secondary-color"><?php esc_html_e( 'VIDEO', 'groovy-menu' );
 									?></a>
 							</div>
+						</div>
+					</div>
+
+				</div><!-- .gm-welcome-body -->
+			</div>
+
+
+			<?php
+
+			/**
+			 * Fires after the groovy menu welcome page output.
+			 *
+			 * @since 1.9.0
+			 */
+			do_action( 'gm_after_welcome_output' );
+
+		}
+
+
+		public function welcome_ext() {
+
+			global $gm_supported_module;
+
+			$lic_opt = GroovyMenuUtils::check_lic();
+
+			if ( $lic_opt ) {
+				$lic_txt = '<span class="gm-lic-ok dashicons dashicons-yes-alt"></span>' . esc_html__( 'Plugin is registered!', 'groovy-menu' );
+			} else {
+				$lic_txt = '<span class="gm-lic-lock dashicons dashicons-lock"></span>' . esc_html__( 'Plugin is NOT registered!', 'groovy-menu' );
+			}
+
+			/**
+			 * Fires before the groovy menu welcome page output.
+			 *
+			 * @since 1.9.0
+			 */
+			do_action( 'gm_before_welcome_output' );
+
+			?>
+
+			<div class="gm-welcome-container gm-welcome-full gm-welcome-ext">
+				<div class="gm-welcome-body">
+					<div class="gm-welcome-header">
+                    <span class="gm-welcome-header__logo">
+                      <img src="<?php echo GROOVY_MENU_URL; ?>assets/images/groovy-menu-repsonsive-logo.svg" alt="">
+	                    <span
+		                    class="gm-welcome-header__subversion_full"><?php esc_html_e( 'premium version', 'groovy-menu' ); ?></span>
+                    </span>
+						<span class="gm-welcome-header__version"><?php echo GROOVY_MENU_VERSION; ?></span>
+					</div>
+					<div class="gm-welcome-top-block">
+						<div class="gm-welcome-top-block__txt">
+							<div class="gm-welcome-registered__txt">
+								<?php echo GroovyMenuUtils::clean_output( $lic_txt ); ?>
+							</div>
+							<?php if ( $lic_opt ) { ?>
+								<p class="gm-welcome-simple-text">
+									<?php esc_html_e( 'under the extended license for the template:', 'groovy-menu' ); ?>
+									<code><?php echo esc_attr( $gm_supported_module['theme'] ); ?></code>
+								</p>
+							<?php } ?>
+						</div>
+						<div class="gm-welcome-top-block__img">
+							<img src="<?php echo GROOVY_MENU_URL; ?>assets/images/laptop-with-bg.png" alt="">
+						</div>
+					</div>
+
+					<div class="gm-welcome-tabs">
+						<div class="gm-welcome-tab gm-welcome-tab__welcome gm-welcome-grid-wrapper2-1">
+
+							<div class="gm-welcome-grid">
+								<div class="gm-welcome-buy-license-wrapper">
+									<div class="gm-welcome-notice gm-welcome-notice__important">
+										<div class="gm-welcome-tab__big-text">
+											<p>
+												<strong><?php esc_html_e( 'Buy new license', 'groovy-menu' ); ?></strong> - <?php esc_html_e( 'Starting a new project? Buy another license', 'groovy-menu' ); ?>
+											</p>
+										</div>
+										<p>
+											<strong><?php esc_html_e( 'Important!', 'groovy-menu' ); ?></strong> <?php esc_html_e( 'This license is registered for the current template.', 'groovy-menu' ); ?>
+										</p>
+										<p><?php esc_html_e( 'If you liked the plugin and want to install it on another template and use it separately, then you need to purchase a license.', 'groovy-menu' ); ?></p>
+										<p class="gm-welcome-margintop"><a
+												class="gm-welcome-big-button gm-welcome-big-button--green"
+												href="https://1.envato.market/regular"
+												target="_blank"><?php esc_html_e( 'Purchase new license', 'groovy-menu' ); ?></a>
+										</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="gm-welcome-grid gm-welcome-sysinfo__wrapper">
+								<div class="gm-welcome-sysinfo">
+									<h2><?php esc_html_e( 'System Status', 'groovy-menu' ); ?></h2>
+									<?php echo GroovyMenuUtils::get_environment_info( 'html' ); ?>
+								</div>
+							</div>
+
 						</div>
 					</div>
 

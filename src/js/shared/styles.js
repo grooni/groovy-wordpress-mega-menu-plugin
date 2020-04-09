@@ -1824,6 +1824,13 @@ export default class GmStyles {
           '.gm-navigation-drawer .gm-search': `color: ${settings.responsiveNavigationTextColor}`
         });
       }
+
+      // Fullscreen canvas background color
+      if (settings.searchFormFullscreenBackground) {
+        css.push({
+          '.gm-search__fullscreen-container': `background-color: ${settings.searchFormFullscreenBackground}`
+        });
+      }
     }
 
     // Top level text color

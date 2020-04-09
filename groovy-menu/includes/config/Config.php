@@ -159,6 +159,16 @@ return array(
 				'condition' => array( 'search_form', 'in', array( 'fullscreen', 'dropdown-without-ajax' ) ),
 				'default'     => 'all',
 			),
+			'search_form_fullscreen_background' => array(
+				'title'       => esc_html__( 'Fullscreen canvas background color', 'groovy-menu' ),
+				'description' => esc_html__( 'Also applicable for mobile screen resolutions', 'groovy-menu' ),
+				'type'        => 'colorpicker',
+				'default'     => 'rgba(0,0,0,0.85)',
+				'alpha'       => true,
+				'condition'   => array(
+					array( 'search_form', 'in', array( 'dropdown-without-ajax', 'fullscreen', 'custom' ) )
+				)
+			),
 			'search_form_end'                              => array(
 				'type' => 'inlineEnd'
 			),

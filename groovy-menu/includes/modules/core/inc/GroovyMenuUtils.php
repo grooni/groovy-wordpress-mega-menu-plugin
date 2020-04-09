@@ -347,6 +347,157 @@ class GroovyMenuUtils {
 
 
 	/**
+	 * Get all posts by gm_menu_block post type.
+	 *
+	 * @return array
+	 */
+	public static function getMenuBlockPostsList() {
+
+		static $cached_posts = array();
+
+		if ( ! empty( $cached_posts ) ) {
+			return $cached_posts;
+		}
+
+		$params = array(
+			'post_type'   => 'gm_menu_block',
+			'post_status' => 'publish',
+			'numberposts' => - 1,
+		);
+
+		$posts = get_posts( $params );
+
+		foreach ( $posts as $post ) {
+			if ( ! empty( $post->ID ) ) {
+				$title                     = empty( $post->post_title ) ? '' : $post->post_title;
+				$title                     = $title . ' (id:' . $post->ID . ')';
+				$cached_posts[ $post->ID ] = $title;
+			}
+		}
+
+		return $cached_posts;
+
+	}
+
+
+	/**
+	 * Get all posts by gm_menu_block post type.
+	 *
+	 * @param string $searchIcon
+	 *
+	 * @return string
+	 */
+	public static function getSearchBlock( $searchIcon ) {
+
+		global $groovyMenuSettings;
+
+		$html             = '';
+		$searchFilter     = '';
+		$menuBlockContent = '';
+		$isFullScreen     = false;
+		$isShowDefault    = true;
+		$isCustom         = false;
+
+		$searchForm                  = isset( $groovyMenuSettings['searchForm'] ) ? $groovyMenuSettings['searchForm'] : 'fullscreen';
+		$searchFormFrom              = isset( $groovyMenuSettings['searchFormFrom'] ) ? $groovyMenuSettings['searchFormFrom'] : 'all';
+		$searchFormCustomWrapper     = isset( $groovyMenuSettings['searchFormCustomWrapper'] ) ? $groovyMenuSettings['searchFormCustomWrapper'] : 'fullscreen';
+		$searchFormCustomShowDefault = isset( $groovyMenuSettings['searchFormCustomShowDefault'] ) ? $groovyMenuSettings['searchFormCustomShowDefault'] : true;
+		$searchFormCustomId          = isset( $groovyMenuSettings['searchFormCustomId'] ) ? intval( $groovyMenuSettings['searchFormCustomId'] ) : 0;
+
+		if ( 'custom' === $searchForm ) {
+			$isCustom = true;
+		}
+
+		if ( 'fullscreen' === $searchForm || ( $isCustom && 'dropdown' !== $searchFormCustomWrapper ) ) {
+			$isFullScreen = 'fullscreen';
+		}
+
+		if ( $isCustom && ! $searchFormCustomShowDefault ) {
+			$isShowDefault = false;
+		}
+
+		if ( $isCustom && ! empty( $searchFormCustomId ) ) {
+			$menuBlockHelper  = new \GroovyMenu\WalkerNavMenu();
+			$menuBlockContent = $menuBlockHelper->getMenuBlockPostContent( $searchFormCustomId );
+		}
+
+		if ( ! empty( $searchForm ) && 'all' !== $searchFormFrom ) {
+			$searchFilter = '<input type="hidden" name="post_type" value="' . $searchFormFrom . '">';
+		}
+
+		$searchFilter = apply_filters( 'gm_search_filter_hidden_input', $searchFilter );
+
+		$html .= '<div class="gm-search ' . ( $isFullScreen ? 'fullscreen' : 'gm-dropdown' ) . '">
+										<i class="' . esc_attr( $searchIcon ) . '"></i>
+										<span class="gm-search__txt">'
+		         . esc_html__( 'Search', 'groovy-menu' ) .
+		         '</span>';
+
+		if ( $searchForm === 'dropdown-without-ajax' || ( 'custom' === $searchForm && 'dropdown' === $searchFormCustomWrapper ) ) {
+			$html .= '
+										<div class="gm-search-wrapper">';
+			if ( $isCustom && 'dropdown' === $searchFormCustomWrapper ) {
+				$html .= $menuBlockContent;
+			}
+
+			if ( $isShowDefault ) {
+				$html .= '					<form action="' . network_site_url() . '/"
+											      method="get"
+											      class="gm-search-wrapper-form">
+												<div class="gm-form-group">
+													<input placeholder="' . esc_html__( 'Search...', 'groovy-menu' ) . '"
+													       type="text"
+													       name="s"
+													       class="gm-search__input">
+													' . $searchFilter . '
+													<button type="submit" class="gm-search-btn">
+														<i class="fa fa-search"></i>
+													</button>
+												</div>
+											</form>';
+			}
+			$html .= '					</div>';
+		}
+
+		$html .= '<div class="gm-search__fullscreen-container gm-hidden">
+										<span class="gm-search__close"></span>
+
+										<div class="gm-search__inner">';
+		if ( $isShowDefault ) {
+			$html .= '<span class="gm-search__alpha">'
+			         . esc_html__( 'START TYPING AND PRESS ENTER TO SEARCH', 'groovy-menu' ) .
+			         '</span>';
+		}
+		$html .= '							<div class="gm-search-wrapper">';
+
+		if ( $isCustom ) {
+			$html .= $menuBlockContent;
+		}
+
+		if ( $isShowDefault ) {
+			$html .= '							<form action="' . network_site_url() . '/"
+												      method="get"
+												      class="gm-search-wrapper-form">
+													<div class="gm-form-group">
+														<input type="text" name="s" class="gm-search__input">
+														' . $searchFilter . '
+														<button type="submit" class="gm-search-btn">
+															<i class="fa fa-search"></i>
+														</button>
+													</div>
+												</form>';
+		}
+		$html .= '							</div>
+										</div>
+									</div>';
+		$html .= '				</div>';
+
+
+		return $html;
+
+	}
+
+	/**
 	 * Uses for many custom options
 	 *
 	 * @return string

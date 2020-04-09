@@ -664,24 +664,6 @@ function groovyMenu( $args = array() ) {
 
 	$output_html .= '</nav>';
 
-	$show_gm_action = false;
-
-	$searchForm = $groovyMenuSettings['searchForm'];
-	if ( 'disable' !== $searchForm ) {
-		$show_gm_action = true;
-	}
-	$searchFormFrom = $groovyMenuSettings['searchFormFrom'];
-	$searchFilter   = '';
-	if ( ! empty( $searchForm ) && 'all' !== $searchFormFrom ) {
-		$searchFilter = '<input type="hidden" name="post_type" value="' . $searchFormFrom . '">';
-	}
-
-	$searchFilter = apply_filters( 'gm_search_filter_hidden_input', $searchFilter );
-
-	if ( ! gm_get_shop_is_catalog() && $groovyMenuSettings['woocommerceCart'] && class_exists( 'WooCommerce' ) ) {
-		$show_gm_action = true;
-	}
-
 
 	ob_start();
 	/**
@@ -693,67 +675,38 @@ function groovyMenu( $args = array() ) {
 	$output_html .= ob_get_clean();
 
 
+	$show_gm_action = false;
+
+	$searchForm = $groovyMenuSettings['searchForm'];
+	if ( 'disable' !== $searchForm ) {
+		$show_gm_action = true;
+	}
+
+	if ( ! gm_get_shop_is_catalog() && $groovyMenuSettings['woocommerceCart'] && class_exists( 'WooCommerce' ) ) {
+		$show_gm_action = true;
+	}
+
 	if ( $show_gm_action ) {
 
 		$output_html .= '<div class="gm-actions">';
-
-		$searchIcon = 'gmi gmi-zoom-search';
-		if ( $styles->getGlobal( 'misc_icons', 'search_icon' ) ) {
-			$searchIcon = $styles->getGlobal( 'misc_icons', 'search_icon' );
-		}
 
 		if ( $styles->get( 'general', 'show_divider' ) ) {
 
 			$output_html .= '<span class="gm-nav-inline-divider"></span>';
 
 		}
+
 		if ( 'disable' !== $searchForm ) {
 
-
-			$output_html .= '<div class="gm-search ' . ( ( 'fullscreen' === $searchForm ) ? 'fullscreen' : 'gm-dropdown' ) . '">
-										<i class="nav-search ' . esc_attr( $searchIcon ) . '"></i>
-										<span class="gm-search__txt">'
-			                . esc_html__( 'Search', 'groovy-menu' ) .
-			                '</span>';
-
-			if ( $searchForm === 'dropdown-without-ajax' ) {
-				$output_html .= '
-											<form action="' . network_site_url() . '/"
-											      method="get"
-											      class="gm-search-wrapper">
-												<div class="gm-form-group">
-													<input placeholder="' . esc_html__( 'Search...', 'groovy-menu' ) . '"
-													       type="text"
-													       name="s"
-													       class="gm-search__input">
-													' . $searchFilter . '
-													<button type="submit" class="gm-search-btn">
-														<i class="fa fa-search"></i>
-													</button>
-												</div>
-											</form>';
+			$searchIcon = 'gmi gmi-zoom-search';
+			if ( $styles->getGlobal( 'misc_icons', 'search_icon' ) ) {
+				$searchIcon = $styles->getGlobal( 'misc_icons', 'search_icon' );
 			}
-			$output_html .= '<div class="gm-search__fullscreen-container gm-hidden">
-											<span class="gm-search__close"></span>
 
-											<div class="gm-search__inner">
-											<span class="gm-search__alpha">'
-			                . esc_html__( 'START TYPING AND PRESS ENTER TO SEARCH', 'groovy-menu' ) .
-			                '</span>
-												<form action="' . network_site_url() . '/"
-												      method="get"
-												      class="gm-search-wrapper">
-													<div class="gm-form-group">
-														<input type="text" name="s" class="gm-search__input">
-														' . $searchFilter . '
-														<button type="submit" class="gm-search-btn">
-															<i class="fa fa-search"></i>
-														</button>
-													</div>
-												</form>
-											</div>
-										</div>
-									</div>';
+			if ( method_exists( 'GroovyMenuUtils', 'getSearchBlock' ) ) {
+				$output_html .= GroovyMenuUtils::getSearchBlock( $searchIcon );
+			}
+
 		}
 
 		if ( ! gm_get_shop_is_catalog() && $groovyMenuSettings['woocommerceCart'] && class_exists( 'WooCommerce' ) && function_exists( 'wc_get_page_id' ) ) {
@@ -880,8 +833,18 @@ function groovyMenu( $args = array() ) {
 
 	if ( 'disable' !== $searchForm ) {
 
+		$isFullScreen = false;
 
-		$output_html .= '<div class="gm-search ' . ( ( $searchForm === 'fullscreen' ) ? 'fullscreen' : 'gm-dropdown' ) . '">
+		if ( 'custom' === $searchForm ) {
+			$isCustom = true;
+		}
+
+		$searchFormCustomWrapper = isset( $groovyMenuSettings['searchFormCustomWrapper'] ) ? $groovyMenuSettings['searchFormCustomWrapper'] : 'fullscreen';
+		if ( 'fullscreen' === $searchForm || ( $isCustom && 'dropdown' !== $searchFormCustomWrapper ) ) {
+			$isFullScreen = 'fullscreen';
+		}
+
+		$output_html .= '<div class="gm-search ' . ( $isFullScreen ? 'fullscreen' : 'gm-dropdown' ) . '">
 						<i class="gm-icon ' . esc_attr( $searchIcon ) . '"></i>
 						<span class="gm-search__txt">'
 		                . esc_html__( 'Search', 'groovy-menu' ) .
@@ -889,6 +852,7 @@ function groovyMenu( $args = array() ) {
 					</div>';
 
 	}
+
 	$output_html .= '<div class="gm-divider--vertical mx-4"></div>';
 	if ( ! gm_get_shop_is_catalog() && $groovyMenuSettings['woocommerceCart'] && class_exists( 'WooCommerce' ) && function_exists( 'wc_get_page_id' ) ) {
 		global $woocommerce;
