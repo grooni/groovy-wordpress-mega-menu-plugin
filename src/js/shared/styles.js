@@ -1805,7 +1805,8 @@ export default class GmStyles {
       css.push({
         // Search
         '.gm-search:not(.fullscreen) .gm-search-wrapper': 'position: absolute; top: 100%; right: 0; width: 350px; padding: 15px 20px; transition: opacity ease 0.3s, visibility ease 0.3s; border-right: 4px solid #93cb52; border-top-left-radius: 4px; border-bottom-left-radius: 4px; background-color: #fff; box-shadow: 0 0 5px rgba(0, 1, 0, 0.3);',
-        '.gm-main-menu-wrapper .gm-search > i': 'padding-left: 15px; padding-right: 13px; cursor: pointer;',
+        '.gm-main-menu-wrapper .gm-search': 'cursor: pointer;',
+        '.gm-main-menu-wrapper .gm-search > i': 'padding-left: 15px; padding-right: 13px;',
         '.gm-navbar--align-right .gm-search-wrapper': 'right: auto; left: -15px;',
         '.gm-main-menu-wrapper .gm-search__txt': 'display: none;',
         media: 'desktop'

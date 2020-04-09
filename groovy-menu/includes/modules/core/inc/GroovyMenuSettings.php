@@ -496,8 +496,8 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 		 * @return GroovyMenuStyle
 		 */
 		public function settings( $menu_id = null ) {
-			if ( is_null( $menu_id ) && isset( $_GET['id'] ) ) {
-				$menu_id = esc_attr( $_GET['id'] );
+			if ( is_null( $menu_id ) && isset( $_GET['id'] ) ) { // @codingStandardsIgnoreLine
+				$menu_id = esc_attr( $_GET['id'] ); // @codingStandardsIgnoreLine
 			}
 			if ( is_null( $this->settings ) ) {
 				$this->settings = new GroovyMenuStyle( $menu_id );

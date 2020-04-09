@@ -422,10 +422,20 @@ class GroovyMenuUtils {
 		}
 
 		if ( ! empty( $searchForm ) && 'all' !== $searchFormFrom ) {
-			$searchFilter = '<input type="hidden" name="post_type" value="' . $searchFormFrom . '">';
+			$searchFilter .= '<input type="hidden" name="post_type" value="' . $searchFormFrom . '">';
+		}
+
+		$current_lang = apply_filters( 'wpml_current_language', null );
+		if ( $current_lang ) {
+			$searchFilter .= '<input type="hidden" name="lang" value="' . $current_lang . '">';
 		}
 
 		$searchFilter = apply_filters( 'gm_search_filter_hidden_input', $searchFilter );
+
+		$home_url = trailingslashit( network_site_url() );
+		if ( defined( 'WPML_PLUGIN_FOLDER' ) && WPML_PLUGIN_FOLDER ) {
+			$home_url = apply_filters( 'wpml_home_url', $home_url );
+		}
 
 		$html .= '<div class="gm-search ' . ( $isFullScreen ? 'fullscreen' : 'gm-dropdown' ) . '">
 										<i class="' . esc_attr( $searchIcon ) . '"></i>
@@ -441,7 +451,7 @@ class GroovyMenuUtils {
 			}
 
 			if ( $isShowDefault ) {
-				$html .= '					<form action="' . network_site_url() . '/"
+				$html .= '					<form action="' . $home_url . '"
 											      method="get"
 											      class="gm-search-wrapper-form">
 												<div class="gm-form-group">
@@ -475,7 +485,7 @@ class GroovyMenuUtils {
 		}
 
 		if ( $isShowDefault ) {
-			$html .= '							<form action="' . network_site_url() . '/"
+			$html .= '							<form action="' . $home_url . '"
 												      method="get"
 												      class="gm-search-wrapper-form">
 													<div class="gm-form-group">

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import tingle from 'tingle.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -47,5 +48,41 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   });
 
+
+  function initGSModal() {
+    let btn = document.querySelector('.gm-dashboard__global-settings-btn');
+    let modalContent = document.querySelector('#global-settings-modal');
+    let closeModalBtn = document.querySelector('#global-settings-modal .gm-modal-close');
+    let tabs = document.querySelectorAll('.groovy-tabs');
+
+    if (modalContent === null) {
+      return;
+    }
+
+    let gsModal = new tingle.modal({
+      footer: false,
+      stickyFooter: false,
+      closeMethods: ['overlay', 'escape'],
+      cssClass: ['gm-modal--lg', 'gm-modal-overflow'],
+      beforeOpen() {
+        modalContent.classList.remove('gm-hidden');
+      }
+    });
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => gsModal.checkOverflow());
+    });
+
+    gsModal.setContent(modalContent);
+
+    btn.addEventListener('click', () => {
+      gsModal.open();
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+      gsModal.close();
+    });
+  }
+
+  initGSModal();
 
 });
