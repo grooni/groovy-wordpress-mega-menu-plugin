@@ -96,17 +96,19 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 * Improve: Added setting for choosing background color to search screen in fullscreen mode.
 * Fix: The search query now is considering the language setting, with installed and active the multilanguage WPML plugin.
 * Fix: "Global settings" button not working on the "Integration" section.
+* Fix: Bug with assignment and deleting presets of the menu.
+* Fix: Bug with RTL issue.
 
 = 1.1.7 =
-* Fix: Fixed a bug when the option "Top level links with align center must considering logo width" has been ignored
-* Fix: Text size for social icons in the toolbar now also depends on the preset option "Toolbar social icon size"
-* Fix: Fixed a bug when Woocommerce mini-cart aren't displayed in the mobile version
+* Fix: Fixed a bug when the option "Top level links with align center must considering logo width" has been ignored.
+* Fix: Text size for social icons in the toolbar now also depends on the preset option "Toolbar social icon size".
+* Fix: Fixed a bug when Woocommerce mini-cart aren't displayed in the mobile version.
 
 = 1.1.6 =
 * Fix: Fixed minimalistic menu bug with centered logo.
 
 = 1.1.5 =
-* Fix: Fixed text color for active top-level menu item
+* Fix: Fixed text color for active top-level menu item.
 * Fix: Mega menu wrapper padding.
 * Add: Added a smooth transition between dropdowns of the 3rd level.
 
@@ -153,27 +155,27 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 = 1.0.9 =
 * Add: Added an option "General" > "Submenu" > "Show Mega Menu titles as regular menu items" to the preset settings. Which will allow you to display the links and badges for Mega Menu titles.
 * Add: Integration into the "Theme Locations"
-* Fix: Now the output of echo when the Actions from Header.php are working will be displayed in the markup location match to the action
-* Add: Added 4 new actions for working in the toolbar
+* Fix: Now the output of echo when the Actions from Header.php are working will be displayed in the markup location match to the action.
+* Add: Added 4 new actions for working in the toolbar.
 
 = 1.0.8 =
-* Fix: check empty nav_menu list when get Global settings translations
+* Fix: check empty nav_menu list when get Global settings translations.
 
 = 1.0.7 =
 * Add: ru_RU language
-* Fix: Fixed an error that did not allow translating phrases in the Global settings
+* Fix: Fixed an error that did not allow translating phrases in the Global settings.
 
 = 1.0.6 =
-* Fix: Cancels the display of the menu in maintenance mode when auto-integration is enabled
-* Fix: Prevent conflict with cornerstone plugin
-* Fix: Anchor tracking for one page scrolls now works with any id
-* Fix: Output buffer conflict with some plugins
-* Fix: Overlay submenu of submenu with multi level dropdowns
-* Fix: Social icon link text font size
-* Add: Option for preset: social icon link text hide on mobile
-* Add: Target and rel options for social links
-* Add: New social icons default font pack
-* Add: The ability to display custom text in the social media link
+* Fix: Cancels the display of the menu in maintenance mode when auto-integration is enabled.
+* Fix: Prevent conflict with cornerstone plugin.
+* Fix: Anchor tracking for one page scrolls now works with any id.
+* Fix: Output buffer conflict with some plugins.
+* Fix: Overlay submenu of submenu with multi level dropdowns.
+* Fix: Social icon link text font size.
+* Add: Option for preset: social icon link text hide on mobile.
+* Add: Target and rel options for social links.
+* Add: New social icons default font pack.
+* Add: The ability to display custom text in the social media link.
 * Add: Preset option: Top level links with align center must considering logo width.
 
 = 1.0.5 =
