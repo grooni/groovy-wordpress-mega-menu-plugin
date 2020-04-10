@@ -17,6 +17,11 @@ function disableMenuThumbnail () {
 
 export function initMenuThumbnails () {
   const gmNavbar = document.querySelector('.gm-navbar');
+
+  if (!gmNavbar) {
+    return;
+  }
+
   const thumbnailMenuItems = gmNavbar.querySelectorAll('.gm-has-featured-img');
 
   thumbnailMenuItems.forEach(function (item) {

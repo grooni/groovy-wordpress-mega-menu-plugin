@@ -435,6 +435,8 @@ GROOVY DASHBOARD PRESET
   line-height: 23px;
   text-transform: uppercase;
   letter-spacing: 1.2px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .preset-title__alpha-sub {

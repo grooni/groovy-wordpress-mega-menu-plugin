@@ -11,12 +11,12 @@
 
 
 #echo '-----=[ make modules from premium ]==-----'
-cd ../groovy-menu/
-./deploy---modules.sh
-cd ../groovy-menu-wp.org
+##cd ../groovy-menu/
+##./deploy---modules.sh
+##cd ../groovy-menu-wp.org
 
 
-#echo '-----=[ copy modules from premium ]==-----'
+echo '-----=[ copy modules from premium ]==-----'
 rm -r zip_modules
 mkdir zip_modules
 #ln -s ../groovy-menu/zip_modules zip_modules

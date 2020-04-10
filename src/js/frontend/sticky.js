@@ -78,7 +78,7 @@ function handleSlideDown () {
     stickyOffset = window.innerHeight / 100 * optionsStickyOffset;
   }
 
-  if (window.pageYOffset >= stickyOffset) {
+  if (window.pageYOffset >= stickyOffset && navbar) {
     let toolbarHeight = toolbar === null ? 0 : toolbar.offsetHeight;
     let headerStickyHeight = isMobile(options.mobileWidth) ? options.mobileHeaderStickyHeight : options.headerHeightSticky;
 
@@ -99,7 +99,7 @@ function handleSlideDown () {
     navbarWrapper.style.transform = `translateY(${headerStickyHeight + getStickyMenuOffset() + toolbarHeight}px)`;
 
     recalculatePaddingsAlignCenter({options});
-  } else if (window.pageYOffset === 0) {
+  } else if (window.pageYOffset === 0 && navbar) {
     navbar.classList.remove('gm-navbar-sticky-toggle');
 
     navbarWrapper.style.top = null;
@@ -114,11 +114,11 @@ function handleSlideDown () {
 }
 
 function handleFixedSticky () {
-  if (window.pageYOffset > 0) {
+  if (window.pageYOffset > 0 && navbar) {
     navbar.classList.add('gm-navbar-sticky-toggle');
     navbarWrapper.style.transform = `translateY(${getStickyMenuOffset()}px)`;
     recalculatePaddingsAlignCenter({options});
-  } else if (window.pageYOffset === 0) {
+  } else if (window.pageYOffset === 0 && navbar) {
     navbar.classList.remove('gm-navbar-sticky-toggle');
     navbarWrapper.style.transform = null;
 
@@ -149,11 +149,11 @@ export function enableStickyNav () {
   }
 
 
-  if (stickySettings.type === 'slide-down') {
+  if (stickySettings.type === 'slide-down' && navbar) {
     navbar.classList.add('gm-navbar-sticky');
     handleSlideDown({data: {options}});
     window.addEventListener('scroll', lodash.throttle(handleSlideDown, 50));
-  } else if (stickySettings.type === 'fixed-sticky') {
+  } else if (stickySettings.type === 'fixed-sticky' && navbar) {
     navbar.classList.add('gm-navbar-fixed-sticky');
     navbarWrapper.style.transform = `translate3d(0,' + (${translateHeight}) + 'px,0)`;
     handleFixedSticky();
@@ -162,17 +162,19 @@ export function enableStickyNav () {
 }
 
 export function disableStickyNav () {
-  if (options.stickyHeader === 'slide-down') {
+  if (options.stickyHeader === 'slide-down' && navbar) {
     window.removeEventListener('scroll', handleSlideDown);
     navbar.classList.remove('gm-navbar-sticky', 'gm-navbar-sticky-toggle');
   }
 
-  if (options.stickyHeader === 'fixed-sticky') {
+  if (options.stickyHeader === 'fixed-sticky' && navbar) {
     window.removeEventListener('scroll', handleFixedSticky);
     navbar.classList.remove('gm-navbar-fixed-sticky', 'gm-navbar-sticky-toggle');
   }
 
-  navbarWrapper.style.transform = 'translate3d(0, 0, 0)';
+  if (navbarWrapper) {
+    navbarWrapper.style.transform = 'translate3d(0, 0, 0)';
+  }
 }
 
 export function initStickyNav (args) {
