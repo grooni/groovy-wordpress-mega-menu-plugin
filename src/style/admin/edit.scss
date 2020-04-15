@@ -1334,3 +1334,16 @@ SAVE SPINNER
   width: 18px;
   height: 18px;
 }
+
+/***************************************
+RTL style fixes
+***************************************/
+.rtl .gm-form .gm-gui__module .choices__list {
+  text-align: right;
+}
+
+.rtl .gm-form .gm-gui__module .choices__list--dropdown .choices__item {
+  text-align: right;
+  padding-left: 10px;
+  padding-right: 10px;
+}
