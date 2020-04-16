@@ -833,14 +833,15 @@ function groovyMenu( $args = array() ) {
 
 	if ( 'disable' !== $searchForm ) {
 
-		$isFullScreen = false;
+		$isFullScreen   = false;
+		$isSearchCustom = false;
 
 		if ( 'custom' === $searchForm ) {
-			$isCustom = true;
+			$isSearchCustom = true;
 		}
 
 		$searchFormCustomWrapper = isset( $groovyMenuSettings['searchFormCustomWrapper'] ) ? $groovyMenuSettings['searchFormCustomWrapper'] : 'fullscreen';
-		if ( 'fullscreen' === $searchForm || ( $isCustom && 'dropdown' !== $searchFormCustomWrapper ) ) {
+		if ( 'fullscreen' === $searchForm || ( $isSearchCustom && 'dropdown' !== $searchFormCustomWrapper ) ) {
 			$isFullScreen = 'fullscreen';
 		}
 
