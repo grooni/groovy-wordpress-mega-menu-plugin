@@ -302,18 +302,18 @@ function groovyMenu( $args = array() ) {
 		$groovyMenuSettings['css_file_params'] = $css_file_params;
 
 		$output_html .= groovy_menu_add_preset_style( $preset_id, $compiled_css, $args['gm_echo'] );
-	}
 
-	$custom_css = trim( stripslashes( $styles->get( 'general', 'css' ) ) );
-	$custom_js  = trim( stripslashes( $styles->get( 'general', 'js' ) ) );
+		$custom_css = trim( stripslashes( $styles->get( 'general', 'css' ) ) );
+		$custom_js  = trim( stripslashes( $styles->get( 'general', 'js' ) ) );
 
-	if ( $custom_css ) {
-		$tag_name    = 'style';
-		$output_html .= "\n" . '<' . esc_attr( $tag_name ) . '>' . $custom_css . '</' . esc_attr( $tag_name ) . '>';
-	}
-	if ( $custom_js ) {
-		$tag_name    = 'script';
-		$output_html .= "\n" . '<' . esc_attr( $tag_name ) . '>' . $custom_js . '</' . esc_attr( $tag_name ) . '>';
+		if ( $custom_css ) {
+			$tag_name    = 'style';
+			$output_html .= "\n" . '<' . esc_attr( $tag_name ) . '>' . $custom_css . '</' . esc_attr( $tag_name ) . '>';
+		}
+		if ( $custom_js ) {
+			$tag_name    = 'script';
+			$output_html .= "\n" . '<' . esc_attr( $tag_name ) . '>' . $custom_js . '</' . esc_attr( $tag_name ) . '>';
+		}
 	}
 
 	$wrapper_tag = 'header';
