@@ -869,10 +869,8 @@ function groovyMenu( $args = array() ) {
 		$output_html .= '
 					<div class="gm-minicart">
 						<a href="' . get_permalink( wc_get_page_id( 'cart' ) ) . '" class="gm-minicart-link">
-							<div class="gm-badge">
-								<i class="gm-icon ' . esc_attr( $cartIcon ) . '"></i>
-								' . groovy_menu_woocommerce_mini_cart_counter( $qty ) . '
-							</div>
+							<div class="gm-badge">' . groovy_menu_woocommerce_mini_cart_counter( $qty ) . '</div>
+							<i class="gm-icon ' . esc_attr( $cartIcon ) . '"></i>
 							<span class="gm-minicart__txt">'
 		                . esc_html__( 'My cart', 'groovy-menu' ) .
 		                '</span>
