@@ -94,6 +94,7 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 
 = 1.1.10 =
 * Fix: Fixed fit on the screen of search icons and mini-cart for iOS.
+* Fix: Preset preview fix.
 
 = 1.1.9 =
 * Fix: Fixed php notice: "Undefined variable isCustom".
