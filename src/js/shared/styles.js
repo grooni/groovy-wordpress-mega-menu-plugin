@@ -170,6 +170,45 @@ export default class GmStyles {
         });
       }
 
+      // Triangle border upper
+      if (settings.subLevelBorderUpperTriangle) {
+        const triangleColor1 = settings.subLevelBorderTopColor ? settings.subLevelBorderTopColor : 'transparent';
+        const triangleColor2 = settings.subLevelBackgroundColor ? settings.subLevelBackgroundColor : 'transparent';
+        const mainMenuZIndex = settings.menuZIndex ? settings.menuZIndex : 9999;
+        const menuZIndexTriangleBefore = mainMenuZIndex + 14;
+        const menuZIndexTriangleAfter = mainMenuZIndex + 15;
+
+        css.push({
+          '.gm-main-menu-wrapper .gm-dropdown .gm-dropdown-menu--lvl-1::after': `
+            content: "";
+            position: absolute;
+            left: 10px;
+            top: -13px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 10px 10px 10px;
+            border-color: transparent transparent ${triangleColor1} transparent;
+            z-index: ${menuZIndexTriangleAfter};`,
+          media: 'desktop'
+        });
+
+        css.push({
+          '.gm-main-menu-wrapper .gm-dropdown .gm-dropdown-menu--lvl-1::before': `
+            content: "";
+            position: absolute;
+            left: 11px;
+            top: -12px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 9px 9px 9px;
+            border-color: transparent transparent ${triangleColor2} transparent;
+            z-index: ${menuZIndexTriangleBefore};`,
+          media: 'desktop'
+        });
+      }
+
       // Mega menu canvas wide width
       if (settings.megaMenuCanvasContainerWidthType === 'mega-menu-canvas-wide-container-boxed' ||
         settings.megaMenuCanvasContainerWidthType === 'mega-menu-canvas-wide-container-wide') {

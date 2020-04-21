@@ -497,6 +497,12 @@ return array(
 				'default' => null,
 				'alpha'   => true,
 			),
+			'sub_level_border_upper_triangle' => array(
+				'title'     => esc_html__( 'Upper triangle', 'groovy-menu' ),
+				'type'      => 'checkbox',
+				'default'   => false,
+				'condition' => array( 'header.style', 'in', array( '1' ) ),
+			),
 			'sub_item_text_start'                          => array(
 				'title' => esc_html__( 'Submenu text', 'groovy-menu' ),
 				'type'  => 'inlineStart',
