@@ -4,7 +4,7 @@ Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive,
 Requires at least: 4.9.7
 Tested up to: 5.4
 Requires PHP: 7.0
-Stable tag: 1.1.9
+Stable tag: 1.1.10
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -95,7 +95,6 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 == Changelog ==
 
 = 1.1.10 =
-* Add: Added option Upper triangle, which displays a triangle for submenu pointing to the parent menu item of the top level.
 * Fix: Fixed fit on the screen of search icons and mini-cart for iOS.
 * Fix: Preset preview fix.
 
