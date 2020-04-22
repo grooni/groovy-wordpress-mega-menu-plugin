@@ -94,7 +94,8 @@ class FrontendWalker extends WalkerNavMenu {
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		global $groovyMenuSettings;
-		$item_output = '';
+		$item_output   = '';
+		$hiding_symbol = array( '-', '–', '&#8211;' );
 
 		$this->currentItem = $item;
 		$indent            = ( $depth ) ? str_repeat( "\t", $depth ) : '';
@@ -364,10 +365,15 @@ class FrontendWalker extends WalkerNavMenu {
 						}
 					}
 
+					$current_title = apply_filters( 'the_title', $item->title, $item->ID );
+					if ( in_array( $current_title, $hiding_symbol, true ) ) {
+						$current_title = '&nbsp;';
+					}
+
 					$item_link .= '<span class="gm-menu-item__txt-wrapper">';
 					$item_link .= $badge['left'];
 					$item_link .= '<span class="gm-menu-item__txt' . ( empty( $item->url ) ? ' gm-menu-item__txt-empty-url' : '' ) . '">';
-					$item_link .= $link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $link_after;
+					$item_link .= $link_before . $current_title . $link_after;
 					$item_link .= '</span>'; // .gm-menu-item__txt
 					$item_link .= $badge['right'];
 					$item_link .= '</span>'; // .gm-menu-item__txt-wrapper
@@ -390,7 +396,12 @@ class FrontendWalker extends WalkerNavMenu {
 
 				} else {
 
-					$item_title .= apply_filters( 'the_title', $item->title, $item->ID );
+					$current_title = apply_filters( 'the_title', $item->title, $item->ID );
+					if ( in_array( $current_title, $hiding_symbol, true ) ) {
+						$current_title = '&nbsp;';
+					}
+
+					$item_title .= $current_title;
 
 				}
 
@@ -630,10 +641,15 @@ class FrontendWalker extends WalkerNavMenu {
 					}
 				}
 
+				$current_title = apply_filters( 'the_title', $item->title, $item->ID );
+				if ( in_array( $current_title, $hiding_symbol, true ) ) {
+					$current_title = '&nbsp;';
+				}
+
 				$item_output .= '<span class="gm-menu-item__txt-wrapper">';
 				$item_output .= $badge['left'];
 				$item_output .= '<span class="gm-menu-item__txt' . ( empty( $item->url ) ? ' gm-menu-item__txt-empty-url' : '' ) . '">';
-				$item_output .= $link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $link_after;
+				$item_output .= $link_before . $current_title . $link_after;
 				$item_output .= '</span>'; // .gm-menu-item__txt
 				$item_output .= $badge['right'];
 				$item_output .= '</span>'; // .gm-menu-item__txt-wrapper
