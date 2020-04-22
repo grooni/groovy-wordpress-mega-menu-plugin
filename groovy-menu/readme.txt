@@ -95,6 +95,7 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 == Changelog ==
 
 = 1.1.10 =
+* Add: Added option Upper triangle, which displays a triangle for submenu pointing to the parent menu item of the top level.
 * Fix: Fixed fit on the screen of search icons and mini-cart for iOS.
 * Fix: Preset preview fix.
 
