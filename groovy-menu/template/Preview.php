@@ -2,7 +2,7 @@
 
 global $groovyMenuSettings, $groovyMenuPreview;
 
-$groovyMenuPreview = false;
+$groovyMenuPreview = true;
 
 $preset_id     = isset( $_GET['id'] ) ? esc_attr( sanitize_text_field( wp_unslash( $_GET['id'] ) ) ) : false; // @codingStandardsIgnoreLine
 $from_action   = isset( $_GET['from'] ) ? esc_attr( sanitize_text_field( wp_unslash( $_GET['from'] ) ) ) : null; // @codingStandardsIgnoreLine
@@ -10,6 +10,8 @@ $rtl_flag      = isset( $_GET['d'] ) ? true : false; // @codingStandardsIgnoreLi
 $preset_params = empty( $_POST['menu'] ) ? array() : $_POST['menu']; // @codingStandardsIgnoreLine
 $styles        = new GroovyMenuStyle( $preset_id );
 $settings      = new GroovyMenuSettings();
+
+GroovyMenu\StyleStorage::getInstance()->set_disable_storage();
 
 // Save preview image.
 if ( isset( $_POST ) && isset( $_POST['image'] ) && ! empty( $_GET['screen'] ) ) {
@@ -37,13 +39,26 @@ if ( 'api' === $from_action ) {
 
 }
 
-$serialized_styles                          = $styles->serialize();
+$serialized_styles                          = $styles->serialize( false, true, true, false );
 $groovyMenuSettings                         = $serialized_styles;
 $groovyMenuSettings['preset']               = array(
 	'id'   => $styles->getPreset()->getId(),
 	'name' => $styles->getPreset()->getName(),
 );
 $groovyMenuSettings['extra_navbar_classes'] = $styles->getHtmlClasses();
+
+$custom_css          = trim( stripslashes( $styles->get( 'general', 'css' ) ) );
+$custom_js           = trim( stripslashes( $styles->get( 'general', 'js' ) ) );
+$output_custom_media = '';
+
+if ( $custom_css ) {
+	$tag_name            = 'style';
+	$output_custom_media .= "\n" . '<' . esc_attr( $tag_name ) . '>' . $custom_css . '</' . esc_attr( $tag_name ) . '>';
+}
+if ( $custom_js ) {
+	$tag_name            = 'script';
+	$output_custom_media .= "\n" . '<' . esc_attr( $tag_name ) . '>' . $custom_js . '</' . esc_attr( $tag_name ) . '>';
+}
 
 // Disable admin bar.
 add_filter( 'show_admin_bar', '__return_false' );
@@ -96,6 +111,9 @@ wp_enqueue_script( 'groovy-js-preview', GROOVY_MENU_URL . 'assets/js/preview.js'
 	 * @since 1.0
 	 */
 	do_action( 'gm_before_preview' );
+
+
+	echo $output_custom_media ? : '';
 
 	$args = array(
 		'menu'           => GroovyMenuUtils::getDefaultMenu(),

@@ -109,7 +109,7 @@
 body:not(.admin-bar) {
   .gm-navigation-drawer {
     top: 0;
-    height: 100vh;
+    height: 100%;
   }
 }
 
@@ -117,7 +117,7 @@ body:not(.admin-bar) {
   .admin-bar {
     .gm-navigation-drawer {
       top: 46px;
-      height: calc(100vh - 46px);
+      height: calc(100% - 46px);
     }
   }
 }
@@ -126,7 +126,7 @@ body:not(.admin-bar) {
   .admin-bar {
     .gm-navigation-drawer {
       top: 32px;
-      height: calc(100vh - 32px);
+      height: calc(100% - 32px);
     }
   }
 }
