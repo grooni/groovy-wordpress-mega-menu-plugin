@@ -179,10 +179,10 @@ export default class GmStyles {
         const menuZIndexTriangleAfter = mainMenuZIndex + 15;
 
         css.push({
-          '.gm-main-menu-wrapper .gm-dropdown .gm-dropdown-menu--lvl-1::after': `
+          '.gm-main-menu-wrapper .gm-dropdown:not(.mega-gm-dropdown) .gm-dropdown-menu--lvl-1::after': `
             content: "";
             position: absolute;
-            left: 10px;
+            left: 12px;
             top: -13px;
             width: 0;
             height: 0;
@@ -190,14 +190,18 @@ export default class GmStyles {
             border-width: 0 10px 10px 10px;
             border-color: transparent transparent ${triangleColor1} transparent;
             z-index: ${menuZIndexTriangleAfter};`,
+          '.gm-main-menu-wrapper .gm-dropdown:not(.mega-gm-dropdown) .gm-dropdown-menu-wrapper--left .gm-dropdown-menu--lvl-1::after': `
+            left: auto;
+            right: 20px;
+          `,
           media: 'desktop'
         });
 
         css.push({
-          '.gm-main-menu-wrapper .gm-dropdown .gm-dropdown-menu--lvl-1::before': `
+          '.gm-main-menu-wrapper .gm-dropdown:not(.mega-gm-dropdown) .gm-dropdown-menu--lvl-1::before': `
             content: "";
             position: absolute;
-            left: 11px;
+            left: 13px;
             top: -12px;
             width: 0;
             height: 0;
@@ -205,6 +209,10 @@ export default class GmStyles {
             border-width: 0 9px 9px 9px;
             border-color: transparent transparent ${triangleColor2} transparent;
             z-index: ${menuZIndexTriangleBefore};`,
+          '.gm-main-menu-wrapper .gm-dropdown:not(.mega-gm-dropdown) .gm-dropdown-menu-wrapper--left .gm-dropdown-menu--lvl-1::before' : `
+            left: auto;
+            right: 21px;
+          `,
           media: 'desktop'
         });
       }
