@@ -7,10 +7,12 @@ Requires PHP: 7.0
 Stable tag: 1.1.9
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
-Groovy menu is a responsive and free Mega Menu WordPress plugin designed for creating mobile friendly menus with a lot of options.
+
+Groovy Menu is a Free responsive Mega Menu plugin that will allow you easily to add an awesome menu on your site and improve website navigation.
 
 == Description ==
 [Mega Menu Pro](https://codecanyon.net/item/groovy-menu-wordpress-mega-menu-plugin/23049456) | [Demo](https://groovymenu.grooni.com/) | [Documentation](https://grooni.com/docs/groovy-menu/) | [Video tutorials](https://www.youtube.com/channel/UCpbGGAUnqSLwCAoNgm5uAKg)
+
 Groovy Menu is a responsive and free [Mega Menu WordPress plugin](https://groovymenu.grooni.com/) that will allow you easily to add an awesome menu on your site and improve website navigation. Is an easy to customize, just need to upload your logo and fit your own colors, fonts and sizes.
 https://youtu.be/w1SIBwMdfn8
 View more video tutorials: [Mega Menu Tutorials](https://www.youtube.com/channel/UCpbGGAUnqSLwCAoNgm5uAKg)
@@ -93,6 +95,7 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 == Changelog ==
 
 = 1.1.10 =
+* Add: Added option Upper triangle, which displays a triangle for submenu pointing to the parent menu item of the top level.
 * Fix: Fixed fit on the screen of search icons and mini-cart for iOS.
 * Fix: Preset preview fix.
 

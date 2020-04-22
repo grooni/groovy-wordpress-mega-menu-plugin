@@ -27,7 +27,7 @@ export function gmSaveForm (form, subAction) {
       gmGetSettings(form, subAction);
     })
     .catch(function (response) {
-      showMessage(`Error: ${response.data.data}`);
+      showMessage(`Error gmSaveForm: ${response.data}`);
       saveBtnElem.className = saveBtnElem.className.replace(spinnerClassName, '');
     });
 }
@@ -50,7 +50,7 @@ function gmGetSettings (form, subAction) {
       gmSaveStyles(presetId, gmStyles.get(), subAction);
     })
     .catch(function (response) {
-      showMessage(`Error: ${response.data.data}`);
+      showMessage(`Error gmGetSettings: ${response.data}`);
       saveBtnElem.className = saveBtnElem.className.replace(spinnerClassName, '');
     });
 }
@@ -78,7 +78,7 @@ function gmSaveStyles (presetId, css, subAction) {
       saveBtnElem.className = saveBtnElem.className.replace(spinnerClassName, '');
     })
     .catch(function (response) {
-      showMessage(`Error: ${response.data.data}`);
+      showMessage(`Error gmSaveStyles: ${response.data}`);
       saveBtnElem.className = saveBtnElem.className.replace(spinnerClassName, '');
     });
 }
