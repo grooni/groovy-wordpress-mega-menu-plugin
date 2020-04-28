@@ -57,13 +57,16 @@ function gmGetSettings (form, subAction) {
 
 function gmSaveStyles (presetId, css, subAction) {
   let gmNonce = document.querySelector('#gm-nonce-save-preset-action');
+  let groovyMenuForm = document.querySelector('.gm-form');
+
   const data = {
     'action': 'gm_save_styles',
     'sub_action': subAction,
-    'data': css,
     'direction': isRtl() ? 'rtl' : 'ltr',
     'preset_id': presetId,
-    'gm_nonce': gmNonce.value
+    'gm_nonce': gmNonce.value,
+    'gm_version': groovyMenuForm.getAttribute('data-version'),
+    'data': css,
   };
   const params = new URLSearchParams(data);
 

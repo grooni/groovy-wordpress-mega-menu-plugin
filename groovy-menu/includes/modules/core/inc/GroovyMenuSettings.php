@@ -25,7 +25,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 			add_action( 'wp_ajax_gm_save', array( $this, 'saveSettings' ) );
 
 			add_action( 'wp_ajax_gm_save_styles', array( $this, 'saveStyles' ) );
-			add_action( 'wp_ajax_nopriv_gm_save_styles', array( $this, 'saveStyles' ) );
+			add_action( 'wp_ajax_nopriv_gm_save_styles', array( $this, 'saveStylesNoPriv' ) );
 
 			add_action( 'wp_ajax_gm_save_auto_integration', array( $this, 'saveAutoIntegration' ) );
 
@@ -2598,7 +2598,12 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 			}
 		}
 
-		function saveStyles() {
+		/**
+		 * Save style of preset
+		 *
+		 * @param bool $check_ver
+		 */
+		function saveStyles( $check_ver = false ) {
 			$cap_can = true;
 
 			if ( ! isset( $_POST['gm_nonce'] ) || ! wp_verify_nonce( $_POST['gm_nonce'], 'gm_nonce_preset_save' ) ) {
@@ -2607,9 +2612,12 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 
 			if ( $cap_can && defined( 'DOING_AJAX' ) && DOING_AJAX && ! empty( $_POST ) && isset( $_POST['action'] ) && $_POST['action'] === 'gm_save_styles' ) {
 
-				$ajax_data = empty( $_POST['data'] ) ? '' : trim( $_POST['data'] );
-				$direction = empty( $_POST['direction'] ) ? '' : trim( $_POST['direction'] );
-				$preset_id = empty( $_POST['preset_id'] ) ? '' : trim( $_POST['preset_id'] );
+				$ajax_data  = empty( $_POST['data'] ) ? '' : trim( $_POST['data'] );
+				$direction  = empty( $_POST['direction'] ) ? '' : trim( $_POST['direction'] );
+				$preset_id  = empty( $_POST['preset_id'] ) ? '' : trim( $_POST['preset_id'] );
+				$gm_version = empty( $_POST['gm_version'] ) ? '' : trim( $_POST['gm_version'] );
+
+				$direction_postfix = ( 'rtl' === $direction ) ? '_rtl' : '';
 
 				if ( empty( $ajax_data ) ) {
 					// Send a JSON response back to an AJAX request, and die().
@@ -2626,16 +2634,31 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 					wp_send_json_error( esc_html__( 'Error. Missing id of the current menu', 'groovy-menu' ) );
 				}
 
+				if ( empty( $gm_version ) ) {
+					// Send a JSON response back to an AJAX request, and die().
+					wp_send_json_error( esc_html__( 'Error. Missing Groovy Menu version parameter', 'groovy-menu' ) );
+				}
+
+				if ( $gm_version !== GROOVY_MENU_VERSION ) {
+					// Send a JSON response back to an AJAX request, and die().
+					wp_send_json_error( esc_html__( 'Error. Outdated Groovy Menu version parameter', 'groovy-menu' ) );
+				}
+
+				if ( $check_ver ) {
+					$saved_gm_version      = get_post_meta( intval( $preset_id ), 'gm_version' . $direction_postfix, true );
+					$saved_gm_compiled_css = get_post_meta( intval( $preset_id ), 'gm_compiled_css' . $direction_postfix, true );
+
+					if ( $saved_gm_version === GROOVY_MENU_VERSION && ! empty( $saved_gm_compiled_css) ) {
+						// Send a JSON response back to an AJAX request, and die().
+						wp_send_json_error( esc_html__( 'Error. Groovy Menu preset style already saved', 'groovy-menu' ) );
+					}
+				}
 
 				$preset_key = md5( rand() . uniqid() . time() );
 
-				if ( 'rtl' === $direction ) {
-					update_post_meta( intval( $preset_id ), 'gm_compiled_css_rtl', $ajax_data );
-				} else {
-					update_post_meta( intval( $preset_id ), 'gm_compiled_css', $ajax_data );
-				}
+				update_post_meta( intval( $preset_id ), 'gm_compiled_css' . $direction_postfix, $ajax_data );
 				update_post_meta( intval( $preset_id ), 'gm_preset_key', $preset_key );
-				update_post_meta( intval( $preset_id ), 'gm_version', GROOVY_MENU_VERSION );
+				update_post_meta( intval( $preset_id ), 'gm_version' . $direction_postfix, GROOVY_MENU_VERSION );
 
 				// Save compiled_css to file
 				$this->save_compiled_css( $preset_id, $ajax_data, $direction );
@@ -2661,6 +2684,10 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 			}
 		}
 
+
+		function saveStylesNoPriv() {
+			$this->saveStyles( true );
+		}
 
 		/**
 		 * Save preset compiled style to the file

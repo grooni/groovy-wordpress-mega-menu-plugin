@@ -1003,6 +1003,11 @@ return array(
 				'type'    => 'hiddenInput',
 				'default' => '',
 			),
+			'version_rtl'                                  => array(
+				'title'   => '',
+				'type'    => 'hiddenInput',
+				'default' => '',
+			),
 			'custom_code_group'                            => array(
 				'title'     => esc_html__( 'Custom code', 'groovy-menu' ),
 				'type'      => 'group',
