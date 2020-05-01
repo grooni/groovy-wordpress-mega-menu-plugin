@@ -297,6 +297,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	 */
 	public function getMenuBlockPostContent( $post_id ) {
 		global $post;
+		global $wp_filter;
 
 		$mm_content = '';
 
@@ -352,6 +353,11 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 			} else {
 
 				$mm_content = apply_filters( 'the_content', $post->post_content );
+
+				// fix for bbPress function bbp_remove_all_filters('the_content').
+				if ( empty( $wp_filter['the_content'] ) ) {
+					$mm_content = do_shortcode( $mm_content );
+				}
 
 			}
 
