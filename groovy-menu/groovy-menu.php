@@ -288,7 +288,10 @@ function groovy_menu_add_after_body( $output ) {
 	}
 
 	$after_body = apply_filters( 'groovy_menu_after_body_insert', '' );
-	$output     = preg_replace( '#(\<body.*\>)#', '$1' . $after_body, $output );
+	$output     = apply_filters( 'groovy_menu_after_body_insert_output', $output );
+	$limit      = apply_filters( 'groovy_menu_after_body_insert_limit', 1 );
+
+	$output = preg_replace( '#(\<body.*\>)#i', '$1' . $after_body, $output, $limit );
 
 	return $output;
 }
