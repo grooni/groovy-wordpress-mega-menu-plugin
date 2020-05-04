@@ -235,14 +235,14 @@ class FrontendWalker extends WalkerNavMenu {
 						$item_link .= '<div class="' . $atts['class'] . ' gm-anchor--empty">';
 					}
 
-					if ( $this->getIcon( $item ) ) {
-						$item_link .= '<span class="gm-menu-item__icon ' . $this->getIcon( $item ) . '"></span>';
-					}
-
 					$badge = array(
 						'left'  => '',
 						'right' => '',
 					);
+
+					if ( $this->getIcon( $item ) ) {
+						$badge['left'] .= '<span class="gm-menu-item__icon ' . $this->getIcon( $item ) . '"></span>';
+					}
 
 					$badge_enable = $this->getBadgeEnable( $item );
 					if ( ! empty( $badge_enable ) && $badge_enable ) {
@@ -361,7 +361,7 @@ class FrontendWalker extends WalkerNavMenu {
 						}
 
 						if ( ! empty( $badge_placement ) && ! empty( $badge_html ) ) {
-							$badge[ $badge_placement ] = '<span class="gm-badge" ' . $badge_out_style . '>' . $badge_html . '</span>';
+							$badge[ $badge_placement ] .= '<span class="gm-badge" ' . $badge_out_style . '>' . $badge_html . '</span>';
 						}
 					}
 
@@ -511,14 +511,14 @@ class FrontendWalker extends WalkerNavMenu {
 					$item_output .= '<div class="' . $atts['class'] . ' gm-anchor--empty">';
 				}
 
-				if ( $this->getIcon( $item ) ) {
-					$item_output .= '<span class="gm-menu-item__icon ' . $this->getIcon( $item ) . '"></span>';
-				}
-
 				$badge = array(
 					'left'  => '',
 					'right' => '',
 				);
+
+				if ( $this->getIcon( $item ) ) {
+					$badge['left'] .= '<span class="gm-menu-item__icon ' . $this->getIcon( $item ) . '"></span>';
+				}
 
 				$badge_enable = $this->getBadgeEnable( $item );
 				if ( ! empty( $badge_enable ) && $badge_enable ) {
@@ -637,7 +637,7 @@ class FrontendWalker extends WalkerNavMenu {
 					}
 
 					if ( ! empty( $badge_placement ) && ! empty( $badge_html ) ) {
-						$badge[ $badge_placement ] = '<span class="gm-badge" ' . $badge_out_style . '>' . $badge_html . '</span>';
+						$badge[ $badge_placement ] .= '<span class="gm-badge" ' . $badge_out_style . '>' . $badge_html . '</span>';
 					}
 				}
 
