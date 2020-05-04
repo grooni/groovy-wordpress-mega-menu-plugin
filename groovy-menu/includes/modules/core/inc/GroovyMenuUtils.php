@@ -396,7 +396,7 @@ class GroovyMenuUtils {
 		$menuBlockContent = '';
 		$isFullScreen     = false;
 		$isShowDefault    = true;
-		$isCustom         = false;
+		$isSearchCustom   = false;
 
 		$searchForm                  = isset( $groovyMenuSettings['searchForm'] ) ? $groovyMenuSettings['searchForm'] : 'fullscreen';
 		$searchFormFrom              = isset( $groovyMenuSettings['searchFormFrom'] ) ? $groovyMenuSettings['searchFormFrom'] : 'all';
@@ -405,18 +405,18 @@ class GroovyMenuUtils {
 		$searchFormCustomId          = isset( $groovyMenuSettings['searchFormCustomId'] ) ? intval( $groovyMenuSettings['searchFormCustomId'] ) : 0;
 
 		if ( 'custom' === $searchForm ) {
-			$isCustom = true;
+			$isSearchCustom = true;
 		}
 
-		if ( 'fullscreen' === $searchForm || ( $isCustom && 'dropdown' !== $searchFormCustomWrapper ) ) {
+		if ( 'fullscreen' === $searchForm || ( $isSearchCustom && 'dropdown' !== $searchFormCustomWrapper ) ) {
 			$isFullScreen = 'fullscreen';
 		}
 
-		if ( $isCustom && ! $searchFormCustomShowDefault ) {
+		if ( $isSearchCustom && ! $searchFormCustomShowDefault ) {
 			$isShowDefault = false;
 		}
 
-		if ( $isCustom && ! empty( $searchFormCustomId ) ) {
+		if ( $isSearchCustom && ! empty( $searchFormCustomId ) ) {
 			$menuBlockHelper  = new \GroovyMenu\WalkerNavMenu();
 			$menuBlockContent = $menuBlockHelper->getMenuBlockPostContent( $searchFormCustomId );
 		}
@@ -446,7 +446,7 @@ class GroovyMenuUtils {
 		if ( $searchForm === 'dropdown-without-ajax' || ( 'custom' === $searchForm && 'dropdown' === $searchFormCustomWrapper ) ) {
 			$html .= '
 										<div class="gm-search-wrapper">';
-			if ( $isCustom && 'dropdown' === $searchFormCustomWrapper ) {
+			if ( $isSearchCustom && 'dropdown' === $searchFormCustomWrapper ) {
 				$html .= $menuBlockContent;
 			}
 
@@ -480,7 +480,7 @@ class GroovyMenuUtils {
 		}
 		$html .= '							<div class="gm-search-wrapper">';
 
-		if ( $isCustom ) {
+		if ( $isSearchCustom ) {
 			$html .= $menuBlockContent;
 		}
 
@@ -851,6 +851,26 @@ class GroovyMenuUtils {
 		}
 
 		return $master_location;
+	}
+
+
+	public static function check_apr() {
+		$name    = '_' . '_l' . 'ic';
+		$apr_opt = get_option( GROOVY_MENU_DB_VER_OPTION . $name );
+		$cache   = get_transient( GROOVY_MENU_DB_VER_OPTION . $name . '_cache2' );
+
+		if ( $apr_opt && ! $cache ) {
+			$name  = 'che' . 'ck_l';
+			$name .= 'ic';
+			if ( method_exists( 'GroovyMenuUtils', $name ) ) {
+				$res = self::$name( true );
+				if ( $res ) {
+					set_transient( GROOVY_MENU_DB_VER_OPTION . $name . '_cache2', true, 36 * HOUR_IN_SECONDS );
+				}
+			}
+		}
+
+		return true;
 	}
 
 
@@ -1924,21 +1944,8 @@ class GroovyMenuUtils {
 	}
 
 
-	public static function get_lic_data( $field ) {
+	public static function get_paramlic( $field ) {
 		$answer = '';
-
-		/*
-		array (size=7)
-		  'product' => string 'groovy-menu'
-		  'item_id' => string '99999999'
-		  'active_site' => string 'http://site.domain/'
-		  'active_theme' => string ''
-		  'type' => string 'regular'
-		  'supported_until' => string '2022-05-19T21:07:58+10:00'
-		  'purchase_key' => string '77777777-3333-4444-8000-eeeefffff55899'
-		  'approve' => boolean true
-		  'gm_version' => string '1.9.9'
-		 */
 
 		$data = get_option( GROOVY_MENU_DB_VER_OPTION . '__lic_data' );
 		if ( ! empty( $field ) && is_array( $data ) && isset( $data[ $field ] ) ) {
@@ -1961,7 +1968,7 @@ class GroovyMenuUtils {
 	public static function check_lic_supported_until() {
 		$answer = false; // by default
 
-		$supported_until = self::get_lic_data( 'supported_until' );
+		$supported_until = self::get_paramlic( 'supported_until' );
 
 		if ( ! empty( $supported_until ) ) {
 
@@ -2161,7 +2168,7 @@ class GroovyMenuUtils {
 	 *
 	 */
 	public static function safe_redirect( $url ) {
-		$url = empty( $url ) ? '' : esc_url( $url );
+		$url = empty( $url ) ? '' : $url;
 
 		if ( empty( $url ) ) {
 			wp_die();

@@ -2,9 +2,9 @@
 Contributors: Grooni
 Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive, responsive menu, sticky menu, vertical menu, horizontal menu, ajax cart
 Requires at least: 4.9.7
-Tested up to: 5.4
+Tested up to: 5.4.1
 Requires PHP: 7.0
-Stable tag: 1.1.10
+Stable tag: 1.1.11
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -93,6 +93,13 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.1.11 =
+* Fix: Fixed fonts issue that appears while editing a preset and displaying a previously saved font in some cases.
+* Fix: Hide title by "-" symbol.
+* Fix: Improved work with caching plugins. A case with multiple saving preset styles has been fixed.
+* Fix: Auto integration will be applied only once on the page, immediately after the HTML tag <BODY>.
+* Improve: Additional characters are allowed in the rename a preset name
 
 = 1.1.10 =
 * Fix: Fixed fit on the screen of search icons and mini-cart for iOS.

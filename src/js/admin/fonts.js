@@ -150,6 +150,44 @@ document.addEventListener('DOMContentLoaded', () => {
     select.passedElement.element.addEventListener('addItem', () => {
       handleSelectChanges(select, subsetSelect, variantSelect);
     }, false);
+
+    let selectValue = select.passedElement.element.getAttribute('data-value');
+    if (selectValue) {
+      select.setChoiceByValue(selectValue);
+    }
+
+    if (typeof subsetSelect.forEach === 'function') {
+      subsetSelect.forEach((selectIn) => {
+        if (_.isEmpty(selectIn)) {
+          return;
+        }
+        let subsetSelectValue = selectIn.passedElement.element.getAttribute('data-value');
+        selectIn.setChoiceByValue(subsetSelectValue);
+      });
+    } else {
+      if (_.isEmpty(subsetSelect)) {
+        return;
+      }
+      let subsetSelectValue = subsetSelect.passedElement.element.getAttribute('data-value');
+      subsetSelect.setChoiceByValue(subsetSelectValue);
+    }
+
+    if (typeof variantSelect.forEach === 'function') {
+      variantSelect.forEach((selectIn) => {
+        if (_.isEmpty(selectIn)) {
+          return;
+        }
+        let variantSelectValue = selectIn.passedElement.element.getAttribute('data-value');
+        selectIn.setChoiceByValue(variantSelectValue);
+      });
+    } else {
+      if (_.isEmpty(variantSelect)) {
+        return;
+      }
+      let variantSelectValue = variantSelect.passedElement.element.getAttribute('data-value');
+      variantSelect.setChoiceByValue(variantSelectValue);
+    }
+
   }
 
   function scrollToActivePosition (select) {

@@ -840,7 +840,8 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 			update_post_meta( self::getPresetPostId( $this->preset ), 'gm_compiled_css_rtl', $compiled_css_rtl );
 			update_post_meta( self::getPresetPostId( $this->preset ), 'gm_preset_settings', $preset_settings );
 			update_post_meta( self::getPresetPostId( $this->preset ), 'gm_preset_key', $preset_key );
-			update_post_meta( self::getPresetPostId( $this->preset ), 'gm_version', GROOVY_MENU_VERSION );
+			//update_post_meta( self::getPresetPostId( $this->preset ), 'gm_version', GROOVY_MENU_VERSION );
+			//update_post_meta( self::getPresetPostId( $this->preset ), 'gm_version_rtl', GROOVY_MENU_VERSION );
 		}
 
 		/**
@@ -960,6 +961,7 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 
 			$options = array(
 				'version'          => '',
+				'version_rtl'      => '',
 				'preset_key'       => '',
 				'compiled_css'     => '',
 				'compiled_css_rtl' => '',
@@ -973,6 +975,7 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 
 			$options = array(
 				'version'          => get_post_meta( $post_id, 'gm_version', true ),
+				'version_rtl'      => get_post_meta( $post_id, 'gm_version_rtl', true ),
 				'preset_key'       => get_post_meta( $post_id, 'gm_preset_key', true ),
 				'compiled_css'     => get_post_meta( $post_id, 'gm_compiled_css', true ),
 				'compiled_css_rtl' => get_post_meta( $post_id, 'gm_compiled_css_rtl', true ),

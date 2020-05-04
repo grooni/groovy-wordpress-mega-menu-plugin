@@ -7,11 +7,15 @@ require_once dirname( __FILE__ ) . '/vendor/autoload.php';
 $gm_vp_controller = new \GroovyMenu\VirtualPagesController( new \GroovyMenu\VirtualPagesTemplateLoader() );
 add_action( 'init', array( $gm_vp_controller, 'init' ) );
 add_filter( 'do_parse_request', array( $gm_vp_controller, 'dispatch' ), PHP_INT_MAX, 2 );
-add_action( 'loop_end', function ( \WP_Query $query ) {
-	if ( isset( $query->virtual_page ) && ! empty( $query->virtual_page ) ) {
-		$query->virtual_page = null;
+add_action( 'loop_end', 'gm_action_check_query_virtual_page' );
+function gm_action_check_query_virtual_page( $query ) {
+	if ( $query instanceof \WP_Query ) {
+		if ( isset( $query->virtual_page ) && ! empty( $query->virtual_page ) ) {
+			$query->virtual_page = null;
+		}
 	}
-} );
+}
+
 add_filter( 'the_permalink', function ( $permalink ) {
 	global $post, $wp_query;
 	if (

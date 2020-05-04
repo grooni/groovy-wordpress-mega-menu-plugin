@@ -25,7 +25,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 			add_action( 'wp_ajax_gm_save', array( $this, 'saveSettings' ) );
 
 			add_action( 'wp_ajax_gm_save_styles', array( $this, 'saveStyles' ) );
-			add_action( 'wp_ajax_nopriv_gm_save_styles', array( $this, 'saveStyles' ) );
+			add_action( 'wp_ajax_nopriv_gm_save_styles', array( $this, 'saveStylesNoPriv' ) );
 
 			add_action( 'wp_ajax_gm_save_auto_integration', array( $this, 'saveAutoIntegration' ) );
 
@@ -298,9 +298,6 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 
 			$do_ob = false;
 
-			if ( isset( $_GET['export'] ) ) { // @codingStandardsIgnoreLine
-				$do_ob = true;
-			}
 			if ( isset( $_FILES['import'] ) && isset( $_FILES['import']['tmp_name'] ) ) { // @codingStandardsIgnoreLine
 				$do_ob = true;
 			}
@@ -315,6 +312,11 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 			if ( $do_ob ) {
 				ob_start();
 			}
+
+			if ( isset( $_GET['export'] ) && isset( $_GET['page'] ) && 'groovy_menu_settings' === $_GET['page'] ) { // @codingStandardsIgnoreLine
+				$this->export();
+			}
+
 		}
 
 		/**
@@ -587,7 +589,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 
 			$main_slug    = 'groovy_menu_welcome';
 			$lic_opt      = get_option( GROOVY_MENU_DB_VER_OPTION . '__lic' );
-			$lic_type     = GroovyMenuUtils::get_lic_data( 'type' );
+			$lic_type     = GroovyMenuUtils::get_paramlic( 'type' );
 			$welcome_page = 'welcome_full';
 			if ( 'extended' === $lic_type ) {
 				$welcome_page = 'welcome_ext';
@@ -746,6 +748,8 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				$name = sanitize_text_field( wp_unslash( $_GET['name'] ) );
 				GroovyMenuPreset::rename( $id, $name );
 			}
+
+			ob_clean();
 			exit;
 		}
 
@@ -1161,7 +1165,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 			$lic_opt             = GroovyMenuUtils::check_lic();
 			$supported_until     = GroovyMenuUtils::check_lic_supported_until();
 			$supported_until_txt = $supported_until ? date( "F j, Y", $supported_until ) : '';
-			$purchase_key        = GroovyMenuUtils::get_lic_data( 'purchase_key' );
+			$purchase_key        = GroovyMenuUtils::get_paramlic( 'purchase_key' );
 
 			if ( ! empty( $purchase_key ) ) {
 				$half_key_count      = floor( strlen( $purchase_key ) / 2 );
@@ -2598,7 +2602,13 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 			}
 		}
 
-		function saveStyles() {
+
+		/**
+		 * Save style of preset
+		 *
+		 * @param bool $check_ver
+		 */
+		function saveStyles( $check_ver = false ) {
 			$cap_can = true;
 
 			if ( ! isset( $_POST['gm_nonce'] ) || ! wp_verify_nonce( $_POST['gm_nonce'], 'gm_nonce_preset_save' ) ) {
@@ -2607,9 +2617,12 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 
 			if ( $cap_can && defined( 'DOING_AJAX' ) && DOING_AJAX && ! empty( $_POST ) && isset( $_POST['action'] ) && $_POST['action'] === 'gm_save_styles' ) {
 
-				$ajax_data = empty( $_POST['data'] ) ? '' : trim( $_POST['data'] );
-				$direction = empty( $_POST['direction'] ) ? '' : trim( $_POST['direction'] );
-				$preset_id = empty( $_POST['preset_id'] ) ? '' : trim( $_POST['preset_id'] );
+				$ajax_data  = empty( $_POST['data'] ) ? '' : trim( $_POST['data'] );
+				$direction  = empty( $_POST['direction'] ) ? '' : trim( $_POST['direction'] );
+				$preset_id  = empty( $_POST['preset_id'] ) ? '' : trim( $_POST['preset_id'] );
+				$gm_version = empty( $_POST['gm_version'] ) ? '' : trim( $_POST['gm_version'] );
+
+				$direction_postfix = ( 'rtl' === $direction ) ? '_rtl' : '';
 
 				if ( empty( $ajax_data ) ) {
 					// Send a JSON response back to an AJAX request, and die().
@@ -2626,16 +2639,31 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 					wp_send_json_error( esc_html__( 'Error. Missing id of the current menu', 'groovy-menu' ) );
 				}
 
+				if ( empty( $gm_version ) ) {
+					// Send a JSON response back to an AJAX request, and die().
+					wp_send_json_error( esc_html__( 'Error. Missing Groovy Menu version parameter', 'groovy-menu' ) );
+				}
+
+				if ( $gm_version !== GROOVY_MENU_VERSION ) {
+					// Send a JSON response back to an AJAX request, and die().
+					wp_send_json_error( esc_html__( 'Error. Outdated Groovy Menu version parameter', 'groovy-menu' ) );
+				}
+
+				if ( $check_ver ) {
+					$saved_gm_version      = get_post_meta( intval( $preset_id ), 'gm_version' . $direction_postfix, true );
+					$saved_gm_compiled_css = get_post_meta( intval( $preset_id ), 'gm_compiled_css' . $direction_postfix, true );
+
+					if ( $saved_gm_version === GROOVY_MENU_VERSION && ! empty( $saved_gm_compiled_css ) ) {
+						// Send a JSON response back to an AJAX request, and die().
+						wp_send_json_error( esc_html__( 'Error. Groovy Menu preset style already saved', 'groovy-menu' ) );
+					}
+				}
 
 				$preset_key = md5( rand() . uniqid() . time() );
 
-				if ( 'rtl' === $direction ) {
-					update_post_meta( intval( $preset_id ), 'gm_compiled_css_rtl', $ajax_data );
-				} else {
-					update_post_meta( intval( $preset_id ), 'gm_compiled_css', $ajax_data );
-				}
+				update_post_meta( intval( $preset_id ), 'gm_compiled_css' . $direction_postfix, $ajax_data );
 				update_post_meta( intval( $preset_id ), 'gm_preset_key', $preset_key );
-				update_post_meta( intval( $preset_id ), 'gm_version', GROOVY_MENU_VERSION );
+				update_post_meta( intval( $preset_id ), 'gm_version' . $direction_postfix, GROOVY_MENU_VERSION );
 
 				// Save compiled_css to file
 				$this->save_compiled_css( $preset_id, $ajax_data, $direction );
@@ -2659,6 +2687,11 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				wp_send_json_success( $respond );
 
 			}
+		}
+
+
+		function saveStylesNoPriv() {
+			$this->saveStyles( true );
 		}
 
 
@@ -2826,17 +2859,54 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 		}
 
 		public function export() {
-			if ( GroovyMenuRoleCapabilities::canExport( true ) && isset( $_GET['export'] ) && ! $this->lver ) {
-				ob_clean();
-				$filename = str_replace( ' ', '_', $this->settings()->getPreset()->getName() );
-				header( 'Content-Type: text/json' );
-				header( 'Content-Disposition: attachment; filename="' . $filename . '.json"' );
+			if ( GroovyMenuRoleCapabilities::canExport( true ) && isset( $_GET['export'] ) && ! $this->lver && ! empty( $_GET['id'] ) ) {
+
+				$export = array();
 
 				$export['settings'] = $this->settings()->getSettingsArray( true );
 				$export['name']     = $this->settings()->getPreset()->getName();
-				$export['img']      = GroovyMenuPreset::getPreviewById( $this->settings()->getPreset()->getId() );
-				echo wp_json_encode( $export, JSON_PRETTY_PRINT );
-				exit;
+				//$export['img']    = GroovyMenuPreset::getPreviewById( $this->settings()->getPreset()->getId() );
+				$export['name'] = empty( $export['name'] ) ? 'groovy menu preset' : $export['name'];
+				$preset_name    = str_replace( ' ', '-', $export['name'] );
+				$filename       = 'groovy-menu-preset-[' . $preset_name . '].json';
+
+				if ( function_exists( 'mb_ereg_replace' ) ) {
+					if ( function_exists( 'mb_internal_encoding' ) ) {
+						mb_internal_encoding( "UTF-8" );
+					}
+					if ( function_exists( 'mb_regex_encoding' ) ) {
+						mb_regex_encoding( "UTF-8" );
+					}
+
+					// Remove anything which isn't a word, whitespace, number and some symbols
+					$filename = mb_ereg_replace( "([^\w\s\d\-_\#~,;\[\]\(\).])", '', $filename );
+				} else {
+					// Remove anything which isn't a word, whitespace, number
+					$filename = preg_replace( "#([^\w\s\d\-_\#~,;\[\]\(\).])#", '', $filename );
+					// Remove any runs of periods
+					$filename = preg_replace( "#([\.]{2,})#", '', $filename );
+				}
+
+				if ( ! headers_sent() ) {
+					ob_clean();
+
+					header( 'Content-Type: text/json' );
+					header( 'Content-Disposition: attachment; filename="' . $filename . '"' );
+
+					echo wp_json_encode( $export, JSON_PRETTY_PRINT );
+					exit;
+				} else { // Fallback
+					echo '<h1>';
+					echo __( 'The error of creating an export file!', 'groovy-menu' );
+					echo '</h1><h2>';
+					echo __( 'Below is the contents of the text from the file. Copy the code and save it as a text file.', 'groovy-menu' );
+					echo '</h2>';
+					echo '<p>' . __( 'Suggested file name', 'groovy-menu' ) . ': <code>' . GroovyMenuUtils::clean_output( $filename ) . '</code></p>';
+					echo '<textarea cols="80" rows="24" autofocus>';
+					echo wp_json_encode( $export, JSON_PRETTY_PRINT );
+					echo '</textarea>';
+					exit;
+				}
 			}
 		}
 
