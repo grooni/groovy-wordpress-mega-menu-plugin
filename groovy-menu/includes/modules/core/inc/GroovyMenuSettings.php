@@ -748,6 +748,8 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				$name = sanitize_text_field( wp_unslash( $_GET['name'] ) );
 				GroovyMenuPreset::rename( $id, $name );
 			}
+
+			ob_clean();
 			exit;
 		}
 

@@ -126,6 +126,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (newName === '') {
       alert('Preset name cannot be empty');
     } else {
+      newName = encodeURIComponent(newName);
+
       let infoBox = document.querySelector('.gm-infobox');
       let url = `${groovyMenuLocalize.GroovyMenuAdminUrl}&action=rename&id=${id}&name=${newName}&gm_nonce=${gmNonce.value}`;
 
