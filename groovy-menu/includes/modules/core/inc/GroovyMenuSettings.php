@@ -748,6 +748,8 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				$name = sanitize_text_field( wp_unslash( $_GET['name'] ) );
 				GroovyMenuPreset::rename( $id, $name );
 			}
+
+			ob_clean();
 			exit;
 		}
 
@@ -2863,9 +2865,27 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 
 				$export['settings'] = $this->settings()->getSettingsArray( true );
 				$export['name']     = $this->settings()->getPreset()->getName();
-				//$export['img']      = GroovyMenuPreset::getPreviewById( $this->settings()->getPreset()->getId() );
-				$preset_name        = str_replace( ' ', '_', $export['name'] );
-				$filename           = 'groovy-menu-preset-[' . $preset_name . '].json';
+				//$export['img']    = GroovyMenuPreset::getPreviewById( $this->settings()->getPreset()->getId() );
+				$export['name'] = empty( $export['name'] ) ? 'groovy menu preset' : $export['name'];
+				$preset_name    = str_replace( ' ', '-', $export['name'] );
+				$filename       = 'groovy-menu-preset-[' . $preset_name . '].json';
+
+				if ( function_exists( 'mb_ereg_replace' ) ) {
+					if ( function_exists( 'mb_internal_encoding' ) ) {
+						mb_internal_encoding( "UTF-8" );
+					}
+					if ( function_exists( 'mb_regex_encoding' ) ) {
+						mb_regex_encoding( "UTF-8" );
+					}
+
+					// Remove anything which isn't a word, whitespace, number and some symbols
+					$filename = mb_ereg_replace( "([^\w\s\d\-_\#~,;\[\]\(\).])", '', $filename );
+				} else {
+					// Remove anything which isn't a word, whitespace, number
+					$filename = preg_replace( "#([^\w\s\d\-_\#~,;\[\]\(\).])#", '', $filename );
+					// Remove any runs of periods
+					$filename = preg_replace( "#([\.]{2,})#", '', $filename );
+				}
 
 				if ( ! headers_sent() ) {
 					ob_clean();
