@@ -95,8 +95,7 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 == Changelog ==
 
 = 1.1.11 =
-* Fix: Fixed fonts issue that appears while editing a preset and displaying a previously saved font in some cases
-* Fix: Fixed bug with the export of preset.  Fallback is also provided in case of blocking the downloading of files from the site.
+* Fix: Fixed fonts issue that appears while editing a preset and displaying a previously saved font in some cases.
 * Fix: Hide title by "-" symbol.
 * Fix: Improved work with caching plugins. A case with multiple saving preset styles has been fixed.
 * Fix: Auto integration will be applied only once on the page, immediately after the HTML tag <BODY>.
