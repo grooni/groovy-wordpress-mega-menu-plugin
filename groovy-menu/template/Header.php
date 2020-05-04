@@ -691,9 +691,10 @@ function groovyMenu( $args = array() ) {
 		$output_html .= '<div class="gm-actions">';
 
 		if ( $styles->get( 'general', 'show_divider' ) ) {
-
-			$output_html .= '<span class="gm-nav-inline-divider"></span>';
-
+			$header_style = $styles->get( 'general', 'header' );
+			if ( isset( $header_style['style'] ) && 1 === $header_style['style'] ) {
+				$output_html .= '<span class="gm-nav-inline-divider"></span>';
+			}
 		}
 
 		if ( 'disable' !== $searchForm ) {
