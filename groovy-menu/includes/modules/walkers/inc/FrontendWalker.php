@@ -241,7 +241,7 @@ class FrontendWalker extends WalkerNavMenu {
 					);
 
 					if ( $this->getIcon( $item ) ) {
-						$item_link .= '<span class="gm-menu-item__icon ' . $this->getIcon( $item ) . '"></span>';
+						$badge['left'] .= '<span class="gm-menu-item__icon ' . $this->getIcon( $item ) . '"></span>';
 					}
 
 					$badge_enable = $this->getBadgeEnable( $item );
@@ -517,7 +517,11 @@ class FrontendWalker extends WalkerNavMenu {
 				);
 
 				if ( $this->getIcon( $item ) ) {
-					$badge['left'] .= '<span class="gm-menu-item__icon ' . $this->getIcon( $item ) . '"></span>';
+					if ( 0 === $depth ) {
+						$item_output .= '<span class="gm-menu-item__icon ' . $this->getIcon( $item ) . '"></span>';
+					} else {
+						$badge['left'] .= '<span class="gm-menu-item__icon ' . $this->getIcon( $item ) . '"></span>';
+					}
 				}
 
 				$badge_enable = $this->getBadgeEnable( $item );
