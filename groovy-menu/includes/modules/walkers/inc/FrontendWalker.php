@@ -241,7 +241,7 @@ class FrontendWalker extends WalkerNavMenu {
 					);
 
 					if ( $this->getIcon( $item ) ) {
-						$badge['left'] .= '<span class="gm-menu-item__icon ' . $this->getIcon( $item ) . '"></span>';
+						$item_link .= '<span class="gm-menu-item__icon ' . $this->getIcon( $item ) . '"></span>';
 					}
 
 					$badge_enable = $this->getBadgeEnable( $item );
