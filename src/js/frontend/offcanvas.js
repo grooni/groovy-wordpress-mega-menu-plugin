@@ -8,7 +8,7 @@ var hamburgerMenu;
 
 let offcanvasIsOpen = function (navDrawer) {
   let isOpen;
-  if (navDrawer.classList.contains('gm-navigation-drawer--open')) {
+  if (navDrawer && navDrawer.classList.contains('gm-navigation-drawer--open')) {
     isOpen = true;
   } else {
     isOpen = false;
@@ -17,8 +17,10 @@ let offcanvasIsOpen = function (navDrawer) {
 };
 
 function offcanvasOpen (navDrawer) {
-  navDrawer.classList.remove('gm-hidden');
-  navDrawer.classList.add('gm-navigation-drawer--open');
+  if (navDrawer) {
+    navDrawer.classList.remove('gm-hidden');
+    navDrawer.classList.add('gm-navigation-drawer--open');
+  }
 }
 
 function offcanvasClose (navDrawer) {
@@ -146,7 +148,9 @@ export function offcanvasWrap(navDrawer, side, slide) {
   }
 
   makeHiddenVisible();
-  navDrawer.classList.add(`gm-navigation-drawer--${side}`);
+  if (navDrawer) {
+    navDrawer.classList.add(`gm-navigation-drawer--${side}`);
+  }
 }
 
 export function initOffcanvas(args) {

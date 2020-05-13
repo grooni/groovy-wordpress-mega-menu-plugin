@@ -7,7 +7,9 @@ if ( ! empty( $gm_supported_module['search_post_type_additional'] ) && is_array(
 }
 
 $default_arr = array( 'default' => '--- ' . esc_html__( 'Same as desktop', 'groovy-menu' ) . ' ---' );
-$nav_menus   = $default_arr + GroovyMenuUtils::getNavMenus();
+$none_arr    = array( 'none' => '--- ' . esc_html__( 'Hide Groovy menu', 'groovy-menu' ) . ' ---' );
+$nav_menus   = $default_arr + $none_arr + GroovyMenuUtils::getNavMenus();
+
 
 return array(
 	'general' => array(

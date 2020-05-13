@@ -479,7 +479,7 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 					$classes_navbar[] = 'gm-navbar--toolbar-' . $settings['header']['toolbar'];
 				}
 
-				if ( $settings['header']['style'] === 1 ) {
+				if ( 1 === $settings['header']['style'] ) {
 					if ( isset( $settings['showDividerBetweenMenuLinks'] ) && $settings['showDividerBetweenMenuLinks'] ) {
 						$classes_navbar[] = 'gm-navbar--has-divider';
 					}
@@ -487,15 +487,15 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 
 			}
 
-			if ( isset( $settings['shadow'] ) && $settings['shadow'] && $settings['header']['style'] !== 3 ) {
+			if ( isset( $settings['shadow'] ) && $settings['shadow'] && 3 !== $settings['header']['style'] ) {
 				$classes_navbar[] = 'gm-navbar--has-shadow';
 			}
 
-			if ( isset( $settings['shadowSticky'] ) && $settings['shadowSticky'] && $settings['header']['style'] !== 3 ) {
+			if ( isset( $settings['shadowSticky'] ) && $settings['shadowSticky'] && 3 !== $settings['header']['style'] ) {
 				$classes_navbar[] = 'gm-navbar--has-shadow-sticky';
 			}
 
-			if ( isset( $settings['shadowDropdown'] ) && $settings['shadowDropdown'] && $settings['header']['style'] !== 3 ) {
+			if ( isset( $settings['shadowDropdown'] ) && $settings['shadowDropdown'] && 3 !== $settings['header']['style'] ) {
 				$classes_navbar[] = 'gm-navbar--has-shadow-dropdown';
 			}
 
@@ -503,19 +503,24 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 				$classes_navbar[] = 'gm-navbar--hide-gm-caret';
 			}
 
-			// Top level hover Style
+			// Top level hover Style.
 			if ( isset( $settings['dropdownHoverStyle'] ) && $settings['dropdownHoverStyle'] ) {
 				$classes_navbar[] = 'gm-dropdown-hover-style-' . $settings['dropdownHoverStyle'];
 			}
 
-			// Dropdown appearance style
+			// Dropdown appearance style.
 			if ( isset( $settings['dropdownAppearanceStyle'] ) && $settings['dropdownAppearanceStyle'] ) {
 				$classes_navbar[] = 'gm-dropdown-appearance-' . $settings['dropdownAppearanceStyle'];
 			}
 
-			// Use dark style logo in sidebar menu
+			// Use dark style logo in sidebar menu.
 			if ( isset( $settings['sidebarMenuUseDarkStyleLogo'] ) && $settings['sidebarMenuUseDarkStyleLogo'] ) {
 				$classes_navbar[] = 'gm-navbar--style-3__dark';
+			}
+
+			// Hide for mobile view.
+			if ( isset( $settings['mobileNavMenu'] ) && 'none' === $settings['mobileNavMenu'] ) {
+				$classes_navbar[] = 'gm-hide-on-mobile';
 			}
 
 			return $classes_navbar;
