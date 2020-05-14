@@ -1,8 +1,8 @@
 <?php defined( 'ABSPATH' ) || die( 'This script cannot be accessed directly.' );
 
-if ( ! class_exists( 'DS_Custom_Module_GroovyMenu' ) ) {
+if ( ! class_exists( 'GroovyMenu_Custom_Module_For_Builder' ) && class_exists('ET_Builder_Module') ) {
 
-	class DS_Custom_Module_GroovyMenu extends ET_Builder_Module {
+	class GroovyMenu_Custom_Module_For_Builder extends ET_Builder_Module {
 		function init() {
 			$this->name = esc_html__( 'Groovy Menu', 'groovy-menu' );
 			$this->slug = 'grooni_groovymenu';
@@ -41,6 +41,6 @@ if ( ! class_exists( 'DS_Custom_Module_GroovyMenu' ) ) {
 		}
 	}
 
-	new DS_Custom_Module_GroovyMenu;
+	new GroovyMenu_Custom_Module_For_Builder();
 
 }
