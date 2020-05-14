@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     '57db63b64a3f06b64e8dea29484e3113' => $baseDir . '/includes/theme_support/crane.php',
+    '5f0758a858333143c3cc0725e0f79b35' => $baseDir . '/includes/theme_support/divi.php',
     '655fc50bc71579437c0b8c94b9b5f072' => $baseDir . '/includes/migration/migrate.php',
     'fab540ef9b69f507bcc21701eeef4143' => $baseDir . '/template/loader.php',
     '89faccae217ae94c3a1c0e22589b2a86' => $baseDir . '/includes/modules/core/core.php',

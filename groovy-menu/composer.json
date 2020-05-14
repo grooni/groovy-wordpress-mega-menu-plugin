@@ -9,6 +9,7 @@
     "files": [
 
       "includes/theme_support/crane.php",
+      "includes/theme_support/divi.php",
 
       "includes/migration/migrate.php",
       "template/loader.php",
