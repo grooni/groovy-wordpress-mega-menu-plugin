@@ -303,7 +303,7 @@ class GroovyMenu {
     let dropdownItems = document.querySelectorAll('.gm-anchor, .gm-minicart-link');
     let navbarNav = document.querySelector('.gm-navbar-nav');
 
-    if (options.showSubmenu === 'hover' && !isMobile()) {
+    if (options.showSubmenu === 'hover' && !isMobile() && dropdownItems) {
       dropdownItems.forEach((dropdownItem) => {
         if (isTouchDevice) {
           dropdownItem.addEventListener('click', initDropdownAction);
@@ -400,7 +400,7 @@ class GroovyMenu {
 
       overlapMenu(options);
 
-      if (headerStyle === 1 && options.header.align !== 'center') {
+      if (headerStyle === 1 && options.header.align !== 'center' && navbar) {
         navbar.classList.add(`gm-top-links-align-${options.topLvlLinkAlign}`);
       }
 

@@ -49,7 +49,9 @@ body {
 .gm-navigation-drawer ul.gm-navbar-nav,
 .gm-navigation-drawer ul.gm-navbar-nav > li,
 .gm-navigation-drawer ul.gm-dropdown-menu,
-.gm-navigation-drawer ul.gm-dropdown-menu > li {
+.gm-navigation-drawer ul.gm-dropdown-menu > li,
+.gm-navbar .gm-toolbar-socials-list,
+.gm-navbar .gm-toolbar-socials-list > li {
   list-style: none;
   padding: 0 0 0 0;
   line-height: initial;
@@ -66,4 +68,8 @@ body {
 
 .gm-menu-btn__inner {
   line-height: 1;
+}
+
+.gm-dropdown:not(.gm-open) .gm-dropdown-menu-wrapper {
+  overflow: hidden;
 }
