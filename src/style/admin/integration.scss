@@ -66,8 +66,9 @@
     max-height: 120px;
    }
 
-  .gm-gui-picture__play-video {
-    margin: 0 0.5em 0 0.7em;
+  .gm-gui-picture__play-video,
+  .gm-gui-picture__need-help {
+    margin: 0 0.5em -0.2em 0.7em;
     height: 1em;
   }
 
