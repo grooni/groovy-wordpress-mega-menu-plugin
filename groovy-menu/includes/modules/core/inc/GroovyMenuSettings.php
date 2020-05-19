@@ -2866,9 +2866,9 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				$export['settings'] = $this->settings()->getSettingsArray( true );
 				$export['name']     = $this->settings()->getPreset()->getName();
 				//$export['img']    = GroovyMenuPreset::getPreviewById( $this->settings()->getPreset()->getId() );
-				$export['name'] = empty( $export['name'] ) ? 'groovy menu preset' : $export['name'];
-				$preset_name    = str_replace( ' ', '-', $export['name'] );
-				$filename       = 'groovy-menu-preset-[' . $preset_name . '].json';
+				$export['name']     = empty( $export['name'] ) ? 'groovy menu preset' : $export['name'];
+				$preset_name        = str_replace( ' ', '-', $export['name'] );
+				$filename           = 'groovy-menu-preset-[' . $preset_name . '].json';
 
 				if ( function_exists( 'mb_ereg_replace' ) ) {
 					if ( function_exists( 'mb_internal_encoding' ) ) {

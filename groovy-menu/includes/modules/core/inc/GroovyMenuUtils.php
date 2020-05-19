@@ -855,18 +855,28 @@ class GroovyMenuUtils {
 
 
 	public static function check_apr() {
-		$name    = '_' . '_l' . 'ic';
-		$apr_opt = get_option( GROOVY_MENU_DB_VER_OPTION . $name );
-		$cache   = get_transient( GROOVY_MENU_DB_VER_OPTION . $name . '_cache2' );
-
+		$apr        = '';
+		$name       = '_' . '_l' . 'ic';
+		$name_cache = $name . '_cache2';
+		$apr_opt    = get_option( GROOVY_MENU_DB_VER_OPTION . $name );
+		$cache      = get_transient( GROOVY_MENU_DB_VER_OPTION . $name_cache );
 		if ( $apr_opt && ! $cache ) {
-			$name  = 'che' . 'ck_l';
-			$name .= 'ic';
-			if ( method_exists( 'GroovyMenuUtils', $name ) ) {
-				$res = self::$name( true );
+			$get_apr   = 'ge' . 't_pa';
+			$get_apr  .= 'raml' . 'ic';
+			$name_apr  = 'che' . 'ck_l';
+			$name_apr .= 'ic';
+			if ( method_exists( 'GroovyMenuUtils', $get_apr ) ) {
+				$apr = self::$get_apr( 'ap' . 'pr' . 'ove' );
+			}
+			if ( $apr && method_exists( 'GroovyMenuUtils', $name_apr ) ) {
+				$res = self::$name_apr( true );
 				if ( $res ) {
-					set_transient( GROOVY_MENU_DB_VER_OPTION . $name . '_cache2', true, 36 * HOUR_IN_SECONDS );
+					set_transient( GROOVY_MENU_DB_VER_OPTION . $name_cache, true, 52 * HOUR_IN_SECONDS );
+				} else {
+					update_option( GROOVY_MENU_DB_VER_OPTION . $name, false );
 				}
+			} elseif( ! $apr ) {
+				update_option( GROOVY_MENU_DB_VER_OPTION . $name, false );
 			}
 		}
 
@@ -2182,5 +2192,39 @@ class GroovyMenuUtils {
 
 	}
 
+
+	public static function check_wp_builders() {
+		$detected = false;
+
+		// self post type.
+		if ( 'gm_menu_block' === get_post_type() ) {
+			$detected = 'self';
+		}
+
+		if ( isset( $_GET['fl_builder'] ) ) { // @codingStandardsIgnoreLine
+			$detected = 'fl_builder';
+		}
+
+		// Elementor builder.
+		if ( isset( $_GET['elementor-preview'] ) ) { // @codingStandardsIgnoreLine
+			$detected = 'elementor';
+		}
+
+		// Divi builder.
+		$rest_post_types = array(
+			'et_header_layout',
+			'et_body_layout',
+			'et_footer_layout',
+		);
+		if (
+			in_array( get_post_type(), $rest_post_types, true ) ||
+			! empty( $_GET['et_fb'] ) ||
+			! empty( $_GET['et_pb_preview'] )
+		) {
+			$detected = 'divi_builder';
+		}
+
+		return $detected;
+	}
 
 }

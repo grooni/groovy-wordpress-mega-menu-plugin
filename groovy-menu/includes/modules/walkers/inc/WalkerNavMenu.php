@@ -3,6 +3,7 @@
 namespace GroovyMenu;
 
 use \Walker_Nav_Menu as Walker_Nav_Menu;
+use \GroovyMenuUtils as GroovyMenuUtils;
 
 
 defined( 'ABSPATH' ) || die( 'This script cannot be accessed directly.' );
@@ -307,28 +308,42 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 
 			$wpml_gm_menu_block_id = apply_filters( 'wpml_object_id', $post_id, 'gm_menu_block', true );
 
+			// prevent conflict with Divi theme builder.
+			if ( 'divi_builder' === GroovyMenuUtils::check_wp_builders() ) {
+				return '[' . __( 'Divi Builder Conflict Prevention', 'groovy-menu' ) . ']';
+			}
+
 			// Copy global $post exemplar.
 			$_post = $post;
-			$post  = get_post( $wpml_gm_menu_block_id );
+			$post  = get_post( $wpml_gm_menu_block_id ); // @codingStandardsIgnoreLine
 
 			if ( empty( $post->ID ) ) {
 				// Recovery global $post exemplar.
-				$post = $_post;
+				$post = $_post; // @codingStandardsIgnoreLine
 
 				return $mm_content;
 			}
 
-			// prevent conflict with cornerstone plugin
+			// prevent conflict with cornerstone plugin.
 			if ( isset( $_POST['cs_preview_state'] ) && isset( $_POST['_cs_nonce'] ) ) { // @codingStandardsIgnoreLine
 				// Recovery global $post exemplar.
-				$post = $_post;
+				$post = $_post; // @codingStandardsIgnoreLine
 
-				return __( 'Cornerstone content', 'groovy-menu' );
+				return '[' . __( 'Cornerstone Conflict Prevention', 'groovy-menu' ) . ']';
 			}
 
 			if ( isset( $_GET['elementor-preview'] ) ) { // @codingStandardsIgnoreLine
-				$post = $_post;
-				return __( 'Elementor content', 'groovy-menu' );
+				// Recovery global $post exemplar.
+				$post = $_post; // @codingStandardsIgnoreLine
+
+				return '[' . __( 'Elementor Conflict Prevention', 'groovy-menu' ) . ']';
+			}
+
+			if ( isset( $_GET['page_id'] ) && ! empty( $_GET['et_fb'] ) ) { // @codingStandardsIgnoreLine
+				// Recovery global $post exemplar.
+				$post = $_post; // @codingStandardsIgnoreLine
+
+				return '[' . __( 'Divi builder Conflict Prevention', 'groovy-menu' ) . ']';
 			}
 
 			if (
