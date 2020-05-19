@@ -1,9 +1,9 @@
-<?php
+<?php defined( 'ABSPATH' ) || die( 'This script cannot be accessed directly.' );
 /*
 Plugin Name: Divi Grooni Groovymenu
 Plugin URI:  https://groovymenu.grooni.com
 Description: add module with Groovy Menu plugin
-Version:     1.0.0
+Version:     1.0.2
 Author:      grooni.com
 Author URI:  
 License:     GPL2
@@ -26,14 +26,16 @@ along with Divi Grooni Groovymenu. If not, see https://www.gnu.org/licenses/gpl-
 */
 
 
-if ( ! function_exists( 'groovymenu_initialize_extension' ) ):
-/**
- * Creates the extension's main class instance.
- *
- * @since 1.0.0
- */
-function groovymenu_initialize_extension() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/DiviGrooniGroovyMenu_init.php';
+if ( ! function_exists( 'groovymenu_initialize_extension' ) ) {
+	/**
+	 * Creates the extension's main class instance.
+	 *
+	 * @since 1.0.0
+	 */
+	function groovymenu_initialize_extension() {
+		require_once plugin_dir_path( __FILE__ ) . 'includes/DiviGrooniGroovyMenu_init.php';
+	}
+
+	add_action( 'divi_extensions_init', 'groovymenu_initialize_extension' );
+
 }
-add_action( 'divi_extensions_init', 'groovymenu_initialize_extension' );
-endif;

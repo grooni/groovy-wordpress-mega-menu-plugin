@@ -2142,121 +2142,205 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				<div class="gm-dashboard-body">
 					<div class="gm-dashboard-body_inner">
 
-						<div class="gm-dashboard-body-section">
-							<h3><?php esc_html_e( 'Automatic integration', 'groovy-menu' ); ?></h3>
-							<label>
-								<input class="gm-auto-integration-switcher" type="checkbox" class="switch"
-									   value="1"<?php if ( $saved_auto_integration ) {
-									echo ' checked';
-								} ?>>
-								<?php esc_html_e( 'Enable automatic integration', 'groovy-menu' ); ?>
-							</label>
-							<button type="button" class="btn gm-integration-button gm-auto-integration-save">
-								<?php esc_html_e( 'Save changes', 'groovy-menu' ); ?>
-							</button>
-							<input type="hidden" id="gm-nonce-auto-integration-field" name="gm_nonce"
-								   value="<?php echo esc_attr( wp_create_nonce( 'gm_nonce_auto_integration' ) ); ?>">
-							<p><?php esc_html_e( 'If enabled, the Groovy menu markup will be displayed after &lt;body&gt; html tag.', 'groovy-menu' ); ?></p>
+						<div class="gm-dashboard-body-title">
+							<h2><?php esc_html_e( 'Please select one of integration method below', 'groovy-menu' ); ?></h2>
+							<p><?php echo sprintf(
+									esc_html__( 'You can get more info from the %s', 'groovy-menu' ),
+									sprintf(
+										'<a href="%s" target="_blank" class="gm-integration-link gm-integration-link--video"><img class="gm-gui-picture gm-gui-picture__play-video" src="%sassets/images/play-video.svg" alt="">' . esc_html__( 'video tutorial', 'groovy-menu' ) . '</a>',
+										esc_url( 'https://youtu.be/7QjpDT8NUWI' ),
+										GROOVY_MENU_URL
+									)
+								); ?></p>
 						</div>
 
-						<div class="gm-dashboard-body-section">
-							<h3><?php esc_html_e( 'Choose the location for the integration menu into pre-defined areas in your theme.', 'groovy-menu' ); ?></h3>
-							<p><?php esc_html_e( 'If chosen then the Groovy Menu will display its own markup instead of the standard code from the function wp_nav_menu().', 'groovy-menu' ); ?></p>
-							<p>
-								<label for="gm-integration-location">
-									<?php esc_html_e( 'Theme Location', 'groovy-menu' ); ?><br/>
-									<select class="gm-integration-location"
-										id="gm-integration-location"
-										name="gm-integration-location">
-										<option
-											value="" <?php echo ( empty( $saved_location_integration ) ) ? ' selected' : '' ?>>--- <?php esc_html_e( 'Select a Location', 'groovy-menu' ); ?> ---
-										</option>
-										<?php
-										foreach ( GroovyMenuUtils::getNavMenuLocations( false, true ) as $location => $name ) {
-											// Prevent select Groovy Menu virtual location.
-											if ( 'gm_primary' === $location ) {
-												continue;
-											}
+						<?php
+						if ( class_exists('DiviGrooniGroovyMenu_Init') ) { ?>
+							<div class="gm-dashboard-body-section gm-dashboard-body-section--divi">
+								<div class="gm-dashboard-body-block--left">
+									<img class="gm-gui-picture gm-gui-picture__integration"
+										 src="<?php echo GROOVY_MENU_URL; ?>assets/images/integration.svg" alt="">
+								</div>
+								<div class="gm-dashboard-body-block--right">
+									<h3><?php esc_html_e( 'Integration for DIVI Theme', 'groovy-menu' ); ?></h3>
+									<p><?php esc_html_e( 'We automatically recognized the current theme as the DIVI, For the DIVI theme we have module already integrated into code of the plugin.', 'groovy-menu' ); ?></p>
+									<p><?php esc_html_e( 'So you don\'t need to do something for integration!', 'groovy-menu' ); ?></p>
+								</div>
+							</div>
+						<?php } ?>
 
-											?>
-											<option
-												value="<?php echo esc_attr( $location ); ?>"<?php echo ( strval( $saved_location_integration ) === strval( $location ) ) ? ' selected' : '' ?>><?php echo esc_attr( $name ); ?></option>
-											<?php
-										}
-										?>
-									</select>
-								</label>
-							</p>
-							<p><?php esc_html_e( 'Note:', 'groovy-menu' ); ?><?php echo sprintf( __( 'Make sure the menu is assigned on the %s page. Otherwise, the location selection list will be empty.', 'groovy-menu' ), $admin_nav_menu_page ); ?><?php esc_html_e( 'Groovy menu Primary location will be ignored.', 'groovy-menu' ); ?><?php esc_html_e( 'This integration successfully works only with those locations that are displayed on the front of the site.', 'groovy-menu' ); ?></p>
-							<p>
-								<button type="button" class="btn gm-integration-button gm-integration-location-save">
-									<?php esc_html_e( 'Save changes', 'groovy-menu' ); ?>
-								</button>
-						</div>
-
-						<div class="gm-dashboard-body-section">
-							<h3><?php esc_html_e( 'Manual integration', 'groovy-menu' ); ?></h3>
-							<p><?php esc_html_e( 'Attention! We strongly recommend that you insert the following code into a child theme. Therefore, the changes you make will not affect the files of the parent theme.', 'groovy-menu' ); ?></p>
-							<p><?php esc_html_e( 'You can display the Groovy menu directly in the template by adding the following code to the template:', 'groovy-menu' ); ?></p>
-							<p>
-								<code
-										class="gm-integrate-php-sample">&lt;?php if ( function_exists( 'groovy_menu' ) )
-									{ groovy_menu(); } ?&gt;</code>
-							</p>
-							<p><?php esc_html_e( 'The place where the code should be inserted depends on the theme. The most common place is the', 'groovy-menu' ); ?>
-								<code>header.php</code>.
-							</p>
-						</div>
 
 						<?php
 						// Child Theme exists in base
 						if ( ! empty( $child_proposal ) && is_array( $child_proposal ) ) { ?>
-							<div class="gm-dashboard-body-section">
-								<h3><?php esc_html_e( 'Integration through Child Theme', 'groovy-menu' ); ?></h3>
-								<?php if ( isset( $child_proposal['auto_integration'] ) && $child_proposal['auto_integration'] ) { ?>
-									<p><?php esc_html_e( 'According to the information from the Groovy Menu integration database, your current theme fully supports integration of Groovy Menu.', 'groovy-menu' ) ?></p>
-								<?php } ?>
-
-								<?php if ( isset( $child_proposal['integration_type'] ) && in_array( $child_proposal['integration_type'], array(
-										'function',
-										'header'
-									) )
-								) { ?>
-
-									<p><?php esc_html_e( 'The currently activated theme is in the Groovy Menu integration database. That means you do not have to manually integrate the Groovy menu and find out how to disable the one that comes with theme. We already found it out and prepared the solution in child theme', 'groovy-menu' ); ?>
-										. <?php
-										if ( 'function' === $child_proposal['integration_type'] ) {
-											esc_html_e( 'For the correct operation of the plugin, you should create a Child theme or add to existing one the following code to functions.php.', 'groovy-menu' );
-										}
-										if ( 'header' === $child_proposal['integration_type'] ) {
-											esc_html_e( 'For the correct operation of the plugin, you should create a Child theme with header.php and add the support code to it. Following code just example. We suggest download our child theme below.', 'groovy-menu' );
-										}
-
-										?></p>
-									<pre><?php echo( empty( $child_proposal['function_code'] ) ? '' : $child_proposal['function_code'] ); ?></pre>
-
+							<div class="gm-dashboard-body-section gm-dashboard-body-section--child">
+								<div class="gm-dashboard-body-block--left">
+									<img class="gm-gui-picture gm-gui-picture__integration"
+										 src="<?php echo GROOVY_MENU_URL; ?>assets/images/integration.svg" alt="">
+								</div>
+								<div class="gm-dashboard-body-block--right">
+									<h3><?php esc_html_e( 'Integration through Child Theme', 'groovy-menu' ); ?></h3>
+									<?php if ( isset( $child_proposal['auto_integration'] ) && $child_proposal['auto_integration'] ) { ?>
+										<p><?php esc_html_e( 'According to the information from the Groovy Menu integration database, your current theme fully supports integration of Groovy Menu.', 'groovy-menu' ) ?></p>
+									<?php } ?>
 
 									<?php if ( isset( $child_proposal['zip_url'] ) && $child_proposal['zip_url'] ) { ?>
-										<p><?php esc_html_e( 'Or we suggest downloading already prepared Child theme from the following link', 'groovy-menu' ); ?>
+										<p><?php echo sprintf( esc_html__( 'Your activated %s theme is already in our database. That is mean you don\'t need to use auto or manual integration.', 'groovy-menu' ), $current_theme ) ?></p>
+										<p><?php esc_html_e( 'We already prepared Child theme as the solution for your integration. Please download and activate', 'groovy-menu' ); ?>
 											:
-											<a href="<?php echo esc_attr( $child_proposal['zip_url'] ); ?>"><?php echo esc_html( $child_proposal['child_name'] ); ?></a>
+											<a href="<?php echo esc_attr( $child_proposal['zip_url'] ); ?>"
+											   class="gm-welcome-big-button gm-welcome-big-button--blue"><?php echo esc_html( $child_proposal['child_name'] ); ?></a>
 										</p>
 									<?php } ?>
 
-								<?php } ?>
+									<?php if ( isset( $child_proposal['integration_type'] ) && in_array( $child_proposal['integration_type'], array(
+											'function',
+											'header'
+										) )
+									) { ?>
+										<div class="gm-dashboard-body-block--slider">
+											<div class="gm-dashboard-body-block--slider_title">
+												<h4><?php esc_html_e( 'For advanced users', 'groovy-menu' ); ?></h4>
+											</div>
+											<div class="gm-dashboard-body-block--slider_content">
+												<p><?php
+													if ( 'function' === $child_proposal['integration_type'] ) {
+														esc_html_e( 'Create a Child theme or add to existing one the following code to functions.php.', 'groovy-menu' );
+													}
+													if ( 'header' === $child_proposal['integration_type'] ) {
+														esc_html_e( 'For the correct operation of the plugin, you should create a Child theme with header.php and add the support code to it. Following code just example. We suggest download our child theme below.', 'groovy-menu' );
+													}
+													?></p>
+												<pre><?php echo( empty( $child_proposal['function_code'] ) ? '' : $child_proposal['function_code'] ); ?></pre>
+											</div>
+										</div>
+									<?php } ?>
+								</div>
 							</div>
 						<?php } ?>
 
-						<?php if ( ! $this->lver ) { ?>
 
+						<div class="gm-dashboard-body-section">
+							<div class="gm-dashboard-body-block--left">
+								<img class="gm-gui-picture gm-gui-picture__auto-integration"
+									 src="<?php echo GROOVY_MENU_URL; ?>assets/images/auto-integration.svg" alt="">
+							</div>
+							<div class="gm-dashboard-body-block--right">
+								<h3><?php esc_html_e( 'Automatic integration', 'groovy-menu' ); ?></h3>
+								<label>
+									<input class="gm-auto-integration-switcher" type="checkbox" class="switch"
+										   value="1"<?php if ( $saved_auto_integration ) {
+										echo ' checked';
+									} ?>>
+									<?php esc_html_e( 'Enable automatic integration', 'groovy-menu' ); ?>
+								</label>
+								<button type="button" class="btn gm-integration-button gm-auto-integration-save">
+									<?php esc_html_e( 'Save changes', 'groovy-menu' ); ?>
+								</button>
+								<input type="hidden" id="gm-nonce-auto-integration-field" name="gm_nonce"
+									   value="<?php echo esc_attr( wp_create_nonce( 'gm_nonce_auto_integration' ) ); ?>">
+								<p><?php esc_html_e( 'If enabled, the Groovy Menu markup will be placed after &lt;body&gt; html tag.', 'groovy-menu' ); ?></p>
+							</div>
+						</div>
+
+
+						<div class="gm-dashboard-body-section">
+							<div class="gm-dashboard-body-block--left">
+								<img class="gm-gui-picture gm-gui-picture__integration-location"
+									 src="<?php echo GROOVY_MENU_URL; ?>assets/images/integration-location.svg" alt="">
+							</div>
+							<div class="gm-dashboard-body-block--right">
+								<h3><?php esc_html_e( 'Choose the location for the integration menu into pre-defined areas in your theme.', 'groovy-menu' ); ?></h3>
+								<p><?php esc_html_e( 'If chosen then the Groovy Menu will display its own markup instead of the standard code from the function wp_nav_menu().', 'groovy-menu' ); ?></p>
+								<p>
+									<label for="gm-integration-location">
+										<?php esc_html_e( 'Theme Locations', 'groovy-menu' ); ?><br/>
+										<select class="gm-integration-location"
+												id="gm-integration-location"
+												name="gm-integration-location">
+											<option
+													value="" <?php echo ( empty( $saved_location_integration ) ) ? ' selected' : '' ?>>
+												--- <?php esc_html_e( 'Select a Location', 'groovy-menu' ); ?> ---
+											</option>
+											<?php
+											foreach ( GroovyMenuUtils::getNavMenuLocations( false, true ) as $location => $name ) {
+												// Prevent select Groovy Menu virtual location.
+												if ( 'gm_primary' === $location ) {
+													continue;
+												}
+
+												?>
+												<option
+														value="<?php echo esc_attr( $location ); ?>"<?php echo ( strval( $saved_location_integration ) === strval( $location ) ) ? ' selected' : '' ?>><?php echo esc_attr( $name ); ?></option>
+												<?php
+											}
+											?>
+										</select>
+									</label>
+								</p>
+								<p><?php esc_html_e( 'Note:', 'groovy-menu' ); ?> <?php echo sprintf( __( 'Make sure the menu is assigned on the %s page. Otherwise, the location selection list will be empty.', 'groovy-menu' ), $admin_nav_menu_page ); ?><?php esc_html_e( 'Groovy menu Primary location will be ignored.', 'groovy-menu' ); ?><?php esc_html_e( 'The Groovy Menu Primary area will be ignored.', 'groovy-menu' ); ?></p>
+								<p>
+									<button type="button"
+											class="btn gm-integration-button gm-integration-location-save">
+										<?php esc_html_e( 'Save changes', 'groovy-menu' ); ?>
+									</button>
+							</div>
+						</div>
+
+
+						<div class="gm-dashboard-body-section">
+							<div class="gm-dashboard-body-block--left">
+								<img class="gm-gui-picture gm-gui-picture__manual-integration"
+									 src="<?php echo GROOVY_MENU_URL; ?>assets/images/manual-integration.svg" alt="">
+							</div>
+							<div class="gm-dashboard-body-block--right">
+								<h3><?php esc_html_e( 'Manual integration', 'groovy-menu' ); ?></h3>
+								<p><?php esc_html_e( 'Attention! We strongly recommend you insert the following code into a Child theme. Therefore, the changes you make will not affect the files of the parent theme.', 'groovy-menu' ); ?></p>
+								<p><?php esc_html_e( 'You can display the Groovy menu  by adding the following code directly to the template:', 'groovy-menu' ); ?></p>
+								<p>
+									<code
+											class="gm-integrate-php-sample">&lt;?php if ( function_exists( 'groovy_menu'
+										) )
+										{ groovy_menu(); } ?&gt;</code>
+								</p>
+								<p><?php esc_html_e( 'The place where the code should be inserted depends on the theme. The most common place is the', 'groovy-menu' ); ?>
+									<code>header.php</code>.
+								</p>
+							</div>
+						</div>
+
+
+						<?php if ( ! $this->lver ) { ?>
 							<div class="gm-dashboard-body-section">
-								<h3><?php esc_html_e( 'Support request', 'groovy-menu' ); ?></h3>
-								<p><?php
-									echo sprintf( esc_html__( 'If you encounter integration problems, find any bugs, or want to suggest new feature please create a ticket on our %s', 'groovy-menu' ),
-										sprintf( '<a href="https://grooni.ticksy.com/" target="_blank">%s</a>', esc_html__( 'Support Portal', 'groovy-menu' ) )
-									); ?></p>
+								<div class="gm-dashboard-body-block--left">
+									<img class="gm-gui-picture gm-gui-picture__need-integration"
+										 src="<?php echo GROOVY_MENU_URL; ?>assets/images/need-integration.svg" alt="">
+								</div>
+								<div class="gm-dashboard-body-block--right">
+									<h3><?php esc_html_e( 'Need integration for your theme?', 'groovy-menu' ); ?></h3>
+									<p><?php esc_html_e( 'if none of the above methods of automatic integration doesn\'t work properly, and for manual integration, you do not have enough time and experience.', 'groovy-menu' ); ?></p>
+									<p><?php esc_html_e( 'You can order to the manual integration service from our team.', 'groovy-menu' ); ?></p>
+									<p><?php esc_html_e( 'We do it in the shortest time!', 'groovy-menu' ); ?></p>
+									<p><a
+												class="gm-welcome-big-button gm-welcome-big-button--green"
+												href="https://gum.co/groovy-integration"
+												target="_blank"><?php esc_html_e( 'Manual integration', 'groovy-menu' ); ?>
+											$35</a></p>
+								</div>
 							</div>
 
+
+							<div class="gm-dashboard-body-subsection">
+									<p><?php esc_html_e( 'Get stucked?', 'groovy-menu' ); ?>
+										<img
+												class="gm-gui-picture gm-gui-picture__need-help"
+												src="<?php echo GROOVY_MENU_URL; ?>assets/images/need-help.svg"
+												alt="">
+										<?php
+										echo sprintf( esc_html__( 'Ask the %s team', 'groovy-menu' ),
+											sprintf( '<a href="https://grooni.ticksy.com/" target="_blank">%s</a>', esc_html__( 'support', 'groovy-menu' ) )
+										); ?></p>
+							</div>
 						<?php } ?>
 
 					</div>

@@ -467,6 +467,7 @@ if ( ! function_exists( 'groovy_menu_scripts_admin' ) ) {
 			), true ) && ! isset( $_GET['action'] ) ) {
 			wp_enqueue_script( 'groovy-menu-js-integration', GROOVY_MENU_URL . 'assets/js/integration.js', array(), GROOVY_MENU_VERSION, true );
 			wp_enqueue_style( 'groovy-menu-style-font-roboto', 'https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap', array(), GROOVY_MENU_VERSION );
+			wp_enqueue_style( 'groovy-menu-style-welcome', GROOVY_MENU_URL . 'assets/style/welcome.css', array(), GROOVY_MENU_VERSION );
 		}
 
 		// Only dashboard.
