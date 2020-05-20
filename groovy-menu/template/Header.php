@@ -578,6 +578,11 @@ function groovyMenu( $args = array() ) {
 				}
 			}
 
+			$img_src_wpml = esc_url( apply_filters( 'wpml_translate_single_string', $img_src, 'groovy-menu', 'Global settings - Logo image file URL (id:' . $attach_id . ')' ) );
+			if ( ! empty( $img_src_wpml ) ) {
+				$img_src = $img_src_wpml;
+			}
+
 			switch ( $key ) {
 				case 'default':
 					$additionl_class = ( intval( $groovyMenuSettings['header']['style'] ) === 4 ) ? 'header-4' : 'default';

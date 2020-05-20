@@ -173,7 +173,7 @@ class AdminWalker extends WalkerNavMenu {
 		$admin_walker_priority = 10;
 
 		if ( self::getGroovyMenuStyleClass()->getGlobal( 'tools', 'admin_walker_priority' ) ) {
-			$admin_walker_priority = 999999;
+			$admin_walker_priority = PHP_INT_MAX;
 		}
 
 		add_filter( 'wp_edit_nav_menu_walker', '\GroovyMenu\AdminWalker::get_edit_walker', $admin_walker_priority, 2 );
