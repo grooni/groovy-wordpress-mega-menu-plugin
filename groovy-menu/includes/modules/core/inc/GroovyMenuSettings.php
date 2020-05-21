@@ -2165,6 +2165,14 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 									<h3><?php esc_html_e( 'Integration for DIVI Theme', 'groovy-menu' ); ?></h3>
 									<p><?php esc_html_e( 'We automatically recognized the current theme as the DIVI, For the DIVI theme we have module already integrated into code of the plugin.', 'groovy-menu' ); ?></p>
 									<p><?php esc_html_e( 'So you don\'t need to do something for integration!', 'groovy-menu' ); ?></p>
+									<p><?php echo sprintf(
+											esc_html__( 'How To Create A DIVI Mega Menu with Groovy Menu %s', 'groovy-menu' ),
+											sprintf(
+												'<a href="%s" target="_blank" class="gm-integration-link gm-integration-link--video"><img class="gm-gui-picture gm-gui-picture__play-video" src="%sassets/images/play-video.svg" alt="">' . esc_html__( 'video tutorial', 'groovy-menu' ) . '</a>',
+												esc_url( 'https://youtu.be/ZiGtqayLllk' ),
+												GROOVY_MENU_URL
+											)
+										); ?></p>
 								</div>
 							</div>
 						<?php } ?>

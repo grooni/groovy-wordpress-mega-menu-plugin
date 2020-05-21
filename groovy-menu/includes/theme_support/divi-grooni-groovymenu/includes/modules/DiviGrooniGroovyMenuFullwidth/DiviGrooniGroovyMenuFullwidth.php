@@ -16,6 +16,13 @@ if ( ! class_exists( 'DiviGrooniGroovyMenuFullwidth' ) && class_exists( 'ET_Buil
 
 		public function init() {
 			$this->name = esc_html__( 'Groovy Menu Fullwidth', 'groovy-menu' );
+
+			$this->help_videos = array(
+				array(
+					'id'   => esc_html( 'ZiGtqayLllk' ),
+					'name' => esc_html__( 'How To Create A DIVI Mega Menu with Groovy Menu', 'groovy-menu' ),
+				),
+			);
 		}
 
 		public function get_fields() {

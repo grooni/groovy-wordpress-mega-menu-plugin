@@ -3,12 +3,12 @@
 Plugin Name: Divi Grooni Groovymenu
 Plugin URI:  https://groovymenu.grooni.com
 Description: add module with Groovy Menu plugin
-Version:     1.0.2
+Version:     1.0.3
 Author:      grooni.com
-Author URI:  
+Author URI:  https://grooni.com
 License:     GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: groovymenu-divi-grooni-groovymenu
+Text Domain: groovy-menu
 Domain Path: /languages
 
 Divi Grooni Groovymenu is free software: you can redistribute it and/or modify

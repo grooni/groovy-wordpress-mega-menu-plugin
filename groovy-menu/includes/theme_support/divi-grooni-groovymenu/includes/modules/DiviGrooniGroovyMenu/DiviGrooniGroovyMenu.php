@@ -15,6 +15,13 @@ if ( ! class_exists( 'DiviGrooniGroovyMenu' ) && class_exists( 'ET_Builder_Modul
 
 		public function init() {
 			$this->name = esc_html__( 'Groovy Menu', 'groovy-menu' );
+
+			$this->help_videos = array(
+				array(
+					'id'   => esc_html( 'ZiGtqayLllk' ),
+					'name' => esc_html__( 'How To Create A DIVI Mega Menu with Groovy Menu', 'groovy-menu' ),
+				),
+			);
 		}
 
 		public function get_fields() {
