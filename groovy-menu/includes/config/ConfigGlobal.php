@@ -422,7 +422,7 @@ return array(
 				'type'        => 'checkbox',
 				'title'       => esc_html__( 'Enable displaying the Groovy menu layout into Menu blocks post type', 'groovy-menu' ),
 				'default'     => false,
-				'description' => '',
+				'description' => esc_html__( 'Is also apply to not public post types', 'groovy-menu' ),
 			),
 			'google_fonts_local'    => array(
 				'type'        => 'checkbox',

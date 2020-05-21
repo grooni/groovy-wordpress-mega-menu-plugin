@@ -2193,13 +2193,13 @@ class GroovyMenuUtils {
 	}
 
 
+	/**
+	 * Detect different WP content builders.
+	 *
+	 * @return false|string
+	 */
 	public static function check_wp_builders() {
 		$detected = false;
-
-		// self post type.
-		if ( 'gm_menu_block' === get_post_type() ) {
-			$detected = 'self';
-		}
 
 		if ( isset( $_GET['fl_builder'] ) ) { // @codingStandardsIgnoreLine
 			$detected = 'fl_builder';
