@@ -3,6 +3,8 @@ import {
 } from '../shared/helpers';
 
 export function overlapMenu (options) {
+  let isElementorEditorActive = document.querySelector('body.elementor-editor-active');
+
   let toolbar = document.querySelector('.gm-toolbar');
   let toolbarHeight = toolbar === null ? 0 : toolbar.offsetHeight;
   const headerHeight = parseInt(options.headerHeight, 10);
@@ -20,7 +22,7 @@ export function overlapMenu (options) {
     navbarHeightMobile = mobileHeaderHeight;
   }
 
-  if (!options.overlap && headerToolbar) {
+  if (!options.overlap && headerToolbar || isElementorEditorActive) {
     let paddingTopVal = isMobile(options.mobileWidth) ? navbarHeightMobile : navbarHeightDesktop;
 
     if (padding) {
