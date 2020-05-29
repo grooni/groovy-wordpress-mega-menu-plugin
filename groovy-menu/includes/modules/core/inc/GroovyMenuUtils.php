@@ -2224,6 +2224,14 @@ class GroovyMenuUtils {
 			$detected = 'divi_builder';
 		}
 
+		// Avada theme / Fusion builder.
+		if ( defined( 'AVADA_VERSION' ) && isset( $_GET['builder'] ) && 'true' === $_GET['builder'] ) { // @codingStandardsIgnoreLine
+			$detected = 'fusion_builder';
+		}
+		if ( defined( 'AVADA_VERSION' ) && ! empty( $_GET['fb-edit'] ) ) { // @codingStandardsIgnoreLine
+			$detected = 'fusion_builder';
+		}
+
 		return $detected;
 	}
 

@@ -11,6 +11,7 @@
       "includes/theme_support/crane.php",
       "includes/theme_support/elementor.php",
       "includes/theme_support/divi.php",
+      "includes/theme_support/avada.php",
 
       "includes/migration/migrate.php",
       "template/loader.php",

@@ -313,6 +313,11 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 				return '[' . __( 'Divi Builder Conflict Prevention', 'groovy-menu' ) . ']';
 			}
 
+			// prevent conflict with Avada theme / Fusion builder.
+			if ( 'fusion_builder' === GroovyMenuUtils::check_wp_builders() ) {
+				return '[' . __( 'Fusion Builder Conflict Prevention', 'groovy-menu' ) . ']';
+			}
+
 			// Copy global $post exemplar.
 			$_post = $post;
 			$post  = get_post( $wpml_gm_menu_block_id ); // @codingStandardsIgnoreLine
