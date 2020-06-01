@@ -23,7 +23,7 @@ function getVisibleHeight (elem) {
 
 export function setCurrentItem () {
   let rowsArr = [];
-  const menu = document.querySelector('.gm-navbar-nav');
+  const menu = document.querySelector('.gm-main-menu-wrapper');
   let rows = document.querySelectorAll('[id]');
   let mostVisibleRow = {};
 
