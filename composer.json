@@ -10,7 +10,8 @@
     "groovymenu/storage": ">=1.1",
     "groovymenu/debugpage": ">=1.2",
     "groovymenu/virtualpages": ">=1.1",
-    "mnsami/composer-custom-directory-installer": "1.1.*"
+    "mnsami/composer-custom-directory-installer": "1.1.*",
+    "ext-json": "*"
   },
   "require-dev": {
     "composer/composer": "1.2"
@@ -45,7 +46,7 @@
       "type": "package",
       "package": {
         "name": "groovymenu/walkers",
-        "version": "2.0.0",
+        "version": "2.1.0",
         "dist": {
           "url": "./zip_modules/walkers.zip",
           "type": "zip"

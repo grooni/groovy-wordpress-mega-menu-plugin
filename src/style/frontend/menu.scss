@@ -129,8 +129,9 @@ NAVBAR GENERAL STYLES
     cursor: pointer;
   }
 
-  .gm-menu-item__txt-wrapper {
-    transition: all 0.2s;
+  .gm-menu-item__txt-wrapper,
+  .gm-menu-item__icon {
+    transition: all 0.15s;
   }
 
   .gm-navbar-nav > li,

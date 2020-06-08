@@ -1,0 +1,9 @@
+.et-db #et-boc .et-l .et-fb-modules-list ul > li.grooni_groovymenu::before,
+.et-db #et-boc .et-l .et-fb-modules-list ul > li.grooni_groovymenu_fullwidth::before {
+  content: '';
+  display: block;
+  height: 16px;
+  background-image: url('../images/gm-logo.svg');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}

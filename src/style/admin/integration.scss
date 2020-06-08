@@ -1,14 +1,83 @@
 .gm-dashboard__integration {
+  font-size: 16px;
+
+  h2 {
+    font-size: 1.8em;
+  }
+
+  h3 {
+    font-size: 1.4em;
+  }
+
+  pre {
+    border: 1px solid rgba(100, 100, 100, 0.2);
+    font-size: 0.8em;
+  }
+
   .gm-dashboard-body-section {
     border-bottom: dashed 1px #bbb;
     padding-bottom: 12px;
+    display: flex;
+
+    .gm-dashboard-body-block--left {
+      margin: auto 36px auto 18px;
+    }
 
     label {
+      font-size: 1.2em;
       margin-right: 5px;
     }
 
     .gm-integration-button {
       margin-top: 15px;
+    }
+  }
+
+  .gm-dashboard-body-section--child,
+  .gm-dashboard-body-section--divi {
+    background-color: #f7efd8;
+    border-radius: 6px;
+    border: 1px solid #ded3ab;
+
+    .gm-dashboard-body-block--left {
+      margin-top: 24px;
+    }
+  }
+
+  .gm-dashboard-body-block--slider {
+    background: #fff;
+    margin-top: 32px;
+    border: 1px solid #ded3ab;
+    border-radius: 3px;
+
+    .gm-dashboard-body-block--slider_title {
+      background: #fffbee;
+      border-bottom: 1px solid #ded3ab;
+      padding: 2px 18px;
+    }
+
+    .gm-dashboard-body-block--slider_content {
+      padding: 2px 18px;
+    }
+  }
+
+  .gm-gui-picture {
+    max-width: 120px;
+    max-height: 120px;
+   }
+
+  .gm-gui-picture__play-video,
+  .gm-gui-picture__need-help {
+    margin: 0 0.5em -0.2em 0.7em;
+    height: 1em;
+  }
+
+  .gm-dashboard-body-subsection {
+    margin: 4em 0;
+
+    p {
+      text-align: center;
+      line-height: 1em;
     }
   }
 }

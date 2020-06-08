@@ -855,18 +855,28 @@ class GroovyMenuUtils {
 
 
 	public static function check_apr() {
-		$name    = '_' . '_l' . 'ic';
-		$apr_opt = get_option( GROOVY_MENU_DB_VER_OPTION . $name );
-		$cache   = get_transient( GROOVY_MENU_DB_VER_OPTION . $name . '_cache2' );
-
+		$apr        = '';
+		$name       = '_' . '_l' . 'ic';
+		$name_cache = $name . '_cache2';
+		$apr_opt    = get_option( GROOVY_MENU_DB_VER_OPTION . $name );
+		$cache      = get_transient( GROOVY_MENU_DB_VER_OPTION . $name_cache );
 		if ( $apr_opt && ! $cache ) {
-			$name  = 'che' . 'ck_l';
-			$name .= 'ic';
-			if ( method_exists( 'GroovyMenuUtils', $name ) ) {
-				$res = self::$name( true );
+			$get_apr   = 'ge' . 't_pa';
+			$get_apr  .= 'raml' . 'ic';
+			$name_apr  = 'che' . 'ck_l';
+			$name_apr .= 'ic';
+			if ( method_exists( 'GroovyMenuUtils', $get_apr ) ) {
+				$apr = self::$get_apr( 'ap' . 'pr' . 'ove' );
+			}
+			if ( $apr && method_exists( 'GroovyMenuUtils', $name_apr ) ) {
+				$res = self::$name_apr( true );
 				if ( $res ) {
-					set_transient( GROOVY_MENU_DB_VER_OPTION . $name . '_cache2', true, 36 * HOUR_IN_SECONDS );
+					set_transient( GROOVY_MENU_DB_VER_OPTION . $name_cache, true, 52 * HOUR_IN_SECONDS );
+				} else {
+					update_option( GROOVY_MENU_DB_VER_OPTION . $name, false );
 				}
+			} elseif( ! $apr ) {
+				update_option( GROOVY_MENU_DB_VER_OPTION . $name, false );
 			}
 		}
 
@@ -2090,9 +2100,9 @@ class GroovyMenuUtils {
 			'title'          => __( 'PHP Max input vars', 'groovy-menu' ),
 			'value'          => $php_max_input_vars,
 			'desc'           => __( 'Matters to the Appearance - Menus editor', 'groovy-menu' ),
-			'recommend_desc' => __( 'Current Max input vars is OK, however 10000 is recommended for the correct operation of all the function.', 'groovy-menu' ),
-			'recommend'      => ( $php_max_input_vars >= 1000 ) ? true : false, // minimum 1000
-			'pass'           => ( $php_max_input_vars >= 10000 ) ? true : false, // minimum 10000
+			'recommend_desc' => sprintf( __( 'Current Max input vars is OK, however %s is recommended for the correct operation of all the function.', 'groovy-menu' ), '1000' ),
+			'recommend'      => ( $php_max_input_vars >= 200 ) ? true : false, // minimum 200
+			'pass'           => ( $php_max_input_vars >= 1000 ) ? true : false, // minimum 1000
 		);
 
 		// php_max_input_vars
@@ -2182,5 +2192,47 @@ class GroovyMenuUtils {
 
 	}
 
+
+	/**
+	 * Detect different WP content builders.
+	 *
+	 * @return false|string
+	 */
+	public static function check_wp_builders() {
+		$detected = false;
+
+		if ( isset( $_GET['fl_builder'] ) ) { // @codingStandardsIgnoreLine
+			$detected = 'fl_builder';
+		}
+
+		// Elementor builder.
+		if ( isset( $_GET['elementor-preview'] ) ) { // @codingStandardsIgnoreLine
+			$detected = 'elementor';
+		}
+
+		// Divi builder.
+		$rest_post_types = array(
+			'et_header_layout',
+			'et_body_layout',
+			'et_footer_layout',
+		);
+		if (
+			in_array( get_post_type(), $rest_post_types, true ) ||
+			! empty( $_GET['et_fb'] ) ||
+			! empty( $_GET['et_pb_preview'] )
+		) {
+			$detected = 'divi_builder';
+		}
+
+		// Avada theme / Fusion builder.
+		if ( defined( 'AVADA_VERSION' ) && isset( $_GET['builder'] ) && 'true' === $_GET['builder'] ) { // @codingStandardsIgnoreLine
+			$detected = 'fusion_builder';
+		}
+		if ( defined( 'AVADA_VERSION' ) && ! empty( $_GET['fb-edit'] ) ) { // @codingStandardsIgnoreLine
+			$detected = 'fusion_builder';
+		}
+
+		return $detected;
+	}
 
 }

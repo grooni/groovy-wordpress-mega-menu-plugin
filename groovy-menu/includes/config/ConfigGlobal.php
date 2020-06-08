@@ -418,6 +418,12 @@ return array(
 				'default'     => false,
 				'description' => esc_html__( 'The theme or another plugin can override the visibility of the Groovy menu settings at Appearance &gt; Menus. To show up Groovy menus settings instead, use this option.', 'groovy-menu' ),
 			),
+			'display_gm_when_menu_block_edit' => array(
+				'type'        => 'checkbox',
+				'title'       => esc_html__( 'Enable displaying the Groovy menu layout into Menu blocks post type', 'groovy-menu' ),
+				'default'     => false,
+				'description' => esc_html__( 'Is also apply to not public post types', 'groovy-menu' ),
+			),
 			'google_fonts_local'    => array(
 				'type'        => 'checkbox',
 				'title'       => esc_html__( 'Use local google fonts', 'groovy-menu' ),

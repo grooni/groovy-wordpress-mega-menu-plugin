@@ -2,8 +2,8 @@ import tingle from 'tingle.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   let iconField;
+  let globalWrapper = document.querySelector('body.wp-admin');
   let icons = document.querySelectorAll('#gm-icon-settings-modal .groovy-icon');
-  let selectIconBtns = document.querySelectorAll('.gm-icons-modal');
   const iconModalContent = document.querySelector('#gm-icon-settings-modal');
   let closeModalBtn = document.querySelector('#gm-icon-settings-modal .gm-modal-close');
   let iconModalOptions = {
@@ -19,49 +19,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
   iconsModal.setContent(iconModalContent);
 
-  function openIconsModal () {
-    if (document.querySelector('.gm-dashboard-container')) {
-      iconField = this.closest('.gm-gui__module__icon-wrapper')
-        .querySelector('input');
+  function openIconsModal(event) {
+    let openApproved = false;
+
+    if (event.target && event.target.classList && event.target.classList.contains('gm-icons-modal')) {
+      openApproved = true;
     }
 
-    if (document.querySelector('.menu-item-settings')) {
-      iconField = this.closest('.description')
-        .querySelector('.gm-icon-field');
-    }
+    if (openApproved) {
+      if (document.querySelector('.gm-dashboard-container')) {
+        iconField = event.target.closest('.gm-gui__module__icon-wrapper')
+          .querySelector('input');
+      }
 
-    iconsModal.open();
+      if (document.querySelector('.menu-item-settings')) {
+        iconField = event.target.closest('.description')
+          .querySelector('.gm-icon-field');
+      }
+
+      iconsModal.open();
+    }
   }
 
-  function setIcon () {
-    iconField.value = this.dataset.class;
+  function setIcon(event) {
+    iconField.value = event.target.dataset.class;
 
     if (document.querySelector('.gm-dashboard-container')) {
       iconField
         .closest('.gm-gui__module__icon-wrapper')
         .querySelector('.gm-icon-preview span')
-        .setAttribute('class', this.dataset.class);
+        .setAttribute('class', event.target.dataset.class);
     }
 
     if (document.querySelector('.menu-item-settings')) {
       iconField
         .closest('.description')
         .querySelector('.gm-icon-preview span')
-        .setAttribute('class', this.dataset.class);
+        .setAttribute('class', event.target.dataset.class);
     }
 
     iconsModal.close();
   }
 
-  selectIconBtns.forEach((btn) => {
-    btn.addEventListener('click', openIconsModal);
-  });
+  if (globalWrapper) {
+    globalWrapper.addEventListener('click', openIconsModal);
+  }
 
-  closeModalBtn.addEventListener('click', () => {
-    iconsModal.close();
-  });
+  if (closeModalBtn) {
+    closeModalBtn.addEventListener('click', () => {
+      iconsModal.close();
+    });
+  }
 
-  icons.forEach((icon) => {
-    icon.addEventListener('click', setIcon);
-  });
+  if (icons) {
+    icons.forEach((icon) => {
+      icon.addEventListener('click', setIcon);
+    });
+  }
 });

@@ -3,6 +3,7 @@
 namespace GroovyMenu;
 
 use \Walker_Nav_Menu as Walker_Nav_Menu;
+use \GroovyMenuUtils as GroovyMenuUtils;
 
 
 defined( 'ABSPATH' ) || die( 'This script cannot be accessed directly.' );
@@ -52,25 +53,6 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	const GM_BADGE_CONTAINER_RADIUS     = 'groovy_menu_badge_container_radius';
 	const GM_BADGE_CONTAINER_BG         = 'groovy_menu_badge_container_bg';
 
-	protected static $backgroundPositions = array(
-		'top left',
-		'top center',
-		'top right',
-		'center left',
-		'center center',
-		'center right',
-		'bottom left',
-		'bottom center',
-		'bottom right',
-	);
-
-	protected static $backgroundRepeats = array(
-		'no-repeat',
-		'repeat',
-		'repeat-x',
-		'repeat-y',
-	);
-
 	/**
 	 * Mass meta storage
 	 *
@@ -84,6 +66,165 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	 * @var array
 	 */
 	private $gm_google_fonts = array();
+
+	/**
+	 * Array with menu item options.
+	 *
+	 * @var array
+	 */
+	static $menu_item_options = array(
+		'groovymenu-megamenu'                 => array(
+			'meta_name' => self::IS_MEGAMENU_META,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'groovymenu-megamenu-cols'            => array(
+			'meta_name' => self::MEGAMENU_META_COLS,
+			'default'   => '5',
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'groovymenu-do-not-show-title'        => array(
+			'meta_name' => self::DO_NOT_SHOW_TITLE,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'groovymenu-icon-class'               => array(
+			'meta_name' => self::ICON_CLASS,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'groovymenu-is-show-featured'         => array(
+			'meta_name' => self::IS_SHOW_FEATURED_IMAGE,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'groovymenu-megamenu-bg'              => array(
+			'meta_name' => self::MEGAMENU_BACKGROUND,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'groovymenu-megamenu-bg-position'     => array(
+			'meta_name' => self::MEGAMENU_BACKGROUND_POSITION,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'groovymenu-megamenu-bg-repeat'       => array(
+			'meta_name' => self::MEGAMENU_BACKGROUND_REPEAT,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'groovymenu-megamenu-bg-size'         => array(
+			'meta_name' => self::MEGAMENU_BACKGROUND_SIZE,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'groovymenu-block-url'                => array(
+			'meta_name' => self::MENU_BLOCK_URL,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'groovymenu-megamenu-post-not-mobile' => array(
+			'meta_name' => self::MEGAMENU_META_POST_NOT_MOBILE,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		// Thumb
+		'gm-thumb-enable'                     => array(
+			'meta_name' => self::GM_THUMB_ENABLE,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-thumb-position'                   => array(
+			'meta_name' => self::GM_THUMB_POSITION,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-thumb-max-height'                 => array(
+			'meta_name' => self::GM_THUMB_MAX_HEIGHT,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-thumb-with-url'                   => array(
+			'meta_name' => self::GM_THUMB_WITH_URL,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-thumb-image'                      => array(
+			'meta_name' => self::GM_THUMB_IMAGE,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		// Badge.
+		'gm-badge-enable'                     => array(
+			'meta_name' => self::GM_BADGE_ENABLE,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-type'                       => array(
+			'meta_name' => self::GM_BADGE_TYPE,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-placement'                  => array(
+			'meta_name' => self::GM_BADGE_PLACEMENT,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-general-position'           => array(
+			'meta_name' => self::GM_BADGE_GENERAL_POSITION,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-y-position'                 => array(
+			'meta_name' => self::GM_BADGE_Y_POSITION,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-x-position'                 => array(
+			'meta_name' => self::GM_BADGE_X_POSITION,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		// Badge image.
+		'gm-badge-image'                      => array(
+			'meta_name' => self::GM_BADGE_IMAGE,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-image-width'                => array(
+			'meta_name' => self::GM_BADGE_IMAGE_WIDTH,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-image-height'               => array(
+			'meta_name' => self::GM_BADGE_IMAGE_HEIGHT,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		// Badge icon.
+		'gm-badge-icon'                       => array(
+			'meta_name' => self::GM_BADGE_ICON,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-icon-size'                  => array(
+			'meta_name' => self::GM_BADGE_ICON_SIZE,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-icon-color'                 => array(
+			'meta_name' => self::GM_BADGE_ICON_COLOR,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		// Badge text.
+		'gm-badge-text'                       => array(
+			'meta_name' => self::GM_BADGE_TEXT,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-text-font-family'           => array(
+			'meta_name' => self::GM_BADGE_TEXT_FONT_FAMILY,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-text-font-variant'          => array(
+			'meta_name' => self::GM_BADGE_TEXT_FONT_VARIANT,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-text-font-size'             => array(
+			'meta_name' => self::GM_BADGE_TEXT_FONT_SIZE,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-text-font-color'            => array(
+			'meta_name' => self::GM_BADGE_TEXT_FONT_COLOR,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-container-padding'          => array(
+			'meta_name' => self::GM_BADGE_CONTAINER_PADDING,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-container-radius'           => array(
+			'meta_name' => self::GM_BADGE_CONTAINER_RADIUS,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-container-bg'               => array(
+			'meta_name' => self::GM_BADGE_CONTAINER_BG,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+	);
+
 
 	/**
 	 * @param $item
@@ -307,28 +448,47 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 
 			$wpml_gm_menu_block_id = apply_filters( 'wpml_object_id', $post_id, 'gm_menu_block', true );
 
+			// prevent conflict with Divi theme builder.
+			if ( 'divi_builder' === GroovyMenuUtils::check_wp_builders() ) {
+				return '[' . __( 'Divi Builder Conflict Prevention', 'groovy-menu' ) . ']';
+			}
+
+			// prevent conflict with Avada theme / Fusion builder.
+			if ( 'fusion_builder' === GroovyMenuUtils::check_wp_builders() ) {
+				return '[' . __( 'Fusion Builder Conflict Prevention', 'groovy-menu' ) . ']';
+			}
+
 			// Copy global $post exemplar.
 			$_post = $post;
-			$post  = get_post( $wpml_gm_menu_block_id );
+			$post  = get_post( $wpml_gm_menu_block_id ); // @codingStandardsIgnoreLine
 
 			if ( empty( $post->ID ) ) {
 				// Recovery global $post exemplar.
-				$post = $_post;
+				$post = $_post; // @codingStandardsIgnoreLine
 
 				return $mm_content;
 			}
 
-			// prevent conflict with cornerstone plugin
+			// prevent conflict with cornerstone plugin.
 			if ( isset( $_POST['cs_preview_state'] ) && isset( $_POST['_cs_nonce'] ) ) { // @codingStandardsIgnoreLine
 				// Recovery global $post exemplar.
-				$post = $_post;
+				$post = $_post; // @codingStandardsIgnoreLine
 
-				return __( 'Cornerstone content', 'groovy-menu' );
+				return '[' . __( 'Cornerstone Conflict Prevention', 'groovy-menu' ) . ']';
 			}
 
 			if ( isset( $_GET['elementor-preview'] ) ) { // @codingStandardsIgnoreLine
-				$post = $_post;
-				return __( 'Elementor content', 'groovy-menu' );
+				// Recovery global $post exemplar.
+				$post = $_post; // @codingStandardsIgnoreLine
+
+				return '[' . __( 'Elementor Conflict Prevention', 'groovy-menu' ) . ']';
+			}
+
+			if ( isset( $_GET['page_id'] ) && ! empty( $_GET['et_fb'] ) ) { // @codingStandardsIgnoreLine
+				// Recovery global $post exemplar.
+				$post = $_post; // @codingStandardsIgnoreLine
+
+				return '[' . __( 'Divi builder Conflict Prevention', 'groovy-menu' ) . ']';
 			}
 
 			if (

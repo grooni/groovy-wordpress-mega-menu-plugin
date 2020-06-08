@@ -8,6 +8,11 @@
   z-index: 100000;
 }
 
+.tingle-modal.gm-modal--icons,
+.tingle-modal.gm-modal-overflow {
+  backdrop-filter: blur(1px);
+}
+
 .tingle-modal-box__content {
   padding: 0;
   height: inherit;
@@ -93,7 +98,8 @@
 
 .gm-modal--lg {
   .tingle-modal-box {
-    max-width: 900px;
+    max-width: 960px;
+    width: 90%;
   }
 }
 
@@ -113,7 +119,7 @@
 }
 
 .gm-modal--icons {
-  z-index: 100001;
+  z-index: 999999999;
 
   .tingle-modal-box {
     max-width: 915px;

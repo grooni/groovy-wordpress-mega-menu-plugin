@@ -21,6 +21,8 @@ function groovyMenu( $args = array() ) {
 	// Main var with GM block HTML.
 	$output_html = '';
 
+	$show_mobile_menu = true;
+
 	global $groovyMenuSettings, $groovyMenuPreview;
 
 	$post_type = GroovyMenuUtils::get_current_page_type();
@@ -321,7 +323,9 @@ function groovyMenu( $args = array() ) {
 		$wrapper_tag = esc_attr( $groovyMenuSettings['wrapperTag'] );
 	}
 
-
+	if ( isset( $groovyMenuSettings['mobileNavMenu'] ) && 'none' === $groovyMenuSettings['mobileNavMenu'] ) {
+		$show_mobile_menu = false;
+	}
 
 	// Clean output, first parent level;
 	ob_start();
@@ -574,6 +578,11 @@ function groovyMenu( $args = array() ) {
 				}
 			}
 
+			$img_src_wpml = esc_url( apply_filters( 'wpml_translate_single_string', $img_src, 'groovy-menu', 'Global settings - Logo image file URL (id:' . $attach_id . ')' ) );
+			if ( ! empty( $img_src_wpml ) ) {
+				$img_src = $img_src_wpml;
+			}
+
 			switch ( $key ) {
 				case 'default':
 					$additionl_class = ( intval( $groovyMenuSettings['header']['style'] ) === 4 ) ? 'header-4' : 'default';
@@ -771,117 +780,121 @@ function groovyMenu( $args = array() ) {
 		<div class="gm-padding"></div>
 	</' . esc_html( $wrapper_tag ) . '>';
 
-	$custom_css_class = $styles->getCustomHtmlClass();
 
-	$output_html .= '<aside class="gm-navigation-drawer gm-navigation-drawer--mobile gm-hidden';
-	if ( $custom_css_class ) {
-		$output_html .= ' ' . esc_attr( $custom_css_class );
-	}
-	$output_html .= '">';
-	$output_html .= '<div class="gm-grid-container d-flex flex-column h-100">
+	// ------------------------------------------------------------------------------------------- mobile menu --------.
+	if ( $show_mobile_menu ) {
+		$custom_css_class = $styles->getCustomHtmlClass();
+
+		$output_html .= '<aside class="gm-navigation-drawer gm-navigation-drawer--mobile gm-hidden';
+		if ( $custom_css_class ) {
+			$output_html .= ' ' . esc_attr( $custom_css_class );
+		}
+		$output_html .= '">';
+		$output_html .= '<div class="gm-grid-container d-flex flex-column h-100">
 			<div>';
 
-	$args['gm_navigation_mobile'] = true;
+		$args['gm_navigation_mobile'] = true;
 
-	if ( isset( $groovyMenuSettings['mobileNavMenu'] ) && is_numeric( $groovyMenuSettings['mobileNavMenu'] ) ) {
-		// Re-assign nav_menu for the mobile view.
-		$args['menu'] = intval( $groovyMenuSettings['mobileNavMenu'] );
-	}
-
-
-	ob_start();
-	/**
-	 * Fires at the mobile main menu nav.
-	 *
-	 * @since 1.1.0
-	 */
-	do_action( 'gm_mobile_main_menu_nav_first' );
-	$output_html .= ob_get_clean();
-
-
-	$output_html .= wp_nav_menu( $args );
-
-
-	ob_start();
-	/**
-	 * Fires at the mobile main menu nav.
-	 *
-	 * @since 1.1.0
-	 */
-	do_action( 'gm_mobile_main_menu_nav_last' );
-	$output_html .= ob_get_clean();
-
-	$output_html .= '</div>';
-	$output_html .= '<div class="flex-grow-1"></div>';
-
-	ob_start();
-	/**
-	 * Fires after main menu nav for mobile.
-	 *
-	 * @since 1.1.0
-	 */
-	do_action( 'gm_mobile_after_main_menu_nav' );
-	$output_html .= ob_get_clean();
-
-
-	$output_html .= '<div class="d-flex justify-content-center align-items-center text-center mb-4 mt-5">';
-
-	$searchForm = $groovyMenuSettings['searchForm'];
-	$searchIcon = 'gmi gmi-zoom-search';
-	if ( $styles->getGlobal( 'misc_icons', 'search_icon' ) ) {
-		$searchIcon = $styles->getGlobal( 'misc_icons', 'search_icon' );
-	}
-
-	if ( 'disable' !== $searchForm ) {
-
-		$isFullScreen   = false;
-		$isSearchCustom = false;
-
-		if ( 'custom' === $searchForm ) {
-			$isSearchCustom = true;
+		if ( isset( $groovyMenuSettings['mobileNavMenu'] ) && is_numeric( $groovyMenuSettings['mobileNavMenu'] ) ) {
+			// Re-assign nav_menu for the mobile view.
+			$args['menu'] = intval( $groovyMenuSettings['mobileNavMenu'] );
 		}
 
-		$searchFormCustomWrapper = isset( $groovyMenuSettings['searchFormCustomWrapper'] ) ? $groovyMenuSettings['searchFormCustomWrapper'] : 'fullscreen';
-		if ( 'fullscreen' === $searchForm || ( $isSearchCustom && 'dropdown' !== $searchFormCustomWrapper ) ) {
-			$isFullScreen = 'fullscreen';
+
+		ob_start();
+		/**
+		 * Fires at the mobile main menu nav.
+		 *
+		 * @since 1.1.0
+		 */
+		do_action( 'gm_mobile_main_menu_nav_first' );
+		$output_html .= ob_get_clean();
+
+
+		$output_html .= wp_nav_menu( $args );
+
+
+		ob_start();
+		/**
+		 * Fires at the mobile main menu nav.
+		 *
+		 * @since 1.1.0
+		 */
+		do_action( 'gm_mobile_main_menu_nav_last' );
+		$output_html .= ob_get_clean();
+
+		$output_html .= '</div>';
+		$output_html .= '<div class="flex-grow-1"></div>';
+
+		ob_start();
+		/**
+		 * Fires after main menu nav for mobile.
+		 *
+		 * @since 1.1.0
+		 */
+		do_action( 'gm_mobile_after_main_menu_nav' );
+		$output_html .= ob_get_clean();
+
+
+		$output_html .= '<div class="d-flex justify-content-center align-items-center text-center mb-4 mt-5">';
+
+		$searchForm = $groovyMenuSettings['searchForm'];
+		$searchIcon = 'gmi gmi-zoom-search';
+		if ( $styles->getGlobal( 'misc_icons', 'search_icon' ) ) {
+			$searchIcon = $styles->getGlobal( 'misc_icons', 'search_icon' );
 		}
 
-		$output_html .= '<div class="gm-search ' . ( $isFullScreen ? 'fullscreen' : 'gm-dropdown' ) . '">
+		if ( 'disable' !== $searchForm ) {
+
+			$isFullScreen   = false;
+			$isSearchCustom = false;
+
+			if ( 'custom' === $searchForm ) {
+				$isSearchCustom = true;
+			}
+
+			$searchFormCustomWrapper = isset( $groovyMenuSettings['searchFormCustomWrapper'] ) ? $groovyMenuSettings['searchFormCustomWrapper'] : 'fullscreen';
+			if ( 'fullscreen' === $searchForm || ( $isSearchCustom && 'dropdown' !== $searchFormCustomWrapper ) ) {
+				$isFullScreen = 'fullscreen';
+			}
+
+			$output_html .= '<div class="gm-search ' . ( $isFullScreen ? 'fullscreen' : 'gm-dropdown' ) . '">
 						<i class="gm-icon ' . esc_attr( $searchIcon ) . '"></i>
 						<span class="gm-search__txt">'
-		                . esc_html__( 'Search', 'groovy-menu' ) .
-		                '</span>
+			                . esc_html__( 'Search', 'groovy-menu' ) .
+			                '</span>
 					</div>';
 
-	}
-
-	$output_html .= '<div class="gm-divider--vertical mx-4"></div>';
-	if ( ! gm_get_shop_is_catalog() && $groovyMenuSettings['woocommerceCart'] && class_exists( 'WooCommerce' ) && function_exists( 'wc_get_page_id' ) ) {
-		global $woocommerce;
-
-		$qty = 0;
-		if ( $woocommerce && isset( $woocommerce->cart ) ) {
-			$qty = $woocommerce->cart->get_cart_contents_count();
 		}
-		$cartIcon = 'gmi gmi-bag';
-		if ( $styles->getGlobal( 'misc_icons', 'cart_icon' ) ) {
-			$cartIcon = $styles->getGlobal( 'misc_icons', 'cart_icon' );
-		}
-		$output_html .= '
+
+		$output_html .= '<div class="gm-divider--vertical mx-4"></div>';
+		if ( ! gm_get_shop_is_catalog() && $groovyMenuSettings['woocommerceCart'] && class_exists( 'WooCommerce' ) && function_exists( 'wc_get_page_id' ) ) {
+			global $woocommerce;
+
+			$qty = 0;
+			if ( $woocommerce && isset( $woocommerce->cart ) ) {
+				$qty = $woocommerce->cart->get_cart_contents_count();
+			}
+			$cartIcon = 'gmi gmi-bag';
+			if ( $styles->getGlobal( 'misc_icons', 'cart_icon' ) ) {
+				$cartIcon = $styles->getGlobal( 'misc_icons', 'cart_icon' );
+			}
+			$output_html .= '
 					<div class="gm-minicart">
 						<a href="' . get_permalink( wc_get_page_id( 'cart' ) ) . '" class="gm-minicart-link">
 							<div class="gm-badge">' . groovy_menu_woocommerce_mini_cart_counter( $qty ) . '</div>
 							<i class="gm-icon ' . esc_attr( $cartIcon ) . '"></i>
 							<span class="gm-minicart__txt">'
-		                . esc_html__( 'My cart', 'groovy-menu' ) .
-		                '</span>
+			                . esc_html__( 'My cart', 'groovy-menu' ) .
+			                '</span>
 						</a>
 					</div>
 					';
+		}
+		$output_html .= '</div>';
+		$output_html .= '</div>';
+		$output_html .= '</aside>';
 	}
-	$output_html .= '</div>';
-	$output_html .= '</div>';
-	$output_html .= '</aside>';
 
 	ob_start();
 	/**

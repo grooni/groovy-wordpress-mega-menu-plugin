@@ -367,7 +367,7 @@ class FrontendWalker extends WalkerNavMenu {
 
 					$current_title = apply_filters( 'the_title', $item->title, $item->ID );
 					if ( in_array( $current_title, $hiding_symbol, true ) ) {
-						$current_title = '&nbsp;';
+						$current_title = '';
 					}
 
 					$item_link .= '<span class="gm-menu-item__txt-wrapper">';
@@ -398,7 +398,7 @@ class FrontendWalker extends WalkerNavMenu {
 
 					$current_title = apply_filters( 'the_title', $item->title, $item->ID );
 					if ( in_array( $current_title, $hiding_symbol, true ) ) {
-						$current_title = '&nbsp;';
+						$current_title = '';
 					}
 
 					$item_title .= $current_title;
@@ -517,7 +517,11 @@ class FrontendWalker extends WalkerNavMenu {
 				);
 
 				if ( $this->getIcon( $item ) ) {
-					$badge['left'] .= '<span class="gm-menu-item__icon ' . $this->getIcon( $item ) . '"></span>';
+					if ( 0 === $depth ) {
+						$item_output .= '<span class="gm-menu-item__icon ' . $this->getIcon( $item ) . '"></span>';
+					} else {
+						$badge['left'] .= '<span class="gm-menu-item__icon ' . $this->getIcon( $item ) . '"></span>';
+					}
 				}
 
 				$badge_enable = $this->getBadgeEnable( $item );
@@ -643,7 +647,7 @@ class FrontendWalker extends WalkerNavMenu {
 
 				$current_title = apply_filters( 'the_title', $item->title, $item->ID );
 				if ( in_array( $current_title, $hiding_symbol, true ) ) {
-					$current_title = '&nbsp;';
+					$current_title = '';
 				}
 
 				$item_output .= '<span class="gm-menu-item__txt-wrapper">';
