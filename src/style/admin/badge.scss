@@ -91,80 +91,6 @@
     z-index: 100005;
     box-sizing: border-box;
     text-align: right;
-
-    .gm-walker-modal-save,
-    .gm-walker-modal-close {
-      font-size: 16px;
-      padding: 6px 30px;
-      margin: 0 10px;
-      text-decoration: none;
-      text-transform: uppercase;
-      border-radius: 4px;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.2s ease;
-      color: #fff;
-      background: #458aff;
-      box-shadow: 0 2px 0 #3060b2;
-    }
-
-    .gm-walker-modal-save:hover,
-    .gm-walker-modal-close:hover {
-      color: #fff;
-      background: #2b79ff;
-      box-shadow: 0 1px 0 #0e54cc;
-    }
-
-    .gm-walker-modal-save::before {
-      color: #b31b56;
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 0;
-      margin-top: 8px;
-      width: 22px;
-      height: 22px;
-      border: 2px solid;
-      border-left-color: transparent;
-      border-right-color: transparent;
-      border-radius: 50%;
-      opacity: 0;
-      transition: opacity 1s;
-      -webkit-animation: 0.5s linear infinite gm-rotate-amination;
-      animation: 0.5s linear infinite gm-rotate-amination;
-    }
-
-    .gm-walker-modal-save.gm-button-loading {
-      background: #0330b0;
-      pointer-events: none;
-      cursor: not-allowed;
-    }
-
-    .gm-walker-modal-save.gm-button-loading::before {
-      transition-delay: 0.2s;
-      transition-duration: 1s;
-      opacity: 1;
-    }
-
-    @-webkit-keyframes gm-rotate-amination {
-      0% {
-        transform: rotate(0deg);
-      }
-
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
-    @keyframes gm-rotate-amination {
-      0% {
-        transform: rotate(0deg);
-      }
-
-      100% {
-        transform: rotate(360deg);
-      }
-    }
   }
 
   .gm-walker-modal-main-container {
@@ -250,6 +176,86 @@
           display: block;
         }
       }
+    }
+
+    .gm-option-field .gm-option-field-select {
+      font-size: 1.3em !important;
+      font-weight: bold;
+    }
+  }
+
+  .gm-option-field button,
+  .gm-walker-modal-save,
+  .gm-walker-modal-close {
+    font-size: 16px;
+    padding: 6px 30px;
+    margin: 0 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    color: #fff;
+    background: #458aff;
+    box-shadow: 0 2px 0 #3060b2;
+  }
+
+  .gm-walker-modal-save:hover,
+  .gm-walker-modal-close:hover {
+    color: #fff;
+    background: #2b79ff;
+    box-shadow: 0 1px 0 #0e54cc;
+  }
+
+  .gm-walker-modal-save::before {
+    color: #b31b56;
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    margin-top: 8px;
+    width: 22px;
+    height: 22px;
+    border: 2px solid;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 1s;
+    -webkit-animation: 0.5s linear infinite gm-rotate-amination;
+    animation: 0.5s linear infinite gm-rotate-amination;
+  }
+
+  .gm-walker-modal-save.gm-button-loading {
+    background: #0330b0;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+
+  .gm-walker-modal-save.gm-button-loading::before {
+    transition-delay: 0.2s;
+    transition-duration: 1s;
+    opacity: 1;
+  }
+
+  @-webkit-keyframes gm-rotate-amination {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes gm-rotate-amination {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
     }
   }
 

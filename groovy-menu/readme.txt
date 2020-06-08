@@ -25,6 +25,9 @@ View more video tutorials: [Mega Menu Tutorials](https://www.youtube.com/channel
 * Submenu
 * Toolbar menu
 * Ajax Cart
+* DIVI Compatible
+* Avada Fusion Builder Compatible
+* Elementor Compatible
 * [WooCommerce Mega menu](https://groovymenu.grooni.com/shop/)
 * Responsive menu
 * Fullwidth mega menu
@@ -44,7 +47,10 @@ View more video tutorials: [Mega Menu Tutorials](https://www.youtube.com/channel
 = Premium Features =
 * Megamenu
 * Mega menu blocks - that allow adding rich content into the mega menu. Compatibility with best popular page builders as Elementor,
-WPBakery (Visual Composer), Beaver Builder, Gutenberg
+Elementor, DIVI, WPBakery
+* [Divi Mega menu](https://groovymenu.grooni.com/divi-mega-menu/)
+* Divi Fullwidth Module
+* Divi Regular Module
 * Many header layouts
 * Online preset library with pre-made presets
 * Vertical menu
@@ -64,9 +70,25 @@ WPBakery (Visual Composer), Beaver Builder, Gutenberg
 * WPBakery Mega Menu
 * Mega menu for Visual Composer
 Get max from your site menu with the Groovy Mega Menu PRO for WP.
+
+= Page Builders compatibility =
+
+- Elementor, Elementor Pro
+- DIVI Theme Builder - new
+- Fusion Builder (Avada Theme Builder) new
+- WPBakery (Visual Composer)
+- BeaverBuilder
+- Brizy
+- UX Builder from Flatsome theme new
+- Cornerstone by Themeco authors X theme, Pro theme
+- Gutenberg
+- SiteOrigin Page Builder
+
+
 = Plugin compatibility =
-WooCommerce, WPBakery, Elementor, SiteOrigin, Beaver Builder, WPML,
-Gutenberg, Elementor PRO
+WooCommerce, Contact Form 7,  Slider Revolution, ConvertPlug, WPML,
+Ninja forms, Elementor PRO, Cache plugins such as WP Rocket, W3 Total Cache,
+Fastest Cache, Hummingbird, Super Cache, Autoptimize, WP Optimize. Cache Enabler and others.
 
 == Installation ==
 1. Upload \"groovy-menu.zip\" to the \"/wp-content/plugins/\" directory.
@@ -95,17 +117,19 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 == Changelog ==
 
 = 1.2.0 =
-* Improve: Для редактирования пунктов навигационного меню добавлена кнопка с модальным окном, содержащим настройки. Сохранение настроек происходит по AJAX и не требует сохранения всего меню. Предотвращает проблемы с низкими значениями PHP max_input_vars на хостинге сайта.
+* Improve: Plugin performance improved for "Appearance > Menus" section.
+* Improve: Groovy menu settings in "Appearance > Menus section" has been moved to modal window.
+* Improve: Recommended system requirements for value PHP max_input_vars is reduced from 10000 to 1000 (Is a standard settings for a shared hosting).
 * Improve: Added the ability to disable the mobile menu.
 * Improve: Added module for Divi Theme Builder.
 * Improve: Design of integration section.
 * Improve: Added the possibility to set different logo URLs for WPML.
 * Fix: Increased priority of the handler of admin nav_menu in WP Dashboard -> Appearance -> Menus. This eliminates conflicts with some plugins.
 * Fix: Added the possibility to hide Groovy menu layout from not public post types. Managed in Global setting -> Tools -> Enable displaying the Groovy menu layout into Menu blocks post type.
-* Fix: Resolved conflict сaused by Сomposer autoload (dependency manager for PHP) with some other plugins in some cases.
+* Fix: Resolved conflict caused by Composer autoload (dependency manager for PHP) with some other plugins in some cases.
 * Fix: Removed the menu overlapping on content during page editing in Elementor with the "Enable Groovy menu to overlap the first block in the page" option enabled.
 * Fix: Added compatibility with Avada theme through automatic integration.
-* Fix: Anchors highlight for centered menu style.
+* Fix: Anchors highlight for centered logo menu style.
 
 = 1.1.12 =
 * Fix: Fixed bug with sub-menu icon.
