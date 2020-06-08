@@ -1,7 +1,7 @@
 <?php defined( 'ABSPATH' ) || die( 'This script cannot be accessed directly.' );
 /*
 Plugin Name: Groovy Menu (free)
-Version: 1.1.12
+Version: 1.2.0
 Description: Groovy menu is a modern adjustable and flexible menu designed for creating mobile-friendly menus with a lot of options.
 Plugin URI: https://groovymenu.grooni.com/
 Author: Grooni.com
@@ -31,7 +31,7 @@ if ( ! defined( 'GROOVY_MENU_LVER' ) ) {
 	return;
 }
 
-define( 'GROOVY_MENU_VERSION', '1.1.12' );
+define( 'GROOVY_MENU_VERSION', '1.2.0' );
 define( 'GROOVY_MENU_DB_VER_OPTION', 'groovy_menu_db_version' );
 define( 'GROOVY_MENU_DIR', plugin_dir_path( __FILE__ ) );
 define( 'GROOVY_MENU_URL', plugin_dir_url( __FILE__ ) );
@@ -491,12 +491,12 @@ if ( ! function_exists( 'groovy_menu_scripts_admin' ) ) {
 		// Only Appearance > Menus page.
 		if ( 'nav-menus.php' === $hook_suffix ) {
 			wp_enqueue_media();
-			wp_enqueue_script( 'groovy-menu-js-appearance', GROOVY_MENU_URL . 'assets/js/appearance.js', array(), GROOVY_MENU_VERSION, true );
+			wp_enqueue_script( 'groovy-menu-js-appearance', GROOVY_MENU_URL . 'assets/js/appearance.js', [ 'jquery', 'wp-color-picker' ], GROOVY_MENU_VERSION, true );
 		}
 
 		// Only Debug page.
 		if ( 'tools_page_groovy_menu_debug_page' === $hook_suffix ) {
-			wp_enqueue_script( 'groovy-menu-js-appearance', GROOVY_MENU_URL . 'assets/js/debug.js', array(), GROOVY_MENU_VERSION, true );
+			wp_enqueue_script( 'groovy-menu-js-appearance', GROOVY_MENU_URL . 'assets/js/debug.js', [ 'jquery' ], GROOVY_MENU_VERSION, true );
 		}
 
 		$allow_pages = array(

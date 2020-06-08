@@ -53,25 +53,6 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	const GM_BADGE_CONTAINER_RADIUS     = 'groovy_menu_badge_container_radius';
 	const GM_BADGE_CONTAINER_BG         = 'groovy_menu_badge_container_bg';
 
-	protected static $backgroundPositions = array(
-		'top left',
-		'top center',
-		'top right',
-		'center left',
-		'center center',
-		'center right',
-		'bottom left',
-		'bottom center',
-		'bottom right',
-	);
-
-	protected static $backgroundRepeats = array(
-		'no-repeat',
-		'repeat',
-		'repeat-x',
-		'repeat-y',
-	);
-
 	/**
 	 * Mass meta storage
 	 *
@@ -85,6 +66,165 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	 * @var array
 	 */
 	private $gm_google_fonts = array();
+
+	/**
+	 * Array with menu item options.
+	 *
+	 * @var array
+	 */
+	static $menu_item_options = array(
+		'groovymenu-megamenu'                 => array(
+			'meta_name' => self::IS_MEGAMENU_META,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'groovymenu-megamenu-cols'            => array(
+			'meta_name' => self::MEGAMENU_META_COLS,
+			'default'   => '5',
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'groovymenu-do-not-show-title'        => array(
+			'meta_name' => self::DO_NOT_SHOW_TITLE,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'groovymenu-icon-class'               => array(
+			'meta_name' => self::ICON_CLASS,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'groovymenu-is-show-featured'         => array(
+			'meta_name' => self::IS_SHOW_FEATURED_IMAGE,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'groovymenu-megamenu-bg'              => array(
+			'meta_name' => self::MEGAMENU_BACKGROUND,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'groovymenu-megamenu-bg-position'     => array(
+			'meta_name' => self::MEGAMENU_BACKGROUND_POSITION,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'groovymenu-megamenu-bg-repeat'       => array(
+			'meta_name' => self::MEGAMENU_BACKGROUND_REPEAT,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'groovymenu-megamenu-bg-size'         => array(
+			'meta_name' => self::MEGAMENU_BACKGROUND_SIZE,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'groovymenu-block-url'                => array(
+			'meta_name' => self::MENU_BLOCK_URL,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'groovymenu-megamenu-post-not-mobile' => array(
+			'meta_name' => self::MEGAMENU_META_POST_NOT_MOBILE,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		// Thumb
+		'gm-thumb-enable'                     => array(
+			'meta_name' => self::GM_THUMB_ENABLE,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-thumb-position'                   => array(
+			'meta_name' => self::GM_THUMB_POSITION,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-thumb-max-height'                 => array(
+			'meta_name' => self::GM_THUMB_MAX_HEIGHT,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-thumb-with-url'                   => array(
+			'meta_name' => self::GM_THUMB_WITH_URL,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-thumb-image'                      => array(
+			'meta_name' => self::GM_THUMB_IMAGE,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		// Badge.
+		'gm-badge-enable'                     => array(
+			'meta_name' => self::GM_BADGE_ENABLE,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-type'                       => array(
+			'meta_name' => self::GM_BADGE_TYPE,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-placement'                  => array(
+			'meta_name' => self::GM_BADGE_PLACEMENT,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-general-position'           => array(
+			'meta_name' => self::GM_BADGE_GENERAL_POSITION,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-y-position'                 => array(
+			'meta_name' => self::GM_BADGE_Y_POSITION,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-x-position'                 => array(
+			'meta_name' => self::GM_BADGE_X_POSITION,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		// Badge image.
+		'gm-badge-image'                      => array(
+			'meta_name' => self::GM_BADGE_IMAGE,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-image-width'                => array(
+			'meta_name' => self::GM_BADGE_IMAGE_WIDTH,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-image-height'               => array(
+			'meta_name' => self::GM_BADGE_IMAGE_HEIGHT,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		// Badge icon.
+		'gm-badge-icon'                       => array(
+			'meta_name' => self::GM_BADGE_ICON,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-icon-size'                  => array(
+			'meta_name' => self::GM_BADGE_ICON_SIZE,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-icon-color'                 => array(
+			'meta_name' => self::GM_BADGE_ICON_COLOR,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		// Badge text.
+		'gm-badge-text'                       => array(
+			'meta_name' => self::GM_BADGE_TEXT,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-text-font-family'           => array(
+			'meta_name' => self::GM_BADGE_TEXT_FONT_FAMILY,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-text-font-variant'          => array(
+			'meta_name' => self::GM_BADGE_TEXT_FONT_VARIANT,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-text-font-size'             => array(
+			'meta_name' => self::GM_BADGE_TEXT_FONT_SIZE,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-text-font-color'            => array(
+			'meta_name' => self::GM_BADGE_TEXT_FONT_COLOR,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-container-padding'          => array(
+			'meta_name' => self::GM_BADGE_CONTAINER_PADDING,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-container-radius'           => array(
+			'meta_name' => self::GM_BADGE_CONTAINER_RADIUS,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+		'gm-badge-container-bg'               => array(
+			'meta_name' => self::GM_BADGE_CONTAINER_BG,
+			'mass'      => self::GM_NAV_MENU_META,
+		),
+	);
+
 
 	/**
 	 * @param $item
