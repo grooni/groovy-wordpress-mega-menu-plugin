@@ -4,7 +4,7 @@ Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive,
 Requires at least: 4.9.7
 Tested up to: 5.4.1
 Requires PHP: 7.0
-Stable tag: 1.1.12
+Stable tag: 1.2.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -93,6 +93,19 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.2.0 =
+* Improve: Для редактирования пунктов навигационного меню добавлена кнопка с модальным окном, содержащим настройки. Сохранение настроек происходит по AJAX и не требует сохранения всего меню. Предотвращает проблемы с низкими значениями PHP max_input_vars на хостинге сайта.
+* Improve: Added the ability to disable the mobile menu.
+* Improve: Added module for Divi Theme Builder.
+* Improve: Design of integration section.
+* Improve: Added the possibility to set different logo URLs for WPML.
+* Fix: Increased priority of the handler of admin nav_menu in WP Dashboard -> Appearance -> Menus. This eliminates conflicts with some plugins.
+* Fix: Added the possibility to hide Groovy menu layout from not public post types. Managed in Global setting -> Tools -> Enable displaying the Groovy menu layout into Menu blocks post type.
+* Fix: Resolved conflict сaused by Сomposer autoload (dependency manager for PHP) with some other plugins in some cases.
+* Fix: Removed the menu overlapping on content during page editing in Elementor with the "Enable Groovy menu to overlap the first block in the page" option enabled.
+* Fix: Added compatibility with Avada theme through automatic integration.
+* Fix: Anchors highlight for centered menu style.
 
 = 1.1.12 =
 * Fix: Fixed bug with sub-menu icon.

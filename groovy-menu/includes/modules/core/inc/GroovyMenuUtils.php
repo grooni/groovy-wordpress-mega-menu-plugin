@@ -2100,9 +2100,9 @@ class GroovyMenuUtils {
 			'title'          => __( 'PHP Max input vars', 'groovy-menu' ),
 			'value'          => $php_max_input_vars,
 			'desc'           => __( 'Matters to the Appearance - Menus editor', 'groovy-menu' ),
-			'recommend_desc' => __( 'Current Max input vars is OK, however 10000 is recommended for the correct operation of all the function.', 'groovy-menu' ),
-			'recommend'      => ( $php_max_input_vars >= 1000 ) ? true : false, // minimum 1000
-			'pass'           => ( $php_max_input_vars >= 10000 ) ? true : false, // minimum 10000
+			'recommend_desc' => sprintf( __( 'Current Max input vars is OK, however %s is recommended for the correct operation of all the function.', 'groovy-menu' ), '1000' ),
+			'recommend'      => ( $php_max_input_vars >= 200 ) ? true : false, // minimum 200
+			'pass'           => ( $php_max_input_vars >= 1000 ) ? true : false, // minimum 1000
 		);
 
 		// php_max_input_vars

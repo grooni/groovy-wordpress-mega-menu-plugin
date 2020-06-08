@@ -2194,10 +2194,11 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 
 									<?php if ( isset( $child_proposal['zip_url'] ) && $child_proposal['zip_url'] ) { ?>
 										<p><?php echo sprintf( esc_html__( 'Your activated %s theme is already in our database. That is mean you don\'t need to use auto or manual integration.', 'groovy-menu' ), $current_theme ) ?></p>
-										<p><?php esc_html_e( 'We already prepared Child theme as the solution for your integration. Please download and activate', 'groovy-menu' ); ?>
-											:
+										<p><?php esc_html_e( 'We already prepared Child theme as the solution for your integration. Please download and activate', 'groovy-menu' ); ?>:
+										</p>
+										<p>
 											<a href="<?php echo esc_attr( $child_proposal['zip_url'] ); ?>"
-											   class="gm-welcome-big-button gm-welcome-big-button--blue"><?php echo esc_html( $child_proposal['child_name'] ); ?></a>
+												class="gm-welcome-big-button gm-welcome-big-button--blue"><?php echo esc_html( $child_proposal['child_name'] ); ?></a>
 										</p>
 									<?php } ?>
 

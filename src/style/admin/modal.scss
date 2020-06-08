@@ -8,6 +8,10 @@
   z-index: 100000;
 }
 
+.gm-modal--icons.tingle-modal {
+  backdrop-filter: blur(1px);
+}
+
 .tingle-modal-box__content {
   padding: 0;
   height: inherit;

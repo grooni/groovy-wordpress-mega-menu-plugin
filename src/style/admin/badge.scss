@@ -17,6 +17,7 @@
     background-color: rgba(0, 0, 12, 0.75);
     top: 0;
     left: 0;
+    backdrop-filter: blur(1px);
     z-index: 99999;
   }
 
@@ -112,12 +113,6 @@
       color: #fff;
       background: #2b79ff;
       box-shadow: 0 1px 0 #0e54cc;
-    }
-
-    .gm-walker-modal-close:hover {
-      color: #711202;
-      background: #ffcece;
-      box-shadow: 0 1px 0 #91371a;
     }
 
     .gm-walker-modal-save::before {

@@ -213,7 +213,7 @@
       $secondWrapper.find('.gm-walker-modal-overlay')
         .show();
       $secondWrapper.find('.gm-walker-modal-settings-container')
-        .show(120);
+        .show();
 
       $('body')
         .addClass('gm_walker_page_no_scroll');
