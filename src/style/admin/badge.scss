@@ -185,7 +185,7 @@
   }
 
   .gm-walker-modal-save,
-  .gm-walker-modal-close {
+  .gm-walker-modal-close:not(.dashicons) {
     font-size: 16px;
     padding: 6px 30px;
     margin: 0 10px;
