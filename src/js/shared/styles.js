@@ -1144,6 +1144,14 @@ export default class GmStyles {
         });
       }
 
+      // Show logo responsive (fit with block)
+      if (settings.logoResponsive) {
+        css.push({
+          '.gm-navbar .gm-logo__img-header-4': 'max-width: 100%; height: auto !important;',
+          media: 'desktop'
+        });
+      }
+
       if (settings.subLevelWidth) {
         css.push({
           '.gm-main-menu-wrapper .gm-navbar-nav > .gm-dropdown .gm-dropdown-menu, .gm-main-menu-wrapper .gm-navbar-nav > .gm-menu-item > .gm-anchor >.gm-menu-item__txt-wrapper': `min-width: ${settings.subLevelWidth}px`,
@@ -1359,18 +1367,15 @@ export default class GmStyles {
         });
 
         css.push({
-          '.gm-navbar .gm-toolbar-socials-list__item': `border-right: 1px solid ${color}`
-        });
-
-        css.push({
-          '.gm-navbar .gm-toolbar-socials-list__item:first-of-type': `border-left: 1px solid ${color}`
+          '.gm-navbar .gm-toolbar-socials-list__item': `border-right: 1px solid ${color}`,
+          '.gm-navbar .gm-toolbar-socials-list__item:nth-last-child(1)': `border-right: none;`
         });
       }
 
       // Toolbar social icon size
       if (settings.toolbarIconSize) {
         css.push({
-          '.gm-navbar .gm-toolbar-social-link, .gm-navbar .gm-toolbar-social-link i': `font-size: ${settings.toolbarIconSize}px`
+          '.gm-navbar .gm-toolbar-social-link, .gm-navbar .gm-toolbar-social-link i': `font-size: ${settings.toolbarIconSize}px; min-width: ${settings.toolbarIconSize}px; text-align: center;`
         });
       }
     }

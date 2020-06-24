@@ -764,7 +764,7 @@ $select-height: 40px;
 }
 
 .gm-gui__module .gm-gui__header-types__options__list .select {
-  min-width: 150px;
+  min-width: 170px;
 }
 
 .select-styled {
@@ -1053,11 +1053,11 @@ HEADER TYPES
 }
 
 .style-3-align-right .gm-gui__header-types__preview {
-  background-position: 0 -284px;
+  background-position: right -284px;
 }
 
 .style-3-align-right.toolbar-true .gm-gui__header-types__preview {
-  background-position: 0 -852px;
+  background-position: right -852px;
 }
 
 /* Style 4 */
@@ -1071,11 +1071,11 @@ HEADER TYPES
 }
 
 .style-4-align-right .gm-gui__header-types__preview {
-  background-position: -10px -1136px;
+  background-position: right -1136px;
 }
 
 .style-4-align-right.toolbar-true .gm-gui__header-types__preview {
-  background-position: -10px -1704px;
+  background-position: right -1704px;
 }
 
 /***************************************
