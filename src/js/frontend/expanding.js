@@ -6,7 +6,7 @@ var hamburgerMenu;
 
 let expandingIsOpen = function (navbar) {
   let isOpen;
-  if (navbar && navbar.classList.contains('gm-expanding--open')) {
+  if (navbar && (navbar.classList.contains('gm-expanding--open') || navbar.classList.contains('gm-expanding--hold'))) {
     isOpen = true;
   } else {
     isOpen = false;
@@ -16,12 +16,17 @@ let expandingIsOpen = function (navbar) {
 
 function expandingOpen(navbar) {
   if (navbar) {
-    navbar.classList.add('gm-expanding--open');
+    if (options.sidebarExpandingMenuOpenOnHover) {
+      navbar.classList.add('gm-expanding--open');
+    } else {
+      navbar.classList.add('gm-expanding--hold');
+    }
   }
 }
 
 function expandingClose(navbar) {
   if (expandingIsOpen(navbar)) {
+    navbar.classList.remove('gm-expanding--hold');
     navbar.classList.remove('gm-expanding--open');
   } else {
     return;
@@ -66,6 +71,7 @@ export function expandingSidebarEvents() {
   }
 
   expandingOpenMouseEvents();
+
   expandingClickOutside();
 
   window.addEventListener('resize', _.debounce(() => {

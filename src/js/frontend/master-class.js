@@ -139,7 +139,7 @@ class GroovyMenu {
 
 
     let initDropdownAction = (e) => {
-      let delay = 210;
+      let delay = 260;
       let closestDropdown = e.target.closest('.gm-dropdown');
       let dropdownMenus = document.querySelectorAll('.gm-dropdown');
       let hasOpenedElems = false;

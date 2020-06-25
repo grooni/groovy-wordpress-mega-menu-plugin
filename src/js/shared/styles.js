@@ -1207,7 +1207,24 @@ export default class GmStyles {
         logoMarginRight,
         logoMarginBottom,
         logoMarginLeft,
+        sidebarExpandingMenuInitialWidth,
+        sidebarExpandingMenuExpandedWidth,
+        sidebarExpandingMenuUseAnimation,
+        sidebarExpandingMenuIconSize,
+        sidebarExpandingMenuFirstLevelMargin
       } = settings;
+
+      let logoMarginWidth = logoMarginRight+ logoMarginLeft;
+
+      let iconSize = sidebarExpandingMenuIconSize ? sidebarExpandingMenuIconSize : 32;
+      let initialWidth = sidebarExpandingMenuInitialWidth ? sidebarExpandingMenuInitialWidth : 70;
+      let expandedWidth = sidebarExpandingMenuExpandedWidth ? sidebarExpandingMenuExpandedWidth : 300;
+      let firstLevelMargin = sidebarExpandingMenuFirstLevelMargin ? sidebarExpandingMenuFirstLevelMargin : 24;
+      let animationCssParam, animationCssParamSecondary = '';
+      if (sidebarExpandingMenuUseAnimation) {
+        animationCssParam = 'transition: width 0.2s;';
+        animationCssParamSecondary = 'transition: opacity 0.7s;';
+      }
 
       // Submenu bottom border style, Thickness, Color
       if (
@@ -1294,7 +1311,7 @@ export default class GmStyles {
 
       if (settings.header.align === 'left') {
         css.push({
-          'body': 'margin-left: 70px !important;',
+          'body': `margin-left: ${initialWidth}px !important;`,
           '.gm-navbar': 'left: 0;',
           '.gm-toolbar': 'left: 0;',
           '.gm-search': 'padding-left: 20px; padding-right: 20px; flex-shrink: 0;',
@@ -1308,7 +1325,7 @@ export default class GmStyles {
 
       if (settings.header.align === 'right') {
         css.push({
-          'body': 'margin-right: 70px !important;',
+          'body': `margin-right: ${initialWidth}px !important;`,
           '.gm-navbar': 'right: 0;',
           '.gm-toolbar': 'right: 0;',
           '.gm-search': 'padding-left: 20px; padding-right: 20px; flex-shrink: 0;',
@@ -1373,7 +1390,7 @@ export default class GmStyles {
         '.gm-navbar .gm-toolbar-social-link': 'width: 42px; height: 42px;',
         '.gm-navbar .gm-toolbar-socials-list__item': 'padding-left: 0; padding-right: 0;',
         '.gm-navbar .gm-toolbar-email, .gm-navbar .gm-toolbar-phone': 'display: none;',
-        '.gm-navbar .gm-logo': `position: absolute; margin: ${logoMarginTop}px ${logoMarginRight}px ${logoMarginBottom}px ${logoMarginLeft}px;`,
+        '.gm-navbar .gm-logo': `position: absolute; margin: ${logoMarginTop}px ${logoMarginRight}px ${logoMarginBottom}px ${logoMarginLeft}px; width: calc(100% - ${logoMarginWidth}px);`,
         '.gm-navbar .gm-logo__img': 'margin-right: auto; margin-left: auto;',
         '.gm-navbar .gm-actions': 'position: fixed; bottom: 100px; z-index: 999; justify-content: center;',
         '.gm-navbar .gm-actions > div:nth-of-type(n+2)': 'border-left-width: 1px; border-left-style: solid;',
@@ -1387,7 +1404,6 @@ export default class GmStyles {
         '.gm-navbar .gm-main-menu-wrapper': 'flex: 1 100%; justify-content: center;',
         '.gm-navbar #gm-main-menu': 'flex: 1 100%;',
         '.gm-navbar .gm-navbar-nav': 'display: flex; flex-direction: column; width: 100%; height: 100%; justify-content: center;',
-        '.gm-navbar .gm-navbar-nav > .gm-menu-item': 'padding-right: 56px; padding-left: 56px;',
         '.gm-navbar .gm-dropdown-menu-wrapper': 'width: 100%; height: 100%;',
         '.gm-navbar .gm-dropdown-menu .gm-menu-item': 'padding-right: 0; padding-left: 0;',
         '.gm-navbar .gm-dropdown-menu .gm-menu-item__link': 'padding-right: 32px; padding-left: 32px;',
@@ -1400,6 +1416,7 @@ export default class GmStyles {
         '.gm-navbar .gm-minicart-dropdown': 'top: 100%;',
         '.gm-navbar .gm-menu-item__link': 'position: relative; padding-right: 0; padding-left: 0;',
         '.gm-navbar .attachment-menu-thumb': 'display: none;',
+        '.gm-navbar .gm-navbar-nav > .gm-menu-item': `padding-right: 18px; padding-left: ${firstLevelMargin}px; width: ${expandedWidth}px;`,
 
         '.admin-bar .gm-navbar': 'top: 32px; height: calc(100vh - 32px);',
         media: 'desktop'
@@ -1408,34 +1425,46 @@ export default class GmStyles {
 
       // Hide elements by default
       css.push({
-        '.gm-navbar': 'width: 70px;',
+        '.gm-navbar': `width: ${initialWidth}px; ${animationCssParam}`,
+        '.gm-navbar .gm-wrapper': 'overflow: hidden;',
 
-        '.gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-badge': 'opacity: 0; display: none;',
-        '.gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-menu-item__txt': 'opacity: 0; display: none;',
-        '.gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-caret': 'opacity: 0; display: none;',
+        '.gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-menu-item__txt, .gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-badge, .gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-caret': `opacity: 0; ${animationCssParamSecondary}`,
         '.gm-navbar .gm-toolbar': 'opacity: 0; display: none;',
         '.gm-navbar .gm-actions': 'opacity: 0; display: none;',
         media: 'desktop'
       });
 
-      // Show elements for open class
+      // Show elements for Expanded
       css.push({
-        '.gm-expanding--open.gm-navbar': 'width: 300px;',
+        '.gm-expanding--open.gm-navbar': `width: ${expandedWidth}px;`,
+        '.gm-expanding--open.gm-navbar .gm-wrapper, .gm-expanding--hold.gm-navbar .gm-wrapper': 'overflow: unset;',
 
-        '.gm-expanding--open.gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-badge': 'opacity: 1; display: block; transition: opacity 0.2s;',
-        '.gm-expanding--open.gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-menu-item__txt': 'opacity: 1; display: block; transition: opacity 0.2s;',
-        '.gm-expanding--open.gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-caret': 'opacity: 1; display: block; transition: opacity 0.2s;',
-        '.gm-expanding--open.gm-navbar .gm-toolbar': 'opacity: 1; display: block; transition: opacity 0.2s;',
-        '.gm-expanding--open.gm-navbar .gm-actions': 'opacity: 1; display: block; transition: opacity 0.2s;',
+        '.gm-expanding--open.gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-menu-item__txt, .gm-expanding--open.gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-badge, .gm-expanding--open.gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-caret': 'opacity: 1;',
+        '.gm-expanding--open.gm-navbar .gm-toolbar': 'opacity: 1; display: block;',
+        '.gm-expanding--open.gm-navbar .gm-actions': 'opacity: 1; display: block;',
+        media: 'desktop'
+      });
+
+      // Icons
+      css.push({
+        '.gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-menu-item__icon': `font-size: ${iconSize}px;`,
         media: 'desktop'
       });
 
       // Show logo responsive (fit with block)
-      if (settings.logoResponsive) {
-        css.push({
-          '.gm-navbar .gm-logo__img-header-sidebar': 'max-width: 100% !important; height: auto !important;',
-          media: 'desktop'
-        });
+      // Logo height
+      if (settings.logoType === 'img') {
+        if (settings.logoResponsive) {
+          const {
+            logoHeight
+          } = settings;
+
+          css.push({
+            '.gm-navbar .gm-logo__img-header-sidebar': `max-width: 100% !important; height: auto !important; max-height: ${logoHeight}px;`,
+            '.gm-expanding--open.gm-navbar .gm-logo': 'width: 100%;',
+            media: 'desktop'
+          });
+        }
       }
 
     }
