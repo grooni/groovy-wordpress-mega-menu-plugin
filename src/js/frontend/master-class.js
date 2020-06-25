@@ -15,6 +15,7 @@ import { scrollToId, setCurrentItem } from './one-page';
 import { initPaddingsAlignCenter, splitMenu } from './split';
 import { disableStickyNav, enableStickyNav, initStickyNav } from './sticky';
 import { initOffcanvas, offcanvasSlide, offcanvasWrap } from './offcanvas';
+import { initExpanding, expandingSidebarEvents } from './expanding';
 import { initMenuThumbnails } from './thumbnails';
 
 import SmoothScroll from 'smooth-scroll';
@@ -517,6 +518,18 @@ class GroovyMenu {
         initPaddingsAlignCenter({options: options});
       }, 200);
     }
+
+
+    // Expanding sidebar
+    initExpanding({
+      options: options,
+      navbar,
+      hamburgerMenu
+    });
+
+    expandingSidebarEvents();
+
+
   }
 }
 

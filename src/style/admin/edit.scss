@@ -1078,6 +1078,24 @@ HEADER TYPES
   background-position: right -1704px;
 }
 
+/* Style 5 */
+
+.style-5-align-left .gm-gui__header-types__preview {
+  background-position: 0 -5964px;
+}
+
+.style-5-align-left.toolbar-true .gm-gui__header-types__preview {
+  background-position: 0 -6532px;
+}
+
+.style-5-align-right .gm-gui__header-types__preview {
+  background-position: right -5680px;
+}
+
+.style-5-align-right.toolbar-true .gm-gui__header-types__preview {
+  background-position: right -6248px;
+}
+
 /***************************************
 Hover styles
 ***************************************/

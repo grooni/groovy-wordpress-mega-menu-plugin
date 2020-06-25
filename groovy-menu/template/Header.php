@@ -585,7 +585,7 @@ function groovyMenu( $args = array() ) {
 
 			switch ( $key ) {
 				case 'default':
-					$additionl_class = ( intval( $groovyMenuSettings['header']['style'] ) === 4 ) ? 'header-4' : 'default';
+					$additionl_class = ( intval( $groovyMenuSettings['header']['style'] ) === 4 ) ? 'header-sidebar' : 'default';
 					$logo_html       .= '<img src="' . $img_src . '"' . $img_width . $img_height . ' class="gm-logo__img gm-logo__img-' . $additionl_class . '" alt="" />';
 					break;
 
