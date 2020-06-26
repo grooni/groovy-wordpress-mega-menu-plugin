@@ -1425,6 +1425,7 @@ export default class GmStyles {
         '.gm-navbar .gm-menu-item__link': 'position: relative; padding-right: 0; padding-left: 0;',
         '.gm-navbar .attachment-menu-thumb': 'display: none;',
         '.gm-navbar .gm-navbar-nav > .gm-menu-item': `padding-right: 18px; padding-left: ${firstLevelMargin}px; width: ${expandedWidth}px;`,
+        '.gm-menu-btn--expanded' : 'display:none',
 
         '.admin-bar .gm-navbar': 'top: 32px; height: calc(100vh - 32px);',
         media: 'desktop'
@@ -1489,6 +1490,11 @@ export default class GmStyles {
         css.push({
           '.gm-navbar .gm-menu-btn--expanded': `display: block; position: absolute; top: 12px; width: ${initialWidth}px; text-align: center; cursor: pointer;`,
           '.gm-navbar .gm-container': `padding-top: ${hamburgerIconHeight}px;`,
+          media: 'desktop'
+        });
+      } else {
+        css.push({
+          '.gm-navbar .gm-menu-btn--expanded': `display: none;`,
           media: 'desktop'
         });
       }
