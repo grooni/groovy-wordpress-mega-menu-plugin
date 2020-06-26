@@ -53,13 +53,21 @@ function expandingClickOutside() {
   });
 }
 
+function expandingClickHamburger() {
+  document.addEventListener('click', function (event) {
+    if (event.target.closest('.gm-menu-btn--expanded')) {
+      expandingToggle(navbar);
+    }
+  });
+}
+
 function expandingOpenMouseEvents() {
   navbar.addEventListener('mouseenter', function (event) {
-    expandingToggle(navbar);
+    expandingOpen(navbar);
   }, false);
 
   navbar.addEventListener('mouseleave', function (event) {
-    expandingToggle(navbar);
+    expandingClose(navbar);
   }, false);
 }
 
@@ -73,6 +81,8 @@ export function expandingSidebarEvents() {
   expandingOpenMouseEvents();
 
   expandingClickOutside();
+
+  expandingClickHamburger();
 
   window.addEventListener('resize', _.debounce(() => {
     expandingClose(navbar);

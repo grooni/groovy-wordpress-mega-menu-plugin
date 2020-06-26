@@ -59,6 +59,7 @@ export default class GmStyles {
     if (settings.menuZIndex > 0) {
       const menuZIndex = settings.menuZIndex;
       const menuZIndexToolbar = menuZIndex + 12;
+      const menuZIndexButton = menuZIndexToolbar + 6; // Mobile wrapper must be more then desktop.
       const menuZIndexMobile = menuZIndexToolbar + 12; // Mobile wrapper must be more then desktop.
       const menuZIndexSearch = menuZIndexMobile + 12; // Search wrapper must be more then mobile.
       const adminBarZIndex = (menuZIndex < 99949) ? 0 : menuZIndexSearch + 12;
@@ -86,7 +87,11 @@ export default class GmStyles {
         media: 'desktop'
       });
       css.push({
-        '.gm-search__fullscreen-container': `z-index: ${menuZIndexSearch} !important`
+        '.gm-navbar .gm-menu-btn--expanded': `z-index: ${menuZIndexButton} !important`,
+        media: 'desktop'
+      });
+      css.push({
+        '.gm-search__fullscreen-container': `z-index: ${menuZIndexMobile} !important`
       });
       if (adminBarZIndex > 0) {
         css.push({
@@ -1211,7 +1216,8 @@ export default class GmStyles {
         sidebarExpandingMenuExpandedWidth,
         sidebarExpandingMenuUseAnimation,
         sidebarExpandingMenuIconSize,
-        sidebarExpandingMenuFirstLevelMargin
+        sidebarExpandingMenuFirstLevelMargin,
+        sidebarExpandingMenuShowSideIcon
       } = settings;
 
       let logoMarginWidth = logoMarginRight+ logoMarginLeft;
@@ -1319,6 +1325,7 @@ export default class GmStyles {
           '.gm-main-menu-wrapper .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-caret > i': 'transform: rotate(-90deg);',
           '[dir=\'rtl\'] .gm-main-menu-wrapper .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-caret > i': 'transform: rotate(90deg);',
           '.gm-main-menu-wrapper .gm-dropdown-menu-wrapper': 'left: 100%; right: auto;',
+          '.gm-navbar .gm-menu-btn--expanded' : 'left: 0;',
           media: 'desktop'
         });
       }
@@ -1336,6 +1343,7 @@ export default class GmStyles {
           '[dir=\'rtl\'] .gm-main-menu-wrapper .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-caret > i': 'transform: rotate(-90deg);',
           '.gm-main-menu-wrapper .gm-navbar-nav > .gm-menu-item .gm-dropdown-menu .gm-caret > i': 'transform: rotate(180deg);',
           '.gm-main-menu-wrapper .gm-dropdown-menu-wrapper': 'right: 100%; left: auto;',
+          '.gm-navbar .gm-menu-btn--expanded': 'right: 0;',
           media: 'desktop'
         });
       }
@@ -1465,6 +1473,24 @@ export default class GmStyles {
             media: 'desktop'
           });
         }
+      }
+
+      // Hamburger icon
+      if (sidebarExpandingMenuShowSideIcon) {
+
+        const {
+          hamburgerIconBorderWidth,
+          hamburgerIconPadding,
+          hamburgerIconSize
+        } = settings;
+
+        let hamburgerIconHeight = hamburgerIconSize + (hamburgerIconPadding * 2) + (hamburgerIconBorderWidth * 2);
+
+        css.push({
+          '.gm-navbar .gm-menu-btn--expanded': `display: block; position: absolute; top: 12px; width: ${initialWidth}px; text-align: center; cursor: pointer;`,
+          '.gm-navbar .gm-container': `padding-top: ${hamburgerIconHeight}px;`,
+          media: 'desktop'
+        });
       }
 
     }
