@@ -60,12 +60,32 @@ export function setCurrentItem () {
   }
 }
 
-export function scrollToId () {
-  let listItems = document.querySelectorAll('.gm-navbar-nav > .gm-menu-item');
 
-  listItems.forEach((listItem) => {
-    listItem.classList.remove('current-menu-item');
-  });
+export function scrollToId(e, scroll, target, scrollOptions) {
 
-  this.parentNode.classList.add('current-menu-item');
+  let divWithId = document.querySelector(target);
+  let scrollOffset = scrollOptions.scrollOffset;
+
+  if (divWithId) {
+
+    let elemWindowOffset = divWithId.getBoundingClientRect().top;
+    let wpadminbarElem = document.getElementById('wpadminbar');
+
+    if (wpadminbarElem && wpadminbarElem.clientHeight) {
+      scrollOffset = scrollOffset + wpadminbarElem.clientHeight;
+    }
+
+    let elemScrollOffsetDelta = elemWindowOffset - scrollOffset;
+
+    if (Math.abs(elemScrollOffsetDelta) > scrollOffset) {
+      scroll.animateScroll(divWithId, 0, scrollOptions);
+    } else {
+      if (e) {
+        e.preventDefault();
+      }
+      scroll.cancelScroll();
+    }
+
+  }
+
 }
