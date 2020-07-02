@@ -56,22 +56,23 @@ class GroovyMenu {
 
     const isPreview = body.classList.contains('gm-preview-body');
 
-    let scrollOptions = {
-      speed: 300,
-      offset() {
-        if (options.stickyHeader !== undefined && options.stickyHeader !== 'disable-sticky-header') {
-          return isMobile() ? options.mobileHeaderStickyHeight : options.headerHeightSticky;
-        } else {
-          return 0;
-        }
+    let scrollOffset = 0;
+    if (options.stickyHeader !== undefined && options.stickyHeader !== 'disable-sticky-header') {
+      scrollOffset = isMobile() ? options.mobileHeaderStickyHeight : options.headerHeightSticky;
+    }
 
+    let scrollOptions = {
+      speed: 220,
+      scrollOffset: scrollOffset,
+      offset() {
+        return scrollOffset;
       },
       updateURL: false,
     };
-    let linksWithHashes = document.querySelectorAll('.menu-item > a[href^="#"]:not([href="#"])');
-    let linkWithHash = document.querySelector('.menu-item > a[href^="#"]:not([href="#"])');
+    let scroll = new SmoothScroll();
 
-    let scroll = new SmoothScroll('.gm-navbar-nav a[href^="#"]:not([href="#"])', scrollOptions);
+    let linksWithHashes = document.querySelectorAll('.menu-item > a[href^="#"]:not([href="#"])');
+
     let headerStyle = parseInt(options.header.style, 10);
     const direction = isRtl() ? 'rtl' : 'ltr';
     let isTouchDevice = 'ontouchstart' in document.documentElement;
@@ -478,27 +479,30 @@ class GroovyMenu {
       });
     }
 
-    linksWithHashes.forEach((link) => {
-      link.addEventListener('click', scrollToId);
-    });
-
     function setPagePositionByHash () {
       let target = window.location.hash;
 
       if (target.length) {
-        let divWithId = document.querySelector(target);
-        scroll.animateScroll(divWithId, scrollOptions);
+        scrollToId(null, scroll, target, scrollOptions);
       }
     }
 
-    if (linkWithHash !== null) {
+    if (linksWithHashes !== null) {
       window.addEventListener('scroll', _.debounce(setCurrentItem, 50));
+
       setCurrentItem();
 
       window.addEventListener('load', () => {
         setPagePositionByHash();
       });
     }
+
+    linksWithHashes.forEach((link) => {
+      let targetHash = link.getAttribute('href');
+      link.addEventListener('click', (e) => {
+        scrollToId(e, scroll, targetHash, scrollOptions);
+      });
+    });
 
     if (
       !isMobile() &&
