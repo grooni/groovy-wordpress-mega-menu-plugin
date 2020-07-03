@@ -1107,6 +1107,22 @@ return array(
 				'default' => 'rgba(255,255,255,1)',
 				'alpha'   => true,
 			),
+			'background_color_change_on_submenu_opened' => array(
+				'title'     => esc_html__( 'Change Top level menu background color when submenu(s) are opened', 'groovy-menu' ),
+				'type'      => 'checkbox',
+				'default'   => false,
+				'condition' => array( 'header.style', 'in', array( '1' ) ),
+			),
+			'background_color_change'                   => array(
+				'title'     => esc_html__( 'Top level menu background color when submenu(s) are opened', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => '#ffffff',
+				'alpha'     => true,
+				'condition' => array(
+					array( 'header.style', 'in', array( '1' ) ),
+					array( 'background_color_change_on_submenu_opened', '==', true ),
+				)
+			),
 			'background_image'                   => array(
 				'title'            => esc_html__( 'Top level menu background Image', 'groovy-menu' ),
 				'description'      => '',

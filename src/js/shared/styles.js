@@ -2890,7 +2890,9 @@ export default class GmStyles {
       stickyBgImage: bgImage,
       stickyBgRepeat: bgRepeat,
       stickyBgAttachment: bgAttachment,
-      stickyBgPosition: bgPosition
+      stickyBgPosition: bgPosition,
+      stickyBackgroundColorChangeOnSubmenuOpened,
+      stickyBackgroundColorChange
     } = settings;
     // STICKY STYLES
 
@@ -3295,6 +3297,14 @@ export default class GmStyles {
         });
       }
 
+      if (settings.header.style !== 2 && stickyBackgroundColorChangeOnSubmenuOpened) {
+        if (stickyBackgroundColorChange) {
+          css.push({
+            '.gm-navbar-dropdown-opened.gm-navbar-sticky-toggle .gm-inner-bg': `background-color: ${stickyBackgroundColorChange}`
+          });
+        }
+      }
+
       if (settings.stickyBgImage) {
         css.push({
           '.gm-navbar-sticky-toggle .gm-inner-bg': `background-image: url(${bgImage});`
@@ -3361,7 +3371,9 @@ export default class GmStyles {
       backgroundRepeat,
       backgroundAttachment,
       backgroundPosition,
-      coverBackground
+      coverBackground,
+      backgroundColorChangeOnSubmenuOpened,
+      backgroundColorChange
     } = settings;
     let css = [];
 
@@ -3446,6 +3458,17 @@ export default class GmStyles {
         });
       }
     }
+
+
+    if (settings.header.style !== 2 && backgroundColorChangeOnSubmenuOpened) {
+      if (backgroundColorChange) {
+        css.push({
+          '.gm-navbar-dropdown-opened:not(.gm-navbar-sticky-toggle) .gm-inner-bg, .gm-navbar-dropdown-opened .gm-padding': `background-color: ${backgroundColorChange}`
+        });
+      }
+    }
+
+
     return css;
   }
 
