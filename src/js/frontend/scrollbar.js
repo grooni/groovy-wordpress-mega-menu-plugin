@@ -22,7 +22,7 @@ function getFirstDropdownRect (menuItem, settings) {
   let top = menuItem.offsetHeight;
   let width = currentDropdownWidth;
 
-  if (settings.header.style === 2 || settings.header.style === 3) {
+  if (settings.header.style === 2 || settings.header.style === 3 || settings.header.style === 5) {
     top = 0;
   }
 
@@ -37,7 +37,7 @@ function getSubmenuDropdownRect (menuItem, settings) {
   let dropdownMenuBorderWidth = getComputedStyle(dropdownMenu)['borderTopWidth'] || 0;
   let top = menuItem.offsetTop - parseInt(dropdownMenuBorderWidth, 10);
 
-  if (settings.header.style === 2 || settings.header.style === 3) {
+  if (settings.header.style === 2 || settings.header.style === 3 || settings.header.style === 5) {
     top = 0;
   }
 
@@ -51,6 +51,7 @@ export default function initScrollbar (settings) {
   let dropdownMenuLinks = document.querySelectorAll('.gm-dropdown-toggle');
   let isScrollbarEnabled = false;
   let scrollbars = [];
+
 
   function handleScrollbarMouseEnter () {
     let menuItem = this.closest('.gm-dropdown');
@@ -116,6 +117,10 @@ export default function initScrollbar (settings) {
       link.addEventListener('mouseenter', handleScrollbarMouseEnter);
       link.addEventListener('mouseleave', handleScrollbarMouseLeave);
     });
+  }
+
+  function disableScrollbar () {
+    // ..
   }
 
   function handleResize () {

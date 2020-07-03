@@ -693,16 +693,72 @@ return array(
 					'no'   => 'no',
 				),
 			),
+			'logo_margin_start'  => array(
+				'title'     => esc_html__( 'Logo margin', 'groovy-menu' ),
+				'type'      => 'inlineStart',
+				'condition' => array(
+					array( 'logo_type', 'in', array( 'img', 'text' ) ),
+					array( 'header.style', 'in', array( '1', '2', '3', '5' ) ),
+				),
+			),
+			'logo_margin_top'    => array(
+				'title'     => esc_html__( 'Top', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 1000, 1000 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'logo_type', 'in', array( 'img', 'text' ) ),
+					array( 'header.style', 'in', array( '1', '2', '3', '5' ) ),
+				),
+			),
+			'logo_margin_right'  => array(
+				'title'     => esc_html__( 'Right', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 1000, 1000 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'logo_type', 'in', array( 'img', 'text' ) ),
+					array( 'header.style', 'in', array( '1', '2', '3', '5' ) ),
+				),
+			),
+			'logo_margin_bottom' => array(
+				'title'     => esc_html__( 'Bottom', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 1000, 1000 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'logo_type', 'in', array( 'img', 'text' ) ),
+					array( 'header.style', 'in', array( '1', '2', '3', '5' ) ),
+				),
+			),
+			'logo_margin_left'   => array(
+				'title'     => esc_html__( 'Left', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 1000, 1000 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'logo_type', 'in', array( 'img', 'text' ) ),
+					array( 'header.style', 'in', array( '1', '2', '3', '5' ) ),
+				),
+			),
+			'logo_margin_end'    => array(
+				'type'      => 'inlineEnd',
+				'condition' => array(
+					array( 'logo_type', 'in', array( 'img', 'text' ) ),
+					array( 'header.style', 'in', array( '1', '2', '3', '5' ) ),
+				),
+			),
 			'logo_height'                                  => array(
 				'title'     => esc_html__( 'Logo height', 'groovy-menu' ),
 				'type'      => 'number',
-				'range'     => array( 10, 200 ),
+				'range'     => array( 10, 350 ),
 				'default'   => 46,
 				'unit'      => 'px',
-				'condition' => array(
-					array( 'logo_type', '==', 'img' ),
-					array( 'header.style', 'in', array( '1', '2', '3' ) ),
-				),
+				'condition' => array( array( 'logo_type', '==', 'img' ) ),
 			),
 			'logo_height_mobile'                           => array(
 				'title'     => esc_html__( 'Mobile logo height', 'groovy-menu' ),

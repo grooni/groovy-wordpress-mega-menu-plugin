@@ -20,5 +20,5 @@ export function showMessage (message) {
       isMessageAppended = false;
     });
     snackbar.classList.remove('gm-snackbar--visible');
-  }, 2000);
+  }, 5100);
 }

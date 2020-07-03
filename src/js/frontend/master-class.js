@@ -15,9 +15,11 @@ import { scrollToId, setCurrentItem } from './one-page';
 import { initPaddingsAlignCenter, splitMenu } from './split';
 import { disableStickyNav, enableStickyNav, initStickyNav } from './sticky';
 import { initOffcanvas, offcanvasSlide, offcanvasWrap } from './offcanvas';
+import { initExpanding, expandingSidebarEvents } from './expanding';
 import { initMenuThumbnails } from './thumbnails';
 
 import SmoothScroll from 'smooth-scroll';
+//import initScrollbar from './scrollbar-new'; // TODO debug -------
 import {
   dropdownCloseAll,
   dropdownToggle,
@@ -139,7 +141,7 @@ class GroovyMenu {
 
 
     let initDropdownAction = (e) => {
-      let delay = 210;
+      let delay = 260;
       let closestDropdown = e.target.closest('.gm-dropdown');
       let dropdownMenus = document.querySelectorAll('.gm-dropdown');
       let hasOpenedElems = false;
@@ -521,6 +523,20 @@ class GroovyMenu {
         initPaddingsAlignCenter({options: options});
       }, 200);
     }
+
+
+    // Expanding sidebar
+    initExpanding({
+      options: options,
+      navbar,
+      hamburgerMenu
+    });
+
+    expandingSidebarEvents();
+
+
+    // initScrollbar(options); // TODO debug ---.
+
   }
 }
 

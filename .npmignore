@@ -16,6 +16,7 @@ build*.php
 
 .idea
 node_modules
+zip_modules
 src
 Bundle
 groovy-menu/*
