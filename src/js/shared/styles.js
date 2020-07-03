@@ -130,6 +130,7 @@ export default class GmStyles {
       if (settings.headerHeight) {
         css.push({
           '.gm-inner .gm-container': `height: ${settings.headerHeight}px;`,
+          '.gm-navbar:not(.gm-navbar-sticky-toggle) .gm-inner': `min-height: ${settings.headerHeight}px;`,
           media: 'desktop'
         });
       }
@@ -497,6 +498,7 @@ export default class GmStyles {
       if (settings.headerHeight) {
         css.push({
           '.gm-inner .gm-container': `height: ${settings.headerHeight}px;`,
+          '.gm-navbar:not(.gm-navbar-sticky-toggle) .gm-inner': `min-height: ${settings.headerHeight}px;`,
           media: 'desktop'
         });
       }
