@@ -35,6 +35,12 @@ export function dropdownOpen (elem, options) {
       }
     }
   }
+
+  let gmNavbar = elem.closest('.gm-navbar');
+  if (gmNavbar) {
+    gmNavbar.classList.add('gm-navbar-dropdown-opened');
+  }
+
 }
 
 export function dropdownClose (elem) {
@@ -55,6 +61,15 @@ export function dropdownClose (elem) {
       }
     }
   }
+
+  let elems = document.querySelectorAll('.gm-open');
+  if (!elems) {
+    let gmNavbar = document.querySelector('.gm-navbar');
+    if (gmNavbar) {
+      gmNavbar.classList.remove('gm-navbar-dropdown-opened');
+    }
+  }
+
 }
 
 export function dropdownToggle (elem, options) {
@@ -105,4 +120,10 @@ export function dropdownCloseAll () {
 
     el.classList.remove('gm-open');
   });
+
+  let gmNavbar = document.querySelector('.gm-navbar');
+  if (gmNavbar) {
+    gmNavbar.classList.remove('gm-navbar-dropdown-opened');
+  }
+
 }
