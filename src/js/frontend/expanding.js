@@ -6,7 +6,7 @@ var hamburgerMenu;
 
 let expandingIsOpen = function (navbar) {
   let isOpen;
-  if (navbar && (navbar.classList.contains('gm-expanding--open') || navbar.classList.contains('gm-expanding--hold'))) {
+  if (navbar && navbar.classList.contains('gm-expanding--open')) {
     isOpen = true;
   } else {
     isOpen = false;
@@ -16,17 +16,14 @@ let expandingIsOpen = function (navbar) {
 
 function expandingOpen(navbar) {
   if (navbar) {
-    if (options.sidebarExpandingMenuOpenOnHover) {
-      navbar.classList.add('gm-expanding--open');
-    } else {
-      navbar.classList.add('gm-expanding--hold');
-    }
+
+    navbar.classList.add('gm-expanding--open');
+
   }
 }
 
 function expandingClose(navbar) {
   if (expandingIsOpen(navbar)) {
-    navbar.classList.remove('gm-expanding--hold');
     navbar.classList.remove('gm-expanding--open');
   } else {
     return;
@@ -43,7 +40,7 @@ function expandingToggle(navbar) {
 
 function expandingClickOutside() {
   document.addEventListener('click', function (event) {
-    if (event.target.closest('.gm-menu-btn')) {
+    if (event.target.closest('.gm-menu-btn--expanded')) {
       return;
     }
 
@@ -78,7 +75,9 @@ export function expandingSidebarEvents() {
     return;
   }
 
-  expandingOpenMouseEvents();
+  if (options.sidebarExpandingMenuOpenOnHover) {
+    expandingOpenMouseEvents();
+  }
 
   expandingClickOutside();
 

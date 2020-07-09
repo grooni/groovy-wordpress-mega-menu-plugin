@@ -44,6 +44,8 @@ body {
 .gm-navbar ul.gm-navbar-nav,
 .gm-navbar ul.gm-navbar-nav > li,
 .gm-navbar ul.gm-dropdown-menu,
+.gm-navbar ul.gm-dropdown-menu > li,
+.gm-navbar ~ .gm-main-menu-wrapper .gm-dropdown-menu .gm-menu-item,
 .gm-navbar .gm-dropdown-menu-wrapper > ul,
 .gm-navbar .gm-dropdown-menu-wrapper > ul > li,
 .gm-navigation-drawer ul.gm-navbar-nav,
@@ -51,7 +53,8 @@ body {
 .gm-navigation-drawer ul.gm-dropdown-menu,
 .gm-navigation-drawer ul.gm-dropdown-menu > li,
 .gm-navbar .gm-toolbar-socials-list,
-.gm-navbar .gm-toolbar-socials-list > li {
+.gm-navbar .gm-toolbar-socials-list > li,
+.gm-navbar .gm-plain-list-menu-wrapper > .gm-plain-list-menu {
   list-style: none;
   padding: 0 0 0 0;
   line-height: initial;

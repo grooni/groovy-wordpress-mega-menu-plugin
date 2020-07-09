@@ -135,16 +135,22 @@ class GroovyMenu {
       }
 
       if (document.querySelector('.gm-open') !== null && !e.target.closest('.gm-dropdown')) {
-        dropdownCloseAll();
+        dropdownCloseAll(0);
       }
     });
 
 
     let initDropdownAction = (e) => {
-      let delay = 260;
+      let delay = 210;
       let closestDropdown = e.target.closest('.gm-dropdown');
+      let isTopLevelClass = false;
       let dropdownMenus = document.querySelectorAll('.gm-dropdown');
+      let gmMainMenu = document.querySelector('#gm-main-menu');
       let hasOpenedElems = false;
+
+      if (closestDropdown) {
+        isTopLevelClass = closestDropdown.classList.contains('gm-menu-item--lvl-0');
+      }
 
       if (e.target.closest('.gm-minicart') && e.type === 'click') {
         if (headerStyle !== 1 || isMobile()) {
@@ -199,6 +205,17 @@ class GroovyMenu {
 
         closestDropdown.setAttribute('data-close', false);
 
+        if (isTopLevelClass && !openParents.length) {
+          clearTimeout(closestDropdown.getAttribute('data-timeout-close'));
+          closestDropdown.setAttribute('data-timeout-close', null);
+        }
+
+        if (gmMainMenu) {
+          clearTimeout(gmMainMenu.getAttribute('data-timeout-close-all'));
+          gmMainMenu.setAttribute('data-timeout-close-all', null);
+        }
+
+
         // smooth switching between adjacent dropdowns
         closestDropdown.setAttribute('data-timeout-open', setTimeout(function () {
 
@@ -223,8 +240,6 @@ class GroovyMenu {
               });
             }
 
-            dropdownOpen(closestDropdown, options);
-
             // Close all not parents dropdowns.
             if (dropdownMenus.length > 0) {
               dropdownMenus.forEach((el) => {
@@ -233,6 +248,8 @@ class GroovyMenu {
                 }
               });
             }
+
+            dropdownOpen(closestDropdown, options);
 
           } else { // menu item without children dropdown. Just close all others opened dropdown.
 
@@ -261,7 +278,7 @@ class GroovyMenu {
 
       } else { // apparently this is the top level menu without dropdown.
         // Close all dropdowns.
-        dropdownCloseAll();
+        dropdownCloseAll(420);
       }
     };
 
@@ -269,27 +286,29 @@ class GroovyMenu {
     let leaveDropdownAction = (e) => {
 
       let closestDropdown = e.target.closest('.gm-dropdown');
+      let isTopLevelClass = e.target.classList.contains('gm-menu-item--lvl-0');
 
       // parent dropdown not exist.
       if (!closestDropdown) {
         return;
       }
 
+      let elemClassList = closestDropdown.classList;
+
       // exclude first level of the nav menu.
-      if (!closestDropdown.classList.contains('gm-dropdown-submenu')) {
+      if (!elemClassList.contains('gm-dropdown-submenu') && !isTopLevelClass) {
         return;
       }
 
       // parent dropdown is open.
-      if (closestDropdown.classList.contains('gm-open')) {
+      if (elemClassList.contains('gm-open') && !elemClassList.contains('gm-menu-item--lvl-0')) {
         return;
       }
 
-      let delay = 230;
+      let delay = 350;
 
       // disable for search and WooCommerce buttons.
-      if (closestDropdown.classList.contains('gm-search')
-        || closestDropdown.classList.contains('gm-minicart')) {
+      if (elemClassList.contains('gm-search') || elemClassList.contains('gm-minicart')) {
         return;
       }
 
@@ -303,27 +322,36 @@ class GroovyMenu {
       }, delay));
     };
 
-    let dropdownItems = document.querySelectorAll('.gm-anchor, .gm-minicart-link');
-    let navbarNav = document.querySelector('.gm-navbar-nav');
 
-    if (options.showSubmenu === 'hover' && !isMobile() && dropdownItems) {
-      dropdownItems.forEach((dropdownItem) => {
-        if (isTouchDevice) {
-          dropdownItem.addEventListener('click', initDropdownAction);
-        } else {
-          dropdownItem.addEventListener('click', initDropdownAction);
+    let gmAnchorItems = document.querySelectorAll('.gm-anchor, .gm-minicart, .mega-gm-dropdown > .gm-dropdown-menu-wrapper');
+    let gmMainMenu = document.querySelector('#gm-main-menu');
+
+    if (gmAnchorItems && options.showSubmenu === 'hover' && !isMobile()) {
+      gmAnchorItems.forEach((dropdownItem) => {
+
+        let menuItem = dropdownItem.closest('.gm-menu-item');
+
+        dropdownItem.addEventListener('click', initDropdownAction);
+
+        if (!isTouchDevice) {
           dropdownItem.addEventListener('mouseenter', initDropdownAction);
-          dropdownItem.addEventListener('mouseleave', leaveDropdownAction);
+          if (menuItem) {
+            menuItem.addEventListener('mouseleave', leaveDropdownAction);
+          } else {
+            dropdownItem.addEventListener('mouseleave', leaveDropdownAction);
+          }
         }
       });
 
-      if (!isTouchDevice && navbarNav) {
-        navbarNav.addEventListener('mouseleave', dropdownCloseAll);
+      if (!isTouchDevice && gmMainMenu) {
+        gmMainMenu.addEventListener('mouseleave', () => {
+          dropdownCloseAll(750);
+        });
       }
     }
 
-    if (options.showSubmenu === 'click' || isMobile()) {
-      dropdownItems.forEach((dropdownItem) => {
+    if (gmAnchorItems && (options.showSubmenu === 'click' || isMobile())) {
+      gmAnchorItems.forEach((dropdownItem) => {
         dropdownItem.addEventListener('click', initDropdownAction);
       });
     }
@@ -463,7 +491,7 @@ class GroovyMenu {
           return;
         }
 
-        if (headerStyle !== 3 && headerStyle !== 4) {
+        if (headerStyle !== 3 && headerStyle !== 4 && headerStyle !== 5) {
           dropdownToggle(item.closest('.gm-search'), options);
           setTimeout(() => {
             item.querySelector('.gm-search__input')
