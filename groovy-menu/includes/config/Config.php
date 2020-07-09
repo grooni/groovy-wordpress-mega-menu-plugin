@@ -665,6 +665,22 @@ return array(
 				'range'       => array( 900, 2000 ),
 				'unit'        => 'px',
 			),
+			'megamenu_background_color_custom' => array(
+				'title'     => esc_html__( 'Custom Mega menu background color', 'groovy-menu' ),
+				'type'      => 'checkbox',
+				'default'   => false,
+				'condition' => array( 'header.style', 'in', array( '1' ) ),
+			),
+			'megamenu_background_color'        => array(
+				'title'     => esc_html__( 'Mega menu background color', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => '#202022',
+				'alpha'     => true,
+				'condition' => array(
+					array( 'megamenu_background_color_custom', '==', true, ),
+					array( 'header.style', 'in', array( '1' ) ),
+				),
+			),
 			'mega_menu_divider_color'                      => array(
 				'title'     => esc_html__( 'Mega menu columns divider color', 'groovy-menu' ),
 				'type'      => 'colorpicker',
