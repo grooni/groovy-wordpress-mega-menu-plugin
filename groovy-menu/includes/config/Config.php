@@ -681,6 +681,12 @@ return array(
 					array( 'header.style', 'in', array( '1' ) ),
 				),
 			),
+			'megamenu_column_padding' => array(
+				'title'     => esc_html__( 'Add Mega menu columns padding', 'groovy-menu' ),
+				'type'      => 'checkbox',
+				'default'   => true,
+				'condition' => array( 'header.style', 'in', array( '1' ) ),
+			),
 			'mega_menu_divider_color'                      => array(
 				'title'     => esc_html__( 'Mega menu columns divider color', 'groovy-menu' ),
 				'type'      => 'colorpicker',
