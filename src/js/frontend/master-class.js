@@ -19,7 +19,7 @@ import { initExpanding, expandingSidebarEvents } from './expanding';
 import { initMenuThumbnails } from './thumbnails';
 
 import SmoothScroll from 'smooth-scroll';
-//import initScrollbar from './scrollbar-new'; // TODO debug -------
+// import initScrollbar from './scrollbar-new'; // TODO debug -------
 import {
   dropdownCloseAll,
   dropdownToggle,
@@ -147,12 +147,13 @@ class GroovyMenu {
       let dropdownMenus = document.querySelectorAll('.gm-dropdown');
       let gmMainMenu = document.querySelector('#gm-main-menu');
       let hasOpenedElems = false;
+      let miniCart = e.target.closest('.gm-minicart');
 
       if (closestDropdown) {
         isTopLevelClass = closestDropdown.classList.contains('gm-menu-item--lvl-0');
       }
 
-      if (e.target.closest('.gm-minicart') && e.type === 'click') {
+      if (miniCart && e.type === 'click') {
         if (headerStyle !== 1 || isMobile()) {
           window.location = document.querySelector('.gm-minicart-link')
             .getAttribute('href');
@@ -160,8 +161,11 @@ class GroovyMenu {
           return false;
         }
 
-        e.preventDefault();
-        dropdownToggle(closestDropdown, options);
+        if (e.target.closest('.gm-minicart-link')) {
+          e.preventDefault();
+          dropdownToggle(closestDropdown, options);
+        }
+
         return false;
       }
 

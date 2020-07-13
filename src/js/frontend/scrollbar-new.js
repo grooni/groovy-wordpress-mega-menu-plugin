@@ -6,7 +6,7 @@ export default function initScrollbar(settings) {
 
   let scrollbars = [];
 
-  let dropdownWrapper = document.querySelectorAll('.gm-dropdown-menu-wrapper > .gm-dropdown-menu');
+  let dropdownWrapper = document.querySelectorAll('.gm-dropdown-menu-wrapper .gm-dropdown-menu');
 
   dropdownWrapper.forEach((elem) => {
     scrollbars.push(new PerfectScrollbar(elem, {suppressScrollX: true}));
