@@ -4,14 +4,21 @@
   }
 }
 
+//.gm-dropdown-menu.ps {
+//  overflow: visible !important;
+//}
+
 .gm-dropdown-menu.ps {
-  overflow: visible !important;
+  overflow: hidden !important;
+  touch-action: auto;
 }
 
-//.gm-dropdown-menu.ps {
-//  overflow: hidden !important;
-//  touch-action: auto;
-//}
+.gm-navbar.gm-dropdown-hover-style-default .gm-main-menu-wrapper {
+  .gm-dropdown-menu-wrapper > .gm-dropdown-menu {
+    transform: none;
+    transition: transform 0.01s ease 0s;
+  }
+}
 
 /* rtl:begin:ignore */
 

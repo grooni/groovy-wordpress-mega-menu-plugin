@@ -1,5 +1,5 @@
 import PerfectScrollbar from 'perfect-scrollbar';
-import { getCoords, isMobile, wrap } from '../shared/helpers';
+import { getCoords, isMobile } from '../shared/helpers';
 import _ from 'lodash';
 
 function getDropdownMaxHeight (currentDropdown) {
@@ -32,14 +32,40 @@ function getFirstDropdownRect (menuItem, settings) {
   });
 }
 
-function getSubmenuDropdownRect (menuItem, settings) {
-  let dropdownMenu = document.querySelector('.gm-dropdown-menu');
-  let dropdownMenuBorderWidth = getComputedStyle(dropdownMenu)['borderTopWidth'] || 0;
-  let top = menuItem.offsetTop - parseInt(dropdownMenuBorderWidth, 10);
+function isVerticalMenu (settings) {
+  let verticalMenu = false;
 
   if (settings.header.style === 2 || settings.header.style === 3 || settings.header.style === 5) {
+    verticalMenu = true;
+  }
+
+  return verticalMenu;
+}
+
+function getSubmenuDropdownRect (menuItem, settings, scrollbars) {
+  let dropdownMenu = document.querySelector('.gm-dropdown-menu');
+  let dropdownMenuBorderWidth = getComputedStyle(dropdownMenu)['borderTopWidth'] || 0;
+  let closestdropdownMenuPs = menuItem.closest('.gm-dropdown-menu.ps');
+  let psId = closestdropdownMenuPs.getAttribute('data-ps-id');
+  let top = 0;
+
+  top = menuItem.offsetTop - parseInt(dropdownMenuBorderWidth, 10) - scrollbars[psId].lastScrollTop;
+  if (top < 0) {
     top = 0;
   }
+
+  if (isVerticalMenu(settings)) {
+    top = 0;
+  }
+
+  console.log('--------------- getSubmenuDropdownRect ---'); // TODO debug ---.
+  console.log(menuItem); // TODO debug ---.
+  console.log(menuItem.offsetTop); // TODO debug ---.
+  console.log(closestdropdownMenuPs); // TODO debug ---.
+  console.log(closestdropdownMenuPs.offsetTop); // TODO debug ---.
+  console.log(scrollbars[psId]); // TODO debug ---.
+  console.log(top); // TODO debug ---.
+
 
   return ({
     top: top
@@ -47,35 +73,77 @@ function getSubmenuDropdownRect (menuItem, settings) {
 }
 
 export default function initScrollbar (settings) {
-  let dropdownMenuLists = document.querySelectorAll('.gm-main-menu-wrapper .gm-dropdown-menu:not(.gm-minicart-dropdown)');
+  //let dropdownMenuLists = document.querySelectorAll('.gm-main-menu-wrapper .gm-dropdown-menu:not(.gm-minicart-dropdown)');
   let dropdownMenuLinks = document.querySelectorAll('.gm-dropdown-toggle');
-  let isScrollbarEnabled = false;
   let scrollbars = [];
 
 
   function handleScrollbarMouseEnter () {
-    let menuItem = this.closest('.gm-dropdown');
-    let currentDropdown = menuItem.querySelector('.gm-dropdown-menu');
-    let firstDropdownRect = getFirstDropdownRect(menuItem, settings);
-    let currentDropdownWidth = firstDropdownRect.width;
-    let dropdownWrapper = menuItem.querySelector('.gm-dropdown-menu-wrapper');
 
-    if (menuItem.classList.contains('gm-dropdown-submenu')) {
-      menuItem.style.position = 'static';
-      dropdownWrapper.style.top = `${getSubmenuDropdownRect(menuItem, settings).top}px`;
-      currentDropdown.style.maxHeight = `${getDropdownMaxHeight(currentDropdown)}px`;
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>>> handleScrollbarMouseEnter'); // TODO debug ---.
 
-      if (menuItem.classList.contains('gm-has-featured-img')) {
-        const image = menuItem.querySelector('.attachment-menu-thumb');
-        const imagePosition = getCoords(menuItem);
+    let parentMenuItem = this.closest('.gm-dropdown');
+
+    if (!parentMenuItem) {
+      return;
+    }
+
+    let currentDropdown = parentMenuItem.querySelector('.gm-dropdown-menu');
+
+    if (!currentDropdown) {
+      return;
+    }
+
+
+    let dropdownWrapper = parentMenuItem.querySelector('.gm-dropdown-menu-wrapper');
+
+
+    // Second and next dropdown levels ---------------------------------------------------------------------------------
+    if (parentMenuItem.classList.contains('gm-dropdown-submenu')) {
+      let subDropdownRect = getSubmenuDropdownRect(parentMenuItem, settings, scrollbars);
+      console.log('subDropdownRect:'); // TODO debug ---.
+      console.log(subDropdownRect); // TODO debug ---.
+
+
+      parentMenuItem.style.position = 'static';
+
+      dropdownWrapper.style.top = `${subDropdownRect.top}px`;
+      dropdownWrapper.style.height = `${subDropdownRect.height}px`;
+
+      currentDropdown.style.position = 'static';
+      if (!isVerticalMenu(settings)) {
+        currentDropdown.style.maxHeight = `${getDropdownMaxHeight(currentDropdown)}px`;
+      }
+
+      if (parentMenuItem.classList.contains('gm-has-featured-img')) {
+        const image = parentMenuItem.querySelector('.attachment-menu-thumb');
+        const imagePosition = getCoords(parentMenuItem);
 
         image.style.top = `${imagePosition.top}px`;
       }
+
+      activatePerfectScrollbar(currentDropdown);
+
+      return;
     }
 
+    // First dropdown level --------------------------------------------------------------------------------------------
+    let firstDropdownRect = getFirstDropdownRect(parentMenuItem, settings);
+    console.log('firstDropdownRect:'); // TODO debug ---.
+    console.log(firstDropdownRect); // TODO debug ---.
+
+    dropdownWrapper.style.top = `${firstDropdownRect.top}px`;
+    dropdownWrapper.style.width = `${firstDropdownRect.width}px`;
+    //dropdownWrapper.style.height = `${firstDropdownRect.height}px`;
+
     currentDropdown.style.position = 'static';
-    currentDropdown.style.transform = 'none';
-    currentDropdown.style.maxHeight = `${getDropdownMaxHeight(this)}px`;
+    if (!isVerticalMenu(settings)) {
+      currentDropdown.style.maxHeight = `${getDropdownMaxHeight(this)}px`;
+    }
+    //currentDropdown.style.transform = 'none';
+
+    activatePerfectScrollbar(currentDropdown);
+
     currentDropdown.addEventListener('transitionend', handleTransitionEnd);
   }
 
@@ -84,20 +152,59 @@ export default function initScrollbar (settings) {
       return;
     }
 
+    console.log('~~~~~~~~~~~~ handleTransitionEnd'); // TODO debug ---.
+    console.log(event.propertyName); // TODO debug ---.
+
+    updateDropdownMaxHeight(this);
+
     let dropdown = this.closest('.gm-dropdown');
-    let gmWrapper = document.querySelector('.gm-wrapper');
 
     if (dropdown.classList.contains('gm-open')) {
-      this.style.transform = 'none';
-      this.style.maxHeight = `${getDropdownMaxHeight(this)}px`;
-      const ps = new PerfectScrollbar(this, {
-        suppressScrollX: true
-      });
-      scrollbars.push(ps);
-      // this.style.position = 'static';
-    } else {
-      this.style.transform = null;
+      activatePerfectScrollbar(this);
     }
+  }
+
+  function updateDropdownMaxHeight (elem) {
+    console.log('...... updateDropdownMaxHeight'); // TODO debug ---.
+    console.log(event.propertyName); // TODO debug ---.
+
+    let dropdown = elem.closest('.gm-dropdown');
+
+    if (dropdown.classList.contains('gm-open')) {
+      elem.style.transform = 'none';
+      if (!isVerticalMenu(settings)) {
+        elem.style.maxHeight = `${getDropdownMaxHeight(elem)}px`;
+      }
+      elem.style.position = 'static';
+    } else {
+      elem.style.transform = null;
+    }
+  }
+
+  function activatePerfectScrollbar (elem) {
+
+    if (!elem) {
+      return;
+    }
+
+    let isHandled = elem.classList.contains('ps');
+
+    if (isHandled) {
+      return;
+    }
+
+    console.log('+++ activatePerfectScrollbar'); // TODO debug ---.
+
+    const ps = new PerfectScrollbar(elem, {
+      suppressScrollX: true,
+      wheelSpeed: 0.7
+    });
+
+    elem.setAttribute('data-ps-id', scrollbars.length);
+
+    scrollbars.push(ps);
+
+    console.log(elem); // TODO debug ---.
   }
 
   function handleScrollbarMouseLeave () {
