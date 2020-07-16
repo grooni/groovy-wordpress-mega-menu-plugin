@@ -116,6 +116,21 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 
 == Changelog ==
 
+= 1.2.1 =
+* Added: Added new feature the "Scrollbar". That allows scrolling for long lists of submenus and mega menus.
+* Added: New option for the logo position "Enable fit logotype to the sidebar area" for menu type "Icon Sidebar".
+* Added: New option "Mega menu background color".
+* Added: New option "Change Top level menu background color when the submenu is opened".
+* Improve: Optimized opening/closing submenus and mega menus for all types of menu. Added time delays to close dropdown menus. This will allow the site visitors to improve the experience with menu interaction and move on smoothly to adjacent drop-down menus diagonally.
+* Improve: Removed side paddings for Mega menu.
+* Improve: Settings for "Submenu" and "Mega menu" has been moved into own sections
+* Improve: Added the Element (widget) for Elementor builder.
+* Fix: Fixed the flicker effect when you click on the active anchor link.
+* Fix: New option "General > Mega menu > Add Mega menu columns padding". Enabled by default.
+* Fix: The issue with overlapped mega menu blocks
+* Fix: Added minor fixes that help in some cases prevent changes Groovy Menu styles through WordPress templates.
+
+
 = 1.2.0 =
 * Improve: Plugin performance improved for "Appearance > Menus" section.
 * Improve: Groovy menu settings in "Appearance > Menus section" has been moved to modal window.

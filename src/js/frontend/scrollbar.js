@@ -22,7 +22,7 @@ function getFirstDropdownRect (menuItem, settings) {
   let top = menuItem.offsetHeight;
   let width = currentDropdownWidth;
 
-  if (settings.header.style === 2 || settings.header.style === 3 || settings.header.style === 5) {
+  if (isVerticalMenu(settings)) {
     top = 0;
   }
 
@@ -47,9 +47,8 @@ function getSubmenuDropdownRect (menuItem, settings, scrollbars) {
   let dropdownMenuBorderWidth = getComputedStyle(dropdownMenu)['borderTopWidth'] || 0;
   let closestdropdownMenuPs = menuItem.closest('.gm-dropdown-menu.ps');
   let psId = closestdropdownMenuPs.getAttribute('data-ps-id');
-  let top = 0;
+  let top = menuItem.offsetTop - parseInt(dropdownMenuBorderWidth, 10) - scrollbars[psId].lastScrollTop;
 
-  top = menuItem.offsetTop - parseInt(dropdownMenuBorderWidth, 10) - scrollbars[psId].lastScrollTop;
   if (top < 0) {
     top = 0;
   }
@@ -58,29 +57,20 @@ function getSubmenuDropdownRect (menuItem, settings, scrollbars) {
     top = 0;
   }
 
-  console.log('--------------- getSubmenuDropdownRect ---'); // TODO debug ---.
-  console.log(menuItem); // TODO debug ---.
-  console.log(menuItem.offsetTop); // TODO debug ---.
-  console.log(closestdropdownMenuPs); // TODO debug ---.
-  console.log(closestdropdownMenuPs.offsetTop); // TODO debug ---.
-  console.log(scrollbars[psId]); // TODO debug ---.
-  console.log(top); // TODO debug ---.
-
-
   return ({
     top: top
   });
 }
 
+
+// ---------------------------------------------------------------------------------------------------------------------
+
 export default function initScrollbar (settings) {
-  //let dropdownMenuLists = document.querySelectorAll('.gm-main-menu-wrapper .gm-dropdown-menu:not(.gm-minicart-dropdown)');
   let dropdownMenuLinks = document.querySelectorAll('.gm-dropdown-toggle');
   let scrollbars = [];
 
 
   function handleScrollbarMouseEnter () {
-
-    console.log('>>>>>>>>>>>>>>>>>>>>>>>>> handleScrollbarMouseEnter'); // TODO debug ---.
 
     let parentMenuItem = this.closest('.gm-dropdown');
 
@@ -98,12 +88,9 @@ export default function initScrollbar (settings) {
     let dropdownWrapper = parentMenuItem.querySelector('.gm-dropdown-menu-wrapper');
 
 
-    // Second and next dropdown levels ---------------------------------------------------------------------------------
+    // Second and next dropdown levels ---------------------------------------------------
     if (parentMenuItem.classList.contains('gm-dropdown-submenu')) {
       let subDropdownRect = getSubmenuDropdownRect(parentMenuItem, settings, scrollbars);
-      console.log('subDropdownRect:'); // TODO debug ---.
-      console.log(subDropdownRect); // TODO debug ---.
-
 
       parentMenuItem.style.position = 'static';
 
@@ -111,9 +98,7 @@ export default function initScrollbar (settings) {
       dropdownWrapper.style.height = `${subDropdownRect.height}px`;
 
       currentDropdown.style.position = 'static';
-      if (!isVerticalMenu(settings)) {
-        currentDropdown.style.maxHeight = `${getDropdownMaxHeight(currentDropdown)}px`;
-      }
+      currentDropdown.style.maxHeight = `${getDropdownMaxHeight(currentDropdown)}px`;
 
       if (parentMenuItem.classList.contains('gm-has-featured-img')) {
         const image = parentMenuItem.querySelector('.attachment-menu-thumb');
@@ -123,27 +108,21 @@ export default function initScrollbar (settings) {
       }
 
       activatePerfectScrollbar(currentDropdown);
+      currentDropdown.addEventListener('transitionend', handleTransitionEnd);
 
       return;
     }
 
-    // First dropdown level --------------------------------------------------------------------------------------------
+    // First dropdown level --------------------------------------------------------------
     let firstDropdownRect = getFirstDropdownRect(parentMenuItem, settings);
-    console.log('firstDropdownRect:'); // TODO debug ---.
-    console.log(firstDropdownRect); // TODO debug ---.
 
     dropdownWrapper.style.top = `${firstDropdownRect.top}px`;
     dropdownWrapper.style.width = `${firstDropdownRect.width}px`;
-    //dropdownWrapper.style.height = `${firstDropdownRect.height}px`;
 
     currentDropdown.style.position = 'static';
-    if (!isVerticalMenu(settings)) {
-      currentDropdown.style.maxHeight = `${getDropdownMaxHeight(this)}px`;
-    }
-    //currentDropdown.style.transform = 'none';
+    currentDropdown.style.maxHeight = `${getDropdownMaxHeight(currentDropdown)}px`;
 
     activatePerfectScrollbar(currentDropdown);
-
     currentDropdown.addEventListener('transitionend', handleTransitionEnd);
   }
 
@@ -152,29 +131,21 @@ export default function initScrollbar (settings) {
       return;
     }
 
-    console.log('~~~~~~~~~~~~ handleTransitionEnd'); // TODO debug ---.
-    console.log(event.propertyName); // TODO debug ---.
-
     updateDropdownMaxHeight(this);
 
     let dropdown = this.closest('.gm-dropdown');
 
-    if (dropdown.classList.contains('gm-open')) {
+    if (dropdown && dropdown.classList.contains('gm-open')) {
       activatePerfectScrollbar(this);
     }
   }
 
   function updateDropdownMaxHeight (elem) {
-    console.log('...... updateDropdownMaxHeight'); // TODO debug ---.
-    console.log(event.propertyName); // TODO debug ---.
-
     let dropdown = elem.closest('.gm-dropdown');
 
     if (dropdown.classList.contains('gm-open')) {
       elem.style.transform = 'none';
-      if (!isVerticalMenu(settings)) {
-        elem.style.maxHeight = `${getDropdownMaxHeight(elem)}px`;
-      }
+      elem.style.maxHeight = `${getDropdownMaxHeight(elem)}px`;
       elem.style.position = 'static';
     } else {
       elem.style.transform = null;
@@ -189,22 +160,32 @@ export default function initScrollbar (settings) {
 
     let isHandled = elem.classList.contains('ps');
 
+    // Return if Perfect Scrollbar already arsing for elem.
     if (isHandled) {
       return;
     }
 
-    console.log('+++ activatePerfectScrollbar'); // TODO debug ---.
+    // Preventing the calculation of the height of the current dropdown for all sub-dropdowns
+    let childDropdowns = elem.querySelectorAll('.gm-dropdown-submenu');
+    if (childDropdowns) {
+      childDropdowns.forEach((dropdown) => {
+        dropdown.style.position = 'static';
+      });
+    }
 
+    // Init Perfect Scrollbar for elem.
     const ps = new PerfectScrollbar(elem, {
       suppressScrollX: true,
-      wheelSpeed: 0.7
+      wheelPropagation: false,
+      swipeEasing: false,
+      wheelSpeed: 0.5
     });
 
+    // Save the index of the scrollbar object for further manipulation.
     elem.setAttribute('data-ps-id', scrollbars.length);
 
+    // Save scrollbar object to array.
     scrollbars.push(ps);
-
-    console.log(elem); // TODO debug ---.
   }
 
   function handleScrollbarMouseLeave () {

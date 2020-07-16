@@ -20,8 +20,7 @@ import { initMenuThumbnails } from './thumbnails';
 
 import SmoothScroll from 'smooth-scroll';
 
-// import initScrollbar from './scrollbar-new'; // TODO debug -------
-import initScrollbar from './scrollbar'; // TODO debug -------
+import initScrollbar from './scrollbar';
 
 import {
   dropdownCloseAll,
@@ -570,7 +569,9 @@ class GroovyMenu {
     expandingSidebarEvents();
 
 
-    initScrollbar(options); // TODO debug ---.
+    if (options.scrollbarEnable) {
+      initScrollbar(options);
+    }
 
 
   }

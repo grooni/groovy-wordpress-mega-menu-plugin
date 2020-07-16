@@ -700,6 +700,17 @@ return array(
 				'default'   => false,
 				'condition' => array( 'header.style', 'in', array( '1' ) ),
 			),
+			'scrollbar_group'  => array(
+				'title'     => esc_html__( 'Scrollbar', 'groovy-menu' ),
+				'type'      => 'group',
+				'serialize' => false,
+			),
+			'scrollbar_enable' => array(
+				'title'       => esc_html__( 'Enable scrollbar', 'groovy-menu' ),
+				'type'        => 'checkbox',
+				'default'     => false,
+				'description' => esc_html__( 'Enable scrolling for long lists of submenus and mega menus', 'groovy-menu' ),
+			),
 			'logo_group'                                   => array(
 				'title'     => esc_html__( 'Logo', 'groovy-menu' ),
 				'type'      => 'group',
