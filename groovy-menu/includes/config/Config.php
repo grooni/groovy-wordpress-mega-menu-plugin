@@ -665,6 +665,28 @@ return array(
 				'range'       => array( 900, 2000 ),
 				'unit'        => 'px',
 			),
+			'megamenu_background_color_custom' => array(
+				'title'     => esc_html__( 'Custom Mega menu background color', 'groovy-menu' ),
+				'type'      => 'checkbox',
+				'default'   => false,
+				'condition' => array( 'header.style', 'in', array( '1' ) ),
+			),
+			'megamenu_background_color'        => array(
+				'title'     => esc_html__( 'Mega menu background color', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => '#202022',
+				'alpha'     => true,
+				'condition' => array(
+					array( 'megamenu_background_color_custom', '==', true, ),
+					array( 'header.style', 'in', array( '1' ) ),
+				),
+			),
+			'megamenu_column_padding' => array(
+				'title'     => esc_html__( 'Add Mega menu columns padding', 'groovy-menu' ),
+				'type'      => 'checkbox',
+				'default'   => true,
+				'condition' => array( 'header.style', 'in', array( '1' ) ),
+			),
 			'mega_menu_divider_color'                      => array(
 				'title'     => esc_html__( 'Mega menu columns divider color', 'groovy-menu' ),
 				'type'      => 'colorpicker',
@@ -677,6 +699,17 @@ return array(
 				'type'      => 'checkbox',
 				'default'   => false,
 				'condition' => array( 'header.style', 'in', array( '1' ) ),
+			),
+			'scrollbar_group'  => array(
+				'title'     => esc_html__( 'Scrollbar', 'groovy-menu' ),
+				'type'      => 'group',
+				'serialize' => false,
+			),
+			'scrollbar_enable' => array(
+				'title'       => esc_html__( 'Enable scrollbar', 'groovy-menu' ),
+				'type'        => 'checkbox',
+				'default'     => false,
+				'description' => esc_html__( 'Enable scrolling for long lists of submenus and mega menus', 'groovy-menu' ),
 			),
 			'logo_group'                                   => array(
 				'title'     => esc_html__( 'Logo', 'groovy-menu' ),

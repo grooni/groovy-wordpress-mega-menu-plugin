@@ -22,8 +22,13 @@ function getVisibleHeight (elem) {
 }
 
 export function setCurrentItem () {
-  let rowsArr = [];
   const menu = document.querySelector('.gm-main-menu-wrapper');
+
+  if (!menu) {
+    return;
+  }
+
+  let rowsArr = [];
   let rows = document.querySelectorAll('[id]');
   let mostVisibleRow = {};
 
