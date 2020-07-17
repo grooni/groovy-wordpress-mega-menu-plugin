@@ -130,7 +130,6 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 * Fix: The issue with overlapped mega menu blocks
 * Fix: Added minor fixes that help in some cases prevent changes Groovy Menu styles through WordPress templates.
 
-
 = 1.2.0 =
 * Improve: Plugin performance improved for "Appearance > Menus" section.
 * Improve: Groovy menu settings in "Appearance > Menus section" has been moved to modal window.
@@ -140,7 +139,6 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 * Improve: Design of integration section.
 * Improve: Added the possibility to set different logo URLs for WPML.
 * Fix: Increased priority of the handler of admin nav_menu in WP Dashboard -> Appearance -> Menus. This eliminates conflicts with some plugins.
-* Fix: Added the possibility to hide Groovy menu layout from not public post types. Managed in Global setting -> Tools -> Enable displaying the Groovy menu layout into Menu blocks post type.
 * Fix: Resolved conflict caused by Composer autoload (dependency manager for PHP) with some other plugins in some cases.
 * Fix: Removed the menu overlapping on content during page editing in Elementor with the "Enable Groovy menu to overlap the first block in the page" option enabled.
 * Fix: Added compatibility with Avada theme through automatic integration.

@@ -23,6 +23,7 @@ if ( 'crane' === $gm_supported_module['theme'] ) {
 
 	$gm_supported_module['activate'][]   = 'gm_activate_action_for_crane_theme';
 	$gm_supported_module['deactivate'][] = 'gm_deactivate_action_for_crane_theme';
+	$gm_supported_module['check_update'] = true;
 
 }
 

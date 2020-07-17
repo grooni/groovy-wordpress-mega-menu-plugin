@@ -23,4 +23,4 @@ if ( ! function_exists( 'groovy_menu_prevent_output_for_not_public_post_types' )
 	}
 }
 
-add_filter( 'groovy_menu_prevent_output_html', 'groovy_menu_prevent_output_for_not_public_post_types', 10, 1 );
+//add_filter( 'groovy_menu_prevent_output_html', 'groovy_menu_prevent_output_for_not_public_post_types', 10, 1 );
