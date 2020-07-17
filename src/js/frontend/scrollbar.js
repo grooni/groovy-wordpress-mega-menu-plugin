@@ -2,16 +2,23 @@ import PerfectScrollbar from 'perfect-scrollbar';
 import { getCoords, isMobile } from '../shared/helpers';
 import _ from 'lodash';
 
-function getDropdownMaxHeight (currentDropdown) {
+function getDropdownMaxHeight (currentDropdown, isTransitionEnd) {
   let windowHeight = window.innerHeight;
   let topOffset = getCoords(currentDropdown).top;
   let topViewportOffset = topOffset - window.pageYOffset;
   let transformValuesCss = getComputedStyle(document.querySelector('.gm-dropdown-menu'))['transform'];
-  let transformValues = transformValuesCss
-    .replace(/[^0-9\-.,]/g, '')
-    .split(',');
-  let dropdownMenuTranslateY = Number(transformValues[5]) || 0;
-  let getDropdownMaxHeightValue = windowHeight - topViewportOffset + dropdownMenuTranslateY;
+
+  let getDropdownMaxHeightValue = windowHeight - topViewportOffset;
+
+  if (!isTransitionEnd) {
+    let transformValues = transformValuesCss
+      .replace(/[^0-9\-.,]/g, '')
+      .split(',');
+    let dropdownMenuTranslateY = Number(transformValues[5]) || 0;
+
+    getDropdownMaxHeightValue = windowHeight - topViewportOffset + dropdownMenuTranslateY;
+  }
+
 
   return getDropdownMaxHeightValue;
 }
@@ -98,7 +105,7 @@ export default function initScrollbar (settings) {
       dropdownWrapper.style.height = `${subDropdownRect.height}px`;
 
       currentDropdown.style.position = 'static';
-      currentDropdown.style.maxHeight = `${getDropdownMaxHeight(currentDropdown)}px`;
+      currentDropdown.style.maxHeight = `${getDropdownMaxHeight(currentDropdown, false)}px`;
 
       if (parentMenuItem.classList.contains('gm-has-featured-img')) {
         const image = parentMenuItem.querySelector('.attachment-menu-thumb');
@@ -108,6 +115,7 @@ export default function initScrollbar (settings) {
       }
 
       activatePerfectScrollbar(currentDropdown);
+
       currentDropdown.addEventListener('transitionend', handleTransitionEnd);
 
       return;
@@ -120,9 +128,10 @@ export default function initScrollbar (settings) {
     dropdownWrapper.style.width = `${firstDropdownRect.width}px`;
 
     currentDropdown.style.position = 'static';
-    currentDropdown.style.maxHeight = `${getDropdownMaxHeight(currentDropdown)}px`;
+    currentDropdown.style.maxHeight = `${getDropdownMaxHeight(currentDropdown, false)}px`;
 
     activatePerfectScrollbar(currentDropdown);
+
     currentDropdown.addEventListener('transitionend', handleTransitionEnd);
   }
 
@@ -131,25 +140,45 @@ export default function initScrollbar (settings) {
       return;
     }
 
-    updateDropdownMaxHeight(this);
+    updateDropdownStyles(this);
 
-    let dropdown = this.closest('.gm-dropdown');
+    let parentMenuItem = this.closest('.gm-dropdown');
 
-    if (dropdown && dropdown.classList.contains('gm-open')) {
+    if (parentMenuItem && parentMenuItem.classList.contains('gm-open')) {
       activatePerfectScrollbar(this);
     }
   }
 
-  function updateDropdownMaxHeight (elem) {
-    let dropdown = elem.closest('.gm-dropdown');
+  function updateDropdownStyles (elem) {
+    let parentMenuItem = elem.closest('.gm-dropdown');
 
-    if (dropdown.classList.contains('gm-open')) {
-      elem.style.transform = 'none';
-      elem.style.maxHeight = `${getDropdownMaxHeight(elem)}px`;
+    if (parentMenuItem && parentMenuItem.classList.contains('gm-open')) {
+
+      let maxHeightCalculated = getDropdownMaxHeight(elem, true);
+
       elem.style.position = 'static';
+      elem.style.transform = 'none';
+      elem.style.maxHeight = `${maxHeightCalculated}px`;
     } else {
       elem.style.transform = null;
     }
+
+  }
+
+  function handleScrollbarMouseLeave() {
+    let parentMenuItem = this.closest('.gm-dropdown');
+
+    if (!parentMenuItem) {
+      return;
+    }
+
+    let currentDropdown = parentMenuItem.querySelector('.gm-dropdown-menu');
+
+    if (!currentDropdown) {
+      return;
+    }
+
+    currentDropdown.style.transform = null;
   }
 
   function activatePerfectScrollbar (elem) {
@@ -186,14 +215,6 @@ export default function initScrollbar (settings) {
 
     // Save scrollbar object to array.
     scrollbars.push(ps);
-  }
-
-  function handleScrollbarMouseLeave () {
-    let menuItem = this.closest('.gm-dropdown');
-    let currentDropdown = menuItem.querySelector('.gm-dropdown-menu');
-
-    currentDropdown.style.display = null;
-    currentDropdown.style.transform = null;
   }
 
   function enableScrollbar () {
