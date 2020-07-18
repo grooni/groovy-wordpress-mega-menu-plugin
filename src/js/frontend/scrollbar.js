@@ -73,7 +73,7 @@ function getSubmenuDropdownRect (menuItem, settings, scrollbars) {
 // ---------------------------------------------------------------------------------------------------------------------
 
 export default function initScrollbar (settings) {
-  let dropdownMenuLinks = document.querySelectorAll('.gm-dropdown-toggle');
+  let dropdownMenuLinks = document.querySelectorAll('.gm-navbar-nav .gm-dropdown-toggle');
   let scrollbars = [];
 
 

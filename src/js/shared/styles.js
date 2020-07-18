@@ -1761,14 +1761,14 @@ export default class GmStyles {
 
     if (settings.header.style !== 3) {
       if (settings.bottomBorderColor) {
-        css.push({
-          '.gm-navbar:not(.gm-navbar-sticky-toggle) .gm-inner': `border-bottom-color: ${settings.bottomBorderColor}`
-        });
-      }
+        let bottomBorderThickness = settings.bottomBorderThickness;
 
-      if (settings.bottomBorderThickness) {
+        if (!bottomBorderThickness) {
+          bottomBorderThickness = 0;
+        }
+
         css.push({
-          '.gm-navbar:not(.gm-navbar-sticky-toggle) .gm-inner': `border-bottom-width: ${settings.bottomBorderThickness}px`
+          '.gm-navbar:not(.gm-navbar-sticky-toggle) .gm-inner': `border-bottom-color: ${settings.bottomBorderColor}; border-bottom-width: ${bottomBorderThickness}px`
         });
       }
 
