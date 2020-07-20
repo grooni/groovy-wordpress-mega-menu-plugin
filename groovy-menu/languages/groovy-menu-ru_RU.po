@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Groovy Menu 1.2.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 11:11+0300\n"
-"PO-Revision-Date: 2020-07-17 11:34+0300\n"
+"POT-Creation-Date: 2020-07-20 11:42+0300\n"
+"PO-Revision-Date: 2020-07-20 11:43+0300\n"
 "Last-Translator: Di_Skyer <diskyer@gmail.com>\n"
 "Language-Team: Русский\n"
 "Language: ru_RU\n"
@@ -598,7 +598,7 @@ msgstr "Включить Скролбар"
 
 #: includes/config/Config.php:712
 msgid "Enable scrolling for long lists of submenus and mega menus"
-msgstr ""
+msgstr "Включить скроллинг для длинных списков суб-меню и мега меню"
 
 #: includes/config/Config.php:715 includes/config/ConfigGlobal.php:18
 msgid "Logo"
@@ -1485,18 +1485,10 @@ msgstr ""
 "используйте эту опцию."
 
 #: includes/config/ConfigGlobal.php:423
-msgid "Enable displaying the Groovy menu layout into Menu blocks post type"
-msgstr "Разрешить показывать Groovy Menu слой в редакторе Меню Блоков"
-
-#: includes/config/ConfigGlobal.php:425
-msgid "Is also apply to not public post types"
-msgstr "Так же применяется для непубличных типов записей"
-
-#: includes/config/ConfigGlobal.php:429
 msgid "Use local google fonts"
 msgstr "Использовать локальные шрифты Google"
 
-#: includes/config/ConfigGlobal.php:431
+#: includes/config/ConfigGlobal.php:425
 msgid ""
 "For presets settings. When turning on, the Google fonts will be connected "
 "from local upload folder. Turning off option for use the Google CDN service."
@@ -1504,11 +1496,11 @@ msgstr ""
 "При включении шрифты Google будут подключаться из локальной папки загрузки. "
 "Отключение опции для использования сервиса Google CDN."
 
-#: includes/config/ConfigGlobal.php:435
+#: includes/config/ConfigGlobal.php:429
 msgid "Remove All Data after uninstall"
 msgstr "Удалить все данные после удаления"
 
-#: includes/config/ConfigGlobal.php:437
+#: includes/config/ConfigGlobal.php:431
 msgid ""
 "This tool will remove Groovy menu, Presets and other data when using the "
 "\"Delete\" link on the plugins screen."
@@ -1635,6 +1627,7 @@ msgstr "Доступны миграции"
 #: includes/modules/core/inc/GroovyMenuCategoryPreset.php:51
 #: includes/modules/core/inc/GroovyMenuSettings.php:360
 #: includes/theme_support/divi-grooni-groovymenu/includes/modules/DiviGrooniGroovyMenu/DiviGrooniGroovyMenu.php:17
+#: includes/theme_support/elementor-gm-widget.php:34
 msgid "Groovy Menu"
 msgstr "Groovy Menu"
 
@@ -3245,7 +3238,20 @@ msgstr "Как сделать DIVI Mega Menu вместе с Groovy Menu"
 
 #: includes/theme_support/divi-grooni-groovymenu/includes/modules/DiviGrooniGroovyMenuFullwidth/DiviGrooniGroovyMenuFullwidth.php:18
 msgid "Groovy Menu Fullwidth"
+msgstr "Groovy Menu полная ширина"
+
+#: includes/theme_support/elementor.php:199
+#, php-format
+msgid "\"%1$s\" requires \"%2$s\" version %3$s or greater."
 msgstr ""
+
+#: includes/theme_support/elementor.php:200
+msgid "Groovy Menu Elementor module"
+msgstr "Elementor модуль Groovy Menu"
+
+#: includes/theme_support/elementor.php:201
+msgid "Elementor"
+msgstr "Elementor"
 
 #: template/Header.php:601
 msgid "Please add image or text logo"
@@ -3262,6 +3268,12 @@ msgstr "Моя корзина"
 #: template/PreviewModal.php:10
 msgid "Sticky"
 msgstr "Липкое"
+
+#~ msgid "Enable displaying the Groovy menu layout into Menu blocks post type"
+#~ msgstr "Разрешить показывать Groovy Menu слой в редакторе Меню Блоков"
+
+#~ msgid "Is also apply to not public post types"
+#~ msgstr "Так же применяется для непубличных типов записей"
 
 #~ msgid ""
 #~ "This integration successfully works only with those locations that are "
