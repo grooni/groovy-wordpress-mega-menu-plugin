@@ -125,7 +125,6 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 * Improve: Settings for "Submenu" and "Mega menu" has been moved into own sections
 * Improve: Added the Element (widget) for Elementor builder.
 * Fix: Fixed the flicker effect when you click on the active anchor link.
-* Fix: New option "General > Mega menu > Add Mega menu columns padding". Enabled by default.
 * Fix: The issue with overlapped mega menu blocks
 * Fix: Added minor fixes that help in some cases prevent changes Groovy Menu styles through WordPress templates.
 * Fix: Hidden Groovy Menu options button for "Appearance > Menus" section.
