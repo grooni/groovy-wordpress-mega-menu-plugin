@@ -100,9 +100,13 @@ export function dropdownToggle (elem, options) {
 
 export function dropdownCloseAll (delay) {
 
+  if (!delay) {
+    delay = 0;
+  }
+
   let gmMainMenu = document.querySelector('#gm-main-menu');
 
-  if (gmMainMenu) {
+  if (gmMainMenu && delay > 0) {
 
     gmMainMenu.setAttribute('data-timeout-close-all', setTimeout(function () {
       dropdownCloseAllOpened();

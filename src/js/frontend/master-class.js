@@ -174,7 +174,21 @@ class GroovyMenu {
       if (e.target.closest('.gm-caret')) {
         e.preventDefault();
         e.stopPropagation();
-        dropdownToggle(closestDropdown, options);
+
+        if (closestDropdown && isTopLevelClass) {
+
+          let isOpenedBefore = closestDropdown.classList.contains('gm-open');
+
+          dropdownCloseAll(0);
+
+          if (! isOpenedBefore) {
+            dropdownOpen(closestDropdown, options);
+          }
+
+        } else {
+          dropdownToggle(closestDropdown, options);
+        }
+
         return false;
       }
 
