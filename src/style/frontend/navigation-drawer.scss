@@ -136,6 +136,10 @@ body:not(.admin-bar) {
   will-change: transform;
 }
 
+.gm-navbar.gm-navbar--style-2 .gm-main-menu-wrapper:not(.gm-navigation-drawer--open) {
+  display: none;
+}
+
 .gm-navigation-drawer.gm-navigation-drawer--open {
   transform: translate3d(0, 0, 0) !important;
 }

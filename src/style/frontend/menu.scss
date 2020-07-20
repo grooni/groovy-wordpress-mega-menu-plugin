@@ -31,6 +31,20 @@ NAVBAR GENERAL STYLES
     max-width: none;
     max-height: none;
   }
+
+  .menu-item {
+    display: block;
+    width: auto;
+    max-width: inherit;
+    height: auto;
+    padding: inherit;
+    margin: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: none;
+  }
 }
 
 .gm-inner {
@@ -255,4 +269,13 @@ NAVBAR GENERAL STYLES
   position: relative;
   display: flex;
   align-items: center;
+}
+
+/* bugfix: For sub-submenus that climb out of the right side of the screen and, on some WP Themes, they call the horizontal scroll of the browser when opening the first level submenu. */
+.gm-navbar .gm-navbar-nav > .gm-dropdown .gm-dropdown-menu .gm-dropdown-submenu:not(.gm-open) .gm-dropdown-menu-wrapper {
+  display: none;
+}
+
+.gm-navbar .gm-navbar-nav > .gm-dropdown .gm-dropdown-menu .gm-dropdown-submenu:hover .gm-dropdown-menu-wrapper {
+  display: block;
 }

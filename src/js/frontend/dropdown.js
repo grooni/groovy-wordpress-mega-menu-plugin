@@ -7,13 +7,16 @@ export function dropdownOpen (elem, options) {
     var hasParentLeft = elem.closest('.gm-dropdown-menu-wrapper');
     hasParentLeft = hasParentLeft !== null && hasParentLeft.classList.contains('gm-dropdown-menu-wrapper--left');
   }
-  var isVerticalNavDrawer =
-    options.header.style === 2 ||
-    options.header.style === 3 ||
-    options.header.style === 4;
+  var isVerticalNavDrawer = options.header.style !== 1;
 
   if (elem.classList.contains('gm-minicart') && isVerticalNavDrawer) {
     return false;
+  }
+
+  let gmMainMenu = document.querySelector('#gm-main-menu');
+  if (gmMainMenu) {
+    clearTimeout(gmMainMenu.getAttribute('data-timeout-close-all'));
+    gmMainMenu.setAttribute('data-timeout-close-all', null);
   }
 
   if (dropdownWrapper !== null &&
@@ -35,6 +38,12 @@ export function dropdownOpen (elem, options) {
       }
     }
   }
+
+  let gmNavbar = elem.closest('.gm-navbar');
+  if (gmNavbar) {
+    gmNavbar.classList.add('gm-navbar-dropdown-opened');
+  }
+
 }
 
 export function dropdownClose (elem) {
@@ -55,6 +64,15 @@ export function dropdownClose (elem) {
       }
     }
   }
+
+  let elems = document.querySelectorAll('.gm-open');
+  if (!elems) {
+    let gmNavbar = document.querySelector('.gm-navbar');
+    if (gmNavbar) {
+      gmNavbar.classList.remove('gm-navbar-dropdown-opened');
+    }
+  }
+
 }
 
 export function dropdownToggle (elem, options) {
@@ -73,21 +91,36 @@ export function dropdownToggle (elem, options) {
       }
     } else {
       // close all
-      dropdownCloseAll();
+      dropdownCloseAll(400);
     }
 
     dropdownOpen(elem, options);
   }
 }
 
-export function dropdownCloseAll () {
+export function dropdownCloseAll (delay) {
+
+  let gmMainMenu = document.querySelector('#gm-main-menu');
+
+  if (gmMainMenu) {
+
+    gmMainMenu.setAttribute('data-timeout-close-all', setTimeout(function () {
+      dropdownCloseAllOpened();
+    }, delay));
+
+  } else {
+
+    dropdownCloseAllOpened();
+
+  }
+
+}
+
+function dropdownCloseAllOpened () {
+
   let elems = document.querySelectorAll('.gm-open');
 
   elems.forEach((el) => {
-
-    if (event.target.closest('.gm-open')) {
-      return;
-    }
 
     clearTimeout(el.getAttribute('data-timeout-open'));
     el.setAttribute('data-timeout-open', null);
@@ -105,4 +138,16 @@ export function dropdownCloseAll () {
 
     el.classList.remove('gm-open');
   });
+
+  let gmNavbar = document.querySelector('.gm-navbar');
+  if (gmNavbar) {
+    gmNavbar.classList.remove('gm-navbar-dropdown-opened');
+  }
+
+  let gmMainMenu = document.querySelector('#gm-main-menu');
+  if (gmMainMenu) {
+    clearTimeout(gmMainMenu.getAttribute('data-timeout-close-all'));
+    gmMainMenu.setAttribute('data-timeout-close-all', null);
+  }
+
 }

@@ -2,9 +2,9 @@
 Contributors: Grooni
 Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive, responsive menu, sticky menu, vertical menu, horizontal menu, ajax cart
 Requires at least: 4.9.7
-Tested up to: 5.4.1
+Tested up to: 5.4.2
 Requires PHP: 7.0
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -116,6 +116,20 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 
 == Changelog ==
 
+= 1.2.1 =
+* Added: Added new feature the "Scrollbar". That allows scrolling for long lists of submenus and mega menus.
+* Added: New option for the logo position "Enable fit logotype to the sidebar area" for menu type "Icon Sidebar".
+* Added: New option "Mega menu background color".
+* Added: New option "Change Top level menu background color when the submenu is opened".
+* Improve: Optimized opening/closing submenus and mega menus for all types of menu. Added time delays to close dropdown menus. This will allow the site visitors to improve the experience with menu interaction and move on smoothly to adjacent drop-down menus diagonally.
+* Improve: Removed side paddings for Mega menu.
+* Improve: Settings for "Submenu" and "Mega menu" has been moved into own sections
+* Improve: Added the Element (widget) for Elementor builder.
+* Fix: Fixed the flicker effect when you click on the active anchor link.
+* Fix: New option "General > Mega menu > Add Mega menu columns padding". Enabled by default.
+* Fix: The issue with overlapped mega menu blocks
+* Fix: Added minor fixes that help in some cases prevent changes Groovy Menu styles through WordPress templates.
+
 = 1.2.0 =
 * Improve: Plugin performance improved for "Appearance > Menus" section.
 * Improve: Groovy menu settings in "Appearance > Menus section" has been moved to modal window.
@@ -125,7 +139,6 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 * Improve: Design of integration section.
 * Improve: Added the possibility to set different logo URLs for WPML.
 * Fix: Increased priority of the handler of admin nav_menu in WP Dashboard -> Appearance -> Menus. This eliminates conflicts with some plugins.
-* Fix: Added the possibility to hide Groovy menu layout from not public post types. Managed in Global setting -> Tools -> Enable displaying the Groovy menu layout into Menu blocks post type.
 * Fix: Resolved conflict caused by Composer autoload (dependency manager for PHP) with some other plugins in some cases.
 * Fix: Removed the menu overlapping on content during page editing in Elementor with the "Enable Groovy menu to overlap the first block in the page" option enabled.
 * Fix: Added compatibility with Avada theme through automatic integration.

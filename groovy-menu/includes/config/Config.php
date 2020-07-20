@@ -665,6 +665,28 @@ return array(
 				'range'       => array( 900, 2000 ),
 				'unit'        => 'px',
 			),
+			'megamenu_background_color_custom' => array(
+				'title'     => esc_html__( 'Custom Mega menu background color', 'groovy-menu' ),
+				'type'      => 'checkbox',
+				'default'   => false,
+				'condition' => array( 'header.style', 'in', array( '1' ) ),
+			),
+			'megamenu_background_color'        => array(
+				'title'     => esc_html__( 'Mega menu background color', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => '#202022',
+				'alpha'     => true,
+				'condition' => array(
+					array( 'megamenu_background_color_custom', '==', true, ),
+					array( 'header.style', 'in', array( '1' ) ),
+				),
+			),
+			'megamenu_column_padding' => array(
+				'title'     => esc_html__( 'Add Mega menu columns padding', 'groovy-menu' ),
+				'type'      => 'checkbox',
+				'default'   => true,
+				'condition' => array( 'header.style', 'in', array( '1' ) ),
+			),
 			'mega_menu_divider_color'                      => array(
 				'title'     => esc_html__( 'Mega menu columns divider color', 'groovy-menu' ),
 				'type'      => 'colorpicker',
@@ -677,6 +699,17 @@ return array(
 				'type'      => 'checkbox',
 				'default'   => false,
 				'condition' => array( 'header.style', 'in', array( '1' ) ),
+			),
+			'scrollbar_group'  => array(
+				'title'     => esc_html__( 'Scrollbar', 'groovy-menu' ),
+				'type'      => 'group',
+				'serialize' => false,
+			),
+			'scrollbar_enable' => array(
+				'title'       => esc_html__( 'Enable scrollbar', 'groovy-menu' ),
+				'type'        => 'checkbox',
+				'default'     => false,
+				'description' => esc_html__( 'Enable scrolling for long lists of submenus and mega menus', 'groovy-menu' ),
 			),
 			'logo_group'                                   => array(
 				'title'     => esc_html__( 'Logo', 'groovy-menu' ),
@@ -693,16 +726,72 @@ return array(
 					'no'   => 'no',
 				),
 			),
+			'logo_margin_start'  => array(
+				'title'     => esc_html__( 'Logo margin', 'groovy-menu' ),
+				'type'      => 'inlineStart',
+				'condition' => array(
+					array( 'logo_type', 'in', array( 'img', 'text' ) ),
+					array( 'header.style', 'in', array( '1', '2', '3', '5' ) ),
+				),
+			),
+			'logo_margin_top'    => array(
+				'title'     => esc_html__( 'Top', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 1000, 1000 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'logo_type', 'in', array( 'img', 'text' ) ),
+					array( 'header.style', 'in', array( '1', '2', '3', '5' ) ),
+				),
+			),
+			'logo_margin_right'  => array(
+				'title'     => esc_html__( 'Right', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 1000, 1000 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'logo_type', 'in', array( 'img', 'text' ) ),
+					array( 'header.style', 'in', array( '1', '2', '3', '5' ) ),
+				),
+			),
+			'logo_margin_bottom' => array(
+				'title'     => esc_html__( 'Bottom', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 1000, 1000 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'logo_type', 'in', array( 'img', 'text' ) ),
+					array( 'header.style', 'in', array( '1', '2', '3', '5' ) ),
+				),
+			),
+			'logo_margin_left'   => array(
+				'title'     => esc_html__( 'Left', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 1000, 1000 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'logo_type', 'in', array( 'img', 'text' ) ),
+					array( 'header.style', 'in', array( '1', '2', '3', '5' ) ),
+				),
+			),
+			'logo_margin_end'    => array(
+				'type'      => 'inlineEnd',
+				'condition' => array(
+					array( 'logo_type', 'in', array( 'img', 'text' ) ),
+					array( 'header.style', 'in', array( '1', '2', '3', '5' ) ),
+				),
+			),
 			'logo_height'                                  => array(
 				'title'     => esc_html__( 'Logo height', 'groovy-menu' ),
 				'type'      => 'number',
-				'range'     => array( 10, 200 ),
+				'range'     => array( 10, 350 ),
 				'default'   => 46,
 				'unit'      => 'px',
-				'condition' => array(
-					array( 'logo_type', '==', 'img' ),
-					array( 'header.style', 'in', array( '1', '2', '3' ) ),
-				),
+				'condition' => array( array( 'logo_type', '==', 'img' ) ),
 			),
 			'logo_height_mobile'                           => array(
 				'title'     => esc_html__( 'Mobile logo height', 'groovy-menu' ),
@@ -1050,6 +1139,22 @@ return array(
 				'type'    => 'colorpicker',
 				'default' => 'rgba(255,255,255,1)',
 				'alpha'   => true,
+			),
+			'background_color_change_on_submenu_opened' => array(
+				'title'     => esc_html__( 'Change Top level menu background color when submenu(s) are opened', 'groovy-menu' ),
+				'type'      => 'checkbox',
+				'default'   => false,
+				'condition' => array( 'header.style', 'in', array( '1' ) ),
+			),
+			'background_color_change'                   => array(
+				'title'     => esc_html__( 'Top level menu background color when submenu(s) are opened', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => '#ffffff',
+				'alpha'     => true,
+				'condition' => array(
+					array( 'header.style', 'in', array( '1' ) ),
+					array( 'background_color_change_on_submenu_opened', '==', true ),
+				)
 			),
 			'background_image'                   => array(
 				'title'            => esc_html__( 'Top level menu background Image', 'groovy-menu' ),
