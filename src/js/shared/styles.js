@@ -1077,7 +1077,7 @@ export default class GmStyles {
         '.gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor': 'display: block; height: 70px; padding: 0; line-height: 70px;',
         '.gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor > .gm-menu-item__txt-wrapper': 'position: absolute; top: 0; visibility: hidden; padding-right: 15px; padding-left: 15px; transition: opacity 0.3s, visibility 0.3s; opacity: 0;',
         '.gm-navbar .gm-navbar-nav > .gm-menu-item.gm-open > .gm-anchor > .gm-menu-item__txt-wrapper': 'visibility: visible; opacity: 1;',
-        '.gm-navbar .gm-menu-item__icon': 'display: block; text-align: center; line-height: 70px;',
+        '.gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor > .gm-menu-item__icon': 'display: block; text-align: center; line-height: 70px;',
         '.gm-navbar .gm-mega-menu-wrapper': 'position: relative;',
         '.gm-navbar .gm-actions': 'flex-direction: column;',
         '.gm-navbar .gm-search': 'height: 70px; text-align: center; line-height: 70px; box-sizing: content-box; width: 70px;',
