@@ -554,6 +554,11 @@ return array(
 				'type'        => 'checkbox',
 				'default'     => false,
 			),
+			'megamenu_group' => array(
+				'title'     => esc_html__( 'Mega menu', 'groovy-menu' ),
+				'type'      => 'group',
+				'serialize' => false,
+			),
 			'megamenu_title_text_start'                    => array(
 				'title'     => esc_html__( 'Mega menu title text', 'groovy-menu' ),
 				'condition' => array( 'header.style', 'in', array( '1' ) ),

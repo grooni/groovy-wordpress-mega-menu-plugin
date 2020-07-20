@@ -6,7 +6,7 @@ function getDropdownMaxHeight (currentDropdown, isTransitionEnd) {
   let windowHeight = window.innerHeight;
   let topOffset = getCoords(currentDropdown).top;
   let topViewportOffset = topOffset - window.pageYOffset;
-  let transformValuesCss = getComputedStyle(document.querySelector('.gm-dropdown-menu'))['transform'];
+  let transformValuesCss = getComputedStyle(document.querySelector('.gm-navbar .gm-dropdown-menu'))['transform'];
 
   let getDropdownMaxHeightValue = windowHeight - topViewportOffset;
 
@@ -50,7 +50,7 @@ function isVerticalMenu (settings) {
 }
 
 function getSubmenuDropdownRect (menuItem, settings, scrollbars) {
-  let dropdownMenu = document.querySelector('.gm-dropdown-menu');
+  let dropdownMenu = document.querySelector('.gm-navbar .gm-dropdown-menu');
   let dropdownMenuBorderWidth = getComputedStyle(dropdownMenu)['borderTopWidth'] || 0;
   let closestdropdownMenuPs = menuItem.closest('.gm-dropdown-menu.ps');
   let psId = closestdropdownMenuPs.getAttribute('data-ps-id');
@@ -73,7 +73,7 @@ function getSubmenuDropdownRect (menuItem, settings, scrollbars) {
 // ---------------------------------------------------------------------------------------------------------------------
 
 export default function initScrollbar (settings) {
-  let dropdownMenuLinks = document.querySelectorAll('.gm-navbar-nav .gm-dropdown-toggle');
+  let dropdownMenuLinks = document.querySelectorAll('.gm-navbar .gm-dropdown-toggle');
   let scrollbars = [];
 
 
