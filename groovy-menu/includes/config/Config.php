@@ -1812,6 +1812,11 @@ return array(
 				'options'     => $nav_menus,
 				'default'     => '',
 			),
+			'mobile_show_woominicart' => array(
+				'title'   => esc_html__( 'Show', 'groovy-menu' ) . ' ' . esc_html__( 'Woo minicart', 'groovy-menu' ),
+				'type'    => 'checkbox',
+				'default' => false,
+			),
 			'mobile_nav_drawer_open_type'            => array(
 				'title'   => esc_html__( 'Mobile navigation drawer open type', 'groovy-menu' ),
 				'type'    => 'select',

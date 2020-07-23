@@ -28,6 +28,35 @@ GROOVY CART
   }
 }
 
+.gm-menu-actions-wrapper {
+  .gm-minicart {
+    margin: auto 0;
+  }
+
+  .gm-minicart > .gm-minicart-link {
+    position: relative;
+    font-size: 18px;
+
+    .gm-badge > .gm-cart-counter {
+      position: absolute;
+      top: -16px;
+      right: -28px;
+      display: block;
+      width: 26px;
+      height: 26px;
+      transition: top 0.2s;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 26px;
+    }
+
+    .gm-badge > .gm-cart-counter:empty {
+      display: none;
+    }
+  }
+}
+
 .gm-navbar--align-right .gm-main-menu-wrapper .gm-minicart .gm-minicart-dropdown {
   position: absolute;
   right: auto;

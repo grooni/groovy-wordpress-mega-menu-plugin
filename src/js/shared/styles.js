@@ -2681,6 +2681,14 @@ export default class GmStyles {
     if (settings.hamburgerIconColorMobile) {
       css.push({
         '.gm-menu-btn__inner': `color: ${settings.hamburgerIconColorMobile};`,
+        '.gm-menu-actions-wrapper a': `color: ${settings.hamburgerIconColorMobile};`,
+        media: 'mobile'
+      });
+    }
+
+    if (settings.mobileShowWoominicart) {
+      css.push({
+        '.gm-navbar .gm-logo': 'flex-grow: 1; justify-content: flex-start;',
         media: 'mobile'
       });
     }
@@ -2845,6 +2853,7 @@ export default class GmStyles {
     if (settings.header.style !== 2) {
       css.push({
         '.gm-navbar .gm-menu-btn': 'display: none;',
+        '.gm-navbar .gm-menu-actions-wrapper': 'display: none;',
         media: 'desktop'
       });
     }
