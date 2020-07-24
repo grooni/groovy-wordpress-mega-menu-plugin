@@ -571,7 +571,17 @@ export default class GmStyles {
 
       if (settings.header.align === 'center') {
         css.push({
-          '.gm-navbar .gm-logo': 'position: relative; left: 50%; right: auto; transform: translateX(-50%);',
+          '.gm-navbar .gm-logo': 'flex-grow: 1; justify-content: center;',
+          media: 'desktop'
+        });
+      } else if (settings.header.align === 'right') {
+        css.push({
+          '.gm-navbar .gm-logo': 'flex-grow: 1; justify-content: flex-end;',
+          media: 'desktop'
+        });
+      } else {
+        css.push({
+          '.gm-navbar .gm-logo': 'flex-grow: 1; justify-content: flex-start;',
           media: 'desktop'
         });
       }
@@ -1338,6 +1348,12 @@ export default class GmStyles {
           media: 'desktop'
         });
       }
+
+      // Do not show .gm-menu-btn--expanded on mobile.
+      css.push({
+        '.gm-navbar .gm-menu-btn--expanded': 'display: none;',
+        media: 'mobile'
+      });
 
       if (settings.header.align === 'left') {
         css.push({
@@ -2687,10 +2703,17 @@ export default class GmStyles {
     }
 
     if (settings.mobileShowWoominicart) {
-      css.push({
-        '.gm-navbar .gm-logo': 'flex-grow: 1; justify-content: flex-start;',
-        media: 'mobile'
-      });
+      if (settings.header.align === 'right' && (settings.header.style === 1 || settings.header.style === 2)) {
+        css.push({
+          '.gm-navbar .gm-logo': 'flex-grow: 1; justify-content: flex-end;',
+          media: 'mobile'
+        });
+      } else {
+        css.push({
+          '.gm-navbar .gm-logo': 'flex-grow: 1; justify-content: flex-start;',
+          media: 'mobile'
+        });
+      }
     }
 
     // Mobile hamburger icon size
@@ -3467,6 +3490,11 @@ export default class GmStyles {
       if (backgroundColor) {
         css.push({
           '.gm-navbar:not(.gm-navbar-sticky-toggle)': `background-color: ${backgroundColor}`
+        });
+
+        css.push({
+          '.gm-navbar .gm-inner-bg': `background-color: ${backgroundColor}`,
+          media: 'mobile'
         });
       }
 
