@@ -9,11 +9,17 @@ body {
   box-sizing: border-box;
 }
 
-.gm-navbar a,
-.gm-main-menu-wrapper a,
-.gm-navigation-drawer a {
-  text-decoration: none;
-  transition: none;
+.gm-navbar,
+.gm-main-menu-wrapper,
+.gm-navigation-drawer {
+  a,
+  a:hover,
+  a:focus,
+  a:active,
+  a:visited {
+    text-decoration: none;
+    transition: none;
+  }
 }
 
 .gm-main-menu-wrapper {
