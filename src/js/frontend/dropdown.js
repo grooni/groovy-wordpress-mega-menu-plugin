@@ -28,6 +28,7 @@ export function dropdownOpen (elem, options) {
   }
 
   elem.classList.add('gm-open');
+  elem.classList.add('gm-opened-before');
 
   if (elem.closest('.gm-navigation-drawer')) {
     let elemChildren = elem.children;
