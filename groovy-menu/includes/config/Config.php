@@ -806,6 +806,23 @@ return array(
 				'unit'      => 'px',
 				'condition' => array( array( 'logo_type', '==', 'img' ) ),
 			),
+			'logo_show_alt'          => array(
+				'title'       => esc_html__( 'Show image Alternative text', 'groovy-menu' ) . ' (' . esc_html__( 'Alt attribute', 'groovy-menu' ) . ')',
+				'type'        => 'checkbox',
+				'default'     => false,
+				'description' => esc_html__( 'This attribute is editable by the WordPress media library.', 'groovy-menu' ) . ' ' . esc_html__( 'If there is no alternative text, then the attribute will be displayed empty.', 'groovy-menu' ),
+				'condition'   => array( array( 'logo_type', '==', 'img' ) ),
+			),
+			'logo_show_title_as_alt' => array(
+				'title'       => esc_html__( 'Show Title as Alternative text', 'groovy-menu' ) . ' (' . esc_html__( 'Alt attribute', 'groovy-menu' ) . ')',
+				'type'        => 'checkbox',
+				'default'     => false,
+				'description' => esc_html__( 'This attribute is editable by the WordPress media library.', 'groovy-menu' ),
+				'condition'   => array(
+					array( 'logo_type', '==', 'img' ),
+					array( 'logo_show_alt', '==', true ),
+				),
+			),
 			'logo_txt_font'                                => array(
 				'title'       => esc_html__( 'Google font family', 'groovy-menu' ),
 				'description' => esc_html__( 'Choose preferred Google font family for logo.', 'groovy-menu' ),
