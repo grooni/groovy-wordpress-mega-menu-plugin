@@ -64,3 +64,11 @@ DROPDOWN HOVER STYLES
     content: '\f177';
   }
 }
+
+.gm-dropdown-appearance-fade-in-out .gm-main-menu-wrapper .gm-dropdown {
+  &.gm-minicart .gm-dropdown-menu,
+  .gm-dropdown-menu-wrapper,
+  .gm-dropdown-menu-wrapper .gm-dropdown-menu {
+    transition: opacity 0.16s cubic-bezier(1, 0, 1, 1), visibility 0.16s cubic-bezier(1, 0, 1, 1);
+  }
+}
