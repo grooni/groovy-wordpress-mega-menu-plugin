@@ -131,7 +131,7 @@ export function dropdownCloseAll (delay) {
 
 function dropdownCloseAllOpened () {
 
-  let elems = document.querySelectorAll('.gm-open');
+  let elems = document.querySelectorAll('.gm-open:not(.gm-minicart)');
 
   elems.forEach((el) => {
 
