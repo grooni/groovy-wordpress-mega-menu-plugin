@@ -38,18 +38,17 @@ class FieldMedia extends \GroovyMenu\FieldField {
 
 			?>
 			<input data-name="<?php echo esc_attr( $this->name ); ?>" type="hidden" class="gm-upload-input"
-				   data-reset="<?php echo ( isset( $this->field['reset'] ) && ! $this->field['reset'] ) ? 'false' : ''; ?>"
-				   name="<?php echo esc_attr( $this->getName() ); ?>" value="<?php echo esc_attr( $image_id ); ?>"
-				   data-url="<?php echo esc_url( $image ); ?>"
-				   data-thumbnail="<?php echo esc_url( $thumbnail_src ); ?>"/>
+				data-reset="<?php echo ( isset( $this->field['reset'] ) && ! $this->field['reset'] ) ? 'false' : ''; ?>"
+				name="<?php echo esc_attr( $this->getName() ); ?>" value="<?php echo esc_attr( $image_id ); ?>"
+				data-url="<?php echo esc_url( $image ); ?>" data-thumbnail="<?php echo esc_url( $thumbnail_src ); ?>"/>
 
 			<div class="gm-media-control">
 				<div class="gm-media-preview"></div>
 				<div class="gm-media-control-buttons">
 					<input type="button" name="upload-btn" class="gm-upload-btn button-primary"
-						   value="<?php esc_html_e( 'Upload Image', 'groovy-menu' ); ?>">
+						value="<?php esc_html_e( 'Upload Image', 'groovy-menu' ); ?>">
 					<input type="button" name="remove-btn" class="gm-remove-btn button-secondary"
-						   value="<?php esc_html_e( 'Remove Image', 'groovy-menu' ); ?>">
+						value="<?php esc_html_e( 'Remove Image', 'groovy-menu' ); ?>">
 				</div>
 			</div>
 
@@ -59,15 +58,15 @@ class FieldMedia extends \GroovyMenu\FieldField {
 				</p>
 				<p class="gm-media-file-info-text gm-media-file-info-text--title">
 					<strong><?php esc_html_e( 'Title', 'groovy-menu' ); ?>:</strong> <span
-							class="gm-text-value"><?php echo esc_attr( $img_title ); ?></span>
+						class="gm-text-value"><?php echo esc_attr( $img_title ); ?></span>
 				</p>
 				<p class="gm-media-file-info-text gm-media-file-info-text--alt">
 					<strong><?php esc_html_e( 'Alternative Text', 'groovy-menu' ); ?>:</strong> <span
-							class="gm-text-value"><?php echo esc_attr( $img_alt ); ?></span>
+						class="gm-text-value"><?php echo esc_attr( $img_alt ); ?></span>
 				</p>
 				<p class="gm-media-file-info-text gm-media-file-info-text--url">
 					<strong><?php esc_html_e( 'File URL', 'groovy-menu' ); ?>:</strong> <span
-							class="gm-text-value"><?php echo esc_url( $image ); ?></span>
+						class="gm-text-value"><?php echo esc_url( $image ); ?></span>
 				</p>
 			</div>
 		</div>

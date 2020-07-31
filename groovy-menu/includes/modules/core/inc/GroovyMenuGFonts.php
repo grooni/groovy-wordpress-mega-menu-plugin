@@ -236,7 +236,7 @@ class GroovyMenuGFonts {
 						foreach ( $source_gfont_data['variants'] as $variant ) {
 							$need_fonts[ $font_name ]['variants'][] = $variant;
 						}
-					} elseif( is_string( $source_gfont_data['variants'] ) ) {
+					} elseif ( is_string( $source_gfont_data['variants'] ) ) {
 						$need_fonts[ $font_name ]['variants'][] = $source_gfont_data['variants'];
 					}
 				}

@@ -21,7 +21,7 @@ class WalkerHelper extends WalkerNavMenu {
 	public function __construct() {
 
 		$lic_opt = get_option( GROOVY_MENU_DB_VER_OPTION . '__lic' );
-		$lver = false;
+		$lver    = false;
 		if ( defined( 'GROOVY_MENU_LVER' ) && '2' === GROOVY_MENU_LVER ) {
 			$lver = true;
 		}
