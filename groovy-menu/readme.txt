@@ -4,7 +4,7 @@ Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive,
 Requires at least: 4.9.7
 Tested up to: 5.4.2
 Requires PHP: 7.0
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -116,6 +116,27 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 
 == Changelog ==
 
+= 1.2.2 =
+* Added: Added the opportunity to enable scrollbar for Minimalistic menu type.
+* Added: SEO improvements. Added the ability to select the alt text for the logo.
+* Added: Added option "Mobile menu" - "Show Woo minicart" that will be enable to show the Woocomerce minicart on the mobile.
+* Improve: Added "Fade in out" effect for "Submenu appearance style".
+* Improve: Setting "Submenu appearance style" is now available for all menu types except Minimalistic.
+* Fix: Improved visibility of content sizes in the menu block for JavaScript calculations. Rarely is there such a need for complex content in menu blocks.
+* Fix: Increased priority of CSS rules for links in menu items. It is prevents color overwriting when Groovy Menu is integrated using the Divi builder.
+* Fix: Fixed cart opening issue that appears when quickly move mouse between the menu item and the cart icon.
+* Fix: Added changes to the styles for the mini cart.  Most styles now have the! Important property. These changes are aimed at preventing overwriting styles of cart by the theme styles.
+* Fix: Fixed an issue with appearance the mega menu content that created with Divi builder, which occurred on Woocommerce product pages only.
+* Fix: Added the fadeout effect for submenus "Submenu appearance style" - "Animate from bottom" that has missed before
+* Fix: The "Submenu hover style" - "Shift right" setting has been fixed for the Expanding sidebar menu on the right.
+* Fix: Bug with "Change Top level menu background color" when submenu is opened", there were cases when the color did not return to the default after closing all submenus.
+* Fix: Added default styles for all menu links that remove the underline style for links in all states as hover, active, focus, visited.
+* Fix: Added an additional check of the preset options for number type in order to exclude operations with values ​​outside the minimum and maximum values. This also improves compatibility with presets created in the earlier versions of Groovy Menu Free.
+* Fix: Preventing early closing of dropdown items for search and Woocomerce minicart.
+* Fix: Fixed dropdown behavior when "Show submenu - On click" option is enabled.
+* Fix: Added minor changes in CSS styles, that is allowed to resolve an issue when the submenu is out of the screen.
+* Fix: Fixed calculation of the height for a scroll object. That occurs in some cases when the "Submenu appearance style": "Animate from bottom" preset setting was active.
+
 = 1.2.1 =
 * Added: Added new feature the "Scrollbar". That allows scrolling for long lists of submenus and mega menus.
 * Added: New option "Mega menu background color".
@@ -125,7 +146,6 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 * Improve: Settings for "Submenu" and "Mega menu" has been moved into own sections
 * Improve: Added the Element (widget) for Elementor builder.
 * Fix: Fixed the flicker effect when you click on the active anchor link.
-* Fix: New option "General > Mega menu > Add Mega menu columns padding". Enabled by default.
 * Fix: The issue with overlapped mega menu blocks
 * Fix: Added minor fixes that help in some cases prevent changes Groovy Menu styles through WordPress templates.
 * Fix: Hidden Groovy Menu options button for "Appearance > Menus" section.

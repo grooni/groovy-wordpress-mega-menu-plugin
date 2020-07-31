@@ -746,8 +746,29 @@ GENERAL SETTINGS MODAL
   line-height: 41px;
 }
 
-#global-settings-modal .gm-modal-body {
-  padding: 0;
+#global-settings-modal {
+  .gm-modal-body {
+    padding: 0;
+  }
+}
+
+.gm-gui__module__media {
+  display: flex;
+}
+
+.gm-media-file-info {
+  margin-left: 30px;
+}
+
+.gm-media-file-info-title {
+  font-size: 1.2em;
+  border-bottom: 1px dotted #b5b5b5;
+  border-top: 1px dotted #b5b5b5;
+  padding: 6px;
+}
+
+.gm-media-file-info-text {
+  padding-left: 6px;
 }
 
 .gm-infobox {

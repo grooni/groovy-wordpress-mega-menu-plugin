@@ -1,10 +1,16 @@
-.gm-dropdown-with-scrollbar .gm-dropdown-menu {
-  .ps__rail-y {
-    top: 0 !important;
+.gm-dropdown-with-scrollbar {
+  .gm-dropdown-menu {
+    .ps__rail-y {
+      top: 0 !important;
+    }
+
+    .ps__thumb-y {
+      border-radius: 2px;
+    }
   }
 
-  .ps__thumb-y {
-    border-radius: 2px;
+  .mega-gm-dropdown .gm-dropdown-menu .ps__rail-y {
+    z-index: 100;
   }
 }
 

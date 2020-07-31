@@ -28,6 +28,7 @@ export function dropdownOpen (elem, options) {
   }
 
   elem.classList.add('gm-open');
+  elem.classList.add('gm-opened-before');
 
   if (elem.closest('.gm-navigation-drawer')) {
     let elemChildren = elem.children;
@@ -51,9 +52,17 @@ export function dropdownClose (elem) {
 
   descendantsOpen.forEach((item) => {
     item.classList.remove('gm-open');
+    let itemDropdown = item.querySelector('.gm-dropdown-menu');
+    if (itemDropdown) {
+      itemDropdown.style.transform = null;
+    }
   });
 
   elem.classList.remove('gm-open');
+  let currentDropdown = elem.querySelector('.gm-dropdown-menu');
+  if (currentDropdown) {
+    currentDropdown.style.transform = null;
+  }
 
   if (elem.closest('.gm-navigation-drawer')) {
     let elemChildren = elem.children;
@@ -66,7 +75,7 @@ export function dropdownClose (elem) {
   }
 
   let elems = document.querySelectorAll('.gm-open');
-  if (!elems) {
+  if (elems.length < 1) {
     let gmNavbar = document.querySelector('.gm-navbar');
     if (gmNavbar) {
       gmNavbar.classList.remove('gm-navbar-dropdown-opened');
@@ -122,7 +131,7 @@ export function dropdownCloseAll (delay) {
 
 function dropdownCloseAllOpened () {
 
-  let elems = document.querySelectorAll('.gm-open');
+  let elems = document.querySelectorAll('.gm-open:not(.gm-minicart)');
 
   elems.forEach((el) => {
 
@@ -141,6 +150,11 @@ function dropdownCloseAllOpened () {
     }
 
     el.classList.remove('gm-open');
+
+    let elDropdown = el.querySelector('.gm-dropdown-menu');
+    if (elDropdown) {
+      elDropdown.style.transform = null;
+    }
   });
 
   let gmNavbar = document.querySelector('.gm-navbar');

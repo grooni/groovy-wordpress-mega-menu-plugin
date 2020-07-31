@@ -515,6 +515,8 @@ function groovyMenu( $args = array() ) {
 				<div class="gm-container">
 					<div class="gm-logo">';
 
+	$header_style = intval( $groovyMenuSettings['header']['style'] );
+
 
 	ob_start();
 	/**
@@ -562,6 +564,7 @@ function groovyMenu( $args = array() ) {
 			$img_src    = $img;
 			$img_width  = '';
 			$img_height = '';
+			$img_alt    = '';
 
 			$filetype = wp_check_filetype( $img );
 
@@ -583,14 +586,21 @@ function groovyMenu( $args = array() ) {
 				$img_src = $img_src_wpml;
 			}
 
+			// Image Alt attribute.
+			if ( $groovyMenuSettings['logoShowAlt'] ) {
+				$img_alt = $groovyMenuSettings['logoShowTitleAsAlt'] ? get_the_title( $attach_id ) : get_post_meta( $attach_id, '_wp_attachment_image_alt', true );
+				$img_alt = esc_attr( $img_alt );
+			}
+
 			switch ( $key ) {
 				case 'default':
-					$additionl_class = ( intval( $groovyMenuSettings['header']['style'] ) === 4 ) ? 'header-sidebar' : 'default';
-					$logo_html       .= '<img src="' . $img_src . '"' . $img_width . $img_height . ' class="gm-logo__img gm-logo__img-' . $additionl_class . '" alt="" />';
+					$additional_class = ( in_array( $header_style, array( 4, 5 ), true ) ) ? 'header-sidebar' : 'default';
+
+					$logo_html .= '<img src="' . $img_src . '"' . $img_width . $img_height . ' class="gm-logo__img gm-logo__img-' . $additional_class . '" alt="' . $img_alt . '" />';
 					break;
 
 				default:
-					$logo_html .= '<img src="' . $img_src . '"' . $img_width . $img_height . ' class="gm-logo__img gm-logo__img-' . $key . '" alt="" />';
+					$logo_html .= '<img src="' . $img_src . '"' . $img_width . $img_height . ' class="gm-logo__img gm-logo__img-' . $key . '" alt="' . $img_alt . '" />';
 					break;
 			}
 		}
@@ -629,6 +639,39 @@ function groovyMenu( $args = array() ) {
 
 
 	$output_html .= '</div>';
+
+
+	// Woocomerce minicart for mobile top bar.
+	if (
+		$groovyMenuSettings['mobileShowWoominicart'] &&
+		! gm_get_shop_is_catalog() &&
+		$groovyMenuSettings['woocommerceCart'] &&
+		class_exists( 'WooCommerce' ) &&
+		function_exists( 'wc_get_page_id' )
+	) {
+		global $woocommerce;
+
+		$qty = 0;
+		if ( $woocommerce && isset( $woocommerce->cart ) ) {
+			$qty = $woocommerce->cart->get_cart_contents_count();
+		}
+		$cartIcon = 'gmi gmi-bag';
+		if ( $styles->getGlobal( 'misc_icons', 'cart_icon' ) ) {
+			$cartIcon = $styles->getGlobal( 'misc_icons', 'cart_icon' );
+		}
+
+		$output_html .= '
+				<div class="gm-menu-actions-wrapper">
+					<div class="gm-menu-action-btn gm-minicart">
+						<a href="' . get_permalink( wc_get_page_id( 'cart' ) ) . '" class="gm-minicart-link">
+							<div class="gm-badge">' . groovy_menu_woocommerce_mini_cart_counter( $qty ) . '</div>
+							<i class="gm-icon ' . esc_attr( $cartIcon ) . '"></i>
+						</a>
+					</div>
+				</div>';
+	}
+
+
 	$output_html .= '<span class="gm-menu-btn">
 						<span class="gm-menu-btn__inner">';
 

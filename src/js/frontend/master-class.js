@@ -155,22 +155,6 @@ class GroovyMenu {
         isTopLevelClass = closestDropdown.classList.contains('gm-menu-item--lvl-0');
       }
 
-      if (miniCart && e.type === 'click') {
-        if (headerStyle !== 1 || isMobile()) {
-          window.location = document.querySelector('.gm-minicart-link')
-            .getAttribute('href');
-          e.stopPropagation();
-          return false;
-        }
-
-        if (e.target.closest('.gm-minicart-link')) {
-          e.preventDefault();
-          dropdownToggle(closestDropdown, options);
-        }
-
-        return false;
-      }
-
       if (e.target.closest('.gm-caret')) {
         e.preventDefault();
         e.stopPropagation();
@@ -201,7 +185,6 @@ class GroovyMenu {
         });
       }
 
-
       if (closestDropdown) {
 
         if (!hasOpenedElems) {
@@ -217,12 +200,6 @@ class GroovyMenu {
           });
         }
 
-        // Don't open on hover search and minicart dropdown
-        if (closestDropdown.classList.contains('gm-search') ||
-          closestDropdown.classList.contains('gm-minicart')) {
-          return false;
-        }
-
         closestDropdown.setAttribute('data-close', false);
 
         if (isTopLevelClass && !openParents.length) {
@@ -235,6 +212,32 @@ class GroovyMenu {
           gmMainMenu.setAttribute('data-timeout-close-all', null);
         }
 
+        // Click event on the woo minicart dropdown.
+        if (miniCart && e.type === 'click') {
+          if (headerStyle !== 1 || isMobile()) {
+            window.location = document.querySelector('.gm-minicart-link')
+              .getAttribute('href');
+            e.stopPropagation();
+            return false;
+          }
+
+          if (e.target.closest('.gm-minicart-link')) {
+            e.preventDefault();
+            let searchOpenElem = document.querySelector('.gm-search.gm-open');
+            if (searchOpenElem) {
+              dropdownToggle(searchOpenElem, options);
+            }
+            dropdownToggle(closestDropdown, options);
+          }
+
+          return false;
+        }
+
+        // Don't open on hover search and minicart dropdown
+        if (closestDropdown.classList.contains('gm-search') ||
+          closestDropdown.classList.contains('gm-minicart')) {
+          return false;
+        }
 
         // smooth switching between adjacent dropdowns
         closestDropdown.setAttribute('data-timeout-open', setTimeout(function () {
@@ -343,7 +346,7 @@ class GroovyMenu {
     };
 
 
-    let gmAnchorItems = document.querySelectorAll('.gm-anchor, .gm-minicart, .mega-gm-dropdown > .gm-dropdown-menu-wrapper');
+    let gmAnchorItems = document.querySelectorAll('.gm-anchor, .gm-minicart, .gm-search, .mega-gm-dropdown > .gm-dropdown-menu-wrapper');
     let gmMainMenu = document.querySelector('#gm-main-menu');
 
     if (gmAnchorItems && options.showSubmenu === 'hover' && !isMobile()) {
@@ -500,6 +503,7 @@ class GroovyMenu {
       body.appendChild(navbarSearchContainer);
     }
 
+    // Click event on the gm-search
     gmSearch.forEach((item) => {
       item.addEventListener('click', function () {
         if (item.classList.contains('fullscreen') || isMobile()) {
@@ -512,6 +516,10 @@ class GroovyMenu {
         }
 
         if (headerStyle !== 3 && headerStyle !== 4 && headerStyle !== 5) {
+          let miniCartOpenElem = document.querySelector('.gm-minicart.gm-open');
+          if (miniCartOpenElem) {
+            dropdownToggle(miniCartOpenElem, options);
+          }
           dropdownToggle(item.closest('.gm-search'), options);
           setTimeout(() => {
             item.querySelector('.gm-search__input')

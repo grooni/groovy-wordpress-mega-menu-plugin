@@ -28,6 +28,35 @@ GROOVY CART
   }
 }
 
+.gm-menu-actions-wrapper {
+  .gm-minicart {
+    margin: auto 0;
+  }
+
+  .gm-minicart > .gm-minicart-link {
+    position: relative;
+    font-size: 18px;
+
+    .gm-badge > .gm-cart-counter {
+      position: absolute;
+      top: -16px;
+      right: -28px;
+      display: block;
+      width: 26px;
+      height: 26px;
+      transition: top 0.2s;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 26px;
+    }
+
+    .gm-badge > .gm-cart-counter:empty {
+      display: none;
+    }
+  }
+}
+
 .gm-navbar--align-right .gm-main-menu-wrapper .gm-minicart .gm-minicart-dropdown {
   position: absolute;
   right: auto;
@@ -69,21 +98,19 @@ GROOVY CART
 
   .woocommerce-mini-cart-item {
     position: relative;
-    padding-bottom: 15px;
-    padding-left: 80px;
+    padding: 6px 0 6px 80px;
     min-height: 85px;
     box-sizing: content-box;
     line-height: 1.5;
 
     &:not(:last-of-type) {
-      margin-bottom: 20px !important;
+      margin-bottom: 2px !important;
     }
 
     .remove {
       position: absolute;
       right: 0;
-      top: 50%;
-      transform: translateY(-50%);
+      top: 27px;
       width: 20px;
       height: 20px;
       text-align: center;
@@ -102,7 +129,7 @@ GROOVY CART
       img {
         width: 68px;
         position: absolute;
-        top: 0;
+        top: 6px;
         left: 0;
       }
     }
@@ -153,15 +180,19 @@ GROOVY CART
       flex-direction: column;
 
       a {
-        margin-bottom: 15px;
-        padding: 10px 20px;
-        line-height: 1.5;
-        width: 100%;
+        margin: 0 0 15px 0 !important;
+        padding: 10px 20px !important;
+        line-height: 1.5 !important;
+        width: 100% !important;
+      }
+
+      a::after {
+        display: none !important;
       }
 
       .button {
         text-transform: uppercase;
-        text-align: center;
+        text-align: center !important;
       }
     }
 
