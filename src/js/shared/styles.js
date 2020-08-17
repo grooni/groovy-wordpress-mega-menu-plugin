@@ -349,21 +349,21 @@ export default class GmStyles {
       if (settings.topLevelTextColorHover2) {
         if (settings.hoverStyle === '3') {
           css.push({
-            '.gm-main-menu-wrapper .gm-navbar-nav > li:hover > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav li.current-menu-parent > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > li:hover > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav li.current-menu-item > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav li.current-menu-ancestor.gm-open > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > li:hover > .gm-anchor': `color: ${settings.topLevelTextColorHover2}`,
+            '.gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav > li:hover > .gm-anchor, .gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav li.current-menu-parent > .gm-anchor, .gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav > li:hover > .gm-anchor, .gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav li.current-menu-item > .gm-anchor, .gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav li.current-menu-ancestor.gm-open > .gm-anchor, .gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor, .gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav > li:hover > .gm-anchor': `color: ${settings.topLevelTextColorHover2}`,
             media: 'desktop'
           });
         }
 
         if (settings.hoverStyle === '4') {
           css.push({
-            '.gm-main-menu-wrapper .gm-navbar-nav > li > .gm-anchor:hover, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item.gm-open > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav li.current-menu-ancestor.gm-open > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav li.current-menu-item > .gm-anchor.gm-menu-item__link, .gm-main-menu-wrapper .gm-navbar-nav li.current-menu-ancestor > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav li.current-menu-item > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav li.current-menu-parent:not(.current-post-ancestor) > .gm-anchor': `color: ${settings.topLevelTextColorHover2}`,
+            '.gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav > li > .gm-anchor:hover, .gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav > .menu-item.gm-open > .gm-anchor, .gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav li.current-menu-ancestor.gm-open > .gm-anchor, .gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav li.current-menu-item > .gm-anchor.gm-menu-item__link, .gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav li.current-menu-ancestor > .gm-anchor, .gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav li.current-menu-item > .gm-anchor, .gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav li.current-menu-parent:not(.current-post-ancestor) > .gm-anchor': `color: ${settings.topLevelTextColorHover2}`,
             media: 'desktop'
           });
         }
 
         if (settings.hoverStyle === '6') {
           css.push({
-            '.gm-main-menu-wrapper .gm-navbar-nav > li > .gm-anchor:hover, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item.gm-open > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav li.current-menu-ancestor.gm-open > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav li.current-menu-item > .gm-anchor.gm-menu-item__link, .gm-main-menu-wrapper .gm-navbar-nav li.current-menu-ancestor > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav li.current-menu-item > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav li.current-menu-parent:not(.current-post-ancestor) > .gm-anchor': `color: ${settings.topLevelTextColorHover2}`,
+            '.gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav > li > .gm-anchor:hover, .gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav > .menu-item.gm-open > .gm-anchor, .gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav li.current-menu-ancestor.gm-open > .gm-anchor, .gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav li.current-menu-item > .gm-anchor.gm-menu-item__link, .gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav li.current-menu-ancestor > .gm-anchor, .gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav li.current-menu-item > .gm-anchor, .gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav li.current-menu-parent:not(.current-post-ancestor) > .gm-anchor': `color: ${settings.topLevelTextColorHover2}`,
             media: 'desktop'
           });
         }
@@ -1799,7 +1799,7 @@ export default class GmStyles {
         const color = settings.toolbarIconColor;
 
         css.push({
-          '.gm-navbar .gm-toolbar-social-link': `color: ${color}`
+          '.gm-navbar #gm-toolbar .gm-toolbar-social-link': `color: ${color} !important`
         });
 
         css.push({
@@ -1886,7 +1886,7 @@ export default class GmStyles {
         const {toolbarIconHoverColor} = settings;
 
         css.push({
-          '.gm-toolbar-social-link:hover': `color: ${toolbarIconHoverColor}`,
+          '.gm-navbar #gm-toolbar .gm-toolbar-social-link:hover': `color: ${toolbarIconHoverColor} !important`,
           media: 'desktop'
         });
       }
@@ -2347,7 +2347,7 @@ export default class GmStyles {
     // Mobile navigation text color
     if (settings.responsiveNavigationTextColor) {
       css.push({
-        '.gm-navigation-drawer .gm-anchor, .gm-navigation-drawer .gm-mega-menu__item__title': `color: ${settings.responsiveNavigationTextColor}`
+        '.gm-navigation-drawer .gm-anchor, .gm-navigation-drawer .gm-mega-menu__item__title': `color: ${settings.responsiveNavigationTextColor} !important`
       });
 
       css.push({
@@ -2740,6 +2740,7 @@ export default class GmStyles {
       css.push({
         '.gm-menu-btn__inner': `color: ${settings.hamburgerIconColorMobile};`,
         '.gm-menu-actions-wrapper a': `color: ${settings.hamburgerIconColorMobile};`,
+        '.gm-menu-actions-wrapper a.gm-minicart-link': `color: ${settings.hamburgerIconColorMobile} !important;`,
         media: 'mobile'
       });
     }
@@ -3080,21 +3081,21 @@ export default class GmStyles {
         if (settings.stickyTopLevelTextColorHover2) {
           if (settings.hoverStyle === '3') {
             css.push({
-              '.gm-navbar-sticky-toggle .gm-navbar-nav > li > .gm-anchor:hover, .gm-navbar-sticky-toggle .gm-navbar-nav > .menu-item.gm-open > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-parent > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-item > .gm-anchor,.gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-ancestor.gm-open > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li:hover > .gm-anchor': `color: ${settings.stickyTopLevelTextColorHover2} !important`,
+              '.gm-navbar-sticky-toggle #gm-main-menu .gm-navbar-nav > li > .gm-anchor:hover, .gm-navbar-sticky-toggle #gm-main-menu .gm-navbar-nav > .menu-item.gm-open > .gm-anchor, .gm-navbar-sticky-toggle #gm-main-menu .gm-navbar-nav > li.current-menu-parent > .gm-anchor, .gm-navbar-sticky-toggle #gm-main-menu .gm-navbar-nav > li.current-menu-item > .gm-anchor,.gm-navbar-sticky-toggle #gm-main-menu .gm-navbar-nav > li.current-menu-ancestor.gm-open > .gm-anchor, .gm-navbar-sticky-toggle #gm-main-menu .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor, .gm-navbar-sticky-toggle #gm-main-menu .gm-navbar-nav > li:hover > .gm-anchor': `color: ${settings.stickyTopLevelTextColorHover2} !important`,
               media: 'desktop'
             });
           }
 
           if (settings.hoverStyle === '4') {
             css.push({
-              '.gm-navbar-sticky-toggle .gm-navbar-nav > li > .gm-anchor:hover, .gm-navbar-sticky-toggle .gm-navbar-nav > .menu-item.gm-open > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-ancestor.gm-open > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-item > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-parent:not(.current-post-ancestor) > .gm-anchor': `color: ${settings.stickyTopLevelTextColorHover2} !important`,
+              '.gm-navbar-sticky-toggle #gm-main-menu .gm-navbar-nav > li > .gm-anchor:hover, .gm-navbar-sticky-toggle #gm-main-menu .gm-navbar-nav > .menu-item.gm-open > .gm-anchor, .gm-navbar-sticky-toggle #gm-main-menu .gm-navbar-nav > li.current-menu-ancestor.gm-open > .gm-anchor, .gm-navbar-sticky-toggle #gm-main-menu .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor, .gm-navbar-sticky-toggle #gm-main-menu .gm-navbar-nav > li.current-menu-item > .gm-anchor, .gm-navbar-sticky-toggle #gm-main-menu .gm-navbar-nav > li.current-menu-parent:not(.current-post-ancestor) > .gm-anchor': `color: ${settings.stickyTopLevelTextColorHover2} !important`,
               media: 'desktop'
             });
           }
 
           if (settings.hoverStyle === '6') {
             css.push({
-              '.gm-navbar-sticky-toggle .gm-navbar-nav > li > .gm-anchor:hover, .gm-navbar-sticky-toggle .gm-navbar-nav > .menu-item.gm-open > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-ancestor.gm-open > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-item > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-parent:not(.current-post-ancestor) > .gm-anchor': `color: ${settings.stickyTopLevelTextColorHover2} !important`,
+              '.gm-navbar-sticky-toggle #gm-main-menu .gm-navbar-nav > li > .gm-anchor:hover, .gm-navbar-sticky-toggle #gm-main-menu .gm-navbar-nav > .menu-item.gm-open > .gm-anchor, .gm-navbar-sticky-toggle #gm-main-menu .gm-navbar-nav > li.current-menu-ancestor.gm-open > .gm-anchor, .gm-navbar-sticky-toggle #gm-main-menu .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor, .gm-navbar-sticky-toggle #gm-main-menu .gm-navbar-nav > li.current-menu-item > .gm-anchor, .gm-navbar-sticky-toggle #gm-main-menu .gm-navbar-nav > li.current-menu-parent:not(.current-post-ancestor) > .gm-anchor': `color: ${settings.stickyTopLevelTextColorHover2} !important`,
               media: 'desktop'
             });
           }
@@ -3164,7 +3165,7 @@ export default class GmStyles {
       //Top level text color sticky
       if (settings.stickyTopLevelTextColor) {
         css.push({
-          '.gm-navbar-sticky-toggle .gm-main-menu-wrapper .gm-navbar-nav > li > .gm-anchor, .gm-navbar-sticky-toggle .gm-main-menu-wrapper .gm-search > i, .gm-navbar-sticky-toggle .gm-main-menu-wrapper .gm-minicart-icon-wrapper > i': `color: ${settings.stickyTopLevelTextColor}`,
+          '.gm-navbar-sticky-toggle .gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav > li > .gm-anchor, .gm-navbar-sticky-toggle .gm-main-menu-wrapper .gm-search > i, .gm-navbar-sticky-toggle .gm-main-menu-wrapper .gm-minicart-icon-wrapper > i': `color: ${settings.stickyTopLevelTextColor}`,
           media: 'desktop'
         });
 
