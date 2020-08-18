@@ -66,7 +66,7 @@
         .addClass('gm-button-disable gm-button-loading');
 
       var formData = {};
-      $secondModalArea.find('input[name], select[name]')
+      $secondModalArea.find('input[name], select[name], textarea[name]')
         .each(function (index, node) {
           var ignore = false;
           var legalName = node.name;

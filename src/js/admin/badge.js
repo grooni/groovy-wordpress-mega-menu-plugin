@@ -14,6 +14,9 @@
     $globalWrapper.on('change', '.edit-menu-item-gm-megamenu', toggleMegaMenuOptionsVisibility);
 
     // --- Show/Hide badge setting action ------------------------------------------------------------------------------
+    $globalWrapper.on('change', '.edit-menu-item-gm-use-html-as-icon', toggleHtmlIconSettingsVisibility);
+
+    // --- Show/Hide badge setting action ------------------------------------------------------------------------------
     $globalWrapper.on('change', '.edit-menu-item-gm-badge-enable', toggleBadgeSettingsVisibility);
 
     // --- Show/Hide badge type setting action -------------------------------------------------------------------------
@@ -154,6 +157,19 @@
           .is(':checked'));
     }
 
+    function toggleHtmlIconSettingsVisibility() {
+      $(this)
+        .closest('.gm-walker-modal-settings-container')
+        .find('.gm-html-icon-depend')
+        .toggle($(this)
+          .is(':checked'));
+
+      $(this)
+        .closest('.gm-walker-modal-settings-container')
+        .find('.gm-field-id-icon-class')
+        .toggle(!$(this)
+          .is(':checked'));
+    }
 
     function toggleBadgeSettingsVisibility() {
       $(this)
