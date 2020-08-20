@@ -449,7 +449,7 @@ if ( ! function_exists( 'groovy_menu_scripts_admin' ) ) {
 
 		// For any admin page.
 		wp_enqueue_style( 'groovy-css-admin-menu', GROOVY_MENU_URL . 'assets/style/admin-common.css', [], GROOVY_MENU_VERSION );
-		wp_enqueue_script( 'groovy-js-admin', GROOVY_MENU_URL . 'assets/js/admin.js', [ 'jquery', 'wp-color-picker' ], GROOVY_MENU_VERSION, true );
+		wp_enqueue_script( 'groovy-js-admin', GROOVY_MENU_URL . 'assets/js/admin.js', [], GROOVY_MENU_VERSION, true );
 
 		// Only Welcome page.
 		if ( in_array( $hook_suffix, array(
@@ -491,12 +491,12 @@ if ( ! function_exists( 'groovy_menu_scripts_admin' ) ) {
 		// Only Appearance > Menus page.
 		if ( 'nav-menus.php' === $hook_suffix ) {
 			wp_enqueue_media();
-			wp_enqueue_script( 'groovy-menu-js-appearance', GROOVY_MENU_URL . 'assets/js/appearance.js', [ 'jquery', 'wp-color-picker' ], GROOVY_MENU_VERSION, true );
+			wp_enqueue_script( 'groovy-menu-js-appearance', GROOVY_MENU_URL . 'assets/js/appearance.js', [], GROOVY_MENU_VERSION, true );
 		}
 
 		// Only Debug page.
 		if ( 'tools_page_groovy_menu_debug_page' === $hook_suffix ) {
-			wp_enqueue_script( 'groovy-menu-js-appearance', GROOVY_MENU_URL . 'assets/js/debug.js', [ 'jquery' ], GROOVY_MENU_VERSION, true );
+			wp_enqueue_script( 'groovy-menu-js-appearance', GROOVY_MENU_URL . 'assets/js/debug.js', [], GROOVY_MENU_VERSION, true );
 		}
 
 		$allow_pages = array(
