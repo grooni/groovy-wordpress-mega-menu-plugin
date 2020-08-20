@@ -69,7 +69,8 @@
 }
 
 .gm-badge-field,
-.gm-thumb-field {
+.gm-thumb-field,
+.megamenu-options-depend {
   display: none;
 }
 
@@ -85,4 +86,295 @@
 .gm-badge-field .wp-picker-container .wp-picker-clear {
   min-height: 28px;
   margin: 1px 0 0 6px;
+}
+
+/* --- modal nav-menu settings START --- */
+.nav-menus-php.gm_walker_page_no_scroll {
+  overflow: hidden;
+}
+
+.nav-menus-php {
+  .gm-menu-options-container {
+    float: left;
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .gm-walker-modal-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 12, 0.75);
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(1px);
+    z-index: 99999;
+  }
+
+  .gm-walker-modal-settings-container,
+  .gm-walker-second-wrapper {
+    position: fixed;
+    width: 84%;
+    max-width: 980px;
+    top: 5%;
+    left: 8%;
+    right: 8%;
+    bottom: 5%;
+    margin: auto;
+    background: #fff;
+    border-radius: 4px;
+    padding: 1em;
+    box-sizing: border-box;
+    overflow: auto;
+    z-index: 100001;
+
+    .pickr {
+      width: 42px;
+      margin: -5px 10px 0 0;
+      float: left;
+    }
+  }
+
+  .gm-walker-modal-top-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100010;
+
+    h2 {
+      padding: 1.1em 2.5%;
+      border-bottom: 1px solid #bfbfbf !important;
+      margin: 0;
+      font-size: 23px;
+      background: rgba(206, 206, 206, 0.6);
+      line-height: inherit;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .gm-walker-modal-close {
+      height: 69px;
+      width: 69px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      cursor: pointer;
+      text-align: center;
+      padding: 1.1em 0;
+      box-sizing: border-box;
+      font-size: 23px;
+      color: #000;
+      background: #ccc;
+      transition: all 0.32s ease;
+      border-left: 1px solid #bfbfbf;
+    }
+
+    .gm-walker-modal-close:hover {
+      color: #711202;
+      background-color: rgba(255, 52, 52, 0.2);
+    }
+  }
+
+  .gm-walker-modal-bottom-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-top: 1px solid #bfbfbf;
+    padding: 1em;
+    background: rgba(206, 206, 206, 0.6);
+    z-index: 100005;
+    box-sizing: border-box;
+    text-align: right;
+  }
+
+  .gm-walker-modal-main-container {
+    overflow: auto;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 2em;
+    box-sizing: border-box;
+    padding: 1.5em 0 0;
+    background-color: #fff;
+    margin-top: 6em;
+    margin-bottom: 3em;
+
+    .gm-walker-modal-item-title {
+      margin: 1em 3% !important;
+      border-bottom: 1px dotted #bfbfbf;
+      font-size: 1.5em;
+    }
+
+    .gm-option-details {
+      width: 35%;
+      float: left;
+      display: inline-block;
+
+      h3 {
+        color: #151515;
+        margin-bottom: 0.3em;
+        font-size: 1.1em;
+        font-weight: bold;
+      }
+
+      .description {
+        color: #858585;
+        margin-bottom: 1em;
+        font-size: 1em;
+        font-style: italic;
+      }
+    }
+
+    .gm-option-field {
+      width: 60%;
+      float: left;
+      display: inline-block;
+      padding: 0.7em 0 0;
+      margin-left: 5%;
+    }
+
+    .gm-option-image-preview {
+      max-width: 100%;
+      max-height: 256px;
+      margin: 0 0 12px 0;
+      overflow: hidden;
+
+      img {
+        max-width: 100%;
+        max-height: 256px;
+      }
+    }
+
+    .wp-picker-container.wp-picker-active {
+      min-width: 300px;
+    }
+
+    .wp-picker-container {
+      .wp-picker-holder {
+        width: 100%;
+      }
+
+      .iris-picker {
+        overflow: hidden;
+      }
+
+      .iris-palette-container {
+        .iris-palette {
+          max-width: 20px !important;
+          max-height: 20px !important;
+          display: none;
+        }
+
+        .iris-palette:nth-child(-n+8) {
+          display: block;
+        }
+      }
+    }
+
+    .gm-option-field .gm-option-field-select {
+      font-size: 1.3em !important;
+      font-weight: bold;
+    }
+
+    .gm-option-field .gm-option-type-textarea {
+      width: 100%;
+    }
+  }
+
+  .gm-walker-modal-save,
+  .gm-walker-modal-close:not(.dashicons) {
+    font-size: 16px;
+    padding: 6px 30px;
+    margin: 0 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    color: #fff;
+    background: #458aff;
+    box-shadow: 0 2px 0 #3060b2;
+  }
+
+  .gm-walker-modal-save:hover,
+  .gm-walker-modal-close:hover {
+    color: #fff;
+    background: #2b79ff;
+    box-shadow: 0 1px 0 #0e54cc;
+  }
+
+  .gm-walker-modal-save::before {
+    color: #b31b56;
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    margin-top: 8px;
+    width: 22px;
+    height: 22px;
+    border: 2px solid;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 1s;
+    -webkit-animation: 0.5s linear infinite gm-rotate-amination;
+    animation: 0.5s linear infinite gm-rotate-amination;
+  }
+
+  .gm-walker-modal-save.gm-button-loading {
+    background: #0330b0;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+
+  .gm-walker-modal-save.gm-button-loading::before {
+    transition-delay: 0.2s;
+    transition-duration: 1s;
+    opacity: 1;
+  }
+
+  @-webkit-keyframes gm-rotate-amination {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes gm-rotate-amination {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .gm-walker-option {
+    border-bottom: 1px dotted #bfbfbf;
+    float: left;
+    width: 94%;
+    padding: 1em 3%;
+    margin: 0;
+  }
+}
+
+/* --- modal nav-menu settings END --- */
+
+.gm-badge-image-preview img {
+  max-width: 300px;
+  max-height: 150px;
+}
+
+.gm-badge-image-preview {
+  display: block;
+  margin-top: 10px;
 }
