@@ -302,10 +302,8 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    var $option = elem.value;
-
     // Put select chosen value to the hidden text field.
-    elem.parentNode.querySelector('.gm-option-field-select-hidden').value = $option;
+    elem.parentNode.querySelector('.gm-option-field-select-hidden').value = elem.value;
   };
 
   //$globalWrapper.addEventListener('change', setSelectedValueToHiddenField);
@@ -398,8 +396,6 @@ document.addEventListener('DOMContentLoaded', () => {
           .get('selection')
           .first()
           .toJSON();
-
-        console.log('.gm-walker-second-wrapper .gm-walker-modal-settings-container[data-item-id="' + id + '"] .' + saveId); // TODO denuig ---.
 
         let $parent = document.querySelector('.gm-walker-second-wrapper .gm-walker-modal-settings-container[data-item-id="' + id + '"] .' + saveId);
 
@@ -558,6 +554,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 masterElem.checked = true;
               }
 
+            } else if (node.tagName.toUpperCase() === 'INPUT') {
+              if (node.classList && node.classList.contains('gm-option-field-select-hidden')) {
+                let selectMasterElem = masterElem.parentNode.querySelector('.gm-option-field-select');
+
+                if (selectMasterElem) {
+                  //selectMasterElem.options[selectMasterElem.options.selectedIndex].selected = false;
+                  //selectMasterElem.value = legalValue;
+                  let checkedOption = selectMasterElem.querySelector('option:checked');
+                  if (checkedOption) {
+                    checkedOption.removeAttribute('selected');
+                  }
+
+                  let newCheckedOption = selectMasterElem.querySelector('option[value="' + legalValue + '"]');
+                  if (newCheckedOption) {
+                    newCheckedOption.setAttribute('selected', true);
+                  }
+
+                  selectMasterElem.dispatchEvent(changeEvent);
+                }
+              }
+              masterElem.value = legalValue;
             } else {
               masterElem.value = legalValue;
             }
@@ -631,17 +648,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     $secondWrapper.innerHTML = '';
     $secondWrapper.append($cloneOverlay, $clone);
-
-    // let $secondWrapperContainer = $secondWrapper.querySelector('.gm-walker-modal-settings-container');
-    // if ($secondWrapperContainer) {
-    //   $secondWrapperContainer.addEventListener('change', toggleThumbSettingsVisibility);
-    //   $secondWrapperContainer.addEventListener('change', toggleMegaMenuOptionsVisibility);
-    //   $secondWrapperContainer.addEventListener('change', toggleHtmlIconSettingsVisibility);
-    //   $secondWrapperContainer.addEventListener('change', toggleBadgeSettingsVisibility);
-    //   $secondWrapperContainer.addEventListener('change', toggleBadgeTypeVisibility);
-    //   $secondWrapperContainer.addEventListener('change', changeGoogleFontFamily);
-    //   $secondWrapperContainer.addEventListener('change', setSelectedValueToHiddenField);
-    // }
 
     initSelectFields($secondWrapper);
 
