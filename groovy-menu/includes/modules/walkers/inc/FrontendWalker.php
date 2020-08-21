@@ -240,7 +240,12 @@ class FrontendWalker extends WalkerNavMenu {
 						'right' => '',
 					);
 
-					if ( $this->getIcon( $item ) ) {
+					if ( $this->getUseHtmlAsIcon( $item ) ) {
+						$html_icon_content = $this->getHtmlIconContent( $item );
+						if ( ! empty( $html_icon_content ) ) {
+							$badge['left'] .= '<div class="gm-menu-item__icon">' . $html_icon_content . '</div>';
+						}
+					} elseif ( $this->getIcon( $item ) ) {
 						$badge['left'] .= '<span class="gm-menu-item__icon ' . $this->getIcon( $item ) . '"></span>';
 					}
 
@@ -518,11 +523,23 @@ class FrontendWalker extends WalkerNavMenu {
 					'right' => '',
 				);
 
-				if ( $this->getIcon( $item ) ) {
+				// Icon
+				if ( $this->getUseHtmlAsIcon( $item ) ) {
+					$html_icon_content = $this->getHtmlIconContent( $item );
+					if ( ! empty( $html_icon_content ) ) {
+						$badge_content = '<div class="gm-menu-item__icon">' . $html_icon_content . '</div>';
+						if ( 0 === $depth && in_array( $headerStyle, array( 4 ), true ) ) {
+							$item_output .= $badge_content;
+						} else {
+							$badge['left'] .= $badge_content;
+						}
+					}
+				} elseif ( $this->getIcon( $item ) ) {
+					$badge_content = '<span class="gm-menu-item__icon ' . $this->getIcon( $item ) . '"></span>';
 					if ( 0 === $depth && in_array( $headerStyle, array( 4 ), true ) ) {
-						$item_output .= '<span class="gm-menu-item__icon ' . $this->getIcon( $item ) . '"></span>';
+						$item_output .= $badge_content;
 					} else {
-						$badge['left'] .= '<span class="gm-menu-item__icon ' . $this->getIcon( $item ) . '"></span>';
+						$badge['left'] .= $badge_content;
 					}
 				}
 

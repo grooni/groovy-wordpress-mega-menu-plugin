@@ -374,7 +374,7 @@ function groovyMenu( $args = array() ) {
 		}
 
 		$output_html .= '
-				<div class="gm-toolbar">
+				<div class="gm-toolbar" id="gm-toolbar">
 					<div class="gm-toolbar-bg"></div>
 					<div class="gm-container">
 						<div class="gm-toolbar-left">';

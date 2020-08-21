@@ -2235,4 +2235,78 @@ class GroovyMenuUtils {
 		return $detected;
 	}
 
+	/**
+	 * Return array of allowed html tags
+	 *
+	 * @param bool $enable_script if true allowed html tag script
+	 *
+	 * @return array
+	 */
+	public static function check_allowed_tags( $enable_script = false ) {
+
+		$default_attr = array(
+			'id'             => array(),
+			'class'          => array(),
+			'style'          => array(),
+			'title'          => array(),
+			'data'           => array(),
+			'data-mce-id'    => array(),
+			'data-mce-style' => array(),
+			'data-mce-bogus' => array(),
+		);
+
+		$allowed_tags = array(
+			'p'          => $default_attr,
+			'div'        => $default_attr,
+			'a'          => array_merge( $default_attr, array(
+				'href'    => array(),
+				'onclick' => array(),
+				'target'  => array( '_blank', '_top', '_self' ),
+			) ),
+			'img'        => array_merge( $default_attr, array(
+				'src'      => array(),
+				'srcset'   => array(),
+				'width'    => array(),
+				'height'   => array(),
+				'alt'      => array(),
+				'align'    => array(),
+				'hspace'   => array(),
+				'vspace'   => array(),
+				'sizes'    => array(),
+				'longdesc' => array(),
+				'border'   => array(),
+				'usemap'   => array(),
+			) ),
+			'span'       => $default_attr,
+			'code'       => $default_attr,
+			'strong'     => $default_attr,
+			'u'          => $default_attr,
+			'i'          => $default_attr,
+			'q'          => $default_attr,
+			'b'          => $default_attr,
+			'ul'         => $default_attr,
+			'ol'         => $default_attr,
+			'li'         => $default_attr,
+			'br'         => $default_attr,
+			'hr'         => $default_attr,
+			'blockquote' => $default_attr,
+			'del'        => $default_attr,
+			'strike'     => $default_attr,
+			'em'         => $default_attr,
+			'noscript'   => array(),
+		);
+
+		if ( $enable_script ) {
+			$allowed_tags['script'] = array(
+				'type'    => array(),
+				'async'   => array(),
+				'charset' => array(),
+				'defer'   => array(),
+				'src'     => array(),
+			);
+		}
+
+		return $allowed_tags;
+	}
+
 }
