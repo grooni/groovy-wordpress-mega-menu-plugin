@@ -2,9 +2,9 @@
 Contributors: Grooni
 Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive, responsive menu, sticky menu, vertical menu, horizontal menu, ajax cart
 Requires at least: 4.9.7
-Tested up to: 5.4.2
+Tested up to: 5.5
 Requires PHP: 7.0
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -115,6 +115,11 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.2.3 =
+* Added: New feature to add any HTML or shortcode instead of an icon. Configurable in appearance - menu.
+* Fix: Improved compatibility with WordPress 5.5. Now plugin backend code is also without jQuery.
+* Fix: Bug with colors for mobile menu links, cart icon and toolbar social buttons on  pages with WooCommerce together with Divi theme.
 
 = 1.2.2 =
 * Added: Added the opportunity to enable scrollbar for Minimalistic menu type.
