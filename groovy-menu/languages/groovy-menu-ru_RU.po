@@ -2,10 +2,10 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Groovy Menu 1.2.2\n"
+"Project-Id-Version: Groovy Menu 1.2.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-31 16:43+0300\n"
-"PO-Revision-Date: 2020-07-31 16:44+0300\n"
+"POT-Creation-Date: 2020-08-21 12:39+0300\n"
+"PO-Revision-Date: 2020-08-21 12:39+0300\n"
 "Last-Translator: Di_Skyer <diskyer@gmail.com>\n"
 "Language-Team: Русский\n"
 "Language: ru_RU\n"
@@ -518,7 +518,7 @@ msgstr "Тень подменю"
 
 #: includes/config/Config.php:559
 #: includes/modules/core/inc/GroovyMenuSettings.php:1913
-#: includes/modules/walkers/inc/WalkerHelper.php:251
+#: includes/modules/walkers/inc/WalkerNavMenu.php:189
 msgid "Mega menu"
 msgstr "Мега меню"
 
@@ -627,7 +627,7 @@ msgid "Top"
 msgstr "Верх"
 
 #: includes/config/Config.php:755
-#: includes/modules/walkers/inc/WalkerHelper.php:138
+#: includes/modules/walkers/inc/WalkerNavMenu.php:546
 msgid "Right"
 msgstr "Справа"
 
@@ -636,7 +636,7 @@ msgid "Bottom"
 msgstr "Снизу"
 
 #: includes/config/Config.php:777
-#: includes/modules/walkers/inc/WalkerHelper.php:137
+#: includes/modules/walkers/inc/WalkerNavMenu.php:545
 msgid "Left"
 msgstr "Слева"
 
@@ -1679,7 +1679,7 @@ msgstr "Меню навигации (из меню «Внешний вид»> «
 
 #: includes/modules/core/inc/GroovyMenuIcons.php:9
 #: includes/modules/fields/inc/FieldIcon.php:22
-#: includes/modules/walkers/inc/WalkerHelper.php:1065
+#: includes/modules/walkers/inc/WalkerHelper.php:590
 msgid "Select icon"
 msgstr "Выбрать иконку"
 
@@ -2562,14 +2562,14 @@ msgstr "Востановить"
 #: includes/modules/core/inc/GroovyMenuSettings.php:2788
 #: includes/modules/core/inc/GroovyMenuSettings.php:2895
 #: includes/modules/core/inc/GroovyMenuSettings.php:2929
-#: includes/modules/walkers/inc/WalkerHelper.php:591
+#: includes/modules/walkers/inc/WalkerHelper.php:82
 msgid "Save"
 msgstr "Сохранить"
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:2618
 #: includes/modules/core/inc/GroovyMenuSettings.php:2666
 #: includes/modules/core/inc/GroovyMenuSettings.php:2756
-#: includes/modules/walkers/inc/WalkerHelper.php:1211
+#: includes/modules/walkers/inc/WalkerHelper.php:740
 msgid "Error. Missing id of the current menu"
 msgstr "Ошибка. Отсутствует идентификатор текущего меню"
 
@@ -2876,238 +2876,250 @@ msgstr "Меню"
 msgid "Preset Preview"
 msgstr "Предпросмотр"
 
-#: includes/modules/walkers/inc/AdminWalker.php:229
+#: includes/modules/walkers/inc/AdminWalker.php:173
 #, php-format
 msgid "%s (Invalid)"
 msgstr "%s (Неверно)"
 
-#: includes/modules/walkers/inc/AdminWalker.php:233
+#: includes/modules/walkers/inc/AdminWalker.php:177
 #, php-format
 msgid "%s (Pending)"
 msgstr "%s (В одидании)"
 
-#: includes/modules/walkers/inc/AdminWalker.php:268
-#: includes/modules/walkers/inc/AdminWalker.php:278
+#: includes/modules/walkers/inc/AdminWalker.php:212
+#: includes/modules/walkers/inc/AdminWalker.php:222
 msgid "Mega Menu"
 msgstr "Мега Меню"
 
-#: includes/modules/walkers/inc/AdminWalker.php:278
+#: includes/modules/walkers/inc/AdminWalker.php:222
 msgid "Sub"
 msgstr "Sub"
 
-#: includes/modules/walkers/inc/AdminWalker.php:287
+#: includes/modules/walkers/inc/AdminWalker.php:231
 msgid "sub item"
 msgstr "подпункт"
 
-#: includes/modules/walkers/inc/AdminWalker.php:304
+#: includes/modules/walkers/inc/AdminWalker.php:248
 msgid "Move up"
 msgstr "Переместить вверх"
 
-#: includes/modules/walkers/inc/AdminWalker.php:321
+#: includes/modules/walkers/inc/AdminWalker.php:265
 msgid "Move down"
 msgstr "Переместить вниз"
 
-#: includes/modules/walkers/inc/AdminWalker.php:341
+#: includes/modules/walkers/inc/AdminWalker.php:285
 msgid "Edit menu item"
 msgstr "Редактировать пункт меню"
 
-#: includes/modules/walkers/inc/AdminWalker.php:342
+#: includes/modules/walkers/inc/AdminWalker.php:286
 msgid "Edit"
 msgstr "Править"
 
-#: includes/modules/walkers/inc/AdminWalker.php:353
+#: includes/modules/walkers/inc/AdminWalker.php:297
 msgid "URL"
 msgstr "URL"
 
-#: includes/modules/walkers/inc/AdminWalker.php:362
+#: includes/modules/walkers/inc/AdminWalker.php:306
 msgid "Navigation Label (\"-\" to hide)"
 msgstr "Навигационная метка (\"-\" скрыть)"
 
-#: includes/modules/walkers/inc/AdminWalker.php:370
+#: includes/modules/walkers/inc/AdminWalker.php:314
 msgid "Title Attribute"
 msgstr "Заголовок "
 
-#: includes/modules/walkers/inc/AdminWalker.php:380
+#: includes/modules/walkers/inc/AdminWalker.php:324
 msgid "Open link in a new tab"
 msgstr "Открывать ссылку в новом окне"
 
-#: includes/modules/walkers/inc/AdminWalker.php:392
+#: includes/modules/walkers/inc/AdminWalker.php:336
 msgid "Menu block URL"
 msgstr "Меню Блок URL"
 
-#: includes/modules/walkers/inc/AdminWalker.php:402
+#: includes/modules/walkers/inc/AdminWalker.php:346
 msgid "CSS Classes (optional)"
 msgstr "CSS классы (опционально)"
 
-#: includes/modules/walkers/inc/AdminWalker.php:410
+#: includes/modules/walkers/inc/AdminWalker.php:354
 msgid "Link Relationship (XFN)"
 msgstr "Link Relationship (XFN)"
 
-#: includes/modules/walkers/inc/AdminWalker.php:418
+#: includes/modules/walkers/inc/AdminWalker.php:362
 msgid "Description"
 msgstr "Описание"
 
-#: includes/modules/walkers/inc/AdminWalker.php:423
+#: includes/modules/walkers/inc/AdminWalker.php:367
 msgid ""
 "The description will be displayed in the menu if the current theme supports "
 "it."
 msgstr ""
 "Описание будет отображаться в меню, если текущая тема поддерживает его."
 
-#: includes/modules/walkers/inc/AdminWalker.php:445
+#: includes/modules/walkers/inc/AdminWalker.php:389
 msgid "Move"
 msgstr "Переместить"
 
-#: includes/modules/walkers/inc/AdminWalker.php:447
+#: includes/modules/walkers/inc/AdminWalker.php:391
 msgid "Up one"
 msgstr "Вверх "
 
-#: includes/modules/walkers/inc/AdminWalker.php:449
+#: includes/modules/walkers/inc/AdminWalker.php:393
 msgid "Down one"
 msgstr "Вниз"
 
-#: includes/modules/walkers/inc/AdminWalker.php:453
+#: includes/modules/walkers/inc/AdminWalker.php:397
 msgid "To the top"
 msgstr "сверху в центре"
 
-#: includes/modules/walkers/inc/AdminWalker.php:461
+#: includes/modules/walkers/inc/AdminWalker.php:405
 #, php-format
 msgid "Original: %s"
 msgstr "Ориг.: %s"
 
-#: includes/modules/walkers/inc/AdminWalker.php:480
+#: includes/modules/walkers/inc/AdminWalker.php:424
 msgid "Remove"
 msgstr "Удалить"
 
-#: includes/modules/walkers/inc/AdminWalker.php:498
-#: includes/modules/walkers/inc/WalkerHelper.php:593
+#: includes/modules/walkers/inc/AdminWalker.php:442
+#: includes/modules/walkers/inc/WalkerHelper.php:84
 msgid "Cancel"
 msgstr "Отмена"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:98
-#: includes/modules/walkers/inc/WalkerHelper.php:101
-#: includes/modules/walkers/inc/WalkerHelper.php:104
-#: includes/modules/walkers/inc/WalkerHelper.php:107
-#: includes/modules/walkers/inc/WalkerHelper.php:110
-#: includes/modules/walkers/inc/WalkerHelper.php:113
-#, php-format
-msgid "%1$d Columns with %2$s each"
-msgstr "%1$d Колонок по %2$s каждая"
+#: includes/modules/walkers/inc/WalkerHelper.php:70
+#: includes/modules/walkers/inc/WalkerHelper.php:77
+msgid "Groovy Menu item options"
+msgstr "Настройки Groovy Menu "
 
-#: includes/modules/walkers/inc/WalkerHelper.php:124
-msgid "Icon Badge"
-msgstr "Бейдж Иконка"
+#: includes/modules/walkers/inc/WalkerHelper.php:88
+msgid "Menu item title"
+msgstr "Миниатюра пункта меню"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:125
-msgid "Image Badge"
-msgstr "Бейдж Картинка"
+#: includes/modules/walkers/inc/WalkerHelper.php:500
+#: includes/modules/walkers/inc/WalkerNavMenu.php:464
+msgid "Inherit from parent"
+msgstr "Наследовать от родителя"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:126
-msgid "Text Badge"
-msgstr "Текстовый Бейдж"
+#: includes/modules/walkers/inc/WalkerHelper.php:694
+msgid "Select Image"
+msgstr "Выберите картинку"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:149
-msgid "Above menu text item"
-msgstr "Над текстом пункта меню"
+#: includes/modules/walkers/inc/WalkerHelper.php:695
+msgid "Insert image"
+msgstr "Вставить изобр."
 
-#: includes/modules/walkers/inc/WalkerHelper.php:150
-msgid "Under menu text item"
-msgstr "Под текстом пункта меню"
+#: includes/modules/walkers/inc/WalkerHelper.php:697
+msgid "Select image"
+msgstr "Выберите картинку"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:161
-msgid "Relative"
-msgstr "Связанный"
+#: includes/modules/walkers/inc/WalkerHelper.php:704
+msgid "Remove image"
+msgstr "Удалить картинку"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:162
-msgid "Absolute"
-msgstr "Абсолютное"
+#: includes/modules/walkers/inc/WalkerHelper.php:735
+msgid "Error. Corrupted data of the menu item"
+msgstr "Ошибка!. Повреждены данные пункта меню."
 
-#: includes/modules/walkers/inc/WalkerHelper.php:172
-msgid "none"
-msgstr "не задано"
+#: includes/modules/walkers/inc/WalkerHelper.php:813
+msgid "Options Saved"
+msgstr "Настройки сохранены"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:216
+#: includes/modules/walkers/inc/WalkerNavMenu.php:137
 msgid "Icon"
 msgstr "Иконка"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:217
+#: includes/modules/walkers/inc/WalkerNavMenu.php:138
 msgid "Select an icon for your menu item."
 msgstr "Выбирите иконку для пункта меню."
 
-#: includes/modules/walkers/inc/WalkerHelper.php:224
+#: includes/modules/walkers/inc/WalkerNavMenu.php:145
+msgid "Use HTML or shortcode as icon"
+msgstr "Использовать HTML или шорткод в качестве иконки"
+
+#: includes/modules/walkers/inc/WalkerNavMenu.php:146
+msgid "if checked, the following content will be added instead of the icon"
+msgstr "если отмечено, то следующий контент будет добавлен вместо иконки"
+
+#: includes/modules/walkers/inc/WalkerNavMenu.php:153
+msgid "HTML icon content"
+msgstr "Содержимое HTML иконки"
+
+#: includes/modules/walkers/inc/WalkerNavMenu.php:154
+msgid "&lt;script&gt; tag not allowed"
+msgstr "тег &lt;script&gt; не будет сохранён"
+
+#: includes/modules/walkers/inc/WalkerNavMenu.php:162
 msgid "Do not show menu item title and link"
 msgstr "Не показывать заголовок и ссылку"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:232
+#: includes/modules/walkers/inc/WalkerNavMenu.php:170
 msgid "Show featured image on hover"
 msgstr "Показывать \"featured image\" при наведении"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:242
+#: includes/modules/walkers/inc/WalkerNavMenu.php:180
 msgid "Do not show Menu block content on mobile"
 msgstr "Не показывать содержимое Блока на мобильном"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:252
+#: includes/modules/walkers/inc/WalkerNavMenu.php:190
 msgid "Applies to first level menu only."
 msgstr "Применяется только для первого уровня меню"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:260
-#: includes/modules/walkers/inc/WalkerHelper.php:281
+#: includes/modules/walkers/inc/WalkerNavMenu.php:198
+#: includes/modules/walkers/inc/WalkerNavMenu.php:219
 msgid "Mega menu columns"
 msgstr "Мега меню колонки"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:271
+#: includes/modules/walkers/inc/WalkerNavMenu.php:209
 msgid "Mega menu background image"
 msgstr "Фоновое изображение Mega menu"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:292
+#: includes/modules/walkers/inc/WalkerNavMenu.php:230
 msgid "Background repeat"
 msgstr "Повторение фона"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:303
+#: includes/modules/walkers/inc/WalkerNavMenu.php:241
 msgid "Background image size"
 msgstr "Размер фонового изображения"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:315
+#: includes/modules/walkers/inc/WalkerNavMenu.php:253
 msgid "Enable thumbnail"
 msgstr "Показывать миниатюру"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:316
+#: includes/modules/walkers/inc/WalkerNavMenu.php:254
 msgid "Show thumbnail for post."
 msgstr "Показывать миниатюру для записи"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:324
+#: includes/modules/walkers/inc/WalkerNavMenu.php:262
 msgid "Thumbnail position."
 msgstr "Позиция миниатюры"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:335
+#: includes/modules/walkers/inc/WalkerNavMenu.php:273
 msgid "Thumbnail image maximum height."
 msgstr "Максимальная высота миниатюрного изображения."
 
-#: includes/modules/walkers/inc/WalkerHelper.php:348
+#: includes/modules/walkers/inc/WalkerNavMenu.php:286
 msgid "Wrap thumbnail with menu item URL"
 msgstr "Обернуть миниатюру в URL пункта меню"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:358
+#: includes/modules/walkers/inc/WalkerNavMenu.php:296
 msgid "Thumbnail Image"
 msgstr "Миниатюрное изображение"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:369
+#: includes/modules/walkers/inc/WalkerNavMenu.php:307
 msgid "Enable badge"
 msgstr "Включить Бейджи"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:370
+#: includes/modules/walkers/inc/WalkerNavMenu.php:308
 msgid "Show badge with menu item"
 msgstr "Показывать бейдж вместе с пунктом меню"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:378
+#: includes/modules/walkers/inc/WalkerNavMenu.php:316
 msgid "Badge placement"
 msgstr "Размещение Бейджа"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:389
+#: includes/modules/walkers/inc/WalkerNavMenu.php:327
 msgid "Badge position."
 msgstr "Позиция Бейджа"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:391
+#: includes/modules/walkers/inc/WalkerNavMenu.php:329
 msgid ""
 "Absolutely positioned Badge take no space in the page layout. Relatively "
 "positioned Badge acts as normal element taking space."
@@ -3116,148 +3128,152 @@ msgstr ""
 "Относительно расположенный бейдж  действует как обычный элемент, занимающий "
 "место."
 
-#: includes/modules/walkers/inc/WalkerHelper.php:400
+#: includes/modules/walkers/inc/WalkerNavMenu.php:338
 msgid "Badge X offset."
 msgstr "Бейдж X смещение"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:401
+#: includes/modules/walkers/inc/WalkerNavMenu.php:339
 msgid "Negative value will push badge left, positive right."
 msgstr ""
 "Отрицательное значение будет толкать значок влево, положительное право."
 
-#: includes/modules/walkers/inc/WalkerHelper.php:401
-#: includes/modules/walkers/inc/WalkerHelper.php:411
-#: includes/modules/walkers/inc/WalkerHelper.php:421
-#: includes/modules/walkers/inc/WalkerHelper.php:431
+#: includes/modules/walkers/inc/WalkerNavMenu.php:339
+#: includes/modules/walkers/inc/WalkerNavMenu.php:349
+#: includes/modules/walkers/inc/WalkerNavMenu.php:359
+#: includes/modules/walkers/inc/WalkerNavMenu.php:369
 #, php-format
 msgid "Any valid CSS units accepted e.q. % or px."
 msgstr "Любые действительные единицы CSS, например % или px"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:410
+#: includes/modules/walkers/inc/WalkerNavMenu.php:348
 msgid "Badge Y offset."
 msgstr "Бейдж Y смещение"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:411
+#: includes/modules/walkers/inc/WalkerNavMenu.php:349
 msgid "Negative value will push badge up, positive down."
 msgstr "Отрицательное значение будет толкать значок вверх, положительное вниз."
 
-#: includes/modules/walkers/inc/WalkerHelper.php:420
+#: includes/modules/walkers/inc/WalkerNavMenu.php:358
 msgid "Badge container padding."
 msgstr "Бейдж контейнер отступ"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:421
-#: includes/modules/walkers/inc/WalkerHelper.php:431
+#: includes/modules/walkers/inc/WalkerNavMenu.php:359
+#: includes/modules/walkers/inc/WalkerNavMenu.php:369
 msgid "One, two, three or four values accepted."
 msgstr "Одно, два, три или четыре значения."
 
-#: includes/modules/walkers/inc/WalkerHelper.php:430
+#: includes/modules/walkers/inc/WalkerNavMenu.php:368
 msgid "Badge container border radius."
 msgstr "Бейдж радиус границы контейнера "
 
-#: includes/modules/walkers/inc/WalkerHelper.php:440
+#: includes/modules/walkers/inc/WalkerNavMenu.php:378
 msgid "Badge container background color"
 msgstr "Цвет фона контейнера Бейджа"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:450
+#: includes/modules/walkers/inc/WalkerNavMenu.php:388
 msgid "Badge content type"
 msgstr "Тип содержимого Бейджа"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:461
+#: includes/modules/walkers/inc/WalkerNavMenu.php:399
 msgid "Badge Image"
 msgstr "Бейдж картинка"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:471
+#: includes/modules/walkers/inc/WalkerNavMenu.php:409
 msgid "Badge Icon"
 msgstr "Бейдж Иконка"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:481
+#: includes/modules/walkers/inc/WalkerNavMenu.php:419
 msgid "Badge icon size"
 msgstr "Размер иконки бейджа"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:482
+#: includes/modules/walkers/inc/WalkerNavMenu.php:420
 msgid "If left blank, it will use the font size from the menu item"
 msgstr ""
 "Если оставить пустым, то будет использован размер шрифта от пункта меню"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:494
+#: includes/modules/walkers/inc/WalkerNavMenu.php:432
 msgid "Badge icon color"
 msgstr "Цвет иконки бейджа"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:504
+#: includes/modules/walkers/inc/WalkerNavMenu.php:442
 msgid "Badge text"
 msgstr "Бейдж текст"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:514
+#: includes/modules/walkers/inc/WalkerNavMenu.php:452
 msgid "Badge text font family"
 msgstr "Бейдж текст шрифт"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:525
+#: includes/modules/walkers/inc/WalkerNavMenu.php:463
 msgid "Badge text font variant"
 msgstr "Бейдж текст тип шрифта"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:526
-#: includes/modules/walkers/inc/WalkerHelper.php:975
-msgid "Inherit from parent"
-msgstr "Наследовать от родителя"
-
-#: includes/modules/walkers/inc/WalkerHelper.php:536
+#: includes/modules/walkers/inc/WalkerNavMenu.php:474
 msgid "Badge text font size"
 msgstr "Бейдж текст размер шрифта"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:549
+#: includes/modules/walkers/inc/WalkerNavMenu.php:487
 msgid "Badge text font color"
 msgstr "Бейдж текст цвет шрифта"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:579
-#: includes/modules/walkers/inc/WalkerHelper.php:586
-msgid "Groovy Menu item options"
-msgstr "Настройки Groovy Menu "
+#: includes/modules/walkers/inc/WalkerNavMenu.php:506
+#: includes/modules/walkers/inc/WalkerNavMenu.php:509
+#: includes/modules/walkers/inc/WalkerNavMenu.php:512
+#: includes/modules/walkers/inc/WalkerNavMenu.php:515
+#: includes/modules/walkers/inc/WalkerNavMenu.php:518
+#: includes/modules/walkers/inc/WalkerNavMenu.php:521
+#, php-format
+msgid "%1$d Columns with %2$s each"
+msgstr "%1$d Колонок по %2$s каждая"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:597
-msgid "Menu item title"
-msgstr "Миниатюра пункта меню"
+#: includes/modules/walkers/inc/WalkerNavMenu.php:532
+msgid "Icon Badge"
+msgstr "Бейдж Иконка"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:1165
-msgid "Select Image"
-msgstr "Выберите картинку"
+#: includes/modules/walkers/inc/WalkerNavMenu.php:533
+msgid "Image Badge"
+msgstr "Бейдж Картинка"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:1166
-msgid "Insert image"
-msgstr "Вставить изобр."
+#: includes/modules/walkers/inc/WalkerNavMenu.php:534
+msgid "Text Badge"
+msgstr "Текстовый Бейдж"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:1168
-msgid "Select image"
-msgstr "Выберите картинку"
+#: includes/modules/walkers/inc/WalkerNavMenu.php:557
+msgid "Above menu text item"
+msgstr "Над текстом пункта меню"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:1175
-msgid "Remove image"
-msgstr "Удалить картинку"
+#: includes/modules/walkers/inc/WalkerNavMenu.php:558
+msgid "Under menu text item"
+msgstr "Под текстом пункта меню"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:1206
-msgid "Error. Corrupted data of the menu item"
-msgstr "Ошибка!. Повреждены данные пункта меню."
+#: includes/modules/walkers/inc/WalkerNavMenu.php:569
+msgid "Relative"
+msgstr "Связанный"
 
-#: includes/modules/walkers/inc/WalkerHelper.php:1277
-msgid "Options Saved"
-msgstr "Настройки сохранены"
+#: includes/modules/walkers/inc/WalkerNavMenu.php:570
+msgid "Absolute"
+msgstr "Абсолютное"
 
-#: includes/modules/walkers/inc/WalkerNavMenu.php:459
+#: includes/modules/walkers/inc/WalkerNavMenu.php:580
+msgid "none"
+msgstr "не задано"
+
+#: includes/modules/walkers/inc/WalkerNavMenu.php:836
 msgid "Divi Builder Conflict Prevention"
 msgstr "Предотвращение конфликта с Divi Builder"
 
-#: includes/modules/walkers/inc/WalkerNavMenu.php:464
+#: includes/modules/walkers/inc/WalkerNavMenu.php:841
 msgid "Fusion Builder Conflict Prevention"
 msgstr "Предотвращение конфликта с Fusion Builder"
 
-#: includes/modules/walkers/inc/WalkerNavMenu.php:469
+#: includes/modules/walkers/inc/WalkerNavMenu.php:846
 msgid "Cornerstone Conflict Prevention"
 msgstr "Предотвращение конфликста с Cornerstone"
 
-#: includes/modules/walkers/inc/WalkerNavMenu.php:473
+#: includes/modules/walkers/inc/WalkerNavMenu.php:850
 msgid "Elementor Conflict Prevention"
 msgstr "Предотвращение конфликста с Elementor"
 
-#: includes/modules/walkers/inc/WalkerNavMenu.php:477
+#: includes/modules/walkers/inc/WalkerNavMenu.php:854
 msgid "Divi builder Conflict Prevention"
 msgstr "Предотвращение конфликта с Divi Builder"
 

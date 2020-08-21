@@ -3,8 +3,8 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Groovy Menu 1.2.2\n"
-"POT-Creation-Date: 2020-07-31 16:43+0300\n"
+"Project-Id-Version: Groovy Menu 1.2.3\n"
+"POT-Creation-Date: 2020-08-21 12:39+0300\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -503,7 +503,7 @@ msgstr ""
 
 #: includes/config/Config.php:559
 #: includes/modules/core/inc/GroovyMenuSettings.php:1913
-#: includes/modules/walkers/inc/WalkerHelper.php:251
+#: includes/modules/walkers/inc/WalkerNavMenu.php:189
 msgid "Mega menu"
 msgstr ""
 
@@ -610,7 +610,7 @@ msgid "Top"
 msgstr ""
 
 #: includes/config/Config.php:755
-#: includes/modules/walkers/inc/WalkerHelper.php:138
+#: includes/modules/walkers/inc/WalkerNavMenu.php:546
 msgid "Right"
 msgstr ""
 
@@ -619,7 +619,7 @@ msgid "Bottom"
 msgstr ""
 
 #: includes/config/Config.php:777
-#: includes/modules/walkers/inc/WalkerHelper.php:137
+#: includes/modules/walkers/inc/WalkerNavMenu.php:545
 msgid "Left"
 msgstr ""
 
@@ -1672,7 +1672,7 @@ msgstr ""
 
 #: includes/modules/core/inc/GroovyMenuIcons.php:9
 #: includes/modules/fields/inc/FieldIcon.php:22
-#: includes/modules/walkers/inc/WalkerHelper.php:1065
+#: includes/modules/walkers/inc/WalkerHelper.php:590
 msgid "Select icon"
 msgstr ""
 
@@ -2510,14 +2510,14 @@ msgstr ""
 #: includes/modules/core/inc/GroovyMenuSettings.php:2788
 #: includes/modules/core/inc/GroovyMenuSettings.php:2895
 #: includes/modules/core/inc/GroovyMenuSettings.php:2929
-#: includes/modules/walkers/inc/WalkerHelper.php:591
+#: includes/modules/walkers/inc/WalkerHelper.php:82
 msgid "Save"
 msgstr ""
 
 #: includes/modules/core/inc/GroovyMenuSettings.php:2618
 #: includes/modules/core/inc/GroovyMenuSettings.php:2666
 #: includes/modules/core/inc/GroovyMenuSettings.php:2756
-#: includes/modules/walkers/inc/WalkerHelper.php:1211
+#: includes/modules/walkers/inc/WalkerHelper.php:740
 msgid "Error. Missing id of the current menu"
 msgstr ""
 
@@ -2820,382 +2820,399 @@ msgstr ""
 msgid "Preset Preview"
 msgstr ""
 
-#: includes/modules/walkers/inc/AdminWalker.php:229
+#: includes/modules/walkers/inc/AdminWalker.php:173
 #, php-format
 msgid "%s (Invalid)"
 msgstr ""
 
-#: includes/modules/walkers/inc/AdminWalker.php:233
+#: includes/modules/walkers/inc/AdminWalker.php:177
 #, php-format
 msgid "%s (Pending)"
 msgstr ""
 
-#: includes/modules/walkers/inc/AdminWalker.php:268
-#: includes/modules/walkers/inc/AdminWalker.php:278
+#: includes/modules/walkers/inc/AdminWalker.php:212
+#: includes/modules/walkers/inc/AdminWalker.php:222
 msgid "Mega Menu"
 msgstr ""
 
-#: includes/modules/walkers/inc/AdminWalker.php:278
+#: includes/modules/walkers/inc/AdminWalker.php:222
 msgid "Sub"
 msgstr ""
 
-#: includes/modules/walkers/inc/AdminWalker.php:287
+#: includes/modules/walkers/inc/AdminWalker.php:231
 msgid "sub item"
 msgstr ""
 
-#: includes/modules/walkers/inc/AdminWalker.php:304
+#: includes/modules/walkers/inc/AdminWalker.php:248
 msgid "Move up"
 msgstr ""
 
-#: includes/modules/walkers/inc/AdminWalker.php:321
+#: includes/modules/walkers/inc/AdminWalker.php:265
 msgid "Move down"
 msgstr ""
 
-#: includes/modules/walkers/inc/AdminWalker.php:341
+#: includes/modules/walkers/inc/AdminWalker.php:285
 msgid "Edit menu item"
 msgstr ""
 
-#: includes/modules/walkers/inc/AdminWalker.php:342
+#: includes/modules/walkers/inc/AdminWalker.php:286
 msgid "Edit"
 msgstr ""
 
-#: includes/modules/walkers/inc/AdminWalker.php:353
+#: includes/modules/walkers/inc/AdminWalker.php:297
 msgid "URL"
 msgstr ""
 
-#: includes/modules/walkers/inc/AdminWalker.php:362
+#: includes/modules/walkers/inc/AdminWalker.php:306
 msgid "Navigation Label (\"-\" to hide)"
 msgstr ""
 
-#: includes/modules/walkers/inc/AdminWalker.php:370
+#: includes/modules/walkers/inc/AdminWalker.php:314
 msgid "Title Attribute"
 msgstr ""
 
-#: includes/modules/walkers/inc/AdminWalker.php:380
+#: includes/modules/walkers/inc/AdminWalker.php:324
 msgid "Open link in a new tab"
 msgstr ""
 
-#: includes/modules/walkers/inc/AdminWalker.php:392
+#: includes/modules/walkers/inc/AdminWalker.php:336
 msgid "Menu block URL"
 msgstr ""
 
-#: includes/modules/walkers/inc/AdminWalker.php:402
+#: includes/modules/walkers/inc/AdminWalker.php:346
 msgid "CSS Classes (optional)"
 msgstr ""
 
-#: includes/modules/walkers/inc/AdminWalker.php:410
+#: includes/modules/walkers/inc/AdminWalker.php:354
 msgid "Link Relationship (XFN)"
 msgstr ""
 
-#: includes/modules/walkers/inc/AdminWalker.php:418
+#: includes/modules/walkers/inc/AdminWalker.php:362
 msgid "Description"
 msgstr ""
 
-#: includes/modules/walkers/inc/AdminWalker.php:423
+#: includes/modules/walkers/inc/AdminWalker.php:367
 msgid ""
 "The description will be displayed in the menu if the current theme "
 "supports it."
 msgstr ""
 
-#: includes/modules/walkers/inc/AdminWalker.php:445
+#: includes/modules/walkers/inc/AdminWalker.php:389
 msgid "Move"
 msgstr ""
 
-#: includes/modules/walkers/inc/AdminWalker.php:447
+#: includes/modules/walkers/inc/AdminWalker.php:391
 msgid "Up one"
 msgstr ""
 
-#: includes/modules/walkers/inc/AdminWalker.php:449
+#: includes/modules/walkers/inc/AdminWalker.php:393
 msgid "Down one"
 msgstr ""
 
-#: includes/modules/walkers/inc/AdminWalker.php:453
+#: includes/modules/walkers/inc/AdminWalker.php:397
 msgid "To the top"
 msgstr ""
 
-#: includes/modules/walkers/inc/AdminWalker.php:461
+#: includes/modules/walkers/inc/AdminWalker.php:405
 #, php-format
 msgid "Original: %s"
 msgstr ""
 
-#: includes/modules/walkers/inc/AdminWalker.php:480
+#: includes/modules/walkers/inc/AdminWalker.php:424
 msgid "Remove"
 msgstr ""
 
-#: includes/modules/walkers/inc/AdminWalker.php:498
-#: includes/modules/walkers/inc/WalkerHelper.php:593
+#: includes/modules/walkers/inc/AdminWalker.php:442
+#: includes/modules/walkers/inc/WalkerHelper.php:84
 msgid "Cancel"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:98
-#: includes/modules/walkers/inc/WalkerHelper.php:101
-#: includes/modules/walkers/inc/WalkerHelper.php:104
-#: includes/modules/walkers/inc/WalkerHelper.php:107
-#: includes/modules/walkers/inc/WalkerHelper.php:110
-#: includes/modules/walkers/inc/WalkerHelper.php:113
-#, php-format
-msgid "%1$d Columns with %2$s each"
+#: includes/modules/walkers/inc/WalkerHelper.php:70
+#: includes/modules/walkers/inc/WalkerHelper.php:77
+msgid "Groovy Menu item options"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:124
-msgid "Icon Badge"
+#: includes/modules/walkers/inc/WalkerHelper.php:88
+msgid "Menu item title"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:125
-msgid "Image Badge"
+#: includes/modules/walkers/inc/WalkerHelper.php:500
+#: includes/modules/walkers/inc/WalkerNavMenu.php:464
+msgid "Inherit from parent"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:126
-msgid "Text Badge"
+#: includes/modules/walkers/inc/WalkerHelper.php:694
+msgid "Select Image"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:149
-msgid "Above menu text item"
+#: includes/modules/walkers/inc/WalkerHelper.php:695
+msgid "Insert image"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:150
-msgid "Under menu text item"
+#: includes/modules/walkers/inc/WalkerHelper.php:697
+msgid "Select image"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:161
-msgid "Relative"
+#: includes/modules/walkers/inc/WalkerHelper.php:704
+msgid "Remove image"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:162
-msgid "Absolute"
+#: includes/modules/walkers/inc/WalkerHelper.php:735
+msgid "Error. Corrupted data of the menu item"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:172
-msgid "none"
+#: includes/modules/walkers/inc/WalkerHelper.php:813
+msgid "Options Saved"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:216
+#: includes/modules/walkers/inc/WalkerNavMenu.php:137
 msgid "Icon"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:217
+#: includes/modules/walkers/inc/WalkerNavMenu.php:138
 msgid "Select an icon for your menu item."
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:224
+#: includes/modules/walkers/inc/WalkerNavMenu.php:145
+msgid "Use HTML or shortcode as icon"
+msgstr ""
+
+#: includes/modules/walkers/inc/WalkerNavMenu.php:146
+msgid ""
+"if checked, the following content will be added instead of the icon"
+msgstr ""
+
+#: includes/modules/walkers/inc/WalkerNavMenu.php:153
+msgid "HTML icon content"
+msgstr ""
+
+#: includes/modules/walkers/inc/WalkerNavMenu.php:154
+msgid "&lt;script&gt; tag not allowed"
+msgstr ""
+
+#: includes/modules/walkers/inc/WalkerNavMenu.php:162
 msgid "Do not show menu item title and link"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:232
+#: includes/modules/walkers/inc/WalkerNavMenu.php:170
 msgid "Show featured image on hover"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:242
+#: includes/modules/walkers/inc/WalkerNavMenu.php:180
 msgid "Do not show Menu block content on mobile"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:252
+#: includes/modules/walkers/inc/WalkerNavMenu.php:190
 msgid "Applies to first level menu only."
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:260
-#: includes/modules/walkers/inc/WalkerHelper.php:281
+#: includes/modules/walkers/inc/WalkerNavMenu.php:198
+#: includes/modules/walkers/inc/WalkerNavMenu.php:219
 msgid "Mega menu columns"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:271
+#: includes/modules/walkers/inc/WalkerNavMenu.php:209
 msgid "Mega menu background image"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:292
+#: includes/modules/walkers/inc/WalkerNavMenu.php:230
 msgid "Background repeat"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:303
+#: includes/modules/walkers/inc/WalkerNavMenu.php:241
 msgid "Background image size"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:315
+#: includes/modules/walkers/inc/WalkerNavMenu.php:253
 msgid "Enable thumbnail"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:316
+#: includes/modules/walkers/inc/WalkerNavMenu.php:254
 msgid "Show thumbnail for post."
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:324
+#: includes/modules/walkers/inc/WalkerNavMenu.php:262
 msgid "Thumbnail position."
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:335
+#: includes/modules/walkers/inc/WalkerNavMenu.php:273
 msgid "Thumbnail image maximum height."
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:348
+#: includes/modules/walkers/inc/WalkerNavMenu.php:286
 msgid "Wrap thumbnail with menu item URL"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:358
+#: includes/modules/walkers/inc/WalkerNavMenu.php:296
 msgid "Thumbnail Image"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:369
+#: includes/modules/walkers/inc/WalkerNavMenu.php:307
 msgid "Enable badge"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:370
+#: includes/modules/walkers/inc/WalkerNavMenu.php:308
 msgid "Show badge with menu item"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:378
+#: includes/modules/walkers/inc/WalkerNavMenu.php:316
 msgid "Badge placement"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:389
+#: includes/modules/walkers/inc/WalkerNavMenu.php:327
 msgid "Badge position."
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:391
+#: includes/modules/walkers/inc/WalkerNavMenu.php:329
 msgid ""
 "Absolutely positioned Badge take no space in the page layout. "
 "Relatively positioned Badge acts as normal element taking space."
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:400
+#: includes/modules/walkers/inc/WalkerNavMenu.php:338
 msgid "Badge X offset."
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:401
+#: includes/modules/walkers/inc/WalkerNavMenu.php:339
 msgid "Negative value will push badge left, positive right."
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:401
-#: includes/modules/walkers/inc/WalkerHelper.php:411
-#: includes/modules/walkers/inc/WalkerHelper.php:421
-#: includes/modules/walkers/inc/WalkerHelper.php:431
+#: includes/modules/walkers/inc/WalkerNavMenu.php:339
+#: includes/modules/walkers/inc/WalkerNavMenu.php:349
+#: includes/modules/walkers/inc/WalkerNavMenu.php:359
+#: includes/modules/walkers/inc/WalkerNavMenu.php:369
 #, php-format
 msgid "Any valid CSS units accepted e.q. % or px."
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:410
+#: includes/modules/walkers/inc/WalkerNavMenu.php:348
 msgid "Badge Y offset."
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:411
+#: includes/modules/walkers/inc/WalkerNavMenu.php:349
 msgid "Negative value will push badge up, positive down."
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:420
+#: includes/modules/walkers/inc/WalkerNavMenu.php:358
 msgid "Badge container padding."
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:421
-#: includes/modules/walkers/inc/WalkerHelper.php:431
+#: includes/modules/walkers/inc/WalkerNavMenu.php:359
+#: includes/modules/walkers/inc/WalkerNavMenu.php:369
 msgid "One, two, three or four values accepted."
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:430
+#: includes/modules/walkers/inc/WalkerNavMenu.php:368
 msgid "Badge container border radius."
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:440
+#: includes/modules/walkers/inc/WalkerNavMenu.php:378
 msgid "Badge container background color"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:450
+#: includes/modules/walkers/inc/WalkerNavMenu.php:388
 msgid "Badge content type"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:461
+#: includes/modules/walkers/inc/WalkerNavMenu.php:399
 msgid "Badge Image"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:471
+#: includes/modules/walkers/inc/WalkerNavMenu.php:409
 msgid "Badge Icon"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:481
+#: includes/modules/walkers/inc/WalkerNavMenu.php:419
 msgid "Badge icon size"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:482
+#: includes/modules/walkers/inc/WalkerNavMenu.php:420
 msgid "If left blank, it will use the font size from the menu item"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:494
+#: includes/modules/walkers/inc/WalkerNavMenu.php:432
 msgid "Badge icon color"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:504
+#: includes/modules/walkers/inc/WalkerNavMenu.php:442
 msgid "Badge text"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:514
+#: includes/modules/walkers/inc/WalkerNavMenu.php:452
 msgid "Badge text font family"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:525
+#: includes/modules/walkers/inc/WalkerNavMenu.php:463
 msgid "Badge text font variant"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:526
-#: includes/modules/walkers/inc/WalkerHelper.php:975
-msgid "Inherit from parent"
-msgstr ""
-
-#: includes/modules/walkers/inc/WalkerHelper.php:536
+#: includes/modules/walkers/inc/WalkerNavMenu.php:474
 msgid "Badge text font size"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:549
+#: includes/modules/walkers/inc/WalkerNavMenu.php:487
 msgid "Badge text font color"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:579
-#: includes/modules/walkers/inc/WalkerHelper.php:586
-msgid "Groovy Menu item options"
+#: includes/modules/walkers/inc/WalkerNavMenu.php:506
+#: includes/modules/walkers/inc/WalkerNavMenu.php:509
+#: includes/modules/walkers/inc/WalkerNavMenu.php:512
+#: includes/modules/walkers/inc/WalkerNavMenu.php:515
+#: includes/modules/walkers/inc/WalkerNavMenu.php:518
+#: includes/modules/walkers/inc/WalkerNavMenu.php:521
+#, php-format
+msgid "%1$d Columns with %2$s each"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:597
-msgid "Menu item title"
+#: includes/modules/walkers/inc/WalkerNavMenu.php:532
+msgid "Icon Badge"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:1165
-msgid "Select Image"
+#: includes/modules/walkers/inc/WalkerNavMenu.php:533
+msgid "Image Badge"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:1166
-msgid "Insert image"
+#: includes/modules/walkers/inc/WalkerNavMenu.php:534
+msgid "Text Badge"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:1168
-msgid "Select image"
+#: includes/modules/walkers/inc/WalkerNavMenu.php:557
+msgid "Above menu text item"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:1175
-msgid "Remove image"
+#: includes/modules/walkers/inc/WalkerNavMenu.php:558
+msgid "Under menu text item"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:1206
-msgid "Error. Corrupted data of the menu item"
+#: includes/modules/walkers/inc/WalkerNavMenu.php:569
+msgid "Relative"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerHelper.php:1277
-msgid "Options Saved"
+#: includes/modules/walkers/inc/WalkerNavMenu.php:570
+msgid "Absolute"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerNavMenu.php:459
+#: includes/modules/walkers/inc/WalkerNavMenu.php:580
+msgid "none"
+msgstr ""
+
+#: includes/modules/walkers/inc/WalkerNavMenu.php:836
 msgid "Divi Builder Conflict Prevention"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerNavMenu.php:464
+#: includes/modules/walkers/inc/WalkerNavMenu.php:841
 msgid "Fusion Builder Conflict Prevention"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerNavMenu.php:469
+#: includes/modules/walkers/inc/WalkerNavMenu.php:846
 msgid "Cornerstone Conflict Prevention"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerNavMenu.php:473
+#: includes/modules/walkers/inc/WalkerNavMenu.php:850
 msgid "Elementor Conflict Prevention"
 msgstr ""
 
-#: includes/modules/walkers/inc/WalkerNavMenu.php:477
+#: includes/modules/walkers/inc/WalkerNavMenu.php:854
 msgid "Divi builder Conflict Prevention"
 msgstr ""
 
