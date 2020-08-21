@@ -117,8 +117,8 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 == Changelog ==
 
 = 1.2.3 =
-* Added: New feature to add any HTML or shortcode instead of an icon. Configurable in appearance - menu.
-* Fix: Improved compatibility with WordPress 5.5. Now plugin backend code is also without jQuery.
+* Added: New feature to add any HTML or Shortcode instead of an Icon. For example you can add JSON animated or SVG icons. Configured in "Appearance > Menus".
+* Fix: Improved compatibility with WordPress 5.5. Now plugin backend code is also without jQuery dependency.
 * Fix: Bug with colors for mobile menu links, cart icon and toolbar social buttons on  pages with WooCommerce together with Divi theme.
 
 = 1.2.2 =
