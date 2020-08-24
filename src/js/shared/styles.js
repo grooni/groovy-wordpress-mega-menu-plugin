@@ -200,7 +200,7 @@ export default class GmStyles {
           '.gm-grid-container':'padding-left: 0; padding-right: 0;',
           '.gm-grid-row':'margin-left: 0; margin-right: 0;',
           '.gm-grid-container .gm-mega-menu__item .gm-mega-menu__item__title':'margin-left: 15px; margin-right: 15px;',
-          '.gm-grid-container .gm-mega-menu__item .gm-dropdown-menu-wrapper':'margin-left: 15px !important; margin-right: 15px; !important',
+          '.gm-grid-container .gm-mega-menu__item .gm-dropdown-menu-wrapper':'margin-left: 15px !important; margin-right: 15px !important;',
           '.gm-navigation-drawer .gm-grid-container': 'padding-left: 15px; padding-right: 15px;',
           '.gm-navbar .grid,.gm-navbar .grid-5,.gm-navbar .grid-10,.gm-navbar .grid-11,.gm-navbar .grid-12,.gm-navbar .grid-14,.gm-navbar .grid-15,.gm-navbar .grid-16,.gm-navbar .grid-20,.gm-navbar .grid-25,.gm-navbar .grid-30,.gm-navbar .grid-35,.gm-navbar .grid-40,.gm-navbar .grid-45,.gm-navbar .grid-50,.gm-navbar .grid-55,.gm-navbar .grid-60,.gm-navbar .grid-65,.gm-navbar .grid-70,.gm-navbar .grid-75,.gm-navbar .grid-80,.gm-navbar .grid-85,.gm-navbar .grid-90,.gm-navbar .grid-95,.gm-navbar .grid-100,.gm-navbar .grid-33,.gm-navbar .grid-66,.gm-navbar .mobile-grid,.gm-navbar .mobile-grid-5,.gm-navbar .mobile-grid-10,.gm-navbar .mobile-grid-11,.gm-navbar .mobile-grid-12,.gm-navbar .mobile-grid-14,.gm-navbar .mobile-grid-15,.gm-navbar .mobile-grid-16,.gm-navbar .mobile-grid-20,.gm-navbar .mobile-grid-25,.gm-navbar .mobile-grid-30,.gm-navbar .mobile-grid-35,.gm-navbar .mobile-grid-40,.gm-navbar .mobile-grid-45,.gm-navbar .mobile-grid-50,.gm-navbar .mobile-grid-55,.gm-navbar .mobile-grid-60,.gm-navbar .mobile-grid-65,.gm-navbar .mobile-grid-70,.gm-navbar .mobile-grid-75,.gm-navbar .mobile-grid-80,.gm-navbar .mobile-grid-85,.gm-navbar .mobile-grid-90,.gm-navbar .mobile-grid-95,.gm-navbar .mobile-grid-100,.gm-navbar .mobile-grid-33,.gm-navbar .mobile-grid-66': 'padding-left: 0; padding-right: 0;',
           media: 'desktop'
@@ -2963,7 +2963,7 @@ export default class GmStyles {
       '.gm-menu-btn': 'display: flex;',
       '.gm-caret': 'padding-left: 15px',
       '.gm-main-menu-wrapper .gm-dropdown-submenu .gm-caret i': 'transform: rotate(90deg)',
-      '[dir="rtl"] .gm-main-menu-wrapper .gm-dropdown-submenu .gm-caret i': 'transform: rotate(-90deg)',
+      '[dir=\'rtl\'] .gm-main-menu-wrapper .gm-dropdown-submenu .gm-caret i': 'transform: rotate(-90deg)',
       media: 'mobile'
     });
 
