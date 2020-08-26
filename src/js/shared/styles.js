@@ -170,12 +170,23 @@ export default class GmStyles {
       }
 
       if (settings.subLevelBorderTopColor) {
-        const color = settings.subLevelBorderTopColor;
+        const {
+          subLevelBorderTopThickness: borderTopThickness,
+          subLevelBorderTopStyle: borderTopStyle,
+          subLevelBorderTopColor: borderTopColor,
+          subLevelBorderTopShift: borderTopShift,
+        } = settings;
 
         css.push({
-          '.gm-main-menu-wrapper .gm-navbar-nav .gm-dropdown-menu': `border-top: 3px solid ${color}`,
+          '.gm-main-menu-wrapper .gm-navbar-nav .gm-dropdown-menu': `border-top: ${borderTopThickness}px ${borderTopStyle} ${borderTopColor}`,
           media: 'desktop'
         });
+        if (!borderTopShift) {
+          css.push({
+            '.gm-main-menu-wrapper .gm-navbar-nav .gm-dropdown-submenu .gm-dropdown-menu-wrapper': `margin-top: -${borderTopThickness}px`,
+            media: 'desktop'
+          });
+        }
       }
 
       // Sub level background color
@@ -475,13 +486,6 @@ export default class GmStyles {
         '.gm-navbar .gm-search': 'transition: height 0.2s, line-height 0.2s;',
         media: 'desktop'
       });
-
-      if (settings.subLevelBorderTopColor !== '') {
-        css.push({
-          '.gm-main-menu-wrapper .gm-dropdown-submenu .gm-dropdown-menu-wrapper': 'top: -3px;',
-          media: 'desktop'
-        });
-      }
 
       // Appearance Styles
       if (settings.dropdownAppearanceStyle === 'animate-from-bottom') {
@@ -977,12 +981,23 @@ export default class GmStyles {
       }
 
       if (settings.subLevelBorderTopColor) {
-        const color = settings.subLevelBorderTopColor;
+        const {
+          subLevelBorderTopThickness: borderTopThickness,
+          subLevelBorderTopStyle: borderTopStyle,
+          subLevelBorderTopColor: borderTopColor,
+          subLevelBorderTopShift: borderTopShift,
+        } = settings;
 
         css.push({
-          '.gm-main-menu-wrapper .gm-navbar-nav .gm-dropdown-menu': `border-top: 3px solid ${color}`,
+          '.gm-main-menu-wrapper .gm-navbar-nav .gm-dropdown-menu': `border-top: ${borderTopThickness}px ${borderTopStyle} ${borderTopColor}`,
           media: 'desktop'
         });
+        if (!borderTopShift) {
+          css.push({
+            '.gm-main-menu-wrapper .gm-navbar-nav .gm-dropdown-submenu .gm-dropdown-menu-wrapper': `margin-top: -${borderTopThickness}px`,
+            media: 'desktop'
+          });
+        }
       }
 
       // Sub level background color

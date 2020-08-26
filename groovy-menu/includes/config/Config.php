@@ -422,7 +422,7 @@ return array(
 				'default'   => 'default',
 				'condition' => array( 'header.style', 'in', array( '1' ) ),
 			),
-			'dropdown_appearance_style' => array(
+			'dropdown_appearance_style'                    => array(
 				'title'     => esc_html__( 'Submenu appearance style', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
@@ -464,6 +464,43 @@ return array(
 			'submenu_border_end'                           => array(
 				'type' => 'inlineEnd'
 			),
+			'sub_level_border_top_color_start'             => array(
+				'title' => esc_html__( 'Submenu box border top color', 'groovy-menu' ),
+				'type'  => 'inlineStart',
+			),
+			'sub_level_border_top_style'                   => array(
+				'title'   => esc_html__( 'style', 'groovy-menu' ),
+				'type'    => 'select',
+				'options' => array(
+					'solid'  => esc_html__( 'Solid', 'groovy-menu' ),
+					'dashed' => esc_html__( 'Dashed', 'groovy-menu' ),
+					'dotted' => esc_html__( 'Dotted', 'groovy-menu' ),
+				),
+				'default' => 'solid',
+			),
+			'sub_level_border_top_thickness'               => array(
+				'title'   => esc_html__( 'thickness', 'groovy-menu' ),
+				'type'    => 'number',
+				'range'   => array( 0, 10 ),
+				'default' => 3,
+				'unit'    => 'px',
+			),
+			'sub_level_border_top_color'                   => array(
+				'title'   => esc_html__( 'color', 'groovy-menu' ),
+				'type'    => 'colorpicker',
+				'default' => '#93cb52',
+				'alpha'   => true,
+			),
+			'sub_level_border_top_color_end'               => array(
+				'type' => 'inlineEnd'
+			),
+			'sub_level_border_top_shift'                   => array(
+				'title'       => esc_html__( 'Shift down the submenu at the height of the top border thickness', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'checkbox',
+				'default'     => true,
+				'condition'   => array( 'header.style', 'in', array( '1', '4' ) ),
+			),
 			'sub_level_text_color'                         => array(
 				'title'   => esc_html__( 'Submenu text color', 'groovy-menu' ),
 				'type'    => 'colorpicker',
@@ -478,12 +515,6 @@ return array(
 			),
 			'sub_level_text_active_color'                  => array(
 				'title'   => esc_html__( 'Submenu active link text color', 'groovy-menu' ),
-				'type'    => 'colorpicker',
-				'default' => '#93cb52',
-				'alpha'   => true,
-			),
-			'sub_level_border_top_color'                   => array(
-				'title'   => esc_html__( 'Submenu box border top color', 'groovy-menu' ),
 				'type'    => 'colorpicker',
 				'default' => '#93cb52',
 				'alpha'   => true,
