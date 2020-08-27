@@ -2291,6 +2291,72 @@ export default class GmStyles {
           '.gm-search__fullscreen-container': `background-color: ${settings.searchFormFullscreenBackground}`
         });
       }
+
+
+      // Search element styles -----------------------------------------------------------------------------------------
+
+      if (settings.searchFormCloseIconColor) {
+        css.push({
+          '.gm-search__fullscreen-container .gm-search__close svg': `fill: ${settings.searchFormCloseIconColor}`
+        });
+      }
+
+      if (settings.searchFormIconColor) {
+        css.push({
+          '.gm-search__fullscreen-container .gm-search-btn': `color: ${settings.searchFormIconColor} !important`,
+          '.gm-search:not(.fullscreen) .gm-search-btn': `color: ${settings.searchFormIconColor} !important`,
+        });
+      }
+
+      if (settings.searchFormIconColorHover) {
+        css.push({
+          '.gm-search__fullscreen-container .gm-search-btn:hover': `color: ${settings.searchFormIconColorHover} !important`,
+          '.gm-search:not(.fullscreen) .gm-search-btn:hover': `color: ${settings.searchFormIconColorHover} !important`,
+        });
+      }
+
+      if (settings.searchFormDropdownBackground) {
+        css.push({
+          '.gm-search:not(.fullscreen) .gm-search-wrapper': `background: ${settings.searchFormDropdownBackground}`,
+        });
+      }
+
+      if (settings.searchFormInputFieldBackground) {
+        css.push({
+          '.gm-search__fullscreen-container .gm-search__input[type="text"]': `background: ${settings.searchFormInputFieldBackground}`,
+          '.gm-search__fullscreen-container .gm-search-btn': `background: ${settings.searchFormInputFieldBackground} !important`,
+          '.gm-search:not(.fullscreen) .gm-search__input': `background: ${settings.searchFormInputFieldBackground}`,
+        });
+      }
+
+      if (settings.searchFormInputFieldColor) {
+        css.push({
+          '.gm-search__fullscreen-container .gm-search__input[type="text"]': `color: ${settings.searchFormInputFieldColor}`,
+          '.gm-search__fullscreen-container .gm-search__alpha': `color: ${settings.searchFormInputFieldColor}`,
+          '.gm-search:not(.fullscreen) .gm-search__input': `color: ${settings.searchFormInputFieldColor}`,
+        });
+      }
+
+      if (settings.searchFormSideBorderStyle) {
+        css.push({
+          '.gm-search:not(.fullscreen) .gm-search-wrapper': `border-right: ${settings.searchFormSideBorderThickness}px ${settings.searchFormSideBorderStyle} ${settings.searchFormSideBorderColor}`,
+          '.gm-search__fullscreen-container .gm-search__input[type="text"]': `border-bottom: ${settings.searchFormSideBorderThickness}px ${settings.searchFormSideBorderStyle} ${settings.searchFormSideBorderColor}`,
+          '.gm-search__fullscreen-container .gm-search-btn': `border-bottom: ${settings.searchFormSideBorderThickness}px ${settings.searchFormSideBorderStyle} ${settings.searchFormSideBorderColor} !important`,
+        });
+      }
+
+      if (settings.searchFormDropdownBtnBackground) {
+        css.push({
+          '.gm-search:not(.fullscreen) .gm-search-btn': `background: ${settings.searchFormDropdownBtnBackground}`,
+        });
+      }
+
+      if (settings.searchFormDropdownBtnHover) {
+        css.push({
+          '.gm-search:not(.fullscreen) .gm-search-btn:hover': `background: ${settings.searchFormDropdownBtnHover}`,
+        });
+      }
+
     }
 
     // Top level text color
