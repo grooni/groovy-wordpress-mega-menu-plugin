@@ -54,7 +54,7 @@ export default class GmStyles {
       : 1;
 
     let headerToolbar = settings.header.toolbar;
-    
+
     // z-index param
     if (settings.menuZIndex > 0) {
       const menuZIndex = settings.menuZIndex;
@@ -2454,28 +2454,44 @@ export default class GmStyles {
     }
 
     // Mobile logo position
-    if (settings.mobileLogoPosition === 'left') {
+    if (settings.mobileLogoPosition !== 'default') {
+      const {
+        mobileLogoMarginTop,
+        mobileLogoMarginRight,
+        mobileLogoMarginBottom,
+        mobileLogoMarginLeft,
+      } = settings;
 
       css.push({
-        '.gm-navbar .gm-container .gm-logo': 'flex-grow: 1; justify-content: flex-start;',
+        '.gm-navbar .gm-logo > a': `position: absolute; margin: ${mobileLogoMarginTop}px ${mobileLogoMarginRight}px ${mobileLogoMarginBottom}px ${mobileLogoMarginLeft}px;`,
         media: 'mobile'
       });
 
-    } else if (settings.mobileLogoPosition === 'center') {
+      if (settings.mobileLogoPosition === 'left') {
 
-      css.push({
-        '.gm-navbar .gm-container .gm-logo': 'flex-grow: 1; justify-content: space-around;',
-        media: 'mobile'
-      });
+        css.push({
+          '.gm-navbar .gm-container .gm-logo': 'flex-grow: 1; justify-content: flex-start;',
+          media: 'mobile'
+        });
 
-    } else if (settings.mobileLogoPosition === 'right') {
+      } else if (settings.mobileLogoPosition === 'center') {
 
-      css.push({
-        '.gm-navbar .gm-container .gm-logo': 'flex-grow: 1; justify-content: flex-end;',
-        media: 'mobile'
-      });
+        css.push({
+          '.gm-navbar .gm-container .gm-logo': 'flex-grow: 1; justify-content: space-around;',
+          media: 'mobile'
+        });
+
+      } else if (settings.mobileLogoPosition === 'right') {
+
+        css.push({
+          '.gm-navbar .gm-container .gm-logo': 'flex-grow: 1; justify-content: flex-end;',
+          media: 'mobile'
+        });
+
+      }
 
     }
+
 
     // Mobile Side icon position
     if (settings.mobileSideIconPosition === 'left') {
