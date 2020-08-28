@@ -1835,7 +1835,7 @@ export default class GmStyles {
 
     if (settings.header.style !== 3) {
       if (settings.bottomBorderColor) {
-        let bottomBorderThickness = settings.bottomBorderThickness;
+        let bottomBorderThickness = Number(settings.bottomBorderThickness);
 
         if (!bottomBorderThickness) {
           bottomBorderThickness = 0;
@@ -2338,8 +2338,13 @@ export default class GmStyles {
       }
 
       if (settings.searchFormSideBorderStyle) {
+        let searchFormSideBorderThickness = Number(settings.searchFormSideBorderThickness);
+        if (!searchFormSideBorderThickness) {
+          searchFormSideBorderThickness = 0;
+        }
+
         css.push({
-          '.gm-search:not(.fullscreen) .gm-search-wrapper': `border-right: ${settings.searchFormSideBorderThickness}px ${settings.searchFormSideBorderStyle} ${settings.searchFormSideBorderColor}`,
+          '.gm-search:not(.fullscreen) .gm-search-wrapper': `border-right: ${searchFormSideBorderThickness}px ${settings.searchFormSideBorderStyle} ${settings.searchFormSideBorderColor}`,
           '.gm-search__fullscreen-container .gm-search__input[type="text"]': `border-bottom: ${settings.searchFormSideBorderThickness}px ${settings.searchFormSideBorderStyle} ${settings.searchFormSideBorderColor}`,
           '.gm-search__fullscreen-container .gm-search-btn': `border-bottom: ${settings.searchFormSideBorderThickness}px ${settings.searchFormSideBorderStyle} ${settings.searchFormSideBorderColor} !important`,
         });
@@ -2432,9 +2437,78 @@ export default class GmStyles {
       css.push({
         '.gm-navigation-drawer .gm-anchor, .gm-navigation-drawer .gm-mega-menu__item__title': `color: ${settings.responsiveNavigationTextColor} !important`
       });
+    }
+    if (settings.mobileItemsBorderStyle) {
+      let mobileItemsBorderThickness = Number(settings.mobileItemsBorderThickness);
+      if (!mobileItemsBorderThickness) {
+        mobileItemsBorderThickness = 0;
+      }
 
       css.push({
-        '.gm-navigation-drawer .gm-anchor, .gm-navigation-drawer .gm-mega-menu__item__title, .gm-navigation-drawer .gm-divider--vertical': `border-color: ${settings.responsiveNavigationTextColor}`
+        '.gm-navigation-drawer .gm-anchor, .gm-navigation-drawer .gm-mega-menu__item__title': `border-bottom: ${mobileItemsBorderThickness}px ${settings.mobileItemsBorderStyle} ${settings.mobileItemsBorderColor}`
+      });
+
+      css.push({
+        '.gm-navigation-drawer .gm-divider--vertical': `border-color: ${settings.mobileItemsBorderColor}`
+      });
+    }
+
+    // Mobile logo position
+    if (settings.mobileLogoPosition === 'left') {
+
+      css.push({
+        '.gm-navbar .gm-container .gm-logo': 'flex-grow: 1; justify-content: flex-start;',
+        media: 'mobile'
+      });
+
+    } else if (settings.mobileLogoPosition === 'center') {
+
+      css.push({
+        '.gm-navbar .gm-container .gm-logo': 'flex-grow: 1; justify-content: space-around;',
+        media: 'mobile'
+      });
+
+    } else if (settings.mobileLogoPosition === 'right') {
+
+      css.push({
+        '.gm-navbar .gm-container .gm-logo': 'flex-grow: 1; justify-content: flex-end;',
+        media: 'mobile'
+      });
+
+    }
+
+    // Mobile Side icon position
+    if (settings.mobileSideIconPosition === 'left') {
+
+      css.push({
+        '.gm-navbar .gm-container': 'flex-direction: row-reverse !important;',
+        media: 'mobile'
+      });
+
+    } else if (settings.mobileSideIconPosition === 'right') {
+
+      css.push({
+        '.gm-navbar .gm-container': 'flex-direction: row !important;',
+        media: 'mobile'
+      });
+
+    }
+
+    // mobile toolbar icon colors
+    if (settings.mobileToolbarIconColor) {
+      css.push({
+        '.gm-navigation-drawer .gm-search, .gm-navigation-drawer .gm-minicart': `color: ${settings.mobileToolbarIconColor} !important;`,
+        media: 'mobile'
+      });
+    }
+
+    // mobile_caret_custom_color
+    if (settings.mobileCaretCustomColor) {
+      css.push({
+        '.gm-navigation-drawer .gm-caret': `color: ${settings.mobileCaretCustomColorTop};`,
+        '.gm-navigation-drawer .gm-dropdown-menu-wrapper .gm-caret': `color: ${settings.mobileCaretCustomColorSub};`,
+        '.gm-navigation-drawer .gm-anchor:hover .gm-caret, .gm-navigation-drawer li.current-menu-parent > .gm-anchor .gm-caret, .gm-navigation-drawer li.current-menu-item > .gm-anchor .gm-caret': `color: ${settings.mobileCaretCustomColorCurrent};`,
+        media: 'mobile'
       });
     }
 
