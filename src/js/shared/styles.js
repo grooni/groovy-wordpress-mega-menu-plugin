@@ -401,7 +401,7 @@ export default class GmStyles {
           });
 
           css.push({
-            '.gm-navbar--has-divider .gm-navbar-nav > li:not(:last-of-type) > .gm-anchor::before': `right: -${gutterSpace}px`,
+            '.gm-navbar--has-divider .gm-navbar-nav > li:not(:last-of-type) > .gm-anchor::before': `right: -${gutterSpace}px !important;`,
             media: 'desktop'
           });
         } else {
@@ -2374,7 +2374,7 @@ export default class GmStyles {
       css.push({
         '.gm-navbar:not(.gm-navbar-sticky-toggle) .gm-main-menu-wrapper .gm-nav-inline-divider': `background-color: ${settings.topLevelTextColor}`,
         '.gm-navbar--has-divider .gm-navbar-nav > li:not(:last-of-type) > .gm-anchor': 'position: relative;',
-        '.gm-navbar--has-divider .gm-navbar-nav > li:not(:last-of-type) > .gm-anchor::before': 'position: absolute; width: 1px; height: 30px; opacity: 0.33; content: ""; top: 50%; transform: translateY(-50%);',
+        '.gm-navbar--has-divider .gm-navbar-nav > li:not(:last-of-type) > .gm-anchor::before': 'position: absolute; width: 1px; height: 30px; opacity: 0.25; content: ""; top: 50%; right: 0; transform: translateY(-50%);',
         '.gm-navbar:not(.gm-navbar-sticky-toggle).gm-navbar--has-divider .gm-main-menu-wrapper .gm-navbar-nav > li:not(:last-of-type) > .gm-anchor::before': `background-color: ${settings.topLevelTextColor}`,
         media: 'desktop'
       });
@@ -2388,10 +2388,18 @@ export default class GmStyles {
         }
         if (settings.mobileHeaderHeight) {
           css.push({
-            '.gm-navbar-sticky-toggle.gm-navbar--has-divider .gm-navbar-nav > li:not(:last-of-type) > .gm-anchor::before': `height: ${settings.mobileHeaderHeight}px;`,
+            '.gm-navbar-sticky-toggle.gm-navbar--has-divider .gm-navbar-nav > li:not(:last-of-type) > .gm-anchor::before': `height: ${settings.mobileHeaderHeight}px; max-height: 100%;`,
             media: 'desktop'
           });
         }
+
+        if (hoverStyleNumber === 2 || hoverStyleNumber === 3 || hoverStyleNumber === 7) {
+          css.push({
+            '.gm-navbar--has-divider .gm-navbar-nav > li:not(:last-of-type) > .gm-anchor::before': 'max-height: 100%;',
+            media: 'desktop'
+          });
+        }
+
       }
 
     }
