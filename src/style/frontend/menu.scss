@@ -255,21 +255,6 @@ NAVBAR GENERAL STYLES
   align-items: center;
 }
 
-.gm-navbar--has-divider .gm-navbar-nav > li:not(:last-of-type) > .gm-anchor {
-  position: relative;
-
-  &::before {
-    position: absolute;
-    width: 1px;
-    height: 30px;
-    opacity: 0.4;
-    content: '';
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-}
-
 .gm-menu-item__txt-wrapper {
   position: relative;
   display: flex;

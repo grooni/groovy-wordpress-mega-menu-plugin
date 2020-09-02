@@ -222,14 +222,33 @@ return array(
 					array( 'header.style', 'in', array( '1' ) )
 				),
 			),
+			'show_divider_between_menu_links_start'        => array(
+				'title'     => esc_html__( 'Show divider between menu links', 'groovy-menu' ),
+				'type'      => 'inlineStart',
+				'condition' => array( 'header.style', 'in', array( '1' ) ),
+			),
 			'show_divider_between_menu_links'              => array(
-				'title'       => esc_html__( 'Show divider between menu links', 'groovy-menu' ),
+				'title'       => esc_html__( 'Show', 'groovy-menu' ),
 				'description' => '',
 				'type'        => 'checkbox',
 				'default'     => false,
 				'condition'   => array(
 					array( 'header.style', 'in', array( '1' ) )
 				),
+			),
+			'show_divider_between_menu_links_wide'         => array(
+				'title'       => esc_html__( 'Stretch to all menu height', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'checkbox',
+				'default'     => false,
+				'condition'   => array(
+					array( 'header.style', 'in', array( '1' ) ),
+					array( 'show_divider_between_menu_links', '==', true ),
+				),
+			),
+			'show_divider_between_menu_links_end'          => array(
+				'type'      => 'inlineEnd',
+				'condition' => array( 'header.style', 'in', array( '1' ) ),
 			),
 			'show_top_lvl_and_submenu_icons'               => array(
 				'title'       => esc_html__( 'Hide icons at top level menu and submenu',
@@ -512,12 +531,6 @@ return array(
 			),
 			'sub_item_text_end'                            => array(
 				'type' => 'inlineEnd'
-			),
-			'shadow_dropdown'                              => array(
-				'title'       => esc_html__( 'Submenu shadow', 'groovy-menu' ),
-				'description' => '',
-				'type'        => 'checkbox',
-				'default'     => false,
 			),
 			'megamenu_group'                               => array(
 				'title'     => esc_html__( 'Mega menu', 'groovy-menu' ),
@@ -1561,6 +1574,12 @@ return array(
 				'description' => '',
 				'type'        => 'checkbox',
 				'default'     => true,
+			),
+			'shadow_dropdown'                           => array(
+				'title'       => esc_html__( 'Submenu shadow', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'checkbox',
+				'default'     => false,
 			),
 			'toolbar_group'                             => array(
 				'type'      => 'group',
