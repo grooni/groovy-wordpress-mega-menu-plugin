@@ -2121,9 +2121,10 @@ return array(
 				'default' => 'default',
 			),
 			'mobile_show_woominicart'                => array(
-				'title'   => esc_html__( 'Show', 'groovy-menu' ) . ' ' . esc_html__( 'Woo minicart', 'groovy-menu' ),
-				'type'    => 'checkbox',
-				'default' => false,
+				'title'       => esc_html__( 'Show', 'groovy-menu' ) . ' ' . esc_html__( 'Woo minicart', 'groovy-menu' ),
+				'description' => esc_html__( 'You can change the icon color in the [Styles] - [Side Icon] section.', 'groovy-menu' ),
+				'type'        => 'checkbox',
+				'default'     => false,
 			),
 
 			// ------------------------------------------------------------------------------ Colors
