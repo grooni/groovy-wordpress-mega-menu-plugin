@@ -3513,6 +3513,8 @@ export default class GmStyles {
 
         css.push({
           '.gm-navbar-sticky-toggle .gm-menu-btn__inner': `color: ${color};`,
+          '.gm-navbar-sticky-toggle .gm-menu-actions-wrapper a': `color: ${color};`,
+          '.gm-navbar-sticky-toggle .gm-menu-actions-wrapper a.gm-minicart-link': `color: ${color} !important;`,
           media: 'mobile'
         });
       }
