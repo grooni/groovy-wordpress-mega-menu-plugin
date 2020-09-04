@@ -532,6 +532,84 @@ return array(
 			'sub_item_text_end'                            => array(
 				'type' => 'inlineEnd'
 			),
+			'sub_dropdown_radius_start'                    => array(
+				'title'     => esc_html__( 'Dropdown radius', 'groovy-menu' ),
+				'type'      => 'inlineStart',
+				'condition' => array( 'header.style', 'in', array( '1', '4' ) ),
+			),
+			'sub_dropdown_radius'                          => array(
+				'title'       => esc_html__( 'switch', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'checkbox',
+				'default'     => false,
+				'condition'   => array( 'header.style', 'in', array( '1', '4' ) ),
+			),
+			'sub_dropdown_radius_1'                        => array(
+				'title'     => esc_html__( 'top left', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( 0, 1000 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'header.style', 'in', array( '1', '4' ) ),
+					array( 'sub_dropdown_radius', '==', true ),
+				),
+			),
+			'sub_dropdown_radius_2'                        => array(
+				'title'     => esc_html__( 'top right', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( 0, 1000 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'header.style', 'in', array( '1', '4' ) ),
+					array( 'sub_dropdown_radius', '==', true ),
+				),
+			),
+			'sub_dropdown_radius_4'                        => array(
+				'title'     => esc_html__( 'bottom left', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( 0, 1000 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'header.style', 'in', array( '1', '4' ) ),
+					array( 'sub_dropdown_radius', '==', true ),
+				),
+			),
+			'sub_dropdown_radius_3'                        => array(
+				'title'     => esc_html__( 'bottom right', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( 0, 1000 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'header.style', 'in', array( '1', '4' ) ),
+					array( 'sub_dropdown_radius', '==', true ),
+				),
+			),
+			'sub_dropdown_radius_end'                      => array(
+				'type'      => 'inlineEnd',
+				'condition' => array( 'header.style', 'in', array( '1', '4' ) ),
+			),
+			'dropdown_margin'                              => array(
+				'title'       => esc_html__( 'Dropdown gap', 'groovy-menu' ),
+				'description' => esc_html__( 'Gap between Main menu and Dropdown menu', 'groovy-menu' ),
+				'type'        => 'number',
+				'range'       => array( 0, 100 ),
+				'default'     => 0,
+				'unit'        => 'px',
+				'condition'   => array( 'header.style', 'in', array( '1' ) ),
+			),
+			'sub_dropdown_margin'                          => array(
+				'title'       => esc_html__( 'Submenu gap', 'groovy-menu' ),
+				'description' => esc_html__( 'Gap beside Dropdown menu and Submenu', 'groovy-menu' ),
+				'type'        => 'number',
+				'range'       => array( 0, 100 ),
+				'default'     => 0,
+				'unit'        => 'px',
+				'condition'   => array( 'header.style', 'in', array( '1' ) ),
+			),
 			'megamenu_group'                               => array(
 				'title'     => esc_html__( 'Mega menu', 'groovy-menu' ),
 				'type'      => 'group',
@@ -682,6 +760,15 @@ return array(
 				'type'      => 'checkbox',
 				'default'   => false,
 				'condition' => array( 'header.style', 'in', array( '1' ) ),
+			),
+			'mega_menu_dropdown_margin'                    => array(
+				'title'       => esc_html__( 'Mega menu gap', 'groovy-menu' ),
+				'description' => esc_html__( 'Gap between Main menu and Mega menu', 'groovy-menu' ),
+				'type'        => 'number',
+				'range'       => array( 0, 100 ),
+				'default'     => 0,
+				'unit'        => 'px',
+				'condition'   => array( 'header.style', 'in', array( '1' ) ),
 			),
 			'scrollbar_group'                              => array(
 				'title'     => esc_html__( 'Scrollbar', 'groovy-menu' ),

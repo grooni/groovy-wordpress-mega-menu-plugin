@@ -417,6 +417,45 @@ export default class GmStyles {
         }
       }
 
+      // Submenu border radius.
+      if (settings.subDropdownRadius) {
+        const topLeft = settings.subDropdownRadius1;
+        const topRight = settings.subDropdownRadius2;
+        const bottomRight = settings.subDropdownRadius3;
+        const bottomLeft = settings.subDropdownRadius4;
+
+        css.push({
+          '.gm-main-menu-wrapper .gm-dropdown-menu': `border-radius: ${topLeft}px ${topRight}px ${bottomRight}px ${bottomLeft}px`,
+          media: 'desktop'
+        });
+
+      }
+
+      // Dropdown margin.
+      if (settings.dropdownMargin) {
+        css.push({
+          '.gm-main-menu-wrapper .gm-navbar-nav > .gm-dropdown:not(.mega-gm-dropdown) > .gm-dropdown-menu-wrapper': `margin-top: ${settings.dropdownMargin}px`,
+          media: 'desktop'
+        });
+      }
+
+      // Sub-Dropdown margin.
+      if (settings.subDropdownMargin) {
+        css.push({
+          '.gm-main-menu-wrapper .gm-navbar-nav .gm-dropdown-submenu > .gm-dropdown-menu-wrapper:not(.gm-dropdown-menu-wrapper--left)': `margin-left: ${settings.subDropdownMargin}px`,
+          '.gm-main-menu-wrapper .gm-navbar-nav .gm-dropdown-submenu > .gm-dropdown-menu-wrapper--left': `margin-right: ${settings.subDropdownMargin}px`,
+          media: 'desktop'
+        });
+      }
+
+      // Mega menu margin.
+      if (settings.megaMenuDropdownMargin) {
+        css.push({
+          '.gm-main-menu-wrapper .gm-navbar-nav > .mega-gm-dropdown > .gm-dropdown-menu-wrapper > .gm-dropdown-menu': `margin-top: ${settings.megaMenuDropdownMargin}px`,
+          media: 'desktop'
+        });
+      }
+
       if (settings.logoType !== 'no') {
         css.push({
           '.gm-navbar .gm-logo': `margin: ${logoMarginTop}px ${logoMarginRight}px ${logoMarginBottom}px ${logoMarginLeft}px;`,
@@ -1275,6 +1314,20 @@ export default class GmStyles {
           '.gm-dropdown-appearance-animate-from-bottom .gm-navbar-nav > .gm-menu-item.gm-open > .gm-anchor > .gm-menu-item__txt-wrapper': 'transform: translateY(0)',
           media: 'desktop'
         });
+      }
+
+      // Submenu border radius.
+      if (settings.subDropdownRadius) {
+        const topLeft = settings.subDropdownRadius1;
+        const topRight = settings.subDropdownRadius2;
+        const bottomRight = settings.subDropdownRadius3;
+        const bottomLeft = settings.subDropdownRadius4;
+
+        css.push({
+          '.gm-main-menu-wrapper .gm-dropdown-menu': `border-radius: ${topLeft}px ${topRight}px ${bottomRight}px ${bottomLeft}px`,
+          media: 'desktop'
+        });
+
       }
 
     }
