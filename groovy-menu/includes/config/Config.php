@@ -775,18 +775,18 @@ return array(
 				'type'      => 'group',
 				'serialize' => false,
 			),
-			'scrollbar_enable'             => array(
+			'scrollbar_enable'                             => array(
 				'title'       => esc_html__( 'Enable internal submenus scrollbar', 'groovy-menu' ),
 				'type'        => 'checkbox',
 				'default'     => true,
 				'description' => esc_html__( 'Enable scrolling for long lists of submenus and mega menus', 'groovy-menu' ),
 			),
-			'scroll_speed_settings'        => array(
+			'scroll_speed_settings'                        => array(
 				'title'   => esc_html__( 'Custom scroll speed options', 'groovy-menu' ),
 				'type'    => 'checkbox',
 				'default' => false,
 			),
-			'scroll_speed_settings_main'   => array(
+			'scroll_speed_settings_main'                   => array(
 				'title'       => esc_html__( 'Scroll Speed', 'groovy-menu' ),
 				'description' => esc_html__( 'Amount of time in milliseconds it should take to scroll 1000px', 'groovy-menu' ),
 				'type'        => 'number',
@@ -795,7 +795,7 @@ return array(
 				'unit'        => 'ms',
 				'condition'   => array( 'scroll_speed_settings', '==', true ),
 			),
-			'scroll_speed_settings_min'    => array(
+			'scroll_speed_settings_min'                    => array(
 				'title'       => esc_html__( 'Minimum', 'groovy-menu' ) . ' ' . esc_html__( 'Scroll Speed', 'groovy-menu' ),
 				'description' => esc_html__( 'The minimum amount of time the scroll animation should take', 'groovy-menu' ),
 				'type'        => 'number',
@@ -804,7 +804,7 @@ return array(
 				'unit'        => 'ms',
 				'condition'   => array( 'scroll_speed_settings', '==', true ),
 			),
-			'scroll_speed_settings_max'    => array(
+			'scroll_speed_settings_max'                    => array(
 				'title'       => esc_html__( 'Maximum', 'groovy-menu' ) . ' ' . esc_html__( 'Scroll Speed', 'groovy-menu' ),
 				'description' => esc_html__( 'The maximum amount of time the scroll animation should take', 'groovy-menu' ),
 				'type'        => 'number',
@@ -813,10 +813,11 @@ return array(
 				'unit'        => 'ms',
 				'condition'   => array( 'scroll_speed_settings', '==', true ),
 			),
-			'scroll_speed_settings_easing' => array(
-				'title'     => esc_html__( 'Scroll easing pattern to use', 'groovy-menu' ),
-				'type'      => 'select',
-				'options'   => array(
+			'scroll_speed_settings_easing'                 => array(
+				'title'       => esc_html__( 'Scroll easing pattern to use', 'groovy-menu' ),
+				'description' => esc_html__( 'Linear Moves at the same speed from start point to end point. Ease-In Gradually increases in speed. Ease-In-Out Gradually increases in speed, peaks, and then gradually slows down. Ease-Out Gradually decreases in speed.', 'groovy-menu' ),
+				'type'        => 'select',
+				'options'     => array(
 					'Linear'         => esc_html__( 'Linear', 'groovy-menu' ),
 					'easeInQuad'     => esc_html__( 'Ease-In Quad', 'groovy-menu' ),
 					'easeInCubic'    => esc_html__( 'Ease-In Cubic', 'groovy-menu' ),
@@ -831,8 +832,8 @@ return array(
 					'easeOutQuart'   => esc_html__( 'Ease-Out Quart', 'groovy-menu' ),
 					'easeOutQuint'   => esc_html__( 'Ease-Out Quint', 'groovy-menu' ),
 				),
-				'default'   => 'easeInOutQuad',
-				'condition' => array( 'scroll_speed_settings', '==', true ),
+				'default'     => 'easeInOutQuad',
+				'condition'   => array( 'scroll_speed_settings', '==', true ),
 			),
 			'search_group'                                 => array(
 				'title'     => esc_html__( 'Search', 'groovy-menu' ),
