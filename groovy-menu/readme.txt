@@ -2,9 +2,9 @@
 Contributors: Grooni
 Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive, responsive menu, sticky menu, vertical menu, horizontal menu, ajax cart
 Requires at least: 4.9.7
-Tested up to: 5.5
+Tested up to: 5.5.1
 Requires PHP: 7.0
-Stable tag: 1.2.4
+Stable tag: 1.2.5
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -115,6 +115,20 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.2.5 =
+* Add: New feature to set border radius for Dropdown menu.
+* Add: New ability to set gap for Dropdown menu, Sub-menu and Mega Menu.
+* Add: Added new setting for menu dividers "Stretch to all menu height".
+* Add: Added settings for choosing colors for search items.
+* Add: Added new settings for the mobile menu. Choosing the position of the logo, dividing lines, icons color.
+* Add: Added new settings for "Submenu box border top color".
+* Improve: Increased dropdown click area at the mobile menu.
+* Improve: All Search settings are moved to their own section.
+* Improve: The section of the "Mobile menu" preset has been reorganized.
+* Fix: Fixed menu items highlighting in case the current single page is included in several taxonomies presented in the menu.
+* Fix: Fixed bug with position of icons in Groovy Menu UI.
+* Fix: Fixed expanding sub-menu for mobile version.
 
 = 1.2.4 =
 * Fix: Fixed RTL issue.

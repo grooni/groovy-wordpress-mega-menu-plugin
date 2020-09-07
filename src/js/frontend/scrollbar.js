@@ -50,11 +50,9 @@ function isVerticalMenu (settings) {
 }
 
 function getSubmenuDropdownRect (menuItem, settings, scrollbars) {
-  let dropdownMenu = document.querySelector('.gm-main-menu-wrapper .gm-dropdown-toggle');
-  let dropdownMenuBorderWidth = getComputedStyle(dropdownMenu)['borderTopWidth'] || 0;
   let closestdropdownMenuPs = menuItem.closest('.gm-dropdown-menu.ps');
   let psId = closestdropdownMenuPs.getAttribute('data-ps-id');
-  let top = menuItem.offsetTop - parseInt(dropdownMenuBorderWidth, 10) - scrollbars[psId].lastScrollTop;
+  let top = menuItem.offsetTop - scrollbars[psId].lastScrollTop;
 
   if (top < 0) {
     top = 0;

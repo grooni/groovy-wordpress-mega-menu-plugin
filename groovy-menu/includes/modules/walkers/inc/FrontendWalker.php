@@ -94,6 +94,12 @@ class FrontendWalker extends WalkerNavMenu {
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		global $groovyMenuSettings;
+
+		// Reset MegaMenu param if menu-item on the top level.
+		if ( 0 === $depth ) {
+			$this->isMegaMenu = false;
+		}
+
 		$item_output   = '';
 		$hiding_symbol = array( '-', '–', '&#8211;' );
 

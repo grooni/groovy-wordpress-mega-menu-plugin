@@ -131,73 +131,6 @@ return array(
 				'range'       => array( 0, 2000 ),
 				'unit'        => 'px',
 			),
-			'search_form_start'                            => array(
-				'title' => esc_html__( 'Search form type', 'groovy-menu' ),
-				'type'  => 'inlineStart',
-			),
-			'search_form'                                  => array(
-				'title'       => esc_html__( 'Select a type of the search form', 'groovy-menu' ),
-				'description' => '',
-				'type'        => 'select',
-				'options'     => array(
-					'dropdown-without-ajax' => array(
-						'title'     => esc_html__( 'Dropdown', 'groovy-menu' ),
-						'condition' => array( 'header.style', 'in', array( '1' ) )
-					),
-					'fullscreen'            => esc_html__( 'Fullscreen', 'groovy-menu' ),
-					'disable'               => esc_html__( 'Disable', 'groovy-menu' ),
-				),
-				'default'     => 'fullscreen',
-			),
-			'search_form_from'                             => array(
-				'title'       => esc_html__( 'Filter search result by', 'groovy-menu' ),
-				'description' => '',
-				'type'        => 'select',
-				'options'     => array_merge( array(
-					'all' => array(
-						'title' => esc_html__( 'Search in all post types', 'groovy-menu' ),
-					),
-				), GroovyMenuUtils::getPostTypesForSearch() ),
-				'condition'   => array( 'search_form', 'in', array( 'fullscreen', 'dropdown-without-ajax' ) ),
-				'default'     => 'all',
-			),
-			'search_form_end'                              => array(
-				'type' => 'inlineEnd'
-			),
-			'search_form_fullscreen_background'            => array(
-				'title'       => esc_html__( 'Canvas background color for fullscreen search wrapper', 'groovy-menu' ),
-				'description' => esc_html__( 'Also applicable for mobile screen resolutions', 'groovy-menu' ),
-				'type'        => 'colorpicker',
-				'default'     => 'rgba(0,0,0,0.85)',
-				'alpha'       => true,
-				'condition'   => array(
-					array( 'search_form', 'in', array( 'dropdown-without-ajax', 'fullscreen', 'custom' ) )
-				)
-			),
-			'search_form_icon_start'                       => array(
-				'title'     => esc_html__( 'Search form icon size', 'groovy-menu' ),
-				'type'      => 'inlineStart',
-				'condition' => array( 'search_form', 'in', array( 'fullscreen', 'dropdown-without-ajax' ) )
-			),
-			'search_form_icon_size_desktop'                => array(
-				'title'       => esc_html__( 'Desktop icon size', 'groovy-menu' ),
-				'description' => '',
-				'type'        => 'number',
-				'default'     => '17',
-				'range'       => array( 10, 50 ),
-				'unit'        => 'px',
-			),
-			'search_form_icon_size_mobile'                 => array(
-				'title'       => esc_html__( 'Mobile icon size', 'groovy-menu' ),
-				'description' => '',
-				'type'        => 'number',
-				'default'     => '17',
-				'range'       => array( 10, 50 ),
-				'unit'        => 'px',
-			),
-			'search_form_icon_end'                         => array(
-				'type' => 'inlineEnd'
-			),
 			'woocommerce_cart_start'                       => array(
 				'title' => esc_html__( 'Show WooCommerce minicart', 'groovy-menu' ),
 				'type'  => 'inlineStart'
@@ -289,14 +222,33 @@ return array(
 					array( 'header.style', 'in', array( '1' ) )
 				),
 			),
+			'show_divider_between_menu_links_start'        => array(
+				'title'     => esc_html__( 'Show divider between menu links', 'groovy-menu' ),
+				'type'      => 'inlineStart',
+				'condition' => array( 'header.style', 'in', array( '1' ) ),
+			),
 			'show_divider_between_menu_links'              => array(
-				'title'       => esc_html__( 'Show divider between menu links', 'groovy-menu' ),
+				'title'       => esc_html__( 'Show', 'groovy-menu' ),
 				'description' => '',
 				'type'        => 'checkbox',
 				'default'     => false,
 				'condition'   => array(
 					array( 'header.style', 'in', array( '1' ) )
 				),
+			),
+			'show_divider_between_menu_links_wide'         => array(
+				'title'       => esc_html__( 'Stretch to all menu height', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'checkbox',
+				'default'     => false,
+				'condition'   => array(
+					array( 'header.style', 'in', array( '1' ) ),
+					array( 'show_divider_between_menu_links', '==', true ),
+				),
+			),
+			'show_divider_between_menu_links_end'          => array(
+				'type'      => 'inlineEnd',
+				'condition' => array( 'header.style', 'in', array( '1' ) ),
 			),
 			'show_top_lvl_and_submenu_icons'               => array(
 				'title'       => esc_html__( 'Hide icons at top level menu and submenu',
@@ -422,7 +374,7 @@ return array(
 				'default'   => 'default',
 				'condition' => array( 'header.style', 'in', array( '1' ) ),
 			),
-			'dropdown_appearance_style' => array(
+			'dropdown_appearance_style'                    => array(
 				'title'     => esc_html__( 'Submenu appearance style', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
@@ -464,6 +416,43 @@ return array(
 			'submenu_border_end'                           => array(
 				'type' => 'inlineEnd'
 			),
+			'sub_level_border_top_color_start'             => array(
+				'title' => esc_html__( 'Submenu box border top color', 'groovy-menu' ),
+				'type'  => 'inlineStart',
+			),
+			'sub_level_border_top_style'                   => array(
+				'title'   => esc_html__( 'style', 'groovy-menu' ),
+				'type'    => 'select',
+				'options' => array(
+					'solid'  => esc_html__( 'Solid', 'groovy-menu' ),
+					'dashed' => esc_html__( 'Dashed', 'groovy-menu' ),
+					'dotted' => esc_html__( 'Dotted', 'groovy-menu' ),
+				),
+				'default' => 'solid',
+			),
+			'sub_level_border_top_thickness'               => array(
+				'title'   => esc_html__( 'thickness', 'groovy-menu' ),
+				'type'    => 'number',
+				'range'   => array( 0, 10 ),
+				'default' => 3,
+				'unit'    => 'px',
+			),
+			'sub_level_border_top_color'                   => array(
+				'title'   => esc_html__( 'color', 'groovy-menu' ),
+				'type'    => 'colorpicker',
+				'default' => '#93cb52',
+				'alpha'   => true,
+			),
+			'sub_level_border_top_color_end'               => array(
+				'type' => 'inlineEnd'
+			),
+			'sub_level_border_top_shift'                   => array(
+				'title'       => esc_html__( 'Shift down the submenu at the height of the top border thickness', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'checkbox',
+				'default'     => true,
+				'condition'   => array( 'header.style', 'in', array( '1', '4' ) ),
+			),
 			'sub_level_text_color'                         => array(
 				'title'   => esc_html__( 'Submenu text color', 'groovy-menu' ),
 				'type'    => 'colorpicker',
@@ -478,12 +467,6 @@ return array(
 			),
 			'sub_level_text_active_color'                  => array(
 				'title'   => esc_html__( 'Submenu active link text color', 'groovy-menu' ),
-				'type'    => 'colorpicker',
-				'default' => '#93cb52',
-				'alpha'   => true,
-			),
-			'sub_level_border_top_color'                   => array(
-				'title'   => esc_html__( 'Submenu box border top color', 'groovy-menu' ),
 				'type'    => 'colorpicker',
 				'default' => '#93cb52',
 				'alpha'   => true,
@@ -549,11 +532,83 @@ return array(
 			'sub_item_text_end'                            => array(
 				'type' => 'inlineEnd'
 			),
-			'shadow_dropdown'                              => array(
-				'title'       => esc_html__( 'Submenu shadow', 'groovy-menu' ),
+			'sub_dropdown_radius_start'                    => array(
+				'title'     => esc_html__( 'Dropdown radius', 'groovy-menu' ),
+				'type'      => 'inlineStart',
+				'condition' => array( 'header.style', 'in', array( '1', '4' ) ),
+			),
+			'sub_dropdown_radius'                          => array(
+				'title'       => esc_html__( 'switch', 'groovy-menu' ),
 				'description' => '',
 				'type'        => 'checkbox',
 				'default'     => false,
+				'condition'   => array( 'header.style', 'in', array( '1', '4' ) ),
+			),
+			'sub_dropdown_radius_1'                        => array(
+				'title'     => esc_html__( 'top left', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( 0, 1000 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'header.style', 'in', array( '1', '4' ) ),
+					array( 'sub_dropdown_radius', '==', true ),
+				),
+			),
+			'sub_dropdown_radius_2'                        => array(
+				'title'     => esc_html__( 'top right', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( 0, 1000 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'header.style', 'in', array( '1', '4' ) ),
+					array( 'sub_dropdown_radius', '==', true ),
+				),
+			),
+			'sub_dropdown_radius_4'                        => array(
+				'title'     => esc_html__( 'bottom left', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( 0, 1000 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'header.style', 'in', array( '1', '4' ) ),
+					array( 'sub_dropdown_radius', '==', true ),
+				),
+			),
+			'sub_dropdown_radius_3'                        => array(
+				'title'     => esc_html__( 'bottom right', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( 0, 1000 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'header.style', 'in', array( '1', '4' ) ),
+					array( 'sub_dropdown_radius', '==', true ),
+				),
+			),
+			'sub_dropdown_radius_end'                      => array(
+				'type'      => 'inlineEnd',
+				'condition' => array( 'header.style', 'in', array( '1', '4' ) ),
+			),
+			'dropdown_margin'                              => array(
+				'title'       => esc_html__( 'Dropdown gap', 'groovy-menu' ),
+				'description' => esc_html__( 'Gap between Main menu and Dropdown menu', 'groovy-menu' ),
+				'type'        => 'number',
+				'range'       => array( 0, 100 ),
+				'default'     => 0,
+				'unit'        => 'px',
+				'condition'   => array( 'header.style', 'in', array( '1' ) ),
+			),
+			'sub_dropdown_margin'                          => array(
+				'title'       => esc_html__( 'Submenu gap', 'groovy-menu' ),
+				'description' => esc_html__( 'Gap beside Dropdown menu and Submenu', 'groovy-menu' ),
+				'type'        => 'number',
+				'range'       => array( 0, 100 ),
+				'default'     => 0,
+				'unit'        => 'px',
+				'condition'   => array( 'header.style', 'in', array( '1' ) ),
 			),
 			'megamenu_group'                               => array(
 				'title'     => esc_html__( 'Mega menu', 'groovy-menu' ),
@@ -706,6 +761,15 @@ return array(
 				'default'   => false,
 				'condition' => array( 'header.style', 'in', array( '1' ) ),
 			),
+			'mega_menu_dropdown_margin'                    => array(
+				'title'       => esc_html__( 'Mega menu gap', 'groovy-menu' ),
+				'description' => esc_html__( 'Gap between Main menu and Mega menu', 'groovy-menu' ),
+				'type'        => 'number',
+				'range'       => array( 0, 100 ),
+				'default'     => 0,
+				'unit'        => 'px',
+				'condition'   => array( 'header.style', 'in', array( '1' ) ),
+			),
 			'scrollbar_group'                              => array(
 				'title'     => esc_html__( 'Scrollbar', 'groovy-menu' ),
 				'type'      => 'group',
@@ -716,6 +780,239 @@ return array(
 				'type'        => 'checkbox',
 				'default'     => false,
 				'description' => esc_html__( 'Enable scrolling for long lists of submenus and mega menus', 'groovy-menu' ),
+			),
+			'search_group'                                 => array(
+				'title'     => esc_html__( 'Search', 'groovy-menu' ),
+				'type'      => 'group',
+				'serialize' => false,
+			),
+			'search_form_start'                            => array(
+				'title' => esc_html__( 'Search form type', 'groovy-menu' ),
+				'type'  => 'inlineStart',
+			),
+			'search_form'                                  => array(
+				'title'       => esc_html__( 'Select a type of the search form', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'select',
+				'options'     => array(
+					'dropdown-without-ajax' => array(
+						'title'     => esc_html__( 'Dropdown', 'groovy-menu' ),
+						'condition' => array( 'header.style', 'in', array( '1' ) )
+					),
+					'fullscreen'            => esc_html__( 'Fullscreen', 'groovy-menu' ),
+					'disable'               => esc_html__( 'Disable', 'groovy-menu' ),
+				),
+				'default'     => 'fullscreen',
+			),
+			'search_form_from'                             => array(
+				'title'       => esc_html__( 'Filter search result by', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'select',
+				'options'     => array_merge( array(
+					'all' => array(
+						'title'     => esc_html__( 'Search in all post types', 'groovy-menu' ),
+						'condition' => array( 'search_form', 'in', array( 'fullscreen', 'dropdown-without-ajax' ) )
+					),
+				), GroovyMenuUtils::getPostTypesForSearch() ),
+				'default'     => 'all',
+				'condition'   => array(
+					array( 'search_form', 'in', array( 'dropdown-without-ajax', 'fullscreen' ) )
+				),
+			),
+			'search_form_end'                              => array(
+				'type' => 'inlineEnd'
+			),
+			'search_form_fullscreen_background'            => array(
+				'title'       => esc_html__( 'Canvas background color for fullscreen search wrapper', 'groovy-menu' ),
+				'description' => esc_html__( 'Also applicable for mobile screen resolutions', 'groovy-menu' ),
+				'type'        => 'colorpicker',
+				'default'     => 'rgba(0,0,0,0.85)',
+				'alpha'       => true,
+				'condition'   => array(
+					array( 'search_form', 'in', array( 'dropdown-without-ajax', 'fullscreen', 'custom' ) )
+				),
+			),
+			'search_form_icon_start'                       => array(
+				'title'     => esc_html__( 'Search form icon size', 'groovy-menu' ),
+				'type'      => 'inlineStart',
+				'condition' => array( 'search_form', 'in', array( 'fullscreen', 'dropdown-without-ajax', 'custom' ) ),
+			),
+			'search_form_icon_size_desktop'                => array(
+				'title'       => esc_html__( 'Desktop icon size', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'number',
+				'default'     => 17,
+				'range'       => array( 10, 50 ),
+				'unit'        => 'px',
+			),
+			'search_form_icon_size_mobile'                 => array(
+				'title'       => esc_html__( 'Mobile icon size', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'number',
+				'default'     => 17,
+				'range'       => array( 10, 50 ),
+				'unit'        => 'px',
+			),
+			'search_form_icon_end'                         => array(
+				'type' => 'inlineEnd'
+			),
+			'search_form_icon_color_start'                 => array(
+				'title'     => esc_html__( 'Opened search form', 'groovy-menu' ) . ': ' . esc_html__( 'Search icon color', 'groovy-menu' ),
+				'type'      => 'inlineStart',
+				'condition' => array( 'search_form', 'in', array( 'dropdown-without-ajax', 'fullscreen', 'custom' ) ),
+			),
+			'search_form_icon_color'                       => array(
+				'title'       => esc_html__( 'color', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'colorpicker',
+				'default'     => '#ffffff',
+				'alpha'       => true,
+				'condition'   => array(
+					array( 'search_form', 'in', array( 'dropdown-without-ajax', 'fullscreen', 'custom' ) )
+				),
+			),
+			'search_form_icon_color_hover'                 => array(
+				'title'       => esc_html__( 'on hover', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'colorpicker',
+				'default'     => '#ffffff',
+				'alpha'       => true,
+				'condition'   => array(
+					array( 'search_form', 'in', array( 'dropdown-without-ajax', 'fullscreen', 'custom' ) )
+				),
+			),
+			'search_form_icon_color_end'                   => array(
+				'type' => 'inlineEnd'
+			),
+			'search_form_close_icon_color'                 => array(
+				'title'       => esc_html__( 'Opened search form', 'groovy-menu' ) . ': ' . esc_html__( 'Fullscreen close icon color', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'colorpicker',
+				'default'     => '#ffffff',
+				'alpha'       => true,
+				'condition'   => array(
+					array( 'search_form', 'in', array( 'dropdown-without-ajax', 'fullscreen', 'custom' ) )
+				),
+			),
+			'search_form_side_border_start'                => array(
+				'title'       => esc_html__( 'Opened search form', 'groovy-menu' ) . ': ' . esc_html__( 'Side border', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'inlineStart',
+				'condition'   => array(
+					array( 'search_form', 'in', array( 'dropdown-without-ajax', 'fullscreen', 'custom' ) )
+				),
+			),
+			'search_form_side_border_thickness'            => array(
+				'title'     => esc_html__( 'thickness', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( 0, 10 ),
+				'default'   => 4,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'search_form', 'in', array( 'dropdown-without-ajax', 'fullscreen', 'custom' ) )
+				),
+			),
+			'search_form_side_border_style'                => array(
+				'title'     => esc_html__( 'style', 'groovy-menu' ),
+				'type'      => 'select',
+				'options'   => array(
+					'dotted' => esc_html__( 'Dotted', 'groovy-menu' ),
+					'dashed' => esc_html__( 'Dashed', 'groovy-menu' ),
+					'solid'  => esc_html__( 'Solid', 'groovy-menu' ),
+				),
+				'default'   => 'solid',
+				'condition' => array(
+					array( 'search_form', 'in', array( 'dropdown-without-ajax', 'fullscreen', 'custom' ) )
+				),
+			),
+			'search_form_side_border_color'                => array(
+				'title'     => esc_html__( 'color', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => '#454545',
+				'alpha'     => true,
+				'condition' => array(
+					array( 'search_form', 'in', array( 'dropdown-without-ajax', 'fullscreen', 'custom' ) )
+				),
+			),
+			'search_form_side_border_end'                  => array(
+				'type'      => 'inlineEnd',
+				'condition' => array(
+					array( 'search_form', 'in', array( 'dropdown-without-ajax', 'fullscreen', 'custom' ) )
+				),
+			),
+			'search_form_input_field_colors_start'         => array(
+				'title'       => esc_html__( 'Opened search form', 'groovy-menu' ) . ': ' . esc_html__( 'Input field colors', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'inlineStart',
+				'condition'   => array(
+					array( 'search_form', 'in', array( 'dropdown-without-ajax', 'fullscreen', 'custom' ) )
+				),
+			),
+			'search_form_input_field_background'           => array(
+				'title'     => esc_html__( 'background', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => 'rgba(255,255,255,0)',
+				'alpha'     => true,
+				'condition' => array(
+					array( 'search_form', 'in', array( 'dropdown-without-ajax', 'fullscreen', 'custom' ) )
+				),
+			),
+			'search_form_input_field_color'                => array(
+				'title'     => esc_html__( 'text color', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => '#909090',
+				'alpha'     => true,
+				'condition' => array(
+					array( 'search_form', 'in', array( 'dropdown-without-ajax', 'fullscreen', 'custom' ) )
+				),
+			),
+			'search_form_input_field_colors_end'           => array(
+				'type'      => 'inlineEnd',
+				'condition' => array(
+					array( 'search_form', 'in', array( 'dropdown-without-ajax', 'fullscreen', 'custom' ) )
+				),
+			),
+			'search_form_dropdown_background'              => array(
+				'title'       => esc_html__( 'Opened search form', 'groovy-menu' ) . ': ' . esc_html__( 'Dropdown background', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'colorpicker',
+				'default'     => '#ffffff',
+				'alpha'       => true,
+				'condition'   => array(
+					array( 'search_form', 'in', array( 'dropdown-without-ajax', 'custom' ) )
+				),
+			),
+			'search_form_dropdown_btn_start'               => array(
+				'title'       => esc_html__( 'Opened search form', 'groovy-menu' ) . ': ' . esc_html__( 'Dropdown search button', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'inlineStart',
+				'condition'   => array(
+					array( 'search_form', 'in', array( 'dropdown-without-ajax', 'custom' ) )
+				),
+			),
+			'search_form_dropdown_btn_background'          => array(
+				'title'     => esc_html__( 'background', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => '#393b3f',
+				'alpha'     => true,
+				'condition' => array(
+					array( 'search_form', 'in', array( 'dropdown-without-ajax', 'custom' ) )
+				),
+			),
+			'search_form_dropdown_btn_hover'               => array(
+				'title'     => esc_html__( 'hover background', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => '#57ab55',
+				'alpha'     => true,
+				'condition' => array(
+					array( 'search_form', 'in', array( 'dropdown-without-ajax', 'custom' ) )
+				),
+			),
+			'search_form_dropdown_btn_end'                 => array(
+				'type'      => 'inlineEnd',
+				'condition' => array(
+					array( 'search_form', 'in', array( 'dropdown-without-ajax', 'custom' ) )
+				),
 			),
 			'logo_group'                                   => array(
 				'title'     => esc_html__( 'Logo', 'groovy-menu' ),
@@ -1365,6 +1662,12 @@ return array(
 				'type'        => 'checkbox',
 				'default'     => true,
 			),
+			'shadow_dropdown'                           => array(
+				'title'       => esc_html__( 'Submenu shadow', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'checkbox',
+				'default'     => false,
+			),
 			'toolbar_group'                             => array(
 				'type'      => 'group',
 				'title'     => esc_html__( 'Toolbar', 'groovy-menu' ),
@@ -1818,6 +2121,7 @@ return array(
 		'title'  => esc_html__( 'Mobile menu', 'groovy-menu' ),
 		'icon'   => 'gm-icon-power-off',
 		'fields' => array(
+			// ------------------------------------------------------------------------------ Mobile options
 			'mobile_group'                           => array(
 				'title'     => esc_html__( 'Mobile options', 'groovy-menu' ),
 				'type'      => 'group',
@@ -1830,11 +2134,6 @@ return array(
 				'options'     => $nav_menus,
 				'default'     => '',
 			),
-			'mobile_show_woominicart'                => array(
-				'title'   => esc_html__( 'Show', 'groovy-menu' ) . ' ' . esc_html__( 'Woo minicart', 'groovy-menu' ),
-				'type'    => 'checkbox',
-				'default' => false,
-			),
 			'mobile_nav_drawer_open_type'            => array(
 				'title'   => esc_html__( 'Mobile navigation drawer open type', 'groovy-menu' ),
 				'type'    => 'select',
@@ -1845,6 +2144,81 @@ return array(
 					'offcanvasSlideSlideRight' => esc_html__( 'Slide menu and container from the right', 'groovy-menu' ),
 				),
 				'default' => 'offcanvasSlideRight',
+			),
+			'mobile_logo_position'                   => array(
+				'title'   => esc_html__( 'Logo Align', 'groovy-menu' ),
+				'type'    => 'select',
+				'options' => array(
+					'default' => esc_html__( 'Default', 'groovy-menu' ),
+					'left'    => esc_html__( 'Align left', 'groovy-menu' ),
+					'center'  => esc_html__( 'Align center', 'groovy-menu' ),
+					'right'   => esc_html__( 'Align right', 'groovy-menu' ),
+				),
+				'default' => 'default',
+			),
+			'mobile_logo_margin_start'               => array(
+				'title'     => esc_html__( 'Logo margin', 'groovy-menu' ),
+				'type'      => 'inlineStart',
+				'condition' => array( 'mobile_logo_position', 'in', array( 'left', 'center', 'right' ) ),
+			),
+			'mobile_logo_margin_top'                 => array(
+				'title'     => esc_html__( 'Top', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 1000, 1000 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array( 'mobile_logo_position', 'in', array( 'left', 'center', 'right' ) ),
+			),
+			'mobile_logo_margin_right'               => array(
+				'title'     => esc_html__( 'Right', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 1000, 1000 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array( 'mobile_logo_position', 'in', array( 'left', 'center', 'right' ) ),
+			),
+			'mobile_logo_margin_bottom'              => array(
+				'title'     => esc_html__( 'Bottom', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 1000, 1000 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array( 'mobile_logo_position', 'in', array( 'left', 'center', 'right' ) ),
+			),
+			'mobile_logo_margin_left'                => array(
+				'title'     => esc_html__( 'Left', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 1000, 1000 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array( 'mobile_logo_position', 'in', array( 'left', 'center', 'right' ) ),
+			),
+			'mobile_logo_margin_end'                 => array(
+				'type'      => 'inlineEnd',
+				'condition' => array( 'mobile_logo_position', 'in', array( 'left', 'center', 'right' ) ),
+			),
+			'mobile_side_icon_position'              => array(
+				'title'   => esc_html__( 'Side icon Align', 'groovy-menu' ),
+				'type'    => 'select',
+				'options' => array(
+					'default' => esc_html__( 'Default', 'groovy-menu' ),
+					'left'    => esc_html__( 'Align left', 'groovy-menu' ),
+					'right'   => esc_html__( 'Align right', 'groovy-menu' ),
+				),
+				'default' => 'default',
+			),
+			'mobile_show_woominicart'                => array(
+				'title'       => esc_html__( 'Show', 'groovy-menu' ) . ' ' . esc_html__( 'Woo minicart', 'groovy-menu' ),
+				'description' => esc_html__( 'You can change the icon color in the [Styles] - [Side Icon] section.', 'groovy-menu' ),
+				'type'        => 'checkbox',
+				'default'     => false,
+			),
+
+			// ------------------------------------------------------------------------------ Colors
+			'mobile_colors_group'                    => array(
+				'title'     => esc_html__( 'Colors', 'groovy-menu' ),
+				'type'      => 'group',
+				'serialize' => false,
 			),
 			'responsive_navigation_background_color' => array(
 				'title'   => esc_html__( 'Mobile navigation drawer background color', 'groovy-menu' ),
@@ -1859,25 +2233,80 @@ return array(
 				'alpha'   => true,
 			),
 			'responsive_navigation_hover_text_color' => array(
-				'title'   => esc_html__( 'Mobile navigation drawer text hover and current skin color', 'groovy-menu' ),
+				'title'   => esc_html__( 'Mobile navigation drawer text hover and active link color', 'groovy-menu' ),
 				'type'    => 'colorpicker',
 				'default' => '#cccccc',
 				'alpha'   => true,
 			),
-			'mobile_items_padding_y'                 => array(
-				'title'       => esc_html__( 'Mobile navigation menu item vertical padding', 'groovy-menu' ),
-				'description' => esc_html__( 'This value will applied as padding to top and bottom of the item', 'groovy-menu' ),
-				'type'        => 'number',
-				'default'     => '9',
-				'range'       => array( 0, 100 ),
-				'unit'        => 'px',
+			'mobile_items_border_start'              => array(
+				'title'       => esc_html__( 'Menu items bottom border', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'inlineStart',
 			),
-			'mobile_offcanvas_width'                 => array(
-				'title'   => esc_html__( 'Mobile navigation drawer width', 'groovy-menu' ),
+			'mobile_items_border_thickness'          => array(
+				'title'   => esc_html__( 'thickness', 'groovy-menu' ),
 				'type'    => 'number',
-				'default' => '250',
-				'range'   => array( 150, 1000 ),
+				'range'   => array( 0, 20 ),
+				'default' => 1,
 				'unit'    => 'px',
+			),
+			'mobile_items_border_style'              => array(
+				'title'   => esc_html__( 'style', 'groovy-menu' ),
+				'type'    => 'select',
+				'options' => array(
+					'dotted' => esc_html__( 'Dotted', 'groovy-menu' ),
+					'dashed' => esc_html__( 'Dashed', 'groovy-menu' ),
+					'solid'  => esc_html__( 'Solid', 'groovy-menu' ),
+				),
+				'default' => 'dotted',
+			),
+			'mobile_items_border_color'              => array(
+				'title'   => esc_html__( 'color', 'groovy-menu' ),
+				'type'    => 'colorpicker',
+				'default' => 'rgb(90, 90, 90, 1)',
+				'alpha'   => true,
+			),
+			'mobile_items_border_end'                => array(
+				'type' => 'inlineEnd',
+			),
+			'mobile_toolbar_icon_color'              => array(
+				'title'   => esc_html__( 'Mobile toolbar icons color', 'groovy-menu' ),
+				'type'    => 'colorpicker',
+				'default' => '#5a5a5a',
+				'alpha'   => true,
+			),
+			'mobile_caret_custom_color'              => array(
+				'title'   => esc_html__( 'Use custom colors for submenu carets', 'groovy-menu' ),
+				'type'    => 'checkbox',
+				'default' => false,
+			),
+			'mobile_caret_custom_color_top'          => array(
+				'title'     => esc_html__( 'Top level caret color', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => '#5a5a5a',
+				'alpha'     => true,
+				'condition' => array( 'mobile_caret_custom_color', '==', true ),
+			),
+			'mobile_caret_custom_color_sub'          => array(
+				'title'     => esc_html__( 'Sub level caret color', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => '#5a5a5a',
+				'alpha'     => true,
+				'condition' => array( 'mobile_caret_custom_color', '==', true ),
+			),
+			'mobile_caret_custom_color_current'      => array(
+				'title'     => esc_html__( 'Current (active) caret color', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => '#cccccc',
+				'alpha'     => true,
+				'condition' => array( 'mobile_caret_custom_color', '==', true ),
+			),
+
+			// ------------------------------------------------------------------------------ Sizes
+			'mobile_sizes_group'                     => array(
+				'title'     => esc_html__( 'Sizes', 'groovy-menu' ),
+				'type'      => 'group',
+				'serialize' => false,
 			),
 			'mobile_width'                           => array(
 				'title'       => esc_html__( 'Mobile version switch', 'groovy-menu' ),
@@ -1887,13 +2316,30 @@ return array(
 				'range'       => array( 0, 2000 ),
 				'unit'        => 'px',
 			),
+			'mobile_offcanvas_width'                 => array(
+				'title'   => esc_html__( 'Mobile navigation drawer width', 'groovy-menu' ),
+				'type'    => 'number',
+				'default' => 250,
+				'range'   => array( 150, 1000 ),
+				'unit'    => 'px',
+			),
 			'mobile_header_height'                   => array(
 				'title'   => esc_html__( 'Mobile header height', 'groovy-menu' ),
 				'type'    => 'number',
-				'default' => '70',
+				'default' => 70,
 				'range'   => array( 50, 200 ),
 				'unit'    => 'px',
 			),
+			'mobile_items_padding_y'                 => array(
+				'title'       => esc_html__( 'Mobile navigation menu item vertical padding', 'groovy-menu' ),
+				'description' => esc_html__( 'This value will applied as padding to top and bottom of the item', 'groovy-menu' ),
+				'type'        => 'number',
+				'default'     => 9,
+				'range'       => array( 0, 100 ),
+				'unit'        => 'px',
+			),
+
+			// ------------------------------------------------------------------------------ Typography
 			'mobile_group_typography'                => array(
 				'title'     => esc_html__( 'Typography', 'groovy-menu' ),
 				'type'      => 'group',
