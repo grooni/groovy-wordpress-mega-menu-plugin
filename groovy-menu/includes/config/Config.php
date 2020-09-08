@@ -1169,7 +1169,7 @@ return array(
 				'type' => 'inlineEnd'
 			),
 			'scrollbar_group'                              => array(
-				'title'     => esc_html__( 'Scrollbar', 'groovy-menu' ),
+				'title'     => esc_html__( 'Scrollbar', 'groovy-menu' ) . ' & ' . esc_html__( 'Onepage', 'groovy-menu' ),
 				'type'      => 'group',
 				'serialize' => false,
 			),
