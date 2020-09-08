@@ -66,13 +66,33 @@ class GroovyMenu {
     }
 
     let scrollOptions = {
-      speed: 220,
+      speed: 400,
+      durationMax: 2000,
+      durationMin: 250,
+      clip: true,
+      easing: 'easeInOutQuad',
       scrollOffset: scrollOffset,
       offset() {
         return scrollOffset;
       },
       updateURL: false,
     };
+
+    if (options.scrollSpeedSettings) {
+      if (options.scrollSpeedSettingsMain) {
+        scrollOptions.speed = options.scrollSpeedSettingsMain;
+      }
+      if (options.scrollSpeedSettingsMin) {
+        scrollOptions.durationMin = options.scrollSpeedSettingsMin;
+      }
+      if (options.scrollSpeedSettingsMax) {
+        scrollOptions.durationMax = options.scrollSpeedSettingsMax;
+      }
+      if (options.scrollSpeedSettingsEasing) {
+        scrollOptions.easing = options.scrollSpeedSettingsEasing;
+      }
+    }
+
     let scroll = new SmoothScroll();
 
     let linksWithHashes = document.querySelectorAll('.menu-item > a[href^="#"]:not([href="#"])');

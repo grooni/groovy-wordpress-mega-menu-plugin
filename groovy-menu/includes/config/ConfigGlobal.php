@@ -424,6 +424,12 @@ return array(
 				'default'     => false,
 				'description' => esc_html__( 'For presets settings. When turning on, the Google fonts will be connected from local upload folder. Turning off option for use the Google CDN service.', 'groovy-menu' ),
 			),
+			'disable_local_font_awesome' => array(
+				'type'        => 'checkbox',
+				'title'       => esc_html__( 'Disable Font Awesome', 'groovy-menu' ),
+				'default'     => false,
+				'description' => esc_html__( 'Disable loading Font Awesome from Groovy menu at the front-end side of the site', 'groovy-menu' ),
+			),
 			'uninstall_data'        => array(
 				'type'        => 'checkbox',
 				'title'       => '<span class="gm-delete-warn">' . esc_html__( 'Remove All Data after uninstall', 'groovy-menu' ) . '</span>',

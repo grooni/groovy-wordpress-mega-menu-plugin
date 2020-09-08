@@ -2311,4 +2311,43 @@ class GroovyMenuUtils {
 		return $allowed_tags;
 	}
 
+
+	/**
+	 * Load Font Awesome font file
+	 */
+	public static function load_font_awesome() {
+
+		$global_settings = get_option( GroovyMenuStyle::OPTION_NAME );
+
+		if ( is_admin() || empty( $global_settings['tools']['disable_local_font_awesome'] ) || ! $global_settings['tools']['disable_local_font_awesome'] ) {
+			add_action( 'gm_enqueue_script_actions', function () {
+				wp_enqueue_style( 'groovy-menu-font-awesome', GROOVY_MENU_URL . 'assets/style/fontawesome.css', [], GROOVY_MENU_VERSION );
+				wp_style_add_data( 'groovy-menu-font-awesome', 'rtl', 'replace' );
+			}, 20 );
+
+			add_filter( 'style_loader_tag', array( 'GroovyMenuUtils', 'enqueue_style_attributes' ), 10, 2 );
+
+			return true;
+		}
+
+		return false;
+	}
+
+
+	/**
+	 * Add Crossorigin Attribute for Font
+	 *
+	 * @param $html
+	 * @param $handle
+	 *
+	 * @return mixed
+	 */
+	public static function enqueue_style_attributes( $html, $handle ) {
+		if ( 'groovy-menu-font-awesome' === $handle ) {
+			return str_replace( "media='all'", "media='all' crossorigin='anonymous'", $html );
+		}
+
+		return $html;
+	}
+
 }
