@@ -112,6 +112,10 @@ if ( method_exists( 'GroovyMenuUtils', 'update_config_text_domain' ) && is_admin
 	add_action( 'wp_loaded', array( 'GroovyMenuUtils', 'update_config_text_domain' ), 1000 );
 }
 
+if ( method_exists( 'GroovyMenuUtils', 'load_font_awesome' ) ) {
+	GroovyMenuUtils::load_font_awesome();
+}
+
 function groovy_menu_activation() {
 	global $gm_supported_module;
 
@@ -530,6 +534,15 @@ if ( ! function_exists( 'groovy_menu_scripts_admin' ) ) {
 			foreach ( \GroovyMenu\FieldIcons::getFonts() as $name => $icon ) {
 				wp_enqueue_style( 'groovy-menu-style-fonts-' . $name, GroovyMenuUtils::getUploadUri() . 'fonts/' . $name . '.css', [], GROOVY_MENU_VERSION );
 			}
+
+
+			/**
+			 * Fires when enqueue_script admin for Groovy Menu
+			 *
+			 * @since 1.2.6
+			 */
+			do_action( 'gm_enqueue_script_admin_actions' );
+
 		}
 
 	}
