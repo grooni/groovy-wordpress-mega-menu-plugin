@@ -1341,6 +1341,10 @@ export default class GmStyles {
         sidebarExpandingMenuBorderThickness,
         sidebarExpandingMenuBorderColor,
         sidebarExpandingMenuBorderStyle,
+        sidebarExpandingMenuTopBorderThickness,
+        sidebarExpandingMenuTopBorderColor,
+        sidebarExpandingMenuTopBorderStyle,
+        sidebarExpandingMenuTopPadding,
         logoMarginTop,
         logoMarginRight,
         logoMarginBottom,
@@ -1349,6 +1353,7 @@ export default class GmStyles {
         sidebarExpandingMenuExpandedWidth,
         sidebarExpandingMenuSubmenuWidth,
         sidebarExpandingMenuUseAnimation,
+        sidebarExpandingMenuAnimationDuration,
         sidebarExpandingMenuIconSize,
         sidebarExpandingMenuShowSideIcon
       } = settings;
@@ -1360,9 +1365,15 @@ export default class GmStyles {
       let expandedWidth = sidebarExpandingMenuExpandedWidth ? sidebarExpandingMenuExpandedWidth : 300;
       let submenuWidth = sidebarExpandingMenuSubmenuWidth ? sidebarExpandingMenuSubmenuWidth : 300;
       let animationCssParam, animationCssParamSecondary = '';
+
       if (sidebarExpandingMenuUseAnimation) {
-        animationCssParam = 'transition: width 0.3s;';
-        animationCssParamSecondary = 'transition: opacity 0.8s;';
+        let seconds = sidebarExpandingMenuAnimationDuration ? parseInt(sidebarExpandingMenuAnimationDuration) : 300 ;
+        seconds = (seconds / 1000).toFixed(1);
+        animationCssParam = `transition: width ${seconds}s;`;
+        animationCssParamSecondary = `transition: opacity 0.5s; ${seconds}s;`;
+      } else {
+        animationCssParam = 'transition: width 0.03s;';
+        animationCssParamSecondary = 'transition: opacity 0.03s 0.05s;';
       }
 
       // Submenu bottom border style, Thickness, Color
@@ -1372,8 +1383,30 @@ export default class GmStyles {
         settings.submenuBorderColor
       ) {
         css.push({
-          '.gm-main-menu-wrapper .gm-navbar-nav > li > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav .gm-dropdown-menu .gm-menu-item__link:after':
+          '.gm-main-menu-wrapper .gm-navbar-nav .gm-dropdown-menu .gm-menu-item__link:after':
             `border-bottom: ${thickness}px ${style} ${color};`,
+          media: 'desktop'
+        });
+      }
+
+      // Top level bottom border style, Thickness, Color
+      if (
+        sidebarExpandingMenuTopBorderThickness &&
+        sidebarExpandingMenuTopBorderColor &&
+        sidebarExpandingMenuTopBorderStyle
+      ) {
+        css.push({
+          '.gm-main-menu-wrapper .gm-navbar-nav > li > .gm-anchor':
+            `border-bottom: ${sidebarExpandingMenuTopBorderThickness}px ${sidebarExpandingMenuTopBorderStyle} ${sidebarExpandingMenuTopBorderColor};`,
+          media: 'desktop'
+        });
+      }
+
+      // Top level paddings
+      if (sidebarExpandingMenuTopPadding) {
+        css.push({
+          '.gm-navbar .gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav > li > .gm-anchor':
+            `padding-top: ${sidebarExpandingMenuTopPadding}px; padding-bottom: ${sidebarExpandingMenuTopPadding}px;`,
           media: 'desktop'
         });
       }
@@ -1588,10 +1621,11 @@ export default class GmStyles {
       css.push({
         '.gm-navbar': `width: ${initialWidth}px; ${animationCssParam}`,
         '.gm-navbar .gm-wrapper': 'overflow: hidden;',
+        '.gm-navbar:not(.gm-animation-end) .gm-container': 'overflow: hidden;',
 
         '.gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-menu-item__txt, .gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-badge, .gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-caret': `opacity: 0; ${animationCssParamSecondary}`,
-        '.gm-navbar .gm-toolbar': 'opacity: 0; display: none;',
-        '.gm-navbar .gm-actions': 'opacity: 0; display: none;',
+        '.gm-navbar .gm-actions, .gm-navbar .gm-toolbar': 'opacity: 0; display: none; transition: opacity 0.3s;',
+        '.gm-navbar .gm-main-menu-wrapper .gm-navbar-nav > li > .gm-anchor':'transition: border 1s 0.3s;',
         '.gm-navbar:not(.gm-expanding--open) .gm-main-menu-wrapper .gm-navbar-nav > li > .gm-anchor':'border-bottom-color: transparent;',
         '.gm-navbar:not(.gm-expanding--open) .gm-logo': 'overflow: hidden;',
         media: 'desktop'
@@ -1603,8 +1637,10 @@ export default class GmStyles {
         '.gm-expanding--open.gm-navbar .gm-wrapper, .gm-expanding--hold.gm-navbar .gm-wrapper': 'overflow: unset;',
 
         '.gm-expanding--open.gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-menu-item__txt, .gm-expanding--open.gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-badge, .gm-expanding--open.gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-caret': 'opacity: 1;',
-        '.gm-expanding--open.gm-navbar .gm-toolbar': 'opacity: 1; display: block; border: none;',
-        '.gm-expanding--open.gm-navbar .gm-actions': 'opacity: 1; display: flex;',
+        '.gm-expanding--open.gm-navbar .gm-toolbar': 'display: block; border: none;',
+        '.gm-animation-end.gm-navbar .gm-toolbar': 'opacity: 1;',
+        '.gm-expanding--open.gm-navbar .gm-actions': 'display: flex;',
+        '.gm-animation-end.gm-navbar .gm-actions': 'opacity: 1;',
         '.gm-expanding--open.gm-navbar .gm-toolbar-socials-list__item': 'box-shadow: none;',
         media: 'desktop'
       });

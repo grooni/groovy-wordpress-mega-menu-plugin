@@ -21,13 +21,20 @@ export function splitMenu () {
     }
   });
 
-  gmMainMenu.innerHTML = '';
-  gmMainMenu.append(left);
-  gmMainMenu.append(right);
+  if (gmMainMenu) {
+    gmMainMenu.innerHTML = '';
+    gmMainMenu.append(left);
+    gmMainMenu.append(right);
+  }
 }
 
 function setPaddingsAlignCenter () {
   const mainMenuWrapper = document.querySelector('.gm-main-menu-wrapper');
+
+  if (!mainMenuWrapper) {
+    return;
+  }
+
   const logo = document.querySelector('.gm-navbar .gm-logo');
   const logoHalfWidth = logo.clientWidth / 2 || 0;
   const sideOffset = (options.logoType === 'no') ? 0 : 25;
