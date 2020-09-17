@@ -194,6 +194,10 @@ function groovyMenu( $args = array() ) {
 	}
 
 
+	// Do custom shortcodes from preset.
+	GroovyMenuUtils::do_preset_shortcodes( $styles );
+
+
 	/**
 	 * Google Font link building
 	 */

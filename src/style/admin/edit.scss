@@ -859,6 +859,16 @@ CODEMIRROR styles
   height: 600px;
 }
 
+.gm-form .gm-textarea-small-height .CodeMirror {
+  height: 120px !important;
+  min-height: 120px !important;
+}
+
+.gm-form .gmCodemirrorInit.gmHtmlTextarea {
+  width: 500px;
+  height: 110px;
+}
+
 /***************************************
 HEADER TYPES
 ***************************************/
