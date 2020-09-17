@@ -148,9 +148,8 @@ NAVBAR GENERAL STYLES
     cursor: pointer;
   }
 
-  .gm-menu-item__txt-wrapper,
-  .gm-menu-item__icon {
-    transition: all 0.05s;
+  .gm-menu-item__txt-wrapper {
+    transition: all 0.15s;
   }
 
   .gm-navbar-nav > li,
@@ -230,6 +229,10 @@ NAVBAR GENERAL STYLES
   .gm-dropdown-menu > .current-menu-ancestor > .gm-menu-item__link:focus {
     outline: 0;
   }
+}
+
+.gm-navbar--style-4 .gm-menu-item--lvl-0 .gm-anchor .gm-menu-item__icon {
+  transition: all 0.03s;
 }
 
 .gm-navbar--has-shadow:not(.gm-navbar-sticky-toggle) .gm-inner {

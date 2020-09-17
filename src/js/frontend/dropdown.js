@@ -118,20 +118,26 @@ export function dropdownCloseAll (delay) {
   if (gmMainMenu && delay > 0) {
 
     gmMainMenu.setAttribute('data-timeout-close-all', setTimeout(function () {
-      dropdownCloseAllOpened();
+      dropdownCloseAllOpened(delay);
     }, delay));
 
   } else {
 
-    dropdownCloseAllOpened();
+    dropdownCloseAllOpened(delay);
 
   }
 
 }
 
-function dropdownCloseAllOpened () {
+function dropdownCloseAllOpened (delay) {
 
-  let elems = document.querySelectorAll('.gm-open:not(.gm-minicart)');
+  let queryOpened = '.gm-open';
+
+  if (delay > 0) {
+    queryOpened = '.gm-open:not(.gm-minicart)';
+  }
+
+  let elems = document.querySelectorAll(queryOpened);
 
   elems.forEach((el) => {
 
