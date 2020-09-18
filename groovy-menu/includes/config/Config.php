@@ -1484,7 +1484,7 @@ return array(
 				'default' => '',
 			),
 			'custom_shortcode_gm__start'                => array(
-				'title' => esc_html__( 'Insert custom shortcode or raw HTML for Groovy Menu wrapper', 'groovy-menu' ),
+				'title' => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu') . ' ' . esc_html__( 'Groovy Menu wrapper', 'groovy-menu' ),
 				'type'  => 'inlineStart',
 			),
 			'action__gm_before_main_header'             => array(
@@ -1511,7 +1511,7 @@ return array(
 				'type' => 'inlineEnd',
 			),
 			'custom_shortcode_toolbar__start'           => array(
-				'title'     => esc_html__( 'Insert custom shortcode or raw HTML for Toolbar', 'groovy-menu' ),
+				'title'     => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu') . ' ' . esc_html__( 'Toolbar', 'groovy-menu' ),
 				'type'      => 'inlineStart',
 				'condition' => array( 'header.toolbar', 'in', array( 'true', '1' ) ),
 			),
@@ -1564,7 +1564,7 @@ return array(
 				'condition' => array( 'header.toolbar', 'in', array( 'true', '1' ) ),
 			),
 			'custom_shortcode_logo__start'              => array(
-				'title' => esc_html__( 'Insert custom shortcode or raw HTML for Logo', 'groovy-menu' ),
+				'title' => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu') . ' ' . esc_html__( 'Logo', 'groovy-menu' ),
 				'type'  => 'inlineStart',
 			),
 			'action__gm_before_logo'                    => array(
@@ -1591,7 +1591,7 @@ return array(
 				'type' => 'inlineEnd',
 			),
 			'custom_shortcode_nav__start'               => array(
-				'title' => esc_html__( 'Insert custom shortcode or raw HTML for Main Navigation', 'groovy-menu' ),
+				'title' => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu') . ' ' . esc_html__( 'Main Navigation', 'groovy-menu' ),
 				'type'  => 'inlineStart',
 			),
 			'action__gm_main_menu_nav_first'            => array(
@@ -1628,7 +1628,7 @@ return array(
 				'type' => 'inlineEnd',
 			),
 			'custom_shortcode_buttons__start'           => array(
-				'title' => esc_html__( 'Insert custom shortcode or raw HTML for Action Buttons', 'groovy-menu' ),
+				'title' => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu') . ' ' . esc_html__( 'Action Buttons', 'groovy-menu' ),
 				'type'  => 'inlineStart',
 			),
 			'action__gm_main_menu_actions_button_first' => array(
@@ -1654,10 +1654,8 @@ return array(
 			'custom_shortcode_buttons__end'             => array(
 				'type' => 'inlineEnd',
 			),
-
-
 			'custom_shortcode_mobile__start'        => array(
-				'title' => esc_html__( 'Insert custom shortcode or raw HTML for Mobile menu', 'groovy-menu' ),
+				'title' => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu') . ' ' . esc_html__( 'Mobile menu', 'groovy-menu' ),
 				'type'  => 'inlineStart',
 			),
 			'action__gm_mobile_main_menu_nav_first' => array(

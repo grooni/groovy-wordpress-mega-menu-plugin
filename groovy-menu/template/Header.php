@@ -194,8 +194,10 @@ function groovyMenu( $args = array() ) {
 	}
 
 
-	// Do custom shortcodes from preset.
-	GroovyMenuUtils::do_preset_shortcodes( $styles );
+	if ( class_exists( 'GroovyMenuActions' ) ) {
+		// Do custom shortcodes from preset.
+		GroovyMenuActions::do_preset_shortcodes( $styles );
+	}
 
 
 	/**

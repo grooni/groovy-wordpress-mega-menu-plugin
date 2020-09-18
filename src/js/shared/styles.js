@@ -1269,7 +1269,7 @@ export default class GmStyles {
       // Icon menu top level active & hover background color
       if (settings.iconMenuTopLevelIconActiveBgColor) {
         css.push({
-          '.gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-item, .gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-ancestor, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item:hover': `background-color: ${settings.iconMenuTopLevelIconActiveBgColor} !important`,
+          '.gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-item, .gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-ancestor, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item.gm-open, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item:hover': `background-color: ${settings.iconMenuTopLevelIconActiveBgColor} !important`,
           media: 'desktop'
         });
       }
