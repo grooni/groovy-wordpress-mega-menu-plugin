@@ -2350,5 +2350,4 @@ class GroovyMenuUtils {
 		return $html;
 	}
 
-
 }
