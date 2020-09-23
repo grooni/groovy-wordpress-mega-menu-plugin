@@ -678,17 +678,19 @@ function groovyMenu( $args = array() ) {
 	}
 
 
-	$output_html .= '<span class="gm-menu-btn">
+	if ( $groovyMenuSettings['mobileIndependentCssHamburger'] && 2 !== $header_style ) {
+		// do nothing ...
+	} else {
+		$output_html .= '<span class="gm-menu-btn">
 						<span class="gm-menu-btn__inner">';
-
-	$menu_icon = 'fa fa-bars';
-	if ( ! empty( $styles->getGlobal( 'misc_icons', 'menu_icon' ) ) ) {
-		$menu_icon = $styles->getGlobal( 'misc_icons', 'menu_icon' );
-	}
-
-	$output_html .= '	<i class="' . esc_attr( $menu_icon ) . '"></i>
+		$menu_icon   = 'fa fa-bars';
+		if ( ! empty( $styles->getGlobal( 'misc_icons', 'menu_icon' ) ) ) {
+			$menu_icon = $styles->getGlobal( 'misc_icons', 'menu_icon' );
+		}
+		$output_html .= '	<i class="' . esc_attr( $menu_icon ) . '"></i>
 					</span>
 					</span>';
+	}
 
 	$output_html .= '<div class="gm-main-menu-wrapper">
 						<nav id="gm-main-menu">';
@@ -839,6 +841,11 @@ function groovyMenu( $args = array() ) {
 			$output_html .= ' ' . esc_attr( $custom_css_class );
 		}
 		$output_html .= '">';
+
+		if ( $groovyMenuSettings['mobileIndependentCssHamburger'] && 2 !== $header_style ) {
+			$output_html .= '<div class="gm-burger"><span></span></div>';
+		}
+
 		$output_html .= '<div class="gm-grid-container d-flex flex-column h-100">
 			<div>';
 

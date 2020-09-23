@@ -49,7 +49,7 @@ class GroovyMenu {
     let navbar = document.querySelector('.gm-navbar');
     let navDrawer = document.querySelector('.gm-navigation-drawer');
 
-    let hamburgerMenu = options.mobileCssSideIcon ? document.querySelector('.gm-burger') : document.querySelector('.gm-menu-btn');
+    let hamburgerMenu = options.mobileIndependentCssHamburger ? document.querySelector('.gm-burger') : document.querySelector('.gm-menu-btn');
     let mainMenuWrapper = document.querySelector('.gm-main-menu-wrapper');
     let toolbar = document.querySelector('.gm-toolbar');
     let navbarWrapper = document.querySelector('.gm-wrapper');

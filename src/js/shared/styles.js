@@ -2980,7 +2980,7 @@ export default class GmStyles {
 
 
     // Hide menu elements when drawler is open.
-    if (settings.mobileCssSideIcon) {
+    if (settings.mobileIndependentCssHamburger) {
       css.push({
         '.gm-navbar .gm-logo, .gm-navbar .gm-menu-actions-wrapper': 'transition: opacity 0.3s 0.1s',
         '.gm-drawer--open .gm-logo, .gm-drawer--open .gm-menu-actions-wrapper': 'opacity: 0; ',
