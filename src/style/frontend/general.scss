@@ -83,3 +83,59 @@ body {
 .gm-dropdown:not(.gm-open) .gm-dropdown-menu-wrapper {
   overflow: hidden;
 }
+
+.gm-burger {
+  margin-top: 8px;
+  transition: margin 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  span {
+    width: 30px;
+    background: #000;
+    position: relative;
+    display: inline-block;
+    height: 3px;
+    vertical-align: bottom;
+    transition: background 0.5s 0.3s;
+
+    &::after,
+    &::before {
+      background: #000;
+      position: absolute;
+      height: 3px;
+      content: "";
+      left: 0;
+    }
+
+    &::before {
+      width: 100%;
+      border-radius: 0;
+      transform: none;
+      top: -18px;
+      transform-origin: 50% 50%;
+      transition: top 0.3s 0.5s, transform 0.3s;
+    }
+
+    &::after {
+      width: 100%;
+      top: -9px;
+      transform-origin: 50% 50%;
+      transition: top 0.3s 0.5s, transform 0.3s;
+    }
+  }
+}
+
+.gm-navigation-drawer--open .gm-burger > span {
+  background: 0 0;
+
+  &::before {
+    top: -12px;
+    transform: rotate3d(0, 0, 1, 45deg);
+    transition: top 0.3s, transform 0.3s 0.3s;
+  }
+
+  &::after {
+    top: -12px;
+    transform: rotate3d(0, 0, 1, -45deg);
+    transition: top 0.3s, transform 0.3s 0.3s;
+  }
+}
