@@ -42,6 +42,7 @@ class GroovyMenu {
 
     let gmStyles = new GmStyles(options);
     let cssGenerated = gmStyles.get();
+    let headerStyle = parseInt(options.header.style, 10);
     const body = document.body;
     const wpAdminBar = document.querySelector('#wpadminbar');
     let navbarSearchContainer = document.querySelector('.gm-search__fullscreen-container');
@@ -49,7 +50,7 @@ class GroovyMenu {
     let navbar = document.querySelector('.gm-navbar');
     let navDrawer = document.querySelector('.gm-navigation-drawer');
 
-    let hamburgerMenu = options.mobileIndependentCssHamburger ? document.querySelector('.gm-burger') : document.querySelector('.gm-menu-btn');
+    let hamburgerMenu = (options.mobileIndependentCssHamburger && 2 !== headerStyle) ? document.querySelector('.gm-burger') : document.querySelector('.gm-menu-btn');
     let mainMenuWrapper = document.querySelector('.gm-main-menu-wrapper');
     let toolbar = document.querySelector('.gm-toolbar');
     let navbarWrapper = document.querySelector('.gm-wrapper');
@@ -97,7 +98,6 @@ class GroovyMenu {
 
     let linksWithHashes = document.querySelectorAll('.menu-item > a[href^="#"]:not([href="#"])');
 
-    let headerStyle = parseInt(options.header.style, 10);
     const direction = isRtl() ? 'rtl' : 'ltr';
     let isTouchDevice = 'ontouchstart' in document.documentElement;
 
@@ -398,6 +398,15 @@ class GroovyMenu {
         dropdownItem.addEventListener('click', initDropdownAction);
       });
     }
+
+
+    let gmDropdownTitleElems = document.querySelectorAll('.gm-dropdown-menu-wrapper .gm-dropdown-menu-title');
+    if (gmDropdownTitleElems) {
+      gmDropdownTitleElems.forEach((dropdownTitleItem) => {
+        dropdownTitleItem.addEventListener('click', initDropdownAction);
+      });
+    }
+
 
     if (options.stickyHeader !== undefined) {
       initStickyNav({

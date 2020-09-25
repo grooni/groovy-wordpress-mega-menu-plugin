@@ -378,9 +378,10 @@ return array(
 				'title'     => esc_html__( 'Submenu appearance style', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
-					'default'             => esc_html__( 'Default', 'groovy-menu' ),
-					'fade-in-out'         => esc_html__( 'Fade in out', 'groovy-menu' ),
-					'animate-from-bottom' => esc_html__( 'Animate from bottom', 'groovy-menu' ),
+					'default'              => esc_html__( 'Default', 'groovy-menu' ),
+					'fade-in-out'          => esc_html__( 'Fade in out', 'groovy-menu' ),
+					'animate-from-bottom'  => esc_html__( 'Animate from bottom', 'groovy-menu' ),
+					'animate-with-scaling' => esc_html__( 'Animate with scaling', 'groovy-menu' ),
 				),
 				'default'   => 'default',
 				'condition' => array( 'header.style', 'in', array( '1' ) ),
@@ -2425,6 +2426,15 @@ return array(
 				'type'        => 'select',
 				'options'     => $nav_menus,
 				'default'     => '',
+			),
+			'mobile_submenu_style' => array(
+				'title'   => esc_html__( 'Mobile submenus navigation style', 'groovy-menu' ),
+				'type'    => 'select',
+				'options' => array(
+					'default' => esc_html__( 'Default expanded list', 'groovy-menu' ),
+					'slider'  => esc_html__( 'Slider', 'groovy-menu' ),
+				),
+				'default' => 'default',
 			),
 			'mobile_independent_css_hamburger'       => array(
 				'title'       => esc_html__( 'Show independent hamburger (menu icon) as animated CSS element', 'groovy-menu' ),

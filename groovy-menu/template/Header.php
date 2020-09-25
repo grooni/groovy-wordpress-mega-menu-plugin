@@ -333,6 +333,9 @@ function groovyMenu( $args = array() ) {
 		$show_mobile_menu = false;
 	}
 
+	$header_style = intval( $groovyMenuSettings['header']['style'] );
+
+
 	// Clean output, first parent level;
 	ob_start();
 
@@ -520,8 +523,6 @@ function groovyMenu( $args = array() ) {
 				<div class="gm-inner-bg"></div>
 				<div class="gm-container">
 					<div class="gm-logo">';
-
-	$header_style = intval( $groovyMenuSettings['header']['style'] );
 
 
 	ob_start();
@@ -751,8 +752,7 @@ function groovyMenu( $args = array() ) {
 		$output_html .= '<div class="gm-actions">';
 
 		if ( $styles->get( 'general', 'show_divider' ) ) {
-			$header_style = $styles->get( 'general', 'header' );
-			if ( isset( $header_style['style'] ) && 1 === $header_style['style'] ) {
+			if ( 1 === $header_style ) {
 				$output_html .= '<span class="gm-nav-inline-divider"></span>';
 			}
 		}
@@ -839,6 +839,9 @@ function groovyMenu( $args = array() ) {
 		$output_html .= '<aside class="gm-navigation-drawer gm-navigation-drawer--mobile gm-hidden';
 		if ( $custom_css_class ) {
 			$output_html .= ' ' . esc_attr( $custom_css_class );
+		}
+		if ( 'slider' === $styles->get( 'mobile', 'mobile_submenu_style' ) ) {
+			$output_html .= ' gm-mobile-submenu-style-slider';
 		}
 		$output_html .= '">';
 

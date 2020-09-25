@@ -95,7 +95,7 @@ body {
     display: inline-block;
     height: 3px;
     vertical-align: bottom;
-    transition: background 0.5s 0.3s;
+    transition: background 0.2s 0.25s;
 
     &::after,
     &::before {
@@ -112,30 +112,31 @@ body {
       transform: none;
       top: -18px;
       transform-origin: 50% 50%;
-      transition: top 0.3s 0.5s, transform 0.3s;
+      transition: top 0.5s 0.1s, transform 0.5s;
     }
 
     &::after {
       width: 100%;
       top: -9px;
       transform-origin: 50% 50%;
-      transition: top 0.3s 0.5s, transform 0.3s;
+      transition: top 0.5s 0.1s, transform 0.5s;
     }
   }
 }
 
 .gm-navigation-drawer--open .gm-burger > span {
   background: 0 0;
+  transition: background 0.2s 0.05s;
 
   &::before {
     top: -12px;
     transform: rotate3d(0, 0, 1, 45deg);
-    transition: top 0.3s, transform 0.3s 0.3s;
+    transition: top 0.5s, transform 0.5s 0.1s;
   }
 
   &::after {
     top: -12px;
     transform: rotate3d(0, 0, 1, -45deg);
-    transition: top 0.3s, transform 0.3s 0.3s;
+    transition: top 0.5s, transform 0.5s 0.1s;
   }
 }

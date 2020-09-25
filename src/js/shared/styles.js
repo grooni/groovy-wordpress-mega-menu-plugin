@@ -534,6 +534,13 @@ export default class GmStyles {
           media: 'desktop'
         });
       }
+      if (settings.dropdownAppearanceStyle === 'animate-with-scaling') {
+        css.push({
+          '.gm-dropdown-appearance-animate-with-scaling .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: transform .28s ease , opacity .28s ease; transform: translateY(-50%) scaleY(0); opacity: 0.2;',
+          '.gm-dropdown-appearance-animate-with-scaling .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'transform: translateY(0) scaleY(1); opacity: 1;',
+          media: 'desktop'
+        });
+      }
 
     }
 
@@ -997,6 +1004,13 @@ export default class GmStyles {
           media: 'desktop'
         });
       }
+      if (settings.dropdownAppearanceStyle === 'animate-with-scaling') {
+        css.push({
+          '.gm-dropdown-appearance-animate-with-scaling .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: transform .28s ease , opacity .28s ease; transform: translateY(-50%) scaleY(0); opacity: 0.2;',
+          '.gm-dropdown-appearance-animate-with-scaling .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'transform: translateY(0) scaleY(1); opacity: 1;',
+          media: 'desktop'
+        });
+      }
 
     }
 
@@ -1312,6 +1326,13 @@ export default class GmStyles {
           '.gm-dropdown-appearance-animate-from-bottom .gm-open > .gm-dropdown-menu-wrapper > .gm-dropdown-menu': 'visibility: visible; transform: translateY(0); opacity: 1;',
           '.gm-dropdown-appearance-animate-from-bottom .gm-navbar-nav > .gm-menu-item > .gm-anchor > .gm-menu-item__txt-wrapper': 'transition: all 0.27s cubic-bezier(1, 0, 1, 1) 0.02s !important; transform: translateY(40px)',
           '.gm-dropdown-appearance-animate-from-bottom .gm-navbar-nav > .gm-menu-item.gm-open > .gm-anchor > .gm-menu-item__txt-wrapper': 'transform: translateY(0)',
+          media: 'desktop'
+        });
+      }
+      if (settings.dropdownAppearanceStyle === 'animate-with-scaling') {
+        css.push({
+          '.gm-dropdown-appearance-animate-with-scaling .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: transform .28s ease , opacity .28s ease; transform: translateY(-50%) scaleY(0); opacity: 0.2;',
+          '.gm-dropdown-appearance-animate-with-scaling .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'transform: translateY(0) scaleY(1); opacity: 1;',
           media: 'desktop'
         });
       }
@@ -1695,6 +1716,13 @@ export default class GmStyles {
         css.push({
           '.gm-dropdown-appearance-animate-from-bottom .gm-dropdown-menu': 'transition: all 0.2s; transform: translateY(80px);',
           '.gm-dropdown-appearance-animate-from-bottom .gm-open > .gm-dropdown-menu-wrapper > .gm-dropdown-menu': 'visibility: visible; transform: translateY(0); opacity: 1;',
+          media: 'desktop'
+        });
+      }
+      if (settings.dropdownAppearanceStyle === 'animate-with-scaling') {
+        css.push({
+          '.gm-dropdown-appearance-animate-with-scaling .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: transform .28s ease , opacity .28s ease; transform: translateY(-50%) scaleY(0); opacity: 0.2;',
+          '.gm-dropdown-appearance-animate-with-scaling .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'transform: translateY(0) scaleY(1); opacity: 1;',
           media: 'desktop'
         });
       }
@@ -2544,7 +2572,8 @@ export default class GmStyles {
       const color = settings.responsiveNavigationBackgroundColor;
 
       css.push({
-        '.gm-navigation-drawer': `background-color: ${color}`
+        '.gm-navigation-drawer': `background-color: ${color};`,
+        '.gm-mobile-submenu-style-slider .gm-navbar-nav .gm-dropdown-menu-wrapper': `background-color: ${color};`
       });
     }
 
@@ -3113,8 +3142,8 @@ export default class GmStyles {
     // Mobile hamburger icon padding area
     if (settings.hamburgerIconPaddingMobile) {
       css.push({
-        '.gm-menu-btn__inner': `padding: ${settings.hamburgerIconPadding}px;`,
-        '.gm-burger': `padding: ${settings.hamburgerIconPadding}px;`,
+        '.gm-menu-btn__inner': `padding: ${settings.hamburgerIconPaddingMobile}px;`,
+        '.gm-burger': `padding: ${settings.hamburgerIconPaddingMobile}px;`,
         media: 'mobile'
       });
     }
@@ -3323,6 +3352,16 @@ export default class GmStyles {
       media: 'mobile'
     });
 
+    // Mobile submenu style SLIDER
+    if (settings.mobileSubmenuStyle && 'slider' === settings.mobileSubmenuStyle) {
+      css.push({
+        '.gm-navigation-drawer--mobile .gm-dropdown-menu-wrapper': 'padding-left: 0;',
+        '.gm-navigation-drawer--mobile .gm-dropdown-menu-wrapper .gm-menu-item > .gm-anchor': 'padding-left: 15px;',
+        media: 'mobile'
+      });
+    }
+
+    // Write css array.
     css.push(...this.setStickyStyles());
 
     this._append(css);
