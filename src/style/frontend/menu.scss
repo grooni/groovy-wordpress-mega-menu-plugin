@@ -320,15 +320,31 @@ NAVBAR GENERAL STYLES
     }
   }
 
-  .gm-grid-container::after {
-    content: "";
-    position: absolute;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
-    top: 0;
-    bottom: 0;
-    right: -2px;
-    width: 2px;
-    z-index: 5;
-    display: block !important;
+  &.gm-navigation-drawer--left {
+    .gm-grid-container::after {
+      content: "";
+      position: absolute;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+      top: 0;
+      bottom: 0;
+      right: -2px;
+      width: 2px;
+      z-index: 5;
+      display: block !important;
+    }
+  }
+
+  &.gm-navigation-drawer--right {
+    .gm-grid-container::before {
+      content: "";
+      position: absolute;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+      top: 0;
+      bottom: 0;
+      left: -2px;
+      width: 2px;
+      z-index: 5;
+      display: block !important;
+    }
   }
 }

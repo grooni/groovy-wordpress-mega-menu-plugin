@@ -175,7 +175,7 @@ class GroovyMenu {
         isTopLevelClass = closestDropdown.classList.contains('gm-menu-item--lvl-0');
       }
 
-      if (e.target.closest('.gm-caret')) {
+      if (e.target.closest('.gm-caret') || e.target.closest('.gm-dropdown-menu-title')) {
         e.preventDefault();
         e.stopPropagation();
 
