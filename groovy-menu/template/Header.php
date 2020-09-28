@@ -846,7 +846,7 @@ function groovyMenu( $args = array() ) {
 		$output_html .= '">';
 
 		if ( $groovyMenuSettings['mobileIndependentCssHamburger'] && 2 !== $header_style ) {
-			$output_html .= '<div class="gm-burger"><span></span></div>';
+			$output_html .= '<div class="gm-burger hamburger"><div class="hamburger-box"><div class="hamburger-inner"></div></div></div>';
 		}
 
 		$output_html .= '<div class="gm-grid-container d-flex flex-column h-100">

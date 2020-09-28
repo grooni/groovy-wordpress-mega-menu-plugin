@@ -27,6 +27,11 @@ function offcanvasOpen (navDrawer) {
     if (gmNavbar) {
       gmNavbar.classList.add('gm-drawer--open');
     }
+    if (hamburgerMenu) {
+      setTimeout(() => {
+        hamburgerMenu.classList.add('is-active');
+      }, 300);
+    }
   }
 }
 
@@ -37,6 +42,11 @@ function offcanvasClose (navDrawer) {
     let gmNavbar = document.querySelector('.gm-navbar');
     if (gmNavbar) {
       gmNavbar.classList.remove('gm-drawer--open');
+    }
+    if (hamburgerMenu) {
+      setTimeout(() => {
+        hamburgerMenu.classList.remove('is-active');
+      }, 300);
     }
   } else {
     return;
@@ -149,7 +159,7 @@ function topIndentForBurger(navDrawer) {
     .replace(/\D+/g, ''));
 
   let indentPx = gmToolbarHeight + (((gmInnerHeight - gmBurgerHeight) / 2) | 0);
-  indentPx = (indentPx < -4) ? 0 : indentPx;
+  indentPx = (indentPx < -4) ? 8 : indentPx;
 
   if (indentPx > window.innerHeight) {
     setTimeout(() => {

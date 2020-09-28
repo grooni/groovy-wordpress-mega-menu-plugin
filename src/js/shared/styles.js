@@ -3098,7 +3098,8 @@ export default class GmStyles {
         '.gm-menu-btn__inner': `color: ${settings.hamburgerIconColorMobile};`,
         '.gm-menu-actions-wrapper a': `color: ${settings.hamburgerIconColorMobile};`,
         '.gm-menu-actions-wrapper a.gm-minicart-link': `color: ${settings.hamburgerIconColorMobile} !important;`,
-        '.gm-burger > span, .gm-burger > span::before, .gm-burger > span::after': `background: ${settings.hamburgerIconColorMobile};`,
+        '.gm-burger .hamburger-inner, .gm-burger .hamburger-inner::after, .gm-burger .hamburger-inner::before': `background-color: ${settings.hamburgerIconColorMobile};`,
+        '.gm-burger.hamburger.is-active .hamburger-inner, .gm-burger.hamburger.is-active .hamburger-inner::after, .gm-burger.hamburger.is-active .hamburger-inner::before': `background-color: ${settings.hamburgerIconColorMobile};`,
         media: 'mobile'
       });
     }
@@ -3123,7 +3124,7 @@ export default class GmStyles {
 
       css.push({
         '.gm-menu-btn__inner': `font-size: ${hamburgerIconSizeMobile}px;`,
-        '.gm-burger > span': `width: ${hamburgerIconSizeMobile}px;`,
+        '.gm-burger .hamburger-box, .gm-burger .hamburger-inner, .gm-burger .hamburger-inner::after, .gm-burger .hamburger-inner::before': `width: ${hamburgerIconSizeMobile}px;`,
         media: 'mobile'
       });
     }
