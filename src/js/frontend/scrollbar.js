@@ -149,6 +149,74 @@ export default function initScrollbar (settings) {
     }
   }
 
+  function mobileTransitionStart (event) {
+    if (event.propertyName !== 'transform') {
+      return;
+    }
+
+    let drawer = document.querySelector('.gm-navigation-drawer--mobile');
+    if (drawer) {
+      drawer.classList.add('gm-transition-work');
+
+      if (settings.mobileSubmenuStyle && 'slider' === settings.mobileSubmenuStyle) {
+
+        let isOpened = drawer.querySelector('.gm-menu-item.gm-open');
+        let menuItems = drawer.querySelectorAll('.gm-menu-item');
+
+        if (isOpened) {
+          if (menuItems) {
+            menuItems.forEach((item) => {
+
+              item.style.display = 'none';
+
+              let isOpenedChild = item.querySelector('.gm-menu-item.gm-open');
+              let currentMenuWrapper = item.closest('.gm-dropdown-menu-wrapper');
+              let parentMenuItem = currentMenuWrapper ? currentMenuWrapper.closest('.gm-dropdown') : false;
+              let isParentMenuOpen = parentMenuItem ? parentMenuItem.classList.contains('gm-open') : false;
+              let isHasDeeper = parentMenuItem ? parentMenuItem.querySelector('.gm-dropdown.gm-open') : false;
+
+              let isDisplay = false;
+
+              if (isOpenedChild) {
+                isDisplay = true;
+              }
+
+              if (isParentMenuOpen && !isHasDeeper) {
+                isDisplay = true;
+              }
+
+              if (item.classList.contains('gm-open')) {
+                isDisplay = true;
+              }
+
+              if (isDisplay) {
+                item.style.display = null;
+              }
+
+            });
+          }
+        } else {
+          menuItems.forEach((item) => {
+            item.style.display = null;
+          });
+        }
+
+      }
+
+    }
+  }
+
+  function mobileTransitionEnd (event) {
+    if (event.propertyName !== 'transform') {
+      return;
+    }
+
+    let drawer = document.querySelector('.gm-navigation-drawer--mobile');
+    if (drawer) {
+      drawer.classList.remove('gm-transition-work');
+    }
+  }
+
   function updateDropdownStyles (elem) {
     let parentMenuItem = elem.closest('.gm-dropdown');
 
@@ -217,6 +285,71 @@ export default function initScrollbar (settings) {
     scrollbars.push(ps);
   }
 
+  function activatePerfectScrollbarMobile (elem) {
+
+    if (!elem) {
+      return;
+    }
+
+    let isHandled = elem.classList.contains('ps');
+
+    // Return if Perfect Scrollbar already arsing for elem.
+    if (isHandled) {
+      return;
+    }
+
+    // Init Perfect Scrollbar for elem.
+    const ps = new PerfectScrollbar(elem, {
+      suppressScrollX: true,
+      wheelPropagation: false,
+      swipeEasing: true,
+      wheelSpeed: 0.7
+    });
+
+    // Save the index of the scrollbar object for further manipulation.
+    elem.setAttribute('data-ps-id', scrollbars.length);
+
+    // Save scrollbar object to array.
+    scrollbars.push(ps);
+  }
+
+
+  function enableMobileScrollbar() {
+    let mobileWrapper = document.querySelector('.gm-navigation-drawer--mobile .gm-grid-container');
+    if (mobileWrapper) {
+
+      activatePerfectScrollbarMobile(mobileWrapper);
+
+      let dropdownMenuMobile = document.querySelectorAll('.gm-navigation-drawer--mobile .gm-dropdown > .gm-dropdown-menu-wrapper');
+
+      if (dropdownMenuMobile) {
+        dropdownMenuMobile.forEach((dropdown) => {
+          dropdown.addEventListener('transitionstart', mobileTransitionStart);
+          dropdown.addEventListener('transitionend', mobileTransitionEnd);
+        });
+      }
+
+      mobileWrapper.addEventListener('click', function (event) {
+        if (!event.target.closest('.gm-caret')) {
+          return;
+        }
+
+        let scrollWrapper = event.target.closest('.ps');
+        if (scrollWrapper) {
+          let psId = scrollWrapper.getAttribute('data-ps-id');
+          if (psId && scrollbars && scrollbars[psId]) {
+            setTimeout(() => {
+
+              scrollbars[psId].update();
+
+            }, 500);
+          }
+        }
+      });
+
+    }
+  }
+
   function enableScrollbar () {
     if (isMobile(settings.mobileWidth)) {
       return;
@@ -228,17 +361,9 @@ export default function initScrollbar (settings) {
     });
   }
 
-  function disableScrollbar () {
-    // ..
-  }
-
   function handleResize () {
     if (window.gmIsResizeOnlyHorisontal) {
       return;
-    }
-
-    if (isMobile(settings.mobileWidth)) {
-      disableScrollbar();
     }
 
     if (!isMobile(settings.mobileWidth)) {
@@ -247,5 +372,8 @@ export default function initScrollbar (settings) {
   }
 
   enableScrollbar();
+
+  enableMobileScrollbar();
+
   window.addEventListener('resize', _.throttle(handleResize, 100));
 }

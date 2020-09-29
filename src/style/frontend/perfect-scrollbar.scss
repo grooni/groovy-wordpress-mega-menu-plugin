@@ -19,6 +19,22 @@
   touch-action: auto;
 }
 
+.gm-navigation-drawer--mobile {
+  .ps {
+    overflow: hidden !important;
+    touch-action: none;
+  }
+
+  .ps__rail-y {
+    top: 0 !important;
+    z-index: 100;
+  }
+
+  .ps__thumb-y {
+    border-radius: 2px;
+  }
+}
+
 .gm-dropdown-hover-style-shift-right.gm-dropdown-with-scrollbar {
   .gm-dropdown-menu .gm-menu-item > .gm-menu-item__link {
     position: relative;

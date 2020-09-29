@@ -178,7 +178,10 @@ class GroovyMenu {
 
       if (e.target.closest('.gm-caret') || e.target.closest('.gm-dropdown-menu-title')) {
         e.preventDefault();
-        e.stopPropagation();
+
+        if (!isMobile()) {
+          e.stopPropagation();
+        }
 
         if (closestDropdown && isTopLevelClass) {
 

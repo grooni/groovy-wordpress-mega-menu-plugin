@@ -834,6 +834,7 @@ function groovyMenu( $args = array() ) {
 
 	// ------------------------------------------------------------------------------------------- mobile menu --------.
 	if ( $show_mobile_menu ) {
+
 		$custom_css_class = $styles->getCustomHtmlClass();
 
 		$output_html .= '<aside class="gm-navigation-drawer gm-navigation-drawer--mobile gm-hidden';
@@ -849,8 +850,10 @@ function groovyMenu( $args = array() ) {
 			$output_html .= '<div class="gm-burger hamburger"><div class="hamburger-box"><div class="hamburger-inner"></div></div></div>';
 		}
 
-		$output_html .= '<div class="gm-grid-container d-flex flex-column h-100">
-			<div>';
+		$output_html .= '<div class="gm-grid-container d-flex flex-column h-100">';
+
+		// Mobile Menu wrapper.
+		$output_html .= '<div class="gm-mobile-menu-container">';
 
 		$args['gm_navigation_mobile'] = true;
 
@@ -882,8 +885,10 @@ function groovyMenu( $args = array() ) {
 		do_action( 'gm_mobile_main_menu_nav_last' );
 		$output_html .= ob_get_clean();
 
-		$output_html .= '</div>';
+
+		$output_html .= '</div>'; // .gm-mobile-menu-container
 		$output_html .= '<div class="flex-grow-1"></div>';
+
 
 		ob_start();
 		/**
@@ -895,7 +900,7 @@ function groovyMenu( $args = array() ) {
 		$output_html .= ob_get_clean();
 
 
-		$output_html .= '<div class="d-flex justify-content-center align-items-center text-center mb-4 mt-5">';
+		$output_html .= '<div class="gm-mobile-action-area-wrapper d-flex justify-content-center align-items-center text-center mb-4 mt-5">';
 
 		$searchForm = $groovyMenuSettings['searchForm'];
 		$searchIcon = 'gmi gmi-zoom-search';
@@ -917,6 +922,17 @@ function groovyMenu( $args = array() ) {
 				$isFullScreen = 'fullscreen';
 			}
 
+
+			ob_start();
+			/**
+			 * Fires before groovy menu mobile search icon.
+			 *
+			 * @since 1.2.8
+			 */
+			do_action( 'gm_mobile_before_search_icon' );
+			$output_html .= ob_get_clean();
+
+
 			$output_html .= '<div class="gm-search ' . ( $isFullScreen ? 'fullscreen' : 'gm-dropdown' ) . '">
 						<i class="gm-icon ' . esc_attr( $searchIcon ) . '"></i>
 						<span class="gm-search__txt">'
@@ -925,7 +941,6 @@ function groovyMenu( $args = array() ) {
 					</div>';
 
 		}
-
 		$output_html .= '<div class="gm-divider--vertical mx-4"></div>';
 		if ( ! gm_get_shop_is_catalog() && $groovyMenuSettings['woocommerceCart'] && class_exists( 'WooCommerce' ) && function_exists( 'wc_get_page_id' ) ) {
 			global $woocommerce;
@@ -938,6 +953,18 @@ function groovyMenu( $args = array() ) {
 			if ( $styles->getGlobal( 'misc_icons', 'cart_icon' ) ) {
 				$cartIcon = $styles->getGlobal( 'misc_icons', 'cart_icon' );
 			}
+
+
+			ob_start();
+			/**
+			 * Fires before groovy menu mobile minicart.
+			 *
+			 * @since 1.2.8
+			 */
+			do_action( 'gm_mobile_before_minicart' );
+			$output_html .= ob_get_clean();
+
+
 			$output_html .= '
 					<div class="gm-minicart">
 						<a href="' . get_permalink( wc_get_page_id( 'cart' ) ) . '" class="gm-minicart-link">
@@ -950,10 +977,23 @@ function groovyMenu( $args = array() ) {
 					</div>
 					';
 		}
-		$output_html .= '</div>';
-		$output_html .= '</div>';
+
+
+		ob_start();
+		/**
+		 * Fires at the groovy menu mobile toolbar end.
+		 *
+		 * @since 1.2.8
+		 */
+		do_action( 'gm_mobile_toolbar_end' );
+		$output_html .= ob_get_clean();
+
+
+		$output_html .= '</div>'; // .gm-mobile-action-area-wrapper
+		$output_html .= '</div>'; // .gm-grid-container
+		$output_html .= '<div class="gm-mobile-postwrap"></div>';
 		$output_html .= '</aside>';
-	}
+	} // end of if $show_mobile_menu.
 
 	ob_start();
 	/**
@@ -977,7 +1017,6 @@ function groovyMenu( $args = array() ) {
 	}
 
 	return null;
-
 }
 
 /**

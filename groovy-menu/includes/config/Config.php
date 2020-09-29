@@ -2428,23 +2428,23 @@ return array(
 				'default'     => '',
 			),
 			'mobile_submenu_style'                   => array(
-				'title'   => esc_html__( 'Mobile submenus navigation style', 'groovy-menu' ),
+				'title'   => esc_html__( 'Mobile submenus style', 'groovy-menu' ),
 				'type'    => 'select',
 				'options' => array(
-					'default' => esc_html__( 'Default expanded list', 'groovy-menu' ),
-					'slider'  => esc_html__( 'Slider', 'groovy-menu' ),
+					'default' => esc_html__( 'Standard dropdown list', 'groovy-menu' ),
+					'slider'  => esc_html__( 'Slider mobile submenu opening style', 'groovy-menu' ),
 				),
 				'default' => 'default',
 			),
 			'mobile_independent_css_hamburger'       => array(
-				'title'       => esc_html__( 'Show independent Hamburger (menu icon) as animated CSS element', 'groovy-menu' ),
+				'title'       => esc_html__( 'Show Hamburger icon as animated', 'groovy-menu' ),
 				'description' => '',
 				'type'        => 'checkbox',
 				'default'     => false,
 				'condition'   => array( 'header.style', 'in', array( '1', '3', '4', '5' ) ),
 			),
 			'mobile_independent_css_hamburger_type'  => array(
-				'title'     => esc_html__( 'CSS Hamburger animation type', 'groovy-menu' ),
+				'title'     => esc_html__( 'Hamburger animation style', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
 					'hamburger--3dx'         => esc_html__( '3d x', 'groovy-menu' ),
