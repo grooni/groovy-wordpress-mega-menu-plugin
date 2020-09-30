@@ -30,6 +30,7 @@ class GroovyMenuActions {
 				'action__gm_main_menu_nav_last'             => 'gm_main_menu_nav_last',
 				'action__gm_main_menu_actions_button_first' => 'gm_main_menu_actions_button_first',
 				'action__gm_main_menu_actions_button_last'  => 'gm_main_menu_actions_button_last',
+				'action__gm_mobile_main_menu_top'           => 'gm_mobile_main_menu_top',
 				'action__gm_mobile_main_menu_nav_first'     => 'gm_mobile_main_menu_nav_first',
 				'action__gm_mobile_main_menu_nav_last'      => 'gm_mobile_main_menu_nav_last',
 				'action__gm_mobile_after_main_menu_nav'     => 'gm_mobile_after_main_menu_nav',

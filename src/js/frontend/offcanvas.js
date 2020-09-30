@@ -80,7 +80,7 @@ function makeHiddenVisible (navDrawer) {
   if (navDrawer && isMobile(options.mobileWidth)) {
     setTimeout(() => {
       navDrawer.classList.remove('gm-hidden');
-    }, 300);
+    }, 500);
   }
 
   if (mainMenuWrapper) {

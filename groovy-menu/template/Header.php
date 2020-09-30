@@ -167,7 +167,13 @@ function groovyMenu( $args = array() ) {
 		$args['gm_preset_id'] = null;
 	}
 
+	if ( 'none' === $args['gm_preset_id'] ) {
+		return null;
+	}
+
+
 	$styles = new GroovyMenuStyle( $args['gm_preset_id'] );
+
 
 	if ( empty( $groovyMenuSettings ) ) {
 
@@ -851,6 +857,17 @@ function groovyMenu( $args = array() ) {
 		}
 
 		$output_html .= '<div class="gm-grid-container d-flex flex-column h-100">';
+
+
+		ob_start();
+		/**
+		 * Fires at the mobile main menu top.
+		 *
+		 * @since 1.2.8
+		 */
+		do_action( 'gm_mobile_main_menu_top' );
+		$output_html .= ob_get_clean();
+
 
 		// Mobile Menu wrapper.
 		$output_html .= '<div class="gm-mobile-menu-container">';

@@ -303,7 +303,7 @@ export default function initScrollbar (settings) {
       suppressScrollX: true,
       wheelPropagation: false,
       swipeEasing: true,
-      wheelSpeed: 0.7
+      wheelSpeed: 1
     });
 
     // Save the index of the scrollbar object for further manipulation.

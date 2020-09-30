@@ -3366,6 +3366,14 @@ export default class GmStyles {
       });
     }
 
+    // mobile_menu_wrapper_indent
+    if (settings.mobileMenuWrapperIndent) {
+      css.push({
+        '.gm-navigation-drawer--mobile .gm-mobile-menu-container': `margin-top: ${settings.mobileMenuWrapperIndent}px;`,
+        media: 'mobile'
+      });
+    }
+
     // Write css array.
     css.push(...this.setStickyStyles());
 

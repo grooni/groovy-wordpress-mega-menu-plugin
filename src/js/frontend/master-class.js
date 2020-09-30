@@ -370,15 +370,21 @@ class GroovyMenu {
     };
 
 
-    let gmAnchorItems = document.querySelectorAll('.gm-anchor, .gm-minicart, .gm-search, .mega-gm-dropdown > .gm-dropdown-menu-wrapper');
+    let gmAnchorItems = document.querySelectorAll('#gm-main-menu .gm-anchor, .gm-minicart, .gm-search, #gm-main-menu .mega-gm-dropdown > .gm-dropdown-menu-wrapper');
     let gmMainMenu = document.querySelector('#gm-main-menu');
 
-    if (gmAnchorItems && options.showSubmenu === 'hover' && !isMobile()) {
+    // By default at any case click action must work.
+    if (gmAnchorItems) {
+      gmAnchorItems.forEach((dropdownItem) => {
+        dropdownItem.addEventListener('click', initDropdownAction);
+      });
+    }
+
+    // Mouse hover actions for descktop menu.
+    if (gmAnchorItems && options.showSubmenu === 'hover') {
       gmAnchorItems.forEach((dropdownItem) => {
 
         let menuItem = dropdownItem.closest('.gm-menu-item');
-
-        dropdownItem.addEventListener('click', initDropdownAction);
 
         if (!isTouchDevice) {
           dropdownItem.addEventListener('mouseenter', initDropdownAction);
@@ -397,12 +403,13 @@ class GroovyMenu {
       }
     }
 
-    if (gmAnchorItems && (options.showSubmenu === 'click' || isMobile())) {
-      gmAnchorItems.forEach((dropdownItem) => {
+    // Click (touch) action for mobile menu items.
+    let gmAnchorItemsMobile = document.querySelectorAll('.gm-mobile-menu-container .gm-anchor');
+    if (gmAnchorItemsMobile) {
+      gmAnchorItemsMobile.forEach((dropdownItem) => {
         dropdownItem.addEventListener('click', initDropdownAction);
       });
     }
-
 
     let gmDropdownTitleElems = document.querySelectorAll('.gm-dropdown-menu-wrapper .gm-dropdown-menu-title');
     if (gmDropdownTitleElems) {
@@ -468,6 +475,11 @@ class GroovyMenu {
       }
 
       if (isMobile()) {
+        // Prevent wrap if mobile menu disabled.
+        if (options.mobileNavMenu === 'none') {
+          return;
+        }
+
         if (options.mobileNavDrawerOpenType === 'offcanvasSlideLeft') {
           offcanvasWrap(navDrawer, 'left');
         } else if (options.mobileNavDrawerOpenType === 'offcanvasSlideRight') {
@@ -484,7 +496,12 @@ class GroovyMenu {
 
 
     setOffcanvas();
-    offcanvasSlide();
+
+    if (isMobile() && options.mobileNavMenu === 'none') {
+      // Prevent slide wrap if mobile menu disabled.
+    } else {
+      offcanvasSlide();
+    }
 
 
     window.addEventListener('resize', _.debounce(() => {

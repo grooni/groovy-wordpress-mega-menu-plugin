@@ -1659,6 +1659,16 @@ return array(
 				'title' => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu' ) . ' ' . esc_html__( 'Mobile menu', 'groovy-menu' ),
 				'type'  => 'inlineStart',
 			),
+			'action__gm_mobile_main_menu_top'              => array(
+				'title'             => esc_html__( 'Mobile Menu Top', 'groovy-menu' ),
+				'type'              => 'textarea',
+				'codemirror_editor' => true,
+				'lang_type'         => 'html',
+				'small_height'      => true,
+				'default'           => '',
+				'serialize'         => false,
+				'do_action'         => true,
+			),
 			'action__gm_mobile_main_menu_nav_first'        => array(
 				'title'             => esc_html__( 'Mobile Menu Navigation First', 'groovy-menu' ),
 				'type'              => 'textarea',
@@ -2676,6 +2686,13 @@ return array(
 				'type'    => 'number',
 				'default' => 70,
 				'range'   => array( 50, 200 ),
+				'unit'    => 'px',
+			),
+			'mobile_menu_wrapper_indent'             => array(
+				'title'   => esc_html__( 'Mobile menu top gap', 'groovy-menu' ),
+				'type'    => 'number',
+				'default' => 0,
+				'range'   => array( 0, 700 ),
 				'unit'    => 'px',
 			),
 			'mobile_items_padding_y'                 => array(
