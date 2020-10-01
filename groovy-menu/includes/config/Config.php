@@ -2446,6 +2446,12 @@ return array(
 				),
 				'default' => 'default',
 			),
+			'mobile_custom_hamburger'                => array(
+				'title'       => esc_html__( 'Custom mobile menu open trigger', 'groovy-menu' ),
+				'description' => esc_html__( 'Place any custom element with CSS class [gm-custom-hamburger] as open/close trigger for a mobile menu', 'groovy-menu' ) . '. ' . esc_html__( 'For example', 'groovy-menu' ) . ': <code>' . htmlentities( '<div class="gm-custom-hamburger">menu</div>' ) . '</code>' . '. ' . esc_html__( 'This option will disable the output of Groovy Menu hamburger menu', 'groovy-menu' ),
+				'type'        => 'checkbox',
+				'default'     => false,
+			),
 			'mobile_independent_css_hamburger'       => array(
 				'title'       => esc_html__( 'Show Hamburger icon as animated', 'groovy-menu' ),
 				'description' => '',

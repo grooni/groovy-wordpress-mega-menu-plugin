@@ -301,7 +301,7 @@ export default class GmStyles {
           });
 
           css.push({
-            '.gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-item > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor:hover, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item.gm-open > .gm-anchor': `color: ${settings.topLevelTextColorHover}`,
+            '.gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-item > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor:hover, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item.gm-open > .gm-anchor': `color: ${settings.topLevelTextColorHover} !important`,
             media: 'desktop'
           });
         }
@@ -3376,7 +3376,7 @@ export default class GmStyles {
       // mobile_menu_wrapper_indent for slider type.
       if (settings.mobileMenuWrapperIndent) {
         css.push({
-          '.gm-navigation-drawer--mobile .gm-dropdown-menu-wrapper': `margin-top: ${settings.mobileMenuWrapperIndent}px;`,
+          '.gm-navigation-drawer--mobile .gm-dropdown-menu-wrapper::before': `content: ""; display: block; margin-top: ${settings.mobileMenuWrapperIndent}px;`,
           media: 'mobile'
         });
       }

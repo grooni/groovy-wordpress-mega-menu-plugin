@@ -52,6 +52,11 @@ class GroovyMenu {
 
     let hamburgerMenu = (options.mobileIndependentCssHamburger && 2 !== headerStyle) ? document.querySelector('.gm-burger') : document.querySelector('.gm-menu-btn');
     let hamburgerMenuType = (options.mobileIndependentCssHamburgerType) ? options.mobileIndependentCssHamburgerType : 'hamburger--squeeze';
+
+    if (options.mobileCustomHamburger) {
+      hamburgerMenu = document.querySelector('.gm-custom-hamburger');
+    }
+
     let mainMenuWrapper = document.querySelector('.gm-main-menu-wrapper');
     let toolbar = document.querySelector('.gm-toolbar');
     let navbarWrapper = document.querySelector('.gm-wrapper');
@@ -448,7 +453,7 @@ class GroovyMenu {
       }
     }
 
-    if (hamburgerMenu && options.mobileIndependentCssHamburger && 2 !== headerStyle) {
+    if (hamburgerMenu && options.mobileIndependentCssHamburger && 2 !== headerStyle && !options.mobileCustomHamburger) {
       hamburgerMenu.classList.add(hamburgerMenuType);
     }
 

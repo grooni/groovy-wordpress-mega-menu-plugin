@@ -167,7 +167,8 @@ export default function initScrollbar (settings) {
           if (menuItems) {
             menuItems.forEach((item) => {
 
-              item.style.display = 'none';
+              //item.style.display = 'none';
+              item.classList.add('gm-item-hidden');
 
               let isOpenedChild = item.querySelector('.gm-menu-item.gm-open');
               let currentMenuWrapper = item.closest('.gm-dropdown-menu-wrapper');
@@ -190,14 +191,16 @@ export default function initScrollbar (settings) {
               }
 
               if (isDisplay) {
-                item.style.display = null;
+                //item.style.display = null;
+                item.classList.remove('gm-item-hidden');
               }
 
             });
           }
         } else {
           menuItems.forEach((item) => {
-            item.style.display = null;
+            //item.style.display = null;
+            item.classList.remove('gm-item-hidden');
           });
         }
 
