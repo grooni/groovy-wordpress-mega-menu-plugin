@@ -3353,6 +3353,14 @@ export default class GmStyles {
       media: 'mobile'
     });
 
+    // mobile_menu_wrapper_indent .
+    if (settings.mobileMenuWrapperIndent) {
+      css.push({
+        '.gm-navigation-drawer--mobile .gm-mobile-menu-container': `margin-top: ${settings.mobileMenuWrapperIndent}px;`,
+        media: 'mobile'
+      });
+    }
+
     // Mobile submenu style SLIDER
     if (settings.mobileSubmenuStyle && 'slider' === settings.mobileSubmenuStyle) {
       css.push({
@@ -3364,15 +3372,16 @@ export default class GmStyles {
         '.gm-navigation-drawer--mobile .gm-dropdown .gm-dropdown-menu-title .gm-caret i.fa-angle-right': 'transform: rotate(180deg);',
         media: 'mobile'
       });
+
+      // mobile_menu_wrapper_indent for slider type.
+      if (settings.mobileMenuWrapperIndent) {
+        css.push({
+          '.gm-navigation-drawer--mobile .gm-dropdown-menu-wrapper': `margin-top: ${settings.mobileMenuWrapperIndent}px;`,
+          media: 'mobile'
+        });
+      }
     }
 
-    // mobile_menu_wrapper_indent
-    if (settings.mobileMenuWrapperIndent) {
-      css.push({
-        '.gm-navigation-drawer--mobile .gm-mobile-menu-container': `margin-top: ${settings.mobileMenuWrapperIndent}px;`,
-        media: 'mobile'
-      });
-    }
 
     // Write css array.
     css.push(...this.setStickyStyles());
