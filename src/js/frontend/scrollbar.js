@@ -162,6 +162,7 @@ export default function initScrollbar (settings) {
 
         let isOpened = drawer.querySelector('.gm-menu-item.gm-open');
         let menuItems = drawer.querySelectorAll('.gm-menu-item');
+        let isDrawerOpen = drawer.classList.contains('gm-navigation-drawer--open');
 
         if (isOpened) {
           if (menuItems) {
@@ -177,6 +178,10 @@ export default function initScrollbar (settings) {
               let isHasDeeper = parentMenuItem ? parentMenuItem.querySelector('.gm-dropdown.gm-open') : false;
 
               let isDisplay = false;
+
+              if (!isDrawerOpen) {
+                isDisplay = true;
+              }
 
               if (isOpenedChild) {
                 isDisplay = true;
@@ -217,6 +222,23 @@ export default function initScrollbar (settings) {
     let drawer = document.querySelector('.gm-navigation-drawer--mobile');
     if (drawer) {
       drawer.classList.remove('gm-transition-work');
+    }
+  }
+
+  function makeHiddenVisible(event) {
+    if (event.propertyName !== 'transform') {
+      return;
+    }
+
+    let drawer = document.querySelector('.gm-navigation-drawer--mobile');
+    if (drawer) {
+      let menuItems = drawer.querySelectorAll('.gm-menu-item');
+
+      if (menuItems) {
+        menuItems.forEach((item) => {
+          item.classList.remove('gm-item-hidden');
+        });
+      }
     }
   }
 
@@ -324,6 +346,11 @@ export default function initScrollbar (settings) {
       activatePerfectScrollbarMobile(mobileWrapper);
 
       let dropdownMenuMobile = document.querySelectorAll('.gm-navigation-drawer--mobile .gm-dropdown > .gm-dropdown-menu-wrapper');
+      let drawerMenuMobile = document.querySelector('.gm-navigation-drawer--mobile');
+
+      if (drawerMenuMobile) {
+        drawerMenuMobile.addEventListener('transitionstart', makeHiddenVisible);
+      }
 
       if (dropdownMenuMobile) {
         dropdownMenuMobile.forEach((dropdown) => {
@@ -345,7 +372,7 @@ export default function initScrollbar (settings) {
 
               scrollbars[psId].update();
 
-            }, 500);
+            }, 600);
           }
         }
       });
@@ -369,14 +396,20 @@ export default function initScrollbar (settings) {
       return;
     }
 
-    if (!isMobile(settings.mobileWidth)) {
+    if (!isMobile(settings.mobileWidth) && settings.scrollbarEnable) {
       enableScrollbar();
     }
   }
 
-  enableScrollbar();
+  // Enable for desktop.
+  if (settings.scrollbarEnable) {
+    enableScrollbar();
+  }
 
-  enableMobileScrollbar();
+  // Enable for mobile.
+  if (settings.scrollbarEnableMobile) {
+    enableMobileScrollbar();
+  }
 
   window.addEventListener('resize', _.throttle(handleResize, 100));
 }

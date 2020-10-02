@@ -20,9 +20,10 @@
 }
 
 .gm-navigation-drawer--mobile {
+  touch-action: none;
+
   .ps {
     overflow: hidden !important;
-    touch-action: none;
   }
 
   .ps__rail-y {

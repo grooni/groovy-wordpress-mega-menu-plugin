@@ -1180,10 +1180,17 @@ return array(
 				'default'     => true,
 				'description' => esc_html__( 'Enable scrolling for long lists of submenus and mega menus', 'groovy-menu' ),
 			),
+			'scrollbar_enable_mobile'                      => array(
+				'title'       => esc_html__( 'Enable mobile menu scrollbar', 'groovy-menu' ),
+				'type'        => 'checkbox',
+				'default'     => true,
+				'description' => esc_html__( 'Enable scrolling for long lists of mobile menu & submenus', 'groovy-menu' ),
+			),
 			'scroll_speed_settings'                        => array(
-				'title'   => esc_html__( 'Custom scroll speed options', 'groovy-menu' ),
-				'type'    => 'checkbox',
-				'default' => false,
+				'title'       => esc_html__( 'Custom scroll speed options', 'groovy-menu' ),
+				'type'        => 'checkbox',
+				'default'     => false,
+				'description' => esc_html__( 'Used to smoothly scroll the page content to anchor links in a onepage menu', 'groovy-menu' ),
 			),
 			'scroll_speed_settings_main'                   => array(
 				'title'       => esc_html__( 'Scroll Speed', 'groovy-menu' ),
@@ -2587,8 +2594,15 @@ return array(
 			'responsive_navigation_background_color' => array(
 				'title'   => esc_html__( 'Mobile navigation drawer background color', 'groovy-menu' ),
 				'type'    => 'colorpicker',
-				'default' => '#ffffff',
+				'default' => '#f9f9f9',
 				'alpha'   => true,
+			),
+			'mobile_slider_title_background_color'   => array(
+				'title'       => esc_html__( 'Mobile submenu title background color', 'groovy-menu' ),
+				'type'        => 'colorpicker',
+				'default'     => '#cecece',
+				'alpha'       => true,
+				'description' => esc_html__( 'Slider mobile submenu opening style', 'groovy-menu' ),
 			),
 			'responsive_navigation_text_color'       => array(
 				'title'   => esc_html__( 'Mobile navigation drawer text color', 'groovy-menu' ),
@@ -2680,12 +2694,25 @@ return array(
 				'range'       => array( 0, 2000 ),
 				'unit'        => 'px',
 			),
+			'mobile_offcanvas_width_start'           => array(
+				'title' => esc_html__( 'Mobile navigation drawer width', 'groovy-menu' ),
+				'type'  => 'inlineStart'
+			),
 			'mobile_offcanvas_width'                 => array(
-				'title'   => esc_html__( 'Mobile navigation drawer width', 'groovy-menu' ),
+				'title'   => esc_html__( 'Maximum size', 'groovy-menu' ),
 				'type'    => 'number',
 				'default' => 250,
-				'range'   => array( 150, 1000 ),
+				'range'   => array( 150, 1300 ),
 				'unit'    => 'px',
+			),
+			'mobile_offcanvas_width_dynamic'         => array(
+				'title'       => esc_html__( 'Dynamic minimum size', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'checkbox',
+				'default'     => false,
+			),
+			'mobile_offcanvas_width_end'             => array(
+				'type' => 'inlineEnd'
 			),
 			'mobile_header_height'                   => array(
 				'title'   => esc_html__( 'Mobile header height', 'groovy-menu' ),
@@ -2700,6 +2727,14 @@ return array(
 				'default' => 0,
 				'range'   => array( 0, 700 ),
 				'unit'    => 'px',
+			),
+			'mobile_slider_title_height'             => array(
+				'title'       => esc_html__( 'Mobile submenu title height', 'groovy-menu' ),
+				'type'        => 'number',
+				'default'     => 50,
+				'range'       => array( 40, 700 ),
+				'unit'        => 'px',
+				'description' => esc_html__( 'Slider mobile submenu opening style', 'groovy-menu' ),
 			),
 			'mobile_items_padding_y'                 => array(
 				'title'       => esc_html__( 'Mobile navigation menu item vertical padding', 'groovy-menu' ),

@@ -650,7 +650,7 @@ class GroovyMenu {
     expandingSidebarEvents();
 
 
-    if (options.scrollbarEnable) {
+    if (options.scrollbarEnable || options.scrollbarEnableMobile) {
       initScrollbar(options);
     }
 

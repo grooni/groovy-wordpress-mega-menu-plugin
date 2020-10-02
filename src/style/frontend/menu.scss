@@ -314,7 +314,7 @@ NAVBAR GENERAL STYLES
     width: 100%;
     min-height: 100%;
     z-index: 4;
-    transition: transform 0.3s ease;
+    transition: transform ease-out 0.5s;
   }
 
   &.gm-navigation-drawer--open .gm-navbar-nav .gm-dropdown > .gm-dropdown-menu-wrapper {
@@ -326,15 +326,28 @@ NAVBAR GENERAL STYLES
   }
 
   .gm-dropdown-menu-title {
-    display: block;
+    display: flex;
     position: relative;
     top: 0;
     width: 100%;
-    height: 60px;
-    padding: 10px 15px;
+    height: 50px;
+    padding: 0 15px;
+
+    .gm-caret {
+      top: auto;
+      position: absolute;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
   .gm-navbar-nav .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper {
     transform: translate3d(-100%, 0, 0);
   }
+}
+
+.gm-burger {
+  transition: margin cubic-bezier(0.7, 0, 0.3, 1) 0.2s;
 }
