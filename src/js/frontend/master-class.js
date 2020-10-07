@@ -10,13 +10,13 @@ import fixMenuCloseOnIOS, {
   isTargetScrollbar,
   getElemParents
 } from '../shared/helpers';
-import { scrollToId, setCurrentItem } from './one-page';
+import {scrollToId, setCurrentItem} from './one-page';
 
-import { initPaddingsAlignCenter, splitMenu } from './split';
-import { disableStickyNav, enableStickyNav, initStickyNav } from './sticky';
-import { initOffcanvas, offcanvasSlide, offcanvasWrap } from './offcanvas';
-import { initExpanding, expandingSidebarEvents } from './expanding';
-import { initMenuThumbnails } from './thumbnails';
+import {initPaddingsAlignCenter, splitMenu} from './split';
+import {disableStickyNav, enableStickyNav, initStickyNav} from './sticky';
+import {initOffcanvas, offcanvasSlide, offcanvasWrap} from './offcanvas';
+import {initExpanding, expandingSidebarEvents} from './expanding';
+import {initMenuThumbnails} from './thumbnails';
 
 import SmoothScroll from 'smooth-scroll';
 
@@ -28,16 +28,16 @@ import {
   dropdownOpen,
   dropdownClose
 } from './dropdown';
-import { overlapMenu } from './overlap';
-import { reinsertCompiledStyles } from './save-styles';
+import {overlapMenu} from './overlap';
+import {reinsertCompiledStyles} from './save-styles';
 
 class GroovyMenu {
-  constructor (selector, options) {
+  constructor(selector, options) {
     this.selector = document.querySelector(`${this.selector}`);
     this.options = options;
   }
 
-  init () {
+  init() {
     let options = this.options;
 
     let gmStyles = new GmStyles(options);
@@ -110,7 +110,7 @@ class GroovyMenu {
     fixMenuCloseOnIOS();
 
     // Check if window width less options.mobileWidth
-    function isMobile () {
+    function isMobile() {
       return isMobileHelper(options.mobileWidth);
     }
 
@@ -171,6 +171,8 @@ class GroovyMenu {
     let initDropdownAction = (e) => {
       let delay = 210;
       let closestDropdown = e.target.closest('.gm-dropdown');
+      let closestAnchor = e.target.closest('.gm-anchor');
+      let isClosestAnchorEmpty = closestAnchor && '#' === closestAnchor.getAttribute('href');
       let isTopLevelClass = false;
       let dropdownMenus = document.querySelectorAll('.gm-dropdown');
       let gmMainMenu = document.querySelector('#gm-main-menu');
@@ -181,7 +183,13 @@ class GroovyMenu {
         isTopLevelClass = closestDropdown.classList.contains('gm-menu-item--lvl-0');
       }
 
-      if (e.target.closest('.gm-caret') || e.target.closest('.gm-dropdown-menu-title')) {
+      // Don't scroll for empty # links.
+      if (isClosestAnchorEmpty) {
+        e.preventDefault();
+      }
+
+      // fast toggle.
+      if (e.target.closest('.gm-caret') || e.target.closest('.gm-dropdown-menu-title') || (closestDropdown && isClosestAnchorEmpty)) {
         e.preventDefault();
 
         if (!isMobile()) {
@@ -194,7 +202,7 @@ class GroovyMenu {
 
           dropdownCloseAll(0);
 
-          if (! isOpenedBefore) {
+          if (!isOpenedBefore) {
             dropdownOpen(closestDropdown, options);
           }
 
@@ -204,6 +212,7 @@ class GroovyMenu {
 
         return false;
       }
+
 
       if (dropdownMenus.length > 0) {
         dropdownMenus.forEach((el) => {
@@ -464,7 +473,7 @@ class GroovyMenu {
       hamburgerMenu
     });
 
-    function setOffcanvas () {
+    function setOffcanvas() {
       if (!isMobile() && headerStyle === 2) {
         if (options.minimalisticMenuOpenType === 'offcanvasSlideSlide') {
           offcanvasWrap(mainMenuWrapper, 'left', true);
@@ -596,7 +605,7 @@ class GroovyMenu {
       });
     }
 
-    function setPagePositionByHash () {
+    function setPagePositionByHash() {
       let target = window.location.hash;
 
       if (target.length) {
