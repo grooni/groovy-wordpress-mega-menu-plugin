@@ -394,9 +394,11 @@ return array(
 		'title'  => esc_html__( 'Icon packs', 'groovy-menu' ),
 		'fields' => array(
 			'icons' => array(
-				'type'    => 'icons',
-				'title'   => esc_html__( 'Icons', 'groovy-menu' ),
-				'default' => '',
+				'type'        => 'icons',
+				'title'       => esc_html__( 'Icons', 'groovy-menu' ),
+				'default'     => '',
+				'description' => sprintf( esc_html__( 'Please upload .ZIP archive created with %1$s service only.', 'groovy-menu' ), '<a href="https://icomoon.io/app/#/select" title="icomoon.io" target="_blank">icomoon.io</a>' ) . ' ' .
+				                 sprintf( esc_html__( 'How to create font icon package read in %1$s this article %2$s', 'groovy-menu' ), '<a href="https://grooni.com/docs/groovy-menu/global-settings/managing-icon-packs/" title="Grooni docs" target="_blank">', '</a>' ),
 			),
 		),
 	),

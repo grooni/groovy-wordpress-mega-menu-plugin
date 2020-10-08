@@ -30,13 +30,23 @@ export function dropdownOpen (elem, options) {
   elem.classList.add('gm-open');
   elem.classList.add('gm-opened-before');
 
-  if (elem.closest('.gm-navigation-drawer')) {
+  if (elem.closest('.gm-navigation-drawer:not(.gm-mobile-submenu-style-slider)')) {
     let elemChildren = elem.children;
 
     for (let el of elemChildren) {
       if (el.classList.contains('gm-dropdown-menu-wrapper')) {
         DOMAnimations.slideDown(el);
       }
+    }
+  }
+
+  // Fill the title of dropdowns.
+  if (elem.closest('.gm-mobile-submenu-style-slider')) {
+    let elemAnchor = elem.querySelector('.gm-anchor');
+    let subWrapperTitle = elem.querySelector('.gm-dropdown-menu-wrapper > .gm-dropdown-menu-title');
+
+    if (elemAnchor && subWrapperTitle) {
+      subWrapperTitle.innerHTML = elemAnchor.innerHTML;
     }
   }
 
@@ -64,7 +74,7 @@ export function dropdownClose (elem) {
     currentDropdown.style.transform = null;
   }
 
-  if (elem.closest('.gm-navigation-drawer')) {
+  if (elem.closest('.gm-navigation-drawer:not(.gm-mobile-submenu-style-slider)')) {
     let elemChildren = elem.children;
 
     for (let el of elemChildren) {
@@ -145,7 +155,7 @@ function dropdownCloseAllOpened (delay) {
     el.setAttribute('data-timeout-open', null);
     el.setAttribute('data-close', true);
 
-    if (el.closest('.gm-navigation-drawer')) {
+    if (el.closest('.gm-navigation-drawer:not(.gm-mobile-submenu-style-slider)')) {
       let elChildren = el.children;
 
       for (let el of elChildren) {

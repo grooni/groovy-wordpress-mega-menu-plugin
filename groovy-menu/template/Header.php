@@ -167,7 +167,13 @@ function groovyMenu( $args = array() ) {
 		$args['gm_preset_id'] = null;
 	}
 
+	if ( 'none' === $args['gm_preset_id'] ) {
+		return null;
+	}
+
+
 	$styles = new GroovyMenuStyle( $args['gm_preset_id'] );
+
 
 	if ( empty( $groovyMenuSettings ) ) {
 
@@ -332,6 +338,9 @@ function groovyMenu( $args = array() ) {
 	if ( isset( $groovyMenuSettings['mobileNavMenu'] ) && 'none' === $groovyMenuSettings['mobileNavMenu'] ) {
 		$show_mobile_menu = false;
 	}
+
+	$header_style = intval( $groovyMenuSettings['header']['style'] );
+
 
 	// Clean output, first parent level;
 	ob_start();
@@ -521,8 +530,6 @@ function groovyMenu( $args = array() ) {
 				<div class="gm-container">
 					<div class="gm-logo">';
 
-	$header_style = intval( $groovyMenuSettings['header']['style'] );
-
 
 	ob_start();
 	/**
@@ -678,17 +685,19 @@ function groovyMenu( $args = array() ) {
 	}
 
 
-	$output_html .= '<span class="gm-menu-btn">
+	if ( ( $groovyMenuSettings['mobileIndependentCssHamburger'] && 2 !== $header_style ) || $groovyMenuSettings['mobileCustomHamburger'] ) {
+		// do nothing ...
+	} else {
+		$output_html .= '<span class="gm-menu-btn">
 						<span class="gm-menu-btn__inner">';
-
-	$menu_icon = 'fa fa-bars';
-	if ( ! empty( $styles->getGlobal( 'misc_icons', 'menu_icon' ) ) ) {
-		$menu_icon = $styles->getGlobal( 'misc_icons', 'menu_icon' );
-	}
-
-	$output_html .= '	<i class="' . esc_attr( $menu_icon ) . '"></i>
+		$menu_icon   = 'fa fa-bars';
+		if ( ! empty( $styles->getGlobal( 'misc_icons', 'menu_icon' ) ) ) {
+			$menu_icon = $styles->getGlobal( 'misc_icons', 'menu_icon' );
+		}
+		$output_html .= '	<i class="' . esc_attr( $menu_icon ) . '"></i>
 					</span>
 					</span>';
+	}
 
 	$output_html .= '<div class="gm-main-menu-wrapper">
 						<nav id="gm-main-menu">';
@@ -749,8 +758,7 @@ function groovyMenu( $args = array() ) {
 		$output_html .= '<div class="gm-actions">';
 
 		if ( $styles->get( 'general', 'show_divider' ) ) {
-			$header_style = $styles->get( 'general', 'header' );
-			if ( isset( $header_style['style'] ) && 1 === $header_style['style'] ) {
+			if ( 1 === $header_style ) {
 				$output_html .= '<span class="gm-nav-inline-divider"></span>';
 			}
 		}
@@ -832,15 +840,37 @@ function groovyMenu( $args = array() ) {
 
 	// ------------------------------------------------------------------------------------------- mobile menu --------.
 	if ( $show_mobile_menu ) {
+
 		$custom_css_class = $styles->getCustomHtmlClass();
 
 		$output_html .= '<aside class="gm-navigation-drawer gm-navigation-drawer--mobile gm-hidden';
 		if ( $custom_css_class ) {
 			$output_html .= ' ' . esc_attr( $custom_css_class );
 		}
+		if ( 'slider' === $styles->get( 'mobile', 'mobile_submenu_style' ) ) {
+			$output_html .= ' gm-mobile-submenu-style-slider';
+		}
 		$output_html .= '">';
-		$output_html .= '<div class="gm-grid-container d-flex flex-column h-100">
-			<div>';
+
+		if ( $groovyMenuSettings['mobileIndependentCssHamburger'] && 2 !== $header_style && ! $groovyMenuSettings['mobileCustomHamburger'] ) {
+			$output_html .= '<div class="gm-burger hamburger"><div class="hamburger-box"><div class="hamburger-inner"></div></div></div>';
+		}
+
+		$output_html .= '<div class="gm-grid-container d-flex flex-column h-100">';
+
+
+		ob_start();
+		/**
+		 * Fires at the mobile main menu top.
+		 *
+		 * @since 1.2.8
+		 */
+		do_action( 'gm_mobile_main_menu_top' );
+		$output_html .= ob_get_clean();
+
+
+		// Mobile Menu wrapper.
+		$output_html .= '<div class="gm-mobile-menu-container">';
 
 		$args['gm_navigation_mobile'] = true;
 
@@ -872,8 +902,10 @@ function groovyMenu( $args = array() ) {
 		do_action( 'gm_mobile_main_menu_nav_last' );
 		$output_html .= ob_get_clean();
 
-		$output_html .= '</div>';
+
+		$output_html .= '</div>'; // .gm-mobile-menu-container
 		$output_html .= '<div class="flex-grow-1"></div>';
+
 
 		ob_start();
 		/**
@@ -885,7 +917,7 @@ function groovyMenu( $args = array() ) {
 		$output_html .= ob_get_clean();
 
 
-		$output_html .= '<div class="d-flex justify-content-center align-items-center text-center mb-4 mt-5">';
+		$output_html .= '<div class="gm-mobile-action-area-wrapper d-flex justify-content-center align-items-center text-center mb-4 mt-5">';
 
 		$searchForm = $groovyMenuSettings['searchForm'];
 		$searchIcon = 'gmi gmi-zoom-search';
@@ -907,6 +939,17 @@ function groovyMenu( $args = array() ) {
 				$isFullScreen = 'fullscreen';
 			}
 
+
+			ob_start();
+			/**
+			 * Fires before groovy menu mobile search icon.
+			 *
+			 * @since 1.2.8
+			 */
+			do_action( 'gm_mobile_before_search_icon' );
+			$output_html .= ob_get_clean();
+
+
 			$output_html .= '<div class="gm-search ' . ( $isFullScreen ? 'fullscreen' : 'gm-dropdown' ) . '">
 						<i class="gm-icon ' . esc_attr( $searchIcon ) . '"></i>
 						<span class="gm-search__txt">'
@@ -915,7 +958,6 @@ function groovyMenu( $args = array() ) {
 					</div>';
 
 		}
-
 		$output_html .= '<div class="gm-divider--vertical mx-4"></div>';
 		if ( ! gm_get_shop_is_catalog() && $groovyMenuSettings['woocommerceCart'] && class_exists( 'WooCommerce' ) && function_exists( 'wc_get_page_id' ) ) {
 			global $woocommerce;
@@ -928,6 +970,18 @@ function groovyMenu( $args = array() ) {
 			if ( $styles->getGlobal( 'misc_icons', 'cart_icon' ) ) {
 				$cartIcon = $styles->getGlobal( 'misc_icons', 'cart_icon' );
 			}
+
+
+			ob_start();
+			/**
+			 * Fires before groovy menu mobile minicart.
+			 *
+			 * @since 1.2.8
+			 */
+			do_action( 'gm_mobile_before_minicart' );
+			$output_html .= ob_get_clean();
+
+
 			$output_html .= '
 					<div class="gm-minicart">
 						<a href="' . get_permalink( wc_get_page_id( 'cart' ) ) . '" class="gm-minicart-link">
@@ -940,10 +994,23 @@ function groovyMenu( $args = array() ) {
 					</div>
 					';
 		}
-		$output_html .= '</div>';
-		$output_html .= '</div>';
+
+
+		ob_start();
+		/**
+		 * Fires at the groovy menu mobile toolbar end.
+		 *
+		 * @since 1.2.8
+		 */
+		do_action( 'gm_mobile_toolbar_end' );
+		$output_html .= ob_get_clean();
+
+
+		$output_html .= '</div>'; // .gm-mobile-action-area-wrapper
+		$output_html .= '</div>'; // .gm-grid-container
+		$output_html .= '<div class="gm-mobile-postwrap"></div>';
 		$output_html .= '</aside>';
-	}
+	} // end of if $show_mobile_menu.
 
 	ob_start();
 	/**
@@ -967,7 +1034,6 @@ function groovyMenu( $args = array() ) {
 	}
 
 	return null;
-
 }
 
 /**

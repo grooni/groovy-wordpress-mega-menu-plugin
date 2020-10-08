@@ -1,5 +1,7 @@
-import { isMobile, unwrapInner, wrapInner } from '../shared/helpers';
+import { getCoords, isMobile, unwrapInner, wrapInner } from '../shared/helpers';
 import _ from 'lodash';
+import {setCurrentItem} from './one-page';
+import {initPaddingsAlignCenter} from './split';
 
 var options;
 var navDrawer;
@@ -20,12 +22,32 @@ function offcanvasOpen (navDrawer) {
   if (navDrawer) {
     navDrawer.classList.remove('gm-hidden');
     navDrawer.classList.add('gm-navigation-drawer--open');
+
+    let gmNavbar = document.querySelector('.gm-navbar');
+    if (gmNavbar) {
+      gmNavbar.classList.add('gm-drawer--open');
+    }
+    if (hamburgerMenu) {
+      setTimeout(() => {
+        hamburgerMenu.classList.add('is-active');
+      }, 450);
+    }
   }
 }
 
 function offcanvasClose (navDrawer) {
   if (offcanvasIsOpen(navDrawer)) {
     navDrawer.classList.remove('gm-navigation-drawer--open');
+
+    let gmNavbar = document.querySelector('.gm-navbar');
+    if (gmNavbar) {
+      gmNavbar.classList.remove('gm-drawer--open');
+    }
+    if (hamburgerMenu) {
+      setTimeout(() => {
+        hamburgerMenu.classList.remove('is-active');
+      }, 450);
+    }
   } else {
     return;
   }
@@ -45,23 +67,140 @@ function offcanvasClickOutside () {
       return;
     }
 
-    if (event.target.closest('.gm-navbar-nav, .gm-navigation-drawer, .gm-main-menu-wrapper') === null) {
+    if (event.target.closest('.gm-navbar-nav, .gm-navigation-drawer, .gm-main-menu-wrapper, .gm-burger, .gm-custom-hamburger') === null) {
       offcanvasClose(mainMenuWrapper);
       offcanvasClose(navDrawer);
     }
   });
 }
 
-function makeHiddenVisible () {
+function makeHiddenVisible (navDrawer) {
   let mainMenuWrapper = document.querySelector('.gm-main-menu-wrapper');
+  let isMobileFlag = isMobile(options.mobileWidth);
+
+  if (navDrawer && navDrawer.classList.contains('gm-hidden') && isMobileFlag) {
+    setTimeout(() => {
+      navDrawer.classList.remove('gm-hidden');
+    }, 100);
+  }
 
   if (mainMenuWrapper) {
-    if (!isMobile(options.mobileWidth)) {
+    if (!isMobileFlag) {
       mainMenuWrapper.classList.add('d-flex');
     } else {
       mainMenuWrapper.classList.remove('d-flex');
     }
   }
+}
+
+function topIndentForBurger(navDrawer) {
+  if (!navDrawer || !isMobile(options.mobileWidth)) {
+    // Remove Margin for actions wrapper.
+    let gmContainer = document.querySelector('.gm-navbar .gm-inner .gm-container');
+    if (gmContainer) {
+      gmContainer.style.paddingLeft = null;
+      gmContainer.style.paddingRight = null;
+    }
+
+    return;
+  }
+  let gmBurger = navDrawer.querySelector('.gm-burger');
+  if (!gmBurger) {
+    return;
+  }
+  let gmNavbar = document.querySelector('.gm-navbar');
+  if (!gmNavbar) {
+    return;
+  }
+
+  let gmToolbar = gmNavbar.querySelector('.gm-wrapper > .gm-toolbar');
+  let gmInner = gmNavbar.querySelector('.gm-wrapper > .gm-inner');
+  let wpAdminbarElem = document.querySelector('#wpadminbar');
+
+  let gmToolbarHeight = 0;
+  let gmInnerHeight = 0;
+  let wpAdminbarElemHeight = 0;
+  let gmBurgerHeight = 0;
+  let gmBurgerPaddings = 0;
+  let offset = 0;
+
+  if (wpAdminbarElem) {
+    wpAdminbarElemHeight = Number(window.getComputedStyle(wpAdminbarElem, null)
+      .height
+      .replace(/\D+/g, ''));
+  }
+  if (gmToolbar) {
+    gmToolbarHeight = Number(window.getComputedStyle(gmToolbar, null)
+      .height
+      .replace(/\D+/g, ''));
+    offset = getCoords(gmToolbar).top - window.pageYOffset - wpAdminbarElemHeight;
+    if (offset < 1) {
+      if ((gmToolbarHeight + offset) < 1) {
+        gmToolbarHeight = 0;
+      } else {
+        gmToolbarHeight = gmToolbarHeight + offset;
+      }
+    }
+  }
+  if (gmInner) {
+    gmInnerHeight = Number(window.getComputedStyle(gmInner, null)
+      .height
+      .replace(/\D+/g, ''));
+    offset = getCoords(gmInner).top - window.pageYOffset - wpAdminbarElemHeight;
+    if (offset < 1) {
+      if ((gmInnerHeight + offset) < 1) {
+        gmInnerHeight = 0;
+      } else {
+        gmInnerHeight = gmInnerHeight + offset;
+      }
+    }
+  }
+  let gmBurgerHeightWrapper = Number(window.getComputedStyle(gmBurger, null)
+    .height
+    .replace(/\D+/g, ''));
+  let gmBurgerWidth = Number(window.getComputedStyle(gmBurger, null)
+    .width
+    .replace(/\D+/g, ''));
+
+  gmBurgerHeight = (gmBurgerHeightWrapper < 8) ? 8 : gmBurgerHeightWrapper;
+
+  gmBurgerPaddings = (options.hamburgerIconPaddingMobile) ? (options.hamburgerIconPaddingMobile * 2) : 0;
+  gmBurgerPaddings = (options.hamburgerIconMobileBorderWidth) ? (options.hamburgerIconMobileBorderWidth * 2) + gmBurgerPaddings : gmBurgerPaddings;
+  if (gmBurgerPaddings > 0) {
+    gmBurgerHeight = gmBurgerHeight - gmBurgerPaddings;
+  }
+
+  if (gmBurgerHeight < 8) {
+    gmBurgerHeight = gmBurgerHeightWrapper;
+  }
+
+  let indentPx = gmToolbarHeight + (((gmInnerHeight - gmBurgerHeight) / 2) | 0);
+  indentPx = (indentPx < -4) ? 8 : indentPx;
+
+  if (gmBurgerPaddings > 0) {
+    indentPx = indentPx - ((gmBurgerPaddings / 2) | 0);
+  }
+
+  if (indentPx > window.innerHeight) {
+    setTimeout(() => {
+      topIndentForBurger(navDrawer);
+    }, 504);
+  } else {
+    // Set margin for burger.
+    gmBurger.style.marginTop = indentPx + 'px';
+
+    // Margin for menu container (indent for burger).
+    let gmContainer = document.querySelector('.gm-navbar .gm-inner .gm-container');
+    if (gmContainer) {
+      if (options.mobileNavDrawerOpenType === 'offcanvasSlideLeft' || options.mobileNavDrawerOpenType === 'offcanvasSlideSlide') {
+        gmContainer.style.paddingLeft = (gmBurgerWidth + 8) + 'px';
+      }
+      if (options.mobileNavDrawerOpenType === 'offcanvasSlideRight' || options.mobileNavDrawerOpenType === 'offcanvasSlideSlideRight') {
+        gmContainer.style.paddingRight = (gmBurgerWidth + 8) + 'px';
+      }
+    }
+  }
+
 }
 
 function wrapContent () {
@@ -133,11 +272,17 @@ export function offcanvasSlide() {
   offcanvasClickOutside();
 
   window.addEventListener('resize', _.debounce(() => {
-    makeHiddenVisible();
+    makeHiddenVisible(navDrawer);
+    topIndentForBurger(navDrawer);
     offcanvasClose(navDrawer);
-  }, 750));
+  }, 200));
 
   closeIfNoChildren(navDrawer);
+
+  window.addEventListener('scroll', _.debounce(() => {
+    topIndentForBurger(navDrawer);
+  }, 250));
+
 }
 
 export function offcanvasWrap(navDrawer, side, slide) {
@@ -147,7 +292,9 @@ export function offcanvasWrap(navDrawer, side, slide) {
     wrapContent();
   }
 
-  makeHiddenVisible();
+  makeHiddenVisible(navDrawer);
+  topIndentForBurger(navDrawer);
+
   if (navDrawer) {
     navDrawer.classList.add(`gm-navigation-drawer--${side}`);
   }

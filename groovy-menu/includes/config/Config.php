@@ -255,7 +255,7 @@ return array(
 					'groovy-menu' ),
 				'type'        => 'checkbox',
 				'description' => esc_html__( 'You can switch between displaying or hiding icons added to menu items from &quot;Appearance > menus&quot;.', 'groovy-menu' ),
-				'default'     => true,
+				'default'     => false,
 			),
 			'menu_z_index'                                 => array(
 				'title'       => esc_html__( 'Menu z-index', 'groovy-menu' ),
@@ -378,9 +378,10 @@ return array(
 				'title'     => esc_html__( 'Submenu appearance style', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
-					'default'             => esc_html__( 'Default', 'groovy-menu' ),
-					'fade-in-out'         => esc_html__( 'Fade in out', 'groovy-menu' ),
-					'animate-from-bottom' => esc_html__( 'Animate from bottom', 'groovy-menu' ),
+					'default'              => esc_html__( 'Default', 'groovy-menu' ),
+					'fade-in-out'          => esc_html__( 'Fade in out', 'groovy-menu' ),
+					'animate-from-bottom'  => esc_html__( 'Animate from bottom', 'groovy-menu' ),
+					'animate-with-scaling' => esc_html__( 'Animate with scaling', 'groovy-menu' ),
 				),
 				'default'   => 'default',
 				'condition' => array( 'header.style', 'in', array( '1' ) ),
@@ -1179,10 +1180,17 @@ return array(
 				'default'     => true,
 				'description' => esc_html__( 'Enable scrolling for long lists of submenus and mega menus', 'groovy-menu' ),
 			),
+			'scrollbar_enable_mobile'                      => array(
+				'title'       => esc_html__( 'Enable mobile menu scrollbar', 'groovy-menu' ),
+				'type'        => 'checkbox',
+				'default'     => true,
+				'description' => esc_html__( 'Enable scrolling for long lists of mobile menu & submenus', 'groovy-menu' ),
+			),
 			'scroll_speed_settings'                        => array(
-				'title'   => esc_html__( 'Custom scroll speed options', 'groovy-menu' ),
-				'type'    => 'checkbox',
-				'default' => false,
+				'title'       => esc_html__( 'Custom scroll speed options', 'groovy-menu' ),
+				'type'        => 'checkbox',
+				'default'     => false,
+				'description' => esc_html__( 'Used to smoothly scroll the page content to anchor links in a onepage menu', 'groovy-menu' ),
 			),
 			'scroll_speed_settings_main'                   => array(
 				'title'       => esc_html__( 'Scroll Speed', 'groovy-menu' ),
@@ -1483,11 +1491,11 @@ return array(
 				'type'    => 'text',
 				'default' => '',
 			),
-			'custom_shortcode_gm__start'                => array(
-				'title' => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu') . ' ' . esc_html__( 'Groovy Menu wrapper', 'groovy-menu' ),
+			'custom_shortcode_gm__start'                   => array(
+				'title' => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu' ) . ' ' . esc_html__( 'Groovy Menu wrapper', 'groovy-menu' ),
 				'type'  => 'inlineStart',
 			),
-			'action__gm_before_main_header'             => array(
+			'action__gm_before_main_header'                => array(
 				'title'             => esc_html__( 'Before Main Header', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -1497,7 +1505,7 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'action__gm_after_main_header'              => array(
+			'action__gm_after_main_header'                 => array(
 				'title'             => esc_html__( 'After Main Header', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -1507,15 +1515,15 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'custom_shortcode_gm__end'                  => array(
+			'custom_shortcode_gm__end'                     => array(
 				'type' => 'inlineEnd',
 			),
-			'custom_shortcode_toolbar__start'           => array(
-				'title'     => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu') . ' ' . esc_html__( 'Toolbar', 'groovy-menu' ),
+			'custom_shortcode_toolbar__start'              => array(
+				'title'     => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu' ) . ' ' . esc_html__( 'Toolbar', 'groovy-menu' ),
 				'type'      => 'inlineStart',
 				'condition' => array( 'header.toolbar', 'in', array( 'true', '1' ) ),
 			),
-			'action__gm_toolbar_left_first'             => array(
+			'action__gm_toolbar_left_first'                => array(
 				'title'             => esc_html__( 'Toolbar Left First', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -1526,7 +1534,7 @@ return array(
 				'do_action'         => true,
 				'condition'         => array( 'header.toolbar', 'in', array( 'true', '1' ) ),
 			),
-			'action__gm_toolbar_left_last'              => array(
+			'action__gm_toolbar_left_last'                 => array(
 				'title'             => esc_html__( 'Toolbar Left Last', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -1537,7 +1545,7 @@ return array(
 				'do_action'         => true,
 				'condition'         => array( 'header.toolbar', 'in', array( 'true', '1' ) ),
 			),
-			'action__gm_toolbar_right_first'            => array(
+			'action__gm_toolbar_right_first'               => array(
 				'title'             => esc_html__( 'Toolbar Right First', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -1548,7 +1556,7 @@ return array(
 				'do_action'         => true,
 				'condition'         => array( 'header.toolbar', 'in', array( 'true', '1' ) ),
 			),
-			'action__gm_toolbar_right_last'             => array(
+			'action__gm_toolbar_right_last'                => array(
 				'title'             => esc_html__( 'Toolbar Right Last', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -1559,15 +1567,15 @@ return array(
 				'do_action'         => true,
 				'condition'         => array( 'header.toolbar', 'in', array( 'true', '1' ) ),
 			),
-			'custom_shortcode_toolbar__end'             => array(
+			'custom_shortcode_toolbar__end'                => array(
 				'type'      => 'inlineEnd',
 				'condition' => array( 'header.toolbar', 'in', array( 'true', '1' ) ),
 			),
-			'custom_shortcode_logo__start'              => array(
-				'title' => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu') . ' ' . esc_html__( 'Logo', 'groovy-menu' ),
+			'custom_shortcode_logo__start'                 => array(
+				'title' => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu' ) . ' ' . esc_html__( 'Logo', 'groovy-menu' ),
 				'type'  => 'inlineStart',
 			),
-			'action__gm_before_logo'                    => array(
+			'action__gm_before_logo'                       => array(
 				'title'             => esc_html__( 'Logo Before', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -1577,7 +1585,7 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'action__gm_after_logo'                     => array(
+			'action__gm_after_logo'                        => array(
 				'title'             => esc_html__( 'Logo After', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -1587,14 +1595,14 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'custom_shortcode_logo__end'                => array(
+			'custom_shortcode_logo__end'                   => array(
 				'type' => 'inlineEnd',
 			),
-			'custom_shortcode_nav__start'               => array(
-				'title' => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu') . ' ' . esc_html__( 'Main Navigation', 'groovy-menu' ),
+			'custom_shortcode_nav__start'                  => array(
+				'title' => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu' ) . ' ' . esc_html__( 'Main Navigation', 'groovy-menu' ),
 				'type'  => 'inlineStart',
 			),
-			'action__gm_main_menu_nav_first'            => array(
+			'action__gm_main_menu_nav_first'               => array(
 				'title'             => esc_html__( 'Main Menu Navigation First', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -1604,7 +1612,7 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'action__gm_main_menu_nav_last'             => array(
+			'action__gm_main_menu_nav_last'                => array(
 				'title'             => esc_html__( 'Main Menu Navigation Last', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -1614,7 +1622,7 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'action__gm_after_main_menu_nav'            => array(
+			'action__gm_after_main_menu_nav'               => array(
 				'title'             => esc_html__( 'Main Menu After', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -1624,14 +1632,14 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'custom_shortcode_nav__end'                 => array(
+			'custom_shortcode_nav__end'                    => array(
 				'type' => 'inlineEnd',
 			),
-			'custom_shortcode_buttons__start'           => array(
-				'title' => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu') . ' ' . esc_html__( 'Action Buttons', 'groovy-menu' ),
+			'custom_shortcode_buttons__start'              => array(
+				'title' => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu' ) . ' ' . esc_html__( 'Action Buttons', 'groovy-menu' ),
 				'type'  => 'inlineStart',
 			),
-			'action__gm_main_menu_actions_button_first' => array(
+			'action__gm_main_menu_actions_button_first'    => array(
 				'title'             => esc_html__( 'Action Buttons First', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -1641,7 +1649,7 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'action__gm_main_menu_actions_button_last'  => array(
+			'action__gm_main_menu_actions_button_last'     => array(
 				'title'             => esc_html__( 'Action Buttons Last', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -1651,14 +1659,24 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'custom_shortcode_buttons__end'             => array(
+			'custom_shortcode_buttons__end'                => array(
 				'type' => 'inlineEnd',
 			),
-			'custom_shortcode_mobile__start'        => array(
-				'title' => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu') . ' ' . esc_html__( 'Mobile menu', 'groovy-menu' ),
+			'custom_shortcode_mobile__start'               => array(
+				'title' => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu' ) . ' ' . esc_html__( 'Mobile menu', 'groovy-menu' ),
 				'type'  => 'inlineStart',
 			),
-			'action__gm_mobile_main_menu_nav_first' => array(
+			'action__gm_mobile_main_menu_top'              => array(
+				'title'             => esc_html__( 'Mobile Menu Top', 'groovy-menu' ),
+				'type'              => 'textarea',
+				'codemirror_editor' => true,
+				'lang_type'         => 'html',
+				'small_height'      => true,
+				'default'           => '',
+				'serialize'         => false,
+				'do_action'         => true,
+			),
+			'action__gm_mobile_main_menu_nav_first'        => array(
 				'title'             => esc_html__( 'Mobile Menu Navigation First', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -1668,7 +1686,7 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'action__gm_mobile_main_menu_nav_last'  => array(
+			'action__gm_mobile_main_menu_nav_last'         => array(
 				'title'             => esc_html__( 'Mobile Menu Navigation Last', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -1678,7 +1696,7 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'action__gm_mobile_after_main_menu_nav' => array(
+			'action__gm_mobile_after_main_menu_nav'        => array(
 				'title'             => esc_html__( 'Mobile Menu After', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -1688,7 +1706,7 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'action__gm_mobile_before_search_icon'  => array(
+			'action__gm_mobile_before_search_icon'         => array(
 				'title'             => esc_html__( 'Mobile Before Search icon', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -1698,7 +1716,7 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'action__gm_mobile_before_minicart'     => array(
+			'action__gm_mobile_before_minicart'            => array(
 				'title'             => esc_html__( 'Mobile Before Woo mini-cart', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -1708,7 +1726,7 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'action__gm_mobile_toolbar_end'         => array(
+			'action__gm_mobile_toolbar_end'                => array(
 				'title'             => esc_html__( 'Mobile Toolbar End', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -1718,7 +1736,7 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'custom_shortcode_mobile__end'          => array(
+			'custom_shortcode_mobile__end'                 => array(
 				'type' => 'inlineEnd',
 			),
 		)
@@ -2426,6 +2444,67 @@ return array(
 				'options'     => $nav_menus,
 				'default'     => '',
 			),
+			'mobile_submenu_style'                   => array(
+				'title'   => esc_html__( 'Mobile submenus style', 'groovy-menu' ),
+				'type'    => 'select',
+				'options' => array(
+					'default' => esc_html__( 'Standard dropdown list', 'groovy-menu' ),
+					'slider'  => esc_html__( 'Slider mobile submenu opening style', 'groovy-menu' ),
+				),
+				'default' => 'default',
+			),
+			'mobile_custom_hamburger'                => array(
+				'title'       => esc_html__( 'Custom mobile menu open trigger', 'groovy-menu' ),
+				'description' => esc_html__( 'Place any custom element with CSS class [gm-custom-hamburger] as open/close trigger for a mobile menu', 'groovy-menu' ) . '. ' . esc_html__( 'For example', 'groovy-menu' ) . ': <code>' . htmlentities( '<div class="gm-custom-hamburger">menu</div>' ) . '</code>' . '. ' . esc_html__( 'This option will disable the output of Groovy Menu hamburger menu', 'groovy-menu' ),
+				'type'        => 'checkbox',
+				'default'     => false,
+			),
+			'mobile_independent_css_hamburger'       => array(
+				'title'       => esc_html__( 'Show Hamburger icon as animated', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'checkbox',
+				'default'     => false,
+				'condition'   => array( 'header.style', 'in', array( '1', '3', '4', '5' ) ),
+			),
+			'mobile_independent_css_hamburger_type'  => array(
+				'title'     => esc_html__( 'Hamburger animation style', 'groovy-menu' ),
+				'type'      => 'select',
+				'options'   => array(
+					'hamburger--3dx'         => esc_html__( '3d x', 'groovy-menu' ),
+					'hamburger--3dx-r'       => esc_html__( '3d x reverse', 'groovy-menu' ),
+					'hamburger--3dy'         => esc_html__( '3d y', 'groovy-menu' ),
+					'hamburger--3dy-r'       => esc_html__( '3d y reverse', 'groovy-menu' ),
+					'hamburger--3dxy'        => esc_html__( '3d xy', 'groovy-menu' ),
+					'hamburger--3dxy-r'      => esc_html__( '3d xy reverse', 'groovy-menu' ),
+					'hamburger--arrow'       => esc_html__( 'arrow', 'groovy-menu' ),
+					'hamburger--arrow-r'     => esc_html__( 'arrow reverse', 'groovy-menu' ),
+					'hamburger--arrowalt'    => esc_html__( 'arrow alt', 'groovy-menu' ),
+					'hamburger--arrowalt-r'  => esc_html__( 'arrow alt reverse', 'groovy-menu' ),
+					'hamburger--arrowturn'   => esc_html__( 'arrow turn', 'groovy-menu' ),
+					'hamburger--arrowturn-r' => esc_html__( 'arrow turn reverse', 'groovy-menu' ),
+					'hamburger--boring'      => esc_html__( 'boring', 'groovy-menu' ),
+					'hamburger--collapse'    => esc_html__( 'collapse', 'groovy-menu' ),
+					'hamburger--collapse-r'  => esc_html__( 'collapse reverse', 'groovy-menu' ),
+					'hamburger--elastic'     => esc_html__( 'elastic', 'groovy-menu' ),
+					'hamburger--elastic-r'   => esc_html__( 'elastic reverse', 'groovy-menu' ),
+					'hamburger--emphatic'    => esc_html__( 'emphatic', 'groovy-menu' ),
+					'hamburger--emphatic-r'  => esc_html__( 'emphatic reverse', 'groovy-menu' ),
+					'hamburger--minus'       => esc_html__( 'minus', 'groovy-menu' ),
+					'hamburger--slider'      => esc_html__( 'slider', 'groovy-menu' ),
+					'hamburger--slider-r'    => esc_html__( 'slider reverse', 'groovy-menu' ),
+					'hamburger--spin'        => esc_html__( 'spin', 'groovy-menu' ),
+					'hamburger--spin-r'      => esc_html__( 'spin reverse', 'groovy-menu' ),
+					'hamburger--spring'      => esc_html__( 'spring', 'groovy-menu' ),
+					'hamburger--spring-r'    => esc_html__( 'spring reverse', 'groovy-menu' ),
+					'hamburger--stand'       => esc_html__( 'stand', 'groovy-menu' ),
+					'hamburger--stand-r'     => esc_html__( 'stand reverse', 'groovy-menu' ),
+					'hamburger--squeeze'     => esc_html__( 'squeeze', 'groovy-menu' ),
+					'hamburger--vortex'      => esc_html__( 'vortex', 'groovy-menu' ),
+					'hamburger--vortex-r'    => esc_html__( 'vortex reverse', 'groovy-menu' ),
+				),
+				'default'   => 'hamburger--squeeze',
+				'condition' => array( 'mobile_independent_css_hamburger', '==', true ),
+			),
 			'mobile_nav_drawer_open_type'            => array(
 				'title'   => esc_html__( 'Mobile navigation drawer open type', 'groovy-menu' ),
 				'type'    => 'select',
@@ -2515,8 +2594,15 @@ return array(
 			'responsive_navigation_background_color' => array(
 				'title'   => esc_html__( 'Mobile navigation drawer background color', 'groovy-menu' ),
 				'type'    => 'colorpicker',
-				'default' => '#ffffff',
+				'default' => '#f9f9f9',
 				'alpha'   => true,
+			),
+			'mobile_slider_title_background_color'   => array(
+				'title'       => esc_html__( 'Mobile submenu title background color', 'groovy-menu' ),
+				'type'        => 'colorpicker',
+				'default'     => '#cecece',
+				'alpha'       => true,
+				'description' => esc_html__( 'Slider mobile submenu opening style', 'groovy-menu' ),
 			),
 			'responsive_navigation_text_color'       => array(
 				'title'   => esc_html__( 'Mobile navigation drawer text color', 'groovy-menu' ),
@@ -2608,12 +2694,25 @@ return array(
 				'range'       => array( 0, 2000 ),
 				'unit'        => 'px',
 			),
+			'mobile_offcanvas_width_start'           => array(
+				'title' => esc_html__( 'Mobile navigation drawer width', 'groovy-menu' ),
+				'type'  => 'inlineStart'
+			),
 			'mobile_offcanvas_width'                 => array(
-				'title'   => esc_html__( 'Mobile navigation drawer width', 'groovy-menu' ),
+				'title'   => esc_html__( 'Maximum size', 'groovy-menu' ),
 				'type'    => 'number',
 				'default' => 250,
-				'range'   => array( 150, 1000 ),
+				'range'   => array( 150, 1300 ),
 				'unit'    => 'px',
+			),
+			'mobile_offcanvas_width_dynamic'         => array(
+				'title'       => esc_html__( 'Dynamic minimum size', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'checkbox',
+				'default'     => false,
+			),
+			'mobile_offcanvas_width_end'             => array(
+				'type' => 'inlineEnd'
 			),
 			'mobile_header_height'                   => array(
 				'title'   => esc_html__( 'Mobile header height', 'groovy-menu' ),
@@ -2621,6 +2720,21 @@ return array(
 				'default' => 70,
 				'range'   => array( 50, 200 ),
 				'unit'    => 'px',
+			),
+			'mobile_menu_wrapper_indent'             => array(
+				'title'   => esc_html__( 'Mobile menu top gap', 'groovy-menu' ),
+				'type'    => 'number',
+				'default' => 0,
+				'range'   => array( 0, 700 ),
+				'unit'    => 'px',
+			),
+			'mobile_slider_title_height'             => array(
+				'title'       => esc_html__( 'Mobile submenu title height', 'groovy-menu' ),
+				'type'        => 'number',
+				'default'     => 50,
+				'range'       => array( 40, 700 ),
+				'unit'        => 'px',
+				'description' => esc_html__( 'Slider mobile submenu opening style', 'groovy-menu' ),
 			),
 			'mobile_items_padding_y'                 => array(
 				'title'       => esc_html__( 'Mobile navigation menu item vertical padding', 'groovy-menu' ),

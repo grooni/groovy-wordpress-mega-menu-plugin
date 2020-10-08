@@ -6,7 +6,7 @@ const DEV = process.env.NODE_ENV === 'development';
 module.exports = {
   // mode: DEV ? 'development' : 'production',
   mode: 'production',
-  // devtool: 'eval-source-map',
+  devtool: DEV ? 'eval-source-map' : false,
   // optimization: {
   //   minimize: false,
   //   // minimizer: [
