@@ -136,8 +136,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function deleteIconPack () {
+    let nonceField = document.getElementById('gm-nonce-editor-field');
+    let nonce = nonceField ? nonceField.value : '';
     let iconPack = this.closest('.groovy-iconset');
-    let url = `?page=groovy_menu_settings&action=deleteFont&name=${iconPack.dataset.name}`;
+    let url = `?page=groovy_menu_settings&action=deleteFont&name=${iconPack.dataset.name}&gm_nonce=${nonce}`;
 
     axios.get(url);
     iconPack.remove();
