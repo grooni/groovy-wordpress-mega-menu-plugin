@@ -184,12 +184,12 @@ class GroovyMenu {
       }
 
       // Don't scroll for empty # links.
-      if (isClosestAnchorEmpty) {
+      if (isClosestAnchorEmpty && e.type === 'click') {
         e.preventDefault();
       }
 
       // fast toggle.
-      if (e.target.closest('.gm-caret') || e.target.closest('.gm-dropdown-menu-title') || (closestDropdown && isClosestAnchorEmpty)) {
+      if (e.target.closest('.gm-caret') || e.target.closest('.gm-dropdown-menu-title') || (closestDropdown && isClosestAnchorEmpty && e.type === 'click')) {
         e.preventDefault();
 
         if (!isMobile()) {
