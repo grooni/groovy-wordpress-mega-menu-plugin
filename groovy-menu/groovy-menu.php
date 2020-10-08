@@ -74,26 +74,29 @@ add_action( 'init', array( 'GroovyMenuUtils', 'add_groovy_menu_preset_post_type'
 add_filter( 'plugin_row_meta', array( 'GroovyMenuUtils', 'gm_plugin_meta_links' ), 10, 2 );
 add_filter( 'plugin_action_links', array( 'GroovyMenuUtils', 'gm_plugin_page_links' ), 10, 2 );
 
+add_action( 'init', 'groovy_menu_init_classes', 2 );
 
 // Initialize Groovy Menu.
-if ( class_exists( 'GroovyMenuPreset' ) ) {
-	new GroovyMenuPreset( null, true );
-}
+function groovy_menu_init_classes() {
+	if ( class_exists( 'GroovyMenuPreset' ) ) {
+		new GroovyMenuPreset( null, true );
+	}
 
-if ( class_exists( 'GroovyMenuSettings' ) ) {
-	new GroovyMenuSettings();
-}
+	if ( class_exists( 'GroovyMenuSettings' ) ) {
+		new GroovyMenuSettings();
+	}
 
-if ( class_exists( 'GroovyMenuCategoryPreset' ) ) {
-	new GroovyMenuCategoryPreset( array( 'category', 'crane_portfolio_cats', 'post_tag', 'product_cat' ) );
-}
+	if ( class_exists( 'GroovyMenuCategoryPreset' ) ) {
+		new GroovyMenuCategoryPreset( array( 'category', 'crane_portfolio_cats', 'post_tag', 'product_cat' ) );
+	}
 
-if ( class_exists( 'GroovyMenuSingleMetaPreset' ) ) {
-	new GroovyMenuSingleMetaPreset();
-}
+	if ( class_exists( 'GroovyMenuSingleMetaPreset' ) ) {
+		new GroovyMenuSingleMetaPreset();
+	}
 
-if ( class_exists( '\GroovyMenu\AdminWalker' ) ) {
-	\GroovyMenu\AdminWalker::registerWalker();
+	if ( class_exists( '\GroovyMenu\AdminWalker' ) ) {
+		\GroovyMenu\AdminWalker::registerWalker();
+	}
 }
 
 if ( method_exists( 'GroovyMenuUtils', 'cache_pre_wp_nav_menu' ) ) {
