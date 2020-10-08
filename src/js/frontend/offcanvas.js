@@ -27,6 +27,11 @@ function offcanvasOpen (navDrawer) {
     if (gmNavbar) {
       gmNavbar.classList.add('gm-drawer--open');
     }
+    if (hamburgerMenu) {
+      setTimeout(() => {
+        hamburgerMenu.classList.add('is-active');
+      }, 450);
+    }
   }
 }
 
@@ -37,6 +42,11 @@ function offcanvasClose (navDrawer) {
     let gmNavbar = document.querySelector('.gm-navbar');
     if (gmNavbar) {
       gmNavbar.classList.remove('gm-drawer--open');
+    }
+    if (hamburgerMenu) {
+      setTimeout(() => {
+        hamburgerMenu.classList.remove('is-active');
+      }, 450);
     }
   } else {
     return;
@@ -57,7 +67,7 @@ function offcanvasClickOutside () {
       return;
     }
 
-    if (event.target.closest('.gm-navbar-nav, .gm-navigation-drawer, .gm-main-menu-wrapper, .gm-burger') === null) {
+    if (event.target.closest('.gm-navbar-nav, .gm-navigation-drawer, .gm-main-menu-wrapper, .gm-burger, .gm-custom-hamburger') === null) {
       offcanvasClose(mainMenuWrapper);
       offcanvasClose(navDrawer);
     }
@@ -66,15 +76,16 @@ function offcanvasClickOutside () {
 
 function makeHiddenVisible (navDrawer) {
   let mainMenuWrapper = document.querySelector('.gm-main-menu-wrapper');
+  let isMobileFlag = isMobile(options.mobileWidth);
 
-  if (navDrawer && isMobile(options.mobileWidth)) {
+  if (navDrawer && navDrawer.classList.contains('gm-hidden') && isMobileFlag) {
     setTimeout(() => {
       navDrawer.classList.remove('gm-hidden');
-    }, 300);
+    }, 100);
   }
 
   if (mainMenuWrapper) {
-    if (!isMobile(options.mobileWidth)) {
+    if (!isMobileFlag) {
       mainMenuWrapper.classList.add('d-flex');
     } else {
       mainMenuWrapper.classList.remove('d-flex');
@@ -109,7 +120,10 @@ function topIndentForBurger(navDrawer) {
   let gmToolbarHeight = 0;
   let gmInnerHeight = 0;
   let wpAdminbarElemHeight = 0;
+  let gmBurgerHeight = 0;
+  let gmBurgerPaddings = 0;
   let offset = 0;
+
   if (wpAdminbarElem) {
     wpAdminbarElemHeight = Number(window.getComputedStyle(wpAdminbarElem, null)
       .height
@@ -141,15 +155,31 @@ function topIndentForBurger(navDrawer) {
       }
     }
   }
-  let gmBurgerHeight = Number(window.getComputedStyle(gmBurger, null)
+  let gmBurgerHeightWrapper = Number(window.getComputedStyle(gmBurger, null)
     .height
     .replace(/\D+/g, ''));
   let gmBurgerWidth = Number(window.getComputedStyle(gmBurger, null)
     .width
     .replace(/\D+/g, ''));
 
+  gmBurgerHeight = (gmBurgerHeightWrapper < 8) ? 8 : gmBurgerHeightWrapper;
+
+  gmBurgerPaddings = (options.hamburgerIconPaddingMobile) ? (options.hamburgerIconPaddingMobile * 2) : 0;
+  gmBurgerPaddings = (options.hamburgerIconMobileBorderWidth) ? (options.hamburgerIconMobileBorderWidth * 2) + gmBurgerPaddings : gmBurgerPaddings;
+  if (gmBurgerPaddings > 0) {
+    gmBurgerHeight = gmBurgerHeight - gmBurgerPaddings;
+  }
+
+  if (gmBurgerHeight < 8) {
+    gmBurgerHeight = gmBurgerHeightWrapper;
+  }
+
   let indentPx = gmToolbarHeight + (((gmInnerHeight - gmBurgerHeight) / 2) | 0);
-  indentPx = (indentPx < -4) ? 0 : indentPx;
+  indentPx = (indentPx < -4) ? 8 : indentPx;
+
+  if (gmBurgerPaddings > 0) {
+    indentPx = indentPx - ((gmBurgerPaddings / 2) | 0);
+  }
 
   if (indentPx > window.innerHeight) {
     setTimeout(() => {
@@ -163,10 +193,10 @@ function topIndentForBurger(navDrawer) {
     let gmContainer = document.querySelector('.gm-navbar .gm-inner .gm-container');
     if (gmContainer) {
       if (options.mobileNavDrawerOpenType === 'offcanvasSlideLeft' || options.mobileNavDrawerOpenType === 'offcanvasSlideSlide') {
-        gmContainer.style.paddingLeft = (gmBurgerWidth + 30) + 'px';
+        gmContainer.style.paddingLeft = (gmBurgerWidth + 8) + 'px';
       }
       if (options.mobileNavDrawerOpenType === 'offcanvasSlideRight' || options.mobileNavDrawerOpenType === 'offcanvasSlideSlideRight') {
-        gmContainer.style.paddingRight = (gmBurgerWidth + 30) + 'px';
+        gmContainer.style.paddingRight = (gmBurgerWidth + 8) + 'px';
       }
     }
   }
@@ -245,7 +275,7 @@ export function offcanvasSlide() {
     makeHiddenVisible(navDrawer);
     topIndentForBurger(navDrawer);
     offcanvasClose(navDrawer);
-  }, 750));
+  }, 200));
 
   closeIfNoChildren(navDrawer);
 
