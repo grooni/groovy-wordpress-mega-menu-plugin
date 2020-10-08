@@ -108,6 +108,7 @@ GROOVY CART
     }
 
     .remove {
+      display: block;
       position: absolute;
       right: 0;
       top: 27px;
@@ -115,11 +116,18 @@ GROOVY CART
       height: 20px;
       text-align: center;
       font-size: 18px;
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+      font-weight: 400;
       color: inherit;
+      text-decoration: none;
+      line-height: 18px;
+      border-radius: 0;
+      border: none;
     }
 
     a {
       color: inherit;
+      font-weight: 700;
     }
 
     a:not(.remove) {
@@ -129,7 +137,7 @@ GROOVY CART
       img {
         width: 68px;
         position: absolute;
-        top: 6px;
+        top: 10px;
         left: 0;
       }
     }
@@ -141,17 +149,54 @@ GROOVY CART
       left: 0;
     }
 
+    .quantity {
+      display: block;
+      clear: both;
+    }
+
     .variation {
-      margin-right: 20px;
+      margin: 0;
+      padding-left: 0.5em;
+      border-left: 2px solid rgba(0, 0, 0, 0.1);
+
+      &::after {
+        clear: both;
+        content: ' ';
+        display: table;
+      }
+
+      &::before {
+        content: ' ';
+        display: table;
+      }
 
       dt,
       dd {
         display: inline-block;
+        float: left;
+        font-size: inherit;
+        padding: 0 0 2px 0;
+        margin: 0;
+
+        p {
+          padding: 0;
+          margin: 0;
+        }
       }
 
       dd {
-        font-weight: 700;
         margin-left: 0;
+        font-weight: 400;
+
+        p {
+          font-weight: 400;
+        }
+      }
+
+      dt {
+        font-weight: 700;
+        margin: 0 4px 0 0;
+        clear: left;
       }
 
       &:last-of-type {

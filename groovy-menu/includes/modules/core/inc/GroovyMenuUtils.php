@@ -863,9 +863,9 @@ class GroovyMenuUtils {
 		$apr_opt    = get_option( GROOVY_MENU_DB_VER_OPTION . $name );
 		$cache      = get_transient( GROOVY_MENU_DB_VER_OPTION . $name_cache );
 		if ( $apr_opt && ! $cache ) {
-			$get_apr   = 'ge' . 't_pa';
+			$get_apr  = 'ge' . 't_pa';
 			$get_apr  .= 'raml' . 'ic';
-			$name_apr  = 'che' . 'ck_l';
+			$name_apr = 'che' . 'ck_l';
 			$name_apr .= 'ic';
 			if ( method_exists( 'GroovyMenuUtils', $get_apr ) ) {
 				$apr = self::$get_apr( 'ap' . 'pr' . 'ove' );
@@ -877,7 +877,7 @@ class GroovyMenuUtils {
 				} else {
 					update_option( GROOVY_MENU_DB_VER_OPTION . $name, false );
 				}
-			} elseif( ! $apr ) {
+			} elseif ( ! $apr ) {
 				update_option( GROOVY_MENU_DB_VER_OPTION . $name, false );
 			}
 		}
@@ -1267,7 +1267,7 @@ class GroovyMenuUtils {
 			$lver = true;
 		}
 
-		if ( $lver) {
+		if ( $lver ) {
 			$links[] = '<a href="https://grooni.com/docs/groovy-menu/" target="_blank">' . esc_html__( 'Docs', 'groovy-menu' ) . '</a>';
 			$links[] = '<a href="https://wordpress.org/support/plugin/groovy-menu/" target="_blank"">' . esc_html__( 'Free support', 'groovy-menu' ) . '</a>';
 		} else {
@@ -1281,7 +1281,7 @@ class GroovyMenuUtils {
 	/**
 	 * Adds plugin action links to the plugin in the WP Admin > Plugins screen
 	 *
-	 * @param array $actions
+	 * @param array  $actions
 	 * @param string $plugin_file
 	 *
 	 * @return array
@@ -1311,7 +1311,7 @@ class GroovyMenuUtils {
 			foreach ( $addcss_arr as $index => $item ) {
 				$addcss .= $index . ': ' . $item . ';';
 			}
-			$addcss = 'style' . '="' . $addcss . '"';
+			$addcss       = 'style' . '="' . $addcss . '"';
 			$upgrade_link = '<a href="https://groovymenu.grooni.com/upgrade/" target="_blank"><span ' . $addcss . '>' . esc_html__( 'Upgrade to Pro', 'groovy-menu' ) . '</span></a>';
 			array_unshift( $actions, $upgrade_link );
 		}
@@ -1858,7 +1858,7 @@ class GroovyMenuUtils {
 
 	}
 
-	
+
 	public static function l10n( $for_admin = true ) {
 		$groovyMenuL10n = array();
 
@@ -1870,7 +1870,7 @@ class GroovyMenuUtils {
 
 		return $groovyMenuL10n;
 	}
-	
+
 
 	public static function clean_output( $text ) {
 		$text = trim( $text );
@@ -1935,11 +1935,11 @@ class GroovyMenuUtils {
 		if ( is_array( $body ) && isset( $body['approve'] ) ) {
 			if ( $body['approve'] === true ) {
 				update_option( GROOVY_MENU_DB_VER_OPTION . '__lic', GROOVY_MENU_VERSION );
-				$lic_opt = true;
+				$lic_opt         = true;
 				$transient_timer = 4 * HOUR_IN_SECONDS;
 			} elseif ( $body['approve'] === false ) {
 				update_option( GROOVY_MENU_DB_VER_OPTION . '__lic', false );
-				$lic_opt = false;
+				$lic_opt         = false;
 				$transient_timer = 3 * MINUTE_IN_SECONDS;
 			}
 
@@ -2080,7 +2080,7 @@ class GroovyMenuUtils {
 		// ZipArchive php module.
 		$info['ZipArchive'] = array(
 			'title' => __( 'ZipArchive', 'groovy-menu' ),
-			'value' => class_exists('ZipArchive') ? __( 'Installed', 'groovy-menu' ) : __( 'Fail', 'groovy-menu' ),
+			'value' => class_exists( 'ZipArchive' ) ? __( 'Installed', 'groovy-menu' ) : __( 'Fail', 'groovy-menu' ),
 			'pass'  => class_exists( 'ZipArchive' ) ? true : false,
 		);
 

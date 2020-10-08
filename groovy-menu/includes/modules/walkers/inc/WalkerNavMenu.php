@@ -859,21 +859,36 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 
 			$wpml_gm_menu_block_id = apply_filters( 'wpml_object_id', $post_id, 'gm_menu_block', true );
 
+			$divi_builder_flag = get_post_meta( $wpml_gm_menu_block_id, '_et_pb_use_builder', true );
+
+			// Post by default.
+			$post = null;
+			$_post = null;
 
 			// prevent conflict with Divi theme builder. But not at the Woocommerce pages.
-			if ( 'on' === get_post_meta( $wpml_gm_menu_block_id, '_et_pb_use_builder', true ) && ! $is_woocommerce_page ) {
+			if ( 'on' === $divi_builder_flag ) {
 				$post = null;
+
+				$query = new \WP_Query( 'post_type=gm_menu_block&p=' . $wpml_gm_menu_block_id );
+				if ( ! empty( $query->posts ) && ! empty( $query->posts[0] ) ) {
+					$post = $query->posts[0];
+				}
 			} else {
 				global $post;
+
+				// Copy global $post exemplar.
+				$_post = $post;
+				$post  = get_post( $wpml_gm_menu_block_id ); // @codingStandardsIgnoreLine
 			}
 
-			// Copy global $post exemplar.
-			$_post = $post;
-			$post  = get_post( $wpml_gm_menu_block_id ); // @codingStandardsIgnoreLine
-
-			if ( empty( $post->ID ) ) {
+			if ( empty( $post ) || empty( $post->ID ) ) {
 				// Recovery global $post exemplar.
 				$post = $_post; // @codingStandardsIgnoreLine
+
+				/**
+				 * Reset the original query
+				 */
+				wp_reset_query();
 
 				return $mm_content;
 			}
@@ -900,11 +915,25 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 
 			} else {
 
-				$mm_content = apply_filters( 'the_content', $post->post_content );
+				$raw_content = empty( $post->post_content ) ? '' : $post->post_content;
 
 				// fix for bbPress function bbp_remove_all_filters('the_content').
 				if ( empty( $wp_filter['the_content'] ) ) {
-					$mm_content = do_shortcode( $mm_content );
+
+					$mm_content = do_shortcode( $raw_content );
+
+				} else {
+
+					if ( 'on' === $divi_builder_flag ) {
+						// Apply all filters for enqueue styles
+						$filtered_content = apply_filters( 'the_content', $raw_content );
+
+						$mm_content = do_shortcode( $raw_content );
+
+					} else {
+						$mm_content = apply_filters( 'the_content', $raw_content );
+					}
+
 				}
 
 			}
@@ -912,6 +941,11 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 
 			// Recovery global $post exemplar.
 			$post = $_post; // @codingStandardsIgnoreLine
+
+			/**
+			 * Reset the original query
+			 */
+			wp_reset_query();
 
 		}
 

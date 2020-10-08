@@ -194,6 +194,12 @@ function groovyMenu( $args = array() ) {
 	}
 
 
+	if ( class_exists( 'GroovyMenuActions' ) ) {
+		// Do custom shortcodes from preset.
+		GroovyMenuActions::do_preset_shortcodes( $styles );
+	}
+
+
 	/**
 	 * Google Font link building
 	 */

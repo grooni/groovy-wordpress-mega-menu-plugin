@@ -883,12 +883,28 @@ GENERAL SETTINGS MODAL
 
 .preview-size-change__tabs,
 .preview-color-change__tabs,
-.preview-sticky-change__tabs {
+.preview-sticky-change__tabs,
+.preview-navmenu-change__tabs {
   display: flex;
 }
 
 .preview-sticky-change__tabs {
-  padding-right: 360px;
+  padding-right: 8px;
+}
+
+.preview-navmenu-change__tabs {
+  padding-right: 60px;
+  min-width: 280px;
+
+  .select-styled::after {
+    position: relative;
+    top: 12px;
+    right: -16px;
+  }
+
+  .select-styled.active::after {
+    top: -12px;
+  }
 }
 
 .value {
@@ -900,7 +916,8 @@ GENERAL SETTINGS MODAL
   align-items: center;
 }
 
-#toplevel_page_groovy_menu_settings .dashicons-admin-generic::before, #toplevel_page_groovy_menu_welcome .dashicons-admin-generic::before {
+#toplevel_page_groovy_menu_settings .dashicons-admin-generic::before,
+#toplevel_page_groovy_menu_welcome .dashicons-admin-generic::before {
   content: '';
   background-image: url('../images/groovy.svg');
   background-repeat: no-repeat;

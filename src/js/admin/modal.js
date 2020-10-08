@@ -38,6 +38,7 @@ export function initPreviewModal (previewForm) {
   const previewBtn = document.querySelector('.gm-gui-preview-btn');
   const presetPreview = document.querySelector('#preview-modal');
   let actionAttr = previewForm.getAttribute('action');
+  let previewNavMenuSelect = document.querySelector('#preview-modal .gm-select[name="gm-preview-nav-menu"]');
 
   let presetPreviewModal = new tingle.modal({
     footer: false,
@@ -47,7 +48,13 @@ export function initPreviewModal (previewForm) {
     beforeOpen () {
       let id = previewForm.dataset.id;
       let rtl = isRtl() ? '&d=rtl' : '';
-      let url = groovyMenuLocalize.GroovyMenuSiteUrl + '/?groovy-menu-preset=1&gm_action_preview=1&from=edit&id=' + id + rtl;
+      let navMenu = '';
+      let previewNavMenuSelect = document.querySelector('#preview-modal .gm-select[name="gm-preview-nav-menu"]');
+      if (previewNavMenuSelect) {
+        navMenu = '&navmenu_id=' + previewNavMenuSelect.options[previewNavMenuSelect.selectedIndex].value;
+      }
+
+      let url = groovyMenuLocalize.GroovyMenuSiteUrl + '/?groovy-menu-preset=1&gm_action_preview=1&from=edit&id=' + id + rtl + navMenu;
       let previewFrame = document.createElement('iframe');
 
       previewFrame.setAttribute('name', 'live-preview');
@@ -95,4 +102,25 @@ export function initPreviewModal (previewForm) {
   previewBtn.addEventListener('click', () => {
     presetPreviewModal.open();
   });
+
+
+
+  if (previewNavMenuSelect) {
+    previewNavMenuSelect.addEventListener('change', () => {
+      let previewNavMenuSelect = document.querySelector('#preview-modal .gm-select[name="gm-preview-nav-menu"]');
+      let navMenu = previewNavMenuSelect.options[previewNavMenuSelect.selectedIndex].value;
+      let previwModalFrame = document.querySelector('#preview-modal #live-preview');
+
+      if (previwModalFrame && navMenu) {
+        let id = previewForm.dataset.id;
+        let rtl = isRtl() ? '&d=rtl' : '';
+        navMenu = '&navmenu_id=' + navMenu;
+        let url = groovyMenuLocalize.GroovyMenuSiteUrl + '/?groovy-menu-preset=1&gm_action_preview=1&from=edit&id=' + id + rtl + navMenu;
+
+        previwModalFrame.setAttribute('src', url);
+      }
+    });
+  }
+
+
 }

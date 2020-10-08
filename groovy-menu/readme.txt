@@ -4,7 +4,7 @@ Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive,
 Requires at least: 4.9.7
 Tested up to: 5.5.1
 Requires PHP: 7.0
-Stable tag: 1.2.6
+Stable tag: 1.2.7
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -115,6 +115,13 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.2.7 =
+* Add: Ability to add a custom shortcode or HTML to the Action areas of Groovy Menu, direclty in the preset editor. The setting is available in the General preset editor > Custom code.
+* Fix: Fixed a conflict that occurred when some plugins for WooCommerce were working together on Divi product pages and using menu blocks.
+* Fix: Added default styles for displaying items in the mini cart. Prevents style conflicts in some themes.
+* Fix: Added an event to close the mini-cart by clicking outside the mini-cart.
+* Fix: Fixed double transition effect for icons.
 
 = 1.2.6 =
 * Add: Added an option for disable Font Awesome.

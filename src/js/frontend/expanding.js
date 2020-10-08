@@ -25,6 +25,7 @@ function expandingOpen(navbar) {
 function expandingClose(navbar) {
   if (expandingIsOpen(navbar)) {
     navbar.classList.remove('gm-expanding--open');
+    navbar.classList.remove('gm-animation-end');
   } else {
     return;
   }
@@ -58,6 +59,27 @@ function expandingClickHamburger() {
   });
 }
 
+function transitionSidebarEvents() {
+  const navbar = document.querySelector('.gm-navbar');
+
+  if (navbar) {
+    navbar.addEventListener('transitionend', handleTransitionEnd);
+  }
+}
+
+function handleTransitionEnd(event) {
+  if (event.propertyName !== 'width') {
+    return;
+  }
+
+  if (event.target.classList.contains('gm-expanding--open')) {
+    event.target.classList.add('gm-animation-end');
+  } else {
+    event.target.classList.remove('gm-animation-end');
+  }
+
+}
+
 function expandingOpenMouseEvents() {
   navbar.addEventListener('mouseenter', function (event) {
     expandingOpen(navbar);
@@ -82,6 +104,8 @@ export function expandingSidebarEvents() {
   expandingClickOutside();
 
   expandingClickHamburger();
+
+  transitionSidebarEvents();
 
   window.addEventListener('resize', _.debounce(() => {
     expandingClose(navbar);
