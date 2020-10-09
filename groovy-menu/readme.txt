@@ -4,7 +4,7 @@ Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive,
 Requires at least: 4.9.7
 Tested up to: 5.5.1
 Requires PHP: 7.0
-Stable tag: 1.2.7
+Stable tag: 1.2.8
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -115,6 +115,28 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.2.8 =
+* Add: New type of mobile menu with slide effect.
+* Add: An additional option for "Mobile navigation drawer width" is "Dynamic minimum size"
+* Add: Added "Enable mobile menu scrollbar" setting. Is enabled by default.
+* Add: New option for mobile menu type "Slider mobile submenu opening style" - "Mobile submenu title height".
+* Add: New option for mobile menu type "Slider mobile submenu opening style" - "Mobile submenu title background color".
+* Add: Added the ability to implement a custom trigger to open a mobile menu. "Custom mobile menu open trigger".
+* Add: New setting to set the top gap for the mobile menu "Mobile menu top gap".
+* Add: Added new action "gm_mobile_main_menu_top". It allows you to add content to the top of the mobile menu, before the "Mobile menu top gap".
+* Add: Added the new mobile menu open type, with Close "X" icon.
+* Add: Added the ability to set animated Hamburger and close button for mobile menu.
+* Add: Added ability to choice of Navigation menu to display in preview mode.
+* Add: New appearance style "Animate with scaling" in "General - Submenus - Submenu appearance style" section.
+* Add: Custom scroll speed options for onepage menus.
+* Fix: Scrolling at vertical menu in the mobile version.
+* Fix: Canceled some functions for working with page content if the mobile menu is disabled.
+* Fix: Added style which prevents mobile menu folding at scrolling the main content.
+* Fix: Added styles to prevent showing the mobile menu at page is loading.
+* Fix: Now are correct working custom empty links in the top level menu together with enabled setting opening the sub-menu on mouse click.
+* Fix: Fixed working with the Iconpack at loading and uninstalling the icon font pack in Global settings.
+* Fix: The initialization of the main Groovy Menu modules has been moved to the ‘init’ action. This avoids conflicts with some third-party plugins, and also allows you to dynamically add new integration capabilities with some themes. (include Zephyr 7.x).
 
 = 1.2.7 =
 * Add: Ability to add a custom shortcode or HTML to the Action areas of Groovy Menu, direclty in the preset editor. The setting is available in the General preset editor > Custom code.
