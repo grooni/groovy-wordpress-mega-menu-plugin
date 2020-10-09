@@ -49,7 +49,7 @@ class FrontendWalker extends WalkerNavMenu {
 			}
 
 			if ( $this->getBackgroundId( $this->currentItem ) ) {
-				$size   = $this->getBackgroundSize( $this->currentItem );
+				$size    = $this->getBackgroundSize( $this->currentItem );
 				$styles .= 'background-image: url(' . $this->getBackgroundUrl( $this->currentItem, $size ) . ');';
 				$styles .= 'background-repeat: ' . $this->getBackgroundRepeat( $this->currentItem ) . ';';
 				$styles .= 'background-position: ' . $this->getBackgroundPosition( $this->currentItem ) . ';';

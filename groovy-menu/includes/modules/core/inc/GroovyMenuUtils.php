@@ -245,6 +245,25 @@ class GroovyMenuUtils {
 			}
 		}
 
+		global $gm_supported_module;
+		if ( ! empty( $gm_supported_module['post_types'] ) && is_array( $gm_supported_module['post_types'] ) ) {
+			if ( $name_as_key ) {
+				foreach ( $gm_supported_module['post_types'] as $post_name => $post_label ) {
+					if ( isset( $post_types[ $post_name ] ) ) {
+						continue;
+					}
+					$post_types[ $post_name ] = $post_label;
+				}
+			} else {
+				foreach ( $gm_supported_module['post_types'] as $post_name => $post_label ) {
+					if ( isset( $post_types[ $post_label ] ) ) {
+						continue;
+					}
+					$post_types[ $post_label ] = $post_name;
+				}
+			}
+		}
+
 		return $post_types;
 
 	}
