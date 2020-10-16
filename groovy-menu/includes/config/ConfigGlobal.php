@@ -397,8 +397,7 @@ return array(
 				'type'        => 'icons',
 				'title'       => esc_html__( 'Icons', 'groovy-menu' ),
 				'default'     => '',
-				'description' => sprintf( esc_html__( 'Please upload .ZIP archive created with %1$s service only.', 'groovy-menu' ), '<a href="https://icomoon.io/app/#/select" title="icomoon.io" target="_blank">icomoon.io</a>' ) . ' ' .
-				                 sprintf( esc_html__( 'How to create font icon package read in %1$s this article %2$s', 'groovy-menu' ), '<a href="https://grooni.com/docs/groovy-menu/global-settings/managing-icon-packs/" title="Grooni docs" target="_blank">', '</a>' ),
+				'description' => '',
 			),
 		),
 	),
@@ -444,11 +443,12 @@ return array(
 				'default'     => true,
 				'description' => esc_html__( 'Add preload link tag', 'groovy-menu' ),
 			),
-			'uninstall_data'              => array(
+			'uninstall_data' => array(
 				'type'        => 'checkbox',
-				'title'       => '<span class="gm-delete-warn">' . esc_html__( 'Remove All Data after uninstall', 'groovy-menu' ) . '</span>',
+				'title'       => esc_html__( 'Remove All Data after uninstall', 'groovy-menu' ),
 				'default'     => false,
 				'description' => esc_html__( 'This tool will remove Groovy menu, Presets and other data when using the "Delete" link on the plugins screen.', 'groovy-menu' ),
+				'title_class' => 'gm-delete-warn',
 			),
 		),
 	),
