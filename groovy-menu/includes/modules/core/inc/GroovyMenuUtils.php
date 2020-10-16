@@ -2332,24 +2332,47 @@ class GroovyMenuUtils {
 
 
 	/**
-	 * Load Font Awesome font file
+	 * Load Font Awesome, Crane font, and other font files
 	 */
-	public static function load_font_awesome() {
+	public static function load_font_internal() {
 
 		$global_settings = get_option( GroovyMenuStyle::OPTION_NAME );
+		$return_flag     = false;
 
-		if ( is_admin() || empty( $global_settings['tools']['disable_local_font_awesome'] ) || ! $global_settings['tools']['disable_local_font_awesome'] ) {
+		if ( empty( $global_settings['tools']['disable_local_font_awesome'] ) || ! $global_settings['tools']['disable_local_font_awesome'] ) {
 			add_action( 'gm_enqueue_script_actions', function () {
+				$global_settings = get_option( GroovyMenuStyle::OPTION_NAME );
 				wp_enqueue_style( 'groovy-menu-font-awesome', GROOVY_MENU_URL . 'assets/style/fontawesome.css', [], GROOVY_MENU_VERSION );
 				wp_style_add_data( 'groovy-menu-font-awesome', 'rtl', 'replace' );
+
+				if ( ! isset( $global_settings['tools']['allow_use_font_preloader'] ) || $global_settings['tools']['allow_use_font_preloader'] ) {
+					wp_enqueue_style( 'groovy-menu-font-awesome-file', GROOVY_MENU_URL . 'assets/fonts/fontawesome-webfont.woff2?v=4.7.0', [], null );
+				}
 			}, 20 );
 
-			add_filter( 'style_loader_tag', array( 'GroovyMenuUtils', 'enqueue_style_attributes' ), 10, 2 );
+			add_filter( 'style_loader_tag', array( 'GroovyMenuUtils', 'font_enqueue_style_attributes' ), 10, 2 );
 
-			return true;
+			$return_flag = true;
 		}
 
-		return false;
+		if ( empty( $global_settings['tools']['disable_local_font_internal'] ) || ! $global_settings['tools']['disable_local_font_internal'] ) {
+			add_action( 'gm_enqueue_script_actions', function () {
+				$global_settings = get_option( GroovyMenuStyle::OPTION_NAME );
+				wp_enqueue_style( 'groovy-menu-font-internal', GROOVY_MENU_URL . 'assets/style/font-internal.css', [], GROOVY_MENU_VERSION );
+				wp_style_add_data( 'groovy-menu-font-internal', 'rtl', 'replace' );
+
+				if ( ! isset( $global_settings['tools']['allow_use_font_preloader'] ) || $global_settings['tools']['allow_use_font_preloader'] ) {
+					wp_enqueue_style( 'groovy-menu-font-internal-file', GROOVY_MENU_URL . 'assets/fonts/crane-font.woff?hhxb42', [], null );
+				}
+			}, 20 );
+
+			add_filter( 'style_loader_tag', array( 'GroovyMenuUtils', 'font_enqueue_style_attributes' ), 10, 2 );
+
+			$return_flag = true;
+		}
+
+
+		return $return_flag;
 	}
 
 
@@ -2361,9 +2384,25 @@ class GroovyMenuUtils {
 	 *
 	 * @return mixed
 	 */
-	public static function enqueue_style_attributes( $html, $handle ) {
+	public static function font_enqueue_style_attributes( $html, $handle ) {
 		if ( 'groovy-menu-font-awesome' === $handle ) {
 			return str_replace( "media='all'", "media='all' crossorigin='anonymous'", $html );
+		}
+
+		if ( 'groovy-menu-font-awesome-file' === $handle ) {
+			$replaced_string = str_replace( "rel='stylesheet'", "rel='preload' as='font' crossorigin='anonymous'", $html );
+
+			return str_replace( "type='text/css'", "type='font/woff2'", $replaced_string );
+		}
+
+		if ( 'groovy-menu-font-internal' === $handle ) {
+			return str_replace( "media='all'", "media='all' crossorigin='anonymous'", $html );
+		}
+
+		if ( 'groovy-menu-font-internal-file' === $handle ) {
+			$replaced_string = str_replace( "rel='stylesheet'", "rel='preload' as='font' crossorigin='anonymous'", $html );
+
+			return str_replace( "type='text/css'", "type='font/woff'", $replaced_string );
 		}
 
 		return $html;

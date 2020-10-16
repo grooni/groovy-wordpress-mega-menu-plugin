@@ -116,8 +116,8 @@ if ( method_exists( 'GroovyMenuUtils', 'update_config_text_domain' ) && is_admin
 	add_action( 'wp_loaded', array( 'GroovyMenuUtils', 'update_config_text_domain' ), 1000 );
 }
 
-if ( method_exists( 'GroovyMenuUtils', 'load_font_awesome' ) ) {
-	GroovyMenuUtils::load_font_awesome();
+if ( method_exists( 'GroovyMenuUtils', 'load_font_internal' ) ) {
+	GroovyMenuUtils::load_font_internal();
 }
 
 function groovy_menu_activation() {
