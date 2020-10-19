@@ -14,7 +14,7 @@
  *                                          in order to be selectable by the user.
  * @type bool               $is_disable     If true - menu do not show
  *
- * @return string|null  if  $gm_echo is true then return void (by default)
+ * @return string  if  $echo is true then return empty string (by default)
  */
 function groovyMenu( $args = array() ) {
 
@@ -52,7 +52,7 @@ function groovyMenu( $args = array() ) {
 	}
 
 	if ( isset( $args['gm_preset_id'] ) && 'none' === $args['gm_preset_id'] ) {
-		return null;
+		return '';
 	}
 
 	$defaults_args = array(
@@ -140,7 +140,7 @@ function groovyMenu( $args = array() ) {
 			if ( $args['gm_echo'] ) {
 				echo ( ! empty( $stored_gm_data['gm_html'] ) ) ? $stored_gm_data['gm_html'] : '';
 
-				return null;
+				return '';
 
 			} else {
 
@@ -168,7 +168,7 @@ function groovyMenu( $args = array() ) {
 	}
 
 	if ( 'none' === $args['gm_preset_id'] ) {
-		return null;
+		return '';
 	}
 
 
@@ -1033,7 +1033,7 @@ function groovyMenu( $args = array() ) {
 		return $output_html;
 	}
 
-	return null;
+	return '';
 }
 
 /**
@@ -1050,7 +1050,7 @@ function groovyMenu( $args = array() ) {
  * @type string             $theme_location Theme location to be used. Must be registered with register_nav_menu()
  *                                          in order to be selectable by the user.
  *
- * @return string|void  if  $echo is true then return void (by default)
+ * @return string  if  $echo is true then return empty string (by default)
  *
  */
 function gm_wp_nav_menu( $args = array() ) {
@@ -1072,9 +1072,12 @@ function gm_wp_nav_menu( $args = array() ) {
  * @type string             $theme_location Theme location to be used. Must be registered with register_nav_menu()
  *                                          in order to be selectable by the user.
  *
- * @return string|void  if  $echo is true then return void (by default)
+ * @return string  if  $echo is true then return empty string (by default)
  *
  */
 function groovy_menu( $args = array() ) {
 	return groovyMenu( $args );
 }
+
+
+add_shortcode( 'groovy_menu', 'groovyMenu' );

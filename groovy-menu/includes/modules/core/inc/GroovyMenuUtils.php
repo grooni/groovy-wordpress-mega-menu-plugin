@@ -2253,6 +2253,11 @@ class GroovyMenuUtils {
 			$detected = 'fusion_builder';
 		}
 
+		// Cornerstone builder (example: Pro theme)
+		if ( isset( $_POST['cs_preview_state'] ) && $_POST['cs_preview_state'] && 'off' !== $_POST['cs_preview_state'] ) {
+			$detected = 'cornerstone_builder';
+		}
+
 		return $detected;
 	}
 
