@@ -30,6 +30,7 @@ import {
 } from './dropdown';
 import {overlapMenu} from './overlap';
 import {reinsertCompiledStyles} from './save-styles';
+import {watchWooMiniCartCounter} from './woo-minicart';
 
 class GroovyMenu {
   constructor(selector, options) {
@@ -663,6 +664,9 @@ class GroovyMenu {
       initScrollbar(options);
     }
 
+    if (options.woocommerceCart) {
+      watchWooMiniCartCounter();
+    }
 
   }
 }
