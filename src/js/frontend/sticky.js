@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import { isMobile } from '../shared/helpers';
 import { recalculatePaddingsAlignCenter } from './split';
+import { dropdownCloseAll } from './dropdown';
 
 var options;
 var wpAdminBar;
@@ -99,6 +100,7 @@ function handleSlideDown () {
     navbarWrapper.style.transform = `translateY(${headerStickyHeight + getStickyMenuOffset() + toolbarHeight}px)`;
 
     recalculatePaddingsAlignCenter({options});
+    dropdownCloseAll(0);
   } else if (window.pageYOffset === 0 && navbar) {
     navbar.classList.remove('gm-navbar-sticky-toggle');
 
@@ -110,6 +112,7 @@ function handleSlideDown () {
     }
 
     recalculatePaddingsAlignCenter({options});
+    dropdownCloseAll(0);
   }
 }
 
@@ -118,6 +121,7 @@ function handleFixedSticky () {
     navbar.classList.add('gm-navbar-sticky-toggle');
     navbarWrapper.style.transform = `translateY(${getStickyMenuOffset()}px)`;
     recalculatePaddingsAlignCenter({options});
+    dropdownCloseAll(0);
   } else if (window.pageYOffset === 0 && navbar) {
     navbar.classList.remove('gm-navbar-sticky-toggle');
     navbarWrapper.style.transform = null;
@@ -127,6 +131,7 @@ function handleFixedSticky () {
     }
 
     recalculatePaddingsAlignCenter({options});
+    dropdownCloseAll(0);
   }
 }
 
