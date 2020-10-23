@@ -2,10 +2,10 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Groovy Menu 1.2.8\n"
+"Project-Id-Version: Groovy Menu 1.2.9\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-09 11:05+0300\n"
-"PO-Revision-Date: 2020-10-09 11:05+0300\n"
+"POT-Creation-Date: 2020-10-23 16:01+0300\n"
+"PO-Revision-Date: 2020-10-23 16:04+0300\n"
 "Last-Translator: Di_Skyer <diskyer@gmail.com>\n"
 "Language-Team: Русский\n"
 "Language: ru_RU\n"
@@ -534,7 +534,7 @@ msgstr ""
 
 #: includes/config/Config.php:606
 msgid "Submenu gap"
-msgstr ""
+msgstr "Отсут суб-меню"
 
 #: includes/config/Config.php:607
 msgid "Gap beside Dropdown menu and Submenu"
@@ -624,7 +624,7 @@ msgstr "Мена меню ссылки нижняя граница"
 
 #: includes/config/Config.php:766
 msgid "Mega menu gap"
-msgstr ""
+msgstr "Отступ Мега меню"
 
 #: includes/config/Config.php:767
 msgid "Gap between Main menu and Mega menu"
@@ -867,7 +867,7 @@ msgstr ""
 
 #: includes/config/Config.php:1214
 msgid "Maximum"
-msgstr ""
+msgstr "Максимум"
 
 #: includes/config/Config.php:1215
 msgid "The maximum amount of time the scroll animation should take"
@@ -1712,9 +1712,8 @@ msgid "Current (active) caret color"
 msgstr "Цвет активной ссылки подменю"
 
 #: includes/config/Config.php:2685
-#, fuzzy
 msgid "Sizes"
-msgstr "Размер"
+msgstr "Размеры"
 
 #: includes/config/Config.php:2690
 msgid "Mobile version switch"
@@ -1734,7 +1733,7 @@ msgstr "Мобильное меню, ширина"
 
 #: includes/config/Config.php:2702
 msgid "Maximum size"
-msgstr ""
+msgstr "Максимальный размер"
 
 #: includes/config/Config.php:2709
 msgid "Dynamic minimum size"
@@ -1745,14 +1744,12 @@ msgid "Mobile header height"
 msgstr "Мобильное меню, высота шапки"
 
 #: includes/config/Config.php:2725
-#, fuzzy
 msgid "Mobile menu top gap"
-msgstr "Моб. меню"
+msgstr "Верхний отступ для моб. меню"
 
 #: includes/config/Config.php:2732
-#, fuzzy
 msgid "Mobile submenu title height"
-msgstr "Мобильное меню, высота шапки"
+msgstr "Мобильное суб-меню, высота заголовка"
 
 #: includes/config/Config.php:2740
 msgid "Mobile navigation menu item vertical padding"
@@ -2051,37 +2048,27 @@ msgstr "Иконки"
 msgid "Icons"
 msgstr "Иконки"
 
-#: includes/config/ConfigGlobal.php:400
-#, php-format
-msgid "Please upload .ZIP archive created with %1$s service only."
-msgstr ""
-
-#: includes/config/ConfigGlobal.php:401
-#, php-format
-msgid "How to create font icon package read in %1$s this article %2$s"
-msgstr ""
-
-#: includes/config/ConfigGlobal.php:406
+#: includes/config/ConfigGlobal.php:405
 msgid "Tools"
 msgstr "Инструменты"
 
-#: includes/config/ConfigGlobal.php:409
+#: includes/config/ConfigGlobal.php:408
 msgid "Wrapper HTML tag for Groovy Menu"
 msgstr "HTML-тег Wrapper для Groovy Menu"
 
-#: includes/config/ConfigGlobal.php:412
+#: includes/config/ConfigGlobal.php:411
 msgid "HEADER"
 msgstr "ЗАГОЛОВОК"
 
-#: includes/config/ConfigGlobal.php:413
+#: includes/config/ConfigGlobal.php:412
 msgid "DIV"
 msgstr ""
 
-#: includes/config/ConfigGlobal.php:419
+#: includes/config/ConfigGlobal.php:418
 msgid "Toggle visibility of Groovy menu settings at Appearance &gt; Menus"
 msgstr "Переключить видимость настроек меню Groovy в разделе Внешний вид> Меню"
 
-#: includes/config/ConfigGlobal.php:421
+#: includes/config/ConfigGlobal.php:420
 msgid ""
 "The theme or another plugin can override the visibility of the Groovy menu "
 "settings at Appearance &gt; Menus. To show up Groovy menus settings instead, "
@@ -2091,11 +2078,11 @@ msgstr ""
 "разделе «Внешний вид»> «Меню». Чтобы показать настройки меню Groovy, "
 "используйте эту опцию."
 
-#: includes/config/ConfigGlobal.php:425
+#: includes/config/ConfigGlobal.php:424
 msgid "Use local google fonts"
 msgstr "Использовать локальные шрифты Google"
 
-#: includes/config/ConfigGlobal.php:427
+#: includes/config/ConfigGlobal.php:426
 msgid ""
 "For presets settings. When turning on, the Google fonts will be connected "
 "from local upload folder. Turning off option for use the Google CDN service."
@@ -2103,21 +2090,39 @@ msgstr ""
 "При включении шрифты Google будут подключаться из локальной папки загрузки. "
 "Отключение опции для использования сервиса Google CDN."
 
-#: includes/config/ConfigGlobal.php:431
+#: includes/config/ConfigGlobal.php:430
 msgid "Disable Font Awesome"
 msgstr "Отключить Font Awesome"
 
-#: includes/config/ConfigGlobal.php:433
+#: includes/config/ConfigGlobal.php:432
 msgid ""
 "Disable loading Font Awesome from Groovy menu at the front-end side of the "
 "site"
 msgstr ""
 
-#: includes/config/ConfigGlobal.php:437
+#: includes/config/ConfigGlobal.php:436
+msgid "Disable internal Font"
+msgstr ""
+
+#: includes/config/ConfigGlobal.php:438
+msgid ""
+"Disable loading internal Font from Groovy menu (search, mini-cart icons) at "
+"the front-end side of the site"
+msgstr ""
+
+#: includes/config/ConfigGlobal.php:442
+msgid "Allow use preloader for internal fonts"
+msgstr ""
+
+#: includes/config/ConfigGlobal.php:444
+msgid "Add preload link tag"
+msgstr ""
+
+#: includes/config/ConfigGlobal.php:448
 msgid "Remove All Data after uninstall"
 msgstr "Удалить все данные после удаления"
 
-#: includes/config/ConfigGlobal.php:439
+#: includes/config/ConfigGlobal.php:450
 msgid ""
 "This tool will remove Groovy menu, Presets and other data when using the "
 "\"Delete\" link on the plugins screen."
@@ -3403,14 +3408,24 @@ msgid "Expanding sidebar"
 msgstr "Раскрываемый сайдбар"
 
 #: includes/modules/fields/inc/FieldIcons.php:33
+#, php-format
+msgid "Please upload .ZIP archive created with %1$s service only."
+msgstr ""
+
+#: includes/modules/fields/inc/FieldIcons.php:34
+#, php-format
+msgid "How to create font icon package read in %1$s this article %2$s"
+msgstr ""
+
+#: includes/modules/fields/inc/FieldIcons.php:43
 msgid "Upload icon pack"
 msgstr "Загрузить иконки"
 
-#: includes/modules/fields/inc/FieldIcons.php:37
+#: includes/modules/fields/inc/FieldIcons.php:47
 msgid "Install default icon packs"
 msgstr "Установить набор иконок"
 
-#: includes/modules/fields/inc/FieldIcons.php:47
+#: includes/modules/fields/inc/FieldIcons.php:57
 msgid "delete"
 msgstr "удалить"
 
@@ -3902,9 +3917,8 @@ msgid "Sticky"
 msgstr "Липкое"
 
 #: template/PreviewModal.php:13
-#, fuzzy
 msgid "Nav menu"
-msgstr "Мега меню"
+msgstr "Навигационное меню"
 
 #~ msgid "Enable displaying the Groovy menu layout into Menu blocks post type"
 #~ msgstr "Разрешить показывать Groovy Menu слой в редакторе Меню Блоков"
