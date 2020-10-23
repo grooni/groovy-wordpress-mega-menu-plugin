@@ -4,7 +4,7 @@ Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive,
 Requires at least: 4.9.7
 Tested up to: 5.5.1
 Requires PHP: 7.0
-Stable tag: 1.2.8
+Stable tag: 1.2.9
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -115,6 +115,19 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.2.9 =
+* Improve: Updated the pool of JavaScript libraries included in the Groovy Menu.
+* Add: Added a new setting in the Global setting: "Disable internal Font".
+* Add: Added a new setting in the Global settings: "Allow use preloader for internal fonts". Allows you to speed up the loading of the FontAwesome & Groovy Menu Internal font.
+* Add: Added the ability to display the Groovy Menu using the [groovy_menu] shortcode. This allows you to insert it into almost any widget or Custom HTML block in content editors.
+* Fix: In some rare cases, WP didn't add IDs for menu items. A fix has been made to add these IDs without fail.
+* Fix: Removed HTML inserts for title & description from the global config. In some rare cases on the server side, reading such a config led to bugs with caching the HTML output.
+* Fix: Fixed a compatibility issue when editing Menu Block with Cornerstone builder (X Theme, Pro theme).
+* Fix: Additional check after AJAX to update the number of products in the Woocommerce mini-cart mobile version.
+* Fix: Now are correct working custom empty links in the top level menu toghether with enabled setting opening the sub-menu on mouse click.
+* Fix: Fixed working with the Iconpack at loading and uninstalling the icon font pack in Global settings.
+* Fix: The initialization of the main Groovy Menu modules has been moved to the 'init' action. This avoids conflicts with some third-party plugins, and also allows you to dynamically add new integration capabilities with some themes. (include Zephyr 7.x).
 
 = 1.2.8 =
 * Add: New type of mobile menu with slide effect.

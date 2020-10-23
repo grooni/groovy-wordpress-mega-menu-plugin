@@ -3,8 +3,8 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Groovy Menu 1.2.8\n"
-"POT-Creation-Date: 2020-10-09 11:04+0300\n"
+"Project-Id-Version: Groovy Menu 1.2.9\n"
+"POT-Creation-Date: 2020-10-23 16:00+0300\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2019,71 +2019,78 @@ msgstr ""
 msgid "Icons"
 msgstr ""
 
-#: includes/config/ConfigGlobal.php:400
-#, php-format
-msgid "Please upload .ZIP archive created with %1$s service only."
-msgstr ""
-
-#: includes/config/ConfigGlobal.php:401
-#, php-format
-msgid ""
-"How to create font icon package read in %1$s this article %2$s"
-msgstr ""
-
-#: includes/config/ConfigGlobal.php:406
+#: includes/config/ConfigGlobal.php:405
 msgid "Tools"
 msgstr ""
 
-#: includes/config/ConfigGlobal.php:409
+#: includes/config/ConfigGlobal.php:408
 msgid "Wrapper HTML tag for Groovy Menu"
 msgstr ""
 
-#: includes/config/ConfigGlobal.php:412
+#: includes/config/ConfigGlobal.php:411
 msgid "HEADER"
 msgstr ""
 
-#: includes/config/ConfigGlobal.php:413
+#: includes/config/ConfigGlobal.php:412
 msgid "DIV"
 msgstr ""
 
-#: includes/config/ConfigGlobal.php:419
+#: includes/config/ConfigGlobal.php:418
 msgid ""
 "Toggle visibility of Groovy menu settings at Appearance &gt; Menus"
 msgstr ""
 
-#: includes/config/ConfigGlobal.php:421
+#: includes/config/ConfigGlobal.php:420
 msgid ""
 "The theme or another plugin can override the visibility of the "
 "Groovy menu settings at Appearance &gt; Menus. To show up Groovy "
 "menus settings instead, use this option."
 msgstr ""
 
-#: includes/config/ConfigGlobal.php:425
+#: includes/config/ConfigGlobal.php:424
 msgid "Use local google fonts"
 msgstr ""
 
-#: includes/config/ConfigGlobal.php:427
+#: includes/config/ConfigGlobal.php:426
 msgid ""
 "For presets settings. When turning on, the Google fonts will be "
 "connected from local upload folder. Turning off option for use the "
 "Google CDN service."
 msgstr ""
 
-#: includes/config/ConfigGlobal.php:431
+#: includes/config/ConfigGlobal.php:430
 msgid "Disable Font Awesome"
 msgstr ""
 
-#: includes/config/ConfigGlobal.php:433
+#: includes/config/ConfigGlobal.php:432
 msgid ""
 "Disable loading Font Awesome from Groovy menu at the front-end "
 "side of the site"
 msgstr ""
 
-#: includes/config/ConfigGlobal.php:437
+#: includes/config/ConfigGlobal.php:436
+msgid "Disable internal Font"
+msgstr ""
+
+#: includes/config/ConfigGlobal.php:438
+msgid ""
+"Disable loading internal Font from Groovy menu (search, mini-cart "
+"icons) at the front-end side of the site"
+msgstr ""
+
+#: includes/config/ConfigGlobal.php:442
+msgid "Allow use preloader for internal fonts"
+msgstr ""
+
+#: includes/config/ConfigGlobal.php:444
+msgid "Add preload link tag"
+msgstr ""
+
+#: includes/config/ConfigGlobal.php:448
 msgid "Remove All Data after uninstall"
 msgstr ""
 
-#: includes/config/ConfigGlobal.php:439
+#: includes/config/ConfigGlobal.php:450
 msgid ""
 "This tool will remove Groovy menu, Presets and other data when "
 "using the \"Delete\" link on the plugins screen."
@@ -3321,14 +3328,25 @@ msgid "Expanding sidebar"
 msgstr ""
 
 #: includes/modules/fields/inc/FieldIcons.php:33
+#, php-format
+msgid "Please upload .ZIP archive created with %1$s service only."
+msgstr ""
+
+#: includes/modules/fields/inc/FieldIcons.php:34
+#, php-format
+msgid ""
+"How to create font icon package read in %1$s this article %2$s"
+msgstr ""
+
+#: includes/modules/fields/inc/FieldIcons.php:43
 msgid "Upload icon pack"
 msgstr ""
 
-#: includes/modules/fields/inc/FieldIcons.php:37
+#: includes/modules/fields/inc/FieldIcons.php:47
 msgid "Install default icon packs"
 msgstr ""
 
-#: includes/modules/fields/inc/FieldIcons.php:47
+#: includes/modules/fields/inc/FieldIcons.php:57
 msgid "delete"
 msgstr ""
 
