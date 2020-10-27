@@ -125,14 +125,12 @@ function topIndentForBurger(navDrawer) {
   let offset = 0;
 
   if (wpAdminbarElem) {
-    wpAdminbarElemHeight = Number(window.getComputedStyle(wpAdminbarElem, null)
-      .height
-      .replace(/\D+/g, ''));
+    wpAdminbarElemHeight = parseInt(window.getComputedStyle(wpAdminbarElem, null).height);
+    wpAdminbarElemHeight = (!wpAdminbarElemHeight) ? 0 : wpAdminbarElemHeight;
   }
   if (gmToolbar) {
-    gmToolbarHeight = Number(window.getComputedStyle(gmToolbar, null)
-      .height
-      .replace(/\D+/g, ''));
+    gmToolbarHeight = parseInt(window.getComputedStyle(gmToolbar, null).height);
+    gmToolbarHeight = (!gmToolbarHeight) ? 0 : gmToolbarHeight;
     offset = getCoords(gmToolbar).top - window.pageYOffset - wpAdminbarElemHeight;
     if (offset < 1) {
       if ((gmToolbarHeight + offset) < 1) {
@@ -143,9 +141,8 @@ function topIndentForBurger(navDrawer) {
     }
   }
   if (gmInner) {
-    gmInnerHeight = Number(window.getComputedStyle(gmInner, null)
-      .height
-      .replace(/\D+/g, ''));
+    gmInnerHeight = parseInt(window.getComputedStyle(gmInner, null).height);
+    gmInnerHeight = (!gmInnerHeight) ? 20 : gmInnerHeight;
     offset = getCoords(gmInner).top - window.pageYOffset - wpAdminbarElemHeight;
     if (offset < 1) {
       if ((gmInnerHeight + offset) < 1) {
@@ -155,14 +152,12 @@ function topIndentForBurger(navDrawer) {
       }
     }
   }
-  let gmBurgerHeightWrapper = Number(window.getComputedStyle(gmBurger, null)
-    .height
-    .replace(/\D+/g, ''));
-  let gmBurgerWidth = Number(window.getComputedStyle(gmBurger, null)
-    .width
-    .replace(/\D+/g, ''));
+  let gmBurgerHeightWrapper = parseInt(window.getComputedStyle(gmBurger, null).height);
+  gmBurgerHeightWrapper = (!gmBurgerHeightWrapper) ? 20 : gmBurgerHeightWrapper;
+  let gmBurgerWidth = parseInt(window.getComputedStyle(gmBurger, null).width);
+  gmBurgerWidth = (!gmBurgerWidth) ? 20 : gmBurgerWidth;
 
-  gmBurgerHeight = (gmBurgerHeightWrapper < 8) ? 8 : gmBurgerHeightWrapper;
+  gmBurgerHeight = (gmBurgerHeightWrapper < 8 || !gmBurgerHeightWrapper) ? 8 : gmBurgerHeightWrapper;
 
   gmBurgerPaddings = (options.hamburgerIconPaddingMobile) ? (options.hamburgerIconPaddingMobile * 2) : 0;
   gmBurgerPaddings = (options.hamburgerIconMobileBorderWidth) ? (options.hamburgerIconMobileBorderWidth * 2) + gmBurgerPaddings : gmBurgerPaddings;
@@ -175,7 +170,7 @@ function topIndentForBurger(navDrawer) {
   }
 
   let indentPx = gmToolbarHeight + (((gmInnerHeight - gmBurgerHeight) / 2) | 0);
-  indentPx = (indentPx < -4) ? 8 : indentPx;
+  indentPx = (gmInnerHeight > 0) ? indentPx : 8;
 
   if (gmBurgerPaddings > 0) {
     indentPx = indentPx - ((gmBurgerPaddings / 2) | 0);
