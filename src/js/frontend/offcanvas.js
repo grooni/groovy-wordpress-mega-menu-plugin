@@ -250,7 +250,7 @@ export function offcanvasSlide() {
     if (!isMobile(options.mobileWidth) && options.header.style !== 2 && document.querySelector('.gm-nav-content-wrapper') !== null) {
       unwrapInner('.gm-nav-content-wrapper');
     }
-  }, 250));
+  }, 310));
 
   function clickHandler() {
     if (!isMobile(options.mobileWidth) && headerStyle === 2) {
@@ -270,13 +270,13 @@ export function offcanvasSlide() {
     makeHiddenVisible(navDrawer);
     topIndentForBurger(navDrawer);
     offcanvasClose(navDrawer);
-  }, 200));
+  }, 310));
 
   closeIfNoChildren(navDrawer);
 
   window.addEventListener('scroll', _.debounce(() => {
     topIndentForBurger(navDrawer);
-  }, 250));
+  }, 310));
 
 }
 

@@ -226,3 +226,11 @@ export function getElemParents(node, selector) {
 
   return list;
 }
+
+export function getPageWidth() {
+  return window.innerWidth != null ? window.innerWidth : document.documentElement && document.documentElement.clientWidth ? document.documentElement.clientWidth : document.body != null ? document.body.clientWidth : 0;
+}
+
+export function getPageHeight() {
+  return window.innerHeight != null ? window.innerHeight : document.documentElement && document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body != null ? document.body.clientHeight : 0;
+}

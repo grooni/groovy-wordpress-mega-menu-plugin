@@ -608,6 +608,7 @@ GENERAL SETTINGS MODAL
   display: inline-block;
   float: left;
   padding: 10px 24px;
+  line-height: 1;
   transition: border-color ease-in-out 0.15s, color ease-in-out 0.15s;
   vertical-align: middle;
   color: #686868;
@@ -630,7 +631,6 @@ GENERAL SETTINGS MODAL
 .select-icon {
   position: relative;
   z-index: 999;
-  top: 1px;
   left: -2px;
   float: left;
   padding: 14px 20px;

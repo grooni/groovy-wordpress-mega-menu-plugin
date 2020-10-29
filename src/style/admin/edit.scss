@@ -550,6 +550,27 @@ GROOVY MENU TABS MODULE
   font-weight: bold;
 }
 
+.gm-gui__module__taxonomy_preset {
+  width: 100%;
+
+  .gm-gui__subselect-wrapper {
+    display: flex;
+    margin-top: 20px;
+    border-top: 1px dashed #cbcbcb;
+    padding-top: 20px;
+    width: 100%;
+    min-width: 100%;
+
+    .gm-gui__module__subselect-title {
+      display: block;
+      margin: 16px 14px 0 0;
+      font-size: 14px;
+      font-weight: 700;
+      flex-grow: 1;
+    }
+  }
+}
+
 .gm-gui__module__info {
   flex-basis: 100%;
 }
@@ -569,9 +590,16 @@ GROOVY MENU TABS MODULE
 GROOVY MENU POST TYPES
 ***************************************/
 
-.gm-gui__module__post_types .gm-gui__module__switch-wrapper {
-  display: inline-block;
-  margin: 8px 20px;
+.gm-gui__module__post_types {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+
+  .gm-gui__module__switch-wrapper {
+    display: inline-block;
+    margin: 18px 22px;
+    min-width: 20%;
+  }
 }
 
 /***************************************
