@@ -518,7 +518,8 @@ class GroovyMenu {
       offcanvasSlide();
     }
 
-
+    // Resize window event.
+    let lastIsMobile = isMobile();
     window.addEventListener('resize', _.debounce(() => {
 
       overlapMenu(options);
@@ -531,16 +532,16 @@ class GroovyMenu {
 
       if (options.stickyHeader !== undefined) {
         if (
-          headerStyle === 1 ||
-          headerStyle === 2 ||
-          isMobile()
+          (headerStyle === 1 || headerStyle === 2) &&
+          lastIsMobile !== isMobile()
         ) {
+          lastIsMobile = isMobile();
           disableStickyNav();
           enableStickyNav();
         }
 
         if (
-          (headerStyle === 3 || headerStyle === 4) &&
+          (headerStyle === 3 || headerStyle === 4 || headerStyle === 5) &&
           !isMobile()
         ) {
           disableStickyNav();

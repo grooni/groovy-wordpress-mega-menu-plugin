@@ -2063,7 +2063,7 @@ export default class GmStyles {
         const fontSize = settings.woocommerceCartIconSizeMobile;
 
         css.push({
-          '.gm-main-menu-wrapper .gm-minicart-icon-wrapper > i': `font-size: ${fontSize}px`,
+          '.gm-main-menu-wrapper .gm-minicart-icon-wrapper > i, .gm-navigation-drawer--mobile .gm-minicart .gm-icon': `font-size: ${fontSize}px`,
           media: 'mobile'
         });
       }
@@ -3174,7 +3174,7 @@ export default class GmStyles {
       const {hamburgerIconSizeMobile} = settings;
 
       css.push({
-        '.gm-menu-btn__inner': `font-size: ${hamburgerIconSizeMobile}px;`,
+        '.gm-menu-btn__inner, .gm-navbar .gm-menu-actions-wrapper .gm-minicart .gm-icon': `font-size: ${hamburgerIconSizeMobile}px;`,
         '.gm-burger .hamburger-box, .gm-burger .hamburger-inner, .gm-burger .hamburger-inner::after, .gm-burger .hamburger-inner::before': `width: ${hamburgerIconSizeMobile}px;`,
         media: 'mobile'
       });
@@ -3185,8 +3185,7 @@ export default class GmStyles {
       const bgColor = settings.hamburgerIconBgColorMobile;
 
       css.push({
-        '.gm-menu-btn__inner': `background-color: ${bgColor};`,
-        '.gm-burger': `background-color: ${bgColor};`,
+        '.gm-menu-btn__inner, .gm-burger': `background-color: ${bgColor};`,
         media: 'mobile'
       });
     }
@@ -3194,8 +3193,12 @@ export default class GmStyles {
     // Mobile hamburger icon padding area
     if (settings.hamburgerIconPaddingMobile) {
       css.push({
-        '.gm-menu-btn__inner': `padding: ${settings.hamburgerIconPaddingMobile}px;`,
-        '.gm-burger': `padding: ${settings.hamburgerIconPaddingMobile}px;`,
+        '.gm-menu-btn__inner, .gm-burger': `padding: ${settings.hamburgerIconPaddingMobile}px;`,
+        media: 'mobile'
+      });
+    } else {
+      css.push({
+        '.gm-menu-btn__inner, .gm-burger': `padding: 0;`,
         media: 'mobile'
       });
     }
@@ -3211,8 +3214,7 @@ export default class GmStyles {
       } = settings;
 
       css.push({
-        '.gm-menu-btn__inner': `border: ${width}px solid ${color};`,
-        '.gm-burger': `border: ${width}px solid ${color};`,
+        '.gm-menu-btn__inner, .gm-burger': `border: ${width}px solid ${color};`,
         media: 'mobile'
       });
     }
@@ -3813,7 +3815,7 @@ export default class GmStyles {
         const size = settings.hamburgerIconMobileStickySize;
 
         css.push({
-          '.gm-navbar-sticky-toggle .gm-menu-btn__inner': `font-size: ${size}px;`,
+          '.gm-navbar-sticky-toggle .gm-menu-btn__inner, .gm-navbar.gm-navbar-sticky-toggle .gm-menu-actions-wrapper .gm-minicart .gm-icon': `font-size: ${size}px;`,
           media: 'mobile'
         });
       }

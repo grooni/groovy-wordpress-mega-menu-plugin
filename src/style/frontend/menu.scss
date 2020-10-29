@@ -317,6 +317,11 @@ NAVBAR GENERAL STYLES
     transition: transform ease-out 0.5s;
   }
 
+  &.gm-navigation-drawer--open .gm-navbar-nav .gm-dropdown:not(.gm-open) > .gm-dropdown-menu-wrapper {
+    max-height: 1em;
+    overflow: hidden;
+  }
+
   &.gm-navigation-drawer--open .gm-navbar-nav .gm-dropdown > .gm-dropdown-menu-wrapper {
     display: block;
   }
