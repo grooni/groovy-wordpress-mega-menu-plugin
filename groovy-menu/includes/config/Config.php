@@ -762,6 +762,13 @@ return array(
 				'default'   => false,
 				'condition' => array( 'header.style', 'in', array( '1' ) ),
 			),
+			'mega_menu_links_side_padding'                 => array(
+				'title'   => esc_html__( 'Mega menu links left/right padding', 'groovy-menu' ),
+				'type'    => 'number',
+				'range'   => array( 0, 100 ),
+				'default' => 0,
+				'unit'    => 'px',
+			),
 			'mega_menu_dropdown_margin'                    => array(
 				'title'       => esc_html__( 'Mega menu gap', 'groovy-menu' ),
 				'description' => esc_html__( 'Gap between Main menu and Mega menu', 'groovy-menu' ),
