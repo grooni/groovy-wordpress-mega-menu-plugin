@@ -3075,7 +3075,7 @@ export default class GmStyles {
     // Hide menu elements when drawler is open.
     if (settings.mobileIndependentCssHamburger) {
       css.push({
-        '.gm-navbar .gm-logo, .gm-navbar .gm-menu-actions-wrapper': 'transition: opacity 0.2s',
+        '.gm-navbar .gm-logo, .gm-navbar .gm-menu-actions-wrapper': 'transition: opacity 0.2s 0.18s',
         '.gm-drawer--open .gm-logo, .gm-drawer--open .gm-menu-actions-wrapper': 'opacity: 0; ',
         media: 'mobile'
       });
@@ -3254,7 +3254,7 @@ export default class GmStyles {
     // Mega menu links left/right padding
     if (settings.megaMenuLinksSidePadding) {
       css.push({
-        '.gm-main-menu-wrapper .gm-mega-menu__item .gm-menu-item__link': `padding-left: ${settings.megaMenuLinksSidePadding}; padding-right: ${settings.megaMenuLinksSidePadding};`,
+        '.gm-main-menu-wrapper .gm-mega-menu__item .gm-menu-item__link': `padding-left: ${settings.megaMenuLinksSidePadding}px; padding-right: ${settings.megaMenuLinksSidePadding}px;`,
         media: 'desktop'
       });
     }

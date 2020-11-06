@@ -372,7 +372,7 @@ export default function initScrollbar (settings) {
 
               scrollbars[psId].update();
 
-            }, 600);
+            }, 750);
           }
         }
       });
