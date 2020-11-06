@@ -247,6 +247,7 @@ NAVBAR GENERAL STYLES
   position: relative;
   font-size: 16px;
   line-height: 1;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .gm-navbar.gm-navbar--hide-gm-caret .gm-navbar-nav > .gm-menu-item > .gm-anchor > .gm-caret {
@@ -355,4 +356,12 @@ NAVBAR GENERAL STYLES
 
 .gm-burger {
   transition: margin cubic-bezier(0.7, 0, 0.3, 1) 0.2s;
+}
+
+.gm-anchor,
+.gm-burger,
+.gm-search,
+.gm-menu-btn,
+.gm-minicart {
+  -webkit-tap-highlight-color: transparent;
 }
