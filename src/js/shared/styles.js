@@ -435,6 +435,7 @@ export default class GmStyles {
       if (settings.dropdownMargin) {
         css.push({
           '.gm-main-menu-wrapper .gm-navbar-nav > .gm-dropdown:not(.mega-gm-dropdown) > .gm-dropdown-menu-wrapper': `margin-top: ${settings.dropdownMargin}px`,
+          '.gm-main-menu-wrapper .gm-actions .gm-minicart .gm-minicart-dropdown, .gm-main-menu-wrapper .gm-actions .gm-search .gm-search-wrapper': `margin-top: ${settings.dropdownMargin}px`,
           media: 'desktop'
         });
       }
