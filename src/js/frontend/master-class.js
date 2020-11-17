@@ -169,6 +169,7 @@ class GroovyMenu {
     });
 
 
+    // Sub-Menus DROPDOWN action ----------------------------------------------------------------------------[ open ]---
     let initDropdownAction = (e) => {
       let delay = 210;
       let closestDropdown = e.target.closest('.gm-dropdown');
@@ -345,6 +346,7 @@ class GroovyMenu {
     };
 
 
+    // Sub-Menus DROPDOWN action ---------------------------------------------------------------------------[ close ]---
     let leaveDropdownAction = (e) => {
 
       let closestDropdown = e.target.closest('.gm-dropdown');
@@ -384,6 +386,46 @@ class GroovyMenu {
       }, delay));
     };
 
+    // Sub-Menus DROPDOWN action ---------------------------------------------------------------------------[ touch ]---
+    let initDropdownActionByTouch = (e) => {
+      let closestDropdown = e.target.closest('.gm-dropdown');
+      let closestAnchor = e.target.closest('.gm-anchor');
+      let isClosestAnchorEmpty = closestAnchor && '#' === closestAnchor.getAttribute('href');
+      let isTopLevelClass = false;
+
+      let closestMenuItem = e.target.closest('.gm-menu-item');
+
+      if (
+        !isClosestAnchorEmpty &&
+        !e.target.closest('.gm-caret') &&
+        closestMenuItem &&
+        closestMenuItem.classList &&
+        closestMenuItem.classList.contains('gm-dropdown') &&
+        !closestMenuItem.classList.contains('gm-open')
+      ) {
+
+        isTopLevelClass = closestMenuItem.classList.contains('gm-menu-item--lvl-0');
+
+        if (isTopLevelClass) {
+
+          let isOpenedBefore = closestMenuItem.classList.contains('gm-open');
+
+          dropdownCloseAll(0);
+
+          if (!isOpenedBefore) {
+            dropdownOpen(closestDropdown, options);
+          }
+
+        } else {
+          dropdownToggle(closestDropdown, options);
+        }
+
+        // Prevent next EventListener 'click'.
+        e.preventDefault();
+
+      }
+    };
+
 
     let gmAnchorItems = document.querySelectorAll('#gm-main-menu .gm-anchor, .gm-minicart, .gm-search, #gm-main-menu .mega-gm-dropdown > .gm-dropdown-menu-wrapper');
     let gmMainMenu = document.querySelector('#gm-main-menu');
@@ -391,6 +433,9 @@ class GroovyMenu {
     // By default at any case click action must work.
     if (gmAnchorItems) {
       gmAnchorItems.forEach((dropdownItem) => {
+        if (isTouchDevice) {
+          dropdownItem.addEventListener('touchend', initDropdownActionByTouch);
+        }
         dropdownItem.addEventListener('click', initDropdownAction);
       });
     }

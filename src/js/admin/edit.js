@@ -216,10 +216,11 @@ document.addEventListener('DOMContentLoaded', () => {
       let options = {
         el: gmPicker,
         comparison: false,
+        theme: 'monolith', // or 'classic', or 'monolith', or 'nano'
         default: defaultColor,
-        position: 'middle',
+        position: 'bottom-start',
         components: {
-          preview: false,
+          preview: true,
           opacity: true,
           hue: true,
           interaction: {
@@ -259,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         colorInput.value = pickr.getColor()
           .toRGBA()
-          .toString();
+          .toString(0);
 
         let isClearBtn = pickr.getRoot()
           .button
@@ -283,12 +284,14 @@ document.addEventListener('DOMContentLoaded', () => {
           pickr.setColor(null, true);
           return;
         }
+
+        pickr.hide();
       });
 
       pickr.on('change', _.debounce(() => {
         colorInput.value = pickr.getColor()
           .toRGBA()
-          .toString();
+          .toString(0);
       }),50);
     });
   }

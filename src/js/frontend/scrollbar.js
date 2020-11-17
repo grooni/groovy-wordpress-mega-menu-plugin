@@ -51,6 +51,13 @@ function isVerticalMenu (settings) {
 
 function getSubmenuDropdownRect (menuItem, settings, scrollbars) {
   let closestdropdownMenuPs = menuItem.closest('.gm-dropdown-menu.ps');
+
+  if (!closestdropdownMenuPs) {
+    return ({
+      top: 0
+    });
+  }
+
   let psId = closestdropdownMenuPs.getAttribute('data-ps-id');
   let top = menuItem.offsetTop - scrollbars[psId].lastScrollTop;
 
