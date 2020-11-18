@@ -13,15 +13,16 @@ export function splitMenu () {
   left.className = 'gm-navbar-nav nav--left';
   right.className = 'gm-navbar-nav nav--right';
 
-  items.forEach(function (li, index) {
-    if (index < itemsCount / 2) {
-      left.append(li);
-    } else {
-      right.append(li);
-    }
-  });
 
-  if (gmMainMenu) {
+  if (gmMainMenu && items) {
+    items.forEach(function (li, index) {
+      if (index < itemsCount / 2) {
+        left.append(li);
+      } else {
+        right.append(li);
+      }
+    });
+
     gmMainMenu.innerHTML = '';
     gmMainMenu.append(left);
     gmMainMenu.append(right);

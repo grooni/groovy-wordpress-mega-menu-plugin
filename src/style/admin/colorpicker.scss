@@ -4,29 +4,75 @@
   border: 1px solid #ddd;
 }
 
-.pcr-app .pcr-selection .pcr-color-chooser .pcr-slider, .pcr-app .pcr-selection .pcr-color-opacity .pcr-slider {
-  width: 16px;
-  border-radius: 0.15em;
+.gm-pickr-container[data-theme=monolith] {
+  width: 240px;
+  max-width: 95vw;
+  padding: 12px;
+  border-radius: 3px;
+
+  .pcr-type {
+    display: none;
+  }
+
+  .pcr-selection {
+    .pcr-color-preview::before,
+    .pcr-color-palette .pcr-palette::before {
+      background: white;
+      background-image: linear-gradient(45deg, #e8e8e8 25%, transparent 25%, transparent 74%, #e8e8e8 75%, #e8e8e8), linear-gradient(45deg, #e8e8e8 25%, transparent 25%, transparent 74%, #e8e8e8 75%, #e8e8e8);
+      background-size: 14px 14px;
+      background-position: 0 0, 7px 7px;
+    }
+
+    .pcr-color-opacity .pcr-slider {
+      background: linear-gradient(to right, transparent, #000), url('data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 2"><path fill="white" d="M1,0H2V1H1V0ZM0,1H1V2H0V1Z"/><path fill="gray" d="M0,0H1V1H0V0ZM1,1H2V2H1V1Z"/></svg>');
+      background-size: 100%, 6px;
+    }
+
+    .pcr-color-palette {
+      height: 210px;
+    }
+
+    .pcr-color-preview,
+    .pcr-color-chooser,
+    .pcr-color-opacity {
+      height: 1.5em;
+    }
+
+    .pcr-color-preview {
+      border: 1px solid #d5d5d5;
+    }
+
+    .pcr-color-chooser .pcr-slider,
+    .pcr-color-opacity .pcr-slider {
+      flex-grow: 1;
+      border-radius: 2px;
+    }
+
+    .pcr-picker {
+      height: 24px;
+      width: 24px;
+    }
+  }
+
+  .pcr-interaction {
+    .pcr-result {
+      height: 32px;
+    }
+
+    .pcr-save,
+    .pcr-clear {
+      height: 30px;
+    }
+  }
 }
 
-.pickr .pcr-button::before,
-.pcr-app .pcr-selection .pcr-color-palette .pcr-palette::before {
-  background-size: 16px;
+.pickr .pcr-button::before {
+  background: white;
+  background-image: linear-gradient(45deg, #e8e8e8 25%, transparent 25%, transparent 74%, #e8e8e8 75%, #e8e8e8), linear-gradient(45deg, #e8e8e8 25%, transparent 25%, transparent 74%, #e8e8e8 75%, #e8e8e8);
+  background-size: 14px 14px;
+  background-position: 0 0, 7px 7px;
 }
 
-.pcr-app .pcr-selection .pcr-color-palette {
-  height: 100%;
-}
-
-.pcr-app {
-  width: 250px;
-  height: 250px;
-}
-
-.pcr-type {
-  display: none;
-}
-
-.nav-menus-php .pcr-app {
+.nav-menus-php .gm-pickr-container {
   z-index: 100101;
 }

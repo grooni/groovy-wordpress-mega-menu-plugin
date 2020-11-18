@@ -435,6 +435,7 @@ export default class GmStyles {
       if (settings.dropdownMargin) {
         css.push({
           '.gm-main-menu-wrapper .gm-navbar-nav > .gm-dropdown:not(.mega-gm-dropdown) > .gm-dropdown-menu-wrapper': `margin-top: ${settings.dropdownMargin}px`,
+          '.gm-main-menu-wrapper .gm-actions .gm-minicart .gm-minicart-dropdown, .gm-main-menu-wrapper .gm-actions .gm-search .gm-search-wrapper': `margin-top: ${settings.dropdownMargin}px`,
           media: 'desktop'
         });
       }
@@ -1969,6 +1970,13 @@ export default class GmStyles {
           '.gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor::after': 'position: absolute; top: 0; left: 0; content: ""; width: 100%; border-top-width: 3px; border-top-style: solid; border-top-color: transparent;',
           media: 'desktop'
         });
+
+        if (settings.topLevelHoverLineThickness) {
+          css.push({
+            '.gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor::after': `border-top-width: ${settings.topLevelHoverLineThickness}px;`,
+            media: 'desktop'
+          });
+        }
       }
 
       if (hoverStyle === 4) {
@@ -1992,6 +2000,13 @@ export default class GmStyles {
           '.gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor::after': 'position: absolute; bottom: 0; left: 0; content: ""; width: 100%; border-bottom: 3px solid transparent;',
           media: 'desktop'
         });
+
+        if (settings.topLevelHoverLineThickness) {
+          css.push({
+            '.gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor::after': `border-bottom-width: ${settings.topLevelHoverLineThickness}px;`,
+            media: 'desktop'
+          });
+        }
       }
     }
 
@@ -3022,7 +3037,7 @@ export default class GmStyles {
       const {menuTitleLetterSpacing} = settings;
 
       css.push({
-        '.gm-main-menu-wrapper .gm-menu-item__link': `letter-spacing: ${menuTitleLetterSpacing}px`,
+        '.gm-main-menu-wrapper .gm-mega-menu__item__title': `letter-spacing: ${menuTitleLetterSpacing}px`,
         media: 'desktop'
       });
     }
@@ -3061,7 +3076,7 @@ export default class GmStyles {
     // Hide menu elements when drawler is open.
     if (settings.mobileIndependentCssHamburger) {
       css.push({
-        '.gm-navbar .gm-logo, .gm-navbar .gm-menu-actions-wrapper': 'transition: opacity 0.2s',
+        '.gm-navbar .gm-logo, .gm-navbar .gm-menu-actions-wrapper': 'transition: opacity 0.2s 0.18s',
         '.gm-drawer--open .gm-logo, .gm-drawer--open .gm-menu-actions-wrapper': 'opacity: 0; ',
         media: 'mobile'
       });
@@ -3237,6 +3252,14 @@ export default class GmStyles {
       });
     }
 
+    // Mega menu links left/right padding
+    if (settings.megaMenuLinksSidePadding) {
+      css.push({
+        '.gm-main-menu-wrapper .gm-mega-menu__item .gm-menu-item__link': `padding-left: ${settings.megaMenuLinksSidePadding}px; padding-right: ${settings.megaMenuLinksSidePadding}px;`,
+        media: 'desktop'
+      });
+    }
+
     // Toolbar background color
     if (!settings.toolbarIconSwitchBorder) {
       css.push({
@@ -3399,6 +3422,14 @@ export default class GmStyles {
         '.gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor': 'margin-top: 5px; margin-bottom: 5px; padding-top: 0; padding-bottom: 0;',
         media: 'desktop'
       });
+
+      if (settings.topLevelHoverLineThickness) {
+        css.push({
+          '.gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor .gm-menu-item__txt::after': `height: ${settings.topLevelHoverLineThickness}px;`,
+          media: 'desktop'
+        });
+      }
+
     }
 
     css.push({

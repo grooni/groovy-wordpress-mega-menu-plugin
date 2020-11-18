@@ -451,7 +451,7 @@ class GroovyMenuUtils {
 
 		$searchFilter = apply_filters( 'gm_search_filter_hidden_input', $searchFilter );
 
-		$home_url = trailingslashit( network_site_url() );
+		$home_url = trailingslashit( home_url() );
 		if ( defined( 'WPML_PLUGIN_FOLDER' ) && WPML_PLUGIN_FOLDER ) {
 			$home_url = apply_filters( 'wpml_home_url', $home_url );
 		}

@@ -449,19 +449,26 @@ if ( ! class_exists( 'GroovyMenuPreset' ) ) {
 			$preview = GroovyMenuPreset::getThumb( $post_id );
 
 			if ( ! $preview ) {
-
 				$preview = get_post_meta( $post_id, 'gm_preset_preview', true );
+
+				$headers  = isset( $GLOBALS['_SERVER'] ) ? $GLOBALS['_SERVER'] : array();
+				$hostname = '';
+
+				if ( isset( $headers['SERVER_NAME'] ) && $headers['SERVER_NAME'] ) {
+					$hostname = $headers['SERVER_NAME'];
+				} elseif ( isset( $headers['HTTP_HOST'] ) && $headers['HTTP_HOST'] ) {
+					$hostname = $headers['HTTP_HOST'];
+				}
 
 				if ( strlen( $preview ) > 1024 ) {
 					update_post_meta( $post_id, 'gm_preset_preview', '' );
 				} elseif (
 					'api.groovy.grooni.com' !== wp_parse_url( $preview, PHP_URL_HOST )
 					&&
-					$_SERVER['SERVER_NAME'] !== wp_parse_url( $preview, PHP_URL_HOST )
+					$hostname !== wp_parse_url( $preview, PHP_URL_HOST )
 				) {
 					update_post_meta( $post_id, 'gm_preset_preview', '' );
 				}
-
 			}
 
 			if ( ! $preview ) {
