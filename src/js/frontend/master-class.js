@@ -430,37 +430,41 @@ class GroovyMenu {
     let gmAnchorItems = document.querySelectorAll('#gm-main-menu .gm-anchor, .gm-minicart, .gm-search, #gm-main-menu .mega-gm-dropdown > .gm-dropdown-menu-wrapper');
     let gmMainMenu = document.querySelector('#gm-main-menu');
 
-    // By default at any case click action must work.
     if (gmAnchorItems) {
-      gmAnchorItems.forEach((dropdownItem) => {
-        if (isTouchDevice) {
-          dropdownItem.addEventListener('touchend', initDropdownActionByTouch);
-        }
-        dropdownItem.addEventListener('click', initDropdownAction);
-      });
-    }
 
-    // Mouse hover actions for descktop menu.
-    if (gmAnchorItems && options.showSubmenu === 'hover') {
-      gmAnchorItems.forEach((dropdownItem) => {
-
-        let menuItem = dropdownItem.closest('.gm-menu-item');
-
-        if (!isTouchDevice) {
-          dropdownItem.addEventListener('mouseenter', initDropdownAction);
-          if (menuItem) {
-            menuItem.addEventListener('mouseleave', leaveDropdownAction);
-          } else {
-            dropdownItem.addEventListener('mouseleave', leaveDropdownAction);
+      // By default at any case click action must work.
+      if (gmAnchorItems) {
+        gmAnchorItems.forEach((dropdownItem) => {
+          if (isTouchDevice) {
+            dropdownItem.addEventListener('touchend', initDropdownActionByTouch);
           }
-        }
-      });
-
-      if (!isTouchDevice && gmMainMenu) {
-        gmMainMenu.addEventListener('mouseleave', () => {
-          dropdownCloseAll(750);
+          dropdownItem.addEventListener('click', initDropdownAction);
         });
       }
+
+      // Mouse hover actions for descktop menu.
+      if (options.showSubmenu === 'hover') {
+        gmAnchorItems.forEach((dropdownItem) => {
+
+          let menuItem = dropdownItem.closest('.gm-menu-item');
+
+          if (!isTouchDevice) {
+            dropdownItem.addEventListener('mouseenter', initDropdownAction);
+            if (menuItem) {
+              menuItem.addEventListener('mouseleave', leaveDropdownAction);
+            } else {
+              dropdownItem.addEventListener('mouseleave', leaveDropdownAction);
+            }
+          }
+        });
+
+        if (!isTouchDevice && gmMainMenu) {
+          gmMainMenu.addEventListener('mouseleave', () => {
+            dropdownCloseAll(750);
+          });
+        }
+      }
+
     }
 
     // Click (touch) action for mobile menu items.

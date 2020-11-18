@@ -4,12 +4,10 @@
   border: 1px solid #ddd;
 }
 
-.pcr-app[data-theme=monolith] {
+.gm-pickr-container[data-theme=monolith] {
   width: 240px;
   max-width: 95vw;
   padding: 12px;
-  background: #f0f0f0;
-  border: 1px solid #d5d5d5;
   border-radius: 3px;
 
   .pcr-type {
@@ -31,7 +29,7 @@
     }
 
     .pcr-color-palette {
-      height: 10em;
+      height: 210px;
     }
 
     .pcr-color-preview,
@@ -75,6 +73,6 @@
   background-position: 0 0, 7px 7px;
 }
 
-.nav-menus-php .pcr-app {
+.nav-menus-php .gm-pickr-container {
   z-index: 100101;
 }

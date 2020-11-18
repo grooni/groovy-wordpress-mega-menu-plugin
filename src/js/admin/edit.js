@@ -219,6 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
         theme: 'monolith', // or 'classic', or 'monolith', or 'nano'
         default: defaultColor,
         position: 'bottom-start',
+        appClass: 'gm-pickr-container',
         components: {
           preview: true,
           opacity: true,
@@ -268,15 +269,10 @@ document.addEventListener('DOMContentLoaded', () => {
           .contains('clear');
 
         if (isClearBtn) {
-          if (defaultColor === '') {
-            colorInput.value = '';
-            pickr.getRoot().interaction.result.value = '';
-            pickr.setColor(null, true);
-            return;
-          } else {
-            pickr.setColor(defaultColor);
-            return;
-          }
+          colorInput.value = '';
+          pickr.getRoot().interaction.result.value = '';
+          pickr.setColor(null, true);
+          return;
         }
 
         if (pickr.getRoot().interaction.result.value === '') {
