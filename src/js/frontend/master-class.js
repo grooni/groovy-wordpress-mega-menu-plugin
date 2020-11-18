@@ -442,7 +442,7 @@ class GroovyMenu {
         });
       }
 
-      // Mouse hover actions for descktop menu.
+      // Mouse hover actions for desktop menu.
       if (options.showSubmenu === 'hover') {
         gmAnchorItems.forEach((dropdownItem) => {
 

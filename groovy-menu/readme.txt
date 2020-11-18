@@ -2,9 +2,9 @@
 Contributors: Grooni
 Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive, responsive menu, sticky menu, vertical menu, horizontal menu, ajax cart
 Requires at least: 4.9.7
-Tested up to: 5.5.1
+Tested up to: 5.5.3
 Requires PHP: 7.0
-Stable tag: 1.2.9
+Stable tag: 1.2.10
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -115,6 +115,22 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.2.10 =
+* Improve: "Slider opening style"  for mobile menu has been optimized.Reduced the number of JavaScript calculations required for this type of menu to work.
+* Add: An added new feature that improves works of dropdowns on IPad. Now single tap can open a dropdown for an active main menu item that has a submenu, and itself is a link. And for double-tap will open assigned the link for this menu item.
+* Add: Added the ability to set negative values for "Dropdown gap", "Submenu gap" and "Mega menu gap".
+* Add: New setting "Mega menu links left / right padding" in section General > Mega menu
+* Fix: Fixed URL for the search form to fix an issue that appears on multidomain multisites.
+* Fix: Fixed bug with colorpicker in the preset editor at the Safari browser.
+* Fix: Added an additional check for cases when the $ _SERVER global variable does not contain the "SERVER_NAME" parameter.
+* Fix: Fixed and improved "Animated Hamburger icon". Improved positioning of the Hamburger icon relative to the center of the menu block and sticky menu.
+* Fix: Setting "Icon size" for WooCommerce mini cart icon on the mobile menu.
+* Fix: "Animated Hamburger icon" for the mobile menu correct operating the font size, padding, and colors from the Side icon settings.
+* Fix: Some fixes in UI styles in the Groovy Menu Dashboard.
+* Fix: Fixed re-initialization of the Sticky menu on the mobile resolutions at changing the height of the browser window.
+* Fix: Increased time spacing for (debounce) to trigger the scroll handler and resize the browser window. This reduces the overall load on the browser during speed navigation with large graphic content inside the menu.
+* Fix: The setting "Letter Spacing" for menu items inside the Mega menu has been fixed.
 
 = 1.2.9 =
 * Improve: Updated the pool of JavaScript libraries included in the Groovy Menu.
