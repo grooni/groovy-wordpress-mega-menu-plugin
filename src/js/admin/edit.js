@@ -227,16 +227,16 @@ document.addEventListener('DOMContentLoaded', () => {
           interaction: {
             hex: true,
             rgba: true,
-            hsla: false,
-            hsva: false,
-            cmyk: false,
+            hsla: true,
+            hsva: true,
+            cmyk: true,
             input: true,
             clear: true,
             save: true
           },
         },
-        strings: {
-          clear: 'Reset'
+        i18n: {
+          'btn:clear': 'Reset'
         }
       };
       const pickr = new Pickr(options);
