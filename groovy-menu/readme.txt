@@ -119,6 +119,7 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 = 1.2.11 =
 * Fix: Active color links for page ancestor. Includes child pages for parent menu items presented in the nav menu.
 * Fix: Colorpicker located in the settings window of the menu item in "Appearance > Menu".
+* Fix: Characters from the extended UNICODE table for text badges are allowed.
 
 = 1.2.10 =
 * Improve: "Slider opening style"  for mobile menu has been optimized.Reduced the number of JavaScript calculations required for this type of menu to work.
