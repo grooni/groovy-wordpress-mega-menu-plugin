@@ -3275,12 +3275,12 @@ export default class GmStyles {
       } = settings;
 
       css.push({
-        '.gm-navbar .gm-logo > a > img': `height: ${height}px`,
+        '.gm-navbar .gm-logo > a img': `height: ${height}px`,
         media: 'desktop'
       });
 
       css.push({
-        '.gm-navbar .gm-logo > a > img': `height: ${heightMobile}px`,
+        '.gm-navbar .gm-logo > a img': `height: ${heightMobile}px`,
         media: 'mobile'
       });
     }
