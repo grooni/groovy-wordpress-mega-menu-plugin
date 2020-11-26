@@ -56,14 +56,14 @@ gulp.task('webserver', function () {
   browserSync(serverConfig);
 });
 
-gulp.task('js:build', function () {
+gulp.task('js:build', async function () {
   return gulp.src(path.src.js)
     .pipe(webpack(require('./webpack.config.js')))
     .pipe(gulp.dest(path.build.js))
     .pipe(reload({ stream: true }));
 });
 
-gulp.task('style:build', function () {
+gulp.task('style:build', async function () {
   return gulp.src(path.src.style)
     .pipe(sass().on('error', sass.logError))
     .pipe(prefixer())
@@ -81,24 +81,24 @@ gulp.task('style:build', function () {
     .pipe(reload({ stream: true }));
 });
 
-gulp.task('image:build', function () {
+gulp.task('image:build', async function () {
   gulp.src(path.src.img)
     .pipe(gulp.dest(path.build.img))
     .pipe(reload({ stream: true }));
 });
 
-gulp.task('fonts:build', function () {
+gulp.task('fonts:build', async function () {
   gulp.src(path.src.fonts)
     .pipe(gulp.dest(path.build.fonts))
     .pipe(reload({ stream: true }));
 });
 
-gulp.task('build', [
+gulp.task('build', gulp.parallel(
   'js:build',
   'style:build',
   'fonts:build',
-  'image:build'
-]);
+  'image:build')
+);
 
 gulp.task('watch', function () {
 
