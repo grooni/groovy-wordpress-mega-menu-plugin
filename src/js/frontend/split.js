@@ -42,11 +42,13 @@ function setPaddingsAlignCenter () {
   const logoHalfWidthWithPadding = logoHalfWidth + sideOffset;
   const navRight = document.querySelector('.nav--right');
   const navLeft = document.querySelector('.nav--left');
+  const gmActions = document.querySelector('.gm-navbar .gm-main-menu-wrapper .gm-actions');
 
   var widthMenuActions = 0;
   var widthMiniCart = 0;
   var widthSearchIcon = 0;
   var widthDivider = 0;
+  var actionsWidth = 0;
 
   if (options.showDivider) {
     widthDivider = 10 + 1 + 10;
@@ -65,15 +67,26 @@ function setPaddingsAlignCenter () {
   widthMenuActions = widthDivider + widthSearchIcon + widthMiniCart;
   widthMenuActions = Math.floor(widthMenuActions / 2);
 
+  if (gmActions && options.forceLogoCentering) {
+    actionsWidth = gmActions.offsetWidth + logoHalfWidthWithPadding + 30;
+  }
+
   if (isRtl()) {
     if (navRight) {
       navRight.style.paddingRight = `${logoHalfWidthWithPadding}px`;
+      if (actionsWidth) {
+        navRight.style.width = `calc(50% + ${actionsWidth}px)`;
+      }
     }
     if (navLeft) {
       navLeft.style.paddingLeft = `${logoHalfWidthWithPadding}px`;
     }
     if (logo) {
-      logo.style.right = `calc(50% - ${widthMenuActions}px)`;
+      if (actionsWidth) {
+        logo.style.right = `50%`;
+      } else {
+        logo.style.right = `calc(50% - ${widthMenuActions}px)`;
+      }
     }
   } else {
     if (navRight) {
@@ -81,9 +94,16 @@ function setPaddingsAlignCenter () {
     }
     if (navLeft) {
       navLeft.style.paddingRight = `${logoHalfWidthWithPadding}px`;
+      if (actionsWidth) {
+        navLeft.style.width = `calc(50% + ${actionsWidth}px)`;
+      }
     }
     if (logo) {
-      logo.style.left = `calc(50% - ${widthMenuActions}px)`;
+      if (actionsWidth) {
+        logo.style.left = `50%`;
+      } else {
+        logo.style.left = `calc(50% - ${widthMenuActions}px)`;
+      }
     }
   }
 

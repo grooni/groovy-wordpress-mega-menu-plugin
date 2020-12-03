@@ -100,22 +100,15 @@ gulp.task('build', gulp.parallel(
   'image:build')
 );
 
-gulp.task('watch', function () {
 
-  watch([ path.watch.style ], function () {
-    gulp.start('style:build');
-  });
-
-  watch(path.watch.js, function () {
-    gulp.start('js:build');
-  });
-
-  watch([ path.watch.img ], function () {
-    gulp.start('image:build');
-  });
-
+// Watch on everything
+gulp.task('watch', async function () {
+  gulp.watch(path.watch.style, gulp.parallel('style:build'));
+  gulp.watch(path.watch.js,    gulp.parallel('js:build'));
+  gulp.watch(path.watch.img,   gulp.parallel('image:build'));
 });
 
-gulp.task('default', function() {
+
+gulp.task('default', async function() {
   runSequence('build', 'webserver', 'watch');
 });

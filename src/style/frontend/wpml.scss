@@ -82,3 +82,11 @@ WPML
 .wpml-ls-legacy-dropdown a {
   border: none;
 }
+
+.gm-navbar .gm-actions .wpml-ls-statics-shortcode_actions {
+  margin: 0;
+}
+
+.gm-navbar .gm-actions .wpml-ls-statics-shortcode_actions > ul {
+  padding: 0 4px;
+}
