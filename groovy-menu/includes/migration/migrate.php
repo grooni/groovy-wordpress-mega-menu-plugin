@@ -11,7 +11,7 @@ class GM_Migration {
 	 * @var array DB updates and options that need to be run per version
 	 */
 	private static $migrate_version_points = array(
-		// '1.0' => [ 'type' => 'ask' ],
+		// '2.1.0' => [ 'type' => 'ask' ],
 	);
 
 	/**
@@ -84,7 +84,7 @@ class GM_Migration {
 	public function migrate_debug() {
 		// Load debug data.
 		if ( class_exists( '\GroovyMenu\DebugPage' ) ) {
-			require_once __DIR__ . '/migrate_debug.php';
+			require_once __DIR__ . DIRECTORY_SEPARATOR . 'migrate_debug.php';
 			new GM_MigrationDebug( self::$migrate_version_points, $this->identifier );
 		}
 	}
@@ -377,8 +377,9 @@ class GM_Migration {
 
 		global $wp_filesystem;
 		if ( empty( $wp_filesystem ) ) {
-			if ( file_exists( ABSPATH . '/wp-admin/includes/file.php' ) ) {
-				require_once ABSPATH . '/wp-admin/includes/file.php';
+			$file_path = $path = str_replace( array( '\\', '/' ), DIRECTORY_SEPARATOR, ABSPATH . '/wp-admin/includes/file.php' );
+			if ( file_exists( $file_path ) ) {
+				require_once $file_path;
 				WP_Filesystem();
 			}
 		}
@@ -386,7 +387,7 @@ class GM_Migration {
 			return null;
 		}
 
-		$migration_file = __DIR__ . '/migrate__v' . $version_str . '.php';
+		$migration_file = __DIR__ . DIRECTORY_SEPARATOR . 'migrate__v' . $version_str . '.php';
 		// check for existence.
 		if ( $wp_filesystem->exists( $migration_file ) ) {
 			include_once $migration_file;
@@ -587,9 +588,9 @@ function gm_force_update_db_version() {
 		return;
 	}
 
-	if ( ! empty( $_GET['gm-groovy-menu-db-version'] ) && ! empty( $_GET['gm-force-update'] ) ) {
+	if ( ! empty( $_GET['gm-groovy-menu-db-version'] ) && ! empty( $_GET['gm-force-update'] ) ) { // @codingStandardsIgnoreLine
 		$migration = new GM_Migration();
-		$version   = esc_attr( wp_unslash( $_GET['gm-groovy-menu-db-version'] ) );
+		$version   = esc_attr( wp_unslash( $_GET['gm-groovy-menu-db-version'] ) ); // @codingStandardsIgnoreLine
 		$migration->update_db_version( $version );
 
 		gm_debug_message( sprintf( esc_html__( 'FORCE WRITE. New DB version: %s', 'groovy-menu' ), $version ) );
@@ -606,7 +607,7 @@ function gm_force_update_db_version() {
 
 	}
 
-	if ( ! empty( $_GET['gm-update-version-data'] ) ) {
+	if ( ! empty( $_GET['gm-update-version-data'] ) ) { // @codingStandardsIgnoreLine
 
 		var_dump( get_option( GROOVY_MENU_DB_VER_OPTION ) );
 

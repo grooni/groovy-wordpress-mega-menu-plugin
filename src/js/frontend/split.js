@@ -68,7 +68,7 @@ function setPaddingsAlignCenter () {
   widthMenuActions = Math.floor(widthMenuActions / 2);
 
   if (gmActions && options.forceLogoCentering) {
-    actionsWidth = gmActions.offsetWidth + logoHalfWidthWithPadding + 30;
+    actionsWidth = gmActions.offsetWidth + 30;
   }
 
   if (isRtl()) {

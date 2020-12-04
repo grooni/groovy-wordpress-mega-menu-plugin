@@ -55,8 +55,8 @@ return array(
 				)
 			),
 			'force_logo_centering'                         => array(
-				'title'       => esc_html__( 'Force logo centering', 'groovy-menu' ),
-				'description' => esc_html__( 'Calculation of the center position for logo based on screen width.', 'groovy-menu' ),
+				'title'       => esc_html__( 'Forced centered logo', 'groovy-menu' ),
+				'description' => esc_html__( 'The central position of the logo is calculated depending on the width of the screen and side elements.', 'groovy-menu' ) . ' ' . esc_html__( 'It may doesn&rsquo;t be suitable for menus with a large number of menu items.', 'groovy-menu' ),
 				'type'        => 'checkbox',
 				'default'     => false,
 				'condition'   => array(
@@ -2546,8 +2546,8 @@ return array(
 				'default' => 'default',
 			),
 			'force_logo_centering_mobile'            => array(
-				'title'       => esc_html__( 'Force logo centering', 'groovy-menu' ),
-				'description' => esc_html__( 'Calculation of the center position for logo based on screen width.', 'groovy-menu' ),
+				'title'       => esc_html__( 'Forced centered logo', 'groovy-menu' ),
+				'description' => esc_html__( 'The central position of the logo is calculated depending on the width of the screen and side elements.', 'groovy-menu' ),
 				'type'        => 'checkbox',
 				'default'     => false,
 				'condition'   => array(
