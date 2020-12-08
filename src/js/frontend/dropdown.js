@@ -119,7 +119,7 @@ export function dropdownToggle (elem, options) {
       }
     } else {
       // close all
-      dropdownCloseAll(400);
+      dropdownCloseAll(500);
     }
 
     dropdownOpen(elem, options);
@@ -136,6 +136,10 @@ export function dropdownCloseAll (delay) {
 
   if (gmMainMenu && delay > 0) {
 
+    gmMainMenu.setAttribute('data-timeout-check-close', setTimeout(function () {
+      checkCursorBeforeClose();
+    }, delay+350));
+
     gmMainMenu.setAttribute('data-timeout-close-all', setTimeout(function () {
       dropdownCloseAllOpened(delay);
     }, delay));
@@ -146,6 +150,17 @@ export function dropdownCloseAll (delay) {
 
   }
 
+}
+
+export function checkCursorBeforeClose() {
+  let currentHovers = document.querySelectorAll(':hover');
+  if (currentHovers && currentHovers.length) {
+    let lastElem = currentHovers[currentHovers.length - 1];
+    let grandPa = lastElem ? lastElem.closest('.gm-main-menu-wrapper') : null;
+    if (!grandPa) {
+      dropdownCloseAllOpened(0);
+    }
+  }
 }
 
 function dropdownCloseAllOpened (delay) {
