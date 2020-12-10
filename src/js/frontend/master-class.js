@@ -628,9 +628,11 @@ class GroovyMenu {
         if (item.classList.contains('fullscreen') || isMobile()) {
           navbarSearchContainer.classList.remove('gm-hidden');
           setTimeout(() => {
-            navbarSearchContainer.querySelector('.gm-search__input')
-              .focus();
-          }, 200);
+            let searchForm = navbarSearchContainer.querySelector('.gm-search__input');
+            if (searchForm) {
+              searchForm.focus();
+            }
+          }, 230);
           return;
         }
 
@@ -641,9 +643,11 @@ class GroovyMenu {
           }
           dropdownToggle(item.closest('.gm-search'), options);
           setTimeout(() => {
-            item.querySelector('.gm-search__input')
-              .focus();
-          }, 200);
+            let searchForm = item.querySelector('.gm-search__input');
+            if (searchForm) {
+              searchForm.focus();
+            }
+          }, 230);
           return;
         }
       });
