@@ -23,3 +23,10 @@
 .gm-mega-menu__item__title {
   margin: 0;
 }
+
+/* Divi integration style fix */
+.et-l--header .gm-navbar .gm-minicart ul {
+  list-style-type: none;
+  padding: 0;
+  line-height: inherit;
+}
