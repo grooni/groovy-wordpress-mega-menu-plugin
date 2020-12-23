@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Groovy Menu 1.2.10\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-18 16:59+0300\n"
-"PO-Revision-Date: 2020-12-18 16:45+0500\n"
+"PO-Revision-Date: 2020-12-23 13:08+0500\n"
 "Last-Translator: Di_Skyer <diskyer@gmail.com>\n"
 "Language-Team: Русский\n"
 "Language: ru_RU\n"
@@ -469,7 +469,7 @@ msgstr "Выбрать"
 #: includes/config/Config.php:1939 includes/config/Config.php:2777
 #: includes/config/Config.php:2817
 msgid "Uppercase"
-msgstr "C Большой "
+msgstr "C большой"
 
 #: includes/config/Config.php:505 includes/config/Config.php:639
 #: includes/config/Config.php:1940 includes/config/Config.php:2778
