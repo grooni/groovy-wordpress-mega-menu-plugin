@@ -530,8 +530,8 @@ export default class GmStyles {
       // Appearance Styles
       if (settings.dropdownAppearanceStyle === 'animate-from-bottom') {
         css.push({
-          '.gm-dropdown-appearance-animate-from-bottom .gm-dropdown-menu': 'transition: all 0.2s; transform: translateY(40px);',
-          '.gm-dropdown-appearance-animate-from-bottom .gm-open > .gm-dropdown-menu-wrapper > .gm-dropdown-menu': 'visibility: visible; transform: translateY(0); opacity: 1;',
+          '.gm-dropdown-appearance-animate-from-bottom .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: all 0.2s; transform: translateY(40px);',
+          '.gm-dropdown-appearance-animate-from-bottom .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'visibility: visible; transform: translateY(0); opacity: 1;',
           media: 'desktop'
         });
       }
@@ -1000,8 +1000,8 @@ export default class GmStyles {
       // Appearance Styles
       if (settings.dropdownAppearanceStyle === 'animate-from-bottom') {
         css.push({
-          '.gm-dropdown-appearance-animate-from-bottom .gm-dropdown-menu': 'transition: all 0.2s; transform: translateY(80px);',
-          '.gm-dropdown-appearance-animate-from-bottom .gm-open > .gm-dropdown-menu-wrapper > .gm-dropdown-menu': 'visibility: visible; transform: translateY(0); opacity: 1;',
+          '.gm-dropdown-appearance-animate-from-bottom .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: all 0.2s; transform: translateY(80px);',
+          '.gm-dropdown-appearance-animate-from-bottom .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'visibility: visible; transform: translateY(0); opacity: 1;',
           media: 'desktop'
         });
       }
@@ -1323,8 +1323,8 @@ export default class GmStyles {
       // Appearance Styles
       if (settings.dropdownAppearanceStyle === 'animate-from-bottom') {
         css.push({
-          '.gm-dropdown-appearance-animate-from-bottom .gm-dropdown-menu': 'transition: all 0.2s; transform: translateY(40px);',
-          '.gm-dropdown-appearance-animate-from-bottom .gm-open > .gm-dropdown-menu-wrapper > .gm-dropdown-menu': 'visibility: visible; transform: translateY(0); opacity: 1;',
+          '.gm-dropdown-appearance-animate-from-bottom .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: all 0.2s; transform: translateY(40px);',
+          '.gm-dropdown-appearance-animate-from-bottom .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'visibility: visible; transform: translateY(0); opacity: 1;',
           '.gm-dropdown-appearance-animate-from-bottom .gm-navbar-nav > .gm-menu-item > .gm-anchor > .gm-menu-item__txt-wrapper': 'transition: all 0.27s cubic-bezier(1, 0, 1, 1) 0.02s !important; transform: translateY(40px)',
           '.gm-dropdown-appearance-animate-from-bottom .gm-navbar-nav > .gm-menu-item.gm-open > .gm-anchor > .gm-menu-item__txt-wrapper': 'transform: translateY(0)',
           media: 'desktop'
@@ -1715,8 +1715,8 @@ export default class GmStyles {
       // Appearance Styles
       if (settings.dropdownAppearanceStyle === 'animate-from-bottom') {
         css.push({
-          '.gm-dropdown-appearance-animate-from-bottom .gm-dropdown-menu': 'transition: all 0.2s; transform: translateY(80px);',
-          '.gm-dropdown-appearance-animate-from-bottom .gm-open > .gm-dropdown-menu-wrapper > .gm-dropdown-menu': 'visibility: visible; transform: translateY(0); opacity: 1;',
+          '.gm-dropdown-appearance-animate-from-bottom .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: all 0.2s; transform: translateY(80px);',
+          '.gm-dropdown-appearance-animate-from-bottom .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'visibility: visible; transform: translateY(0); opacity: 1;',
           media: 'desktop'
         });
       }

@@ -2,27 +2,6 @@ import PerfectScrollbar from 'perfect-scrollbar';
 import { getCoords, isMobile } from '../shared/helpers';
 import _ from 'lodash';
 
-function getDropdownMaxHeight (currentDropdown, isTransitionEnd) {
-  let windowHeight = window.innerHeight;
-  let topOffset = getCoords(currentDropdown).top;
-  let topViewportOffset = topOffset - window.pageYOffset;
-  let transformValuesCss = getComputedStyle(document.querySelector('.gm-main-menu-wrapper .gm-dropdown-menu'))['transform'];
-
-  let getDropdownMaxHeightValue = windowHeight - topViewportOffset;
-
-  if (!isTransitionEnd) {
-    let transformValues = transformValuesCss
-      .replace(/[^0-9\-.,]/g, '')
-      .split(',');
-    let dropdownMenuTranslateY = Number(transformValues[5]) || 0;
-
-    getDropdownMaxHeightValue = windowHeight - topViewportOffset + dropdownMenuTranslateY;
-  }
-
-
-  return getDropdownMaxHeightValue;
-}
-
 function getFirstDropdownRect (menuItem, settings) {
   let currentDropdown = menuItem.querySelector('.gm-dropdown-menu');
   let currentDropdownWidth = currentDropdown.offsetWidth;
@@ -81,8 +60,33 @@ export default function initScrollbar (settings) {
   // Main select fot all dropdown links.
   let dropdownMenuLinks = document.querySelectorAll('.gm-main-menu-wrapper .gm-dropdown-toggle');
 
+  let _dropdownWrapper = document.querySelector('.gm-main-menu-wrapper .gm-dropdown-menu-wrapper');
+  let _transformValuesCss = null;
+  if (_dropdownWrapper) {
+    _transformValuesCss = getComputedStyle(_dropdownWrapper)['transform'];
+  }
+
   let scrollbars = [];
 
+
+  function getDropdownMaxHeight(currentDropdown, isTransitionEnd) {
+    let windowHeight = window.innerHeight;
+    let topOffset = getCoords(currentDropdown).top;
+    let topViewportOffset = topOffset - window.pageYOffset;
+
+    let getDropdownMaxHeightValue = windowHeight - topViewportOffset;
+
+    if (!isTransitionEnd && _transformValuesCss) {
+      let transformValues = _transformValuesCss
+        .replace(/[^0-9\-.,]/g, '')
+        .split(',');
+      let dropdownMenuTranslateY = Number(transformValues[5]) || 0;
+
+      getDropdownMaxHeightValue = windowHeight - topViewportOffset + dropdownMenuTranslateY;
+    }
+
+    return getDropdownMaxHeightValue;
+  }
 
   function handleScrollbarMouseEnter () {
 
@@ -259,6 +263,14 @@ export default function initScrollbar (settings) {
       elem.style.position = 'static';
       elem.style.transform = 'none';
       elem.style.maxHeight = `${maxHeightCalculated}px`;
+
+      if (elem.classList.contains('ps')) {
+        let psId = elem.getAttribute('data-ps-id');
+        if (psId && scrollbars && scrollbars[psId]) {
+          scrollbars[psId].update();
+        }
+      }
+
     } else {
       elem.style.transform = null;
     }
