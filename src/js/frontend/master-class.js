@@ -171,7 +171,7 @@ class GroovyMenu {
 
     // Sub-Menus DROPDOWN action ----------------------------------------------------------------------------[ open ]---
     let initDropdownAction = (e) => {
-      let delay = 210;
+      let delay = 210; // delay for diagonal navigation in sub-menus.
       let closestDropdown = e.target.closest('.gm-dropdown');
       let closestAnchor = e.target.closest('.gm-anchor');
       let isClosestAnchorEmpty = closestAnchor && '#' === closestAnchor.getAttribute('href');
@@ -460,7 +460,7 @@ class GroovyMenu {
 
         if (!isTouchDevice && gmMainMenu) {
           gmMainMenu.addEventListener('mouseleave', () => {
-            dropdownCloseAll(750);
+            dropdownCloseAll(500);
           });
         }
       }
@@ -628,9 +628,11 @@ class GroovyMenu {
         if (item.classList.contains('fullscreen') || isMobile()) {
           navbarSearchContainer.classList.remove('gm-hidden');
           setTimeout(() => {
-            navbarSearchContainer.querySelector('.gm-search__input')
-              .focus();
-          }, 200);
+            let searchForm = navbarSearchContainer.querySelector('.gm-search__input');
+            if (searchForm) {
+              searchForm.focus();
+            }
+          }, 230);
           return;
         }
 
@@ -641,9 +643,11 @@ class GroovyMenu {
           }
           dropdownToggle(item.closest('.gm-search'), options);
           setTimeout(() => {
-            item.querySelector('.gm-search__input')
-              .focus();
-          }, 200);
+            let searchForm = item.querySelector('.gm-search__input');
+            if (searchForm) {
+              searchForm.focus();
+            }
+          }, 230);
           return;
         }
       });

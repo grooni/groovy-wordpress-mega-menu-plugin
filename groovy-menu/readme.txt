@@ -2,9 +2,9 @@
 Contributors: Grooni
 Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive, responsive menu, sticky menu, vertical menu, horizontal menu, ajax cart
 Requires at least: 4.9.7
-Tested up to: 5.5.3
+Tested up to: 5.6
 Requires PHP: 7.0
-Stable tag: 1.2.11
+Stable tag: 1.2.12
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -115,6 +115,20 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.2.12 =
+* Improve: Hover effect of menu item now occur only for the last item in the chain in multi-level menus.
+* Add: Added "Forced centered logo" setting for menu types with center logo.
+* Fix: Prevent double initialization for JavaScript from Groovy Menu. Such a case could have been with custom integration.
+* Fix: Fixed a bug with the appearance of a scrollbar in dropdowns where it should not be.
+* Fix: Fixed small CLS offset for dropdown content when the "Submenu appearance style - Animate from bottom" & "Enable internal submenus scrollbar" preset settings are enabled.
+* Fix: Fixed an issue with "Ensure text remains visible during webfont load" by Google PageSpeed Insights version for Groovy Menu icon fonts. You need to reinstall icon fonts in "Groovy Menu dashboard > Global settings > Icon Packs".
+* Fix: The bug with loading media files in "Global Settings" via the Integration page has been fixed.
+* Fix: Fixed integration with the Divi theme, fixed some style conflicts.
+* Fix: Fixed bug with automatic closing opened dropdown menus that is occurring in some cases.
+* Fix: The bug that prevented the installation of Groovy Menu on a site running Microsoft-IIS has been fixed.
+* Fix: Added styles for WPML selector, which is embedded in the side area.
+* Fix: Added reset CSS styles to prevent style conflicts with some themes.
 
 = 1.2.11 =
 * Fix: Active color links for page ancestor. Includes child pages for parent menu items presented in the nav menu.

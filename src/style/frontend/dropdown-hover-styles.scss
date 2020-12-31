@@ -3,11 +3,13 @@ DROPDOWN HOVER STYLES
 ***********************************/
 
 .gm-dropdown-hover-style-shift-right {
-  .gm-dropdown-menu .gm-menu-item:hover > .gm-anchor .gm-menu-item__txt-wrapper {
+  .gm-dropdown-menu .gm-menu-item:hover > .gm-anchor .gm-menu-item__txt-wrapper,
+  .gm-dropdown-menu .gm-menu-item.gm-open > .gm-anchor .gm-menu-item__txt-wrapper {
     transform: translateX(25px);
   }
 
-  .gm-dropdown-menu .gm-menu-item:hover > .gm-menu-item__link::before {
+  .gm-dropdown-menu .gm-menu-item:hover > .gm-menu-item__link::before,
+  .gm-dropdown-menu .gm-menu-item.gm-open > .gm-menu-item__link::before {
     visibility: visible;
     opacity: 1;
   }

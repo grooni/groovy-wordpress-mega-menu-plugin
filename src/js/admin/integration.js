@@ -83,6 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  initGSModal();
+  //initGSModal();
 
 });

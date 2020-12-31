@@ -1370,8 +1370,13 @@ class GroovyMenuUtils {
 
 				global $wp_filesystem;
 				if ( empty( $wp_filesystem ) ) {
-					if ( file_exists( ABSPATH . '/wp-admin/includes/file.php' ) ) {
-						require_once ABSPATH . '/wp-admin/includes/file.php';
+					$file_path = str_replace( array(
+						'\\',
+						'/'
+					), DIRECTORY_SEPARATOR, ABSPATH . '/wp-admin/includes/file.php' );
+
+					if ( file_exists( $file_path ) ) {
+						require_once $file_path;
 						WP_Filesystem();
 					}
 				}
@@ -1465,6 +1470,7 @@ class GroovyMenuUtils {
 		url(\'' . $name . '.svg?jk3qnc#icomoon1\') format(\'svg\');
 	font-weight: normal;
 	font-style: normal;
+	font-display: block;
 }
 
 [class^="' . $name . '"],
@@ -1812,7 +1818,7 @@ class GroovyMenuUtils {
 
 
 	public static function update_config_text_domain() {
-		$config_global   = include GROOVY_MENU_DIR . 'includes/config/ConfigGlobal.php';
+		$config_global   = include GROOVY_MENU_DIR . 'includes' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'ConfigGlobal.php';
 		$settings_global = \GroovyMenu\StyleStorage::getInstance()->get_global_settings();
 
 		$updated = false;

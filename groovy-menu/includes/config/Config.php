@@ -54,6 +54,17 @@ return array(
 					array( 'logo_type', 'in', array( 'img', 'text' ) ),
 				)
 			),
+			'force_logo_centering'                         => array(
+				'title'       => esc_html__( 'Forced centered logo', 'groovy-menu' ),
+				'description' => esc_html__( 'The central position of the logo is calculated depending on the width of the screen and side elements.', 'groovy-menu' ) . ' ' . esc_html__( 'It may doesn&rsquo;t be suitable for menus with a large number of menu items.', 'groovy-menu' ),
+				'type'        => 'checkbox',
+				'default'     => false,
+				'condition'   => array(
+					array( 'header.style', 'in', array( '1' ) ),
+					array( 'header.align', 'in', array( 'center' ) ),
+					array( 'logo_type', 'in', array( 'img', 'text' ) ),
+				)
+			),
 			'gap_between_logo_and_links'                   => array(
 				'title'     => esc_html__( 'Distance between logo and nav links', 'groovy-menu' ),
 				'type'      => 'number',
@@ -597,7 +608,7 @@ return array(
 				'title'       => esc_html__( 'Dropdown gap', 'groovy-menu' ),
 				'description' => esc_html__( 'Gap between Main menu and Dropdown menu', 'groovy-menu' ),
 				'type'        => 'number',
-				'range'       => array( -100, 100 ),
+				'range'       => array( - 100, 100 ),
 				'default'     => 0,
 				'unit'        => 'px',
 				'condition'   => array( 'header.style', 'in', array( '1' ) ),
@@ -606,7 +617,7 @@ return array(
 				'title'       => esc_html__( 'Submenu gap', 'groovy-menu' ),
 				'description' => esc_html__( 'Gap beside Dropdown menu and Submenu', 'groovy-menu' ),
 				'type'        => 'number',
-				'range'       => array( -100, 100 ),
+				'range'       => array( - 100, 100 ),
 				'default'     => 0,
 				'unit'        => 'px',
 				'condition'   => array( 'header.style', 'in', array( '1' ) ),
@@ -773,7 +784,7 @@ return array(
 				'title'       => esc_html__( 'Mega menu gap', 'groovy-menu' ),
 				'description' => esc_html__( 'Gap between Main menu and Mega menu', 'groovy-menu' ),
 				'type'        => 'number',
-				'range'       => array( -100, 100 ),
+				'range'       => array( - 100, 100 ),
 				'default'     => 0,
 				'unit'        => 'px',
 				'condition'   => array( 'header.style', 'in', array( '1' ) ),
@@ -2533,6 +2544,16 @@ return array(
 					'right'   => esc_html__( 'Align right', 'groovy-menu' ),
 				),
 				'default' => 'default',
+			),
+			'force_logo_centering_mobile'            => array(
+				'title'       => esc_html__( 'Forced centered logo', 'groovy-menu' ),
+				'description' => esc_html__( 'The central position of the logo is calculated depending on the width of the screen and side elements.', 'groovy-menu' ),
+				'type'        => 'checkbox',
+				'default'     => false,
+				'condition'   => array(
+					array( 'mobile_logo_position', 'in', array( 'center' ) ),
+					array( 'mobile_side_icon_position', 'in', array( 'default', 'right' ) ),
+				)
 			),
 			'mobile_logo_margin_start'               => array(
 				'title'     => esc_html__( 'Logo margin', 'groovy-menu' ),
