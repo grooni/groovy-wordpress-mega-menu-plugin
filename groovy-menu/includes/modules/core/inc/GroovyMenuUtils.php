@@ -1470,6 +1470,7 @@ class GroovyMenuUtils {
 		url(\'' . $name . '.svg?jk3qnc#icomoon1\') format(\'svg\');
 	font-weight: normal;
 	font-style: normal;
+	font-display: block;
 }
 
 [class^="' . $name . '"],
