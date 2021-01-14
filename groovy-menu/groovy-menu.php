@@ -116,6 +116,11 @@ if ( method_exists( 'GroovyMenuUtils', 'update_config_text_domain' ) && is_admin
 	add_action( 'wp_loaded', array( 'GroovyMenuUtils', 'update_config_text_domain' ), 1000 );
 }
 
+if ( method_exists( 'GroovyMenuUtils', 'output_uniqid_gm_js' ) ) {
+	add_action( 'gm_enqueue_script_actions', array( 'GroovyMenuUtils', 'output_uniqid_gm_js' ), 999 );
+	add_action( 'gm_after_main_header', array( 'GroovyMenuUtils', 'output_uniqid_gm_js' ), 999 );
+}
+
 if ( method_exists( 'GroovyMenuUtils', 'load_font_internal' ) ) {
 	GroovyMenuUtils::load_font_internal();
 }
@@ -402,9 +407,10 @@ function groovy_menu_js_request( $uniqid, $return_string = false ) {
 
 		return "\n" . '<' . esc_attr( $tag_name ) . '>' . $additional_js . '</' . esc_attr( $tag_name ) . '>';
 	} else {
-		if ( function_exists( 'wp_add_inline_script' ) ) {
-			wp_add_inline_script( 'groovy-menu-js', $additional_js );
-		}
+
+		// Then work with GroovyMenuUtils::output_uniqid_gm_js .
+		$groovyMenuSettings['gm-uniqid-js'][ $preset_id ] = $additional_js;
+
 	}
 
 	return '';

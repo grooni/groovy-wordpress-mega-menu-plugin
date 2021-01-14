@@ -1204,6 +1204,12 @@ return array(
 				'default'     => true,
 				'description' => esc_html__( 'Enable scrolling for long lists of mobile menu & submenus', 'groovy-menu' ),
 			),
+			'scroll_handle_all_links'                      => array(
+				'title'       => esc_html__( 'Find and handle anchor links in custom block menu content', 'groovy-menu' ),
+				'type'        => 'checkbox',
+				'default'     => false,
+				'description' => esc_html__( 'Used to smoothly scroll the page content to anchor links in a onepage menu', 'groovy-menu' ),
+			),
 			'scroll_speed_settings'                        => array(
 				'title'       => esc_html__( 'Custom scroll speed options', 'groovy-menu' ),
 				'type'        => 'checkbox',

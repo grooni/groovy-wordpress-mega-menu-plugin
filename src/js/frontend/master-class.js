@@ -105,6 +105,10 @@ class GroovyMenu {
 
     let linksWithHashes = document.querySelectorAll('.menu-item > a[href^="#"]:not([href="#"])');
 
+    if (options.scrollHandleAllLinks) {
+      linksWithHashes = document.querySelectorAll('.menu-item a:not([href="#"])');
+    }
+
     const direction = isRtl() ? 'rtl' : 'ltr';
     let isTouchDevice = 'ontouchstart' in document.documentElement;
 
