@@ -229,6 +229,11 @@ export default class GmStyles {
             max-width : 100vw;
             position: absolute;`
         });
+
+        css.push({
+          'html': 'overflow-x: hidden;',
+          media: 'desktop'
+        });
       }
 
       // Mega menu canvas and container boxed width
