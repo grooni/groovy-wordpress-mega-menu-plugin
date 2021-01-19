@@ -34,11 +34,27 @@ import {watchWooMiniCartCounter} from './woo-minicart';
 
 class GroovyMenu {
   constructor(selector, options) {
-    this.selector = document.querySelector(`${this.selector}`);
     this.options = options;
+
+    if (typeof selector === 'string') {
+      this.selector = document.querySelector(`${selector}`);
+    } else if (typeof selector === 'object') {
+      this.selector = selector;
+    } else {
+      this.selector = null;
+    }
+
   }
 
   init() {
+
+    // if GM has object - then init, else return null;
+    if (this.selector) {
+      this.selector.classList.add('gm-init-done');
+    } else {
+      return;
+    }
+
     let options = this.options;
 
     let gmStyles = new GmStyles(options);

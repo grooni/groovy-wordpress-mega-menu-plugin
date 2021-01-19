@@ -62,6 +62,7 @@ export default class GmStyles {
       const menuZIndexButton = menuZIndexToolbar + 6; // Mobile wrapper must be more then desktop.
       const menuZIndexMobile = menuZIndexToolbar + 12; // Mobile wrapper must be more then desktop.
       const menuZIndexSearch = menuZIndexMobile + 12; // Search wrapper must be more then mobile.
+      const menuZIndexOverlay = menuZIndex - 3; // Dropdown overlay.
       const adminBarZIndex = (menuZIndex < 99949) ? 0 : menuZIndexSearch + 12;
 
       css.push({
@@ -93,6 +94,9 @@ export default class GmStyles {
       css.push({
         '.gm-search__fullscreen-container': `z-index: ${menuZIndexMobile} !important`
       });
+      css.push({
+        '.gm-dropdown-overlay': `z-index: ${menuZIndexOverlay} !important`
+      });
       if (adminBarZIndex > 0) {
         css.push({
           '#wpadminbar': `z-index: ${adminBarZIndex}`
@@ -100,6 +104,7 @@ export default class GmStyles {
       }
     }
 
+    // ------------------------------------------------------------------------------------ settings.header.style === 1
 
     if (settings.header.style === 1) {
       if (
@@ -547,8 +552,24 @@ export default class GmStyles {
           media: 'desktop'
         });
       }
+      if (settings.dropdownAppearanceStyle === 'slide-from-left') {
+        css.push({
+          '.gm-dropdown-appearance-slide-from-left .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: transform 250ms ease-in-out 0s, -webkit-transform 250ms ease-in-out 0s; transform: translateX(-70%);',
+          '.gm-dropdown-appearance-slide-from-left .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'visibility: visible; transform: translateX(0); opacity: 1;',
+          media: 'desktop'
+        });
+      }
+      if (settings.dropdownAppearanceStyle === 'slide-from-right') {
+        css.push({
+          '.gm-dropdown-appearance-slide-from-right .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: transform 250ms ease-in-out 0s, -webkit-transform 250ms ease-in-out 0s; transform: translateX(70%);',
+          '.gm-dropdown-appearance-slide-from-right .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'visibility: visible; transform: translateX(0); opacity: 1;',
+          media: 'desktop'
+        });
+      }
 
-    }
+    } // settings.header.style === 1
+
+    // ------------------------------------------------------------------------------------ settings.header.style === 2
 
     if (settings.header.style === 2) {
       const {
@@ -791,6 +812,8 @@ export default class GmStyles {
 
     }
 
+    // ------------------------------------------------------------------------------------ settings.header.style === 3
+
     if (settings.header.style === 3) {
       const {
         submenuBorderThickness: thickness,
@@ -1017,8 +1040,24 @@ export default class GmStyles {
           media: 'desktop'
         });
       }
+      if (settings.dropdownAppearanceStyle === 'slide-from-left') {
+        css.push({
+          '.gm-dropdown-appearance-slide-from-left .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: transform 250ms ease-in-out 0s, -webkit-transform 250ms ease-in-out 0s; transform: translateX(-70%);',
+          '.gm-dropdown-appearance-slide-from-left .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'visibility: visible; transform: translateX(0); opacity: 1;',
+          media: 'desktop'
+        });
+      }
+      if (settings.dropdownAppearanceStyle === 'slide-from-right') {
+        css.push({
+          '.gm-dropdown-appearance-slide-from-right .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: transform 250ms ease-in-out 0s, -webkit-transform 250ms ease-in-out 0s; transform: translateX(70%);',
+          '.gm-dropdown-appearance-slide-from-right .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'visibility: visible; transform: translateX(0); opacity: 1;',
+          media: 'desktop'
+        });
+      }
 
     }
+
+    // ------------------------------------------------------------------------------------ settings.header.style === 4
 
     if (settings.header.style === 4) {
       if (
@@ -1342,6 +1381,20 @@ export default class GmStyles {
           media: 'desktop'
         });
       }
+      if (settings.dropdownAppearanceStyle === 'slide-from-left') {
+        css.push({
+          '.gm-dropdown-appearance-slide-from-left .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: transform 250ms ease-in-out 0s, -webkit-transform 250ms ease-in-out 0s; transform: translateX(-70%);',
+          '.gm-dropdown-appearance-slide-from-left .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'visibility: visible; transform: translateX(0); opacity: 1;',
+          media: 'desktop'
+        });
+      }
+      if (settings.dropdownAppearanceStyle === 'slide-from-right') {
+        css.push({
+          '.gm-dropdown-appearance-slide-from-right .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: transform 250ms ease-in-out 0s, -webkit-transform 250ms ease-in-out 0s; transform: translateX(70%);',
+          '.gm-dropdown-appearance-slide-from-right .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'visibility: visible; transform: translateX(0); opacity: 1;',
+          media: 'desktop'
+        });
+      }
 
       // Submenu border radius.
       if (settings.subDropdownRadius) {
@@ -1358,6 +1411,8 @@ export default class GmStyles {
       }
 
     }
+
+    // ------------------------------------------------------------------------------------ settings.header.style === 5
 
     if (settings.header.style === 5) {
       const {
@@ -1729,6 +1784,20 @@ export default class GmStyles {
         css.push({
           '.gm-dropdown-appearance-animate-with-scaling .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: transform .28s ease , opacity .28s ease; transform: translateY(-50%) scaleY(0); opacity: 0.2;',
           '.gm-dropdown-appearance-animate-with-scaling .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'transform: translateY(0) scaleY(1); opacity: 1;',
+          media: 'desktop'
+        });
+      }
+      if (settings.dropdownAppearanceStyle === 'slide-from-left') {
+        css.push({
+          '.gm-dropdown-appearance-slide-from-left .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: transform 250ms ease-in-out 0s, -webkit-transform 250ms ease-in-out 0s; transform: translateX(-70%);',
+          '.gm-dropdown-appearance-slide-from-left .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'visibility: visible; transform: translateX(0); opacity: 1;',
+          media: 'desktop'
+        });
+      }
+      if (settings.dropdownAppearanceStyle === 'slide-from-right') {
+        css.push({
+          '.gm-dropdown-appearance-slide-from-right .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: transform 250ms ease-in-out 0s, -webkit-transform 250ms ease-in-out 0s; transform: translateX(70%);',
+          '.gm-dropdown-appearance-slide-from-right .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'visibility: visible; transform: translateX(0); opacity: 1;',
           media: 'desktop'
         });
       }
@@ -3485,6 +3554,24 @@ export default class GmStyles {
           '.gm-mobile-submenu-style-slider .gm-dropdown-menu-wrapper .gm-dropdown-menu-title, .gm-mobile-submenu-style-slider .gm-dropdown-menu-wrapper .gm-dropdown-menu-title .gm-caret': `height: ${settings.mobileSliderTitleHeight}px;`,
           '.gm-mobile-submenu-style-slider .gm-dropdown-menu-wrapper .gm-dropdown-menu-title .gm-caret': 'padding-left: 5px;',
           media: 'mobile'
+        });
+      }
+    }
+
+
+    // Sumbmenu overlay options.
+    if (settings.dropdownOverlay) {
+      if (settings.dropdownOverlayColor) {
+        const color = settings.dropdownOverlayColor;
+        css.push({
+          '.gm-navbar.gm-navbar-dropdown-opened ~ .gm-dropdown-overlay': `background-color: ${color} !important;`,
+          media: 'desktop'
+        });
+      }
+      if (settings.dropdownOverlayBlur) {
+        css.push({
+          '.gm-navbar.gm-navbar-dropdown-opened ~ .gm-dropdown-overlay': 'backdrop-filter: blur(2px);',
+          media: 'desktop'
         });
       }
     }

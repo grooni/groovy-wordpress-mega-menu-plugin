@@ -74,3 +74,24 @@ DROPDOWN HOVER STYLES
     transition: opacity 0.16s cubic-bezier(1, 0, 1, 1), visibility 0.16s cubic-bezier(1, 0, 1, 1);
   }
 }
+
+.gm-dropdown-overlay {
+  content: "";
+  position: fixed;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  transition: background 150ms ease-in-out 0s;
+}
+
+.gm-navbar.gm-navbar-dropdown-opened ~ .gm-dropdown-overlay {
+  left: 0;
+  top: 0;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(35, 35, 35, 0.7);
+  opacity: 1;
+}

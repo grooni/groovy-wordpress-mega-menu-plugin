@@ -1024,6 +1024,10 @@ function groovyMenu( $args = array() ) {
 		$output_html .= '</aside>';
 	} // end of if $show_mobile_menu.
 
+	if ( $groovyMenuSettings['dropdownOverlay'] ) {
+		$output_html .= '<div class="gm-dropdown-overlay"></div>';
+	}
+
 	ob_start();
 	/**
 	 * Fires after the groovy menu output.
