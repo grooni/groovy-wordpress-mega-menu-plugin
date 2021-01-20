@@ -598,16 +598,43 @@ function groovyMenu( $args = array() ) {
 				}
 			}
 
-			$img_src_wpml = esc_url( apply_filters( 'wpml_translate_single_string', $img_src, 'groovy-menu', 'Global settings - Logo image file URL (id:' . $attach_id . ')' ) );
-			if ( ! empty( $img_src_wpml ) ) {
-				$img_src = $img_src_wpml;
-			}
-
 			// Image Alt attribute.
 			if ( $groovyMenuSettings['logoShowAlt'] ) {
 				$img_alt = $groovyMenuSettings['logoShowTitleAsAlt'] ? get_the_title( $attach_id ) : get_post_meta( $attach_id, '_wp_attachment_image_alt', true );
 				$img_alt = esc_attr( $img_alt );
 			}
+
+			// Filter for WPML logo image SRC changes.
+			$img_src_wpml = esc_url( apply_filters( 'wpml_translate_single_string', $img_src, 'groovy-menu', 'Global settings - Logo image file URL (id:' . $attach_id . ')' ) );
+			if ( ! empty( $img_src_wpml ) ) {
+				$img_src = $img_src_wpml;
+			}
+
+
+			/**
+			 * Can change logo image src by key.
+			 *
+			 * @param string $img_src   Full source URL for logo image.
+			 * @param string $key       Logo image key. Possible keys:
+			 *                          'default', 'alt', 'sticky', 'sticky-alt', 'mobile', 'mobile-alt', 'sticky-mobile', 'sticky-alt-mobile'.
+			 * @param string $attach_id id by WP Media Library.
+			 *
+			 * @since 2.4.4
+			 */
+			$img_src = apply_filters( 'gm_logo_change_src_by_key', $img_src, $key, $attach_id );
+
+			/**
+			 * Can change logo image alt by key.
+			 *
+			 * @param string $img_src   Full source URL for logo image.
+			 * @param string $key       Logo image key. Possible keys:
+			 *                          'default', 'alt', 'sticky', 'sticky-alt', 'mobile', 'mobile-alt', 'sticky-mobile', 'sticky-alt-mobile'.
+			 * @param string $attach_id id by WP Media Library.
+			 *
+			 * @since 2.4.4
+			 */
+			$img_alt = apply_filters( 'gm_logo_change_alt_by_key', $img_alt, $key, $attach_id );
+
 
 			switch ( $key ) {
 				case 'default':

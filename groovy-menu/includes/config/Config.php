@@ -385,39 +385,59 @@ return array(
 				'default'   => 'default',
 				'condition' => array( 'header.style', 'in', array( '1' ) ),
 			),
-			'dropdown_appearance_style'                    => array(
+			'dropdown_appearance_style'    => array(
 				'title'     => esc_html__( 'Submenu appearance style', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
-					'default'              => esc_html__( 'Default', 'groovy-menu' ),
-					'fade-in-out'          => esc_html__( 'Fade in out', 'groovy-menu' ),
-					'animate-from-bottom'  => esc_html__( 'Animate from bottom', 'groovy-menu' ),
-					'animate-with-scaling' => esc_html__( 'Animate with scaling', 'groovy-menu' ),
-					'slide-from-left'      => esc_html__( 'Slide from left', 'groovy-menu' ),
-					'slide-from-right'     => esc_html__( 'Slide from right', 'groovy-menu' ),
+					'default'                 => esc_html__( 'Default', 'groovy-menu' ),
+					'fade-in-out'             => esc_html__( 'Fade in out', 'groovy-menu' ),
+					'animate-from-bottom'     => esc_html__( 'Animate from bottom', 'groovy-menu' ),
+					'animate-with-scaling'    => esc_html__( 'Animate with scaling', 'groovy-menu' ),
+					'slide-from-right'        => esc_html__( 'Slide from right', 'groovy-menu' ),
+					'slide-from-right-fadein' => esc_html__( 'Slide from right FadeIn', 'groovy-menu' ),
+					'slide-from-left'         => esc_html__( 'Slide from left', 'groovy-menu' ),
+					'slide-from-left-fadein'  => esc_html__( 'Slide from left FadeIn', 'groovy-menu' ),
 				),
 				'default'   => 'default',
-				'condition' => array( 'header.style', 'in', array( '1' ) ),
+				'condition' => array( 'header.style', 'in', array( '1', '3', '4', '5' ) ),
 			),
-			'dropdown_overlay'       => array(
-				'title'       => esc_html__( 'Submenu overlay', 'groovy-menu' ),
+			'dropdown_overlay_start'       => array(
+				'title' => esc_html__( 'Page overlay when menu drops down', 'groovy-menu' ),
+				'type'  => 'inlineStart',
+			),
+			'dropdown_overlay'             => array(
+				'title'       => esc_html__( 'Show overlay', 'groovy-menu' ),
 				'description' => '',
 				'type'        => 'checkbox',
 				'default'     => false,
 			),
-			'dropdown_overlay_color' => array(
-				'title'     => esc_html__( 'Submenu overlay background color', 'groovy-menu' ),
+			'dropdown_overlay_color'       => array(
+				'title'     => esc_html__( 'Background color', 'groovy-menu' ),
 				'type'      => 'colorpicker',
 				'default'   => 'rgba(0,0,0,0.5)',
 				'alpha'     => true,
 				'condition' => array( 'dropdown_overlay', '==', true ),
 			),
-			'dropdown_overlay_blur'  => array(
-				'title'       => esc_html__( 'Submenu overlay blur effect', 'groovy-menu' ),
+			'dropdown_overlay_blur'        => array(
+				'title'       => esc_html__( 'Blur effect', 'groovy-menu' ),
 				'description' => '',
 				'type'        => 'checkbox',
 				'default'     => false,
 				'condition'   => array( 'dropdown_overlay', '==', true ),
+			),
+			'dropdown_overlay_blur_radius' => array(
+				'title'     => esc_html__( 'Blur intensity', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( 1, 50 ),
+				'default'   => 2,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'dropdown_overlay', '==', true ),
+					array( 'dropdown_overlay_blur', '==', true ),
+				),
+			),
+			'dropdown_overlay_end'         => array(
+				'type' => 'inlineEnd',
 			),
 			'submenu_border_start'                         => array(
 				'title' => esc_html__( 'Submenu bottom border', 'groovy-menu' ),
