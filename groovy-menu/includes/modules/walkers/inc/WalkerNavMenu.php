@@ -630,6 +630,8 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 			return false;
 		}
 
+		static $meta_data_options = array();
+
 		if ( empty( $this->gm_mass_meta[ $item_id ][ self::GM_NAV_MENU_META ] ) ) {
 			$meta_data = get_post_meta( $item_id, self::GM_NAV_MENU_META, $flag );
 
@@ -637,7 +639,10 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 				$meta_data = json_decode( $meta_data, true );
 			}
 
-			$meta_data_options = $this->menu_walker_options();
+			if ( empty( $meta_data_options ) ) {
+				$meta_data_options = $this->menu_walker_options();
+			}
+
 			foreach ( $meta_data_options as $index => $meta_datum ) {
 				if ( ! empty( $meta_datum['save_id'] ) && isset( $meta_datum['type'] ) && 'textarea' === $meta_datum['type'] ) {
 					if ( isset( $meta_data[ $meta_datum['save_id'] ] ) ) {

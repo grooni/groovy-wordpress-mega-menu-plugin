@@ -399,8 +399,15 @@ function groovy_menu_js_request( $uniqid, $return_string = false ) {
 
 	$groovyMenuSettings['gm-uniqid'][ $preset_id ] = $uniqid;
 
-	// TODO check 'var groovyMenuSettings = ...' for poly GM blocks
-	$additional_js = 'var groovyMenuSettings = ' . wp_json_encode( $groovyMenuSettings_json ) . '; document.addEventListener("DOMContentLoaded", function () {  var gm = new GroovyMenu(\'#' . $uniqid . '\' ,groovyMenuSettings); gm.init();});';
+	$additional_js = 'var groovyMenuSettings = ' . wp_json_encode( $groovyMenuSettings_json ) . ';
+document.addEventListener("DOMContentLoaded", function () {
+	let gmNavNodes = document.querySelectorAll(\'.gm-navbar\');
+	if (gmNavNodes) {
+		gmNavNodes.forEach((gmNode) => {
+			if (gmNode.classList.contains(\'gm-preset-id-' . $preset_id . '\') && ! gmNode.classList.contains(\'gm-init-done\')) { var gm = new GroovyMenu(gmNode ,groovyMenuSettings); gm.init(); }
+		});
+	}
+});';
 
 	if ( $return_string ) {
 		$tag_name = 'script';
