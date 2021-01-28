@@ -302,6 +302,14 @@ export function offcanvasSlide() {
     hamburgerMenu.addEventListener('click', clickHandler);
   }
 
+  // Close button event for Fullscreen minimalistic type.
+  if (2 === headerStyle && options.minimalisticMenuFullscreen) {
+    let fullscreenCloseButton = document.querySelector('.gm-fullscreen-close');
+    if (fullscreenCloseButton) {
+      fullscreenCloseButton.addEventListener('click', clickHandler);
+    }
+  }
+
   offcanvasClickOutside();
 
   window.addEventListener('resize', _.debounce(() => {

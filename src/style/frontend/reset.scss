@@ -25,7 +25,9 @@
 }
 
 /* Divi integration style fix */
-.et-l--header .gm-navbar .gm-minicart ul {
+.et-l--header .gm-navbar .gm-minicart ul,
+#gm-main-menu > ul.gm-navbar-nav,
+.gm-dropdown-menu-wrapper > ul.gm-dropdown-menu {
   list-style-type: none;
   padding: 0;
   line-height: inherit;

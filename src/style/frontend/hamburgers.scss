@@ -7,3 +7,14 @@
 .gm-burger .hamburger-box {
   margin-top: 8px;
 }
+
+.gm-main-menu-wrapper .gm-fullscreen-close {
+  position: absolute;
+  top: 10%;
+  right: 8%;
+  display: block;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  transition: transform linear .2s;
+}
