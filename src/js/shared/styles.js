@@ -850,11 +850,19 @@ export default class GmStyles {
 
         // Apply Fullscreen.
         css.push({
+          '.gm-navbar ~ .gm-main-menu-wrapper.gm-navbar-animated': 'transition: all 0.5s cubic-bezier(0.46, 0.28, 0.15, 0.86);',
           '.gm-navbar ~ .gm-main-menu-wrapper.gm-navigation-drawer--open': 'width: 100vw !important;',
           '.gm-navbar ~ .gm-main-menu-wrapper #gm-main-menu': `flex: 0 ${topWidth}px;`,
           '.gm-main-menu-wrapper .gm-navbar-nav .gm-menu-item > .gm-anchor': `justify-content: ${topAlignment};`,
           '.gm-navigation-drawer--left.gm-navigation-drawer--open ~ .gm-nav-content-wrapper': 'transform: translate3d(100%, 0, 0);',
           '.gm-navigation-drawer--right.gm-navigation-drawer--open ~ .gm-nav-content-wrapper': 'transform: translate3d(-100%, 0, 0);',
+          media: 'desktop'
+        });
+
+        // Opacity animation.
+        css.push({
+          '.gm-main-menu-wrapper #gm-main-menu, .gm-main-menu-wrapper .gm-actions, .gm-main-menu-wrapper .gm-fullscreen-close': 'opacity: 0; transition: opacity cubic-bezier(0.215, 0.61, 0.355, 1) 0.33s 0.5s;',
+          '.gm-main-menu-wrapper.gm-navigation-drawer--open #gm-main-menu, .gm-main-menu-wrapper.gm-navigation-drawer--open .gm-actions, .gm-main-menu-wrapper.gm-navigation-drawer--open .gm-fullscreen-close': 'opacity: 1;',
           media: 'desktop'
         });
 
@@ -1881,8 +1889,20 @@ export default class GmStyles {
           } = settings;
 
           css.push({
-            '.gm-navbar .gm-logo__img-header-sidebar': `max-width: 100% !important; height: auto !important; max-height: ${logoHeight}px;`,
+            '.gm-navbar .gm-logo__img-header-sidebar, .gm-navbar .gm-logo__img-expanded': `max-width: 100% !important; height: auto !important; max-height: ${logoHeight}px;`,
             '.gm-expanding--open.gm-navbar .gm-logo': 'width: 100%;',
+            media: 'desktop'
+          });
+        }
+
+        if (settings.sidebarExpandingMenuSecondLogoEnable) {
+          css.push({
+            '.gm-navbar .gm-logo__img': 'transition: opacity ease 0.3s;',
+            '.gm-navbar .gm-logo__img-expanded': 'opacity: 0;',
+            '.gm-navbar.gm-expanding--open .gm-logo__img-expanded': 'display: block;',
+            '.gm-navbar.gm-expanding--open.gm-animation-end .gm-logo__img-expanded': 'opacity: 1;',
+            '.gm-navbar.gm-expanding--open .gm-logo__img-header-sidebar': 'opacity: 0;',
+            '.gm-navbar.gm-expanding--open.gm-animation-end .gm-logo__img-header-sidebar': 'display: none;',
             media: 'desktop'
           });
         }
