@@ -79,11 +79,13 @@ function handleSlideDown () {
     stickyOffset = window.innerHeight / 100 * optionsStickyOffset;
   }
 
-  if (window.pageYOffset >= stickyOffset && navbar) {
-    let toolbarHeight = toolbar === null ? 0 : toolbar.offsetHeight;
-    let headerStickyHeight = isMobile(options.mobileWidth) ? options.mobileHeaderStickyHeight : options.headerHeightSticky;
+  let toolbarHeight = toolbar === null ? 0 : toolbar.offsetHeight;
+  let headerNormalHeight = isMobile(options.mobileWidth) ? options.mobileHeaderHeight : options.headerHeight;
+  let headerStickyHeight = isMobile(options.mobileWidth) ? options.mobileHeaderStickyHeight : options.headerHeightSticky;
+  let topOffsetWrapper = headerStickyHeight + toolbarHeight;
+  let topOffsetNormalWrapper = headerNormalHeight + toolbarHeight;
 
-    let topOffsetWrapper = headerStickyHeight + toolbarHeight;
+  if (window.pageYOffset >= stickyOffset && navbar) {
 
     if (
       toolbarHeight &&
@@ -101,7 +103,7 @@ function handleSlideDown () {
 
     recalculatePaddingsAlignCenter({options});
     dropdownCloseAll(0);
-  } else if (window.pageYOffset === 0 && navbar) {
+  } else if (window.pageYOffset < Math.max(topOffsetWrapper, topOffsetNormalWrapper) && navbar) {
     navbar.classList.remove('gm-navbar-sticky-toggle');
 
     navbarWrapper.style.top = null;

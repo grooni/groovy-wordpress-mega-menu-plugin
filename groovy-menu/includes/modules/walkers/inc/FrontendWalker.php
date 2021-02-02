@@ -466,11 +466,17 @@ class FrontendWalker extends WalkerNavMenu {
 				$this->isMegaMenu   = true;
 			}
 
+			if ( $this->frozenLink( $this->currentItem ) ) {
+				$classes[] = 'gm-frozen-link';
+			}
+
 			$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth ) );
 			$class_names = trim( $class_names ) ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
-			$id = apply_filters( 'nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args, $depth );
-			$id = $id ? ' id="' . esc_attr( $id ) . '"' : ' id="menu-item-' . esc_attr( $item->ID ) . '"';
+			$mobile_id_prefix = $show_in_mobile ? 'mobile-' : '';
+
+			$id = apply_filters( 'nav_menu_item_id', 'menu-item-' . $mobile_id_prefix . $item->ID, $item, $args, $depth );
+			$id = $id ? ' id="' . esc_attr( $id ) . '"' : ' id="menu-item-' . $mobile_id_prefix . esc_attr( $item->ID ) . '"';
 
 			$output .= $indent . '<li' . $id . $class_names . '>';
 

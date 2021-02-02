@@ -17,6 +17,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	const GM_NAV_MENU_META              = 'groovy_menu_nav_menu_meta';
 	const IS_MEGAMENU_META              = 'groovy_menu_is_megamenu';
 	const DO_NOT_SHOW_TITLE             = 'groovy_menu_do_not_show_title';
+	const FROZEN_LINK                   = 'groovy_menu_frozen_link';
 	const USE_HTML_AS_ICON              = 'groovy_menu_use_html_as_icon';
 	const HTML_ICON_CONTENT             = 'groovy_menu_html_icon_content';
 	const MEGAMENU_META_COLS            = 'groovy_menu_megamenu_cols';
@@ -164,6 +165,14 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 					'type'        => 'checkbox',
 					'default'     => false,
 					'save_id'     => self::DO_NOT_SHOW_TITLE,
+				],
+				'frozen-link'              => [
+					'id'          => 'frozen-link',
+					'label'       => esc_attr__( 'Frozen link', 'groovy-menu' ),
+					'description' => esc_attr__( 'Disabled opening link at click, other features remains working.', 'groovy-menu' ),
+					'type'        => 'checkbox',
+					'default'     => false,
+					'save_id'     => self::FROZEN_LINK,
 				],
 				'is-show-featured'         => [
 					'id'          => 'is-show-featured',
@@ -741,6 +750,25 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 		}
 
 		$val = $this->getGMNavMenuMetaWithCheck( $item_id, self::DO_NOT_SHOW_TITLE, true );
+		if ( '' === $val ) {
+			$val = false;
+		}
+
+		return $val;
+	}
+
+	/**
+	 * @param object $item Object with menu item meta data.
+	 *
+	 * @return bool
+	 */
+	protected function frozenLink( $item ) {
+		$item_id = $this->getId( $item );
+		if ( empty( $item_id ) ) {
+			return false;
+		}
+
+		$val = $this->getGMNavMenuMetaWithCheck( $item_id, self::FROZEN_LINK, true );
 		if ( '' === $val ) {
 			$val = false;
 		}
