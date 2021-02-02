@@ -189,6 +189,47 @@ class GroovyMenu {
     });
 
 
+    let initFrozenLinkAction = (e) => {
+      let closestDropdown = e.target.closest('.gm-dropdown');
+      let gmMenuItem = e.target.closest('.gm-menu-item');
+      let isTopLevelClass = false;
+      if (closestDropdown) {
+        isTopLevelClass = closestDropdown.classList.contains('gm-menu-item--lvl-0');
+      }
+
+      if (!gmMenuItem) {
+        return;
+      }
+
+      let isFrozenLink = gmMenuItem.classList.contains('gm-frozen-link');
+
+      if (isFrozenLink && e.type === 'click') {
+        e.preventDefault();
+
+        if (!isMobile()) {
+          e.stopPropagation();
+        }
+
+        if (closestDropdown && isTopLevelClass) {
+
+          let isOpenedBefore = closestDropdown.classList.contains('gm-open');
+
+          dropdownCloseAll(0);
+
+          if (!isOpenedBefore) {
+            dropdownOpen(closestDropdown, options);
+          }
+
+        } else {
+          dropdownToggle(closestDropdown, options);
+        }
+
+        return false;
+      }
+
+    };
+
+
     // Sub-Menus DROPDOWN action ----------------------------------------------------------------------------[ open ]---
     let initDropdownAction = (e) => {
       let delay = 210; // delay for diagonal navigation in sub-menus.
@@ -208,6 +249,16 @@ class GroovyMenu {
       // Don't scroll for empty # links.
       if (isClosestAnchorEmpty && e.type === 'click') {
         e.preventDefault();
+      }
+
+      // Ignore work with previously frozen link.
+      if (
+        closestDropdown &&
+        closestDropdown.classList.contains('gm-frozen-link') &&
+        ! e.target.closest('.gm-dropdown-menu-title') &&
+        e.type === 'click'
+      ) {
+        return false;
       }
 
       // fast toggle.
@@ -445,6 +496,15 @@ class GroovyMenu {
 
       }
     };
+
+
+    // Frozen links must be frozen.
+    let gmFrozenLinkAnchorItems = document.querySelectorAll('.gm-frozen-link > .gm-anchor');
+    if (gmFrozenLinkAnchorItems) {
+      gmFrozenLinkAnchorItems.forEach((frozenItem) => {
+        frozenItem.addEventListener('click', initFrozenLinkAction);
+      });
+    }
 
 
     let gmAnchorItems = document.querySelectorAll('#gm-main-menu .gm-anchor, .gm-minicart, .gm-search, #gm-main-menu .mega-gm-dropdown > .gm-dropdown-menu-wrapper');
