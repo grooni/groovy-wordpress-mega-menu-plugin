@@ -85,8 +85,21 @@ function handleSlideDown () {
   let topOffsetWrapper = headerStickyHeight + toolbarHeight;
   let topOffsetNormalWrapper = headerNormalHeight + toolbarHeight;
 
-  if (window.pageYOffset >= stickyOffset && navbar) {
+  let maxOffset = Math.max(topOffsetWrapper, topOffsetNormalWrapper) + 40;
 
+  if (window.pageYOffset < maxOffset && navbar) {
+    navbar.classList.remove('gm-navbar-sticky-toggle');
+
+    navbarWrapper.style.top = null;
+    navbarWrapper.style.transform = null;
+
+    if (navbarWrapper.getAttribute('style') === '') {
+      navbarWrapper.removeAttribute('style');
+    }
+
+    recalculatePaddingsAlignCenter({options});
+    dropdownCloseAll(0);
+  } else if (window.pageYOffset >= stickyOffset && navbar) {
     if (
       toolbarHeight &&
       (!isMobile(options.mobileWidth) || !options.hideToolbarOnMobile) &&
@@ -103,19 +116,8 @@ function handleSlideDown () {
 
     recalculatePaddingsAlignCenter({options});
     dropdownCloseAll(0);
-  } else if (window.pageYOffset < Math.max(topOffsetWrapper, topOffsetNormalWrapper) && navbar) {
-    navbar.classList.remove('gm-navbar-sticky-toggle');
-
-    navbarWrapper.style.top = null;
-    navbarWrapper.style.transform = null;
-
-    if (navbarWrapper.getAttribute('style') === '') {
-      navbarWrapper.removeAttribute('style');
-    }
-
-    recalculatePaddingsAlignCenter({options});
-    dropdownCloseAll(0);
   }
+
 }
 
 function handleFixedSticky () {

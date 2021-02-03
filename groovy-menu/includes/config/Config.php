@@ -716,6 +716,13 @@ return array(
 				'type'        => 'checkbox',
 				'default'     => false,
 			),
+			'megamenu_title_as_link_accent'                 => array(
+				'title'       => esc_html__( 'Highlight the titles of the megamenu on hover state and active', 'groovy-menu' ),
+				'description' => esc_html__( 'It&rsquo;s apply for mega menu titles that contain links. Highlight the title with colors according to the settings as for usual menu items.', 'groovy-menu' ),
+				'type'        => 'checkbox',
+				'default'     => false,
+				'condition'   => array( 'megamenu_title_as_link', '==', true, ),
+			),
 			'menu_title_color'                              => array(
 				'title'     => esc_html__( 'Mega menu title text color', 'groovy-menu' ),
 				'type'      => 'colorpicker',
