@@ -1607,7 +1607,7 @@ export default class GmStyles {
 
       // Submenu bottom border style, Thickness, Color
       if (
-        settings.submenuBorderThickness &&
+        typeof settings.submenuBorderThickness !== undefined &&
         settings.submenuBorderStyle &&
         settings.submenuBorderColor
       ) {
@@ -1620,7 +1620,7 @@ export default class GmStyles {
 
       // Top level bottom border style, Thickness, Color
       if (
-        sidebarExpandingMenuTopBorderThickness &&
+        typeof sidebarExpandingMenuTopBorderThickness !== undefined &&
         sidebarExpandingMenuTopBorderColor &&
         sidebarExpandingMenuTopBorderStyle
       ) {
@@ -1651,7 +1651,7 @@ export default class GmStyles {
       }
 
       // Sidebar menu side border thickness
-      if (sidebarExpandingMenuBorderThickness && header.align === 'left') {
+      if (typeof sidebarExpandingMenuBorderThickness !== undefined && header.align === 'left') {
         const width = sidebarExpandingMenuBorderThickness;
 
         css.push({
@@ -1661,7 +1661,7 @@ export default class GmStyles {
       }
 
       // Sidebar menu side border thickness
-      if (sidebarExpandingMenuBorderThickness && header.align === 'right') {
+      if (typeof sidebarExpandingMenuBorderThickness !== undefined && header.align === 'right') {
         const width = sidebarExpandingMenuBorderThickness;
 
         css.push({
@@ -1854,7 +1854,7 @@ export default class GmStyles {
 
         '.gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-menu-item__txt, .gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-badge, .gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-caret': `opacity: 0; ${animationCssParamSecondary}`,
         '.gm-navbar .gm-actions, .gm-navbar .gm-toolbar': 'opacity: 0; display: none; transition: opacity 0.3s;',
-        '.gm-navbar .gm-main-menu-wrapper .gm-navbar-nav > li > .gm-anchor':'transition: border 1s 0.3s;',
+        '.gm-navbar .gm-main-menu-wrapper .gm-navbar-nav > li > .gm-anchor':'transition: border 0.3s 0.1s;',
         '.gm-navbar:not(.gm-expanding--open) .gm-main-menu-wrapper .gm-navbar-nav > li > .gm-anchor':'border-bottom-color: transparent;',
         '.gm-navbar:not(.gm-expanding--open) .gm-logo': 'overflow: hidden;',
         media: 'desktop'
@@ -1917,16 +1917,61 @@ export default class GmStyles {
           hamburgerIconSize
         } = settings;
 
-        let hamburgerIconHeight = hamburgerIconSize + (hamburgerIconPadding * 2) + (hamburgerIconBorderWidth * 2);
+        let hamburgerIconBoxSize = hamburgerIconSize + (hamburgerIconPadding * 2) + (hamburgerIconBorderWidth * 2);
 
         css.push({
-          '.gm-navbar .gm-menu-btn--expanded': `display: flex; position: absolute; top: 12px; width: ${initialWidth}px; text-align: center; cursor: pointer; justify-content: center;`,
-          '.gm-navbar .gm-container': `padding-top: ${hamburgerIconHeight}px;`,
+          '.gm-navbar .gm-menu-btn--expanded': `display: flex; position: absolute; top: 12px; width: ${initialWidth}px; text-align: center; cursor: pointer; justify-content: center; padding: 0; min-width: ${hamburgerIconBoxSize}px;`,
+          '.gm-navbar .gm-container': `padding-top: ${hamburgerIconBoxSize}px;`,
+          '.gm-navbar .gm-logo': 'top: 50px;',
+          '.gm-navbar .gm-menu-btn--expanded .hamburger-box, .gm-navbar .gm-menu-btn--expanded .hamburger-inner, .gm-navbar .gm-menu-btn--expanded .hamburger-inner::after, .gm-navbar .gm-menu-btn--expanded .hamburger-inner::before': `width: ${hamburgerIconSize}px;`,
           media: 'desktop'
         });
       } else {
         css.push({
-          '.gm-navbar .gm-menu-btn--expanded': `display: none;`,
+          '.gm-navbar .gm-menu-btn--expanded': 'display: none;',
+          media: 'desktop'
+        });
+      }
+
+      // Hamburger icon color
+      if (settings.hamburgerIconColor) {
+        css.push({
+          '.gm-navbar .gm-menu-btn--expanded .hamburger-inner, .gm-navbar .gm-menu-btn--expanded .hamburger-inner::after, .gm-navbar .gm-menu-btn--expanded .hamburger-inner::before': `background-color: ${settings.hamburgerIconColor};`,
+          media: 'desktop'
+        });
+      }
+
+      // Hamburger icon padding area
+      if (settings.hamburgerIconPadding) {
+        css.push({
+          '.gm-navbar .gm-menu-btn--expanded': `padding: ${settings.hamburgerIconPadding}px;`,
+          media: 'desktop'
+        });
+      }
+
+      // Hamburger icon bg color
+      if (settings.hamburgerIconBgColor) {
+        const {hamburgerIconBgColor} = settings;
+
+        css.push({
+          '.gm-navbar .gm-menu-btn--expanded': `background-color: ${hamburgerIconBgColor};`,
+          media: 'desktop'
+        });
+      }
+
+      // Hamburger icon border
+      if (
+        settings.hamburgerIconBorderWidth !== 0 &&
+        settings.hamburgerIconBorderColor
+      ) {
+        const {
+          hamburgerIconBorderWidth,
+          hamburgerIconBorderColor
+        } = settings;
+
+
+        css.push({
+          '.gm-navbar .gm-menu-btn--expanded': `border: ${hamburgerIconBorderWidth}px solid ${hamburgerIconBorderColor};`,
           media: 'desktop'
         });
       }

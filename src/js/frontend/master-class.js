@@ -74,6 +74,8 @@ class GroovyMenu {
       hamburgerMenu = document.querySelector('.gm-custom-hamburger');
     }
 
+    let hamburgerMenuExpanded = (options.sidebarExpandingMenuShowSideIcon && 5 === headerStyle) ? document.querySelector('.gm-navbar .gm-menu-btn--expanded') : undefined;
+
     let mainMenuWrapper = document.querySelector('.gm-main-menu-wrapper');
     let toolbar = document.querySelector('.gm-toolbar');
     let navbarWrapper = document.querySelector('.gm-wrapper');
@@ -788,7 +790,7 @@ class GroovyMenu {
     initExpanding({
       options: options,
       navbar,
-      hamburgerMenu
+      hamburgerMenuExpanded
     });
 
     expandingSidebarEvents();

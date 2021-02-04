@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 var options;
 var navbar;
-var hamburgerMenu;
+var hamburgerMenuExpanded;
 
 let expandingIsOpen = function (navbar) {
   let isOpen;
@@ -20,9 +20,21 @@ function expandingOpen(navbar) {
     navbar.classList.add('gm-expanding--open');
 
   }
+
+  if (hamburgerMenuExpanded) {
+    setTimeout(() => {
+      hamburgerMenuExpanded.classList.add('is-active');
+    }, 250);
+  }
 }
 
 function expandingClose(navbar) {
+  if (hamburgerMenuExpanded) {
+    setTimeout(() => {
+      hamburgerMenuExpanded.classList.remove('is-active');
+    }, 250);
+  }
+
   if (expandingIsOpen(navbar)) {
     navbar.classList.remove('gm-expanding--open');
     navbar.classList.remove('gm-animation-end');
@@ -97,6 +109,11 @@ export function expandingSidebarEvents() {
     return;
   }
 
+  let hamburgerMenuExpandedType = (options.sidebarExpandingMenuCssHamburgerType) ? options.sidebarExpandingMenuCssHamburgerType : 'hamburger--squeeze';
+  if (hamburgerMenuExpanded) {
+    hamburgerMenuExpanded.classList.add(hamburgerMenuExpandedType);
+  }
+
   if (options.sidebarExpandingMenuOpenOnHover) {
     expandingOpenMouseEvents();
   }
@@ -116,5 +133,5 @@ export function expandingSidebarEvents() {
 export function initExpanding(args) {
   options = args.options;
   navbar = args.navbar;
-  hamburgerMenu = args.hamburgerMenu;
+  hamburgerMenuExpanded = args.hamburgerMenuExpanded;
 }
