@@ -2852,7 +2852,7 @@ export default class GmStyles {
 
       css.push({
         '.gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav .gm-dropdown-menu .gm-menu-item__link:hover': `color: ${color}`,
-        '.gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav .gm-dropdown-menu .gm-mega-menu-title-item > .gm-mega-menu__item__title:hover .gm-menu-item__txt': `color: ${color}`,
+        '.gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav .gm-dropdown-menu .gm-mega-menu-title-item > .gm-mega-menu__item__title:hover .gm-anchor:not(.gm-anchor--empty) .gm-menu-item__txt': `color: ${color}`,
         media: 'desktop'
       });
     }
