@@ -21,18 +21,29 @@ function expandingOpen(navbar) {
 
   }
 
+  let miliSeconds =
+    (options.sidebarExpandingMenuAnimationDuration) ? parseInt(options.sidebarExpandingMenuAnimationDuration) : 300;
+
+  setTimeout(() => {
+    navbar.classList.add('gm-animation-end');
+  }, miliSeconds + 20);
+
   if (hamburgerMenuExpanded) {
     setTimeout(() => {
       hamburgerMenuExpanded.classList.add('is-active');
-    }, 250);
+    }, miliSeconds + 20);
   }
 }
 
 function expandingClose(navbar) {
+
+  let miliSeconds =
+    (options.sidebarExpandingMenuAnimationDuration) ? parseInt(options.sidebarExpandingMenuAnimationDuration) : 300;
+
   if (hamburgerMenuExpanded) {
     setTimeout(() => {
       hamburgerMenuExpanded.classList.remove('is-active');
-    }, 250);
+    }, miliSeconds + 20);
   }
 
   if (expandingIsOpen(navbar)) {

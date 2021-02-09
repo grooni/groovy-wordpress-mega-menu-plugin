@@ -31,6 +31,10 @@ nav#gm-main-menu {
   padding: 0;
 }
 
+nav ul.gm-navbar-nav li {
+  display: block;
+}
+
 /* Divi integration style fix */
 .et-l--header .gm-navbar .gm-minicart ul,
 #gm-main-menu > ul.gm-navbar-nav,
