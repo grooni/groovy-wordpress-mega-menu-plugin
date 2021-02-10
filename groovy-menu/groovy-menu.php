@@ -1,7 +1,7 @@
 <?php defined( 'ABSPATH' ) || die( 'This script cannot be accessed directly.' );
 /*
 Plugin Name: Groovy Menu (free)
-Version: 1.2.12
+Version: 1.2.13
 Description: Groovy menu is a modern adjustable and flexible menu designed for creating mobile-friendly menus with a lot of options.
 Plugin URI: https://groovymenu.grooni.com/
 Author: Grooni.com
@@ -31,7 +31,7 @@ if ( ! defined( 'GROOVY_MENU_LVER' ) ) {
 	return;
 }
 
-define( 'GROOVY_MENU_VERSION', '1.2.12' );
+define( 'GROOVY_MENU_VERSION', '1.2.13' );
 define( 'GROOVY_MENU_DB_VER_OPTION', 'groovy_menu_db_version' );
 define( 'GROOVY_MENU_DIR', plugin_dir_path( __FILE__ ) );
 define( 'GROOVY_MENU_URL', plugin_dir_url( __FILE__ ) );
@@ -114,6 +114,11 @@ if ( method_exists( 'GroovyMenuUtils', 'install_default_icon_packs' ) ) {
 
 if ( method_exists( 'GroovyMenuUtils', 'update_config_text_domain' ) && is_admin() ) {
 	add_action( 'wp_loaded', array( 'GroovyMenuUtils', 'update_config_text_domain' ), 1000 );
+}
+
+if ( method_exists( 'GroovyMenuUtils', 'output_uniqid_gm_js' ) ) {
+	add_action( 'gm_enqueue_script_actions', array( 'GroovyMenuUtils', 'output_uniqid_gm_js' ), 999 );
+	add_action( 'gm_after_main_header', array( 'GroovyMenuUtils', 'output_uniqid_gm_js' ), 999 );
 }
 
 if ( method_exists( 'GroovyMenuUtils', 'load_font_internal' ) ) {
@@ -394,17 +399,25 @@ function groovy_menu_js_request( $uniqid, $return_string = false ) {
 
 	$groovyMenuSettings['gm-uniqid'][ $preset_id ] = $uniqid;
 
-	// TODO check 'var groovyMenuSettings = ...' for poly GM blocks
-	$additional_js = 'var groovyMenuSettings = ' . wp_json_encode( $groovyMenuSettings_json ) . '; document.addEventListener("DOMContentLoaded", function () {  var gm = new GroovyMenu(\'#' . $uniqid . '\' ,groovyMenuSettings); gm.init();});';
+	$additional_js = 'var groovyMenuSettings = ' . wp_json_encode( $groovyMenuSettings_json ) . ';
+document.addEventListener("DOMContentLoaded", function () {
+	let gmNavNodes = document.querySelectorAll(\'.gm-navbar\');
+	if (gmNavNodes) {
+		gmNavNodes.forEach((gmNode) => {
+			if (gmNode.classList.contains(\'gm-preset-id-' . $preset_id . '\') && ! gmNode.classList.contains(\'gm-init-done\')) { var gm = new GroovyMenu(gmNode ,groovyMenuSettings); gm.init(); }
+		});
+	}
+});';
 
 	if ( $return_string ) {
 		$tag_name = 'script';
 
 		return "\n" . '<' . esc_attr( $tag_name ) . '>' . $additional_js . '</' . esc_attr( $tag_name ) . '>';
 	} else {
-		if ( function_exists( 'wp_add_inline_script' ) ) {
-			wp_add_inline_script( 'groovy-menu-js', $additional_js );
-		}
+
+		// Then work with GroovyMenuUtils::output_uniqid_gm_js .
+		$groovyMenuSettings['gm-uniqid-js'][ $preset_id ] = $additional_js;
+
 	}
 
 	return '';

@@ -66,9 +66,14 @@ export function setCurrentItem () {
 }
 
 
-export function scrollToId(e, scroll, target, scrollOptions) {
+export function scrollToId(e, scroll, url, scrollOptions) {
 
-  let divWithId = document.querySelector(target);
+  if (url.indexOf('#') === -1) {
+    return;
+  }
+
+  let hash = '#' + url.split('#')[1];
+  let divWithId = document.querySelector(hash);
   let scrollOffset = scrollOptions.scrollOffset;
 
   if (divWithId) {

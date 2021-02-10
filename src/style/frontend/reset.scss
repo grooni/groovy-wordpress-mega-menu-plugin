@@ -24,8 +24,21 @@
   margin: 0;
 }
 
+nav#gm-main-menu {
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul.gm-navbar-nav li {
+  display: block;
+}
+
 /* Divi integration style fix */
-.et-l--header .gm-navbar .gm-minicart ul {
+.et-l--header .gm-navbar .gm-minicart ul,
+#gm-main-menu > ul.gm-navbar-nav,
+.gm-dropdown-menu-wrapper > ul.gm-dropdown-menu {
   list-style-type: none;
   padding: 0;
   line-height: inherit;

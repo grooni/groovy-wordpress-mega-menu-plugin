@@ -141,10 +141,10 @@ NAVBAR GENERAL STYLES
     line-height: 25px;
     align-items: center;
     justify-content: space-between;
-    cursor: pointer;
   }
 
-  .gm-anchor {
+  .gm-anchor > .gm-caret,
+  .gm-anchor:not(.gm-anchor--empty) {
     cursor: pointer;
   }
 

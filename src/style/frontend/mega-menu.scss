@@ -48,3 +48,15 @@ MEGA DROPDOWN
     padding-bottom: 12px;
   }
 }
+
+.gm-navbar {
+  .mega-gm-dropdown.gm-custom-dropdown-position-start {
+    position: relative;
+  }
+
+  .gm-dropdown-menu-wrapper.gm-custom-dropdown-width,
+  .mega-gm-dropdown.gm-custom-dropdown-position-start > .gm-dropdown-menu-wrapper {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}

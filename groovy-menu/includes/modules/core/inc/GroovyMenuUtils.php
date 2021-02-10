@@ -1817,6 +1817,26 @@ class GroovyMenuUtils {
 	}
 
 
+	public static function output_uniqid_gm_js() {
+		global $groovyMenuSettings;
+
+		if ( empty( $groovyMenuSettings['gm-uniqid-js'] ) || ! is_array( $groovyMenuSettings['gm-uniqid-js'] ) ) {
+			return null;
+		}
+
+		if ( function_exists( 'wp_add_inline_script' ) ) {
+
+			foreach ( $groovyMenuSettings['gm-uniqid-js'] as $preset_id => $gm_uniqid_js ) {
+				$added = wp_add_inline_script( 'groovy-menu-js', $gm_uniqid_js, 'after' );
+				if ( $added ) {
+					unset( $groovyMenuSettings['gm-uniqid-js'][ $preset_id ] );
+				}
+			}
+
+		}
+	}
+
+
 	public static function update_config_text_domain() {
 		$config_global   = include GROOVY_MENU_DIR . 'includes' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'ConfigGlobal.php';
 		$settings_global = \GroovyMenu\StyleStorage::getInstance()->get_global_settings();
@@ -2417,6 +2437,48 @@ class GroovyMenuUtils {
 		}
 
 		return $html;
+	}
+
+
+	/**
+	 * Return array of CSS hamburger types
+	 *
+	 * @return array
+	 */
+	public static function css_hamburger_types() {
+		return array(
+			'hamburger--3dx'         => esc_html__( '3d x', 'groovy-menu' ),
+			'hamburger--3dx-r'       => esc_html__( '3d x reverse', 'groovy-menu' ),
+			'hamburger--3dy'         => esc_html__( '3d y', 'groovy-menu' ),
+			'hamburger--3dy-r'       => esc_html__( '3d y reverse', 'groovy-menu' ),
+			'hamburger--3dxy'        => esc_html__( '3d xy', 'groovy-menu' ),
+			'hamburger--3dxy-r'      => esc_html__( '3d xy reverse', 'groovy-menu' ),
+			'hamburger--arrow'       => esc_html__( 'arrow', 'groovy-menu' ),
+			'hamburger--arrow-r'     => esc_html__( 'arrow reverse', 'groovy-menu' ),
+			'hamburger--arrowalt'    => esc_html__( 'arrow alt', 'groovy-menu' ),
+			'hamburger--arrowalt-r'  => esc_html__( 'arrow alt reverse', 'groovy-menu' ),
+			'hamburger--arrowturn'   => esc_html__( 'arrow turn', 'groovy-menu' ),
+			'hamburger--arrowturn-r' => esc_html__( 'arrow turn reverse', 'groovy-menu' ),
+			'hamburger--boring'      => esc_html__( 'boring', 'groovy-menu' ),
+			'hamburger--collapse'    => esc_html__( 'collapse', 'groovy-menu' ),
+			'hamburger--collapse-r'  => esc_html__( 'collapse reverse', 'groovy-menu' ),
+			'hamburger--elastic'     => esc_html__( 'elastic', 'groovy-menu' ),
+			'hamburger--elastic-r'   => esc_html__( 'elastic reverse', 'groovy-menu' ),
+			'hamburger--emphatic'    => esc_html__( 'emphatic', 'groovy-menu' ),
+			'hamburger--emphatic-r'  => esc_html__( 'emphatic reverse', 'groovy-menu' ),
+			'hamburger--minus'       => esc_html__( 'minus', 'groovy-menu' ),
+			'hamburger--slider'      => esc_html__( 'slider', 'groovy-menu' ),
+			'hamburger--slider-r'    => esc_html__( 'slider reverse', 'groovy-menu' ),
+			'hamburger--spin'        => esc_html__( 'spin', 'groovy-menu' ),
+			'hamburger--spin-r'      => esc_html__( 'spin reverse', 'groovy-menu' ),
+			'hamburger--spring'      => esc_html__( 'spring', 'groovy-menu' ),
+			'hamburger--spring-r'    => esc_html__( 'spring reverse', 'groovy-menu' ),
+			'hamburger--stand'       => esc_html__( 'stand', 'groovy-menu' ),
+			'hamburger--stand-r'     => esc_html__( 'stand reverse', 'groovy-menu' ),
+			'hamburger--squeeze'     => esc_html__( 'squeeze', 'groovy-menu' ),
+			'hamburger--vortex'      => esc_html__( 'vortex', 'groovy-menu' ),
+			'hamburger--vortex-r'    => esc_html__( 'vortex reverse', 'groovy-menu' ),
+		);
 	}
 
 }

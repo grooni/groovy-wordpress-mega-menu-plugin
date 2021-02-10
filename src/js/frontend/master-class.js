@@ -34,11 +34,27 @@ import {watchWooMiniCartCounter} from './woo-minicart';
 
 class GroovyMenu {
   constructor(selector, options) {
-    this.selector = document.querySelector(`${this.selector}`);
     this.options = options;
+
+    if (typeof selector === 'string') {
+      this.selector = document.querySelector(`${selector}`);
+    } else if (typeof selector === 'object') {
+      this.selector = selector;
+    } else {
+      this.selector = null;
+    }
+
   }
 
   init() {
+
+    // if GM has object - then init, else return null;
+    if (this.selector) {
+      this.selector.classList.add('gm-init-done');
+    } else {
+      return;
+    }
+
     let options = this.options;
 
     let gmStyles = new GmStyles(options);
@@ -57,6 +73,8 @@ class GroovyMenu {
     if (options.mobileCustomHamburger) {
       hamburgerMenu = document.querySelector('.gm-custom-hamburger');
     }
+
+    let hamburgerMenuExpanded = (options.sidebarExpandingMenuShowSideIcon && 5 === headerStyle) ? document.querySelector('.gm-navbar .gm-menu-btn--expanded') : undefined;
 
     let mainMenuWrapper = document.querySelector('.gm-main-menu-wrapper');
     let toolbar = document.querySelector('.gm-toolbar');
@@ -104,6 +122,10 @@ class GroovyMenu {
     let scroll = new SmoothScroll();
 
     let linksWithHashes = document.querySelectorAll('.menu-item > a[href^="#"]:not([href="#"])');
+
+    if (options.scrollHandleAllLinks) {
+      linksWithHashes = document.querySelectorAll('.menu-item a:not([href="#"])');
+    }
 
     const direction = isRtl() ? 'rtl' : 'ltr';
     let isTouchDevice = 'ontouchstart' in document.documentElement;
@@ -169,6 +191,47 @@ class GroovyMenu {
     });
 
 
+    let initFrozenLinkAction = (e) => {
+      let closestDropdown = e.target.closest('.gm-dropdown');
+      let gmMenuItem = e.target.closest('.gm-menu-item');
+      let isTopLevelClass = false;
+      if (closestDropdown) {
+        isTopLevelClass = closestDropdown.classList.contains('gm-menu-item--lvl-0');
+      }
+
+      if (!gmMenuItem) {
+        return;
+      }
+
+      let isFrozenLink = gmMenuItem.classList.contains('gm-frozen-link');
+
+      if (isFrozenLink && e.type === 'click') {
+        e.preventDefault();
+
+        if (!isMobile()) {
+          e.stopPropagation();
+        }
+
+        if (closestDropdown && isTopLevelClass) {
+
+          let isOpenedBefore = closestDropdown.classList.contains('gm-open');
+
+          dropdownCloseAll(0);
+
+          if (!isOpenedBefore) {
+            dropdownOpen(closestDropdown, options);
+          }
+
+        } else {
+          dropdownToggle(closestDropdown, options);
+        }
+
+        return false;
+      }
+
+    };
+
+
     // Sub-Menus DROPDOWN action ----------------------------------------------------------------------------[ open ]---
     let initDropdownAction = (e) => {
       let delay = 210; // delay for diagonal navigation in sub-menus.
@@ -188,6 +251,16 @@ class GroovyMenu {
       // Don't scroll for empty # links.
       if (isClosestAnchorEmpty && e.type === 'click') {
         e.preventDefault();
+      }
+
+      // Ignore work with previously frozen link.
+      if (
+        closestDropdown &&
+        closestDropdown.classList.contains('gm-frozen-link') &&
+        ! e.target.closest('.gm-dropdown-menu-title') &&
+        e.type === 'click'
+      ) {
+        return false;
       }
 
       // fast toggle.
@@ -425,6 +498,15 @@ class GroovyMenu {
 
       }
     };
+
+
+    // Frozen links must be frozen.
+    let gmFrozenLinkAnchorItems = document.querySelectorAll('.gm-frozen-link > .gm-anchor');
+    if (gmFrozenLinkAnchorItems) {
+      gmFrozenLinkAnchorItems.forEach((frozenItem) => {
+        frozenItem.addEventListener('click', initFrozenLinkAction);
+      });
+    }
 
 
     let gmAnchorItems = document.querySelectorAll('#gm-main-menu .gm-anchor, .gm-minicart, .gm-search, #gm-main-menu .mega-gm-dropdown > .gm-dropdown-menu-wrapper');
@@ -708,7 +790,7 @@ class GroovyMenu {
     initExpanding({
       options: options,
       navbar,
-      hamburgerMenu
+      hamburgerMenuExpanded
     });
 
     expandingSidebarEvents();
