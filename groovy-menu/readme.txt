@@ -4,7 +4,7 @@ Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive,
 Requires at least: 4.9.7
 Tested up to: 5.6
 Requires PHP: 7.0
-Stable tag: 1.2.12
+Stable tag: 1.2.13
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -115,6 +115,23 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.2.13 =
+* Improve: The code of Groovy Menu has been optimized to work with large menus.
+* Add: New setting for nav-menu item "Mega menu dropdown custom width". Is apply for container of menu.
+* Add: New setting for nav-menu item "Set position of Menu block dropdown as aligned from the start of top level menu item". Is apply for container of menu.
+* Add: New setting for nav-menu item "Frozen link". Disabled opening link at click, other features remains working.
+* Add: New setting for Mega Menu "Highlight the titles of the megamenu on hover state and active". It's apply for mega menu titles that contain links. Highlight the title with colors according to the settings as for usual menu items.
+* Add: Added Fullscreen menu type, the settings are placed in Minimalistic menu section.
+* Add: New feature is added "Page overlay when menu drops down".
+* Add: Added new drop drown appearance style - "Slide from left / right".
+* Add: New WordPress filter for the ability to dynamically change the Logo image.
+* Add: Added new setting "Enable to handle anchor links for 'Menu blocks' content", placed in "General -> Scrollbar & One page" section. Is allow to enable anchor links in "Menu blocks" and smooth scroll.
+* Fix: Improved style compatibility for some themes with CSS Reset.
+* Fix: The bug that prevents the Groovy Menu normal working when using several plugins for minify JS code and caching site pages has been fixed.
+* Fix: Changed JS preset initialization method. It can prevent an error that occurs in rare cases with complex integrations.
+* Fix: Add ID prefix for mobile nav-menu items. Prevent "The ID is not unique" issue.
+* Fix: Issue with arise horizontal scroll when enabled setting "Mega menu container wide" in case integration inside builder such as Divi builder.
 
 = 1.2.12 =
 * Improve: Hover effect of menu item now occur only for the last item in the chain in multi-level menus.
