@@ -35,6 +35,26 @@ nav ul.gm-navbar-nav li {
   display: block;
 }
 
+/* Woo Mini-cart style fix */
+.gm-navbar .gm-main-menu-wrapper .gm-minicart-dropdown {
+  .thumbnail {
+    position: static;
+    margin: 0;
+  }
+
+  h3 {
+    color: inherit;
+  }
+
+  .woocommerce-mini-cart-item {
+    border-bottom: none;
+  }
+
+  .mini_cart_item .quantity {
+    color: inherit;
+  }
+}
+
 /* Divi integration style fix */
 .et-l--header .gm-navbar .gm-minicart ul,
 #gm-main-menu > ul.gm-navbar-nav,
