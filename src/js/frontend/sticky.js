@@ -59,6 +59,10 @@ function getStickyMenuOffset () {
     toolbarHeight = 0;
   }
 
+  if (window.pageYOffset === 0) {
+    toolbarHeight = 0;
+  }
+
   if (isMobile(options.mobileWidth) &&
     options.header &&
     options.hideToolbarOnMobile) {
@@ -121,22 +125,24 @@ function handleSlideDown () {
 }
 
 function handleFixedSticky () {
-  if (window.pageYOffset > 0 && navbar) {
-    navbar.classList.add('gm-navbar-sticky-toggle');
-    navbarWrapper.style.transform = `translateY(${getStickyMenuOffset()}px)`;
-    recalculatePaddingsAlignCenter({options});
-    dropdownCloseAll(0);
-  } else if (window.pageYOffset === 0 && navbar) {
-    navbar.classList.remove('gm-navbar-sticky-toggle');
-    navbarWrapper.style.transform = null;
 
-    if (navbarWrapper.getAttribute('style') === '') {
-      navbarWrapper.removeAttribute('style');
+  let offsetPixels = getStickyMenuOffset();
+
+  if (navbar) {
+
+    if (window.pageYOffset > 0) {
+      navbar.classList.add('gm-navbar-sticky-toggle');
+    } else if (window.pageYOffset === 0) {
+      navbar.classList.remove('gm-navbar-sticky-toggle');
     }
 
+    navbarWrapper.style.transform = `translateY(${offsetPixels}px)`;
+
     recalculatePaddingsAlignCenter({options});
     dropdownCloseAll(0);
+
   }
+
 }
 
 export function enableStickyNav () {

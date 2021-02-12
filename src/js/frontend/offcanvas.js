@@ -23,6 +23,10 @@ function offcanvasOpen (navDrawer) {
     navDrawer.classList.remove('gm-hidden');
     navDrawer.classList.add('gm-navigation-drawer--open');
 
+    setTimeout(() => {
+      navDrawer.classList.add('gm-navigation-drawer--delay');
+    }, 355);
+
     let gmNavbar = document.querySelector('.gm-navbar');
     if (gmNavbar) {
       gmNavbar.classList.add('gm-drawer--open');
@@ -38,6 +42,10 @@ function offcanvasOpen (navDrawer) {
 function offcanvasClose (navDrawer) {
   if (offcanvasIsOpen(navDrawer)) {
     navDrawer.classList.remove('gm-navigation-drawer--open');
+
+    setTimeout(() => {
+      navDrawer.classList.remove('gm-navigation-drawer--delay');
+    }, 455);
 
     let gmNavbar = document.querySelector('.gm-navbar');
     if (gmNavbar) {

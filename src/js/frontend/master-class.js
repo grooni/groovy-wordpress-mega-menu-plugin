@@ -480,15 +480,8 @@ class GroovyMenu {
         isTopLevelClass = closestMenuItem.classList.contains('gm-menu-item--lvl-0');
 
         if (isTopLevelClass) {
-
-          let isOpenedBefore = closestMenuItem.classList.contains('gm-open');
-
           dropdownCloseAll(0);
-
-          if (!isOpenedBefore) {
-            dropdownOpen(closestDropdown, options);
-          }
-
+          dropdownOpen(closestDropdown, options);
         } else {
           dropdownToggle(closestDropdown, options);
         }
@@ -553,6 +546,9 @@ class GroovyMenu {
     let gmAnchorItemsMobile = document.querySelectorAll('.gm-mobile-menu-container .gm-anchor');
     if (gmAnchorItemsMobile) {
       gmAnchorItemsMobile.forEach((dropdownItem) => {
+        if (isTouchDevice) {
+          dropdownItem.addEventListener('touchend', initDropdownActionByTouch);
+        }
         dropdownItem.addEventListener('click', initDropdownAction);
       });
     }

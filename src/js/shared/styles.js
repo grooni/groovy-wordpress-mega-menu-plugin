@@ -802,7 +802,8 @@ export default class GmStyles {
         '.gm-main-menu-wrapper': 'display: none;',
         '.gm-navbar .gm-menu-btn': 'display: flex;',
         '.gm-navbar .gm-logo a img': 'transition: height 0.2s, line-height 0.2s;',
-        '.gm-navbar ~ .gm-navbar-animated': 'transition: transform cubic-bezier(0.7, 0, 0.3, 1) 0.4s, width cubic-bezier(0.7, 0, 0.3, 1) 0.25s;',
+        '.gm-navbar ~ .gm-navbar-animated': 'transition: transform cubic-bezier(0.7, 0, 0.3, 1) 0.35s, width cubic-bezier(0.7, 0, 0.3, 1) 0.25s;',
+        '.gm-navbar ~ .gm-navbar-animated.gm-navigation-drawer--delay': 'transition: transform cubic-bezier(0.7, 0, 0.3, 1) 0.43s 0.02s;',
         '.gm-navbar ~ .gm-main-menu-wrapper .gm-dropdown-menu.ps--active-y': 'justify-content: flex-start;',
         media: 'desktop'
       });
