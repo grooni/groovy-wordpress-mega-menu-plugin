@@ -102,7 +102,11 @@ function handleSlideDown () {
     }
 
     recalculatePaddingsAlignCenter({options});
-    dropdownCloseAll(0);
+    if (isMobile(options.mobileWidth) && options.mobilePreventAutoclose) {
+      // do nothing ...
+    } else {
+      dropdownCloseAll(0);
+    }
   } else if (window.pageYOffset >= stickyOffset && navbar) {
     if (
       toolbarHeight &&
@@ -119,7 +123,11 @@ function handleSlideDown () {
     navbarWrapper.style.transform = `translateY(${headerStickyHeight + getStickyMenuOffset() + toolbarHeight}px)`;
 
     recalculatePaddingsAlignCenter({options});
-    dropdownCloseAll(0);
+    if (isMobile(options.mobileWidth) && options.mobilePreventAutoclose) {
+      // do nothing ...
+    } else {
+      dropdownCloseAll(0);
+    }
   }
 
 }
@@ -139,7 +147,11 @@ function handleFixedSticky () {
     navbarWrapper.style.transform = `translateY(${offsetPixels}px)`;
 
     recalculatePaddingsAlignCenter({options});
-    dropdownCloseAll(0);
+    if (isMobile(options.mobileWidth) && options.mobilePreventAutoclose) {
+      // do nothing ...
+    } else {
+      dropdownCloseAll(0);
+    }
 
   }
 

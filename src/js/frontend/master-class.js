@@ -180,6 +180,10 @@ class GroovyMenu {
     }
 
     document.addEventListener('click', (e) => {
+      if (isMobile(options.mobileWidth) && options.mobilePreventAutoclose) {
+        return;
+      }
+
       if (isTargetScrollbar(e.target)
         || e.target.closest('.gm-open')) {
         return;

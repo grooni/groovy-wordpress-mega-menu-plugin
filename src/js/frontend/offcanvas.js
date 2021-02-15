@@ -25,7 +25,7 @@ function offcanvasOpen (navDrawer) {
 
     setTimeout(() => {
       navDrawer.classList.add('gm-navigation-drawer--delay');
-    }, 355);
+    }, 420);
 
     let gmNavbar = document.querySelector('.gm-navbar');
     if (gmNavbar) {
@@ -45,7 +45,7 @@ function offcanvasClose (navDrawer) {
 
     setTimeout(() => {
       navDrawer.classList.remove('gm-navigation-drawer--delay');
-    }, 455);
+    }, 420);
 
     let gmNavbar = document.querySelector('.gm-navbar');
     if (gmNavbar) {
@@ -318,12 +318,22 @@ export function offcanvasSlide() {
     }
   }
 
-  offcanvasClickOutside();
+  if (isMobile(options.mobileWidth) && options.mobilePreventAutoclose) {
+    // do nothing ...
+  } else {
+    offcanvasClickOutside();
+  }
 
   window.addEventListener('resize', _.debounce(() => {
     makeHiddenVisible(navDrawer);
     topIndentForBurger(navDrawer);
-    offcanvasClose(navDrawer);
+
+    if (isMobile(options.mobileWidth) && options.mobilePreventAutoclose) {
+      // do nothing ...
+    } else {
+      offcanvasClose(navDrawer);
+    }
+
     forceLogoCentering();
   }, 310));
 
