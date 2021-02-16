@@ -3807,6 +3807,73 @@ export default class GmStyles {
     }
 
 
+    // Hamburger icon mobile
+    // ------------------------------------------------
+
+    // Hamburger line height
+    if (settings.mobileIndependentCssHamburgerHeight) {
+      css.push({
+        '.gm-burger .hamburger-inner, .gm-burger .hamburger-inner::after, .gm-burger .hamburger-inner::before': `height: ${settings.mobileIndependentCssHamburgerHeight}px;`
+      });
+    }
+
+    // Hamburger icon mobile float border
+    if (
+      settings.hamburgerIconMobileFloatBorderWidth &&
+      settings.hamburgerIconMobileFloatBorderColor
+    ) {
+      const {
+        hamburgerIconMobileFloatBorderWidth: width,
+        hamburgerIconMobileFloatBorderColor: color
+      } = settings;
+
+      css.push({
+        '.gm-burger.gm-burger--float': `border: ${width}px solid ${color};`,
+        media: 'mobile'
+      });
+    }
+
+    // Hamburger icon mobile float padding area
+    if (settings.hamburgerIconMobileFloatPadding) {
+      const padding = settings.hamburgerIconMobileFloatPadding;
+
+      css.push({
+        '.gm-burger.gm-burger--float': `padding: ${padding}px;`,
+        media: 'mobile'
+      });
+    }
+
+    // Hamburger icon mobile float color
+    if (settings.hamburgerIconMobileFloatColor) {
+      const color = settings.hamburgerIconMobileFloatColor;
+
+      css.push({
+        '.gm-burger.gm-burger--float .hamburger-inner, .gm-burger.gm-burger--float .hamburger-inner::after, .gm-burger.gm-burger--float .hamburger-inner::before': `background-color: ${color};`,
+        media: 'mobile'
+      });
+    }
+
+    // Hamburger icon mobile float size
+    if (settings.hamburgerIconMobileFloatSize) {
+      const size = settings.hamburgerIconMobileFloatSize;
+
+      css.push({
+        '.gm-burger.gm-burger--float .hamburger-box, .gm-burger.gm-burger--float .hamburger-inner, .gm-burger.gm-burger--float .hamburger-inner::after, .gm-burger.gm-burger--float .hamburger-inner::before': `width: ${size}px;`,
+        media: 'mobile'
+      });
+    }
+
+    // Hamburger icon mobile bg float color
+    if (settings.hamburgerIconMobileFloatBgColor) {
+      const color = settings.hamburgerIconMobileFloatBgColor;
+
+      css.push({
+        '.gm-burger.gm-burger--float': `background-color: ${color};`,
+        media: 'mobile'
+      });
+    }
+
+
     // Write css array.
     css.push(...this.setStickyStyles());
 
@@ -4137,6 +4204,7 @@ export default class GmStyles {
 
         css.push({
           '.gm-navbar-sticky-toggle .gm-menu-btn__inner': `border: ${width}px solid ${color};`,
+          '.gm-navbar-sticky-toggle ~ .gm-navigation-drawer--mobile .gm-burger': `border: ${width}px solid ${color};`,
           media: 'mobile'
         });
       }
@@ -4147,6 +4215,7 @@ export default class GmStyles {
 
         css.push({
           '.gm-navbar-sticky-toggle .gm-menu-btn__inner': `padding: ${padding}px;`,
+          '.gm-navbar-sticky-toggle ~ .gm-navigation-drawer--mobile .gm-burger': `padding: ${padding}px;`,
           media: 'mobile'
         });
       }
@@ -4159,6 +4228,7 @@ export default class GmStyles {
           '.gm-navbar-sticky-toggle .gm-menu-btn__inner': `color: ${color};`,
           '.gm-navbar-sticky-toggle .gm-menu-actions-wrapper a': `color: ${color};`,
           '.gm-navbar-sticky-toggle .gm-menu-actions-wrapper a.gm-minicart-link': `color: ${color} !important;`,
+          '.gm-navbar-sticky-toggle ~ .gm-navigation-drawer--mobile .gm-burger .hamburger-inner, .gm-navbar-sticky-toggle ~ .gm-navigation-drawer--mobile .gm-burger .hamburger-inner::after, .gm-navbar-sticky-toggle ~ .gm-navigation-drawer--mobile .gm-burger .hamburger-inner::before': `background-color: ${color};`,
           media: 'mobile'
         });
       }
@@ -4169,6 +4239,7 @@ export default class GmStyles {
 
         css.push({
           '.gm-navbar-sticky-toggle .gm-menu-btn__inner, .gm-navbar.gm-navbar-sticky-toggle .gm-menu-actions-wrapper .gm-minicart .gm-icon': `font-size: ${size}px;`,
+          '.gm-navbar-sticky-toggle ~ .gm-navigation-drawer--mobile .gm-burger .hamburger-box, .gm-navbar-sticky-toggle ~ .gm-navigation-drawer--mobile .gm-burger .hamburger-inner, .gm-navbar-sticky-toggle ~ .gm-navigation-drawer--mobile .gm-burger .hamburger-inner::after, .gm-navbar-sticky-toggle ~ .gm-navigation-drawer--mobile .gm-burger .hamburger-inner::before': `width: ${size}px;`,
           media: 'mobile'
         });
       }
@@ -4179,6 +4250,7 @@ export default class GmStyles {
 
         css.push({
           '.gm-navbar-sticky-toggle .gm-menu-btn__inner': `background-color: ${color};`,
+          '.gm-navbar-sticky-toggle ~ .gm-navigation-drawer--mobile .gm-burger': `background-color: ${color};`,
           media: 'mobile'
         });
       }

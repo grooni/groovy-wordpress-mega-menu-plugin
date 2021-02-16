@@ -1366,6 +1366,13 @@ CHOICES
 }
 
 /***************************************
+CUSTOMS
+***************************************/
+.gm-gui__module__name__mobile_independent_css_hamburger_type .select-styled {
+  min-width: 180px;
+}
+
+/***************************************
 SAVE SPINNER
 ***************************************/
 @keyframes gm-three-quarters-spinner {
