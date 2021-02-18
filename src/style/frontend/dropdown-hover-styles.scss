@@ -95,3 +95,13 @@ DROPDOWN HOVER STYLES
   background-color: rgba(35, 35, 35, 0.7);
   opacity: 1;
 }
+
+.gm-dropdown-hover-style-fadein-link-color {
+  .gm-navbar-nav .gm-menu-item {
+    transition: background-color 0.55s ease;
+  }
+
+  .gm-navbar-nav .gm-menu-item .gm-menu-item__link {
+    transition: color 0.28s ease;
+  }
+}

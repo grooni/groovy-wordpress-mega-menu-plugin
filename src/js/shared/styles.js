@@ -3042,7 +3042,7 @@ export default class GmStyles {
         '.gm-anchor, .gm-mega-menu__item__title': `padding:${settings.mobileItemsPaddingY}px 0;`,
         '.gm-navigation-drawer .gm-caret': `position: absolute; right: 0; height: ${caretHeight}px; top: auto; padding: calc( ${settings.mobileItemsPaddingY}px + 3px ) 0 ${settings.mobileItemsPaddingY}px 18px; min-width: 50px;`,
         '.gm-navigation-drawer .gm-dropdown > .gm-anchor': 'position: relative;',
-        '.gm-navigation-drawer .gm-dropdown > .gm-anchor .gm-menu-item__txt': 'padding-right: 50px;',
+        '.gm-navigation-drawer .gm-dropdown > .gm-anchor .gm-menu-item__txt-wrapper': 'padding-right: 50px;',
         media: 'mobile'
       });
     }

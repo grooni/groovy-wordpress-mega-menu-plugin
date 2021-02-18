@@ -365,8 +365,9 @@ return array(
 				'title'     => esc_html__( 'Submenu hover style', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
-					'default'     => esc_html__( 'Default', 'groovy-menu' ),
-					'shift-right' => esc_html__( 'Shift right', 'groovy-menu' ),
+					'default'           => esc_html__( 'Default', 'groovy-menu' ),
+					'shift-right'       => esc_html__( 'Shift right', 'groovy-menu' ),
+					'fadein-link-color' => esc_html__( 'Fade in', 'groovy-menu' ),
 				),
 				'default'   => 'default',
 				'condition' => array( 'header.style', 'in', array( '1' ) ),

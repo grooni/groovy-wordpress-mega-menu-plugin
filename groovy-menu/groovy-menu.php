@@ -399,7 +399,9 @@ function groovy_menu_js_request( $uniqid, $return_string = false ) {
 
 	$groovyMenuSettings['gm-uniqid'][ $preset_id ] = $uniqid;
 
-	$additional_js = 'var groovyMenuSettings = ' . wp_json_encode( $groovyMenuSettings_json ) . ';
+	$additional_js      = '';
+	$additional_js_var  = 'var groovyMenuSettings = ' . wp_json_encode( $groovyMenuSettings_json ) . ';';
+	$additional_js_init = '
 document.addEventListener("DOMContentLoaded", function () {
 	let gmNavNodes = document.querySelectorAll(\'.gm-navbar\');
 	if (gmNavNodes) {
@@ -408,6 +410,9 @@ document.addEventListener("DOMContentLoaded", function () {
 		});
 	}
 });';
+
+	$additional_js .= apply_filters( 'groovy_menu_additional_js_front__var', $additional_js_var, $groovyMenuSettings_json );
+	$additional_js .= apply_filters( 'groovy_menu_additional_js_front__init', $additional_js_init, $preset_id );
 
 	if ( $return_string ) {
 		$tag_name = 'script';
