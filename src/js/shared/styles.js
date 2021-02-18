@@ -773,6 +773,10 @@ export default class GmStyles {
         });
       }
 
+      let animSpeed = settings.minimalisticMenuOpenAnimationSpeed;
+      let animSpeedBefore = animSpeed - 23;
+      let animSpeedAfter = 17;
+
       // Desktop styles
       css.push({
         '.gm-navbar .gm-container': 'padding-right: 15px; padding-left: 15px;',
@@ -802,8 +806,9 @@ export default class GmStyles {
         '.gm-main-menu-wrapper': 'display: none;',
         '.gm-navbar .gm-menu-btn': 'display: flex;',
         '.gm-navbar .gm-logo a img': 'transition: height 0.2s, line-height 0.2s;',
-        '.gm-navbar ~ .gm-navbar-animated': 'transition: transform cubic-bezier(0.7, 0, 0.3, 1) 0.387s, width cubic-bezier(0.7, 0, 0.3, 1) 0.25s;',
-        '.gm-navbar ~ .gm-navbar-animated.gm-navigation-drawer--delay': 'transition: transform cubic-bezier(0.7, 0, 0.3, 1) 0.40s 0.017s;',
+        '.gm-navbar ~ .gm-navbar-animated': `transition: transform cubic-bezier(0.7, 0, 0.3, 1) ${animSpeedBefore}ms, width cubic-bezier(0.7, 0, 0.3, 1) ${animSpeedBefore}ms;`,
+        '.gm-navbar ~ .gm-navbar-animated.gm-navigation-drawer--delay': `transition: transform cubic-bezier(0.7, 0, 0.3, 1) ${animSpeed}ms ${animSpeedAfter}ms;`,
+        '.gm-nav-content-wrapper': `transition: transform cubic-bezier(0.7, 0, 0.3, 1) ${animSpeed}ms;`,
         '.gm-navbar ~ .gm-main-menu-wrapper .gm-dropdown-menu.ps--active-y': 'justify-content: flex-start;',
         media: 'desktop'
       });
@@ -846,12 +851,17 @@ export default class GmStyles {
       if (minimalisticMenuFullscreen) {
         const {
           minimalisticMenuFullscreenTopWidth: topWidth,
-          minimalisticMenuFullscreenTopAlignment: topAlignment
+          minimalisticMenuFullscreenTopAlignment: topAlignment,
+          minimalisticMenuOpenAnimationSpeed: animSpeed
         } = settings;
+
+        let animSpeedBefore = animSpeed - 23;
+        let animSpeedAfter = 17;
 
         // Apply Fullscreen.
         css.push({
-          '.gm-navbar ~ .gm-main-menu-wrapper.gm-navbar-animated': 'transition: all 0.5s cubic-bezier(0.46, 0.28, 0.15, 0.86);',
+          '.gm-navbar ~ .gm-main-menu-wrapper.gm-navbar-animated': `transition: all cubic-bezier(0.7, 0, 0.3, 1) ${animSpeedBefore}ms;`,
+          '.gm-navbar ~ .gm-navbar-animated.gm-navigation-drawer--delay': `transition: all cubic-bezier(0.7, 0, 0.3, 1) ${animSpeed}ms ${animSpeedAfter}ms;`,
           '.gm-navbar ~ .gm-main-menu-wrapper.gm-navigation-drawer--open': 'width: 100vw !important;',
           '.gm-navbar ~ .gm-main-menu-wrapper #gm-main-menu': `flex: 0 ${topWidth}px;`,
           '.gm-main-menu-wrapper .gm-navbar-nav .gm-menu-item > .gm-anchor': `justify-content: ${topAlignment};`,

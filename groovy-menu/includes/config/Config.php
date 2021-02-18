@@ -1493,6 +1493,14 @@ return array(
 				'default'   => 'offcanvasSlideRight',
 				'condition' => array( 'header.style', 'in', array( '2' ) ),
 			),
+			'minimalistic_menu_open_animation_speed'        => array(
+				'title'     => esc_html__( 'Slide animation speed', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( 30, 3000 ),
+				'default'   => 400,
+				'unit'      => 'ms',
+				'condition' => array( 'header.style', 'in', array( '2' ) ),
+			),
 			'minimalistic_menu_top_lvl_menu_bg_start'       => array(
 				'title' => esc_html__( 'Top level menu background color', 'groovy-menu' ),
 				'type'  => 'inlineStart',
