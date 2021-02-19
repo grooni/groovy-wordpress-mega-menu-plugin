@@ -63,3 +63,9 @@ nav ul.gm-navbar-nav > li {
   padding: 0;
   line-height: inherit;
 }
+
+/* animation trasition fix */
+.gm-navbar-nav .gm-dropdown-menu-wrapper,
+.gm-dropdown-hover-style-shift-right .gm-dropdown-menu .gm-anchor .gm-menu-item__txt-wrapper {
+  backface-visibility: hidden !important;
+}
