@@ -1,5 +1,5 @@
-html,
-body {
+html:not(.fl-builder-edit),
+body:not(.fl-builder-edit) {
   position: relative;
 }
 

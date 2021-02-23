@@ -365,8 +365,9 @@ return array(
 				'title'     => esc_html__( 'Submenu hover style', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
-					'default'     => esc_html__( 'Default', 'groovy-menu' ),
-					'shift-right' => esc_html__( 'Shift right', 'groovy-menu' ),
+					'default'           => esc_html__( 'Default', 'groovy-menu' ),
+					'shift-right'       => esc_html__( 'Shift right', 'groovy-menu' ),
+					'fadein-link-color' => esc_html__( 'Fade in', 'groovy-menu' ),
 				),
 				'default'   => 'default',
 				'condition' => array( 'header.style', 'in', array( '1' ) ),
@@ -1493,6 +1494,14 @@ return array(
 				'default'   => 'offcanvasSlideRight',
 				'condition' => array( 'header.style', 'in', array( '2' ) ),
 			),
+			'minimalistic_menu_open_animation_speed'        => array(
+				'title'     => esc_html__( 'Slide animation speed', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( 30, 3000 ),
+				'default'   => 400,
+				'unit'      => 'ms',
+				'condition' => array( 'header.style', 'in', array( '2' ) ),
+			),
 			'minimalistic_menu_top_lvl_menu_bg_start'       => array(
 				'title' => esc_html__( 'Top level menu background color', 'groovy-menu' ),
 				'type'  => 'inlineStart',
@@ -2216,7 +2225,7 @@ return array(
 			),
 			'hamburger_group'                           => array(
 				'type'      => 'group',
-				'title'     => esc_html__( 'Side icon', 'groovy-menu' ),
+				'title'     => esc_html__( 'Side icon', 'groovy-menu' ) . ' (' . esc_html__( 'Hamburger', 'groovy-menu' ) . ')',
 				'serialize' => false,
 			),
 			'hamburger_icon_start'                      => array(
@@ -2323,6 +2332,59 @@ return array(
 				'alpha'   => true,
 			),
 			'hamburger_icon_mobile_border_end'          => array(
+				'type' => 'inlineEnd'
+			),
+			'hamburger_icon_mobile_float_start'         => array(
+				'title' => esc_html__( 'Side icon mobile float', 'groovy-menu' ),
+				'type'  => 'inlineStart'
+			),
+			'hamburger_icon_mobile_float_size'          => array(
+				'title'   => esc_html__( 'size', 'groovy-menu' ),
+				'type'    => 'number',
+				'range'   => array( 10, 50 ),
+				'default' => 24,
+				'unit'    => 'px',
+			),
+			'hamburger_icon_mobile_float_padding'       => array(
+				'title'   => esc_html__( 'padding area', 'groovy-menu' ),
+				'type'    => 'number',
+				'range'   => array( 0, 20 ),
+				'default' => 0,
+				'unit'    => 'px',
+			),
+			'hamburger_icon_mobile_float_bg_color'      => array(
+				'title'   => esc_html__( 'background color', 'groovy-menu' ),
+				'type'    => 'colorpicker',
+				'default' => 'rgba(0,0,0,0)',
+				'alpha'   => true,
+			),
+			'hamburger_icon_mobile_float_color'         => array(
+				'title'   => esc_html__( 'color', 'groovy-menu' ),
+				'type'    => 'colorpicker',
+				'default' => 'rgba(104,104,104,1)',
+				'alpha'   => true,
+			),
+			'hamburger_icon_mobile_float_end'           => array(
+				'type' => 'inlineEnd'
+			),
+			'hamburger_icon_mobile_float_border_start'  => array(
+				'title' => esc_html__( 'Side icon mobile float border', 'groovy-menu' ),
+				'type'  => 'inlineStart',
+			),
+			'hamburger_icon_mobile_float_border_width'  => array(
+				'title'   => esc_html__( 'width', 'groovy-menu' ),
+				'type'    => 'number',
+				'range'   => array( 0, 5 ),
+				'default' => 0,
+				'unit'    => 'px',
+			),
+			'hamburger_icon_mobile_float_border_color'  => array(
+				'title'   => esc_html__( 'color', 'groovy-menu' ),
+				'type'    => 'colorpicker',
+				'default' => 'rgba(0,0,0,0)',
+				'alpha'   => true,
+			),
+			'hamburger_icon_mobile_float_border_end'    => array(
 				'type' => 'inlineEnd'
 			),
 			'woo_cart_group'                            => array(
@@ -2562,19 +2624,19 @@ return array(
 		'icon'   => 'gm-icon-power-off',
 		'fields' => array(
 			// ------------------------------------------------------------------------------ Mobile options
-			'mobile_group'                           => array(
+			'mobile_group'                            => array(
 				'title'     => esc_html__( 'Mobile options', 'groovy-menu' ),
 				'type'      => 'group',
 				'serialize' => false,
 			),
-			'mobile_nav_menu'                        => array(
+			'mobile_nav_menu'                         => array(
 				'title'       => esc_html__( 'Mobile navigation menu', 'groovy-menu' ),
 				'description' => esc_html__( 'If for some reason you need to show another menu in the mobile version, then assign it here.', 'groovy-menu' ),
 				'type'        => 'select',
 				'options'     => $nav_menus,
 				'default'     => '',
 			),
-			'mobile_submenu_style'                   => array(
+			'mobile_submenu_style'                    => array(
 				'title'   => esc_html__( 'Mobile submenus style', 'groovy-menu' ),
 				'type'    => 'select',
 				'options' => array(
@@ -2583,59 +2645,50 @@ return array(
 				),
 				'default' => 'default',
 			),
-			'mobile_custom_hamburger'                => array(
+			'mobile_custom_hamburger'                 => array(
 				'title'       => esc_html__( 'Custom mobile menu open trigger', 'groovy-menu' ),
 				'description' => esc_html__( 'Place any custom element with CSS class [gm-custom-hamburger] as open/close trigger for a mobile menu', 'groovy-menu' ) . '. ' . esc_html__( 'For example', 'groovy-menu' ) . ': <code>' . htmlentities( '<div class="gm-custom-hamburger">menu</div>' ) . '</code>' . '. ' . esc_html__( 'This option will disable the output of Groovy Menu hamburger menu', 'groovy-menu' ),
 				'type'        => 'checkbox',
 				'default'     => false,
 			),
-			'mobile_independent_css_hamburger'       => array(
-				'title'       => esc_html__( 'Show Hamburger icon as animated', 'groovy-menu' ),
+			'mobile_independent_css_hamburger_start'  => array(
+				'title'     => esc_html__( 'Show Hamburger icon as animated', 'groovy-menu' ) . ', ' . esc_html__( 'with &quot;X&quot; close icon', 'groovy-menu' ),
+				'type'      => 'inlineStart',
+				'condition' => array( 'header.style', 'in', array( '1', '3', '4', '5' ) ),
+			),
+			'mobile_independent_css_hamburger'        => array(
+				'title'       => esc_html__( 'Enable', 'groovy-menu' ),
 				'description' => '',
 				'type'        => 'checkbox',
 				'default'     => false,
 				'condition'   => array( 'header.style', 'in', array( '1', '3', '4', '5' ) ),
 			),
-			'mobile_independent_css_hamburger_type'  => array(
+			'mobile_independent_css_hamburger_type'   => array(
 				'title'     => esc_html__( 'Hamburger animation style', 'groovy-menu' ),
 				'type'      => 'select',
-				'options'   => array(
-					'hamburger--collapse'    => esc_html__( 'collapse', 'groovy-menu' ),
-					'hamburger--collapse-r'  => esc_html__( 'collapse reverse', 'groovy-menu' ),
-					'hamburger--elastic'     => esc_html__( 'elastic', 'groovy-menu' ),
-					'hamburger--elastic-r'   => esc_html__( 'elastic reverse', 'groovy-menu' ),
-					'hamburger--emphatic'    => esc_html__( 'emphatic', 'groovy-menu' ),
-					'hamburger--emphatic-r'  => esc_html__( 'emphatic reverse', 'groovy-menu' ),
-					'hamburger--minus'       => esc_html__( 'minus', 'groovy-menu' ),
-					'hamburger--slider'      => esc_html__( 'slider', 'groovy-menu' ),
-					'hamburger--slider-r'    => esc_html__( 'slider reverse', 'groovy-menu' ),
-					'hamburger--spin'        => esc_html__( 'spin', 'groovy-menu' ),
-					'hamburger--spin-r'      => esc_html__( 'spin reverse', 'groovy-menu' ),
-					'hamburger--spring'      => esc_html__( 'spring', 'groovy-menu' ),
-					'hamburger--spring-r'    => esc_html__( 'spring reverse', 'groovy-menu' ),
-					'hamburger--stand'       => esc_html__( 'stand', 'groovy-menu' ),
-					'hamburger--stand-r'     => esc_html__( 'stand reverse', 'groovy-menu' ),
-					'hamburger--squeeze'     => esc_html__( 'squeeze', 'groovy-menu' ),
-					'hamburger--vortex'      => esc_html__( 'vortex', 'groovy-menu' ),
-					'hamburger--vortex-r'    => esc_html__( 'vortex reverse', 'groovy-menu' ),
-					'hamburger--3dx'         => esc_html__( '3d x', 'groovy-menu' ),
-					'hamburger--3dx-r'       => esc_html__( '3d x reverse', 'groovy-menu' ),
-					'hamburger--3dy'         => esc_html__( '3d y', 'groovy-menu' ),
-					'hamburger--3dy-r'       => esc_html__( '3d y reverse', 'groovy-menu' ),
-					'hamburger--3dxy'        => esc_html__( '3d xy', 'groovy-menu' ),
-					'hamburger--3dxy-r'      => esc_html__( '3d xy reverse', 'groovy-menu' ),
-					'hamburger--arrow'       => esc_html__( 'arrow', 'groovy-menu' ),
-					'hamburger--arrow-r'     => esc_html__( 'arrow reverse', 'groovy-menu' ),
-					'hamburger--arrowalt'    => esc_html__( 'arrow alt', 'groovy-menu' ),
-					'hamburger--arrowalt-r'  => esc_html__( 'arrow alt reverse', 'groovy-menu' ),
-					'hamburger--arrowturn'   => esc_html__( 'arrow turn', 'groovy-menu' ),
-					'hamburger--arrowturn-r' => esc_html__( 'arrow turn reverse', 'groovy-menu' ),
-					'hamburger--boring'      => esc_html__( 'boring', 'groovy-menu' ),
-				),
+				'options'   => GroovyMenuUtils::css_hamburger_types(),
 				'default'   => 'hamburger--squeeze',
 				'condition' => array( 'mobile_independent_css_hamburger', '==', true ),
 			),
-			'mobile_nav_drawer_open_type'            => array(
+			'mobile_independent_css_hamburger_float'  => array(
+				'title'       => esc_html__( 'Allow float', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'checkbox',
+				'default'     => true,
+				'condition'   => array( 'mobile_independent_css_hamburger', '==', true ),
+			),
+			'mobile_independent_css_hamburger_height' => array(
+				'title'   => esc_html__( 'line thickness', 'groovy-menu' ),
+				'type'    => 'number',
+				'range'   => array( 1, 9 ),
+				'default' => 3,
+				'unit'    => 'px',
+			),
+			'mobile_independent_css_hamburger_end'    => array(
+				'type'      => 'inlineEnd',
+				'condition' => array( 'header.style', 'in', array( '1', '3', '4', '5' ) ),
+			),
+			'mobile_nav_drawer_open_type'             => array(
 				'title'   => esc_html__( 'Mobile navigation drawer open type', 'groovy-menu' ),
 				'type'    => 'select',
 				'options' => array(
@@ -2646,7 +2699,13 @@ return array(
 				),
 				'default' => 'offcanvasSlideRight',
 			),
-			'mobile_logo_position'                   => array(
+			'mobile_prevent_autoclose'                => array(
+				'title'       => esc_html__( 'Prevent auto closing of the mobile menu', 'groovy-menu' ),
+				'type'        => 'checkbox',
+				'default'     => false,
+				'description' => esc_html__( 'Prevent automatically closing of the mobile menu when scrolling, resizing the page or tapping outside the menu area', 'groovy-menu' ),
+			),
+			'mobile_logo_position'                    => array(
 				'title'   => esc_html__( 'Logo Align', 'groovy-menu' ),
 				'type'    => 'select',
 				'options' => array(
@@ -2657,7 +2716,7 @@ return array(
 				),
 				'default' => 'default',
 			),
-			'force_logo_centering_mobile'            => array(
+			'force_logo_centering_mobile'             => array(
 				'title'       => esc_html__( 'Forced centered logo', 'groovy-menu' ),
 				'description' => esc_html__( 'The central position of the logo is calculated depending on the width of the screen and side elements.', 'groovy-menu' ),
 				'type'        => 'checkbox',
@@ -2667,12 +2726,12 @@ return array(
 					array( 'mobile_side_icon_position', 'in', array( 'default', 'right' ) ),
 				)
 			),
-			'mobile_logo_margin_start'               => array(
+			'mobile_logo_margin_start'                => array(
 				'title'     => esc_html__( 'Logo margin', 'groovy-menu' ),
 				'type'      => 'inlineStart',
 				'condition' => array( 'mobile_logo_position', 'in', array( 'left', 'center', 'right' ) ),
 			),
-			'mobile_logo_margin_top'                 => array(
+			'mobile_logo_margin_top'                  => array(
 				'title'     => esc_html__( 'Top', 'groovy-menu' ),
 				'type'      => 'number',
 				'range'     => array( - 1000, 1000 ),
@@ -2680,7 +2739,7 @@ return array(
 				'unit'      => 'px',
 				'condition' => array( 'mobile_logo_position', 'in', array( 'left', 'center', 'right' ) ),
 			),
-			'mobile_logo_margin_right'               => array(
+			'mobile_logo_margin_right'                => array(
 				'title'     => esc_html__( 'Right', 'groovy-menu' ),
 				'type'      => 'number',
 				'range'     => array( - 1000, 1000 ),
@@ -2688,7 +2747,7 @@ return array(
 				'unit'      => 'px',
 				'condition' => array( 'mobile_logo_position', 'in', array( 'left', 'center', 'right' ) ),
 			),
-			'mobile_logo_margin_bottom'              => array(
+			'mobile_logo_margin_bottom'               => array(
 				'title'     => esc_html__( 'Bottom', 'groovy-menu' ),
 				'type'      => 'number',
 				'range'     => array( - 1000, 1000 ),
@@ -2696,7 +2755,7 @@ return array(
 				'unit'      => 'px',
 				'condition' => array( 'mobile_logo_position', 'in', array( 'left', 'center', 'right' ) ),
 			),
-			'mobile_logo_margin_left'                => array(
+			'mobile_logo_margin_left'                 => array(
 				'title'     => esc_html__( 'Left', 'groovy-menu' ),
 				'type'      => 'number',
 				'range'     => array( - 1000, 1000 ),
@@ -2704,11 +2763,11 @@ return array(
 				'unit'      => 'px',
 				'condition' => array( 'mobile_logo_position', 'in', array( 'left', 'center', 'right' ) ),
 			),
-			'mobile_logo_margin_end'                 => array(
+			'mobile_logo_margin_end'                  => array(
 				'type'      => 'inlineEnd',
 				'condition' => array( 'mobile_logo_position', 'in', array( 'left', 'center', 'right' ) ),
 			),
-			'mobile_side_icon_position'              => array(
+			'mobile_side_icon_position'               => array(
 				'title'   => esc_html__( 'Side icon Align', 'groovy-menu' ),
 				'type'    => 'select',
 				'options' => array(
@@ -2718,7 +2777,7 @@ return array(
 				),
 				'default' => 'default',
 			),
-			'mobile_show_woominicart'                => array(
+			'mobile_show_woominicart'                 => array(
 				'title'       => esc_html__( 'Show', 'groovy-menu' ) . ' ' . esc_html__( 'Woo minicart', 'groovy-menu' ),
 				'description' => esc_html__( 'You can change the icon color in the [Styles] - [Side Icon] section.', 'groovy-menu' ),
 				'type'        => 'checkbox',
@@ -2726,49 +2785,49 @@ return array(
 			),
 
 			// ------------------------------------------------------------------------------ Colors
-			'mobile_colors_group'                    => array(
+			'mobile_colors_group'                     => array(
 				'title'     => esc_html__( 'Colors', 'groovy-menu' ),
 				'type'      => 'group',
 				'serialize' => false,
 			),
-			'responsive_navigation_background_color' => array(
+			'responsive_navigation_background_color'  => array(
 				'title'   => esc_html__( 'Mobile navigation drawer background color', 'groovy-menu' ),
 				'type'    => 'colorpicker',
 				'default' => '#f9f9f9',
 				'alpha'   => true,
 			),
-			'mobile_slider_title_background_color'   => array(
+			'mobile_slider_title_background_color'    => array(
 				'title'       => esc_html__( 'Mobile submenu title background color', 'groovy-menu' ),
 				'type'        => 'colorpicker',
 				'default'     => '#cecece',
 				'alpha'       => true,
 				'description' => esc_html__( 'Slider mobile submenu opening style', 'groovy-menu' ),
 			),
-			'responsive_navigation_text_color'       => array(
+			'responsive_navigation_text_color'        => array(
 				'title'   => esc_html__( 'Mobile navigation drawer text color', 'groovy-menu' ),
 				'type'    => 'colorpicker',
 				'default' => '#5a5a5a',
 				'alpha'   => true,
 			),
-			'responsive_navigation_hover_text_color' => array(
+			'responsive_navigation_hover_text_color'  => array(
 				'title'   => esc_html__( 'Mobile navigation drawer text hover and active link color', 'groovy-menu' ),
 				'type'    => 'colorpicker',
 				'default' => '#cccccc',
 				'alpha'   => true,
 			),
-			'mobile_items_border_start'              => array(
+			'mobile_items_border_start'               => array(
 				'title'       => esc_html__( 'Menu items bottom border', 'groovy-menu' ),
 				'description' => '',
 				'type'        => 'inlineStart',
 			),
-			'mobile_items_border_thickness'          => array(
+			'mobile_items_border_thickness'           => array(
 				'title'   => esc_html__( 'thickness', 'groovy-menu' ),
 				'type'    => 'number',
 				'range'   => array( 0, 20 ),
 				'default' => 1,
 				'unit'    => 'px',
 			),
-			'mobile_items_border_style'              => array(
+			'mobile_items_border_style'               => array(
 				'title'   => esc_html__( 'style', 'groovy-menu' ),
 				'type'    => 'select',
 				'options' => array(
@@ -2778,41 +2837,41 @@ return array(
 				),
 				'default' => 'dotted',
 			),
-			'mobile_items_border_color'              => array(
+			'mobile_items_border_color'               => array(
 				'title'   => esc_html__( 'color', 'groovy-menu' ),
 				'type'    => 'colorpicker',
 				'default' => 'rgb(90, 90, 90, 1)',
 				'alpha'   => true,
 			),
-			'mobile_items_border_end'                => array(
+			'mobile_items_border_end'                 => array(
 				'type' => 'inlineEnd',
 			),
-			'mobile_toolbar_icon_color'              => array(
+			'mobile_toolbar_icon_color'               => array(
 				'title'   => esc_html__( 'Mobile toolbar icons color', 'groovy-menu' ),
 				'type'    => 'colorpicker',
 				'default' => '#5a5a5a',
 				'alpha'   => true,
 			),
-			'mobile_caret_custom_color'              => array(
+			'mobile_caret_custom_color'               => array(
 				'title'   => esc_html__( 'Use custom colors for submenu carets', 'groovy-menu' ),
 				'type'    => 'checkbox',
 				'default' => false,
 			),
-			'mobile_caret_custom_color_top'          => array(
+			'mobile_caret_custom_color_top'           => array(
 				'title'     => esc_html__( 'Top level caret color', 'groovy-menu' ),
 				'type'      => 'colorpicker',
 				'default'   => '#5a5a5a',
 				'alpha'     => true,
 				'condition' => array( 'mobile_caret_custom_color', '==', true ),
 			),
-			'mobile_caret_custom_color_sub'          => array(
+			'mobile_caret_custom_color_sub'           => array(
 				'title'     => esc_html__( 'Sub level caret color', 'groovy-menu' ),
 				'type'      => 'colorpicker',
 				'default'   => '#5a5a5a',
 				'alpha'     => true,
 				'condition' => array( 'mobile_caret_custom_color', '==', true ),
 			),
-			'mobile_caret_custom_color_current'      => array(
+			'mobile_caret_custom_color_current'       => array(
 				'title'     => esc_html__( 'Current (active) caret color', 'groovy-menu' ),
 				'type'      => 'colorpicker',
 				'default'   => '#cccccc',
@@ -2821,12 +2880,12 @@ return array(
 			),
 
 			// ------------------------------------------------------------------------------ Sizes
-			'mobile_sizes_group'                     => array(
+			'mobile_sizes_group'                      => array(
 				'title'     => esc_html__( 'Sizes', 'groovy-menu' ),
 				'type'      => 'group',
 				'serialize' => false,
 			),
-			'mobile_width'                           => array(
+			'mobile_width'                            => array(
 				'title'       => esc_html__( 'Mobile version switch', 'groovy-menu' ),
 				'description' => esc_html__( 'You can change switch to mobile breakpoint using this option. (default:1023px).', 'groovy-menu' ),
 				'type'        => 'number',
@@ -2834,41 +2893,41 @@ return array(
 				'range'       => array( 0, 2000 ),
 				'unit'        => 'px',
 			),
-			'mobile_offcanvas_width_start'           => array(
+			'mobile_offcanvas_width_start'            => array(
 				'title' => esc_html__( 'Mobile navigation drawer width', 'groovy-menu' ),
 				'type'  => 'inlineStart'
 			),
-			'mobile_offcanvas_width'                 => array(
+			'mobile_offcanvas_width'                  => array(
 				'title'   => esc_html__( 'Maximum size', 'groovy-menu' ),
 				'type'    => 'number',
 				'default' => 250,
 				'range'   => array( 150, 1300 ),
 				'unit'    => 'px',
 			),
-			'mobile_offcanvas_width_dynamic'         => array(
+			'mobile_offcanvas_width_dynamic'          => array(
 				'title'       => esc_html__( 'Dynamic minimum size', 'groovy-menu' ),
 				'description' => '',
 				'type'        => 'checkbox',
 				'default'     => false,
 			),
-			'mobile_offcanvas_width_end'             => array(
+			'mobile_offcanvas_width_end'              => array(
 				'type' => 'inlineEnd'
 			),
-			'mobile_header_height'                   => array(
+			'mobile_header_height'                    => array(
 				'title'   => esc_html__( 'Mobile header height', 'groovy-menu' ),
 				'type'    => 'number',
 				'default' => 70,
 				'range'   => array( 50, 200 ),
 				'unit'    => 'px',
 			),
-			'mobile_menu_wrapper_indent'             => array(
+			'mobile_menu_wrapper_indent'              => array(
 				'title'   => esc_html__( 'Mobile menu top gap', 'groovy-menu' ),
 				'type'    => 'number',
 				'default' => 0,
 				'range'   => array( 0, 700 ),
 				'unit'    => 'px',
 			),
-			'mobile_slider_title_height'             => array(
+			'mobile_slider_title_height'              => array(
 				'title'       => esc_html__( 'Mobile submenu title height', 'groovy-menu' ),
 				'type'        => 'number',
 				'default'     => 50,
@@ -2876,7 +2935,7 @@ return array(
 				'unit'        => 'px',
 				'description' => esc_html__( 'Slider mobile submenu opening style', 'groovy-menu' ),
 			),
-			'mobile_items_padding_y'                 => array(
+			'mobile_items_padding_y'                  => array(
 				'title'       => esc_html__( 'Mobile navigation menu item vertical padding', 'groovy-menu' ),
 				'description' => esc_html__( 'This value will applied as padding to top and bottom of the item', 'groovy-menu' ),
 				'type'        => 'number',
@@ -2886,23 +2945,23 @@ return array(
 			),
 
 			// ------------------------------------------------------------------------------ Typography
-			'mobile_group_typography'                => array(
+			'mobile_group_typography'                 => array(
 				'title'     => esc_html__( 'Typography', 'groovy-menu' ),
 				'type'      => 'group',
 				'serialize' => false,
 			),
-			'mobile_item_text_start'                 => array(
+			'mobile_item_text_start'                  => array(
 				'title' => esc_html__( 'Top level text', 'groovy-menu' ),
 				'type'  => 'inlineStart'
 			),
-			'mobile_item_text_size'                  => array(
+			'mobile_item_text_size'                   => array(
 				'title'   => esc_html__( 'Size', 'groovy-menu' ),
 				'type'    => 'number',
 				'range'   => array( 6, 50 ),
 				'default' => 11,
 				'unit'    => 'px',
 			),
-			'mobile_item_text_case'                  => array(
+			'mobile_item_text_case'                   => array(
 				'title'   => esc_html__( 'Case', 'groovy-menu' ),
 				'type'    => 'select',
 				'options' => array(
@@ -2913,7 +2972,7 @@ return array(
 				),
 				'default' => 'uppercase',
 			),
-			'mobile_item_text_weight'                => array(
+			'mobile_item_text_weight'                 => array(
 				'title'   => esc_html__( 'Font variant', 'groovy-menu' ),
 				'type'    => 'select',
 				'options' => array(
@@ -2921,28 +2980,28 @@ return array(
 				),
 				'default' => '700',
 			),
-			'mobile_item_letter_spacing'             => array(
+			'mobile_item_letter_spacing'              => array(
 				'title'   => esc_html__( 'Letter spacing', 'groovy-menu' ),
 				'type'    => 'number',
 				'range'   => array( 0, 5 ),
 				'default' => 0,
 				'unit'    => 'px',
 			),
-			'mobile_item_text_end'                   => array(
+			'mobile_item_text_end'                    => array(
 				'type' => 'inlineEnd'
 			),
-			'mobile_subitem_text_start'              => array(
+			'mobile_subitem_text_start'               => array(
 				'title' => esc_html__( 'Sublevel text', 'groovy-menu' ),
 				'type'  => 'inlineStart'
 			),
-			'mobile_subitem_text_size'               => array(
+			'mobile_subitem_text_size'                => array(
 				'title'   => esc_html__( 'Size', 'groovy-menu' ),
 				'type'    => 'number',
 				'range'   => array( 6, 50 ),
 				'default' => 11,
 				'unit'    => 'px',
 			),
-			'mobile_subitem_text_case'               => array(
+			'mobile_subitem_text_case'                => array(
 				'title'   => esc_html__( 'Case', 'groovy-menu' ),
 				'type'    => 'select',
 				'options' => array(
@@ -2953,7 +3012,7 @@ return array(
 				),
 				'default' => 'uppercase',
 			),
-			'mobile_subitem_text_weight'             => array(
+			'mobile_subitem_text_weight'              => array(
 				'title'   => esc_html__( 'Font variant', 'groovy-menu' ),
 				'type'    => 'select',
 				'options' => array(
@@ -2961,14 +3020,14 @@ return array(
 				),
 				'default' => 'none',
 			),
-			'mobile_subitem_letter_spacing'          => array(
+			'mobile_subitem_letter_spacing'           => array(
 				'title'   => esc_html__( 'Letter spacing', 'groovy-menu' ),
 				'type'    => 'number',
 				'range'   => array( 0, 5 ),
 				'default' => 0,
 				'unit'    => 'px',
 			),
-			'mobile_subitem_text_end'                => array(
+			'mobile_subitem_text_end'                 => array(
 				'type' => 'inlineEnd'
 			),
 		),

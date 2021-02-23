@@ -1,6 +1,6 @@
 {
   "name": "groovy-menu-free",
-  "version": "1.2.73",
+  "version": "1.2.75",
   "description": "Groovy menu, WordPress menu plugin.",
   "author": "Grooni",
   "license": "GPLv3",
@@ -38,7 +38,7 @@
     "assets-webpack-plugin": "^6.0.0",
     "autoprefixer": "^10.0.0",
     "babel-loader": "^8.2.1",
-    "browser-sync": "^2.26.13",
+    "browser-sync": "^2.26.14",
     "browser-sync-webpack-plugin": "^2.2.2",
     "clean-webpack-plugin": "^3.0.0",
     "cross-env": "^5.2.1",

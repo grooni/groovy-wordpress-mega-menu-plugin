@@ -116,6 +116,13 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 
 == Changelog ==
 
+= 1.2.14 =
+* Improve: Hamburger behavior and settings.
+* Add: New hover style "Fade in" to submenu hover style.
+* Add: New settings "Prevent auto closing of the mobile menu". Is prevent automatically closing of the mobile menu when scrolling, resizing the page or tapping outside the menu area.
+* Fix: Prevent opening a menu item with a dropdown link at first click for mobile menu.
+* Fix: Small fix of the animation for "Minimalistic menu open type > Slide menu and container".
+
 = 1.2.13 =
 * Improve: The code of Groovy Menu has been optimized to work with large menus.
 * Add: New setting for nav-menu item "Mega menu dropdown custom width". Is apply for container of menu.

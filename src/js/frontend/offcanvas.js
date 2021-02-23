@@ -23,6 +23,10 @@ function offcanvasOpen (navDrawer) {
     navDrawer.classList.remove('gm-hidden');
     navDrawer.classList.add('gm-navigation-drawer--open');
 
+    setTimeout(() => {
+      navDrawer.classList.add('gm-navigation-drawer--delay');
+    }, 420);
+
     let gmNavbar = document.querySelector('.gm-navbar');
     if (gmNavbar) {
       gmNavbar.classList.add('gm-drawer--open');
@@ -38,6 +42,10 @@ function offcanvasOpen (navDrawer) {
 function offcanvasClose (navDrawer) {
   if (offcanvasIsOpen(navDrawer)) {
     navDrawer.classList.remove('gm-navigation-drawer--open');
+
+    setTimeout(() => {
+      navDrawer.classList.remove('gm-navigation-drawer--delay');
+    }, 420);
 
     let gmNavbar = document.querySelector('.gm-navbar');
     if (gmNavbar) {
@@ -144,13 +152,21 @@ function topIndentForBurger(navDrawer) {
     gmInnerHeight = parseInt(window.getComputedStyle(gmInner, null).height);
     gmInnerHeight = (!gmInnerHeight) ? 20 : gmInnerHeight;
     offset = getCoords(gmInner).top - window.pageYOffset - wpAdminbarElemHeight;
+
     if (offset < 1) {
-      if ((gmInnerHeight + offset) < 1) {
-        gmInnerHeight = 0;
+      if (options.mobileIndependentCssHamburgerFloat) {
+        if ((gmInnerHeight + offset) < (0 - gmInnerHeight)) {
+          gmInnerHeight = 0;
+        } else {
+          gmInnerHeight = gmInnerHeight + offset;
+        }
       } else {
-        gmInnerHeight = gmInnerHeight + offset;
+        if ((gmInnerHeight + offset) < (0 - gmInnerHeight)) {
+          gmInnerHeight = 0;
+        }
       }
     }
+
   }
   let gmBurgerHeightWrapper = parseInt(window.getComputedStyle(gmBurger, null).height);
   gmBurgerHeightWrapper = (!gmBurgerHeightWrapper) ? 20 : gmBurgerHeightWrapper;
@@ -170,7 +186,17 @@ function topIndentForBurger(navDrawer) {
   }
 
   let indentPx = gmToolbarHeight + (((gmInnerHeight - gmBurgerHeight) / 2) | 0);
-  indentPx = (gmInnerHeight > 0) ? indentPx : 8;
+
+  if (options.mobileIndependentCssHamburgerFloat) {
+    if (offset < (0 - gmBurgerHeightWrapper)) {
+      indentPx = 8;
+      gmBurger.classList.add('gm-burger--float');
+    } else {
+      gmBurger.classList.remove('gm-burger--float');
+    }
+  } else {
+    indentPx = indentPx + offset;
+  }
 
   if (gmBurgerPaddings > 0) {
     indentPx = indentPx - ((gmBurgerPaddings / 2) | 0);
@@ -310,12 +336,22 @@ export function offcanvasSlide() {
     }
   }
 
-  offcanvasClickOutside();
+  if (isMobile(options.mobileWidth) && options.mobilePreventAutoclose) {
+    // do nothing ...
+  } else {
+    offcanvasClickOutside();
+  }
 
   window.addEventListener('resize', _.debounce(() => {
     makeHiddenVisible(navDrawer);
     topIndentForBurger(navDrawer);
-    offcanvasClose(navDrawer);
+
+    if (isMobile(options.mobileWidth) && options.mobilePreventAutoclose) {
+      // do nothing ...
+    } else {
+      offcanvasClose(navDrawer);
+    }
+
     forceLogoCentering();
   }, 310));
 
@@ -324,7 +360,7 @@ export function offcanvasSlide() {
   window.addEventListener('scroll', _.debounce(() => {
     topIndentForBurger(navDrawer);
     forceLogoCentering();
-  }, 310));
+  }, 200));
 
 }
 
@@ -338,6 +374,10 @@ export function offcanvasWrap(navDrawer, side, slide) {
   makeHiddenVisible(navDrawer);
   topIndentForBurger(navDrawer);
   forceLogoCentering();
+
+  setTimeout(() => {
+    topIndentForBurger(navDrawer);
+  }, 180);
 
   if (navDrawer) {
     navDrawer.classList.add(`gm-navigation-drawer--${side}`);

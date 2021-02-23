@@ -31,8 +31,28 @@ nav#gm-main-menu {
   padding: 0;
 }
 
-nav ul.gm-navbar-nav li {
+nav ul.gm-navbar-nav > li {
   display: block;
+}
+
+/* Woo Mini-cart style fix */
+.gm-navbar .gm-main-menu-wrapper .gm-minicart-dropdown {
+  .thumbnail {
+    position: static;
+    margin: 0;
+  }
+
+  h3 {
+    color: inherit;
+  }
+
+  .woocommerce-mini-cart-item {
+    border-bottom: none;
+  }
+
+  .mini_cart_item .quantity {
+    color: inherit;
+  }
 }
 
 /* Divi integration style fix */
@@ -42,4 +62,10 @@ nav ul.gm-navbar-nav li {
   list-style-type: none;
   padding: 0;
   line-height: inherit;
+}
+
+/* animation trasition fix */
+.gm-navbar-nav .gm-dropdown-menu-wrapper,
+.gm-dropdown-hover-style-shift-right .gm-dropdown-menu .gm-anchor .gm-menu-item__txt-wrapper {
+  backface-visibility: hidden !important;
 }

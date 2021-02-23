@@ -59,6 +59,10 @@ function getStickyMenuOffset () {
     toolbarHeight = 0;
   }
 
+  if (window.pageYOffset === 0) {
+    toolbarHeight = 0;
+  }
+
   if (isMobile(options.mobileWidth) &&
     options.header &&
     options.hideToolbarOnMobile) {
@@ -98,7 +102,11 @@ function handleSlideDown () {
     }
 
     recalculatePaddingsAlignCenter({options});
-    dropdownCloseAll(0);
+    if (isMobile(options.mobileWidth) && options.mobilePreventAutoclose) {
+      // do nothing ...
+    } else {
+      dropdownCloseAll(0);
+    }
   } else if (window.pageYOffset >= stickyOffset && navbar) {
     if (
       toolbarHeight &&
@@ -115,28 +123,38 @@ function handleSlideDown () {
     navbarWrapper.style.transform = `translateY(${headerStickyHeight + getStickyMenuOffset() + toolbarHeight}px)`;
 
     recalculatePaddingsAlignCenter({options});
-    dropdownCloseAll(0);
+    if (isMobile(options.mobileWidth) && options.mobilePreventAutoclose) {
+      // do nothing ...
+    } else {
+      dropdownCloseAll(0);
+    }
   }
 
 }
 
 function handleFixedSticky () {
-  if (window.pageYOffset > 0 && navbar) {
-    navbar.classList.add('gm-navbar-sticky-toggle');
-    navbarWrapper.style.transform = `translateY(${getStickyMenuOffset()}px)`;
-    recalculatePaddingsAlignCenter({options});
-    dropdownCloseAll(0);
-  } else if (window.pageYOffset === 0 && navbar) {
-    navbar.classList.remove('gm-navbar-sticky-toggle');
-    navbarWrapper.style.transform = null;
 
-    if (navbarWrapper.getAttribute('style') === '') {
-      navbarWrapper.removeAttribute('style');
+  let offsetPixels = getStickyMenuOffset();
+
+  if (navbar) {
+
+    if (window.pageYOffset > 0) {
+      navbar.classList.add('gm-navbar-sticky-toggle');
+    } else if (window.pageYOffset === 0) {
+      navbar.classList.remove('gm-navbar-sticky-toggle');
     }
 
+    navbarWrapper.style.transform = `translateY(${offsetPixels}px)`;
+
     recalculatePaddingsAlignCenter({options});
-    dropdownCloseAll(0);
+    if (isMobile(options.mobileWidth) && options.mobilePreventAutoclose) {
+      // do nothing ...
+    } else {
+      dropdownCloseAll(0);
+    }
+
   }
+
 }
 
 export function enableStickyNav () {

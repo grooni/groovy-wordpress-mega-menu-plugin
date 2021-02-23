@@ -11,6 +11,12 @@ NAVBAR GENERAL STYLES
     width: 100%;
     margin-right: auto;
     margin-left: auto;
+    transition: height 0.2s ease;
+  }
+
+  &.gm-navbar-fixed-sticky .gm-wrapper {
+    position: fixed;
+    transition: transform 0.05s ease;
   }
 
   .gm-logo {
@@ -62,7 +68,7 @@ NAVBAR GENERAL STYLES
 
   .gm-container,
   .gm-navbar-nav {
-    transition: height 0.2s;
+    transition: height 0.2s ease;
   }
 }
 
