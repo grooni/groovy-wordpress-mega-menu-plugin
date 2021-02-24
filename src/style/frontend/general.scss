@@ -37,6 +37,13 @@ body:not(.fl-builder-edit) {
 
 .gm-navbar {
   position: relative;
+
+  .gm-toolbar {
+    z-index: 10;
+  }
+  .gm-inner {
+    z-index: 5;
+  }
 }
 
 .gm-navbar ul,

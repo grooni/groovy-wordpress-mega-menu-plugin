@@ -74,3 +74,178 @@ GROOVY TOOLBAR
 .gm-navbar--style-5 .gm-toolbar .gm-toolbar-social-link > span {
   display: none;
 }
+
+/* ------------------------------------ */
+/*    Toolbar Menu: Main CSS Styles     */
+/* ------------------------------------ */
+.gm-toolbar-nav-container {
+  padding: 0;
+  margin: 0 16px;
+  border: 0;
+  width: auto;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  ul,
+  li {
+    list-style: none;
+    margin: 0 0 0 0;
+    padding: 0;
+  }
+
+  &> ul > li {
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+
+  ul {
+    position: relative;
+  }
+
+  ul li {
+    min-height: 1px;
+    vertical-align: middle;
+  }
+
+  ul li.hover,
+  ul li:hover {
+    position: relative;
+    z-index: 100109;
+    cursor: default;
+  }
+
+  ul ul {
+    visibility: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 100108;
+    width: 100%;
+  }
+
+  ul ul ul {
+    top: 0;
+    left: 170px;
+    width: 190px;
+  }
+
+  ul li:hover > ul {
+    visibility: visible;
+  }
+
+  ul ul {
+    bottom: 0;
+    left: 0;
+  }
+
+  ul ul {
+    margin-top: 0;
+  }
+
+  ul ul li {
+    font-weight: normal;
+  }
+
+  a {
+    display: block;
+    line-height: 1em;
+    text-decoration: none;
+  }
+
+  &> ul {
+    display: flex;
+  }
+
+  &> ul > li.menu-item {
+    margin: 0 2px;
+  }
+
+  &:after,
+  ul:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  /* TOP menu link style */
+  a {
+    background: rgba(255, 255, 255, 1);
+    color: rgba(104, 104, 104, 1);
+    padding: 0 8px;
+  }
+
+  /* SUB menu link style */
+  ul ul a {
+    background: rgba(255, 255, 255, 1);
+    color: rgba(104, 104, 104, 1);
+    border: 1px solid rgba(195, 195, 195, 1);
+    border-top: 0 none;
+    line-height: 150%;
+    padding: 8px 20px;
+  }
+
+  /* TOP menu link Hover style */
+  ul li:hover > a,
+  ul li.active > a {
+    background: rgba(255, 255, 255, 1);
+    color: rgba(104, 104, 104, 1);
+  }
+
+  /* SUB menu link Hover style */
+  ul ul li:hover > a {
+    background: rgba(255, 255, 255, 1);
+    color: rgba(104, 104, 104, 1);
+  }
+
+  /* SUB menu List style */
+  ul ul {
+    border-top: 3px solid rgba(195, 195, 195, 1);
+    text-transform: none;
+    min-width: 170px;
+  }
+
+  ul ul ul {
+    border-top: 0 none;
+  }
+
+  ul ul li {
+    position: relative;
+  }
+
+  ul ul li:first-child > a {
+    border-top: 1px solid rgba(195, 195, 195, 1);
+  }
+
+  ul ul li:last-child > a {
+    border-radius: 0 0 3px 3px;
+  }
+
+  ul ul li.menu-item-has-children > a:after {
+    content: '+';
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    margin-top: -8px;
+  }
+
+  ul li.menu-item-has-children > a:after {
+    content: '+';
+    margin-left: 5px;
+  }
+
+  ul li.last ul {
+    left: auto;
+    right: 0;
+  }
+
+  ul li.last ul ul {
+    left: auto;
+    right: 99.5%;
+  }
+
+  &> ul > li > a {
+    line-height: 24px;
+  }
+}
