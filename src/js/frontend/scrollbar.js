@@ -118,7 +118,7 @@ export default function initScrollbar (settings) {
       dropdownWrapper.style.height = `${subDropdownRect.height}px`;
 
       currentDropdown.style.position = 'static';
-      if (isVerticalMenu(settings) && settings.dropdownAppearanceStyle === 'animate-with-scaling') {
+      if (isVerticalMenu(settings)) {
         currentDropdown.style.maxHeight = '100%';
       } else {
         currentDropdown.style.maxHeight = `${maxHeightCalculated}px`;
@@ -145,7 +145,7 @@ export default function initScrollbar (settings) {
     dropdownWrapper.style.width = `${firstDropdownRect.width}px`;
 
     currentDropdown.style.position = 'static';
-    if (isVerticalMenu(settings) && settings.dropdownAppearanceStyle === 'animate-with-scaling') {
+    if (isVerticalMenu(settings)) {
       currentDropdown.style.maxHeight = '100%';
     } else {
       currentDropdown.style.maxHeight = `${maxHeightCalculated}px`;
@@ -272,7 +272,7 @@ export default function initScrollbar (settings) {
 
       elem.style.position = 'static';
       elem.style.transform = 'none';
-      if (isVerticalMenu(settings) && settings.dropdownAppearanceStyle === 'animate-with-scaling') {
+      if (isVerticalMenu(settings)) {
         elem.style.maxHeight = '100%';
       } else {
         elem.style.maxHeight = `${maxHeightCalculated}px`;
