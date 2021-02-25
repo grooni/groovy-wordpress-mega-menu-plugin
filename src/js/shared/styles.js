@@ -301,7 +301,7 @@ export default class GmStyles {
         });
 
         css.push({
-          '.gm-container, #gm-main-menu': 'justify-content: center;',
+          '.gm-inner .gm-container, #gm-main-menu': 'justify-content: center;',
           '.gm-navbar .gm-logo': 'position: absolute; top: 50%; left: 50%; right: auto; transform: translate(-50%, -50%); z-index: 9999;',
           '.gm-main-menu-wrapper .gm-navbar-nav.nav--left': 'justify-content: flex-end;',
           '.gm-main-menu-wrapper .gm-navbar-nav.nav--right': 'justify-content: flex-start;',
@@ -2097,7 +2097,24 @@ export default class GmStyles {
       }
     }
 
-    // SHARED SETTINGS
+    // SHARED SETTINGS -------------------------------------------------------------------------------------------------
+
+
+    // Toolbar Align
+    if (settings.header.style === 1 || settings.header.style === 2) {
+      if (settings.toolbarAlignCenter) {
+        css.push({
+          '.gm-toolbar .gm-container': 'justify-content: center;',
+          media: 'desktop'
+        });
+      }
+      if (settings.toolbarAlignCenterMobile) {
+        css.push({
+          '.gm-toolbar .gm-container': 'justify-content: center;',
+          media: 'mobile'
+        });
+      }
+    }
 
     if (settings.logoType === 'text') {
       // Text logo

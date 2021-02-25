@@ -2295,6 +2295,24 @@ return array(
 				'type'    => 'checkbox',
 				'default' => false,
 			),
+			'toolbar_align_center__start'               => array(
+				'title'     => esc_html__( 'Align toolbar to the center', 'groovy-menu' ),
+				'type'      => 'inlineStart',
+				'condition' => array( 'header.style', 'in', array( '1', '2' ) ),
+			),
+			'toolbar_align_center'                      => array(
+				'title'   => esc_html__( 'Desktop', 'groovy-menu' ),
+				'type'    => 'checkbox',
+				'default' => false,
+			),
+			'toolbar_align_center_mobile'               => array(
+				'title'   => esc_html__( 'Mobile', 'groovy-menu' ),
+				'type'    => 'checkbox',
+				'default' => false,
+			),
+			'toolbar_align_center__end'                 => array(
+				'type' => 'inlineEnd'
+			),
 			'toolbar_top__start'                        => array(
 				'title' => esc_html__( 'Toolbar top border', 'groovy-menu' ),
 				'type'  => 'inlineStart'
