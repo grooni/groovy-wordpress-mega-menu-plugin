@@ -8,6 +8,7 @@ if ( ! empty( $gm_supported_module['search_post_type_additional'] ) && is_array(
 
 $default_arr = array( 'default' => '--- ' . esc_html__( 'Same as desktop', 'groovy-menu' ) . ' ---' );
 $none_arr    = array( 'none' => '--- ' . esc_html__( 'Hide Groovy menu', 'groovy-menu' ) . ' ---' );
+$nav_menus_c = $none_arr + GroovyMenuUtils::getNavMenus();
 $nav_menus   = $default_arr + $none_arr + GroovyMenuUtils::getNavMenus();
 
 
@@ -1223,6 +1224,172 @@ return array(
 			'logo_txt_end'                                  => array(
 				'type' => 'inlineEnd'
 			),
+			'toolbar_menu_group'                            => array(
+				'title'     => esc_html__( 'Toolbar menu', 'groovy-menu' ),
+				'type'      => 'group',
+				'serialize' => false,
+				'condition' => array( 'header.toolbar', 'in', array( 'true', '1' ) ),
+			),
+			'toolbar_menu_enable'                           => array(
+				'title'       => esc_html__( 'Enable second menu at the tollbar', 'groovy-menu' ),
+				'type'        => 'checkbox',
+				'default'     => false,
+				'description' => '',
+			),
+			'toolbar_menu_id'                               => array(
+				'title'       => esc_html__( 'Toolbar navigation menu', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'select',
+				'options'     => $nav_menus_c,
+				'default'     => '',
+				'condition'   => array( 'toolbar_menu_enable', '==', true ),
+			),
+			'toolbar_menu_position'                         => array(
+				'title'       => esc_html__( 'Toolbar menu position', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'select',
+				'options'     => array(
+					'gm_toolbar_left_first'  => esc_html__( 'Left side First', 'groovy-menu' ),
+					'gm_toolbar_left_last'   => esc_html__( 'Left side Last', 'groovy-menu' ),
+					'gm_toolbar_right_first' => esc_html__( 'Right side First', 'groovy-menu' ),
+					'gm_toolbar_right_last'  => esc_html__( 'Right side Last', 'groovy-menu' ),
+				),
+				'default'     => 'gm_toolbar_right_last',
+				'condition'   => array( 'toolbar_menu_enable', '==', true ),
+			),
+			'toolbar_menu_show_mobile'                      => array(
+				'title'       => esc_html__( 'Show toolbar menu at the mobile', 'groovy-menu' ),
+				'type'        => 'checkbox',
+				'default'     => false,
+				'description' => '',
+				'condition'   => array( 'toolbar_menu_enable', '==', true ),
+			),
+			'toolbar_menu_top_start'                        => array(
+				'title'     => esc_html__( 'Top level menu', 'groovy-menu' ),
+				'type'      => 'inlineStart',
+				'condition' => array( 'toolbar_menu_enable', '==', true ),
+			),
+			'toolbar_menu_top_color'                        => array(
+				'title'     => esc_html__( 'Color', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => 'rgba(104, 104, 104, 1)',
+				'alpha'     => true,
+				'condition' => array( 'toolbar_menu_enable', '==', true ),
+			),
+			'toolbar_menu_top_bg'                           => array(
+				'title'     => esc_html__( 'Background', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => 'rgba(255,255,255,1)',
+				'alpha'     => true,
+				'condition' => array( 'toolbar_menu_enable', '==', true ),
+			),
+			'toolbar_menu_top_color_hover'                  => array(
+				'title'     => esc_html__( 'Color hover', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => 'rgba(104, 104, 104, 1)',
+				'alpha'     => true,
+				'condition' => array( 'toolbar_menu_enable', '==', true ),
+			),
+			'toolbar_menu_top_bg_hover'                     => array(
+				'title'     => esc_html__( 'Background hover', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => 'rgba(255,255,255,1)',
+				'alpha'     => true,
+				'condition' => array( 'toolbar_menu_enable', '==', true ),
+			),
+			'toolbar_menu_top_font_size'                    => array(
+				'title'     => esc_html__( 'Font size', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( 4, 50 ),
+				'default'   => 14,
+				'unit'      => 'px',
+				'condition' => array( 'toolbar_menu_enable', '==', true ),
+			),
+			'toolbar_menu_top_end'                          => array(
+				'type'      => 'inlineEnd',
+				'condition' => array( 'toolbar_menu_enable', '==', true ),
+			),
+			'toolbar_menu_sub_start'                        => array(
+				'title'     => esc_html__( 'Dropdown second level menu', 'groovy-menu' ),
+				'type'      => 'inlineStart',
+				'condition' => array( 'toolbar_menu_enable', '==', true ),
+			),
+			'toolbar_menu_sub_color'                        => array(
+				'title'     => esc_html__( 'Color', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => 'rgba(104, 104, 104, 1)',
+				'alpha'     => true,
+				'condition' => array( 'toolbar_menu_enable', '==', true ),
+			),
+			'toolbar_menu_sub_bg'                           => array(
+				'title'     => esc_html__( 'Background', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => 'rgba(255,255,255,1)',
+				'alpha'     => true,
+				'condition' => array( 'toolbar_menu_enable', '==', true ),
+			),
+			'toolbar_menu_sub_color_hover'                  => array(
+				'title'     => esc_html__( 'Color hover', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => 'rgba(104, 104, 104, 1)',
+				'alpha'     => true,
+				'condition' => array( 'toolbar_menu_enable', '==', true ),
+			),
+			'toolbar_menu_sub_bg_hover'                     => array(
+				'title'     => esc_html__( 'Background hover', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => 'rgba(255,255,255,1)',
+				'alpha'     => true,
+				'condition' => array( 'toolbar_menu_enable', '==', true ),
+			),
+			'toolbar_menu_sub_font_size'                    => array(
+				'title'     => esc_html__( 'Font size', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( 4, 50 ),
+				'default'   => 14,
+				'unit'      => 'px',
+				'condition' => array( 'toolbar_menu_enable', '==', true ),
+			),
+			'toolbar_menu_sub_end'                          => array(
+				'type'      => 'inlineEnd',
+				'condition' => array( 'toolbar_menu_enable', '==', true ),
+			),
+			'toolbar_menu_sub_border_start'                 => array(
+				'title'       => esc_html__( 'Dropdown line', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'inlineStart',
+				'condition'   => array( 'toolbar_menu_enable', '==', true ),
+			),
+			'toolbar_menu_sub_border_thickness'             => array(
+				'title'     => esc_html__( 'thickness', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( 0, 20 ),
+				'default'   => 1,
+				'unit'      => 'px',
+				'condition' => array( 'toolbar_menu_enable', '==', true ),
+			),
+			'toolbar_menu_sub_border_style'                 => array(
+				'title'     => esc_html__( 'style', 'groovy-menu' ),
+				'type'      => 'select',
+				'options'   => array(
+					'dotted' => esc_html__( 'Dotted', 'groovy-menu' ),
+					'dashed' => esc_html__( 'Dashed', 'groovy-menu' ),
+					'solid'  => esc_html__( 'Solid', 'groovy-menu' ),
+				),
+				'default'   => 'solid',
+				'condition' => array( 'toolbar_menu_enable', '==', true ),
+			),
+			'toolbar_menu_sub_border_color'                 => array(
+				'title'     => esc_html__( 'color', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => 'rgba(195, 195, 195, 1)',
+				'alpha'     => true,
+				'condition' => array( 'toolbar_menu_enable', '==', true ),
+			),
+			'toolbar_menu_sub_border_end'                   => array(
+				'type'      => 'inlineEnd',
+				'condition' => array( 'toolbar_menu_enable', '==', true ),
+			),
 			'scrollbar_group'                               => array(
 				'title'     => esc_html__( 'Scrollbar', 'groovy-menu' ) . ' & ' . esc_html__( 'Onepage', 'groovy-menu' ),
 				'type'      => 'group',
@@ -2127,6 +2294,24 @@ return array(
 				'title'   => esc_html__( 'Hide toolbar on mobile devices', 'groovy-menu' ),
 				'type'    => 'checkbox',
 				'default' => false,
+			),
+			'toolbar_align_center__start'               => array(
+				'title'     => esc_html__( 'Align toolbar to the center', 'groovy-menu' ),
+				'type'      => 'inlineStart',
+				'condition' => array( 'header.style', 'in', array( '1', '2' ) ),
+			),
+			'toolbar_align_center'                      => array(
+				'title'   => esc_html__( 'Desktop', 'groovy-menu' ),
+				'type'    => 'checkbox',
+				'default' => false,
+			),
+			'toolbar_align_center_mobile'               => array(
+				'title'   => esc_html__( 'Mobile', 'groovy-menu' ),
+				'type'    => 'checkbox',
+				'default' => false,
+			),
+			'toolbar_align_center__end'                 => array(
+				'type' => 'inlineEnd'
 			),
 			'toolbar_top__start'                        => array(
 				'title' => esc_html__( 'Toolbar top border', 'groovy-menu' ),

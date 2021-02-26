@@ -1,17 +1,17 @@
 const rtlcss = require('rtlcss');
 
-import { isRtl } from './helpers';
+import {isRtl} from './helpers';
 import _ from 'lodash';
 
 var lodash = _.noConflict();
 
 export default class GmStyles {
-  constructor (settings) {
+  constructor(settings) {
     this.settings = settings;
     this.styles = '';
   }
 
-  _append (css) {
+  _append(css) {
     const {settings} = this;
     let styles = '';
 
@@ -45,7 +45,7 @@ export default class GmStyles {
     this.styles += styles;
   }
 
-  _generate () {
+  _generate() {
     const {settings} = this;
     let css = [];
     const hoverStyleNumber = Number(settings.hoverStyle);
@@ -213,10 +213,10 @@ export default class GmStyles {
       // Mega Menu columns padding hide
       if (!settings.megamenuColumnPadding) {
         css.push({
-          '.gm-grid-container':'padding-left: 0; padding-right: 0;',
-          '.gm-grid-row':'margin-left: 0; margin-right: 0;',
-          '.gm-grid-container .gm-mega-menu__item .gm-mega-menu__item__title':'margin-left: 15px; margin-right: 15px;',
-          '.gm-grid-container .gm-mega-menu__item .gm-dropdown-menu-wrapper':'margin-left: 15px !important; margin-right: 15px !important;',
+          '.gm-grid-container': 'padding-left: 0; padding-right: 0;',
+          '.gm-grid-row': 'margin-left: 0; margin-right: 0;',
+          '.gm-grid-container .gm-mega-menu__item .gm-mega-menu__item__title': 'margin-left: 15px; margin-right: 15px;',
+          '.gm-grid-container .gm-mega-menu__item .gm-dropdown-menu-wrapper': 'margin-left: 15px !important; margin-right: 15px !important;',
           '.gm-navigation-drawer .gm-grid-container': 'padding-left: 15px; padding-right: 15px;',
           '.gm-navbar .grid,.gm-navbar .grid-5,.gm-navbar .grid-10,.gm-navbar .grid-11,.gm-navbar .grid-12,.gm-navbar .grid-14,.gm-navbar .grid-15,.gm-navbar .grid-16,.gm-navbar .grid-20,.gm-navbar .grid-25,.gm-navbar .grid-30,.gm-navbar .grid-35,.gm-navbar .grid-40,.gm-navbar .grid-45,.gm-navbar .grid-50,.gm-navbar .grid-55,.gm-navbar .grid-60,.gm-navbar .grid-65,.gm-navbar .grid-70,.gm-navbar .grid-75,.gm-navbar .grid-80,.gm-navbar .grid-85,.gm-navbar .grid-90,.gm-navbar .grid-95,.gm-navbar .grid-100,.gm-navbar .grid-33,.gm-navbar .grid-66,.gm-navbar .mobile-grid,.gm-navbar .mobile-grid-5,.gm-navbar .mobile-grid-10,.gm-navbar .mobile-grid-11,.gm-navbar .mobile-grid-12,.gm-navbar .mobile-grid-14,.gm-navbar .mobile-grid-15,.gm-navbar .mobile-grid-16,.gm-navbar .mobile-grid-20,.gm-navbar .mobile-grid-25,.gm-navbar .mobile-grid-30,.gm-navbar .mobile-grid-35,.gm-navbar .mobile-grid-40,.gm-navbar .mobile-grid-45,.gm-navbar .mobile-grid-50,.gm-navbar .mobile-grid-55,.gm-navbar .mobile-grid-60,.gm-navbar .mobile-grid-65,.gm-navbar .mobile-grid-70,.gm-navbar .mobile-grid-75,.gm-navbar .mobile-grid-80,.gm-navbar .mobile-grid-85,.gm-navbar .mobile-grid-90,.gm-navbar .mobile-grid-95,.gm-navbar .mobile-grid-100,.gm-navbar .mobile-grid-33,.gm-navbar .mobile-grid-66': 'padding-left: 0; padding-right: 0;',
           media: 'desktop'
@@ -301,7 +301,7 @@ export default class GmStyles {
         });
 
         css.push({
-          '.gm-container, #gm-main-menu': 'justify-content: center;',
+          '.gm-inner .gm-container, #gm-main-menu': 'justify-content: center;',
           '.gm-navbar .gm-logo': 'position: absolute; top: 50%; left: 50%; right: auto; transform: translate(-50%, -50%); z-index: 9999;',
           '.gm-main-menu-wrapper .gm-navbar-nav.nav--left': 'justify-content: flex-end;',
           '.gm-main-menu-wrapper .gm-navbar-nav.nav--right': 'justify-content: flex-start;',
@@ -809,7 +809,6 @@ export default class GmStyles {
         '.gm-navbar ~ .gm-navbar-animated': `transition: transform cubic-bezier(0.7, 0, 0.3, 1) ${animSpeedBefore}ms, width cubic-bezier(0.7, 0, 0.3, 1) ${animSpeedBefore}ms;`,
         '.gm-navbar ~ .gm-navbar-animated.gm-navigation-drawer--delay': `transition: transform cubic-bezier(0.7, 0, 0.3, 1) ${animSpeed}ms ${animSpeedAfter}ms;`,
         '.gm-nav-content-wrapper': `transition: transform cubic-bezier(0.7, 0, 0.3, 1) ${animSpeed}ms;`,
-        '.gm-navbar ~ .gm-main-menu-wrapper .gm-dropdown-menu.ps--active-y': 'justify-content: flex-start;',
         media: 'desktop'
       });
 
@@ -846,6 +845,50 @@ export default class GmStyles {
         '.gm-dropdown-with-scrollbar ~ .gm-main-menu-wrapper .gm-dropdown-menu .ps__thumb-y': 'border-radius: 2px;',
         media: 'desktop'
       });
+
+      // Appearance Styles
+      if (settings.dropdownAppearanceStyle === 'animate-from-bottom') {
+        css.push({
+          '.gm-dropdown-appearance-animate-from-bottom ~ .gm-main-menu-wrapper .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: all 0.2s; transform: translateY(80px);',
+          '.gm-dropdown-appearance-animate-from-bottom ~ .gm-main-menu-wrapper .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'visibility: visible; transform: translateY(0); opacity: 1;',
+          media: 'desktop'
+        });
+      }
+      if (settings.dropdownAppearanceStyle === 'animate-with-scaling') {
+        css.push({
+          '.gm-dropdown-appearance-animate-with-scaling ~ .gm-main-menu-wrapper .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: transform .25s ease , opacity .22s ease; transform: scale3d(1,0.1,1); opacity: 0.3;',
+          '.gm-dropdown-appearance-animate-with-scaling ~ .gm-main-menu-wrapper .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'transform: scale3d(1,1,1); opacity: 1;',
+          media: 'desktop'
+        });
+      }
+      if (settings.dropdownAppearanceStyle === 'slide-from-left') {
+        css.push({
+          '.gm-dropdown-appearance-slide-from-left ~ .gm-main-menu-wrapper .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: transform .28s ease-in-out 0s, -webkit-transform .28s ease-in-out 0s; transform: translateX(-50%);',
+          '.gm-dropdown-appearance-slide-from-left ~ .gm-main-menu-wrapper .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'visibility: visible; transform: translateX(0); opacity: 1;',
+          media: 'desktop'
+        });
+      }
+      if (settings.dropdownAppearanceStyle === 'slide-from-left-fadein') {
+        css.push({
+          '.gm-dropdown-appearance-slide-from-left-fadein ~ .gm-main-menu-wrapper .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: all .28s ease-in-out 0s, -webkit-transform .28s ease-in-out 0s; transform: translateX(-50%); opacity: 0;',
+          '.gm-dropdown-appearance-slide-from-left-fadein ~ .gm-main-menu-wrapper .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'visibility: visible; transform: translateX(0); opacity: 1;',
+          media: 'desktop'
+        });
+      }
+      if (settings.dropdownAppearanceStyle === 'slide-from-right') {
+        css.push({
+          '.gm-dropdown-appearance-slide-from-right ~ .gm-main-menu-wrapper .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: transform .28s ease-in-out 0s, -webkit-transform .28s ease-in-out 0s; transform: translateX(50%);',
+          '.gm-dropdown-appearance-slide-from-right ~ .gm-main-menu-wrapper .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'visibility: visible; transform: translateX(0); opacity: 1;',
+          media: 'desktop'
+        });
+      }
+      if (settings.dropdownAppearanceStyle === 'slide-from-right-fadein') {
+        css.push({
+          '.gm-dropdown-appearance-slide-from-right-fadein ~ .gm-main-menu-wrapper .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: all .28s ease-in-out 0s, -webkit-transform .28s ease-in-out 0s; transform: translateX(50%); opacity: 0;',
+          '.gm-dropdown-appearance-slide-from-right-fadein ~ .gm-main-menu-wrapper .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'visibility: visible; transform: translateX(0); opacity: 1;',
+          media: 'desktop'
+        });
+      }
 
       // Fullscreen options.
       if (minimalisticMenuFullscreen) {
@@ -1147,11 +1190,10 @@ export default class GmStyles {
         '.gm-navbar .gm-mega-menu-wrapper': 'position: relative;',
         '.gm-navbar .gm-mega-menu__item__title': 'display: block; clear: both; padding: 12px 20px; cursor: pointer; white-space: nowrap; text-transform: uppercase; color: #5a5a5a; border-bottom: none; font-size: 11px; font-weight: 700; line-height: 25px;',
         '.gm-navbar .gm-dropdown-menu': 'top: 0; right: 0; left: 100%; display: flex; flex-direction: column; height: 100%; justify-content: center;',
-        '.gm-navbar .gm-dropdown-menu.ps--active-y': 'justify-content: flex-start;',
         '.gm-navbar .gm-minicart-dropdown': 'top: 100%;',
         '.gm-navbar .gm-menu-item__link': 'position: relative; padding-right: 0; padding-left: 0;',
         '.gm-navbar .attachment-menu-thumb': 'display: none;',
-        '.admin-bar .gm-navbar' : 'top: 32px; height: calc(100vh - 32px);',
+        '.admin-bar .gm-navbar': 'top: 32px; height: calc(100vh - 32px);',
         media: 'desktop'
       });
 
@@ -1165,8 +1207,8 @@ export default class GmStyles {
       }
       if (settings.dropdownAppearanceStyle === 'animate-with-scaling') {
         css.push({
-          '.gm-dropdown-appearance-animate-with-scaling .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: transform .28s ease , opacity .28s ease; transform: translateY(-50%) scaleY(0); opacity: 0.2;',
-          '.gm-dropdown-appearance-animate-with-scaling .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'transform: translateY(0) scaleY(1); opacity: 1;',
+          '.gm-dropdown-appearance-animate-with-scaling .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: transform .25s ease , opacity .22s ease; transform: scale3d(1,0.1,1); opacity: 0.3;',
+          '.gm-dropdown-appearance-animate-with-scaling .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'transform: scale3d(1,1,1); opacity: 1;',
           media: 'desktop'
         });
       }
@@ -1338,7 +1380,7 @@ export default class GmStyles {
 
       if (settings.logoType === 'no') {
         css.push({
-          '.gm-navbar .gm-logo__no-logo' : 'font-size: 10px;',
+          '.gm-navbar .gm-logo__no-logo': 'font-size: 10px;',
           media: 'desktop'
         });
       }
@@ -1374,7 +1416,7 @@ export default class GmStyles {
         '.gm-navbar .navbar.gm-navbar--align-right .gm-cart-counter': 'top: -2px; right: -25px; left: auto; border-radius: 50% 50% 50% 0;',
         '.gm-navbar .gm-mega-menu__item__title': 'display: block; clear: both; padding: 12px 20px; cursor: pointer; white-space: nowrap; text-transform: uppercase; color: #5a5a5a; border-bottom: none; font-size: 11px; font-weight: 700; line-height: 25px;',
         '.gm-navbar .gm-minicart-dropdown': 'top: 0;',
-        '.admin-bar .gm-navbar' : 'top: 32px; height: calc(100vh - 32px);',
+        '.admin-bar .gm-navbar': 'top: 32px; height: calc(100vh - 32px);',
         '.gm-navbar .gm-dropdown-submenu .gm-dropdown-menu-wrapper': 'top: -3px;',
         media: 'desktop'
       });
@@ -1598,7 +1640,7 @@ export default class GmStyles {
         sidebarExpandingMenuShowSideIcon
       } = settings;
 
-      let logoMarginWidth = logoMarginRight+ logoMarginLeft;
+      let logoMarginWidth = logoMarginRight + logoMarginLeft;
 
       let iconSize = sidebarExpandingMenuIconSize ? sidebarExpandingMenuIconSize : 32;
       let initialWidth = sidebarExpandingMenuInitialWidth ? sidebarExpandingMenuInitialWidth : 70;
@@ -1607,7 +1649,7 @@ export default class GmStyles {
       let animationCssParam, animationCssParamSecondary = '';
 
       if (sidebarExpandingMenuUseAnimation) {
-        let seconds = sidebarExpandingMenuAnimationDuration ? parseInt(sidebarExpandingMenuAnimationDuration) : 300 ;
+        let seconds = sidebarExpandingMenuAnimationDuration ? parseInt(sidebarExpandingMenuAnimationDuration) : 300;
         seconds = (seconds / 1000).toFixed(1);
         animationCssParam = `transition: width ${seconds}s;`;
         animationCssParamSecondary = `transition: opacity 0.5s ${seconds}s;`;
@@ -1739,7 +1781,7 @@ export default class GmStyles {
           '.gm-main-menu-wrapper .gm-navbar-nav > .gm-menu-item > .gm-dropdown-menu-wrapper': 'left: 100%; right: auto;',
           '.gm-navbar .gm-main-menu-wrapper .gm-navbar-nav > .gm-menu-item > .gm-dropdown-menu-wrapper > ul > li .gm-dropdown-menu-wrapper': `left: ${submenuWidth}px; right: auto;`,
           '.gm-navbar .gm-main-menu-wrapper .gm-navbar-nav > .gm-menu-item': `padding-right: 18px;`,
-          '.gm-navbar .gm-menu-btn--expanded' : 'left: 0;',
+          '.gm-navbar .gm-menu-btn--expanded': 'left: 0;',
           media: 'desktop'
         });
       }
@@ -1845,12 +1887,11 @@ export default class GmStyles {
         '.gm-navbar .gm-mega-menu-wrapper': 'position: relative;',
         '.gm-navbar .gm-mega-menu__item__title': 'display: block; clear: both; padding: 12px 20px; cursor: pointer; white-space: nowrap; text-transform: uppercase; color: #5a5a5a; border-bottom: none; font-size: 11px; font-weight: 700; line-height: 25px;',
         '.gm-navbar .gm-dropdown-menu': 'top: 0; right: 0; left: 100%; display: flex; flex-direction: column; height: 100%; justify-content: center;',
-        '.gm-navbar .gm-dropdown-menu.ps--active-y': 'justify-content: flex-start;',
         '.gm-navbar .gm-minicart-dropdown': 'top: 100%;',
         '.gm-navbar .gm-menu-item__link': 'position: relative; padding-right: 0; padding-left: 0;',
         '.gm-navbar .attachment-menu-thumb': 'display: none;',
         '.gm-navbar .gm-navbar-nav > .gm-menu-item': `width: ${expandedWidth}px;`,
-        '.gm-menu-btn--expanded' : 'display:none',
+        '.gm-menu-btn--expanded': 'display:none',
         '.gm-navbar-nav > .gm-dropdown:not(.mega-gm-dropdown) .gm-dropdown-menu': `width: ${submenuWidth}px;`,
 
         '.admin-bar .gm-navbar': 'top: 32px; height: calc(100vh - 32px);',
@@ -1866,8 +1907,8 @@ export default class GmStyles {
 
         '.gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-menu-item__txt, .gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-badge, .gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-caret': `word-break: keep-all; white-space: nowrap; opacity: 0; ${animationCssParamSecondary}`,
         '.gm-navbar .gm-actions, .gm-navbar .gm-toolbar': 'opacity: 0; display: none; transition: opacity 0.3s;',
-        '.gm-navbar .gm-main-menu-wrapper .gm-navbar-nav > li > .gm-anchor':'transition: border 0.3s 0.1s;',
-        '.gm-navbar:not(.gm-expanding--open) .gm-main-menu-wrapper .gm-navbar-nav > li > .gm-anchor':'border-bottom-color: transparent;',
+        '.gm-navbar .gm-main-menu-wrapper .gm-navbar-nav > li > .gm-anchor': 'transition: border 0.3s 0.1s;',
+        '.gm-navbar:not(.gm-expanding--open) .gm-main-menu-wrapper .gm-navbar-nav > li > .gm-anchor': 'border-bottom-color: transparent;',
         '.gm-navbar:not(.gm-expanding--open) .gm-logo': 'overflow: hidden;',
         media: 'desktop'
       });
@@ -2005,8 +2046,8 @@ export default class GmStyles {
       }
       if (settings.dropdownAppearanceStyle === 'animate-with-scaling') {
         css.push({
-          '.gm-dropdown-appearance-animate-with-scaling .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: transform .28s ease , opacity .28s ease; transform: translateY(-50%) scaleY(0); opacity: 0.2;',
-          '.gm-dropdown-appearance-animate-with-scaling .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'transform: translateY(0) scaleY(1); opacity: 1;',
+          '.gm-dropdown-appearance-animate-with-scaling .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: transform .25s ease , opacity .22s ease; transform: scale3d(1,0.1,1); opacity: 0.3;',
+          '.gm-dropdown-appearance-animate-with-scaling .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'transform: scale3d(1,1,1); opacity: 1;',
           media: 'desktop'
         });
       }
@@ -2056,7 +2097,24 @@ export default class GmStyles {
       }
     }
 
-    // SHARED SETTINGS
+    // SHARED SETTINGS -------------------------------------------------------------------------------------------------
+
+
+    // Toolbar Align
+    if (settings.header.style === 1 || settings.header.style === 2) {
+      if (settings.toolbarAlignCenter) {
+        css.push({
+          '.gm-toolbar .gm-container': 'justify-content: center;',
+          media: 'desktop'
+        });
+      }
+      if (settings.toolbarAlignCenterMobile) {
+        css.push({
+          '.gm-toolbar .gm-container': 'justify-content: center;',
+          media: 'mobile'
+        });
+      }
+    }
 
     if (settings.logoType === 'text') {
       // Text logo
@@ -2419,7 +2477,7 @@ export default class GmStyles {
 
         css.push({
           '.gm-main-menu-wrapper .gm-minicart-dropdown .woocommerce-mini-cart-item, .woocommerce-mini-cart__empty-message, .gm-minicart, .woocommerce-mini-cart__total': `color: ${color} !important;`,
-          '.gm-main-menu-wrapper .gm-minicart-dropdown .woocommerce-mini-cart-item a':'color: inherit !important;',
+          '.gm-main-menu-wrapper .gm-minicart-dropdown .woocommerce-mini-cart-item a': 'color: inherit !important;',
           media: 'desktop'
         });
       }
@@ -3884,6 +3942,45 @@ export default class GmStyles {
     }
 
 
+    // Toolbar Menu styles.
+    if (settings.header.toolbar && settings.toolbarMenuEnable) {
+      const {
+        toolbarMenuShowMobile: showMobile,
+        toolbarMenuTopColor: topColor,
+        toolbarMenuTopBg: topBg,
+        toolbarMenuTopColorHover: topColorHover,
+        toolbarMenuTopBgHover: topBgHover,
+        toolbarMenuTopFontSize: topFontSize,
+        toolbarMenuSubColor: subColor,
+        toolbarMenuSubBg: subBg,
+        toolbarMenuSubColorHover: subColorHover,
+        toolbarMenuSubBgHover: subBgHover,
+        toolbarMenuSubFontSize: subFontSize,
+        toolbarMenuSubBorderThickness: subLineThickness,
+        toolbarMenuSubBorderStyle: subLineStyle,
+        toolbarMenuSubBorderColor: subLineColor,
+      } = settings;
+
+      if (!showMobile) {
+        css.push({
+          '.gm-toolbar-nav-container': 'display: none;',
+          media: 'mobile'
+        });
+      }
+
+      css.push({
+        '.gm-toolbar-nav-container': `font-size: ${topFontSize}px;`,
+        '.gm-toolbar-nav-container a': `color: ${topColor}; background: ${topBg};`,
+        '.gm-toolbar-nav-container > ul > li:hover > a': `color: ${topColorHover}; background: ${topBgHover};`,
+        '.gm-toolbar-nav-container ul ul a': `border: ${subLineThickness}px ${subLineStyle} ${subLineColor}; color: ${subColor}; background: ${subBg};`,
+        '.gm-toolbar-nav-container ul ul li:hover > a': `color: ${subColorHover}; background: ${subBgHover};`,
+        '.gm-toolbar-nav-container ul ul li:first-child > a': `border-top: ${subLineThickness}px ${subLineStyle} ${subLineColor};`,
+        '.gm-toolbar-nav-container ul ul': `border-top: 3px ${subLineStyle} ${subLineColor}; font-size: ${subFontSize}px;`,
+      });
+
+    }
+
+
     // Write css array.
     css.push(...this.setStickyStyles());
 
@@ -3891,7 +3988,7 @@ export default class GmStyles {
   }
 
 
-  setStickyStyles () {
+  setStickyStyles() {
     const {settings} = this;
     let css = [];
     const {
@@ -4377,7 +4474,7 @@ export default class GmStyles {
     return css;
   }
 
-  setTopBgStyles () {
+  setTopBgStyles() {
     const {settings} = this;
     const {
       backgroundColor,
@@ -4491,9 +4588,10 @@ export default class GmStyles {
     return css;
   }
 
-  addToHeader (styles) {
+  addToHeader(styles) {
     if (document.querySelector('.gm-compiled-css') !== null) {
-      document.querySelector('.gm-compiled-css').remove();
+      document.querySelector('.gm-compiled-css')
+        .remove();
     }
 
     let head = document.head;
@@ -4507,7 +4605,7 @@ export default class GmStyles {
     menuStyles.append(styles);
   }
 
-  get () {
+  get() {
     this._generate();
     return isRtl() ? rtlcss.process(this.styles) : this.styles;
   }

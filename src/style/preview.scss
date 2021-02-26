@@ -172,7 +172,8 @@ body.bg--transparent {
   }
 
   .gm-dropdown-appearance-animate-from-bottom .gm-dropdown-menu,
-  .gm-dropdown-appearance-animate-from-bottom .gm-minicart-dropdown {
+  .gm-dropdown-appearance-animate-from-bottom .gm-minicart-dropdown,
+  .gm-dropdown-appearance-animate-from-bottom ~ .gm-main-menu-wrapper .gm-dropdown-menu {
     transform: none !important;
   }
 

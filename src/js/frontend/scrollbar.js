@@ -21,7 +21,9 @@ function getFirstDropdownRect (menuItem, settings) {
 function isVerticalMenu (settings) {
   let verticalMenu = false;
 
-  if (settings.header.style === 2 || settings.header.style === 3 || settings.header.style === 5) {
+  let headerStyle = parseInt(settings.header.style, 10);
+
+  if (headerStyle === 2 || headerStyle === 3 || headerStyle === 5) {
     verticalMenu = true;
   }
 
@@ -102,7 +104,7 @@ export default function initScrollbar (settings) {
       return;
     }
 
-
+    let maxHeightCalculated = getDropdownMaxHeight(currentDropdown, false);
     let dropdownWrapper = parentMenuItem.querySelector('.gm-dropdown-menu-wrapper');
 
 
@@ -116,7 +118,11 @@ export default function initScrollbar (settings) {
       dropdownWrapper.style.height = `${subDropdownRect.height}px`;
 
       currentDropdown.style.position = 'static';
-      currentDropdown.style.maxHeight = `${getDropdownMaxHeight(currentDropdown, false)}px`;
+      if (isVerticalMenu(settings)) {
+        currentDropdown.style.maxHeight = '100%';
+      } else {
+        currentDropdown.style.maxHeight = `${maxHeightCalculated}px`;
+      }
 
       if (parentMenuItem.classList.contains('gm-has-featured-img')) {
         const image = parentMenuItem.querySelector('.attachment-menu-thumb');
@@ -139,7 +145,11 @@ export default function initScrollbar (settings) {
     dropdownWrapper.style.width = `${firstDropdownRect.width}px`;
 
     currentDropdown.style.position = 'static';
-    currentDropdown.style.maxHeight = `${getDropdownMaxHeight(currentDropdown, false)}px`;
+    if (isVerticalMenu(settings)) {
+      currentDropdown.style.maxHeight = '100%';
+    } else {
+      currentDropdown.style.maxHeight = `${maxHeightCalculated}px`;
+    }
 
     activatePerfectScrollbar(currentDropdown);
 
@@ -262,7 +272,11 @@ export default function initScrollbar (settings) {
 
       elem.style.position = 'static';
       elem.style.transform = 'none';
-      elem.style.maxHeight = `${maxHeightCalculated}px`;
+      if (isVerticalMenu(settings)) {
+        elem.style.maxHeight = '100%';
+      } else {
+        elem.style.maxHeight = `${maxHeightCalculated}px`;
+      }
 
       if (elem.classList.contains('ps')) {
         let psId = elem.getAttribute('data-ps-id');

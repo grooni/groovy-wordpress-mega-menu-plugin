@@ -2,7 +2,8 @@
 DROPDOWN HOVER STYLES
 ***********************************/
 
-.gm-dropdown-hover-style-shift-right {
+.gm-dropdown-hover-style-shift-right,
+.gm-dropdown-hover-style-shift-right ~ .gm-main-menu-wrapper {
   .gm-dropdown-menu .gm-menu-item:hover > .gm-anchor .gm-menu-item__txt-wrapper,
   .gm-dropdown-menu .gm-menu-item.gm-open > .gm-anchor .gm-menu-item__txt-wrapper {
     transform: translateX(25px);
@@ -57,7 +58,8 @@ DROPDOWN HOVER STYLES
   }
 }
 
-[dir='rtl'] .gm-dropdown-hover-style-shift-right .gm-dropdown-menu {
+[dir='rtl'] .gm-dropdown-hover-style-shift-right .gm-dropdown-menu,
+[dir='rtl'] .gm-dropdown-hover-style-shift-right ~ .gm-main-menu-wrapper .gm-dropdown-menu {
   .gm-menu-item {
     overflow: hidden;
   }
@@ -67,7 +69,8 @@ DROPDOWN HOVER STYLES
   }
 }
 
-.gm-dropdown-appearance-fade-in-out .gm-main-menu-wrapper .gm-dropdown {
+.gm-dropdown-appearance-fade-in-out .gm-main-menu-wrapper .gm-dropdown,
+.gm-dropdown-appearance-fade-in-out ~ .gm-main-menu-wrapper .gm-dropdown {
   &.gm-minicart .gm-dropdown-menu,
   .gm-dropdown-menu-wrapper,
   .gm-dropdown-menu-wrapper .gm-dropdown-menu {
@@ -96,7 +99,8 @@ DROPDOWN HOVER STYLES
   opacity: 1;
 }
 
-.gm-dropdown-hover-style-fadein-link-color {
+.gm-dropdown-hover-style-fadein-link-color,
+.gm-dropdown-hover-style-fadein-link-color ~ .gm-main-menu-wrapper {
   .gm-navbar-nav .gm-menu-item {
     transition: background-color 0.55s ease;
   }
@@ -104,4 +108,8 @@ DROPDOWN HOVER STYLES
   .gm-navbar-nav .gm-menu-item .gm-menu-item__link {
     transition: color 0.28s ease;
   }
+}
+
+.gm-dropdown-hover-style-shift-right.gm-navbar--style-2 ~ .gm-main-menu-wrapper .gm-dropdown-menu .gm-menu-item__link::before {
+  left: 32px;
 }
