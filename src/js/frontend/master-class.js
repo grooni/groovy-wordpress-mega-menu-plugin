@@ -261,7 +261,7 @@ class GroovyMenu {
       if (
         closestDropdown &&
         closestDropdown.classList.contains('gm-frozen-link') &&
-        ! e.target.closest('.gm-dropdown-menu-title') &&
+        !e.target.closest('.gm-dropdown-menu-title') &&
         e.type === 'click'
       ) {
         return false;

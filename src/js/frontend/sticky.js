@@ -1,7 +1,7 @@
 import _ from 'lodash';
-import { isMobile } from '../shared/helpers';
-import { recalculatePaddingsAlignCenter } from './split';
-import { dropdownCloseAll } from './dropdown';
+import {isMobile} from '../shared/helpers';
+import {recalculatePaddingsAlignCenter} from './split';
+import {dropdownCloseAll} from './dropdown';
 
 var options;
 var wpAdminBar;
@@ -11,7 +11,7 @@ var toolbar;
 var lodash = _.noConflict();
 var navbarWrapper;
 
-function getStickySettings () {
+function getStickySettings() {
   let type = options.stickyHeader;
   let offset = options.stickyOffset;
   const {stickyHeaderMobile, stickyOffsetMobile} = options;
@@ -28,7 +28,7 @@ function getStickySettings () {
   return {type, offset};
 }
 
-function getStickyMenuOffset () {
+function getStickyMenuOffset() {
   let adminbarHeight = wpAdminBar === null ? 0 : wpAdminBar.offsetHeight;
   let toolbarHeight = toolbar === null ? 0 : toolbar.offsetHeight;
   let stickyMenuOffset;
@@ -73,7 +73,7 @@ function getStickyMenuOffset () {
   return stickyMenuOffset;
 }
 
-function handleSlideDown () {
+function handleSlideDown() {
   var stickyOffset = navbarWrapper.offsetHeight;
   const stickySettings = getStickySettings();
 
@@ -132,7 +132,7 @@ function handleSlideDown () {
 
 }
 
-function handleFixedSticky () {
+function handleFixedSticky() {
 
   let offsetPixels = getStickyMenuOffset();
 
@@ -157,7 +157,7 @@ function handleFixedSticky () {
 
 }
 
-export function enableStickyNav () {
+export function enableStickyNav() {
   const stickySettings = getStickySettings();
 
   adminbarHeight = wpAdminBar === null ? 0 : wpAdminBar.offsetHeight;
@@ -188,7 +188,7 @@ export function enableStickyNav () {
   }
 }
 
-export function disableStickyNav () {
+export function disableStickyNav() {
   if (options.stickyHeader === 'slide-down' && navbar) {
     window.removeEventListener('scroll', handleSlideDown);
     navbar.classList.remove('gm-navbar-sticky', 'gm-navbar-sticky-toggle');
@@ -204,7 +204,7 @@ export function disableStickyNav () {
   }
 }
 
-export function initStickyNav (args) {
+export function initStickyNav(args) {
   options = args.options;
   wpAdminBar = args.wpAdminBar;
   adminbarHeight = args.adminbarHeight;

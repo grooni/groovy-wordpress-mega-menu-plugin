@@ -1,4 +1,4 @@
-import { getCoords, isMobile, unwrapInner, wrapInner } from '../shared/helpers';
+import {getCoords, isMobile, unwrapInner, wrapInner} from '../shared/helpers';
 import _ from 'lodash';
 import {setCurrentItem} from './one-page';
 import {initPaddingsAlignCenter} from './split';
@@ -18,7 +18,7 @@ let offcanvasIsOpen = function (navDrawer) {
   return isOpen;
 };
 
-function offcanvasOpen (navDrawer) {
+function offcanvasOpen(navDrawer) {
   if (navDrawer) {
     navDrawer.classList.remove('gm-hidden');
     navDrawer.classList.add('gm-navigation-drawer--open');
@@ -39,7 +39,7 @@ function offcanvasOpen (navDrawer) {
   }
 }
 
-function offcanvasClose (navDrawer) {
+function offcanvasClose(navDrawer) {
   if (offcanvasIsOpen(navDrawer)) {
     navDrawer.classList.remove('gm-navigation-drawer--open');
 
@@ -61,7 +61,7 @@ function offcanvasClose (navDrawer) {
   }
 }
 
-function offcanvasToggle (navDrawer) {
+function offcanvasToggle(navDrawer) {
   if (offcanvasIsOpen(navDrawer)) {
     offcanvasClose(navDrawer);
   } else {
@@ -69,7 +69,7 @@ function offcanvasToggle (navDrawer) {
   }
 }
 
-function offcanvasClickOutside () {
+function offcanvasClickOutside() {
   document.addEventListener('click', function (event) {
     if (event.target.closest('.gm-menu-btn')) {
       return;
@@ -82,7 +82,7 @@ function offcanvasClickOutside () {
   });
 }
 
-function makeHiddenVisible (navDrawer) {
+function makeHiddenVisible(navDrawer) {
   let mainMenuWrapper = document.querySelector('.gm-main-menu-wrapper');
   let isMobileFlag = isMobile(options.mobileWidth);
 
@@ -224,7 +224,7 @@ function topIndentForBurger(navDrawer) {
 
 }
 
-function wrapContent () {
+function wrapContent() {
   let gmNavbar = document.querySelector('.gm-navbar');
   let navDrawer = document.querySelector('.gm-navigation-drawer');
   let mainMenuWrapper = document.querySelector('.gm-main-menu-wrapper');
@@ -252,7 +252,7 @@ function wrapContent () {
   }
 }
 
-function closeIfNoChildren (navDrawer) {
+function closeIfNoChildren(navDrawer) {
   if (!navDrawer) {
     return;
   }

@@ -4,7 +4,7 @@ import {
   isMobile as isMobileHelper
 } from '../shared/helpers';
 
-export function dropdownOpen (elem, options) {
+export function dropdownOpen(elem, options) {
   let dropdownWrapper = elem.querySelector('.gm-dropdown-menu-wrapper');
 
   if (dropdownWrapper !== null) {
@@ -64,7 +64,7 @@ export function dropdownOpen (elem, options) {
 
 }
 
-export function dropdownClose (elem) {
+export function dropdownClose(elem) {
   let descendantsOpen = elem.querySelectorAll('.gm-open');
 
   descendantsOpen.forEach((item) => {
@@ -103,7 +103,7 @@ export function dropdownClose (elem) {
 
 }
 
-export function dropdownToggle (elem, options) {
+export function dropdownToggle(elem, options) {
   if (elem.classList.contains('gm-open')) {
     dropdownClose(elem);
   } else {
@@ -126,7 +126,7 @@ export function dropdownToggle (elem, options) {
   }
 }
 
-export function dropdownCloseAll (delay) {
+export function dropdownCloseAll(delay) {
 
   if (!delay) {
     delay = 0;
@@ -138,7 +138,7 @@ export function dropdownCloseAll (delay) {
 
     gmMainMenu.setAttribute('data-timeout-check-close', setTimeout(function () {
       checkCursorBeforeClose();
-    }, delay+350));
+    }, delay + 350));
 
     gmMainMenu.setAttribute('data-timeout-close-all', setTimeout(function () {
       dropdownCloseAllOpened(delay);
@@ -163,7 +163,7 @@ export function checkCursorBeforeClose() {
   }
 }
 
-function dropdownCloseAllOpened (delay) {
+function dropdownCloseAllOpened(delay) {
 
   let queryOpened = '.gm-open';
 
