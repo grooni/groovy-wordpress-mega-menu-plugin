@@ -178,8 +178,7 @@ GROOVY TOOLBAR
   /* SUB menu link style */
   ul ul a {
     color: rgba(104, 104, 104, 1);
-    border: 1px solid rgba(195, 195, 195, 1);
-    border-top: 0 none;
+    border: 0 none;
     line-height: 150%;
     padding: 8px 20px;
   }
@@ -197,7 +196,6 @@ GROOVY TOOLBAR
 
   /* SUB menu List style */
   ul ul {
-    border-top: 3px solid rgba(195, 195, 195, 1);
     text-transform: none;
     min-width: 50px;
   }
@@ -221,10 +219,6 @@ GROOVY TOOLBAR
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: auto;
-  }
-
-  ul ul li:first-child > a {
-    border-top: 1px solid rgba(195, 195, 195, 1);
   }
 
   ul ul li.menu-item-has-children > a:after {

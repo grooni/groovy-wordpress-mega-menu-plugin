@@ -1286,7 +1286,7 @@ return array(
 					'slide-from-left'         => esc_html__( 'Slide from left', 'groovy-menu' ),
 					'slide-from-left-fadein'  => esc_html__( 'Slide from left FadeIn', 'groovy-menu' ),
 				),
-				'default'   => 'animate-from-bottom',
+				'default'   => 'animate-with-scaling',
 				'condition' => array( 'toolbar_menu_enable', '==', true ),
 			),
 			'toolbar_menu_top_start'                        => array(
@@ -1349,7 +1349,7 @@ return array(
 			'toolbar_menu_sub_bg'                           => array(
 				'title'     => esc_html__( 'Background', 'groovy-menu' ),
 				'type'      => 'colorpicker',
-				'default'   => 'rgba(255,255,255,1)',
+				'default'   => 'rgba(245,245,245,1)',
 				'alpha'     => true,
 				'condition' => array( 'toolbar_menu_enable', '==', true ),
 			),
@@ -1363,7 +1363,7 @@ return array(
 			'toolbar_menu_sub_bg_hover'                     => array(
 				'title'     => esc_html__( 'Background hover', 'groovy-menu' ),
 				'type'      => 'colorpicker',
-				'default'   => 'rgba(255,255,255,1)',
+				'default'   => 'rgba(250,250,250,1)',
 				'alpha'     => true,
 				'condition' => array( 'toolbar_menu_enable', '==', true ),
 			),
@@ -1385,6 +1385,42 @@ return array(
 				'range'     => array( 50, 2000 ),
 				'default'   => 140,
 				'unit'      => 'px',
+				'condition' => array( 'toolbar_menu_enable', '==', true ),
+			),
+			'toolbar_menu_sub_border_start'                 => array(
+				'title'       => esc_html__( 'Toolbar submenu box border', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'inlineStart',
+				'condition'   => array( 'toolbar_menu_enable', '==', true ),
+			),
+			'toolbar_menu_sub_border_thickness'             => array(
+				'title'     => esc_html__( 'thickness', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( 0, 20 ),
+				'default'   => 1,
+				'unit'      => 'px',
+				'condition' => array( 'toolbar_menu_enable', '==', true ),
+			),
+			'toolbar_menu_sub_border_style'                 => array(
+				'title'     => esc_html__( 'style', 'groovy-menu' ),
+				'type'      => 'select',
+				'options'   => array(
+					'dotted' => esc_html__( 'Dotted', 'groovy-menu' ),
+					'dashed' => esc_html__( 'Dashed', 'groovy-menu' ),
+					'solid'  => esc_html__( 'Solid', 'groovy-menu' ),
+				),
+				'default'   => 'solid',
+				'condition' => array( 'toolbar_menu_enable', '==', true ),
+			),
+			'toolbar_menu_sub_border_color'                 => array(
+				'title'     => esc_html__( 'color', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => 'rgba(195, 195, 195, 1)',
+				'alpha'     => true,
+				'condition' => array( 'toolbar_menu_enable', '==', true ),
+			),
+			'toolbar_menu_sub_border_end'                   => array(
+				'type'      => 'inlineEnd',
 				'condition' => array( 'toolbar_menu_enable', '==', true ),
 			),
 			'toolbar_menu_sub_top_border_start'             => array(
@@ -1423,13 +1459,13 @@ return array(
 				'type'      => 'inlineEnd',
 				'condition' => array( 'toolbar_menu_enable', '==', true ),
 			),
-			'toolbar_menu_sub_border_start'                 => array(
-				'title'       => esc_html__( 'Toolbar submenu bottom border', 'groovy-menu' ),
+			'toolbar_menu_sub_nav_border_start'             => array(
+				'title'       => esc_html__( 'Toolbar submenu items border bottom', 'groovy-menu' ),
 				'description' => '',
 				'type'        => 'inlineStart',
 				'condition'   => array( 'toolbar_menu_enable', '==', true ),
 			),
-			'toolbar_menu_sub_border_thickness'             => array(
+			'toolbar_menu_sub_nav_border_thickness'         => array(
 				'title'     => esc_html__( 'thickness', 'groovy-menu' ),
 				'type'      => 'number',
 				'range'     => array( 0, 20 ),
@@ -1437,7 +1473,7 @@ return array(
 				'unit'      => 'px',
 				'condition' => array( 'toolbar_menu_enable', '==', true ),
 			),
-			'toolbar_menu_sub_border_style'                 => array(
+			'toolbar_menu_sub_nav_border_style'             => array(
 				'title'     => esc_html__( 'style', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
@@ -1445,17 +1481,17 @@ return array(
 					'dashed' => esc_html__( 'Dashed', 'groovy-menu' ),
 					'solid'  => esc_html__( 'Solid', 'groovy-menu' ),
 				),
-				'default'   => 'solid',
+				'default'   => 'dotted',
 				'condition' => array( 'toolbar_menu_enable', '==', true ),
 			),
-			'toolbar_menu_sub_border_color'                 => array(
+			'toolbar_menu_sub_nav_border_color'             => array(
 				'title'     => esc_html__( 'color', 'groovy-menu' ),
 				'type'      => 'colorpicker',
-				'default'   => 'rgba(195, 195, 195, 1)',
+				'default'   => 'rgba(220, 220, 220, 1)',
 				'alpha'     => true,
 				'condition' => array( 'toolbar_menu_enable', '==', true ),
 			),
-			'toolbar_menu_sub_border_end'                   => array(
+			'toolbar_menu_sub_nav_border_end'               => array(
 				'type'      => 'inlineEnd',
 				'condition' => array( 'toolbar_menu_enable', '==', true ),
 			),

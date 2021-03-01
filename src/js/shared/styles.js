@@ -3956,12 +3956,15 @@ export default class GmStyles {
         toolbarMenuSubColorHover: subColorHover,
         toolbarMenuSubBgHover: subBgHover,
         toolbarMenuSubFontSize: subFontSize,
-        toolbarMenuSubTopBorderThickness: subTopLineThickness,
-        toolbarMenuSubTopBorderStyle: subTopLineStyle,
-        toolbarMenuSubTopBorderColor: subTopLineColor,
         toolbarMenuSubBorderThickness: subLineThickness,
         toolbarMenuSubBorderStyle: subLineStyle,
         toolbarMenuSubBorderColor: subLineColor,
+        toolbarMenuSubTopBorderThickness: subTopLineThickness,
+        toolbarMenuSubTopBorderStyle: subTopLineStyle,
+        toolbarMenuSubTopBorderColor: subTopLineColor,
+        toolbarMenuSubNavBorderThickness: subNavLineThickness,
+        toolbarMenuSubNavBorderStyle: subNavLineStyle,
+        toolbarMenuSubNavBorderColor: subNavLineColor,
         toolbarMenuSubWidth: subWidth,
         toolbarMenuHoverStyle: hoverStyle,
         toolbarMenuAppearanceStyle: appearanceStyle,
@@ -3978,10 +3981,10 @@ export default class GmStyles {
         '.gm-toolbar-nav-container': `font-size: ${topFontSize}px;`,
         '.gm-toolbar-nav-container a': `color: ${topColor}; background: ${topBg};`,
         '.gm-toolbar-nav-container > ul > li:hover > a, .gm-toolbar-nav-container > ul > li.current-menu-item > a, .gm-toolbar-nav-container > ul > li.current-menu-ancestor > a': `color: ${topColorHover}; background: ${topBgHover};`,
-        '.gm-toolbar-nav-container ul ul a': `border: ${subLineThickness}px ${subLineStyle} ${subLineColor}; color: ${subColor}; background: ${subBg};`,
+        '.gm-toolbar-nav-container ul ul a': `border-left: ${subLineThickness}px ${subLineStyle} ${subLineColor}; border-right: ${subLineThickness}px ${subLineStyle} ${subLineColor}; border-bottom: ${subNavLineThickness}px ${subNavLineStyle} ${subNavLineColor}; color: ${subColor}; background: ${subBg};`,
         '.gm-toolbar-nav-container ul ul li:hover > a, .gm-toolbar-nav-container ul ul li.current-menu-item > a, .gm-toolbar-nav-container ul ul li.current-menu-ancestor > a': `color: ${subColorHover}; background: ${subBgHover};`,
-        '.gm-toolbar-nav-container ul ul li:first-child > a': `border-top: ${subLineThickness}px ${subLineStyle} ${subLineColor};`,
-        '.gm-toolbar-nav-container ul ul, .gm-toolbar-nav-container ul ul ul': `border-top: ${subTopLineThickness}px ${subTopLineStyle} ${subTopLineColor}; font-size: ${subFontSize}px; width: ${subWidth}px;`,
+        '.gm-toolbar-nav-container ul ul li:last-child > a': `border-bottom: ${subLineThickness}px ${subLineStyle} ${subLineColor};`,
+        '.gm-toolbar-nav-container ul ul': `border-top: ${subTopLineThickness}px ${subTopLineStyle} ${subTopLineColor}; font-size: ${subFontSize}px; width: ${subWidth}px;`,
         '.gm-toolbar-nav-container ul ul ul': `left: ${subWidth}px;`,
       });
 
@@ -4018,6 +4021,8 @@ export default class GmStyles {
         css.push({
           '.gm-toolbar-nav-container ul ul': 'transition: all 0.2s; transform: translateY(32px);',
           '.gm-toolbar-nav-container ul li:hover > ul': 'transform: translateY(0px);',
+          '.gm-toolbar-nav-container ul li': 'overflow: hidden;',
+          '.gm-toolbar-nav-container ul li:hover': 'overflow: visible;',
         });
       }
       if ('animate-with-scaling' === appearanceStyle) {

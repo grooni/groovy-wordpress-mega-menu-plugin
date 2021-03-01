@@ -443,7 +443,7 @@ class GM_Migration {
 	public function needed_notice() {
 		$output_escaped = '<div class="notice notice-warning gm-theme-migrate__notice-wrapper"><p><strong>' .
 		                  esc_html__( 'Groovy menu data update:', 'groovy-menu' ) . '</strong> ' .
-		                  esc_html__( 'We need to update your plugin database to the latest version of template.', 'groovy-menu' ) .
+		                  esc_html__( 'We need to update your Groovy Menu database to the latest version of presets config.', 'groovy-menu' ) .
 		                  '<br>' .
 		                  '<button class="button gm-theme-migrate__button">' . esc_html__( 'Update groovy-menu DB Data', 'groovy-menu' ) . '</button>' .
 		                  '</p></div>';
