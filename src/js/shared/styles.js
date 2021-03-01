@@ -3956,9 +3956,15 @@ export default class GmStyles {
         toolbarMenuSubColorHover: subColorHover,
         toolbarMenuSubBgHover: subBgHover,
         toolbarMenuSubFontSize: subFontSize,
+        toolbarMenuSubTopBorderThickness: subTopLineThickness,
+        toolbarMenuSubTopBorderStyle: subTopLineStyle,
+        toolbarMenuSubTopBorderColor: subTopLineColor,
         toolbarMenuSubBorderThickness: subLineThickness,
         toolbarMenuSubBorderStyle: subLineStyle,
         toolbarMenuSubBorderColor: subLineColor,
+        toolbarMenuSubWidth: subWidth,
+        toolbarMenuHoverStyle: hoverStyle,
+        toolbarMenuAppearanceStyle: appearanceStyle,
       } = settings;
 
       if (!showMobile) {
@@ -3971,12 +3977,85 @@ export default class GmStyles {
       css.push({
         '.gm-toolbar-nav-container': `font-size: ${topFontSize}px;`,
         '.gm-toolbar-nav-container a': `color: ${topColor}; background: ${topBg};`,
-        '.gm-toolbar-nav-container > ul > li:hover > a': `color: ${topColorHover}; background: ${topBgHover};`,
+        '.gm-toolbar-nav-container > ul > li:hover > a, .gm-toolbar-nav-container > ul > li.current-menu-item > a, .gm-toolbar-nav-container > ul > li.current-menu-ancestor > a': `color: ${topColorHover}; background: ${topBgHover};`,
         '.gm-toolbar-nav-container ul ul a': `border: ${subLineThickness}px ${subLineStyle} ${subLineColor}; color: ${subColor}; background: ${subBg};`,
-        '.gm-toolbar-nav-container ul ul li:hover > a': `color: ${subColorHover}; background: ${subBgHover};`,
+        '.gm-toolbar-nav-container ul ul li:hover > a, .gm-toolbar-nav-container ul ul li.current-menu-item > a, .gm-toolbar-nav-container ul ul li.current-menu-ancestor > a': `color: ${subColorHover}; background: ${subBgHover};`,
         '.gm-toolbar-nav-container ul ul li:first-child > a': `border-top: ${subLineThickness}px ${subLineStyle} ${subLineColor};`,
-        '.gm-toolbar-nav-container ul ul': `border-top: 3px ${subLineStyle} ${subLineColor}; font-size: ${subFontSize}px;`,
+        '.gm-toolbar-nav-container ul ul, .gm-toolbar-nav-container ul ul ul': `border-top: ${subTopLineThickness}px ${subTopLineStyle} ${subTopLineColor}; font-size: ${subFontSize}px; width: ${subWidth}px;`,
+        '.gm-toolbar-nav-container ul ul ul': `left: ${subWidth}px;`,
       });
+
+      // Submenu border radius.
+      if (settings.toolbarMenuSubRadius) {
+        const topLeft = settings.toolbarMenuSubRadius1;
+        const topRight = settings.toolbarMenuSubRadius2;
+        const bottomRight = settings.toolbarMenuSubRadius3;
+        const bottomLeft = settings.toolbarMenuSubRadius4;
+
+        css.push({
+          '.gm-toolbar-nav-container ul ul li:first-child > a': `border-radius: ${topLeft}px ${topRight}px 0 0;`,
+          '.gm-toolbar-nav-container ul ul li:last-child > a': `border-radius: 0 0 ${bottomRight}px ${bottomLeft}px;`,
+        });
+
+      }
+
+      // Toolbar Submenu hover style
+      if ('fadein-link-color' === hoverStyle) {
+        css.push({
+          '.gm-toolbar-nav-container ul ul a': 'transition: background-color 0.55s ease, color 0.28s ease;',
+        });
+      }
+      if ('shift-right' === hoverStyle) {
+        css.push({
+          '.gm-toolbar-nav-container ul ul li:hover > a:before': 'left: 18px; opacity: 1; visibility: visible;',
+          '.gm-toolbar-nav-container ul ul li:hover > a': 'padding-left: 40px;',
+          '.gm-toolbar-nav-container ul ul li > a': 'transition: padding .15s ease !important;',
+        });
+      }
+
+      // Toolbar menu Submenu appearance style
+      if ('animate-from-bottom' === appearanceStyle) {
+        css.push({
+          '.gm-toolbar-nav-container ul ul': 'transition: all 0.2s; transform: translateY(32px);',
+          '.gm-toolbar-nav-container ul li:hover > ul': 'transform: translateY(0px);',
+        });
+      }
+      if ('animate-with-scaling' === appearanceStyle) {
+        css.push({
+          '.gm-toolbar-nav-container ul ul': 'transition: all 0.2s; transform: translateY(-50%) scaleY(0); opacity: 0.2;',
+          '.gm-toolbar-nav-container ul li:hover > ul': 'transform: translateY(0) scaleY(1); opacity: 1;',
+        });
+      }
+      if ('fade-in-out' === appearanceStyle) {
+        css.push({
+          '.gm-toolbar-nav-container ul ul': 'transition: opacity .16s cubic-bezier(1,0,1,1),visibility .16s cubic-bezier(1,0,1,1); opacity: 0.2;',
+          '.gm-toolbar-nav-container ul li:hover > ul': 'opacity: 1; visibility: visible;',
+        });
+      }
+      if ('slide-from-left' === appearanceStyle) {
+        css.push({
+          '.gm-toolbar-nav-container ul ul': 'transition: transform .28s ease-in-out 0s, -webkit-transform .28s ease-in-out 0s; transform: translateX(-50%);',
+          '.gm-toolbar-nav-container ul li:hover > ul': 'visibility: visible; transform: translateX(0); opacity: 1;'
+        });
+      }
+      if ('slide-from-left-fadein' === appearanceStyle) {
+        css.push({
+          '.gm-toolbar-nav-container ul ul': 'transition: all .28s ease-in-out 0s, -webkit-transform .28s ease-in-out 0s; transform: translateX(-50%); opacity: 0;',
+          '.gm-toolbar-nav-container ul li:hover > ul': 'visibility: visible; transform: translateX(0); opacity: 1;'
+        });
+      }
+      if ('slide-from-right' === appearanceStyle) {
+        css.push({
+          '.gm-toolbar-nav-container ul ul': 'transition: transform .28s ease-in-out 0s, -webkit-transform .28s ease-in-out 0s; transform: translateX(50%);',
+          '.gm-toolbar-nav-container ul li:hover > ul': 'visibility: visible; transform: translateX(0); opacity: 1;',
+        });
+      }
+      if ('slide-from-right-fadein' === appearanceStyle) {
+        css.push({
+          '.gm-toolbar-nav-container ul ul': 'transition: all .28s ease-in-out 0s, -webkit-transform .28s ease-in-out 0s; transform: translateX(50%); opacity: 0;',
+          '.gm-toolbar-nav-container ul li:hover > ul': 'visibility: visible; transform: translateX(0); opacity: 1;'
+        });
+      }
 
     }
 

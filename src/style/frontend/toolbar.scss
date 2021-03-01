@@ -107,11 +107,11 @@ GROOVY TOOLBAR
   ul li {
     min-height: 1px;
     vertical-align: middle;
+    position: relative;
   }
 
   ul li.hover,
   ul li:hover {
-    position: relative;
     z-index: 100109;
     cursor: default;
   }
@@ -128,7 +128,7 @@ GROOVY TOOLBAR
   ul ul ul {
     top: 0;
     left: 170px;
-    width: 190px;
+    width: 170px;
   }
 
   ul li:hover > ul {
@@ -171,14 +171,12 @@ GROOVY TOOLBAR
 
   /* TOP menu link style */
   a {
-    background: rgba(255, 255, 255, 1);
     color: rgba(104, 104, 104, 1);
     padding: 0 8px;
   }
 
   /* SUB menu link style */
   ul ul a {
-    background: rgba(255, 255, 255, 1);
     color: rgba(104, 104, 104, 1);
     border: 1px solid rgba(195, 195, 195, 1);
     border-top: 0 none;
@@ -189,13 +187,11 @@ GROOVY TOOLBAR
   /* TOP menu link Hover style */
   ul li:hover > a,
   ul li.active > a {
-    background: rgba(255, 255, 255, 1);
     color: rgba(104, 104, 104, 1);
   }
 
   /* SUB menu link Hover style */
   ul ul li:hover > a {
-    background: rgba(255, 255, 255, 1);
     color: rgba(104, 104, 104, 1);
   }
 
@@ -203,27 +199,36 @@ GROOVY TOOLBAR
   ul ul {
     border-top: 3px solid rgba(195, 195, 195, 1);
     text-transform: none;
-    min-width: 170px;
-  }
-
-  ul ul ul {
-    border-top: 0 none;
+    min-width: 50px;
   }
 
   ul ul li {
     position: relative;
   }
 
+  ul ul li > a:before {
+    position: absolute;
+    left: 15px;
+    display: inline-block;
+    visibility: hidden;
+    content: "";
+    transition: all .15s ease;
+    transform: translateX(0);
+    opacity: 0;
+    font: normal normal normal 16px/1 FontAwesome;
+    font-size: inherit;
+    line-height: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: auto;
+  }
+
   ul ul li:first-child > a {
     border-top: 1px solid rgba(195, 195, 195, 1);
   }
 
-  ul ul li:last-child > a {
-    border-radius: 0 0 3px 3px;
-  }
-
   ul ul li.menu-item-has-children > a:after {
-    content: '+';
+    content: "";
     position: absolute;
     top: 50%;
     right: 15px;
@@ -231,8 +236,13 @@ GROOVY TOOLBAR
   }
 
   ul li.menu-item-has-children > a:after {
-    content: '+';
+    content: "";
     margin-left: 5px;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
   }
 
   ul li.last ul {

@@ -403,11 +403,11 @@ function groovy_menu_js_request( $uniqid, $return_string = false ) {
 	$additional_js_var  = 'var groovyMenuSettings = ' . wp_json_encode( $groovyMenuSettings_json ) . ';';
 	$additional_js_init = '
 document.addEventListener("DOMContentLoaded", function () {
-	let gmNavNodes = document.querySelectorAll(\'.gm-navbar\');
-	if (gmNavNodes) {
-		gmNavNodes.forEach((gmNode) => {
-			if (gmNode.classList.contains(\'gm-preset-id-' . $preset_id . '\') && ! gmNode.classList.contains(\'gm-init-done\')) { var gm = new GroovyMenu(gmNode ,groovyMenuSettings); gm.init(); }
-		});
+	let gmNavNode = document.querySelector(\'.gm-preset-id-' . $preset_id . '\');
+	if (gmNavNode) {
+		if ( ! gmNavNode.classList.contains(\'gm-init-done\')) {
+			var gm = new GroovyMenu(gmNavNode ,groovyMenuSettings); gm.init();
+		}
 	}
 });';
 
