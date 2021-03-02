@@ -362,18 +362,8 @@ return array(
 				'alpha'     => true,
 				'condition' => array( 'header.style', 'in', array( '2' ) ),
 			),
-			'dropdown_hover_style'                          => array(
-				'title'   => esc_html__( 'Submenu hover style', 'groovy-menu' ),
-				'type'    => 'select',
-				'options' => array(
-					'default'           => esc_html__( 'Default', 'groovy-menu' ),
-					'shift-right'       => esc_html__( 'Shift right', 'groovy-menu' ),
-					'fadein-link-color' => esc_html__( 'Fade in', 'groovy-menu' ),
-				),
-				'default' => 'default',
-			),
 			'dropdown_appearance_style'                     => array(
-				'title'   => esc_html__( 'Submenu appearance style', 'groovy-menu' ),
+				'title'   => esc_html__( 'Dropdown appearance style', 'groovy-menu' ),
 				'type'    => 'select',
 				'options' => array(
 					'default'                 => esc_html__( 'Default', 'groovy-menu' ),
@@ -384,6 +374,16 @@ return array(
 					'slide-from-right-fadein' => esc_html__( 'Slide from right FadeIn', 'groovy-menu' ),
 					'slide-from-left'         => esc_html__( 'Slide from left', 'groovy-menu' ),
 					'slide-from-left-fadein'  => esc_html__( 'Slide from left FadeIn', 'groovy-menu' ),
+				),
+				'default' => 'default',
+			),
+			'dropdown_hover_style'                          => array(
+				'title'   => esc_html__( 'Menu item hover style', 'groovy-menu' ),
+				'type'    => 'select',
+				'options' => array(
+					'default'           => esc_html__( 'Default', 'groovy-menu' ),
+					'shift-right'       => esc_html__( 'Shift right', 'groovy-menu' ),
+					'fadein-link-color' => esc_html__( 'Fade in', 'groovy-menu' ),
 				),
 				'default' => 'default',
 			),
@@ -1262,19 +1262,8 @@ return array(
 				'description' => '',
 				'condition'   => array( 'toolbar_menu_enable', '==', true ),
 			),
-			'toolbar_menu_hover_style'                      => array(
-				'title'     => esc_html__( 'Submenu hover style', 'groovy-menu' ),
-				'type'      => 'select',
-				'options'   => array(
-					'default'           => esc_html__( 'Default', 'groovy-menu' ),
-					'shift-right'       => esc_html__( 'Shift right', 'groovy-menu' ),
-					'fadein-link-color' => esc_html__( 'Fade in', 'groovy-menu' ),
-				),
-				'default'   => 'default',
-				'condition' => array( 'toolbar_menu_enable', '==', true ),
-			),
 			'toolbar_menu_appearance_style'                 => array(
-				'title'     => esc_html__( 'Submenu appearance style', 'groovy-menu' ),
+				'title'     => esc_html__( 'Dropdown appearance style', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
 					'default'                 => esc_html__( 'Default', 'groovy-menu' ),
@@ -1289,8 +1278,19 @@ return array(
 				'default'   => 'animate-with-scaling',
 				'condition' => array( 'toolbar_menu_enable', '==', true ),
 			),
+			'toolbar_menu_hover_style'                      => array(
+				'title'     => esc_html__( 'Menu item hover style', 'groovy-menu' ),
+				'type'      => 'select',
+				'options'   => array(
+					'default'           => esc_html__( 'Default', 'groovy-menu' ),
+					'shift-right'       => esc_html__( 'Shift right', 'groovy-menu' ),
+					'fadein-link-color' => esc_html__( 'Fade in', 'groovy-menu' ),
+				),
+				'default'   => 'default',
+				'condition' => array( 'toolbar_menu_enable', '==', true ),
+			),
 			'toolbar_menu_top_start'                        => array(
-				'title'     => esc_html__( 'Top level menu', 'groovy-menu' ),
+				'title'     => esc_html__( 'Top level menu styles', 'groovy-menu' ),
 				'type'      => 'inlineStart',
 				'condition' => array( 'toolbar_menu_enable', '==', true ),
 			),
@@ -1335,7 +1335,7 @@ return array(
 				'condition' => array( 'toolbar_menu_enable', '==', true ),
 			),
 			'toolbar_menu_sub_start'                        => array(
-				'title'     => esc_html__( 'Dropdown second level menu', 'groovy-menu' ),
+				'title'     => esc_html__( 'Dropdown menu styles', 'groovy-menu' ),
 				'type'      => 'inlineStart',
 				'condition' => array( 'toolbar_menu_enable', '==', true ),
 			),
@@ -1380,7 +1380,7 @@ return array(
 				'condition' => array( 'toolbar_menu_enable', '==', true ),
 			),
 			'toolbar_menu_sub_width'                        => array(
-				'title'     => esc_html__( 'Toolbar submenu width', 'groovy-menu' ),
+				'title'     => esc_html__( 'Dropdown width', 'groovy-menu' ),
 				'type'      => 'number',
 				'range'     => array( 50, 2000 ),
 				'default'   => 140,
@@ -1388,7 +1388,7 @@ return array(
 				'condition' => array( 'toolbar_menu_enable', '==', true ),
 			),
 			'toolbar_menu_sub_border_start'                 => array(
-				'title'       => esc_html__( 'Toolbar submenu box border', 'groovy-menu' ),
+				'title'       => esc_html__( 'Dropdown border', 'groovy-menu' ),
 				'description' => '',
 				'type'        => 'inlineStart',
 				'condition'   => array( 'toolbar_menu_enable', '==', true ),
@@ -1424,7 +1424,7 @@ return array(
 				'condition' => array( 'toolbar_menu_enable', '==', true ),
 			),
 			'toolbar_menu_sub_top_border_start'             => array(
-				'title'       => esc_html__( 'Toolbar submenu box border top', 'groovy-menu' ),
+				'title'       => esc_html__( 'Dropdown top border styles', 'groovy-menu' ),
 				'description' => '',
 				'type'        => 'inlineStart',
 				'condition'   => array( 'toolbar_menu_enable', '==', true ),
@@ -1460,7 +1460,7 @@ return array(
 				'condition' => array( 'toolbar_menu_enable', '==', true ),
 			),
 			'toolbar_menu_sub_nav_border_start'             => array(
-				'title'       => esc_html__( 'Toolbar submenu items border bottom', 'groovy-menu' ),
+				'title'       => esc_html__( 'Dropdown divider lines', 'groovy-menu' ),
 				'description' => '',
 				'type'        => 'inlineStart',
 				'condition'   => array( 'toolbar_menu_enable', '==', true ),
@@ -1541,7 +1541,7 @@ return array(
 			),
 			'toolbar_menu_sub_radius_end'                   => array(
 				'type'      => 'inlineEnd',
-				'condition' => array( 'header.style', 'in', array( '1', '4' ) ),
+				'condition' => array( 'toolbar_menu_enable', '==', true ),
 			),
 			'scrollbar_group'                               => array(
 				'title'     => esc_html__( 'Scrollbar', 'groovy-menu' ) . ' & ' . esc_html__( 'Onepage', 'groovy-menu' ),

@@ -3984,9 +3984,20 @@ export default class GmStyles {
         '.gm-toolbar-nav-container ul ul a': `border-left: ${subLineThickness}px ${subLineStyle} ${subLineColor}; border-right: ${subLineThickness}px ${subLineStyle} ${subLineColor}; border-bottom: ${subNavLineThickness}px ${subNavLineStyle} ${subNavLineColor}; color: ${subColor}; background: ${subBg};`,
         '.gm-toolbar-nav-container ul ul li:hover > a, .gm-toolbar-nav-container ul ul li.current-menu-item > a, .gm-toolbar-nav-container ul ul li.current-menu-ancestor > a': `color: ${subColorHover}; background: ${subBgHover};`,
         '.gm-toolbar-nav-container ul ul li:last-child > a': `border-bottom: ${subLineThickness}px ${subLineStyle} ${subLineColor};`,
-        '.gm-toolbar-nav-container ul ul': `border-top: ${subTopLineThickness}px ${subTopLineStyle} ${subTopLineColor}; font-size: ${subFontSize}px; width: ${subWidth}px;`,
-        '.gm-toolbar-nav-container ul ul ul': `left: ${subWidth}px;`,
+        '.gm-toolbar-nav-container ul ul': `font-size: ${subFontSize}px; width: ${subWidth}px;`,
+        '.gm-toolbar-nav-container ul ul ul': `margin-top: -${subTopLineThickness}px; width: ${subWidth}px;`,
+        '.gm-toolbar-nav-container ul ul ul ul': `margin-top: 0; width: ${subWidth}px;`,
       });
+
+      if (subTopLineThickness < 1) {
+        css.push({
+          '.gm-toolbar-nav-container ul ul li:first-child > a': `border-top: ${subLineThickness}px ${subLineStyle} ${subLineColor};`,
+        });
+      } else {
+        css.push({
+          '.gm-toolbar-nav-container ul ul li:first-child > a': `border-top: ${subTopLineThickness}px ${subTopLineStyle} ${subTopLineColor};`,
+        });
+      }
 
       // Submenu border radius.
       if (settings.toolbarMenuSubRadius) {

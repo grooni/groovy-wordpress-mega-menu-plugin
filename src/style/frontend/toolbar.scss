@@ -127,7 +127,7 @@ GROOVY TOOLBAR
 
   ul ul ul {
     top: 0;
-    left: 170px;
+    left: 99.8%;
     width: 170px;
   }
 
@@ -181,6 +181,7 @@ GROOVY TOOLBAR
     border: 0 none;
     line-height: 150%;
     padding: 8px 20px;
+    backface-visibility: hidden;
   }
 
   /* TOP menu link Hover style */
@@ -198,6 +199,7 @@ GROOVY TOOLBAR
   ul ul {
     text-transform: none;
     min-width: 50px;
+    backface-visibility: hidden;
   }
 
   ul ul li {
