@@ -4,7 +4,7 @@ Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive,
 Requires at least: 4.9.7
 Tested up to: 5.6
 Requires PHP: 7.0
-Stable tag: 1.2.14
+Stable tag: 1.2.15
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -115,6 +115,11 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.2.15 =
+* Improve: Submenu appearance style for minimalistic menu type.
+* Add: New feature that allows to add an additional menu to the toolbar. Placed in section of "General > Toolbar Menu".
+* Add: New setting "Align toolbar to the center".
 
 = 1.2.14 =
 * Improve: Hamburger behavior and settings.

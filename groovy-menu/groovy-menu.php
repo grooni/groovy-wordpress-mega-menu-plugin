@@ -1,7 +1,7 @@
 <?php defined( 'ABSPATH' ) || die( 'This script cannot be accessed directly.' );
 /*
 Plugin Name: Groovy Menu (free)
-Version: 1.2.14
+Version: 1.2.15
 Description: Groovy menu is a modern adjustable and flexible menu designed for creating mobile-friendly menus with a lot of options.
 Plugin URI: https://groovymenu.grooni.com/
 Author: Grooni.com
@@ -31,7 +31,7 @@ if ( ! defined( 'GROOVY_MENU_LVER' ) ) {
 	return;
 }
 
-define( 'GROOVY_MENU_VERSION', '1.2.14' );
+define( 'GROOVY_MENU_VERSION', '1.2.15' );
 define( 'GROOVY_MENU_DB_VER_OPTION', 'groovy_menu_db_version' );
 define( 'GROOVY_MENU_DIR', plugin_dir_path( __FILE__ ) );
 define( 'GROOVY_MENU_URL', plugin_dir_url( __FILE__ ) );
@@ -403,11 +403,11 @@ function groovy_menu_js_request( $uniqid, $return_string = false ) {
 	$additional_js_var  = 'var groovyMenuSettings = ' . wp_json_encode( $groovyMenuSettings_json ) . ';';
 	$additional_js_init = '
 document.addEventListener("DOMContentLoaded", function () {
-	let gmNavNodes = document.querySelectorAll(\'.gm-navbar\');
-	if (gmNavNodes) {
-		gmNavNodes.forEach((gmNode) => {
-			if (gmNode.classList.contains(\'gm-preset-id-' . $preset_id . '\') && ! gmNode.classList.contains(\'gm-init-done\')) { var gm = new GroovyMenu(gmNode ,groovyMenuSettings); gm.init(); }
-		});
+	let gmNavNode = document.querySelector(\'.gm-preset-id-' . $preset_id . '\');
+	if (gmNavNode) {
+		if ( ! gmNavNode.classList.contains(\'gm-init-done\')) {
+			var gm = new GroovyMenu(gmNavNode ,groovyMenuSettings); gm.init();
+		}
 	}
 });';
 
