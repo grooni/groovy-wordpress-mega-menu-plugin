@@ -1548,11 +1548,29 @@ return array(
 				'type'      => 'group',
 				'serialize' => false,
 			),
-			'scrollbar_enable'                              => array(
+			'scrollbar_enable__start'                       => array(
 				'title'       => esc_html__( 'Enable internal submenus scrollbar', 'groovy-menu' ),
+				'type'        => 'inlineStart',
+				'description' => esc_html__( 'Enable scrolling for long lists of submenus and mega menus', 'groovy-menu' ),
+			),
+			'scrollbar_enable'                              => array(
+				'title'       => esc_html__( 'switch', 'groovy-menu' ),
 				'type'        => 'checkbox',
 				'default'     => true,
-				'description' => esc_html__( 'Enable scrolling for long lists of submenus and mega menus', 'groovy-menu' ),
+				'description' => ''
+			),
+			'scrollbar_enable_wheel_speed'                  => array(
+				'title'     => esc_html__( 'scroll speed', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( 10, 500 ),
+				'default'   => 50,
+				'unit'      => '%',
+				'step'      => 5,
+				'condition' => array( 'scrollbar_enable', '==', true ),
+			),
+			'scrollbar_enable__end'                         => array(
+				'type'      => 'inlineEnd',
+				'condition' => array( 'toolbar_menu_enable', '==', true ),
 			),
 			'scrollbar_enable_mobile'                       => array(
 				'title'       => esc_html__( 'Enable mobile menu scrollbar', 'groovy-menu' ),
@@ -2348,6 +2366,41 @@ return array(
 				'type'    => 'colorpicker',
 				'alpha'   => true,
 				'default' => '#93cb52',
+			),
+			'top_level_text_color_change__start'        => array(
+				'title'     => esc_html__( 'Top level link text color when submenu(s) are opened', 'groovy-menu' ),
+				'type'      => 'inlineStart',
+				'condition' => array(
+					array( 'header.style', 'in', array( '1', '3', '4', '5' ) ),
+					array( 'background_color_change_on_submenu_opened', '==', true ),
+				)
+			),
+			'top_level_text_color_change'               => array(
+				'title'     => esc_html__( 'normal', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => '#5a5a5a',
+				'alpha'     => true,
+				'condition' => array(
+					array( 'header.style', 'in', array( '1', '3', '4', '5' ) ),
+					array( 'background_color_change_on_submenu_opened', '==', true ),
+				)
+			),
+			'top_level_text_color_change_hover'         => array(
+				'title'     => esc_html__( 'hover and active', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => '#93cb52',
+				'alpha'     => true,
+				'condition' => array(
+					array( 'header.style', 'in', array( '1', '3', '4', '5' ) ),
+					array( 'background_color_change_on_submenu_opened', '==', true ),
+				)
+			),
+			'top_level_text_color_change__end'          => array(
+				'type'      => 'inlineEnd',
+				'condition' => array(
+					array( 'header.style', 'in', array( '1', '3', '4', '5' ) ),
+					array( 'background_color_change_on_submenu_opened', '==', true ),
+				)
 			),
 			'typography_group'                          => array(
 				'type'      => 'group',

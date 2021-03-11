@@ -328,12 +328,18 @@ export default function initScrollbar (settings) {
       });
     }
 
+    let scrollWheelSpeed = 0.6;
+
+    if (settings.scrollbarEnableWheelSpeed && settings.scrollbarEnableWheelSpeed > 9) {
+      scrollWheelSpeed = settings.scrollbarEnableWheelSpeed / 100;
+    }
+
     // Init Perfect Scrollbar for elem.
     const ps = new PerfectScrollbar(elem, {
       suppressScrollX: true,
       wheelPropagation: false,
       swipeEasing: false,
-      wheelSpeed: 0.5
+      wheelSpeed: scrollWheelSpeed
     });
 
     // Save the index of the scrollbar object for further manipulation.
