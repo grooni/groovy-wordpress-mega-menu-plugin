@@ -553,6 +553,12 @@ GROOVY MENU TABS MODULE
   font-weight: bold;
 }
 
+.gm-gui__module__internal-title {
+  font-weight: 600;
+  font-size: 22px;
+  margin-top: 60px;
+}
+
 .gm-gui__module__taxonomy_preset {
   width: 100%;
 
@@ -560,9 +566,11 @@ GROOVY MENU TABS MODULE
     display: flex;
     margin-top: 20px;
     border-top: 1px dashed #cbcbcb;
-    padding-top: 20px;
+    padding: 20px 4px 6px 10px;
     width: 100%;
     min-width: 100%;
+    background: #fefeff;
+    box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.03) inset;
 
     .gm-gui__module__subselect-title {
       display: block;

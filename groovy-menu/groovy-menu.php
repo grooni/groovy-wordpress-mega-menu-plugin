@@ -88,7 +88,7 @@ function groovy_menu_init_classes() {
 	}
 
 	if ( class_exists( 'GroovyMenuCategoryPreset' ) ) {
-		new GroovyMenuCategoryPreset( array( 'category', 'crane_portfolio_cats', 'post_tag', 'product_cat' ) );
+		new GroovyMenuCategoryPreset();
 	}
 
 	if ( class_exists( 'GroovyMenuSingleMetaPreset' ) ) {

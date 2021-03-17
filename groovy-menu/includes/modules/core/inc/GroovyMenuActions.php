@@ -76,7 +76,7 @@ class GroovyMenuActions {
 			$settings = $styles->serialize( true, false, false, true );
 
 			$toolbar_menu_position = empty( $settings['toolbar_menu_position'] ) ? '' : $settings['toolbar_menu_position'];
-			$toolbar_menu_id       = empty( $settings['toolbar_menu_id'] ) ? 0 : intval( $settings['toolbar_menu_id'] );
+			$toolbar_menu_id       = empty( $settings['toolbar_menu_id'] ) ? 0 : intval($settings['toolbar_menu_id']);
 
 			if ( ! in_array( $toolbar_menu_position, $allowed_actions_list, true ) || $toolbar_menu_id < 1 ) {
 				return;

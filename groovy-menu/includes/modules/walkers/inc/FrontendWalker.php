@@ -610,8 +610,11 @@ class FrontendWalker extends WalkerNavMenu {
 					// if no one Icon set & we get icon sidebar or expanded sidebar - then show first letter of nav-0menu title.
 				} elseif ( 0 === $depth && in_array( $headerStyle, array( 4, 5 ), true ) && ! $show_in_mobile ) {
 					$badge_content = '<span class="gm-menu-item__icon">' . $this->getFirstLetterAsIcon( $item ) . '</span>';
-
-					$badge['left'] .= $badge_content;
+					if ( 4 === $headerStyle ) {
+						$item_output .= $badge_content;
+					} else {
+						$badge['left'] .= $badge_content;
+					}
 				}
 
 				$badge_enable = $this->getBadgeEnable( $item );

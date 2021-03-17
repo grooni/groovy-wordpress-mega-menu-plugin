@@ -76,3 +76,19 @@
   background-repeat: no-repeat;
   background-position: 50% 50%;
 }
+
+tr.groovy-menu-fields.term_meta__custom_options__field {
+  background: #448aff;
+
+  th {
+    color: #ffffff;
+    border: 1px solid #448aff;
+    padding: 24px 6px 24px 20px;
+  }
+
+  td {
+    color: #252525;
+    background: #ffffff;
+    border: 1px solid #448aff;
+  }
+}
