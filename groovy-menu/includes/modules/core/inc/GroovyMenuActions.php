@@ -55,6 +55,38 @@ class GroovyMenuActions {
 
 
 	/**
+	 * Compile menu block for actions from preset options
+	 *
+	 * @param \GroovyMenuStyle $styles
+	 *
+	 * @return void;
+	 */
+	public static function check_menu_block_for_actions( \GroovyMenuStyle $styles ) {
+		global $groovyMenuSettings;
+		global $groovyMenuActions;
+
+		if ( ! isset( $groovyMenuSettings['_preset_mb_action_added'] ) || ! $groovyMenuSettings['_preset_mb_action_added'] ) {
+
+			$list = array(
+				'action__gm_before_main_header__custom_id' => 'gm_before_main_header',
+				'action__gm_after_main_header__custom_id'  => 'gm_after_main_header',
+			);
+
+			$settings = $styles->serialize( true, false, false, true );
+
+			foreach ( $list as $setting_index => $action_name ) {
+				if ( ! empty( $settings[ $setting_index ] ) ) {
+					$groovyMenuActions['custom_mb_actions'][ $action_name ][] = $settings[ $setting_index ];
+					add_action( $action_name, [ self::class, $action_name ], 10 );
+				}
+			}
+
+			$groovyMenuSettings['_preset_mb_action_added'] = true;
+		}
+	}
+
+
+	/**
 	 * Compile toolbar menu from preset options
 	 *
 	 * @param \GroovyMenuStyle $styles
@@ -125,13 +157,28 @@ class GroovyMenuActions {
 
 
 	/**
-	 * Compile shortcodes for action
+	 * Compile shortcodes and menu block for action
 	 */
 	public static function __callStatic( $method, $arguments ) {
 		global $groovyMenuActions;
 		if ( ! empty( $groovyMenuActions['custom_preset'][ $method ] ) ) {
 			foreach ( $groovyMenuActions['custom_preset'][ $method ] as $action_content ) {
 				echo do_shortcode( $action_content );
+			}
+		}
+
+		if ( ! empty( $groovyMenuActions['custom_mb_actions'][ $method ] ) ) {
+			foreach ( $groovyMenuActions['custom_mb_actions'][ $method ] as $mm_id ) {
+				$menu_block_helper = new \GroovyMenu\WalkerNavMenu();
+
+				echo $menu_block_helper->getMenuBlockPostContent( $mm_id );
+
+				if ( function_exists( 'groovy_menu_add_custom_styles' ) ) {
+					groovy_menu_add_custom_styles( $mm_id );
+				}
+				if ( function_exists( 'groovy_menu_add_custom_styles_support' ) ) {
+					groovy_menu_add_custom_styles_support( $mm_id );
+				}
 			}
 		}
 	}

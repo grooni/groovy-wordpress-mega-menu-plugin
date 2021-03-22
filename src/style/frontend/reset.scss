@@ -69,11 +69,3 @@ nav ul.gm-navbar-nav > li {
 .gm-dropdown-hover-style-shift-right .gm-dropdown-menu .gm-anchor .gm-menu-item__txt-wrapper {
   backface-visibility: hidden !important;
 }
-
-/* CLS fix */
-.gm-navigation-drawer--mobile:not(.gm-navigation-drawer--open) {
-  visibility: hidden;
-}
-.gm-navigation-drawer--mobile.gm-navigation-drawer--delay {
-  visibility: visible;
-}

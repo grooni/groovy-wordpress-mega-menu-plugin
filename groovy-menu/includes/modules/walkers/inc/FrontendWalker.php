@@ -58,7 +58,7 @@ class FrontendWalker extends WalkerNavMenu {
 				$classes = "gm-dropdown-menu gm-dropdown-menu--lvl-{$this->currentLvl}";
 			}
 
-			if ( $this->getBackgroundId( $this->currentItem ) ) {
+			if ( $this->isMegaMenu && $this->getBackgroundId( $this->currentItem ) ) {
 				$size    = $this->getBackgroundSize( $this->currentItem );
 				$styles .= 'background-image: url(' . $this->getBackgroundUrl( $this->currentItem, $size ) . ');';
 				$styles .= 'background-repeat: ' . $this->getBackgroundRepeat( $this->currentItem ) . ';';

@@ -68,7 +68,7 @@ GROOVY MENU GENERAL SETTINGS
   position: relative;
   visibility: hidden;
   min-height: 840px;
-  margin: 20px;
+  margin: 40px 20px;
   transition: visibility 0.3s linear, opacity 0.3s linear;
   opacity: 0;
   color: #555;
@@ -772,7 +772,7 @@ GROOVY MENU SELECT
 
 $select-color: #555;
 $select-background: #fff;
-$select-width: 250px;
+$select-width: 360px;
 $select-height: 40px;
 
 .select-hidden {
@@ -790,6 +790,7 @@ $select-height: 40px;
   color: $select-color;
   border: 1px solid #ddd;
   font-size: 16px;
+  width: 100%;
 }
 
 .gm-gui__module .select {
@@ -1377,7 +1378,9 @@ CHOICES
 /***************************************
 CUSTOMS
 ***************************************/
-.gm-gui__module__name__mobile_independent_css_hamburger_type .select-styled {
+.gm-gui__module__name__mobile_independent_css_hamburger_type .select-styled,
+.gm-gui__module__name__action__gm_before_main_header__custom_id .select-styled,
+.gm-gui__module__name__action__gm_after_main_header__custom_id .select-styled {
   min-width: 180px;
 }
 
