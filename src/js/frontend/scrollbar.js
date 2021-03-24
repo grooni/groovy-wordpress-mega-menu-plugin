@@ -104,8 +104,12 @@ export default function initScrollbar (settings) {
       return;
     }
 
-    let maxHeightCalculated = getDropdownMaxHeight(currentDropdown, false);
     let dropdownWrapper = parentMenuItem.querySelector('.gm-dropdown-menu-wrapper');
+    let headerStyle = parseInt(settings.header.style, 10);
+    let maxHeightCalculated = getDropdownMaxHeight(currentDropdown, false);
+    if ((1 === headerStyle || 4 === headerStyle) && settings.dropdownAppearanceStyle === 'animate-from-bottom') {
+      maxHeightCalculated = maxHeightCalculated + 40;
+    }
 
 
     // Second and next dropdown levels ---------------------------------------------------
