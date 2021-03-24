@@ -724,8 +724,33 @@ function groovyMenu( $args = array() ) {
 
 
 	if ( ( $groovyMenuSettings['mobileIndependentCssHamburger'] && 2 !== $header_style ) || $groovyMenuSettings['mobileCustomHamburger'] ) {
-		// do nothing ...
+
+
+		if ( $groovyMenuSettings['mobileCustomHamburger'] ) {
+			ob_start();
+			/**
+			 * Fires for custom mobile hamburger.
+			 *
+			 * @since 2.4.11
+			 */
+			do_action( 'gm_custom_mobile_hamburger' );
+			$output_html .= ob_get_clean();
+		}
+
+
 	} else {
+
+
+		ob_start();
+		/**
+		 * Fires before mobile hamburger.
+		 *
+		 * @since 1.2.16
+		 */
+		do_action( 'gm_before_mobile_hamburger' );
+		$output_html .= ob_get_clean();
+
+
 		$output_html .= '<span class="gm-menu-btn">
 						<span class="gm-menu-btn__inner">';
 		$menu_icon   = 'fa fa-bars';
@@ -735,7 +760,20 @@ function groovyMenu( $args = array() ) {
 		$output_html .= '	<i class="' . esc_attr( $menu_icon ) . '"></i>
 					</span>
 					</span>';
+
+
+		ob_start();
+		/**
+		 * Fires after mobile hamburger.
+		 *
+		 * @since 1.2.16
+		 */
+		do_action( 'gm_after_mobile_hamburger' );
+		$output_html .= ob_get_clean();
+
+
 	}
+
 
 	ob_start();
 	/**

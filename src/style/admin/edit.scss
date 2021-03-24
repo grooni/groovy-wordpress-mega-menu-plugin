@@ -67,7 +67,7 @@ GROOVY MENU GENERAL SETTINGS
 .gm-gui-container {
   position: relative;
   visibility: hidden;
-  min-height: 840px;
+  min-height: 880px;
   margin: 40px 20px;
   transition: visibility 0.3s linear, opacity 0.3s linear;
   opacity: 0;
@@ -453,7 +453,7 @@ GROOVY MENU TABS GENERAL
 ***************************************/
 
 .gm-gui__tab-panes {
-  min-height: 840px;
+  min-height: 880px;
   margin-left: 320px;
   padding: 30px 30px 0 30px;
   background-color: #fff;
@@ -895,8 +895,8 @@ CODEMIRROR styles
 ***************************************/
 .gm-form .CodeMirror {
   border: 1px solid #dbdbdb;
-  min-height: 600px;
-  height: 600px;
+  min-height: 680px;
+  height: 680px;
 }
 
 .gm-form .gm-textarea-small-height .CodeMirror {

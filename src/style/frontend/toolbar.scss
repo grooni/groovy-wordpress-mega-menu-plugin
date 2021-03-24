@@ -123,6 +123,7 @@ GROOVY TOOLBAR
   ul ul {
     visibility: hidden;
     position: absolute;
+    padding: 0;
     top: 100%;
     left: 0;
     z-index: 100108;
@@ -133,6 +134,7 @@ GROOVY TOOLBAR
     top: 0;
     left: 99.8%;
     width: 170px;
+    padding: 0;
   }
 
   ul li:hover > ul {
@@ -258,4 +260,9 @@ GROOVY TOOLBAR
   &> ul > li > a {
     line-height: 24px;
   }
+}
+
+.gm-navbar .gm-toolbar-nav .menu-item,
+.gm-navbar #gm-toolbar .gm-toolbar-nav-container ul {
+  padding: 0;
 }

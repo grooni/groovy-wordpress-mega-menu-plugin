@@ -30,6 +30,9 @@ class GroovyMenuActions {
 				'action__gm_main_menu_nav_last'             => 'gm_main_menu_nav_last',
 				'action__gm_main_menu_actions_button_first' => 'gm_main_menu_actions_button_first',
 				'action__gm_main_menu_actions_button_last'  => 'gm_main_menu_actions_button_last',
+				'action__gm_custom_mobile_hamburger'        => 'gm_custom_mobile_hamburger',
+				'action__gm_before_mobile_hamburger'        => 'gm_before_mobile_hamburger',
+				'action__gm_after_mobile_hamburger'         => 'gm_after_mobile_hamburger',
 				'action__gm_mobile_main_menu_top'           => 'gm_mobile_main_menu_top',
 				'action__gm_mobile_main_menu_nav_first'     => 'gm_mobile_main_menu_nav_first',
 				'action__gm_mobile_main_menu_nav_last'      => 'gm_mobile_main_menu_nav_last',
@@ -39,12 +42,38 @@ class GroovyMenuActions {
 				'action__gm_mobile_toolbar_end'             => 'gm_mobile_toolbar_end',
 			);
 
+			$wrappered_actions = array(
+				'gm_before_mobile_hamburger',
+				'gm_after_mobile_hamburger',
+			);
+
 			$settings = $styles->serialize( true, false, false, true );
 
 
 			foreach ( $list as $setting_index => $action_name ) {
 				if ( ! empty( $settings[ $setting_index ] ) ) {
-					$groovyMenuActions['custom_preset'][ $action_name ][] = wp_unslash( $settings[ $setting_index ] );
+
+					// Default wrapper must be Empty.
+					$wrapper = array(
+						'before' => '',
+						'after'  => '',
+					);
+
+					// Check needle for wrapper.
+					if ( in_array( $action_name, $wrappered_actions, true ) ) {
+						$wrapper = array(
+							'before' => '<div class="gm-action__' . esc_attr( $action_name ) . '">',
+							'after'  => '</div>',
+						);
+					}
+
+					// Prepare content.
+					$action_content = wp_unslash( self::prepare_string_for_unslash( $settings[ $setting_index ] ) );
+
+					// Wrap content.
+					$groovyMenuActions['custom_preset'][ $action_name ][] = $wrapper['before'] . $action_content . $wrapper['after'];
+
+					// Add action with content.
 					add_action( $action_name, [ self::class, $action_name ], 10 );
 				}
 			}
@@ -53,6 +82,24 @@ class GroovyMenuActions {
 		}
 	}
 
+
+	/**
+	 * Prepare string for unslash.
+	 *
+	 * @param $value string value for work with.
+	 *
+	 * @return string
+	 */
+	public static function prepare_string_for_unslash( $value ) {
+
+		// list from www.json.org: (\b backspace, \f formfeed).
+		$escapers     = array( "\\n", "\\r", "\\t", "\\f", "\\b" );
+		$replacements = array( "\n", "\r", "\t", "\x08", "\x0c" );
+
+		$result = str_replace( $escapers, $replacements, $value );
+
+		return $result;
+	}
 
 	/**
 	 * Compile menu block for actions from preset options
@@ -108,7 +155,7 @@ class GroovyMenuActions {
 			$settings = $styles->serialize( true, false, false, true );
 
 			$toolbar_menu_position = empty( $settings['toolbar_menu_position'] ) ? '' : $settings['toolbar_menu_position'];
-			$toolbar_menu_id       = empty( $settings['toolbar_menu_id'] ) ? 0 : intval($settings['toolbar_menu_id']);
+			$toolbar_menu_id       = empty( $settings['toolbar_menu_id'] ) ? 0 : intval( $settings['toolbar_menu_id'] );
 
 			if ( ! in_array( $toolbar_menu_position, $allowed_actions_list, true ) || $toolbar_menu_id < 1 ) {
 				return;

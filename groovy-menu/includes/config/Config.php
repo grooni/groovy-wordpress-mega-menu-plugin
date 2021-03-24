@@ -2139,6 +2139,43 @@ return array(
 			'custom_shortcode_buttons__end'                 => array(
 				'type' => 'inlineEnd',
 			),
+			'custom_shortcode_hamburger__start'             => array(
+				'title' => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu' ) . ' ' . esc_html__( 'Mobile Hamburger', 'groovy-menu' ),
+				'type'  => 'inlineStart',
+			),
+			'action__gm_custom_mobile_hamburger'            => array(
+				'title'             => esc_html__( 'Action for', 'groovy-menu' ) . ' ' . esc_html__( 'Custom mobile menu open trigger', 'groovy-menu' ),
+				'type'              => 'textarea',
+				'codemirror_editor' => true,
+				'lang_type'         => 'html',
+				'small_height'      => true,
+				'default'           => '',
+				'serialize'         => false,
+				'do_action'         => true,
+			),
+			'action__gm_before_mobile_hamburger'            => array(
+				'title'             => esc_html__( 'Before hamburger icon', 'groovy-menu' ),
+				'type'              => 'textarea',
+				'codemirror_editor' => true,
+				'lang_type'         => 'html',
+				'small_height'      => true,
+				'default'           => '',
+				'serialize'         => false,
+				'do_action'         => true,
+			),
+			'action__gm_after_mobile_hamburger'             => array(
+				'title'             => esc_html__( 'After hamburger icon', 'groovy-menu' ),
+				'type'              => 'textarea',
+				'codemirror_editor' => true,
+				'lang_type'         => 'html',
+				'small_height'      => true,
+				'default'           => '',
+				'serialize'         => false,
+				'do_action'         => true,
+			),
+			'custom_shortcode_hamburger__end'               => array(
+				'type' => 'inlineEnd',
+			),
 			'custom_shortcode_mobile__start'                => array(
 				'title' => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu' ) . ' ' . esc_html__( 'Mobile menu', 'groovy-menu' ),
 				'type'  => 'inlineStart',
