@@ -4,7 +4,7 @@ Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive,
 Requires at least: 4.9.7
 Tested up to: 5.7
 Requires PHP: 7.0
-Stable tag: 1.2.15
+Stable tag: 1.2.16
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -115,6 +115,20 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.2.16 =
+* Improve:  Possibility of correct interpretation of special characters ("\n", "\r", "\t", "\f", "\b") for outputting custom content added in "Groovy Menu > Custom code".
+* Add: Added three new Actions:
+  - Custom mobile menu open trigger: gm_custom_mobile_hamburger
+  - Before hamburger icon: gm_before_mobile_hamburger
+  - After hamburger icon: gm_after_mobile_hamburger
+  You can insert custom shortcodes or raw HTML in these areas. Read more in Manual.
+* Add: Added additional link color settings if "Top level menu background color when submenu (s) are opened" is enabled.
+* Add: Scroll speed setting for "Internal submenus scrollbar".
+* Fix: Fixed visual lags with enabled setting "Animate from bottom" when the dropdown container is greater than the screen height.
+* Fix: Fixed style issues with additional Toolbar menu, which appeared when working with Divi Builder.
+* Fix: For mega menu menus with large height size fixed a bug with calculating the page height on initial load.
+* Fix: Fixed bug when for top-level menu were assigned the "Mega Menu" and "Mega menu background image" the image was displayed even if the "Mega Menu" setting was already disabled for this menu item.
 
 = 1.2.15 =
 * Improve: Submenu appearance style for minimalistic menu type.

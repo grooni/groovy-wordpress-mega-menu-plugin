@@ -92,3 +92,31 @@ tr.groovy-menu-fields.term_meta__custom_options__field {
     border: 1px solid #448aff;
   }
 }
+
+.gm-msg-box {
+  &.notice {
+    border-left: 4px solid #448aff;
+  }
+
+  &.error {
+    border-left: 4px solid #d50000;
+  }
+
+  &.warning {
+    border-left: 4px solid #f2ca04;
+  }
+
+  .gm-msg-body-block {
+    margin: 0.5em 0;
+  }
+
+  .gm-msg-buttons-block {
+    text-align: start;
+    margin-top: 12px;
+  }
+
+  .gm-msg-dismiss-url {
+    text-decoration: none;
+    font-size: 12px;
+  }
+}
