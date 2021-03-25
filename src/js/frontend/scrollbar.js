@@ -104,8 +104,12 @@ export default function initScrollbar (settings) {
       return;
     }
 
-    let maxHeightCalculated = getDropdownMaxHeight(currentDropdown, false);
     let dropdownWrapper = parentMenuItem.querySelector('.gm-dropdown-menu-wrapper');
+    let headerStyle = parseInt(settings.header.style, 10);
+    let maxHeightCalculated = getDropdownMaxHeight(currentDropdown, false);
+    if ((1 === headerStyle || 4 === headerStyle) && settings.dropdownAppearanceStyle === 'animate-from-bottom') {
+      maxHeightCalculated = maxHeightCalculated + 40;
+    }
 
 
     // Second and next dropdown levels ---------------------------------------------------
@@ -328,12 +332,18 @@ export default function initScrollbar (settings) {
       });
     }
 
+    let scrollWheelSpeed = 0.6;
+
+    if (settings.scrollbarEnableWheelSpeed && settings.scrollbarEnableWheelSpeed > 9) {
+      scrollWheelSpeed = settings.scrollbarEnableWheelSpeed / 100;
+    }
+
     // Init Perfect Scrollbar for elem.
     const ps = new PerfectScrollbar(elem, {
       suppressScrollX: true,
       wheelPropagation: false,
       swipeEasing: false,
-      wheelSpeed: 0.5
+      wheelSpeed: scrollWheelSpeed
     });
 
     // Save the index of the scrollbar object for further manipulation.

@@ -67,8 +67,8 @@ GROOVY MENU GENERAL SETTINGS
 .gm-gui-container {
   position: relative;
   visibility: hidden;
-  min-height: 840px;
-  margin: 20px;
+  min-height: 880px;
+  margin: 40px 20px;
   transition: visibility 0.3s linear, opacity 0.3s linear;
   opacity: 0;
   color: #555;
@@ -453,7 +453,7 @@ GROOVY MENU TABS GENERAL
 ***************************************/
 
 .gm-gui__tab-panes {
-  min-height: 840px;
+  min-height: 880px;
   margin-left: 320px;
   padding: 30px 30px 0 30px;
   background-color: #fff;
@@ -553,6 +553,12 @@ GROOVY MENU TABS MODULE
   font-weight: bold;
 }
 
+.gm-gui__module__internal-title {
+  font-weight: 600;
+  font-size: 22px;
+  margin-top: 60px;
+}
+
 .gm-gui__module__taxonomy_preset {
   width: 100%;
 
@@ -560,9 +566,11 @@ GROOVY MENU TABS MODULE
     display: flex;
     margin-top: 20px;
     border-top: 1px dashed #cbcbcb;
-    padding-top: 20px;
+    padding: 20px 4px 6px 10px;
     width: 100%;
     min-width: 100%;
+    background: #fefeff;
+    box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.03) inset;
 
     .gm-gui__module__subselect-title {
       display: block;
@@ -764,7 +772,7 @@ GROOVY MENU SELECT
 
 $select-color: #555;
 $select-background: #fff;
-$select-width: 250px;
+$select-width: 360px;
 $select-height: 40px;
 
 .select-hidden {
@@ -782,6 +790,7 @@ $select-height: 40px;
   color: $select-color;
   border: 1px solid #ddd;
   font-size: 16px;
+  width: 100%;
 }
 
 .gm-gui__module .select {
@@ -886,8 +895,8 @@ CODEMIRROR styles
 ***************************************/
 .gm-form .CodeMirror {
   border: 1px solid #dbdbdb;
-  min-height: 600px;
-  height: 600px;
+  min-height: 680px;
+  height: 680px;
 }
 
 .gm-form .gm-textarea-small-height .CodeMirror {
@@ -1369,7 +1378,9 @@ CHOICES
 /***************************************
 CUSTOMS
 ***************************************/
-.gm-gui__module__name__mobile_independent_css_hamburger_type .select-styled {
+.gm-gui__module__name__mobile_independent_css_hamburger_type .select-styled,
+.gm-gui__module__name__action__gm_before_main_header__custom_id .select-styled,
+.gm-gui__module__name__action__gm_after_main_header__custom_id .select-styled {
   min-width: 180px;
 }
 

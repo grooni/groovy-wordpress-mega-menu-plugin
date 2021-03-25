@@ -18,3 +18,11 @@
   cursor: pointer;
   transition: transform linear .2s;
 }
+
+.gm-action__gm_before_mobile_hamburger,
+.gm-action__gm_after_mobile_hamburger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

@@ -92,11 +92,13 @@ document.addEventListener('DOMContentLoaded', () => {
         .forEach((wrapper) => {
           let presetField = wrapper.querySelector('.gm-subselect--preset');
           let menuField = wrapper.querySelector('.gm-subselect--navmenu');
+          let typeField = wrapper.querySelector('.gm-subselect--type');
           let taxonomy = presetField.dataset.taxonomy;
           let valuePreset = presetField[presetField.selectedIndex].value;
           let valueMenu = menuField.value;
+          let valueType = typeField.value;
 
-          collectValues.push(taxonomy + ':::' + valuePreset + '@' + valueMenu);
+          collectValues.push(taxonomy + ':::' + valuePreset + '@' + valueMenu + ':::' + valueType);
         });
 
       document.querySelector('.gm-taxonomy_preset').value = collectValues.join();
