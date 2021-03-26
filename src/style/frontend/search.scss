@@ -166,3 +166,11 @@ FULLSCREEN SEARCH
   visibility: hidden;
   opacity: 0;
 }
+
+.gm-navbar .gm-search__txt {
+  display: none;
+}
+
+.gm-navbar .gm-menu-actions-wrapper .gm-search {
+  margin: auto 8px;
+}

@@ -156,7 +156,7 @@ return array(
 				'unit'        => 'px',
 			),
 			'woocommerce_cart_icon_size_mobile'             => array(
-				'title'       => esc_html__( 'Mobile icon size', 'groovy-menu' ),
+				'title'       => esc_html__( 'Mobile icon size', 'groovy-menu' ) . ' (' . esc_html__( 'Slide container', 'groovy-menu' ) . ')',
 				'description' => '',
 				'type'        => 'number',
 				'default'     => '17',
@@ -889,7 +889,7 @@ return array(
 				'unit'        => 'px',
 			),
 			'search_form_icon_size_mobile'                  => array(
-				'title'       => esc_html__( 'Mobile icon size', 'groovy-menu' ),
+				'title'       => esc_html__( 'Mobile icon size', 'groovy-menu' ) . ' (' . esc_html__( 'Slide container', 'groovy-menu' ) . ')',
 				'description' => '',
 				'type'        => 'number',
 				'default'     => 17,
@@ -898,6 +898,20 @@ return array(
 			),
 			'search_form_icon_end'                          => array(
 				'type' => 'inlineEnd'
+			),
+			'search_form_icon_position_mobile'              => array(
+				'title'       => esc_html__( 'Mobile search icon position', 'groovy-menu' ),
+				'description' => esc_html__( 'You can change the icon color in the [Styles] - [Side Icon] section.', 'groovy-menu' ) . ' ' . esc_html__( 'See [Side icon mobile] and [Side icon mobile sticky]', 'groovy-menu' ),
+				'type'        => 'select',
+				'options'     => array(
+					'slideBottom'        => esc_html__( 'Slide container (bottom)', 'groovy-menu' ),
+					'topbar'             => esc_html__( 'Top bar side icon', 'groovy-menu' ),
+					'topbar_slideBottom' => esc_html__( 'Top bar side icon & slide container (bottom)', 'groovy-menu' ),
+				),
+				'default'     => 'slideBottom',
+				'condition'   => array(
+					array( 'search_form', 'in', array( 'dropdown-without-ajax', 'fullscreen', 'custom' ) )
+				),
 			),
 			'search_form_icon_color_start'                  => array(
 				'title'     => esc_html__( 'Opened search form', 'groovy-menu' ) . ': ' . esc_html__( 'Search icon color', 'groovy-menu' ),
@@ -3106,11 +3120,12 @@ return array(
 				'condition'   => array( 'mobile_independent_css_hamburger', '==', true ),
 			),
 			'mobile_independent_css_hamburger_height' => array(
-				'title'   => esc_html__( 'line thickness', 'groovy-menu' ),
-				'type'    => 'number',
-				'range'   => array( 1, 9 ),
-				'default' => 3,
-				'unit'    => 'px',
+				'title'     => esc_html__( 'line thickness', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( 1, 9 ),
+				'default'   => 3,
+				'unit'      => 'px',
+				'condition' => array( 'mobile_independent_css_hamburger', '==', true ),
 			),
 			'mobile_independent_css_hamburger_end'    => array(
 				'type'      => 'inlineEnd',
@@ -3206,7 +3221,7 @@ return array(
 				'default' => 'default',
 			),
 			'mobile_show_woominicart'                 => array(
-				'title'       => esc_html__( 'Show', 'groovy-menu' ) . ' ' . esc_html__( 'Woo minicart', 'groovy-menu' ),
+				'title'       => esc_html__( 'Show', 'groovy-menu' ) . ' ' . esc_html__( 'Woo minicart', 'groovy-menu' ) . ' ' . esc_html__( 'at the Top Bar', 'groovy-menu' ),
 				'description' => esc_html__( 'You can change the icon color in the [Styles] - [Side Icon] section.', 'groovy-menu' ),
 				'type'        => 'checkbox',
 				'default'     => false,
