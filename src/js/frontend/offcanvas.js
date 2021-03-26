@@ -139,15 +139,16 @@ function topIndentForBurger(navDrawer) {
   if (gmToolbar) {
     gmToolbarHeight = parseInt(window.getComputedStyle(gmToolbar, null).height);
     gmToolbarHeight = (!gmToolbarHeight) ? 0 : gmToolbarHeight;
-    offset = getCoords(gmToolbar).top - window.pageYOffset - wpAdminbarElemHeight;
-    if (offset < 1) {
-      if ((gmToolbarHeight + offset) < 1) {
+    let offsetToolbar = getCoords(gmToolbar).top - window.pageYOffset - wpAdminbarElemHeight;
+    if (offsetToolbar < 1) {
+      if ((gmToolbarHeight + offsetToolbar) < 1) {
         gmToolbarHeight = 0;
       } else {
-        gmToolbarHeight = gmToolbarHeight + offset;
+        gmToolbarHeight = gmToolbarHeight + offsetToolbar;
       }
     }
   }
+
   if (gmInner) {
     gmInnerHeight = parseInt(window.getComputedStyle(gmInner, null).height);
     gmInnerHeight = (!gmInnerHeight) ? 20 : gmInnerHeight;
@@ -166,8 +167,8 @@ function topIndentForBurger(navDrawer) {
         }
       }
     }
-
   }
+
   let gmBurgerHeightWrapper = parseInt(window.getComputedStyle(gmBurger, null).height);
   gmBurgerHeightWrapper = (!gmBurgerHeightWrapper) ? 20 : gmBurgerHeightWrapper;
   let gmBurgerWidth = parseInt(window.getComputedStyle(gmBurger, null).width);
@@ -195,7 +196,9 @@ function topIndentForBurger(navDrawer) {
       gmBurger.classList.remove('gm-burger--float');
     }
   } else {
-    indentPx = indentPx + offset;
+    if (offset < 0) {
+      indentPx = indentPx + offset;
+    }
   }
 
   if (gmBurgerPaddings > 0) {
