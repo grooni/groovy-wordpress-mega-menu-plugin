@@ -401,15 +401,29 @@ function groovy_menu_js_request( $uniqid, $return_string = false ) {
 
 	$additional_js      = '';
 	$additional_js_var  = 'var groovyMenuSettings = ' . wp_json_encode( $groovyMenuSettings_json ) . ';';
-	$additional_js_init = '
-document.addEventListener("DOMContentLoaded", function () {
-	let gmNavNode = document.querySelector(\'.gm-preset-id-' . $preset_id . '\');
-	if (gmNavNode) {
-		if ( ! gmNavNode.classList.contains(\'gm-init-done\')) {
-			var gm = new GroovyMenu(gmNavNode ,groovyMenuSettings); gm.init();
+	$additional_js_init = '';
+
+	if ( ! $groovyMenuSettings['frontendInitImmediately'] ) {
+		$additional_js_init .= ' document.addEventListener("DOMContentLoaded", function () { ';
+	}
+
+	if ( $groovyMenuSettings['frontendInitAlt'] ) {
+		$additional_js_init .= ' let groovyMenuWrapperNode = document.querySelector(\'.gm-navbar\'); ';
+	} else {
+		$additional_js_init .= ' let groovyMenuWrapperNode = document.querySelector(\'.gm-preset-id-' . $preset_id . '\'); ';
+	}
+
+	$additional_js_init .= '
+	if (groovyMenuWrapperNode) {
+		if ( ! groovyMenuWrapperNode.classList.contains(\'gm-init-done\')) {
+			var gm = new GroovyMenu(groovyMenuWrapperNode ,groovyMenuSettings); gm.init();
 		}
 	}
-});';
+';
+
+	if ( ! $groovyMenuSettings['frontendInitImmediately'] ) {
+		$additional_js_init .= ' }); ';
+	}
 
 	$additional_js .= apply_filters( 'groovy_menu_additional_js_front__var', $additional_js_var, $groovyMenuSettings_json );
 	$additional_js .= apply_filters( 'groovy_menu_additional_js_front__init', $additional_js_init, $preset_id );

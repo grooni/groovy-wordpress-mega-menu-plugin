@@ -804,6 +804,15 @@ class GroovyMenu {
       watchWooMiniCartCounter();
     }
 
+    // integration helper for Thrive Themes Builder
+    let gmThriveIntegration = document.querySelector('.groovy_menu_thrive_integration');
+    if (gmThriveIntegration) {
+      let gmThriveIntegrationHeader = document.querySelector('div[data-tcb-elem-type="header"]');
+      if (gmThriveIntegrationHeader) {
+        gmThriveIntegrationHeader.style.zIndex = '100';
+      }
+    }
+
   }
 }
 
