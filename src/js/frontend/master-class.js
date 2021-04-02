@@ -68,6 +68,7 @@ class GroovyMenu {
     let navDrawer = document.querySelector('.gm-navigation-drawer');
 
     let hamburgerMenu = (options.mobileIndependentCssHamburger && 2 !== headerStyle) ? document.querySelector('.gm-burger') : document.querySelector('.gm-menu-btn');
+    let hamburgerMenuClose = document.querySelector('.gm-navigation-drawer .gm-hamburger-close');
     let hamburgerMenuType = (options.mobileIndependentCssHamburgerType) ? options.mobileIndependentCssHamburgerType : 'hamburger--squeeze';
 
     if (options.mobileCustomHamburger) {
@@ -602,7 +603,8 @@ class GroovyMenu {
       options: options,
       navDrawer,
       mainMenuWrapper,
-      hamburgerMenu
+      hamburgerMenu,
+      hamburgerMenuClose
     });
 
     function setOffcanvas() {

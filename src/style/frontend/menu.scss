@@ -295,6 +295,10 @@ NAVBAR GENERAL STYLES
   display: none;
 }
 
+.gm-main-menu-wrapper .gm-custom-dropdown-width > .gm-dropdown-menu > .gm-menu-item.menu-item-object-gm_menu_block {
+  padding: 0;
+}
+
 /* ------------------------------------ Mobile menus Slider Style */
 
 .gm-navigation-drawer--mobile:not(.gm-transition-work) {

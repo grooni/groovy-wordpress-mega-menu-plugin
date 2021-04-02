@@ -925,7 +925,9 @@ function groovyMenu( $args = array() ) {
 				$cartIcon = $styles->getGlobal( 'misc_icons', 'cart_icon' );
 			}
 
-			$output_html .= '<div class="gm-minicart gm-dropdown">';
+			$woo_cart_dropdown = $groovyMenuSettings['wooCartDisableDropdown'] ? '' : ' gm-dropdown';
+
+			$output_html .= '<div class="gm-minicart' . $woo_cart_dropdown . '">';
 
 			$output_html .= '<a href="' . get_permalink( wc_get_page_id( 'cart' ) ) . '"
 										   class="gm-minicart-link">
@@ -1003,6 +1005,18 @@ function groovyMenu( $args = array() ) {
 
 		$output_html .= '<div class="gm-grid-container d-flex flex-column h-100">';
 
+		if ( $groovyMenuSettings['mobileOffcanvasFullwidth'] && ! $groovyMenuSettings['mobileIndependentCssHamburger'] ) {
+			$output_html .= '
+			<div class="gm-menu-btn gm-hamburger-close">
+				<div class="gm-menu-btn__inner">';
+			$menu_icon   = 'fa fa-times';
+			if ( ! empty( $styles->getGlobal( 'misc_icons', 'close_icon' ) ) ) {
+				$menu_icon = $styles->getGlobal( 'misc_icons', 'close_icon' );
+			}
+			$output_html .= '	<i class="' . esc_attr( $menu_icon ) . '"></i>
+				</div>
+			</div>';
+		}
 
 		ob_start();
 		/**

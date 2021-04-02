@@ -7,6 +7,7 @@ var options;
 var navDrawer;
 var mainMenuWrapper;
 var hamburgerMenu;
+var hamburgerMenuClose;
 
 let offcanvasIsOpen = function (navDrawer) {
   let isOpen;
@@ -330,6 +331,9 @@ export function offcanvasSlide() {
   if (hamburgerMenu) {
     hamburgerMenu.addEventListener('click', clickHandler);
   }
+  if (hamburgerMenuClose) {
+    hamburgerMenuClose.addEventListener('click', clickHandler);
+  }
 
   // Close button event for Fullscreen minimalistic type.
   if (2 === headerStyle && options.minimalisticMenuFullscreen) {
@@ -392,4 +396,5 @@ export function initOffcanvas(args) {
   navDrawer = args.navDrawer;
   mainMenuWrapper = args.mainMenuWrapper;
   hamburgerMenu = args.hamburgerMenu;
+  hamburgerMenuClose = args.hamburgerMenuClose;
 }

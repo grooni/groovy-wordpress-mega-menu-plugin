@@ -388,6 +388,11 @@ return array(
 				'title'   => esc_html__( 'Side icon', 'groovy-menu' ),
 				'default' => 'fa fa-bars',
 			),
+			'close_icon' => array(
+				'type'    => 'icon',
+				'title'   => esc_html__( 'Close icon', 'groovy-menu' ),
+				'default' => 'fa fa-times',
+			),
 		),
 	),
 	'icons'      => array(
