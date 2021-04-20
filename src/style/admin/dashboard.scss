@@ -695,13 +695,15 @@ GENERAL SETTINGS MODAL
   line-height: 29px;
 }
 
-.groovy-delete-font {
+.groovy-delete-font,
+.groovy-replace-icon-pack {
   cursor: pointer;
   position: relative;
   z-index: 999;
   display: block;
   float: right;
   margin-bottom: 15px;
+  margin-left: 8px;
   padding: 8px 20px;
   user-select: none;
   transition: background-color linear 0.3s;

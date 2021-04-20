@@ -164,7 +164,9 @@ class GroovyMenuUtils {
 	public static function getUploadDir() {
 		$uploadDir = wp_upload_dir();
 
-		return $uploadDir['basedir'] . '/groovy/';
+		$return_dir = str_replace( array( '\\', '/', ), DIRECTORY_SEPARATOR, $uploadDir['basedir'] . '/groovy/' );
+
+		return $return_dir;
 	}
 
 
@@ -174,7 +176,9 @@ class GroovyMenuUtils {
 	public static function getFontsDir() {
 		$fonts = self::getUploadDir() . 'fonts/';
 
-		return $fonts;
+		$return_dir = str_replace( array( '\\', '/', ), DIRECTORY_SEPARATOR, $fonts );
+
+		return $return_dir;
 	}
 
 
@@ -1475,6 +1479,67 @@ class GroovyMenuUtils {
 
 
 	/**
+	 * Delete font files.
+	 *
+	 * @param string $font_name
+	 *
+	 * @return boolean
+	 */
+	public static function delete_icon_pack_files( $font_name = '' ) {
+		$font_name = str_replace( array(
+			':',
+			'.',
+			'\\',
+			'/'
+		), '', esc_attr( $font_name ) );
+
+		if ( empty( $font_name ) ) {
+			return false;
+		}
+
+		if ( ! defined( 'FS_METHOD' ) ) {
+			define( 'FS_METHOD', 'direct' );
+		}
+
+		global $wp_filesystem;
+		if ( empty( $wp_filesystem ) ) {
+			$file_path = str_replace( array(
+				'\\',
+				'/'
+			), DIRECTORY_SEPARATOR, ABSPATH . '/wp-admin/includes/file.php' );
+
+			if ( file_exists( $file_path ) ) {
+				require_once $file_path;
+				WP_Filesystem();
+			}
+		}
+		if ( empty( $wp_filesystem ) ) {
+			return false;
+		}
+
+		$exist_fonts = array(
+			'eot'  => true,
+			'woff' => true,
+			'ttf'  => true,
+			'svg'  => true,
+			'css'  => true,
+		);
+
+		$dir = GroovyMenuUtils::getFontsDir();
+
+		foreach ( $exist_fonts as $file_type => $flag ) {
+
+			$file_path = $dir . $font_name . '.' . $file_type;
+
+			if ( $wp_filesystem->exists( $file_path ) ) {
+				$wp_filesystem->delete( $file_path, false, 'f' );
+			}
+		}
+
+		return true;
+	}
+
+	/**
 	 * Install default fonts.
 	 *
 	 * @param bool $self_install
@@ -1559,12 +1624,14 @@ class GroovyMenuUtils {
 						$dir = GroovyMenuUtils::getFontsDir();
 						wp_mkdir_p( $dir );
 
-						file_put_contents( $dir . $name . '.woff', $fontFiles['woff'] );
-						file_put_contents( $dir . $name . '.ttf', $fontFiles['ttf'] );
-						file_put_contents( $dir . $name . '.svg', $fontFiles['svg'] );
-						file_put_contents( $dir . $name . '.eot', $fontFiles['eot'] );
-						file_put_contents( $dir . $name . '.css',
-							self::generate_fonts_css( $name, $selectionData ) );
+						foreach ( $fontFiles as $font_type => $font_file ) {
+							if ( false !== $font_file ) {
+								$type         = esc_attr( $font_type );
+								$put_contents = $wp_filesystem->put_contents( $dir . $name . '.' . $type, $fontFiles[ $type ], FS_CHMOD_FILE );
+							}
+						}
+
+						$put_contents = $wp_filesystem->put_contents( $dir . $name . '.css', self::generate_fonts_css( $name, $selectionData, $fontFiles ), FS_CHMOD_FILE );
 
 						$icons = array();
 						foreach ( $selectionData['icons'] as $icon ) {
@@ -1589,20 +1656,94 @@ class GroovyMenuUtils {
 	}
 
 	/**
-	 * @param $name
-	 * @param $selectionData
+	 * @param string $name
+	 * @param array  $selectionData
+	 * @param array $font_files
 	 *
 	 * @return string
 	 */
-	public static function generate_fonts_css( $name, $selectionData ) {
+	public static function generate_fonts_css( $name, $selectionData, $font_files = array() ) {
+
+		$exist_fonts = array(
+			'eot'  => true,
+			'woff' => true,
+			'ttf'  => true,
+			'svg'  => true,
+		);
+
+		$starter = true;
+
+		$postfix = 'jk3qnc';
+		if ( ! empty( $_POST['gm-replace-field-name'] ) ) {
+			$postfix = 'jk3qnc' . rand( 100, 999 );
+		}
+
+		foreach ( $font_files as $index => $font_file ) {
+			if ( false === $font_file && ! empty( $exist_fonts[ $index ] ) ) {
+				$exist_fonts[ $index ] = false;
+			}
+		}
+
 		$css = '
 @font-face {
 	font-family: \'' . $name . '\';
-	src:url(\'' . $name . '.eot?jk3qnc\');
-	src:url(\'' . $name . '.eot?jk3qnc#iefix\') format(\'embedded-opentype\'),
-		url(\'' . $name . '.ttf?jk3qnc\') format(\'truetype\'),
-		url(\'' . $name . '.woff?jk3qnc\') format(\'woff\'),
-		url(\'' . $name . '.svg?jk3qnc#icomoon1\') format(\'svg\');
+	';
+
+		foreach ( $exist_fonts as $font_type => $flag ) {
+			if ( ! $flag ) {
+				continue;
+			}
+
+			$type = esc_attr( $font_type );
+			if ( 'eot' === $type ) {
+				if ( $starter ) {
+					$css .= 'src:url(\'' . $name . '.eot?' . $postfix . '\');
+	src:url(\'' . $name . '.eot?' . $postfix . '#iefix\') format(\'embedded-opentype\')';
+				} else {
+					$css .= ',
+		url(\'' . $name . '.eot?' . $postfix . '#iefix\') format(\'embedded-opentype\')';
+				}
+				$starter = false;
+			}
+
+			if ( 'ttf' === $type ) {
+				if ( $starter ) {
+					$css .= 'src:url(\'' . $name . '.ttf?' . $postfix . '\');
+	src:url(\'' . $name . '.ttf?' . $postfix . '\') format(\'truetype\')';
+				} else {
+					$css .= ',
+		url(\'' . $name . '.ttf?' . $postfix . '\') format(\'truetype\')';
+				}
+				$starter = false;
+			}
+
+			if ( 'woff' === $type ) {
+				if ( $starter ) {
+					$css .= 'src:url(\'' . $name . '.woff?' . $postfix . '\');
+	src:url(\'' . $name . '.woff?' . $postfix . '\') format(\'woff\')';
+				} else {
+					$css .= ',
+		url(\'' . $name . '.woff?' . $postfix . '\') format(\'woff\')';
+				}
+				$starter = false;
+			}
+
+			if ( 'svg' === $type ) {
+				if ( $starter ) {
+					$css .= 'src:url(\'' . $name . '.svg?' . $postfix . '#icomoon1\');
+	src:url(\'' . $name . '.svg?' . $postfix . '#icomoon1\') format(\'svg\')';
+				} else {
+					$css .= ',
+		url(\'' . $name . '.svg?' . $postfix . '#icomoon1\') format(\'svg\')';
+				}
+				$starter = false;
+			}
+		}
+
+		$css .= ';';
+
+
+		$css .= '
 	font-weight: normal;
 	font-style: normal;
 	font-display: block;
@@ -2614,6 +2755,23 @@ class GroovyMenuUtils {
 			'hamburger--vortex'      => esc_html__( 'vortex', 'groovy-menu' ),
 			'hamburger--vortex-r'    => esc_html__( 'vortex reverse', 'groovy-menu' ),
 		);
+	}
+
+	public static function remove_p_tag( $content, $do_shortcode = true ) {
+		if ( $do_shortcode ) {
+			$content = do_shortcode( shortcode_unautop( $content ) );
+		}
+		$content = preg_replace( '#<p[^>]*>\[vc_row(.*?)\/vc_row]<\/p>#', '[vc_row$1/vc_row]', $content );
+		$content = preg_replace( '#<p[^>]*><div#', '<div', $content );
+		$content = preg_replace( '#\/div><\/p>#', '/div>', $content );
+
+		$content = preg_replace( '#<div class="(.*?)" ><\/p>#', '<div class="$1" >', $content );
+		$content = preg_replace( '#<p><\/div>#', '</div>', $content );
+
+		$content = preg_replace( '#<p><!--(.*?)--></p>#', '<!--$1-->', $content );
+		$content = preg_replace( '#<p><\/p>#', '', $content );
+
+		return $content;
 	}
 
 }

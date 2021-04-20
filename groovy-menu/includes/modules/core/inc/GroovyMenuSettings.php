@@ -11,9 +11,9 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 		 */
 		protected $settings;
 
-		protected $lver = false;
+		protected $lver                    = false;
 		protected $remote_child_themes_url = 'https://updates.grooni.com/theme-demos/gm-child-themes/config/';
-		protected $remote_get_msg_url = 'https://license.grooni.com/grooni-msg-spot/';
+		protected $remote_get_msg_url      = 'https://license.grooni.com/grooni-msg-spot/';
 
 		public function __construct() {
 
@@ -1030,6 +1030,28 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				if ( ! empty( $_POST['icons'] ) ) {
 					if ( class_exists( 'ZipArchive' ) ) {
 
+						if ( ! defined( 'FS_METHOD' ) ) {
+							define( 'FS_METHOD', 'direct' );
+						}
+
+						global $wp_filesystem;
+						if ( empty( $wp_filesystem ) ) {
+							$file_path = str_replace( array(
+								'\\',
+								'/'
+							), DIRECTORY_SEPARATOR, ABSPATH . '/wp-admin/includes/file.php' );
+
+							if ( file_exists( $file_path ) ) {
+								require_once $file_path;
+								WP_Filesystem();
+							}
+						}
+						if ( empty( $wp_filesystem ) ) {
+							@ob_clean();
+							echo esc_html__( 'Cannot start $wp_filesystem.', 'groovy-menu' );
+							exit;
+						}
+
 						$filename = get_attached_file( $_POST['icons'] );
 						$zip      = new ZipArchive();
 						if ( $zip->open( $filename ) ) {
@@ -1037,14 +1059,25 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 
 							$selection     = $zip->getFromName( 'selection.json' );
 							$selectionData = json_decode( $selection, true );
-							$name          = 'groovy-' . rand( 10000, 99999 );
+							$name          = empty( $_POST['gm-replace-field-name'] ) ? 'groovy-' . time() : esc_attr( $_POST['gm-replace-field-name'] );
+
+							\GroovyMenuUtils::delete_icon_pack_files( $name );
 
 							$fontFiles['woff'] = $zip->getFromName( 'fonts/' . $selectionData['metadata']['name'] . '.woff' );
+							$fontFiles['ttf']  = $zip->getFromName( 'fonts/' . $selectionData['metadata']['name'] . '.ttf' );
+							$fontFiles['svg']  = $zip->getFromName( 'fonts/' . $selectionData['metadata']['name'] . '.svg' );
+							$fontFiles['eot']  = $zip->getFromName( 'fonts/' . $selectionData['metadata']['name'] . '.eot' );
 
 							$dir = GroovyMenuUtils::getFontsDir();
 
-							file_put_contents( $dir . $name . '.woff', $fontFiles['woff'] );
-							file_put_contents( $dir . $name . '.css', GroovyMenuUtils::generate_fonts_css( $name, $selectionData ) );
+							foreach ( $fontFiles as $font_type => $font_file ) {
+								if ( false !== $font_file ) {
+									$type         = esc_attr( $font_type );
+									$put_contents = $wp_filesystem->put_contents( $dir . $name . '.' . $type, $fontFiles[ $type ], FS_CHMOD_FILE );
+								}
+							}
+
+							$put_contents = $wp_filesystem->put_contents( $dir . $name . '.css', GroovyMenuUtils::generate_fonts_css( $name, $selectionData, $fontFiles ), FS_CHMOD_FILE );
 
 							$icons = array();
 							foreach ( $selectionData['icons'] as $icon ) {
@@ -1079,8 +1112,9 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 
 			if ( GroovyMenuRoleCapabilities::globalOptions( true ) ) {
 				$fonts = \GroovyMenu\FieldIcons::getFonts();
-				unset( $fonts[ $_GET['name'] ] );
+				unset( $fonts[ esc_attr( $_GET['name'] ) ] );
 				\GroovyMenu\FieldIcons::setFonts( $fonts );
+				\GroovyMenuUtils::delete_icon_pack_files( esc_attr( $_GET['name'] ) );
 			}
 			exit;
 		}
