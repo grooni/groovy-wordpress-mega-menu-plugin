@@ -1277,9 +1277,7 @@ export default class GmStyles {
         '.gm-navbar': 'position: fixed; box-sizing: content-box;',
         '.gm-navbar .gm-wrapper': 'position: relative; height: 100vh;',
         '.gm-navbar .gm-inner': 'height: 100%;',
-        '.gm-navbar .gm-container': 'height: 100%;',
-        '.gm-navbar .gm-toolbar': 'position: absolute; z-index: 1005; bottom: 20px; width: 100%; text-align: center;',
-        '.admin-bar .gm-navbar .gm-toolbar': 'bottom: 52px;',
+        '.gm-navbar .gm-toolbar': 'position: relative; width: 100%; text-align: center;',
         '.gm-navbar .gm-toolbar-right': 'flex-direction: column;',
         '.gm-navbar .gm-toolbar-socials-list': 'order: 2;',
         '.gm-navbar #lang_sel_click': 'align-self: center;',
@@ -1289,19 +1287,18 @@ export default class GmStyles {
         '.gm-navbar .gm-toolbar-social-link': 'width: 42px; height: 42px;',
         '.gm-navbar .gm-toolbar-socials-list__item': 'padding-left: 0; padding-right: 0;',
         '.gm-navbar .gm-toolbar-email, .gm-navbar .gm-toolbar-phone': 'display: none;',
-        '.gm-navbar .gm-logo': `position: absolute; width: 100%; margin: ${logoMarginTop}px ${logoMarginRight}px ${logoMarginBottom}px ${logoMarginLeft}px;`,
         '.gm-navbar .gm-logo__img': 'max-width: 100% !important; margin-right: auto; margin-left: auto;',
-        '.gm-navbar .gm-actions': 'position: fixed; bottom: 100px; z-index: 999; justify-content: center;',
         '.gm-navbar .gm-actions > div:nth-of-type(n+2)': 'border-left-width: 1px; border-left-style: solid;',
+        '.gm-navbar .gm-actions': 'position: relative; margin: 24px 0 6px 0; z-index: 999; justify-content: center; flex-wrap: wrap; flex-direction: row; align-items: flex-end; height: max-content;',
         '.gm-navbar .gm-main-menu-wrapper .gm-minicart__txt, .gm-navbar .gm-main-menu-wrapper .gm-search__txt': 'display: block; text-transform: uppercase; font-weight: 700; line-height: 1;',
         '.gm-navbar .gm-minicart': 'margin: 0; text-align: center;',
         '.gm-navbar .gm-search': 'text-align: center;',
         '.gm-navbar .gm-minicart > a, .gm-navbar .gm-search > i': 'padding: 0; line-height: 1;',
         '.gm-navbar .gm-minicart-icon-wrapper i, .gm-navbar .gm-search > i': 'display: block; padding-bottom: 15px; line-height: 1;',
         '.gm-navbar .gm-cart-counter': 'top: -24px; right: -15px;',
-        '.gm-navbar .gm-main-menu-wrapper': 'flex: 1 100%; justify-content: center;',
-        '.gm-navbar #gm-main-menu': 'flex: 1 100%;',
-        '.gm-navbar .gm-navbar-nav': 'display: flex; flex-direction: column; width: 100%; height: 100%; justify-content: center;',
+        '.gm-navbar .gm-main-menu-wrapper': 'display: flex; flex: 2 100%; justify-content: space-between; flex-direction: column; margin: 16px 0;',
+        '.gm-navbar #gm-main-menu': 'position: static; width: 100%',
+        '.gm-navbar .gm-navbar-nav': 'display: flex; flex-direction: column; width: 100%; height: auto; justify-content: flex-start;',
         '.gm-navbar .gm-navbar-nav > .gm-menu-item': 'padding-right: 56px; padding-left: 56px;',
         '.gm-navbar .gm-dropdown-menu-wrapper': 'width: 100%; height: 100%;',
         '.gm-navbar .gm-dropdown-menu .gm-menu-item': 'padding-right: 0; padding-left: 0;',
@@ -1316,8 +1313,35 @@ export default class GmStyles {
         '.gm-navbar .gm-menu-item__link': 'position: relative; padding-right: 0; padding-left: 0;',
         '.gm-navbar .attachment-menu-thumb': 'display: none;',
         '.admin-bar .gm-navbar': 'top: 32px; height: calc(100vh - 32px);',
+        '.gm-navbar .gm-container': 'display: flex; flex-direction: row; flex-wrap: wrap; height: 100%; padding: 0; justify-content: center;',
+        '.gm-navbar .gm-logo': 'position: relative; flex: 0 100%; width: 100%; top: 0; display: block; margin-top: 40px;', // margin-top: 40px; by default.
+        '.gm-navbar .gm-wrapper > .gm-toolbar': 'display: none;',
+        '.gm-navbar .gm-main-menu-wrapper .gm-actions .gm-toolbar': 'flex: 2 100%; border: 0 !important; margin-top: 30px;',
+        '.gm-navbar .gm-main-menu-wrapper .gm-actions .gm-search, .gm-navbar .gm-main-menu-wrapper .gm-actions .gm-minicart': 'flex-grow: 0;',
         media: 'desktop'
       });
+
+      let logoMargin3 = '';
+
+      if (logoMarginTop) {
+        logoMargin3 = `margin-top: ${logoMarginTop}px !important;`;
+      }
+      if (logoMarginRight) {
+        logoMargin3 = `margin-right: ${logoMarginRight}px !important;`;
+      }
+      if (logoMarginBottom) {
+        logoMargin3 = `margin-bottom: ${logoMarginBottom}px !important;`;
+      }
+      if (logoMarginLeft) {
+        logoMargin3 = `margin-left: ${logoMarginLeft}px !important;`;
+      }
+
+      if (logoMargin3) {
+        css.push({
+          '.gm-navbar .gm-logo': logoMargin3,
+          media: 'desktop'
+        });
+      }
 
       // Appearance Styles
       if (settings.dropdownAppearanceStyle === 'animate-from-bottom') {
@@ -2039,7 +2063,7 @@ export default class GmStyles {
         '.gm-navbar .gm-toolbar-email, .gm-navbar .gm-toolbar-phone': 'display: none;',
         '.gm-navbar .gm-logo': `position: absolute; margin: ${logoMarginTop}px ${logoMarginRight}px ${logoMarginBottom}px ${logoMarginLeft}px; width: calc(100% - ${logoMarginWidth}px);`,
         '.gm-navbar .gm-logo__img': 'margin-right: auto; margin-left: auto;',
-        '.gm-navbar .gm-actions': 'position: fixed; bottom: 100px; z-index: 999; justify-content: center;',
+        '.gm-navbar .gm-actions': 'position: static; margin: 40px 0; z-index: 999; justify-content: center;',
         '.gm-navbar .gm-actions > div:nth-of-type(n+2)': 'border-left-width: 1px; border-left-style: solid;',
         '.gm-navbar .gm-main-menu-wrapper .gm-minicart__txt, .gm-navbar .gm-main-menu-wrapper .gm-search__txt': 'display: block; text-transform: uppercase; font-weight: 700; line-height: 1;',
         '.gm-navbar .gm-logo__img-header-sidebar': 'display: block;',
@@ -2048,9 +2072,9 @@ export default class GmStyles {
         '.gm-navbar .gm-minicart > a, .gm-navbar .gm-search > i': 'padding: 0; line-height: 1;',
         '.gm-navbar .gm-minicart-icon-wrapper i, .gm-navbar .gm-search > i': 'display: block; padding-bottom: 15px; line-height: 1;',
         '.gm-navbar .gm-cart-counter': 'top: -24px; right: -15px;',
-        '.gm-navbar .gm-main-menu-wrapper': 'flex: 1 100%; justify-content: center;',
-        '.gm-navbar #gm-main-menu': 'flex: 1 100%;',
-        '.gm-navbar .gm-navbar-nav': 'display: flex; flex-direction: column; width: 100%; height: 100%; justify-content: center;',
+        '.gm-navbar .gm-main-menu-wrapper': 'display: block; flex: 1 100%; justify-content: center; flex-direction: column; margin: 16px 0;',
+        '.gm-navbar #gm-main-menu': 'position: static;',
+        '.gm-navbar .gm-navbar-nav': 'display: flex; flex-direction: column; width: 100%; height: auto; justify-content: flex-start;',
         '.gm-navbar .gm-dropdown-menu-wrapper': 'width: 100%; height: 100%;',
         '.gm-navbar:not(.gm-expanding--open) .gm-dropdown-menu-wrapper': 'visibility: hidden;',
         '.gm-navbar .gm-dropdown-menu .gm-menu-item': 'padding-right: 0; padding-left: 0;',
@@ -2083,7 +2107,8 @@ export default class GmStyles {
         '.gm-navbar .gm-actions, .gm-navbar .gm-toolbar': 'opacity: 0; display: none; transition: opacity 0.3s;',
         '.gm-navbar .gm-main-menu-wrapper .gm-navbar-nav > li > .gm-anchor': 'transition: border 0.3s 0.1s;',
         '.gm-navbar:not(.gm-expanding--open) .gm-main-menu-wrapper .gm-navbar-nav > li > .gm-anchor': 'border-bottom-color: transparent;',
-        '.gm-navbar:not(.gm-expanding--open) .gm-logo': 'overflow: hidden;',
+        //'.gm-navbar:not(.gm-expanding--open) .gm-logo': 'overflow: hidden;',
+        '.gm-navbar .gm-wrapper > .gm-toolbar': 'display: none;',
         media: 'desktop'
       });
 
@@ -2147,9 +2172,9 @@ export default class GmStyles {
         let hamburgerIconBoxSize = hamburgerIconSize + (hamburgerIconPadding * 2) + (hamburgerIconBorderWidth * 2);
 
         css.push({
-          '.gm-navbar .gm-menu-btn--expanded': `display: flex; position: absolute; top: 12px; width: ${initialWidth}px; text-align: center; cursor: pointer; justify-content: center; padding: 0; min-width: ${hamburgerIconBoxSize}px;`,
-          '.gm-navbar .gm-container': `padding-top: ${hamburgerIconBoxSize}px;`,
-          '.gm-navbar .gm-logo': 'top: 50px;',
+          '.gm-navbar .gm-menu-btn--expanded': `display: flex; position: relative; top: 0; margin: 12px 0; width: ${initialWidth}px; text-align: center; cursor: pointer; justify-content: center; padding: 0; min-width: ${hamburgerIconBoxSize}px;`,
+          '.gm-navbar .gm-container': 'display: flex; flex-direction: column; padding: 0;',
+          '.gm-navbar .gm-logo': 'position: relative; top: 0; display: block;',
           '.gm-navbar .gm-menu-btn--expanded .hamburger-box, .gm-navbar .gm-menu-btn--expanded .hamburger-inner, .gm-navbar .gm-menu-btn--expanded .hamburger-inner::after, .gm-navbar .gm-menu-btn--expanded .hamburger-inner::before': `width: ${hamburgerIconSize}px;`,
           '.gm-navbar .gm-menu-btn--expanded .hamburger-box': `height: ${hamburgerIconSize}px;`,
           media: 'desktop'
@@ -2490,7 +2515,8 @@ export default class GmStyles {
         const color = settings.toolbarIconColor;
 
         css.push({
-          '.gm-navbar #gm-toolbar .gm-toolbar-social-link': `color: ${color} !important`
+          '.gm-navbar #gm-toolbar .gm-toolbar-social-link': `color: ${color} !important`,
+          '.gm-navbar .gm-main-menu-wrapper .gm-actions .gm-toolbar-social-link': `color: ${color} !important`
         });
 
         css.push({
@@ -2592,6 +2618,7 @@ export default class GmStyles {
 
         css.push({
           '.gm-navbar #gm-toolbar .gm-toolbar-social-link:hover': `color: ${toolbarIconHoverColor} !important`,
+          '.gm-navbar .gm-main-menu-wrapper .gm-actions .gm-toolbar-social-link:hover': `color: ${toolbarIconHoverColor} !important`,
           media: 'desktop'
         });
       }

@@ -86,6 +86,7 @@ function offcanvasClickOutside() {
 function makeHiddenVisible(navDrawer) {
   let mainMenuWrapper = document.querySelector('.gm-main-menu-wrapper');
   let isMobileFlag = isMobile(options.mobileWidth);
+  let headerStyle = parseInt(options.header.style, 10);
 
   if (navDrawer && navDrawer.classList.contains('gm-hidden') && isMobileFlag) {
     setTimeout(() => {
@@ -93,7 +94,7 @@ function makeHiddenVisible(navDrawer) {
     }, 100);
   }
 
-  if (mainMenuWrapper) {
+  if (mainMenuWrapper && (5 !== headerStyle && 3 !== headerStyle)) {
     if (!isMobileFlag) {
       mainMenuWrapper.classList.add('d-flex');
     } else {

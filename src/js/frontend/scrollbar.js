@@ -1,8 +1,8 @@
 import PerfectScrollbar from 'perfect-scrollbar';
-import { getCoords, isMobile } from '../shared/helpers';
+import {getCoords, isMobile} from '../shared/helpers';
 import _ from 'lodash';
 
-function getFirstDropdownRect (menuItem, settings) {
+function getFirstDropdownRect(menuItem, settings) {
   let currentDropdown = menuItem.querySelector('.gm-dropdown-menu');
   let currentDropdownWidth = currentDropdown.offsetWidth;
   let top = menuItem.offsetHeight;
@@ -18,7 +18,7 @@ function getFirstDropdownRect (menuItem, settings) {
   });
 }
 
-function isVerticalMenu (settings) {
+function isVerticalMenu(settings) {
   let verticalMenu = false;
 
   let headerStyle = parseInt(settings.header.style, 10);
@@ -30,7 +30,7 @@ function isVerticalMenu (settings) {
   return verticalMenu;
 }
 
-function getSubmenuDropdownRect (menuItem, settings, scrollbars) {
+function getSubmenuDropdownRect(menuItem, settings, scrollbars) {
   let closestdropdownMenuPs = menuItem.closest('.gm-dropdown-menu.ps');
 
   if (!closestdropdownMenuPs) {
@@ -58,10 +58,11 @@ function getSubmenuDropdownRect (menuItem, settings, scrollbars) {
 
 // ---------------------------------------------------------------------------------------------------------------------
 
-export default function initScrollbar (settings) {
+export default function initScrollbar(settings) {
   // Main select fot all dropdown links.
-  let dropdownMenuLinks = document.querySelectorAll('.gm-main-menu-wrapper .gm-dropdown-toggle');
+  const wpAdminBar = document.querySelector('#wpadminbar');
 
+  let dropdownMenuLinks = document.querySelectorAll('.gm-main-menu-wrapper .gm-dropdown-toggle');
   let _dropdownWrapper = document.querySelector('.gm-main-menu-wrapper .gm-dropdown-menu-wrapper');
   let _transformValuesCss = null;
   if (_dropdownWrapper) {
@@ -90,7 +91,7 @@ export default function initScrollbar (settings) {
     return getDropdownMaxHeightValue;
   }
 
-  function handleScrollbarMouseEnter () {
+  function handleScrollbarMouseEnter() {
 
     let parentMenuItem = this.closest('.gm-dropdown');
 
@@ -160,7 +161,45 @@ export default function initScrollbar (settings) {
     currentDropdown.addEventListener('transitionend', handleTransitionEnd);
   }
 
-  function handleTransitionEnd (event) {
+  function handleScrollbarMouseEnterTopLevel() {
+
+    let currentDropdown = document.querySelector('.gm-navbar .gm-container .gm-main-menu-wrapper');
+
+    if (!currentDropdown) {
+      return;
+    }
+
+    let adminbarHeight = wpAdminBar === null ? 0 : wpAdminBar.offsetHeight;
+
+    //let headerStyle = parseInt(settings.header.style, 10);
+    let containerElem = document.querySelector('.gm-navbar .gm-inner .gm-container');
+    let logoElem = document.querySelector('.gm-navbar .gm-inner .gm-container > .gm-logo');
+    let expandedBtnElem = document.querySelector('.gm-navbar .gm-inner .gm-container > .gm-menu-btn--expanded');
+
+    let overallIndentHeight = logoElem === null ? 0 : logoElem.offsetHeight;
+
+    overallIndentHeight = expandedBtnElem === null ?
+      overallIndentHeight :
+      overallIndentHeight + expandedBtnElem.offsetHeight + 24; // 24 - margin of expandedBtnElem top+bottom
+
+    overallIndentHeight = overallIndentHeight + adminbarHeight;
+
+    // Top level --------------------------------------------------------------
+    currentDropdown.style.position = 'static';
+    currentDropdown.style.maxHeight = `calc( 100% - ${overallIndentHeight}px )`;
+
+    // Misc -------------------------------------------------------------------
+    if (containerElem && adminbarHeight) {
+      containerElem.style.maxHeight = `calc( 100% - ${adminbarHeight}px )`;
+    }
+
+
+    activatePerfectScrollbar(currentDropdown);
+
+    //currentDropdown.addEventListener('transitionend', handleTransitionEnd);
+  }
+
+  function handleTransitionEnd(event) {
     if (event.propertyName !== 'transform') {
       return;
     }
@@ -174,7 +213,7 @@ export default function initScrollbar (settings) {
     }
   }
 
-  function mobileTransitionStart (event) {
+  function mobileTransitionStart(event) {
     if (event.propertyName !== 'transform') {
       return;
     }
@@ -239,7 +278,7 @@ export default function initScrollbar (settings) {
     }
   }
 
-  function mobileTransitionEnd (event) {
+  function mobileTransitionEnd(event) {
     if (event.propertyName !== 'transform') {
       return;
     }
@@ -267,7 +306,7 @@ export default function initScrollbar (settings) {
     }
   }
 
-  function updateDropdownStyles (elem) {
+  function updateDropdownStyles(elem) {
     let parentMenuItem = elem.closest('.gm-dropdown');
 
     if (parentMenuItem && parentMenuItem.classList.contains('gm-open')) {
@@ -311,7 +350,7 @@ export default function initScrollbar (settings) {
     currentDropdown.style.transform = null;
   }
 
-  function activatePerfectScrollbar (elem) {
+  function activatePerfectScrollbar(elem) {
 
     if (!elem) {
       return;
@@ -353,7 +392,7 @@ export default function initScrollbar (settings) {
     scrollbars.push(ps);
   }
 
-  function activatePerfectScrollbarMobile (elem) {
+  function activatePerfectScrollbarMobile(elem) {
 
     if (!elem) {
       return;
@@ -423,7 +462,7 @@ export default function initScrollbar (settings) {
     }
   }
 
-  function enableScrollbar () {
+  function enableScrollbar() {
     if (isMobile(settings.mobileWidth)) {
       return;
     }
@@ -434,19 +473,50 @@ export default function initScrollbar (settings) {
     });
   }
 
-  function handleResize () {
+  function enableScrollbarForTopLevel() {
+    if (isMobile(settings.mobileWidth)) {
+      return;
+    }
+
+    let topLevelMenus = [
+      '.gm-navbar.gm-navbar--style-3 .gm-inner .gm-container .gm-main-menu-wrapper',
+      '.gm-navbar.gm-navbar--style-4 .gm-inner .gm-container .gm-main-menu-wrapper',
+      '.gm-navbar.gm-navbar--style-5 .gm-inner .gm-container .gm-main-menu-wrapper'
+    ];
+
+    let flag = false;
+
+    topLevelMenus.forEach((topMenuWrapperClass) => {
+      let topLevelMenuWrapper = document.querySelector(topMenuWrapperClass);
+      if (topLevelMenuWrapper) {
+        topLevelMenuWrapper.addEventListener('mouseenter', handleScrollbarMouseEnterTopLevel);
+        //topLevelMenuWrapper.addEventListener('mouseleave', handleScrollbarMouseLeaveTopLevel);
+
+        flag = true;
+      }
+    });
+
+    if (flag) {
+      handleScrollbarMouseEnterTopLevel();
+    }
+
+  }
+
+  function handleResize() {
     if (window.gmIsResizeOnlyHorisontal) {
       return;
     }
 
     if (!isMobile(settings.mobileWidth) && settings.scrollbarEnable) {
       enableScrollbar();
+      handleScrollbarMouseEnterTopLevel();
     }
   }
 
   // Enable for desktop.
   if (settings.scrollbarEnable) {
     enableScrollbar();
+    enableScrollbarForTopLevel();
   }
 
   // Enable for mobile.

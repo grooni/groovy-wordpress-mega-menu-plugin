@@ -806,6 +806,16 @@ class GroovyMenu {
       watchWooMiniCartCounter();
     }
 
+    if (headerStyle === 3) {
+      let gmToolbarMoveFrom = document.querySelector('.gm-navbar .gm-wrapper > .gm-toolbar');
+      let gmToolbarMoveTo = document.querySelector('.gm-navbar .gm-wrapper > .gm-inner .gm-main-menu-wrapper .gm-actions');
+      if (gmToolbarMoveFrom && gmToolbarMoveTo && !gmToolbarMoveFrom.getAttribute('data-moved')) {
+        gmToolbarMoveFrom.setAttribute('data-moved', '1');
+
+        gmToolbarMoveTo.append(gmToolbarMoveFrom);
+      }
+    }
+
     // integration helper for Thrive Themes Builder
     let gmThriveIntegration = document.querySelector('.groovy_menu_thrive_integration');
     if (gmThriveIntegration) {

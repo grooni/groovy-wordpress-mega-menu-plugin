@@ -376,3 +376,7 @@ NAVBAR GENERAL STYLES
 .gm-minicart {
   -webkit-tap-highlight-color: transparent;
 }
+
+.gm-navbar.gm-navbar--align-left .gm-main-menu-wrapper.ps > .ps__rail-y {
+  left: -6px !important;
+}
