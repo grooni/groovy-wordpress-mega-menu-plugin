@@ -806,7 +806,7 @@ class GroovyMenu {
       watchWooMiniCartCounter();
     }
 
-    if (headerStyle === 3) {
+    if (headerStyle === 3 || headerStyle === 5) {
       let gmToolbarMoveFrom = document.querySelector('.gm-navbar .gm-wrapper > .gm-toolbar');
       let gmToolbarMoveTo = document.querySelector('.gm-navbar .gm-wrapper > .gm-inner .gm-main-menu-wrapper .gm-actions');
       if (gmToolbarMoveFrom && gmToolbarMoveTo && !gmToolbarMoveFrom.getAttribute('data-moved')) {

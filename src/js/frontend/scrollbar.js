@@ -169,6 +169,8 @@ export default function initScrollbar(settings) {
       return;
     }
 
+    let headerStyle = parseInt(settings.header.style, 10);
+
     let adminbarHeight = wpAdminBar === null ? 0 : wpAdminBar.offsetHeight;
 
     //let headerStyle = parseInt(settings.header.style, 10);
@@ -187,6 +189,9 @@ export default function initScrollbar(settings) {
     // Top level --------------------------------------------------------------
     currentDropdown.style.position = 'static';
     currentDropdown.style.maxHeight = `calc( 100% - ${overallIndentHeight}px )`;
+    if (headerStyle === 5) {
+      currentDropdown.style.height = `calc( 100% - ${overallIndentHeight}px )`;
+    }
 
     // Misc -------------------------------------------------------------------
     if (containerElem && adminbarHeight) {

@@ -2049,10 +2049,8 @@ export default class GmStyles {
         '.gm-navbar': 'position: fixed; z-index: 1041; box-sizing: content-box;',
         '.gm-navbar .gm-wrapper': 'position: relative; height: 100vh;',
         '.gm-navbar .gm-inner': 'height: 100%;',
-        '.gm-navbar .gm-container': 'height: 100%;',
-        '.gm-navbar .gm-toolbar': 'position: absolute; z-index: 1005; bottom: 20px; width: 100%; text-align: center;',
-        '.admin-bar .gm-navbar .gm-toolbar': 'bottom: 52px;',
-        '.gm-navbar .gm-toolbar-right': 'flex-direction: column;',
+        '.gm-navbar .gm-toolbar': 'position: relative; width: 100%; text-align: center;',
+        '.gm-navbar .gm-toolbar-right': 'flex-direction: column; width: 100%;',
         '.gm-navbar .gm-toolbar-socials-list': 'order: 2;',
         '.gm-navbar #lang_sel_click': 'align-self: center;',
         '.gm-navbar #lang_sel_click li': 'width: auto;',
@@ -2061,10 +2059,9 @@ export default class GmStyles {
         '.gm-navbar .gm-toolbar-social-link': 'width: 42px; height: 42px;',
         '.gm-navbar .gm-toolbar-socials-list__item': 'padding-left: 0; padding-right: 0;',
         '.gm-navbar .gm-toolbar-email, .gm-navbar .gm-toolbar-phone': 'display: none;',
-        '.gm-navbar .gm-logo': `position: absolute; margin: ${logoMarginTop}px ${logoMarginRight}px ${logoMarginBottom}px ${logoMarginLeft}px; width: calc(100% - ${logoMarginWidth}px);`,
         '.gm-navbar .gm-logo__img': 'margin-right: auto; margin-left: auto;',
-        '.gm-navbar .gm-actions': 'position: static; margin: 40px 0; z-index: 999; justify-content: center;',
         '.gm-navbar .gm-actions > div:nth-of-type(n+2)': 'border-left-width: 1px; border-left-style: solid;',
+        '.gm-navbar .gm-actions': 'position: relative; margin: 24px 0 6px 0; z-index: 999; justify-content: center; flex-wrap: wrap; flex-direction: row; align-items: flex-end; height: max-content; flex: 1 100%; align-self: flex-end;',
         '.gm-navbar .gm-main-menu-wrapper .gm-minicart__txt, .gm-navbar .gm-main-menu-wrapper .gm-search__txt': 'display: block; text-transform: uppercase; font-weight: 700; line-height: 1;',
         '.gm-navbar .gm-logo__img-header-sidebar': 'display: block;',
         '.gm-navbar .gm-minicart': 'margin: 0; text-align: center;',
@@ -2072,8 +2069,8 @@ export default class GmStyles {
         '.gm-navbar .gm-minicart > a, .gm-navbar .gm-search > i': 'padding: 0; line-height: 1;',
         '.gm-navbar .gm-minicart-icon-wrapper i, .gm-navbar .gm-search > i': 'display: block; padding-bottom: 15px; line-height: 1;',
         '.gm-navbar .gm-cart-counter': 'top: -24px; right: -15px;',
-        '.gm-navbar .gm-main-menu-wrapper': 'display: block; flex: 1 100%; justify-content: center; flex-direction: column; margin: 16px 0;',
-        '.gm-navbar #gm-main-menu': 'position: static;',
+        '.gm-navbar .gm-main-menu-wrapper': 'display: flex; justify-content: flex-start; flex-direction: row; flex-wrap: wrap; margin: 16px 0; height: 100%;',
+        '.gm-navbar #gm-main-menu': 'position: static; flex: 1 100%; align-self: center;',
         '.gm-navbar .gm-navbar-nav': 'display: flex; flex-direction: column; width: 100%; height: auto; justify-content: flex-start;',
         '.gm-navbar .gm-dropdown-menu-wrapper': 'width: 100%; height: 100%;',
         '.gm-navbar:not(.gm-expanding--open) .gm-dropdown-menu-wrapper': 'visibility: hidden;',
@@ -2091,11 +2088,37 @@ export default class GmStyles {
         '.gm-navbar .gm-navbar-nav > .gm-menu-item': `width: ${expandedWidth}px;`,
         '.gm-menu-btn--expanded': 'display:none',
         '.gm-navbar-nav > .gm-dropdown:not(.mega-gm-dropdown) .gm-dropdown-menu': `width: ${submenuWidth}px;`,
+        '.gm-navbar .gm-wrapper > .gm-toolbar': 'display: none;',
+        '.gm-navbar .gm-main-menu-wrapper .gm-actions .gm-toolbar': 'flex: 2 100%; border: 0 !important; margin-top: 30px;',
+        '.gm-navbar .gm-main-menu-wrapper .gm-actions .gm-search, .gm-navbar .gm-main-menu-wrapper .gm-actions .gm-minicart': 'flex-grow: 0;',
+        '.gm-navbar .gm-container': 'display: flex; flex-direction: column; height: 100%; padding: 0; justify-content: flex-start; align-items: baseline;',
+        '.gm-navbar .gm-logo': 'position: relative; width: 100%; top: 0; display: block; margin-top: 16px;', // margin-top: 16px; by default.
 
         '.admin-bar .gm-navbar': 'top: 32px; height: calc(100vh - 32px);',
         media: 'desktop'
       });
 
+      let logoMargin3 = '';
+
+      if (logoMarginTop) {
+        logoMargin3 = `margin-top: ${logoMarginTop}px !important;`;
+      }
+      if (logoMarginRight) {
+        logoMargin3 = `margin-right: ${logoMarginRight}px !important;`;
+      }
+      if (logoMarginBottom) {
+        logoMargin3 = `margin-bottom: ${logoMarginBottom}px !important;`;
+      }
+      if (logoMarginLeft) {
+        logoMargin3 = `margin-left: ${logoMarginLeft}px !important;`;
+      }
+
+      if (logoMargin3) {
+        css.push({
+          '.gm-navbar .gm-logo': logoMargin3,
+          media: 'desktop'
+        });
+      }
 
       // Hide elements by default
       css.push({
@@ -2104,11 +2127,13 @@ export default class GmStyles {
         '.gm-navbar:not(.gm-animation-end) .gm-container': 'overflow: hidden;',
 
         '.gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-menu-item__txt, .gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-badge, .gm-navbar .gm-navbar-nav > .gm-menu-item > .gm-anchor .gm-caret': `word-break: keep-all; white-space: nowrap; opacity: 0; ${animationCssParamSecondary}`,
-        '.gm-navbar .gm-actions, .gm-navbar .gm-toolbar': 'opacity: 0; display: none; transition: opacity 0.3s;',
+        '.gm-navbar .gm-actions': `width: ${expandedWidth}px;`,
+        '.gm-navbar .gm-actions, .gm-navbar .gm-toolbar': 'opacity: 0; transition: opacity 0.3s;',
         '.gm-navbar .gm-main-menu-wrapper .gm-navbar-nav > li > .gm-anchor': 'transition: border 0.3s 0.1s;',
         '.gm-navbar:not(.gm-expanding--open) .gm-main-menu-wrapper .gm-navbar-nav > li > .gm-anchor': 'border-bottom-color: transparent;',
         //'.gm-navbar:not(.gm-expanding--open) .gm-logo': 'overflow: hidden;',
         '.gm-navbar .gm-wrapper > .gm-toolbar': 'display: none;',
+        '.gm-navbar .gm-toolbar-socials-list__item': 'box-shadow: none;',
         media: 'desktop'
       });
 
@@ -2122,7 +2147,6 @@ export default class GmStyles {
         '.gm-animation-end.gm-navbar .gm-toolbar': 'opacity: 1;',
         '.gm-expanding--open.gm-navbar .gm-actions': 'display: flex;',
         '.gm-animation-end.gm-navbar .gm-actions': 'opacity: 1;',
-        '.gm-expanding--open.gm-navbar .gm-toolbar-socials-list__item': 'box-shadow: none;',
         media: 'desktop'
       });
 
@@ -2172,9 +2196,9 @@ export default class GmStyles {
         let hamburgerIconBoxSize = hamburgerIconSize + (hamburgerIconPadding * 2) + (hamburgerIconBorderWidth * 2);
 
         css.push({
-          '.gm-navbar .gm-menu-btn--expanded': `display: flex; position: relative; top: 0; margin: 12px 0; width: ${initialWidth}px; text-align: center; cursor: pointer; justify-content: center; padding: 0; min-width: ${hamburgerIconBoxSize}px;`,
-          '.gm-navbar .gm-container': 'display: flex; flex-direction: column; padding: 0;',
-          '.gm-navbar .gm-logo': 'position: relative; top: 0; display: block;',
+          '.gm-navbar .gm-menu-btn--expanded': `display: flex; position: relative; top: 0; margin: 16px 0; width: ${initialWidth}px; text-align: center; cursor: pointer; justify-content: center; padding: 0; min-width: ${hamburgerIconBoxSize}px;`,
+          //'.gm-navbar .gm-container': 'display: flex; flex-direction: column; padding: 0;',
+          //'.gm-navbar .gm-logo': 'position: relative; top: 0; display: block;',
           '.gm-navbar .gm-menu-btn--expanded .hamburger-box, .gm-navbar .gm-menu-btn--expanded .hamburger-inner, .gm-navbar .gm-menu-btn--expanded .hamburger-inner::after, .gm-navbar .gm-menu-btn--expanded .hamburger-inner::before': `width: ${hamburgerIconSize}px;`,
           '.gm-navbar .gm-menu-btn--expanded .hamburger-box': `height: ${hamburgerIconSize}px;`,
           media: 'desktop'
