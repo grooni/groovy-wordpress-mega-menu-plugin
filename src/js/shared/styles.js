@@ -2154,6 +2154,21 @@ export default class GmStyles {
         media: 'desktop'
       });
 
+      if (settings.sidebarExpandingMenuIconHideInitial) {
+        css.push({
+          '.gm-navbar:not(.gm-expanding--open) .gm-navbar-nav > .gm-menu-item.gm-menu-item--lvl-0 > .gm-anchor .gm-menu-item__icon': 'display: none;',
+          '.gm-navbar:not(.gm-expanding--open) .gm-main-menu-wrapper .gm-navbar-nav > .gm-menu-item': 'padding-left: 18px; padding-right: 18px;',
+          media: 'desktop'
+        });
+      }
+      if (settings.sidebarExpandingMenuIconHideExpanded) {
+        css.push({
+          '.gm-navbar.gm-expanding--open .gm-navbar-nav > .gm-menu-item.gm-menu-item--lvl-0 > .gm-anchor .gm-menu-item__icon': 'display: none;',
+          '.gm-navbar.gm-expanding--open .gm-main-menu-wrapper .gm-navbar-nav > .gm-menu-item': 'padding-left: 18px; padding-right: 18px;',
+          media: 'desktop'
+        });
+      }
+
       // Show logo responsive (fit with block)
       // Logo height
       if (settings.logoType === 'img') {
