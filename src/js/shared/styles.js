@@ -1827,8 +1827,6 @@ export default class GmStyles {
         sidebarExpandingMenuShowSideIcon
       } = settings;
 
-      let logoMarginWidth = logoMarginRight + logoMarginLeft;
-
       let iconSize = sidebarExpandingMenuIconSize ? sidebarExpandingMenuIconSize : 32;
       let initialWidth = sidebarExpandingMenuInitialWidth ? sidebarExpandingMenuInitialWidth : 70;
       let expandedWidth = sidebarExpandingMenuExpandedWidth ? sidebarExpandingMenuExpandedWidth : 300;

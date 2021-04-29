@@ -173,7 +173,6 @@ export default function initScrollbar(settings) {
 
     let adminbarHeight = wpAdminBar === null ? 0 : wpAdminBar.offsetHeight;
 
-    //let headerStyle = parseInt(settings.header.style, 10);
     let containerElem = document.querySelector('.gm-navbar .gm-inner .gm-container');
     let logoElem = document.querySelector('.gm-navbar .gm-inner .gm-container > .gm-logo');
     let expandedBtnElem = document.querySelector('.gm-navbar .gm-inner .gm-container > .gm-menu-btn--expanded');
@@ -485,7 +484,6 @@ export default function initScrollbar(settings) {
 
     let topLevelMenus = [
       '.gm-navbar.gm-navbar--style-3 .gm-inner .gm-container .gm-main-menu-wrapper',
-      '.gm-navbar.gm-navbar--style-4 .gm-inner .gm-container .gm-main-menu-wrapper',
       '.gm-navbar.gm-navbar--style-5 .gm-inner .gm-container .gm-main-menu-wrapper'
     ];
 
@@ -495,8 +493,6 @@ export default function initScrollbar(settings) {
       let topLevelMenuWrapper = document.querySelector(topMenuWrapperClass);
       if (topLevelMenuWrapper) {
         topLevelMenuWrapper.addEventListener('mouseenter', handleScrollbarMouseEnterTopLevel);
-        //topLevelMenuWrapper.addEventListener('mouseleave', handleScrollbarMouseLeaveTopLevel);
-
         flag = true;
       }
     });
