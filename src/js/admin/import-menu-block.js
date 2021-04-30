@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {showMessage} from './snackbar';
 
 document.addEventListener('DOMContentLoaded', () => {
   let importMenuBlockBtn = document.querySelector('.gm-import-notice-btn');
@@ -39,7 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       axios.post(ajaxurl, params)
         .then(() => window.location.reload(false))
-        .catch(() => alert('Ajax error'));
+        .catch(function (response) {
+          showMessage(`Error Groovy Menu Block import: ${response.message}`);
+        });
 
     });
     wpMediaObj.open();
