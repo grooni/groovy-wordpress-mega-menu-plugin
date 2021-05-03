@@ -5118,7 +5118,12 @@ export default class GmStyles {
       backgroundPosition,
       coverBackground,
       backgroundColorChangeOnSubmenuOpened,
-      backgroundColorChange
+      backgroundColorChange,
+      minimalisticMenuTopLvlBackgroundImage,
+      minimalisticMenuTopLvlBackgroundRepeat,
+      minimalisticMenuTopLvlBackgroundAttachment,
+      minimalisticMenuTopLvlBackgroundPosition,
+      minimalisticMenuTopLvlCoverBackground
     } = settings;
     let css = [];
 
@@ -5129,39 +5134,41 @@ export default class GmStyles {
         });
       }
 
+      // Background image
       if (backgroundImage) {
         css.push({
           '.gm-navbar:not(.gm-navbar-sticky-toggle) .gm-inner-bg': `background-image: url(${backgroundImage});`
         });
+
+        // Background repeat
+        if (backgroundRepeat) {
+          css.push({
+            '.gm-navbar:not(.gm-navbar-sticky-toggle) .gm-inner-bg': `background-repeat: ${backgroundRepeat}`
+          });
+        }
+
+        // Background attachment
+        if (backgroundAttachment) {
+          css.push({
+            '.gm-navbar:not(.gm-navbar-sticky-toggle) .gm-inner-bg': `background-attachment: ${backgroundAttachment}`
+          });
+        }
+
+        // Background position
+        if (backgroundPosition) {
+          css.push({
+            '.gm-navbar:not(.gm-navbar-sticky-toggle) .gm-inner-bg': `background-position: ${backgroundPosition}`
+          });
+        }
+
+        // Cover background
+        if (coverBackground) {
+          css.push({
+            '.gm-navbar:not(.gm-navbar-sticky-toggle) .gm-inner-bg': 'background-size: cover'
+          });
+        }
       }
 
-      // Background repeat
-      if (backgroundRepeat) {
-        css.push({
-          '.gm-navbar:not(.gm-navbar-sticky-toggle) .gm-inner-bg': `background-repeat: ${backgroundRepeat}`
-        });
-      }
-
-      // Background attachment
-      if (backgroundAttachment) {
-        css.push({
-          '.gm-navbar:not(.gm-navbar-sticky-toggle) .gm-inner-bg': `background-attachment: ${backgroundAttachment}`
-        });
-      }
-
-      // Background position
-      if (backgroundPosition) {
-        css.push({
-          '.gm-navbar:not(.gm-navbar-sticky-toggle) .gm-inner-bg': `background-position: ${backgroundPosition}`
-        });
-      }
-
-      // Cover background
-      if (coverBackground) {
-        css.push({
-          '.gm-navbar:not(.gm-navbar-sticky-toggle) .gm-inner-bg': 'background-size: cover'
-        });
-      }
     } else {
       if (backgroundColor) {
         css.push({
@@ -5174,38 +5181,40 @@ export default class GmStyles {
         });
       }
 
+      // Background image
       if (backgroundImage) {
         css.push({
           '.gm-navbar:not(.gm-navbar-sticky-toggle)': `background-image: url(${backgroundImage});`
         });
-      }
 
-      // Background repeat
-      if (backgroundRepeat) {
-        css.push({
-          '.gm-navbar:not(.gm-navbar-sticky-toggle)': `background-repeat: ${backgroundRepeat}`
-        });
-      }
+        // Background repeat
+        if (backgroundRepeat) {
+          css.push({
+            '.gm-navbar:not(.gm-navbar-sticky-toggle)': `background-repeat: ${backgroundRepeat}`
+          });
+        }
 
-      // Background attachment
-      if (backgroundAttachment) {
-        css.push({
-          '.gm-navbar:not(.gm-navbar-sticky-toggle)': `background-attachment: ${backgroundAttachment}`
-        });
-      }
+        // Background attachment
+        if (backgroundAttachment) {
+          css.push({
+            '.gm-navbar:not(.gm-navbar-sticky-toggle)': `background-attachment: ${backgroundAttachment}`
+          });
+        }
 
-      // Background position
-      if (backgroundPosition) {
-        css.push({
-          '.gm-navbar:not(.gm-navbar-sticky-toggle)': `background-position: ${backgroundPosition}`
-        });
-      }
+        // Background position
+        if (backgroundPosition) {
+          css.push({
+            '.gm-navbar:not(.gm-navbar-sticky-toggle)': `background-position: ${backgroundPosition}`
+          });
+        }
 
-      // Cover background
-      if (coverBackground) {
-        css.push({
-          '.gm-navbar:not(.gm-navbar-sticky-toggle)': 'background-size: cover'
-        });
+        // Cover background
+        if (coverBackground) {
+          css.push({
+            '.gm-navbar:not(.gm-navbar-sticky-toggle)': 'background-size: cover'
+          });
+        }
+
       }
     }
 
@@ -5218,6 +5227,43 @@ export default class GmStyles {
       }
     }
 
+
+    if (settings.header.style === 2) { // Minimalistic style.
+      // Background image
+      if (minimalisticMenuTopLvlBackgroundImage) {
+        css.push({
+          '.gm-navbar ~ .gm-main-menu-wrapper': `background-image: url(${minimalisticMenuTopLvlBackgroundImage});`
+        });
+
+        // Background repeat
+        if (minimalisticMenuTopLvlBackgroundRepeat) {
+          css.push({
+            '.gm-navbar ~ .gm-main-menu-wrapper': `background-repeat: ${minimalisticMenuTopLvlBackgroundRepeat}`
+          });
+        }
+
+        // Background attachment
+        if (minimalisticMenuTopLvlBackgroundAttachment) {
+          css.push({
+            '.gm-navbar ~ .gm-main-menu-wrapper': `background-attachment: ${minimalisticMenuTopLvlBackgroundAttachment}`
+          });
+        }
+
+        // Background position
+        if (minimalisticMenuTopLvlBackgroundPosition) {
+          css.push({
+            '.gm-navbar ~ .gm-main-menu-wrapper': `background-position: ${minimalisticMenuTopLvlBackgroundPosition}`
+          });
+        }
+
+        // Cover background
+        if (minimalisticMenuTopLvlCoverBackground) {
+          css.push({
+            '.gm-navbar ~ .gm-main-menu-wrapper': 'background-size: cover'
+          });
+        }
+      }
+    }
 
     return css;
   }
