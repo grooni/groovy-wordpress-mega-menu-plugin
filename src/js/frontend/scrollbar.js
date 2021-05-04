@@ -163,13 +163,16 @@ export default function initScrollbar(settings) {
 
   function handleScrollbarMouseEnterTopLevel() {
 
+    let headerStyle = parseInt(settings.header.style, 10);
+    if (headerStyle === 1) {
+      return;
+    }
+
     let currentDropdown = document.querySelector('.gm-navbar .gm-container .gm-main-menu-wrapper');
 
     if (!currentDropdown) {
       return;
     }
-
-    let headerStyle = parseInt(settings.header.style, 10);
 
     let adminbarHeight = wpAdminBar === null ? 0 : wpAdminBar.offsetHeight;
 
