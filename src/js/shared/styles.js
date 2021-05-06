@@ -813,6 +813,11 @@ export default class GmStyles {
         });
       }
 
+      css.push({
+        '.gm-navbar .gm-minicart, .gm-navbar .gm-search': 'padding-left: 6px; padding-right: 6px; cursor: pointer;',
+        media: 'desktop'
+      });
+
       if (settings.minimalisticMenuOpenType === 'offcanvasSlideSlide') {
         css.push({
           '.gm-navigation-drawer--left.gm-navigation-drawer--open ~ .gm-nav-content-wrapper': 'transform: translate3d(300px, 0, 0);',
@@ -1093,6 +1098,21 @@ export default class GmStyles {
             media: 'desktop'
           });
         }
+      }
+
+      // Top bar Side icon position
+      if (settings.minimalisticMenuSideIconPosition === 'left') {
+        css.push({
+          '.gm-navbar .gm-inner > .gm-container': 'flex-direction: row-reverse !important;',
+          media: 'desktop'
+        });
+
+      } else if (settings.minimalisticMenuSideIconPosition === 'right') {
+
+        css.push({
+          '.gm-navbar .gm-inner > .gm-container': 'flex-direction: row !important;',
+          media: 'desktop'
+        });
       }
 
 
@@ -2689,7 +2709,7 @@ export default class GmStyles {
         const fontSize = settings.woocommerceCartIconSizeDesktop;
 
         css.push({
-          '.gm-main-menu-wrapper .gm-minicart-icon-wrapper > i': `font-size: ${fontSize}px`,
+          '.gm-main-menu-wrapper .gm-minicart-icon-wrapper > i, .gm-navbar .gm-menu-actions-wrapper > .gm-minicart > .gm-minicart-link > i': `font-size: ${fontSize}px`,
           media: 'desktop'
         });
       }
@@ -3006,7 +3026,7 @@ export default class GmStyles {
       // Icon sizes
       if (settings.searchFormIconSizeDesktop) {
         css.push({
-          '.gm-main-menu-wrapper .gm-search > i': `font-size: ${settings.searchFormIconSizeDesktop}px`,
+          '.gm-main-menu-wrapper .gm-search > i, .gm-navbar .gm-menu-actions-wrapper > .gm-search > i': `font-size: ${settings.searchFormIconSizeDesktop}px`,
           media: 'desktop'
         });
       }
@@ -3963,7 +3983,7 @@ export default class GmStyles {
       });
     }
 
-    if (settings.mobileShowWoominicart) {
+    if (settings.woocommerceIconPositionMobile === 'topbar_slideBottom' || settings.woocommerceIconPositionMobile === 'topbar') {
       if (settings.header.align === 'right' && (settings.header.style === 1 || settings.header.style === 2)) {
         css.push({
           '.gm-navbar .gm-logo': 'flex-grow: 1; justify-content: flex-end;',
@@ -3973,6 +3993,104 @@ export default class GmStyles {
         css.push({
           '.gm-navbar .gm-logo': 'flex-grow: 1; justify-content: flex-start;',
           media: 'mobile'
+        });
+      }
+    }
+
+    // Mobile action buttons view rules for Woocommerce icon mini-cart.
+    if (settings.woocommerceIconPositionMobile !== 'none') {
+      if (settings.woocommerceIconPositionMobile === 'topbar') {
+        css.push({
+          '.gm-navigation-drawer .gm-mobile-action-area-wrapper .gm-minicart': 'display: none;',
+          media: 'mobile'
+        });
+      }
+      if (settings.woocommerceIconPositionMobile === 'slideBottom') {
+        css.push({
+          '.gm-navbar .gm-menu-actions-wrapper .gm-minicart': 'display: none;',
+          media: 'mobile'
+        });
+      }
+    } else {
+      css.push({
+        '.gm-navigation-drawer .gm-mobile-action-area-wrapper .gm-minicart': 'display: none;',
+        '.gm-navbar .gm-menu-actions-wrapper .gm-minicart': 'display: none;',
+        media: 'mobile'
+      });
+    }
+
+    // Mobile action buttons view rules for Search icon.
+    if (settings.searchFormIconPositionMobile !== 'none') {
+      if (settings.searchFormIconPositionMobile === 'topbar') {
+        css.push({
+          '.gm-navigation-drawer .gm-mobile-action-area-wrapper .gm-search': 'display: none;',
+          media: 'mobile'
+        });
+      }
+      if (settings.searchFormIconPositionMobile === 'slideBottom') {
+        css.push({
+          '.gm-navbar .gm-menu-actions-wrapper .gm-search': 'display: none;',
+          media: 'mobile'
+        });
+      }
+    } else {
+      css.push({
+        '.gm-navigation-drawer .gm-mobile-action-area-wrapper .gm-search': 'display: none;',
+        '.gm-navbar .gm-menu-actions-wrapper .gm-search': 'display: none;',
+        media: 'mobile'
+      });
+    }
+
+    // Desktop action buttons view rules for Search icon.
+    if (settings.header.style === 2  && settings.minimalisticMenuSearchIconPosition !== 'none') {
+      if (settings.minimalisticMenuSearchIconPosition === 'topbar') {
+        css.push({
+          '.gm-navbar ~ .gm-main-menu-wrapper .gm-actions > .gm-search': 'display: none;',
+          media: 'desktop'
+        });
+      }
+      if (settings.minimalisticMenuSearchIconPosition === 'slideBottom') {
+        css.push({
+          '.gm-navbar .gm-menu-actions-wrapper > .gm-search': 'display: none;',
+          media: 'desktop'
+        });
+      }
+    } else {
+      css.push({
+        '.gm-navbar ~ .gm-navbar ~ .gm-main-menu-wrapper .gm-actions > .gm-search': 'display: none;',
+        '.gm-navbar .gm-menu-actions-wrapper > .gm-search': 'display: none;',
+        media: 'desktop'
+      });
+    }
+
+    // Desktop action buttons view rules for Woocommerce icon mini-cart.
+    if (settings.header.style === 2 && settings.minimalisticMenuWooIconPosition !== 'none') {
+      if (settings.minimalisticMenuWooIconPosition === 'topbar') {
+        css.push({
+          '.gm-navbar ~ .gm-main-menu-wrapper .gm-actions > .gm-minicart': 'display: none;',
+          media: 'desktop'
+        });
+      }
+      if (settings.minimalisticMenuWooIconPosition === 'slideBottom') {
+        css.push({
+          '.gm-navbar .gm-menu-actions-wrapper > .gm-minicart': 'display: none;',
+          media: 'desktop'
+        });
+      }
+    } else {
+      css.push({
+        '.gm-navbar ~ .gm-main-menu-wrapper .gm-actions > .gm-minicart': 'display: none;',
+        '.gm-navbar .gm-menu-actions-wrapper > .gm-minicart': 'display: none;',
+        media: 'desktop'
+      });
+    }
+
+    // Desktop action buttons divider hide.
+    if (settings.header.style === 2) {
+      if (settings.minimalisticMenuWooIconPosition === 'topbar' || settings.minimalisticMenuWooIconPosition === 'none' || settings.minimalisticMenuSearchIconPosition === 'topbar' || settings.minimalisticMenuSearchIconPosition === 'none') {
+        css.push({
+          '.gm-navbar ~ .gm-main-menu-wrapper .gm-actions > div:nth-of-type(n+2)': 'border-left: none;',
+          media: 'desktop'
         });
       }
     }
@@ -4368,7 +4486,7 @@ export default class GmStyles {
 
 
     // Toolbar Menu styles.
-    if (settings.header.toolbar && settings.toolbarMenuEnable) {
+    if (settings.toolbarMenuEnable) {
       const {
         toolbarMenuShowMobile: showMobile,
         toolbarMenuTopColor: topColor,

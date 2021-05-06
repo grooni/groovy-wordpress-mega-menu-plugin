@@ -275,17 +275,36 @@ function closeIfNoChildren(navDrawer) {
 
 
 function forceLogoCentering() {
-  if (!options.forceLogoCenteringMobile || options.mobileLogoPosition !== 'center' || options.mobileSideIconPosition === 'left') {
-    return false;
-  }
 
   let gmLogo = document.querySelector('.gm-navbar .gm-logo > a');
-
   if (!gmLogo) {
     return null;
   }
 
+  let gmActions = document.querySelector('.gm-navbar .gm-menu-actions-wrapper');
+  let gmBurger = document.querySelector('.gm-navigation-drawer .gm-burger');
+  let gmContainer = document.querySelector('.gm-navbar .gm-container');
+  let indentPixelsDesk = 0;
+
   let isMobileFlag = isMobile(options.mobileWidth);
+
+  // Desktop logo centered.
+  if (gmActions && options.forceLogoCentering && options.header.style === 2 && options.header.align === 'center' && !isMobileFlag) {
+    indentPixelsDesk = Math.floor(gmActions.offsetWidth / 2) + indentPixelsDesk + 32;
+    if (gmContainer && indentPixelsDesk > 0 && indentPixelsDesk < Math.floor(gmContainer.clientWidth / 2)) {
+      if (options.minimalisticMenuSideIconPosition === 'right') {
+        gmLogo.style.marginLeft = `${indentPixelsDesk}px`;
+      } else {
+        gmLogo.style.marginLeft = `-${indentPixelsDesk}px`;
+      }
+      return true;
+    }
+  }
+
+  // Mobile logo centered.
+  if (!options.forceLogoCenteringMobile || options.mobileLogoPosition !== 'center') {
+    return false;
+  }
 
   if (!isMobileFlag) {
     gmLogo.style.marginLeft = null;
@@ -293,8 +312,6 @@ function forceLogoCentering() {
   }
 
 
-  let gmActions = document.querySelector('.gm-navbar .gm-menu-actions-wrapper');
-  let gmBurger = document.querySelector('.gm-navigation-drawer .gm-burger');
   let indentPixels = 0;
 
   if (gmBurger) {
@@ -302,12 +319,17 @@ function forceLogoCentering() {
   }
 
   if (gmActions) {
-    let gmContainer = document.querySelector('.gm-navbar .gm-container');
     indentPixels = Math.floor(gmActions.offsetWidth / 2) + indentPixels + 32;
     if (gmContainer && indentPixels > 0 && indentPixels < Math.floor(gmContainer.clientWidth / 2)) {
-      gmLogo.style.marginLeft = `${indentPixels}px`;
+      if (options.mobileSideIconPosition === 'right') {
+        gmLogo.style.marginLeft = `${indentPixels}px`;
+      } else {
+        gmLogo.style.marginLeft = `-${indentPixels}px`;
+      }
     }
   }
+
+  return true;
 
 }
 

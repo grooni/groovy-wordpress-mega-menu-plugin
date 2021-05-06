@@ -209,7 +209,7 @@ function groovyMenu( $args = array() ) {
 		// Do custom shortcodes from preset.
 		GroovyMenuActions::do_preset_shortcodes( $styles );
 
-		if ( 'true' === $groovyMenuSettings['header']['toolbar'] && $groovyMenuSettings['toolbarMenuEnable'] ) {
+		if ( $groovyMenuSettings['toolbarMenuEnable'] ) {
 			// Do custom shortcodes from preset.
 			GroovyMenuActions::check_toolbar_menu( $styles );
 		}
@@ -695,13 +695,28 @@ function groovyMenu( $args = array() ) {
 	$mobile_woo_icon_html    = '';
 	$mobile_search_icon_html = '';
 
-	// Woocomerce minicart for mobile top bar.
+	// Woocomerce minicart for mobile top bar & minimalistic.
 	if (
-		$groovyMenuSettings['mobileShowWoominicart'] &&
 		! gm_get_shop_is_catalog() &&
 		$groovyMenuSettings['woocommerceCart'] &&
 		class_exists( 'WooCommerce' ) &&
-		function_exists( 'wc_get_page_id' )
+		function_exists( 'wc_get_page_id' ) &&
+		(
+			(
+				! empty( $groovyMenuSettings['woocommerceIconPositionMobile'] ) &&
+				in_array( $groovyMenuSettings['woocommerceIconPositionMobile'], array(
+					'topbar',
+					'topbar_slideBottom',
+				), true )
+			) || (
+				2 === $header_style &&
+				! empty( $groovyMenuSettings['minimalisticMenuWooIconPosition'] ) &&
+				in_array( $groovyMenuSettings['minimalisticMenuWooIconPosition'], array(
+					'topbar',
+					'topbar_slideBottom',
+				), true )
+			)
+		)
 	) {
 		global $woocommerce;
 
@@ -723,11 +738,25 @@ function groovyMenu( $args = array() ) {
 					</div>';
 	}
 
-	// Search icon for mobile top bar.
+	// Search icon for mobile top bar & minimalistic.
 	if (
 		'disable' !== $searchForm &&
-		! empty( $groovyMenuSettings['searchFormIconPositionMobile'] ) &&
-		in_array( $groovyMenuSettings['searchFormIconPositionMobile'], array( 'topbar', 'topbar_slideBottom' ), true )
+		(
+			(
+				! empty( $groovyMenuSettings['searchFormIconPositionMobile'] ) &&
+				in_array( $groovyMenuSettings['searchFormIconPositionMobile'], array(
+					'topbar',
+					'topbar_slideBottom',
+				), true )
+			) || (
+				2 === $header_style &&
+				! empty( $groovyMenuSettings['minimalisticMenuSearchIconPosition'] ) &&
+				in_array( $groovyMenuSettings['minimalisticMenuSearchIconPosition'], array(
+					'topbar',
+					'topbar_slideBottom',
+				), true )
+			)
+		)
 	) {
 		$searchIcon = 'gmi gmi-zoom-search';
 		if ( $styles->getGlobal( 'misc_icons', 'search_icon' ) ) {
@@ -1086,7 +1115,10 @@ function groovyMenu( $args = array() ) {
 		if (
 			'disable' !== $searchForm &&
 			! empty( $groovyMenuSettings['searchFormIconPositionMobile'] ) &&
-			in_array( $groovyMenuSettings['searchFormIconPositionMobile'], array( 'slideBottom', 'topbar_slideBottom' ), true )
+			in_array( $groovyMenuSettings['searchFormIconPositionMobile'], array(
+				'slideBottom',
+				'topbar_slideBottom',
+			), true )
 		) {
 
 			$isFullScreen   = false;
