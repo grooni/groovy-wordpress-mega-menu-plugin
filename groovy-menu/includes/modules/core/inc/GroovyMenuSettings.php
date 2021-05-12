@@ -2421,14 +2421,25 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 										 src="<?php echo GROOVY_MENU_URL; ?>assets/images/integration.svg" alt="">
 								</div>
 								<div class="gm-dashboard-body-block--right">
-									<h3><?php esc_html_e( 'Integration through Child Theme', 'groovy-menu' ); ?></h3>
+									<h3><?php
+										if ( 'plugin' === $child_proposal['integration_type'] ) {
+											esc_html_e( 'Integration through additional Plugin', 'groovy-menu' );
+										} else {
+											esc_html_e( 'Integration through Child Theme', 'groovy-menu' );
+										}
+										?></h3>
 									<?php if ( isset( $child_proposal['auto_integration'] ) && $child_proposal['auto_integration'] ) { ?>
 										<p><?php esc_html_e( 'According to the information from the Groovy Menu integration database, your current theme fully supports integration of Groovy Menu.', 'groovy-menu' ) ?></p>
 									<?php } ?>
 
 									<?php if ( isset( $child_proposal['zip_url'] ) && $child_proposal['zip_url'] ) { ?>
 										<p><?php echo sprintf( esc_html__( 'Your activated %s theme is already in our database. That is mean you don\'t need to use auto or manual integration.', 'groovy-menu' ), $current_theme ) ?></p>
-										<p><?php esc_html_e( 'We already prepared Child theme as the solution for your integration. Please download and activate', 'groovy-menu' ); ?>:
+										<p><?php
+											if ( 'plugin' === $child_proposal['integration_type'] ) {
+												esc_html_e( 'We already prepared additional Plugin as the solution for your integration. Please download and activate', 'groovy-menu' );
+											} else {
+												esc_html_e( 'We already prepared Child theme as the solution for your integration. Please download and activate', 'groovy-menu' );
+											} ?>:
 										</p>
 										<p>
 											<a href="<?php echo esc_attr( $child_proposal['zip_url'] ); ?>"

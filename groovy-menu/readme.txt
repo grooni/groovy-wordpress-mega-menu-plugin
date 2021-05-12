@@ -4,7 +4,7 @@ Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive,
 Requires at least: 4.9.7
 Tested up to: 5.7
 Requires PHP: 7.0
-Stable tag: 1.2.16
+Stable tag: 1.3.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -115,6 +115,9 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.3.0 =
+
 
 = 1.2.16 =
 * Improve:  Possibility of correct interpretation of special characters ("\n", "\r", "\t", "\f", "\b") for outputting custom content added in "Groovy Menu > Custom code".
