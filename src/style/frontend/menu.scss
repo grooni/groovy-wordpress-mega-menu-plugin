@@ -271,6 +271,10 @@ NAVBAR GENERAL STYLES
   align-items: center;
 }
 
+.gm-menu-item > .gm-anchor > .gm-menu-item__txt-wrapper {
+  display: flex;
+}
+
 /* bugfix: For sub-submenus that climb out of the right side of the screen and, on some WP Themes, they call the horizontal scroll of the browser when opening the first level submenu. */
 .gm-navbar {
   .gm-navbar-nav > .gm-dropdown:not(.gm-opened-before) .gm-dropdown-menu-wrapper {

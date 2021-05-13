@@ -27,6 +27,9 @@ body:not(.fl-builder-edit) {
 
   .menu-item {
     margin-bottom: 0;
+    height: auto;
+    width: auto;
+    max-width: 100%;
   }
 
   .gm-navbar-nav {

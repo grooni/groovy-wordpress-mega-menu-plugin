@@ -125,6 +125,13 @@ export default function initScrollbar(settings) {
       currentDropdown.style.position = 'static';
       if (isVerticalMenu(settings)) {
         currentDropdown.style.maxHeight = '100%';
+
+        if (currentDropdown.scrollHeight > maxHeightCalculated) {
+          currentDropdown.style.justifyContent = 'flex-start';
+        } else {
+          currentDropdown.style.justifyContent = null;
+        }
+
       } else {
         currentDropdown.style.maxHeight = `${maxHeightCalculated}px`;
       }
@@ -152,6 +159,13 @@ export default function initScrollbar(settings) {
     currentDropdown.style.position = 'static';
     if (isVerticalMenu(settings)) {
       currentDropdown.style.maxHeight = '100%';
+
+      if (currentDropdown.scrollHeight > maxHeightCalculated) {
+        currentDropdown.style.justifyContent = 'flex-start';
+      } else {
+        currentDropdown.style.justifyContent = null;
+      }
+
     } else {
       currentDropdown.style.maxHeight = `${maxHeightCalculated}px`;
     }
