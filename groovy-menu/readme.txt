@@ -119,11 +119,10 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 = 1.3.0 =
 * Add: Added new feature the Export/Import for Menu Blocks. (Phase 1)
 * Add: Added "Replace" button allows to replace icon pack at "Global setting > Icon pack" tab
-* Add: Added two new settings for the Expanded sidebar menu: "Initial sidebar: Hide first level icons" & "Expanded sidebar: Hide first level icons".
 * Add: Added ability to set a background image for Slider in Minimalistic style menu.
 * Add: Added ability to select places for search icons and Woocommerce mini-cart in Minimalistic style menu.
 * Add: Added the ability to integrate a plugin using a special helper plugin, in cases where integration using a child theme is not possible, for example, for Genesis Framework themes.
-* Add: Added time delay settings for switching between adjacent menu items and auto-closing dropdowns.
+* Add: Added settings to control time delay of appearing in/out between dropdowns and submenus.
 * Add: New setting to set drawer width as fullwidth for mobile menu.
 * Add: Added global setting "Close icon".
 * Add: Added Thrive Theme Builder support.

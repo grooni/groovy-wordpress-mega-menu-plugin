@@ -15,8 +15,29 @@ defined( 'ABSPATH' ) || die( 'This script cannot be accessed directly.' );
  */
 class FrontendSimpleWalker extends WalkerNavMenu {
 
+	protected $currentLvl   = 0;
 	protected $megaMenuPost = null;
 	protected $currentItem;
+
+	/**
+	 * @param string $output
+	 * @param int    $depth
+	 * @param array  $args
+	 */
+	public function start_lvl( &$output, $depth = 0, $args = array() ) {
+		$this->currentLvl ++;
+		parent::start_lvl( $output, $depth = 0, $args = array() );
+	}
+
+	/**
+	 * @param string $output
+	 * @param int    $depth
+	 * @param array  $args
+	 */
+	public function end_lvl( &$output, $depth = 0, $args = array() ) {
+		$this->currentLvl --;
+		parent::end_lvl( $output, $depth = 0, $args = array() );
+	}
 
 	/**
 	 * Begin of element
