@@ -239,7 +239,6 @@ class GroovyMenu {
 
     // Sub-Menus DROPDOWN action ----------------------------------------------------------------------------[ open ]---
     let initDropdownAction = (e) => {
-      let delay = 210; // delay for diagonal navigation in sub-menus.
       let closestDropdown = e.target.closest('.gm-dropdown');
       let closestAnchor = e.target.closest('.gm-anchor');
       let isClosestAnchorEmpty = closestAnchor && '#' === closestAnchor.getAttribute('href');
@@ -248,6 +247,11 @@ class GroovyMenu {
       let gmMainMenu = document.querySelector('#gm-main-menu');
       let hasOpenedElems = false;
       let miniCart = e.target.closest('.gm-minicart');
+      let autoCloseDelay = options.subDropdownAutocloseDelay ? options.subDropdownAutocloseDelay : 500;
+      autoCloseDelay = autoCloseDelay < 1 ? 1 : autoCloseDelay;
+      let diagonalDelay = options.subDropdownAdjacentDelay ? options.subDropdownAdjacentDelay : 300;
+      diagonalDelay = diagonalDelay < 100 ? 100 : diagonalDelay;
+      diagonalDelay = diagonalDelay - 95;
 
       if (closestDropdown) {
         isTopLevelClass = closestDropdown.classList.contains('gm-menu-item--lvl-0');
@@ -306,7 +310,7 @@ class GroovyMenu {
       if (closestDropdown) {
 
         if (!hasOpenedElems) {
-          delay = 0;
+          diagonalDelay = 0;
         }
 
         let openParents = getElemParents(closestDropdown, 'gm-open');
@@ -415,11 +419,11 @@ class GroovyMenu {
             }
           }
 
-        }, delay));
+        }, diagonalDelay));
 
       } else { // apparently this is the top level menu without dropdown.
         // Close all dropdowns.
-        dropdownCloseAll(420);
+        dropdownCloseAll(autoCloseDelay);
       }
     };
 
@@ -447,12 +451,13 @@ class GroovyMenu {
         return;
       }
 
-      let delay = 350;
-
       // disable for search and WooCommerce buttons.
       if (elemClassList.contains('gm-search') || elemClassList.contains('gm-minicart')) {
         return;
       }
+
+      let diagonalDelay = options.subDropdownAdjacentDelay ? options.subDropdownAdjacentDelay : 300;
+      diagonalDelay = diagonalDelay < 100 ? 100 : diagonalDelay;
 
       closestDropdown.setAttribute('data-close', true);
 
@@ -461,7 +466,7 @@ class GroovyMenu {
         if (closestDropdown.getAttribute('data-close')) {
           dropdownClose(closestDropdown);
         }
-      }, delay));
+      }, diagonalDelay));
     };
 
     // Sub-Menus DROPDOWN action ---------------------------------------------------------------------------[ touch ]---
@@ -495,6 +500,13 @@ class GroovyMenu {
         e.preventDefault();
 
       }
+    };
+
+    // Sub-Menus DROPDOWN Auto Close action -----------------------------------------------------------[ auto close ]---
+    let dropdownAutoClose = () => {
+      let autoCloseDelay = options.subDropdownAutocloseDelay ? options.subDropdownAutocloseDelay : 500;
+      autoCloseDelay = autoCloseDelay < 1 ? 1 : autoCloseDelay;
+      dropdownCloseAll(autoCloseDelay);
     };
 
 
@@ -539,9 +551,7 @@ class GroovyMenu {
         });
 
         if (!isTouchDevice && gmMainMenu) {
-          gmMainMenu.addEventListener('mouseleave', () => {
-            dropdownCloseAll(500);
-          });
+          gmMainMenu.addEventListener('mouseleave', dropdownAutoClose);
         }
       }
 

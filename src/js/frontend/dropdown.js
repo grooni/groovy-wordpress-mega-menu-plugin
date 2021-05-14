@@ -119,7 +119,10 @@ export function dropdownToggle(elem, options) {
       }
     } else {
       // close all
-      dropdownCloseAll(500);
+
+      let autoCloseDelay = options.subDropdownAutocloseDelay ? options.subDropdownAutocloseDelay : 500;
+      autoCloseDelay = autoCloseDelay < 1 ? 1 : autoCloseDelay;
+      dropdownCloseAll(autoCloseDelay);
     }
 
     dropdownOpen(elem, options);
@@ -132,17 +135,22 @@ export function dropdownCloseAll(delay) {
     delay = 0;
   }
 
+  if (delay < 0) {
+    delay = 0;
+  }
+
   let gmMainMenu = document.querySelector('#gm-main-menu');
 
+  // The second check is to close the menu 100%.
+  // It is possible that the browser cannot create events when the mouse cursor goes out of focus.
   if (gmMainMenu && delay > 0) {
-
-    gmMainMenu.setAttribute('data-timeout-check-close', setTimeout(function () {
-      checkCursorBeforeClose();
-    }, delay + 350));
 
     gmMainMenu.setAttribute('data-timeout-close-all', setTimeout(function () {
       dropdownCloseAllOpened(delay);
     }, delay));
+    gmMainMenu.setAttribute('data-timeout-check-close', setTimeout(function () {
+      checkCursorBeforeClose();
+    }, delay + 375));
 
   } else {
 

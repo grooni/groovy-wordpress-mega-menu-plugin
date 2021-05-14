@@ -623,6 +623,22 @@ return array(
 				'unit'        => 'px',
 				'condition'   => array( 'header.style', 'in', array( '1' ) ),
 			),
+			'sub_dropdown_adjacent_delay'                      => array(
+				'title'       => esc_html__( 'Delay of smooth switching between adjacent dropdowns and submenus', 'groovy-menu' ),
+				'description' => esc_html__( 'Affects the ability to diagonally navigate between adjacent menu items.', 'groovy-menu' ),
+				'type'        => 'number',
+				'range'       => array( 100, 1500 ),
+				'default'     => 300,
+				'unit'        => 'ms',
+			),
+			'sub_dropdown_autoclose_delay'                    => array(
+				'title'       => esc_html__( 'Auto close delay for submenus', 'groovy-menu' ),
+				'description' => esc_html__( 'Determines how quickly the submenu will close after the mouse cursor loses focus.', 'groovy-menu' ),
+				'type'        => 'number',
+				'range'       => array( 0, 3000 ),
+				'default'     => 500,
+				'unit'        => 'ms',
+			),
 			'megamenu_group'                                  => array(
 				'title'     => esc_html__( 'Mega menu', 'groovy-menu' ),
 				'type'      => 'group',
