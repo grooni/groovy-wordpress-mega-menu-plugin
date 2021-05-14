@@ -117,6 +117,26 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 == Changelog ==
 
 = 1.3.0 =
+* Add: Added new feature the Export/Import for Menu Blocks. (Phase 1)
+* Add: Added "Replace" button allows to replace icon pack at "Global setting > Icon pack" tab
+* Add: Added two new settings for the Expanded sidebar menu: "Initial sidebar: Hide first level icons" & "Expanded sidebar: Hide first level icons".
+* Add: Added ability to set a background image for Slider in Minimalistic style menu.
+* Add: Added ability to select places for search icons and Woocommerce mini-cart in Minimalistic style menu.
+* Add: Added the ability to integrate a plugin using a special helper plugin, in cases where integration using a child theme is not possible, for example, for Genesis Framework themes.
+* Add: Added time delay settings for switching between adjacent menu items and auto-closing dropdowns.
+* Add: New setting to set drawer width as fullwidth for mobile menu.
+* Add: Added global setting "Close icon".
+* Add: Added Thrive Theme Builder support.
+* Add: Added setting "Disable dropdown state for minicart".
+* Add: 2 New settings "Alternative JavaScript initialization", "Run JavaScript initialization as soon as possible" at Global settings > Tools. Enabling of which can help in cases where third party caching plugins have hard-coded JavaScript output.
+* Improve: "General> Toolbar menu" section renamed to "General> Additional menu". Now you can insert additional nav menus in various places in the Groovy Menu.
+* Improve: Added the ability to add Menu Blocks, Icons, Badges for Addition menus.
+* Fix: Delete font files if remove (delete) icon pack (in the Groovy Menu Global setting).
+* Fix: Checking the existence of font files during Icon Pack loading and considering that when creating a CSS file.
+* Fix: Deleting font files if icon pack has been removed (under Dashboard > Global setting > Icons packs).
+* Fix: Changed CSS Flex alignment direction for Expanded sidebar and Sidebar menu types. This also allows you to add a scroll for the first level of the menu in cases where all menu items do not fit in height on the screen.
+* Fix: Hamburger icon at "Show Hamburger icon as animated" had an incorrect position when Toolbar was enabled.
+* Fix: Forced cleaning of Menu Block from automatically wpautop() inserted empty paragraph tags.
 
 
 = 1.2.16 =
