@@ -130,13 +130,9 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 * Add: 2 New settings "Alternative JavaScript initialization", "Run JavaScript initialization as soon as possible" at Global settings > Tools. Enabling of which can help in cases where third party caching plugins have hard-coded JavaScript output.
 * Improve: "General> Toolbar menu" section renamed to "General> Additional menu". Now you can insert additional nav menus in various places in the Groovy Menu.
 * Improve: Added the ability to add Menu Blocks, Icons, Badges for Addition menus.
-* Fix: Delete font files if remove (delete) icon pack (in the Groovy Menu Global setting).
 * Fix: Checking the existence of font files during Icon Pack loading and considering that when creating a CSS file.
 * Fix: Deleting font files if icon pack has been removed (under Dashboard > Global setting > Icons packs).
-* Fix: Changed CSS Flex alignment direction for Expanded sidebar and Sidebar menu types. This also allows you to add a scroll for the first level of the menu in cases where all menu items do not fit in height on the screen.
 * Fix: Hamburger icon at "Show Hamburger icon as animated" had an incorrect position when Toolbar was enabled.
-* Fix: Forced cleaning of Menu Block from automatically wpautop() inserted empty paragraph tags.
-
 
 = 1.2.16 =
 * Improve:  Possibility of correct interpretation of special characters ("\n", "\r", "\t", "\f", "\b") for outputting custom content added in "Groovy Menu > Custom code".
