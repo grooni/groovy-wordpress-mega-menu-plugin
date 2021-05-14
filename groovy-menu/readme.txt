@@ -117,7 +117,6 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 == Changelog ==
 
 = 1.3.0 =
-* Add: Added new feature the Export/Import for Menu Blocks. (Phase 1)
 * Add: Added "Replace" button allows to replace icon pack at "Global setting > Icon pack" tab
 * Add: Added ability to set a background image for Slider in Minimalistic style menu.
 * Add: Added ability to select places for search icons and Woocommerce mini-cart in Minimalistic style menu.
