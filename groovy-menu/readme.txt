@@ -127,8 +127,12 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 * Add: Added Thrive Theme Builder support.
 * Add: Added setting "Disable dropdown state for minicart".
 * Add: 2 New settings "Alternative JavaScript initialization", "Run JavaScript initialization as soon as possible" at Global settings > Tools. Enabling of which can help in cases where third party caching plugins have hard-coded JavaScript output.
+* Add: Option "Show Hamburger icon as animated" added for Minimalistic menu style.
+* Add: Option "Show menu button text" for Mobile and Minimalistic menu type.
+* Add: Option "Slider max height" for Minimalistic menu type.
 * Improve: "General> Toolbar menu" section renamed to "General> Additional menu". Now you can insert additional nav menus in various places in the Groovy Menu.
 * Improve: Added the ability to add Menu Blocks, Icons, Badges for Addition menus.
+* Improve: Mobile "Show Hamburger icon as animated".
 * Fix: Checking the existence of font files during Icon Pack loading and considering that when creating a CSS file.
 * Fix: Deleting font files if icon pack has been removed (under Dashboard > Global setting > Icons packs).
 * Fix: Hamburger icon at "Show Hamburger icon as animated" had an incorrect position when Toolbar was enabled.
