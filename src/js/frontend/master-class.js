@@ -67,9 +67,8 @@ class GroovyMenu {
     let navbar = document.querySelector('.gm-navbar');
     let navDrawer = document.querySelector('.gm-navigation-drawer');
 
-    let hamburgerMenu = (options.mobileIndependentCssHamburger && 2 !== headerStyle) ? document.querySelector('.gm-burger') : document.querySelector('.gm-menu-btn');
+    let hamburgerMenu = (options.mobileIndependentCssHamburger && options.mobileIndependentCssHamburgerFloat && 2 !== headerStyle) ? document.querySelector('.gm-burger') : document.querySelector('.gm-menu-btn');
     let hamburgerMenuClose = document.querySelector('.gm-navigation-drawer .gm-hamburger-close');
-    let hamburgerMenuType = (options.mobileIndependentCssHamburgerType) ? options.mobileIndependentCssHamburgerType : 'hamburger--squeeze';
 
     if (options.mobileCustomHamburger) {
       hamburgerMenu = document.querySelector('.gm-custom-hamburger');
@@ -605,8 +604,16 @@ class GroovyMenu {
       }
     }
 
+    // CSS Mobile hamburger for non-minimalistic style menu.
     if (hamburgerMenu && options.mobileIndependentCssHamburger && 2 !== headerStyle && !options.mobileCustomHamburger) {
-      hamburgerMenu.classList.add(hamburgerMenuType);
+      let hamburgerMenuTypeMobile = (options.mobileIndependentCssHamburgerType) ? options.mobileIndependentCssHamburgerType : 'hamburger--squeeze';
+      hamburgerMenu.classList.add(hamburgerMenuTypeMobile);
+    }
+
+    // CSS hamburger for minimalistic style menu.
+    if (hamburgerMenu && options.minimalisticCssHamburger && 2 === headerStyle) {
+      let hamburgerMenuTypeMinimalistic = (options.minimalisticCssHamburgerType) ? options.minimalisticCssHamburgerType : 'hamburger--squeeze';
+      hamburgerMenu.classList.add(hamburgerMenuTypeMinimalistic);
     }
 
     initOffcanvas({

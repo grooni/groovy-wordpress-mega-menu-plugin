@@ -354,6 +354,9 @@ function groovyMenu( $args = array() ) {
 
 	$searchForm = $groovyMenuSettings['searchForm'];
 
+	$menu_button_text = $styles->getGlobal( 'misc_icons', 'menu_button_text' );
+	$menu_button_text = apply_filters( 'wpml_translate_single_string', $menu_button_text, 'groovy-menu', 'Global settings - Menu button text' );
+
 	// Clean output, first parent level;
 	ob_start();
 
@@ -797,7 +800,7 @@ function groovyMenu( $args = array() ) {
 	}
 
 
-	if ( ( $groovyMenuSettings['mobileIndependentCssHamburger'] && 2 !== $header_style ) || $groovyMenuSettings['mobileCustomHamburger'] ) {
+	if ( ( $groovyMenuSettings['mobileIndependentCssHamburger'] && $groovyMenuSettings['mobileIndependentCssHamburgerFloat'] && 2 !== $header_style ) || $groovyMenuSettings['mobileCustomHamburger'] ) {
 
 
 		if ( $groovyMenuSettings['mobileCustomHamburger'] ) {
@@ -825,15 +828,32 @@ function groovyMenu( $args = array() ) {
 		$output_html .= ob_get_clean();
 
 
-		$output_html .= '<span class="gm-menu-btn">
-						<span class="gm-menu-btn__inner">';
-		$menu_icon   = 'fa fa-bars';
-		if ( ! empty( $styles->getGlobal( 'misc_icons', 'menu_icon' ) ) ) {
-			$menu_icon = $styles->getGlobal( 'misc_icons', 'menu_icon' );
+		$menu_button_text_full = '';
+		if ( $groovyMenuSettings['mobileMenuButtonShowText'] || 2 === $header_style ) {
+			$menu_button_text_full = '<span class="gm-menu-btn--text" >' . $menu_button_text . '</span >';
 		}
-		$output_html .= '	<i class="' . esc_attr( $menu_icon ) . '"></i>
-					</span>
-					</span>';
+
+		if ( 2 === $header_style && $groovyMenuSettings['minimalisticCssHamburger'] ) {
+
+			$output_html .= '<div class="gm-menu-btn gm-burger hamburger">' . $menu_button_text_full . '<div class="hamburger-box"><div class="hamburger-inner"></div></div></div>';
+
+		} elseif ( $groovyMenuSettings['mobileIndependentCssHamburger'] && ! $groovyMenuSettings['mobileIndependentCssHamburgerFloat'] && 2 !== $header_style ) {
+
+			$output_html .= '<div class="gm-menu-btn gm-burger hamburger">' . $menu_button_text_full . '<div class="hamburger-box"><div class="hamburger-inner"></div></div></div>';
+
+		} else {
+			$output_html .= '<span class="gm-menu-btn">';
+			$output_html .= $menu_button_text_full;
+			$output_html .= '	<span class="gm-menu-btn__inner">';
+
+			$menu_icon = 'fa fa-bars';
+			if ( ! empty( $styles->getGlobal( 'misc_icons', 'menu_icon' ) ) ) {
+				$menu_icon = $styles->getGlobal( 'misc_icons', 'menu_icon' );
+			}
+			$output_html .= '	<i class="' . esc_attr( $menu_icon ) . '"></i>';
+			$output_html .= '	</span>';
+			$output_html .= '</span>';
+		}
 
 
 		ob_start();
@@ -1028,13 +1048,13 @@ function groovyMenu( $args = array() ) {
 		}
 		$output_html .= '">';
 
-		if ( $groovyMenuSettings['mobileIndependentCssHamburger'] && 2 !== $header_style && ! $groovyMenuSettings['mobileCustomHamburger'] ) {
+		if ( $groovyMenuSettings['mobileIndependentCssHamburger'] && $groovyMenuSettings['mobileIndependentCssHamburger'] && 2 !== $header_style && ! $groovyMenuSettings['mobileCustomHamburger'] ) {
 			$output_html .= '<div class="gm-burger hamburger"><div class="hamburger-box"><div class="hamburger-inner"></div></div></div>';
 		}
 
 		$output_html .= '<div class="gm-grid-container d-flex flex-column h-100">';
 
-		if ( $groovyMenuSettings['mobileOffcanvasFullwidth'] && ! $groovyMenuSettings['mobileIndependentCssHamburger'] ) {
+		if ( $groovyMenuSettings['mobileOffcanvasFullwidth'] ) {
 			$output_html .= '
 			<div class="gm-menu-btn gm-hamburger-close">
 				<div class="gm-menu-btn__inner">';

@@ -373,22 +373,28 @@ return array(
 	'misc_icons' => array(
 		'title'  => esc_html__( 'Misc icons', 'groovy-menu' ),
 		'fields' => array(
-			'search_icon' => array(
+			'search_icon'      => array(
 				'type'    => 'icon',
 				'title'   => esc_html__( 'Search icon', 'groovy-menu' ),
 				'default' => 'gmi gmi-zoom-search',
 			),
-			'cart_icon'   => array(
+			'cart_icon'        => array(
 				'type'    => 'icon',
 				'title'   => esc_html__( 'Cart icon', 'groovy-menu' ),
 				'default' => 'gmi gmi-bag',
 			),
-			'menu_icon'   => array(
+			'menu_icon'        => array(
 				'type'    => 'icon',
-				'title'   => esc_html__( 'Side icon', 'groovy-menu' ),
+				'title'   => esc_html__( 'Side icon', 'groovy-menu' ) . ' (' . esc_html__( 'Hamburger', 'groovy-menu' ) . ')',
 				'default' => 'fa fa-bars',
 			),
-			'close_icon' => array(
+			'menu_button_text' => array(
+				'title'       => esc_html__( 'Menu button text', 'groovy-menu' ),
+				'description' => esc_html__( 'The string from this field can be translated into other languages using WPML', 'groovy-menu' ),
+				'type'        => 'text',
+				'default'     => 'Menu',
+			),
+			'close_icon'       => array(
 				'type'    => 'icon',
 				'title'   => esc_html__( 'Close icon', 'groovy-menu' ),
 				'default' => 'fa fa-times',
