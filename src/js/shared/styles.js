@@ -5135,8 +5135,8 @@ export default class GmStyles {
         css.push({
           '.gm-navbar-sticky-toggle .gm-menu-btn__inner': `color: ${color};`,
           '.gm-navbar-sticky-toggle .gm-menu-actions-wrapper a.gm-minicart-link': `color: ${color} !important;`,
-          '.gm-navbar-sticky-toggle .gm-burger .hamburger-inner, .gm-navbar-sticky-toggle .gm-burger .hamburger-inner::after, .gm-navbar-sticky-toggle .gm-burger .hamburger-inner::before': `background-color: ${color};`,
-          '.gm-navbar-sticky-toggle .gm-burger.hamburger.is-active .hamburger-inner, .gm-navbar-sticky-toggle .gm-burger.hamburger.is-active .hamburger-inner::after, .gm-navbar-sticky-toggle .gm-burger.hamburger.is-active .hamburger-inner::before': `background-color: ${color};`,
+          '.gm-navbar-sticky-toggle .gm-menu-btn.gm-burger .hamburger-inner, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger .hamburger-inner::after, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger .hamburger-inner::before': `background-color: ${color};`,
+          '.gm-navbar-sticky-toggle .gm-menu-btn.gm-burger.hamburger.is-active .hamburger-inner, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger.hamburger.is-active .hamburger-inner::after, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger.hamburger.is-active .hamburger-inner::before': `background-color: ${color};`,
           media: 'desktop'
         });
       }
@@ -5147,8 +5147,8 @@ export default class GmStyles {
 
         css.push({
           '.gm-navbar-sticky-toggle .gm-menu-btn__inner': `font-size: ${size}px;`,
-          '.gm-navbar-sticky-toggle .gm-burger .hamburger-box, .gm-burger .hamburger-inner, .gm-navbar-sticky-toggle .gm-burger .hamburger-inner::after, .gm-navbar-sticky-toggle .gm-burger .hamburger-inner::before': `width: ${size}px;`,
-          '.gm-navbar-sticky-toggle .gm-burger .hamburger-box': `height: ${size}px;`,
+          '.gm-navbar-sticky-toggle .gm-menu-btn.gm-burger .hamburger-box, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger .hamburger-inner, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger .hamburger-inner::after, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger .hamburger-inner::before': `width: ${size}px;`,
+          '.gm-navbar-sticky-toggle .gm-menu-btn.gm-burger .hamburger-box': `height: ${size}px;`,
           media: 'desktop'
         });
       }
@@ -5158,7 +5158,7 @@ export default class GmStyles {
         const color = settings.hamburgerIconStickyBgColor;
 
         css.push({
-          '.gm-navbar-sticky-toggle .gm-menu-btn__inner, .gm-navbar-sticky-toggle .gm-burger': `background-color: ${color};`,
+          '.gm-navbar-sticky-toggle .gm-menu-btn__inner, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger': `background-color: ${color};`,
           media: 'desktop'
         });
       }
@@ -5168,7 +5168,7 @@ export default class GmStyles {
         const padding = settings.hamburgerIconStickyPadding;
 
         css.push({
-          '.gm-navbar-sticky-toggle .gm-menu-btn__inner, .gm-navbar-sticky-toggle .gm-burger': `padding: ${padding}px;`,
+          '.gm-navbar-sticky-toggle .gm-menu-btn__inner, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger': `padding: ${padding}px;`,
           media: 'desktop'
         });
       }
@@ -5184,7 +5184,7 @@ export default class GmStyles {
         } = settings;
 
         css.push({
-          '.gm-navbar-sticky-toggle .gm-menu-btn__inner, .gm-navbar-sticky-toggle .gm-burger': `border: ${width}px solid ${color};`,
+          '.gm-navbar-sticky-toggle .gm-menu-btn__inner, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger': `border: ${width}px solid ${color};`,
           media: 'desktop'
         });
       }
@@ -5261,8 +5261,8 @@ export default class GmStyles {
           '.gm-navbar-sticky-toggle .gm-menu-actions-wrapper a': `color: ${color};`,
           '.gm-navbar-sticky-toggle .gm-menu-actions-wrapper a.gm-minicart-link': `color: ${color} !important;`,
           '.gm-navbar-sticky-toggle ~ .gm-navigation-drawer--mobile .gm-burger .hamburger-inner, .gm-navbar-sticky-toggle ~ .gm-navigation-drawer--mobile .gm-burger .hamburger-inner::after, .gm-navbar-sticky-toggle ~ .gm-navigation-drawer--mobile .gm-burger .hamburger-inner::before': `background-color: ${color};`,
-          '.gm-navbar-sticky-toggle .gm-burger .hamburger-inner, .gm-navbar-sticky-toggle .gm-burger .hamburger-inner::after, .gm-navbar-sticky-toggle .gm-burger .hamburger-inner::before': `background-color: ${color};`,
-          '.gm-navbar-sticky-toggle .gm-burger.hamburger.is-active .hamburger-inner, .gm-navbar-sticky-toggle .gm-burger.hamburger.is-active .hamburger-inner::after, .gm-navbar-sticky-toggle .gm-burger.hamburger.is-active .hamburger-inner::before': `background-color: ${color};`,
+          '.gm-navbar-sticky-toggle .gm-menu-btn.gm-burger .hamburger-inner, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger .hamburger-inner::after, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger .hamburger-inner::before': `background-color: ${color};`,
+          '.gm-navbar-sticky-toggle .gm-menu-btn.gm-burger.hamburger.is-active .hamburger-inner, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger.hamburger.is-active .hamburger-inner::after, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger.hamburger.is-active .hamburger-inner::before': `background-color: ${color};`,
           media: 'mobile'
         });
       }
@@ -5275,8 +5275,8 @@ export default class GmStyles {
           '.gm-navbar-sticky-toggle .gm-menu-btn__inner, .gm-navbar.gm-navbar-sticky-toggle .gm-menu-actions-wrapper .gm-minicart .gm-icon': `font-size: ${size}px;`,
           '.gm-navbar.gm-navbar-sticky-toggle .gm-menu-actions-wrapper .gm-search > .gm-icon': `font-size: ${size}px;`,
           '.gm-navbar-sticky-toggle ~ .gm-navigation-drawer--mobile .gm-burger .hamburger-box, .gm-navbar-sticky-toggle ~ .gm-navigation-drawer--mobile .gm-burger .hamburger-inner, .gm-navbar-sticky-toggle ~ .gm-navigation-drawer--mobile .gm-burger .hamburger-inner::after, .gm-navbar-sticky-toggle ~ .gm-navigation-drawer--mobile .gm-burger .hamburger-inner::before': `width: ${size}px;`,
-          '.gm-navbar-sticky-toggle .gm-burger .hamburger-box, .gm-navbar-sticky-toggle .gm-burger .hamburger-inner, .gm-navbar-sticky-toggle .gm-burger .hamburger-inner::after, .gm-navbar-sticky-toggle .gm-burger .hamburger-inner::before': `width: ${size}px;`,
-          '.gm-navbar-sticky-toggle ~ .gm-navigation-drawer--mobile .gm-burger .hamburger-box, .gm-navbar-sticky-toggle .gm-burger .hamburger-box': `height: ${size}px;`,
+          '.gm-navbar-sticky-toggle .gm-menu-btn.gm-burger .hamburger-box, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger .hamburger-inner, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger .hamburger-inner::after, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger .hamburger-inner::before': `width: ${size}px;`,
+          '.gm-navbar-sticky-toggle ~ .gm-navigation-drawer--mobile .gm-burger .hamburger-box, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger .hamburger-box': `height: ${size}px;`,
           media: 'mobile'
         });
       }
@@ -5287,7 +5287,7 @@ export default class GmStyles {
 
         css.push({
           '.gm-navbar-sticky-toggle .gm-menu-btn__inner': `background-color: ${color};`,
-          '.gm-navbar-sticky-toggle ~ .gm-navigation-drawer--mobile .gm-burger, .gm-navbar-sticky-toggle .gm-burger': `background-color: ${color};`,
+          '.gm-navbar-sticky-toggle ~ .gm-navigation-drawer--mobile .gm-burger, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger': `background-color: ${color};`,
           media: 'mobile'
         });
       }
