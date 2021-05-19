@@ -2,6 +2,7 @@ import {getCoords, isMobile, unwrapInner, wrapInner} from '../shared/helpers';
 import _ from 'lodash';
 import {setCurrentItem} from './one-page';
 import {initPaddingsAlignCenter} from './split';
+import groovyTakeScreenshot from '../admin/screenshot';
 
 var options;
 var navDrawer;
@@ -337,19 +338,40 @@ function forceLogoCentering() {
 export function offcanvasSlide() {
   let headerStyle = parseInt(options.header.style, 10);
 
-  window.addEventListener('resize', _.debounce(() => {
-    if (!isMobile(options.mobileWidth) && options.header.style !== 2 && document.querySelector('.gm-nav-content-wrapper') !== null) {
-      unwrapInner('.gm-nav-content-wrapper');
-    }
-  }, 310));
-
   function clickHandler() {
+    checkMenuHeight();
+
     if (!isMobile(options.mobileWidth) && headerStyle === 2) {
       offcanvasToggle(mainMenuWrapper);
     } else {
       offcanvasToggle(navDrawer);
     }
   }
+
+  function checkMenuHeight() {
+    if (!isMobile(options.mobileWidth) && headerStyle === 2 && !options.minimalisticMenuMaxHeight) {
+      let gmNavbarWrapper = document.querySelector('.gm-navbar > .gm-wrapper');
+      let gmMainMenuWrapper = document.querySelector('.gm-main-menu-wrapper');
+
+      if (!gmNavbarWrapper || !gmMainMenuWrapper) {
+        return false;
+      }
+
+      let topGap = gmNavbarWrapper.clientHeight + gmNavbarWrapper.getBoundingClientRect().top;
+      topGap = (!topGap || topGap < 1) ? 0 : topGap;
+
+      gmMainMenuWrapper.style.height = `calc( 100vh - ${topGap}px )`;
+      gmMainMenuWrapper.style.top = `${topGap}px`;
+    }
+
+    return false;
+  }
+
+  window.addEventListener('resize', _.debounce(() => {
+    if (!isMobile(options.mobileWidth) && options.header.style !== 2 && document.querySelector('.gm-nav-content-wrapper') !== null) {
+      unwrapInner('.gm-nav-content-wrapper');
+    }
+  }, 310));
 
   if (hamburgerMenu) {
     hamburgerMenu.addEventListener('click', clickHandler);
@@ -382,6 +404,7 @@ export function offcanvasSlide() {
       offcanvasClose(navDrawer);
     }
 
+    checkMenuHeight();
     forceLogoCentering();
   }, 310));
 
@@ -389,8 +412,11 @@ export function offcanvasSlide() {
 
   window.addEventListener('scroll', _.debounce(() => {
     topIndentForBurger(navDrawer);
+    checkMenuHeight();
     forceLogoCentering();
   }, 200));
+
+  checkMenuHeight();
 
 }
 
