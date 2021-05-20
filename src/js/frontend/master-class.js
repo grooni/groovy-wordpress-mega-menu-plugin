@@ -769,22 +769,24 @@ class GroovyMenu {
       }
     }
 
-    if (linksWithHashes !== null) {
-      window.addEventListener('scroll', _.debounce(setCurrentItem, 50));
+    if (options.scrollEnableAnchors) {
+      if (linksWithHashes !== null) {
+        window.addEventListener('scroll', _.debounce(setCurrentItem, 50));
 
-      setCurrentItem();
+        setCurrentItem();
 
-      window.addEventListener('load', () => {
-        setPagePositionByHash();
+        window.addEventListener('load', () => {
+          setPagePositionByHash();
+        });
+      }
+
+      linksWithHashes.forEach((link) => {
+        let targetHash = link.getAttribute('href');
+        link.addEventListener('click', (e) => {
+          scrollToId(e, scroll, targetHash, scrollOptions);
+        });
       });
     }
-
-    linksWithHashes.forEach((link) => {
-      let targetHash = link.getAttribute('href');
-      link.addEventListener('click', (e) => {
-        scrollToId(e, scroll, targetHash, scrollOptions);
-      });
-    });
 
     if (
       !isMobile() &&
