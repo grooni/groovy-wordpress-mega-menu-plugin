@@ -77,6 +77,11 @@ function offcanvasClickOutside() {
       return;
     }
 
+    if (event.type === 'click' && event.target.closest('.gm-anchor') && !(event.target.closest('.gm-caret') || event.target.closest('.gm-dropdown-menu-title'))) {
+      offcanvasClose(mainMenuWrapper);
+      offcanvasClose(navDrawer);
+    }
+
     if (event.target.closest('.gm-navbar-nav, .gm-navigation-drawer, .gm-main-menu-wrapper, .gm-burger, .gm-custom-hamburger') === null) {
       offcanvasClose(mainMenuWrapper);
       offcanvasClose(navDrawer);
