@@ -1077,12 +1077,16 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 								}
 							}
 
-							$put_contents = $wp_filesystem->put_contents( $dir . $name . '.css', GroovyMenuUtils::generate_fonts_css( $name, $selectionData, $fontFiles ), FS_CHMOD_FILE );
+							$generated_font_css = GroovyMenuUtils::generate_fonts_css( $name, $selectionData, $fontFiles );
+
+							$put_contents = $wp_filesystem->put_contents( $dir . $name . '.css', $generated_font_css['css'], FS_CHMOD_FILE );
 
 							$icons = array();
-							foreach ( $selectionData['icons'] as $icon ) {
+							foreach ( $generated_font_css['data']['icons'] as $icon ) {
+								$icon_name = isset( $icon['gm-name'])? $icon['gm-name'] : $icon['icon']['tags'][0];
+
 								$icons[] = array(
-									'name' => $icon['icon']['tags'][0],
+									'name' => $icon_name,
 									'code' => $icon['properties']['code']
 								);
 							}

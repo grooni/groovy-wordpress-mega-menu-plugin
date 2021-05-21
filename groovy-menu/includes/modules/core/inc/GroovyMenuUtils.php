@@ -1631,12 +1631,16 @@ class GroovyMenuUtils {
 							}
 						}
 
-						$put_contents = $wp_filesystem->put_contents( $dir . $name . '.css', self::generate_fonts_css( $name, $selectionData, $fontFiles ), FS_CHMOD_FILE );
+						$generated_font_css = GroovyMenuUtils::generate_fonts_css( $name, $selectionData, $fontFiles );
+
+						$put_contents = $wp_filesystem->put_contents( $dir . $name . '.css', $generated_font_css['css'], FS_CHMOD_FILE );
 
 						$icons = array();
-						foreach ( $selectionData['icons'] as $icon ) {
+						foreach ( $generated_font_css['data']['icons'] as $icon ) {
+							$icon_name = isset( $icon['gm-name'] ) ? $icon['gm-name'] : $icon['icon']['tags'][0];
+
 							$icons[] = array(
-								'name' => $icon['icon']['tags'][0],
+								'name' => $icon_name,
 								'code' => $icon['properties']['code']
 							);
 						}
@@ -1660,7 +1664,7 @@ class GroovyMenuUtils {
 	 * @param array  $selectionData
 	 * @param array $font_files
 	 *
-	 * @return string
+	 * @return array
 	 */
 	public static function generate_fonts_css( $name, $selectionData, $font_files = array() ) {
 
@@ -1774,14 +1778,46 @@ class GroovyMenuUtils {
 }
 ';
 
-		foreach ( $selectionData['icons'] as $icon ) {
-			$iconName = $icon['icon']['tags'][0];
+		$comp_icons = array();
+
+		foreach ( $selectionData['icons'] as $key => $icon ) {
+			if ( empty( $icon['properties']['code'] ) ) {
+				continue;
+			}
+
+			if ( ! empty( $icon['icon']['tags'][0] ) ) {
+				$iconName = $icon['icon']['tags'][0];
+			} elseif ( ! empty( $icon['properties']['name'] ) ) {
+				$iconName = $icon['properties']['name'];
+			} else {
+				$iconName = 'code-' . $icon['properties']['code'];
+			}
+
+			$iconName = esc_attr( str_replace( [ ' ', ',', '.', ':', '&' ], [ '-', '', '', '', '_' ], $iconName ) );
+			$escapers = array( "\'", "\\", "/", "\"", "\n", "\r", "\t", "\x08", "\x0c", '\r\n' );
+			$iconName = str_replace( $escapers, '', $iconName );
+
+			if ( strlen( $iconName ) > 128 ) {
+				$iconName = 'code-' . $icon['properties']['code'];
+			}
+
+			if ( ! empty( $comp_icons[ $iconName ] ) ) {
+				$iconName = $iconName . rand( 100, 999 );
+			}
+
+			$comp_icons[ $iconName ] = true;
+			$selectionData['icons'][$key]['gm-name'] = $iconName;
+
 			$code     = dechex( $icon['properties']['code'] );
 			$css      .= '.' . $name . '-' . $iconName . ':before { content: \'\\' . $code . '\'; }';
-
 		}
 
-		return $css;
+		$return_array = array(
+			'css'  => $css,
+			'data' => $selectionData
+		);
+
+		return $return_array;
 	}
 
 	/**
