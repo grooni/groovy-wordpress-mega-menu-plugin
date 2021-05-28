@@ -4768,14 +4768,14 @@ export default class GmStyles {
       case 'top':
         css.push({
           '.gm-menu-btn--text': 'padding-bottom: 4px;',
-          '.gm-navbar .gm-menu-btn': 'flex-direction: column;',
+          '.gm-navbar .gm-menu-btn': 'flex-direction: column; justify-content: center;',
           media: 'mobile'
         });
         break;
       case 'bottom':
         css.push({
           '.gm-menu-btn--text': 'padding-top: 4px;',
-          '.gm-navbar .gm-menu-btn': 'flex-direction: column-reverse;',
+          '.gm-navbar .gm-menu-btn': 'flex-direction: column-reverse; justify-content: center;',
           media: 'mobile'
         });
         break;
