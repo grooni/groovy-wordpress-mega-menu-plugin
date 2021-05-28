@@ -468,15 +468,13 @@ class GroovyMenu {
       }, diagonalDelay));
     };
 
-    // Sub-Menus DROPDOWN action ---------------------------------------------------------------------------[ touch ]---
+    // Sub-Menus DROPDOWN action -----------------------------------------------------------------------[ touch End ]---
     let initDropdownActionByTouch = (e) => {
       let closestDropdown = e.target.closest('.gm-dropdown');
       let isTopLevelClass = false;
-
       let closestMenuItem = e.target.closest('.gm-menu-item');
 
       if (
-        //!isClosestAnchorEmpty &&
         !e.target.closest('.gm-caret') &&
         closestMenuItem &&
         closestMenuItem.classList &&
