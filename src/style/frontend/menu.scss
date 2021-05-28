@@ -154,6 +154,10 @@ NAVBAR GENERAL STYLES
     cursor: pointer;
   }
 
+  .gm-anchor.gm-dropdown-toggle {
+    cursor: pointer;
+  }
+
   .gm-menu-item__txt-wrapper {
     transition: all 0.15s;
   }
@@ -379,6 +383,11 @@ NAVBAR GENERAL STYLES
 .gm-menu-btn,
 .gm-minicart {
   -webkit-tap-highlight-color: transparent;
+}
+
+.gm-anchor,
+.gm-anchor:active,
+.gm-anchor:focus {
   outline: none;
 }
 

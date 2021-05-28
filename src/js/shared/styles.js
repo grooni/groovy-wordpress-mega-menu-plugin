@@ -143,7 +143,8 @@ export default class GmStyles {
       // Canvas and container boxed width
       if (settings.canvasContainerWidthType === 'canvas-boxed-container-boxed') {
         css.push({
-          '.gm-wrapper': `max-width: ${settings.canvasBoxedContainerBoxedWidth}px`
+          '.gm-wrapper': `max-width: ${settings.canvasBoxedContainerBoxedWidth}px`,
+          '.gm-padding': `max-width: ${settings.canvasBoxedContainerBoxedWidth}px; margin-right: auto; margin-left: auto;`
         });
       }
 
@@ -721,7 +722,8 @@ export default class GmStyles {
       // Canvas and container boxed width
       if (settings.canvasContainerWidthType === 'canvas-boxed-container-boxed') {
         css.push({
-          '.gm-wrapper': `max-width: ${settings.canvasBoxedContainerBoxedWidth}px`
+          '.gm-wrapper': `max-width: ${settings.canvasBoxedContainerBoxedWidth}px`,
+          '.gm-padding': `max-width: ${settings.canvasBoxedContainerBoxedWidth}px; margin-right: auto; margin-left: auto;`
         });
       }
 
@@ -3307,9 +3309,8 @@ export default class GmStyles {
     // Sub level text hover color
     if (settings.subLevelTextColorHover) {
       const color = settings.subLevelTextColorHover;
-
       css.push({
-        '.gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav .gm-dropdown-menu .gm-menu-item__link:hover': `color: ${color}`,
+        '.gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav .gm-dropdown-menu .gm-menu-item__link:hover': `color: ${color} !important`,
         '.gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav .gm-dropdown-menu .gm-mega-menu-title-item > .gm-mega-menu__item__title:hover .gm-anchor:not(.gm-anchor--empty) .gm-menu-item__txt': `color: ${color}`,
         media: 'desktop'
       });

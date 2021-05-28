@@ -121,6 +121,10 @@ if ( method_exists( 'GroovyMenuUtils', 'output_uniqid_gm_js' ) ) {
 	add_action( 'gm_after_main_header', array( 'GroovyMenuUtils', 'output_uniqid_gm_js' ), 999 );
 }
 
+if ( method_exists( 'GroovyMenuUtils', 'add_critical_css' ) ) {
+	add_action( 'gm_before_main_header', array( 'GroovyMenuUtils', 'add_critical_css' ), 1 );
+}
+
 if ( method_exists( 'GroovyMenuUtils', 'load_font_internal' ) ) {
 	GroovyMenuUtils::load_font_internal();
 }

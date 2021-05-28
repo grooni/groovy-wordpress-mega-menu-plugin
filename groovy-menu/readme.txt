@@ -130,6 +130,7 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 * Add: Option "Show Hamburger icon as animated" added for Minimalistic menu style.
 * Add: Option "Show menu button text" for Mobile and Minimalistic menu type.
 * Add: Option "Slider max height" for Minimalistic menu type.
+* Add: Global Option "Enable Critical inline CSS" for tools.
 * Improve: "General> Toolbar menu" section renamed to "General> Additional menu". Now you can insert additional nav menus in various places in the Groovy Menu.
 * Improve: Added the ability to add Menu Blocks, Icons, Badges for Addition menus.
 * Improve: Mobile "Show Hamburger icon as animated".

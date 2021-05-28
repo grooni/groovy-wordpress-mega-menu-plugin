@@ -308,7 +308,13 @@ class GroovyMenuUtils {
 					default:
 						$type_obj = get_post_type_object( $type );
 						// Post type can has archive and single pages.
-						if ( is_object( $type_obj ) && ! empty( $type_obj->has_archive ) && $type_obj->has_archive ) {
+						if ( is_object( $type_obj ) &&
+							(
+								( ! empty( $type_obj->has_archive ) && $type_obj->has_archive )
+								||
+								( ! empty( $type_obj->capability_type ) && 'post' === $type_obj->capability_type )
+							)
+						) {
 							$post_types_ext[ $type . '--single' ] = $name . ' [' . esc_html__( 'single pages', 'groovy-menu' ) . ']';
 						}
 						break;
@@ -2809,5 +2815,97 @@ class GroovyMenuUtils {
 
 		return $content;
 	}
+
+	public static function add_critical_css() {
+
+		$global_settings = get_option( GroovyMenuStyle::OPTION_NAME );
+		// Check option.
+		if ( empty( $global_settings['tools']['enable_critical_inline_css'] ) || ! $global_settings['tools']['enable_critical_inline_css'] ) {
+			return;
+		}
+
+		global $groovyMenuSettings;
+
+		$crit_css     = array( 'desktop' => '', 'mobile' => '', 'all' => '' );
+		$mobile_width = $groovyMenuSettings["mobileWidth"] ? : '1024';
+		$header_style = intval( $groovyMenuSettings["header"]["style"] ? : '1' );
+
+		$crit_css['all'] .= '
+.gm-hidden{opacity:0;visibility:hidden;}
+.gm-dropdown:not(.gm-open) .gm-dropdown-menu-wrapper {overflow:hidden;}
+.gm-navbar:not(.gm-init-done) .gm-main-menu-wrapper .gm-dropdown-menu-wrapper {position:absolute;left:0;visibility:hidden;}
+.gm-navbar:not(.gm-init-done) .gm-logo__img {display:none;width:auto;max-width:none;max-height:none;}
+.gm-navbar:not(.gm-init-done) .gm-main-menu-wrapper ul, .gm-navbar:not(.gm-init-done) ul, .gm-navbar:not(.gm-init-done) ~ .gm-navigation-drawer ul {list-style: none;}
+.gm-navbar:not(.gm-init-done) .gm-badge, .gm-navbar:not(.gm-init-done) .gm-menu-btn{display:none;}
+.gm-navbar:not(.gm-init-done) ~ .gm-navigation-drawer, .gm-navbar:not(.gm-init-done) ~ .gm-navigation-drawer .gm-badge, .gm-navbar:not(.gm-init-done) ~ .gm-navigation-drawer .gm-menu-btn{display:none;}
+.gm-navbar:not(.gm-init-done) .gm-main-menu-wrapper .gm-actions {display:none;}
+.gm-navbar:not(.gm-init-done) .gm-logo > a img {height:' . $groovyMenuSettings["logoHeight"] . 'px;}
+';
+
+		$crit_css['desktop'] .= '
+.gm-navbar.gm-navbar-fixed-sticky:not(.gm-init-done) .gm-wrapper{position:fixed;}
+.gm-navbar:not(.gm-init-done) ~ .gm-navigation-drawer{position:fixed;top:0;overflow-y:auto;}
+.gm-navbar:not(.gm-init-done) .gm-inner {position: relative;box-sizing: content-box;width: 100%;margin-right: auto;margin-left: auto;}
+.gm-navbar:not(.gm-init-done) .gm-container {display:flex;margin-right:auto;margin-left:auto;align-items:stretch;justify-content:space-between;position:relative;}
+.gm-navbar:not(.gm-init-done) .gm-main-menu-wrapper .gm-navbar-nav {display:flex;justify-content:space-between;}
+.gm-navbar:not(.gm-init-done) .gm-main-menu-wrapper .gm-minicart, .gm-navbar:not(.gm-init-done) .gm-main-menu-wrapper .gm-minicart-link, .gm-navbar:not(.gm-init-done) .gm-main-menu-wrapper .gm-navbar-nav>li, .gm-navbar:not(.gm-init-done) .gm-main-menu-wrapper .gm-search {display:flex;align-items:center;justify-content:center;}
+.gm-navbar:not(.gm-init-done) .gm-main-menu-wrapper, .gm-navbar:not(.gm-init-done) .gm-main-menu-wrapper .gm-actions {display:flex;}
+.gm-navbar:not(.gm-navbar-sticky-toggle) .gm-logo__img-default {display:flex;}
+';
+
+		$crit_css['mobile'] .= '
+.gm-navbar:not(.gm-navbar-sticky-toggle) .gm-logo__img-mobile {display:flex;}
+.gm-navbar:not(.gm-init-done) .gm-logo > a img {height:' . $groovyMenuSettings["logoHeightMobile"] . 'px;}
+.gm-navbar:not(.gm-init-done) .gm-inner .gm-container{height:' . $groovyMenuSettings["mobileHeaderHeight"] . 'px;}
+.gm-navbar:not(.gm-init-done) .gm-main-menu-wrapper .gm-navbar-nav{display:none;}
+';
+
+		if ( in_array( $header_style, array( 1, 2 ), true ) ) {
+			if ( ! $groovyMenuSettings["overlap"] ) {
+				$crit_css['desktop'] .= '.gm-padding{padding-top:' . $groovyMenuSettings["headerHeight"] . 'px;}';
+			}
+			$crit_css['desktop'] .= '.gm-navbar:not(.gm-init-done) .gm-navbar-nav > .gm-menu-item > .gm-anchor{margin:5px ' . $groovyMenuSettings["itemsGutterSpace"] . 'px;}';
+			$crit_css['desktop'] .= '.gm-navbar:not(.gm-init-done) .gm-main-menu-wrapper .gm-navbar-nav>.gm-menu-item>.gm-anchor {display:flex;width:100%;padding:5px 0;line-height:25px;align-items:center;justify-content:space-between;}';
+			$crit_css['desktop'] .= '.gm-navbar:not(.gm-init-done) .gm-logo {display:flex;align-items:center;justify-content:center;}';
+		}
+
+		if ( in_array( $header_style, array( 3, 4, 5 ), true ) ) {
+			$crit_css['desktop'] .= '.gm-navbar:not(.gm-init-done) .gm-wrapper{position:relative;height:100vh;}';
+		}
+
+		if ( 1 === $header_style ) {
+			$crit_css['desktop'] .= '.gm-navbar:not(.gm-init-done) .gm-inner .gm-container{height:' . $groovyMenuSettings["headerHeight"] . 'px;}';
+			$crit_css['desktop'] .= '.gm-navbar:not(.gm-navbar-sticky-toggle) .gm-inner{min-height:' . $groovyMenuSettings["headerHeight"] . 'px;}';
+			$crit_css['desktop'] .= '.gm-navbar:not(.gm-init-done) .gm-wrapper{position:absolute;top:0;right:0;left:0;width:100%;margin-right:auto;margin-left:auto;}';
+
+			// Canvas and container boxed width.
+			if ( 'canvas-boxed-container-boxed' === $groovyMenuSettings['canvasContainerWidthType'] ) {
+				$crit_css['desktop'] .= '.gm-navbar:not(.gm-init-done) .gm-wrapper{max-width:' . $groovyMenuSettings["canvasBoxedContainerBoxedWidth"] . 'px;}';
+				$crit_css['desktop'] .= '.gm-navbar:not(.gm-init-done) .gm-padding{max-width:' . $groovyMenuSettings["canvasBoxedContainerBoxedWidth"] . 'px; margin-right: auto; margin-left: auto;}';
+			}
+
+			// Canvas wide - container boxed.
+			if ( 'canvas-wide-container-boxed' === $groovyMenuSettings['canvasContainerWidthType'] ) {
+				$crit_css['desktop'] .= '.gm-navbar:not(.gm-init-done) .gm-container{max-width:' . $groovyMenuSettings["canvasWideContainerBoxedWidth"] . 'px;}';
+			}
+
+			// Canvas wide - container wide.
+			if ( 'canvas-wide-container-wide' === $groovyMenuSettings['canvasContainerWidthType'] ) {
+				$crit_css['desktop'] .= '.gm-navbar:not(.gm-init-done) .gm-wrapper, .gm-container{max-width:none;}';
+				$crit_css['mobile']  .= '.gm-wrapper, .gm-container{max-width:none;}';
+				$crit_css['desktop'] .= '.gm-navbar:not(.gm-init-done) .gm-container{padding-left:' . $groovyMenuSettings["canvasWideContainerWidePadding"] . 'px;}';
+				$crit_css['desktop'] .= '.gm-navbar:not(.gm-init-done) .gm-container{padding-right:' . $groovyMenuSettings["canvasWideContainerWidePadding"] . 'px;}';
+			}
+		}
+
+		$crit_css['desktop'] = ' @media (min-width:' . $mobile_width . 'px) {' . $crit_css['desktop'] . '}';
+		$crit_css['mobile']  = ' @media (max-width:' . $mobile_width . 'px) {' . $crit_css['mobile'] . '}';
+
+		$crit_css_ready = '<style type="text/css">' . $crit_css['all'] . $crit_css['desktop'] . $crit_css['mobile'] . '</style>';
+
+		echo $crit_css_ready;
+
+	}
+
 
 }

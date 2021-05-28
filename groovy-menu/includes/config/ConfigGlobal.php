@@ -442,6 +442,12 @@ return array(
 				'default'     => false,
 				'description' => esc_html__( 'If disabled, then initialization occurs on the JavaScript event "DOMContentLoaded". If enabled, then initialization is performed immediately. It can help in cases where third-party caching plugins have combined all JavaScript into one file and load it after the "DOMContentLoaded" event.', 'groovy-menu' ),
 			),
+			'enable_critical_inline_css'  => array(
+				'type'        => 'checkbox',
+				'title'       => esc_html__( 'Enable Critical inline CSS', 'groovy-menu' ),
+				'default'     => false,
+				'description' => esc_html__( 'Adds CSS rules in front of the Groovy Menu HTML that describes the default sizes of menus and hidden elements.', 'groovy-menu' ),
+			),
 			'google_fonts_local'          => array(
 				'type'        => 'checkbox',
 				'title'       => esc_html__( 'Use local google fonts', 'groovy-menu' ),
