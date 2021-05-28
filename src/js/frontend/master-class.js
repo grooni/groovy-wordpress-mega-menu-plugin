@@ -471,14 +471,12 @@ class GroovyMenu {
     // Sub-Menus DROPDOWN action ---------------------------------------------------------------------------[ touch ]---
     let initDropdownActionByTouch = (e) => {
       let closestDropdown = e.target.closest('.gm-dropdown');
-      let closestAnchor = e.target.closest('.gm-anchor');
-      let isClosestAnchorEmpty = closestAnchor && '#' === closestAnchor.getAttribute('href');
       let isTopLevelClass = false;
 
       let closestMenuItem = e.target.closest('.gm-menu-item');
 
       if (
-        !isClosestAnchorEmpty &&
+        //!isClosestAnchorEmpty &&
         !e.target.closest('.gm-caret') &&
         closestMenuItem &&
         closestMenuItem.classList &&

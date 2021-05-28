@@ -73,19 +73,22 @@ function offcanvasToggle(navDrawer) {
 
 function offcanvasClickOutside() {
   document.addEventListener('click', function (event) {
-    if (event.target.closest('.gm-menu-btn')) {
+    if (event.target.closest('.gm-menu-btn, .gm-burger, .gm-custom-hamburger')) {
       return;
     }
 
-    if (event.type === 'click' && event.target.closest('.gm-anchor') && !(event.target.closest('.gm-caret') || event.target.closest('.gm-dropdown-menu-title'))) {
+    if (
+      event.type === 'click' &&
+      !event.target.closest('.gm-caret, .gm-dropdown-menu-title') &&
+      !event.target.closest('.gm-anchor') &&
+      !event.target.closest('.gm-menu-item') &&
+      !event.target.closest('.gm-navbar, .gm-navigation-drawer, .gm-main-menu-wrapper')
+    ) {
+
       offcanvasClose(mainMenuWrapper);
       offcanvasClose(navDrawer);
     }
 
-    if (event.target.closest('.gm-navbar-nav, .gm-navigation-drawer, .gm-main-menu-wrapper, .gm-burger, .gm-custom-hamburger') === null) {
-      offcanvasClose(mainMenuWrapper);
-      offcanvasClose(navDrawer);
-    }
   });
 }
 
