@@ -110,6 +110,7 @@ DROPDOWN HOVER STYLES
   }
 }
 
-.gm-dropdown-hover-style-shift-right.gm-navbar--style-2 ~ .gm-main-menu-wrapper .gm-dropdown-menu .gm-menu-item__link::before {
-  left: 32px;
+.gm-dropdown-hover-style-shift-right.gm-navbar--style-2 ~ .gm-main-menu-wrapper .gm-dropdown-menu .gm-menu-item__link::before,
+.gm-dropdown-hover-style-shift-right.gm-navbar--style-1 ~ .gm-second-nav-drawer .gm-dropdown-menu .gm-menu-item__link::before {
+  left: 32px !important;
 }

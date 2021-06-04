@@ -4,7 +4,7 @@ import _ from 'lodash';
 var options;
 
 export function splitMenu () {
-  let items = document.querySelectorAll('.gm-main-menu-wrapper .gm-navbar-nav > li');
+  let items = document.querySelectorAll('.gm-main-menu-wrapper:not(.gm-second-nav-drawer) .gm-navbar-nav > li');
   let itemsCount = items.length;
   let left = document.createElement('ul');
   let right = document.createElement('ul');

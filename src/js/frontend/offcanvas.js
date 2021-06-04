@@ -7,8 +7,11 @@ import groovyTakeScreenshot from '../admin/screenshot';
 var options;
 var navDrawer;
 var mainMenuWrapper;
+var secondMenuWrapper;
 var hamburgerMenu;
 var hamburgerMenuClose;
+var secondHamburgerMenu;
+var secondHamburgerMenuClose;
 
 let offcanvasIsOpen = function (navDrawer) {
   let isOpen;
@@ -33,9 +36,13 @@ function offcanvasOpen(navDrawer) {
     if (gmNavbar) {
       gmNavbar.classList.add('gm-drawer--open');
     }
-    if (hamburgerMenu) {
+
+    let isSecondSidebarMenu = navDrawer.classList.contains('gm-second-nav-drawer');
+    let hamburger = isSecondSidebarMenu ? secondHamburgerMenu : hamburgerMenu;
+
+    if (hamburger) {
       setTimeout(() => {
-        hamburgerMenu.classList.add('is-active');
+        hamburger.classList.add('is-active');
       }, 450);
     }
   }
@@ -53,9 +60,13 @@ function offcanvasClose(navDrawer) {
     if (gmNavbar) {
       gmNavbar.classList.remove('gm-drawer--open');
     }
-    if (hamburgerMenu) {
+
+    let isSecondSidebarMenu = navDrawer.classList.contains('gm-second-nav-drawer');
+    let hamburger = isSecondSidebarMenu ? secondHamburgerMenu : hamburgerMenu;
+
+    if (hamburger) {
       setTimeout(() => {
-        hamburgerMenu.classList.remove('is-active');
+        hamburger.classList.remove('is-active');
       }, 450);
     }
   } else {
@@ -73,7 +84,7 @@ function offcanvasToggle(navDrawer) {
 
 function offcanvasClickOutside() {
   document.addEventListener('click', function (event) {
-    if (event.target.closest('.gm-menu-btn, .gm-burger, .gm-custom-hamburger')) {
+    if (event.target.closest('.gm-menu-btn, .gm-menu-btn-second, .gm-burger, .gm-custom-hamburger')) {
       return;
     }
 
@@ -82,10 +93,11 @@ function offcanvasClickOutside() {
       !event.target.closest('.gm-caret, .gm-dropdown-menu-title') &&
       !event.target.closest('.gm-anchor') &&
       !event.target.closest('.gm-menu-item') &&
-      !event.target.closest('.gm-navbar, .gm-navigation-drawer, .gm-main-menu-wrapper')
+      !event.target.closest('.gm-navbar, .gm-navigation-drawer, .gm-main-menu-wrapper, .gm-second-nav-drawer')
     ) {
 
       offcanvasClose(mainMenuWrapper);
+      offcanvasClose(secondMenuWrapper);
       offcanvasClose(navDrawer);
     }
 
@@ -94,6 +106,7 @@ function offcanvasClickOutside() {
 
 function makeHiddenVisible(navDrawer) {
   let mainMenuWrapper = document.querySelector('.gm-main-menu-wrapper');
+  let secondMenuWrapper = document.querySelector('.gm-second-nav-drawer');
   let isMobileFlag = isMobile(options.mobileWidth);
   let headerStyle = parseInt(options.header.style, 10);
 
@@ -108,6 +121,14 @@ function makeHiddenVisible(navDrawer) {
       mainMenuWrapper.classList.add('d-flex');
     } else {
       mainMenuWrapper.classList.remove('d-flex');
+    }
+  }
+
+  if (secondMenuWrapper) {
+    if (!isMobileFlag) {
+      secondMenuWrapper.classList.add('d-flex');
+    } else {
+      secondMenuWrapper.classList.remove('d-flex');
     }
   }
 }
@@ -242,6 +263,7 @@ function wrapContent() {
   let gmNavbar = document.querySelector('.gm-navbar');
   let navDrawer = document.querySelector('.gm-navigation-drawer');
   let mainMenuWrapper = document.querySelector('.gm-main-menu-wrapper');
+  let secondMainMenuWrapper = document.querySelector('.gm-second-nav-drawer');
   let contentWrapper = document.querySelector('.gm-nav-content-wrapper');
   let wpAdminBar = document.querySelector('#wpadminbar');
 
@@ -257,6 +279,10 @@ function wrapContent() {
 
   if (options.header.style === 2) {
     document.body.prepend(mainMenuWrapper);
+  }
+
+  if (options.header.style === 1 && secondMainMenuWrapper) {
+    document.body.prepend(secondMainMenuWrapper);
   }
 
   document.body.prepend(gmNavbar);
@@ -351,15 +377,32 @@ export function offcanvasSlide() {
 
     if (!isMobile(options.mobileWidth) && headerStyle === 2) {
       offcanvasToggle(mainMenuWrapper);
+    } else if (!isMobile(options.mobileWidth) && headerStyle === 1 && options.secondSidebarMenuEnable) {
+      offcanvasToggle(secondMenuWrapper);
     } else {
       offcanvasToggle(navDrawer);
     }
   }
 
   function checkMenuHeight() {
-    if (!isMobile(options.mobileWidth) && headerStyle === 2 && !options.minimalisticMenuMaxHeight) {
+    if (headerStyle === 2 && !options.minimalisticMenuMaxHeight && !isMobile(options.mobileWidth)) {
       let gmNavbarWrapper = document.querySelector('.gm-navbar > .gm-wrapper');
       let gmMainMenuWrapper = document.querySelector('.gm-main-menu-wrapper');
+
+      if (!gmNavbarWrapper || !gmMainMenuWrapper) {
+        return false;
+      }
+
+      let topGap = gmNavbarWrapper.clientHeight + gmNavbarWrapper.getBoundingClientRect().top;
+      topGap = (!topGap || topGap < 1) ? 0 : topGap;
+
+      gmMainMenuWrapper.style.height = `calc( 100vh - ${topGap}px )`;
+      gmMainMenuWrapper.style.top = `${topGap}px`;
+    }
+
+    if (headerStyle === 1 && !options.secondSidebarMenuMaxHeight && !isMobile(options.mobileWidth)) {
+      let gmNavbarWrapper = document.querySelector('.gm-navbar > .gm-wrapper');
+      let gmMainMenuWrapper = document.querySelector('.gm-second-nav-drawer');
 
       if (!gmNavbarWrapper || !gmMainMenuWrapper) {
         return false;
@@ -388,8 +431,23 @@ export function offcanvasSlide() {
     hamburgerMenuClose.addEventListener('click', clickHandler);
   }
 
+  if (secondHamburgerMenu) {
+    secondHamburgerMenu.addEventListener('click', clickHandler);
+  }
+  if (secondHamburgerMenuClose) {
+    secondHamburgerMenuClose.addEventListener('click', clickHandler);
+  }
+
   // Close button event for Fullscreen minimalistic type.
   if (2 === headerStyle && options.minimalisticMenuFullscreen) {
+    let fullscreenCloseButton = document.querySelector('.gm-fullscreen-close');
+    if (fullscreenCloseButton) {
+      fullscreenCloseButton.addEventListener('click', clickHandler);
+    }
+  }
+
+  // Close button event for Fullscreen Second Sidebar Menu type.
+  if (1 === headerStyle && options.secondSidebarMenuEnable && options.secondSidebarMenuMaxHeight) {
     let fullscreenCloseButton = document.querySelector('.gm-fullscreen-close');
     if (fullscreenCloseButton) {
       fullscreenCloseButton.addEventListener('click', clickHandler);
@@ -452,6 +510,9 @@ export function initOffcanvas(args) {
   options = args.options;
   navDrawer = args.navDrawer;
   mainMenuWrapper = args.mainMenuWrapper;
+  secondMenuWrapper = args.secondMenuWrapper;
   hamburgerMenu = args.hamburgerMenu;
   hamburgerMenuClose = args.hamburgerMenuClose;
+  secondHamburgerMenu = args.secondHamburgerMenu;
+  secondHamburgerMenuClose = args.secondHamburgerMenuClose;
 }

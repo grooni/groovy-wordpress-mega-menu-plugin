@@ -4,11 +4,12 @@ import _ from 'lodash';
 
 function getFirstDropdownRect(menuItem, settings) {
   let currentDropdown = menuItem.querySelector('.gm-dropdown-menu');
+  let isSecondSidebarMenu = currentDropdown.closest('.gm-second-nav-drawer');
   let currentDropdownWidth = currentDropdown.offsetWidth;
   let top = menuItem.offsetHeight;
   let width = currentDropdownWidth;
 
-  if (isVerticalMenu(settings)) {
+  if (isVerticalMenu(settings) || isSecondSidebarMenu) {
     top = 0;
   }
 
@@ -32,6 +33,7 @@ function isVerticalMenu(settings) {
 
 function getSubmenuDropdownRect(menuItem, settings, scrollbars) {
   let closestdropdownMenuPs = menuItem.closest('.gm-dropdown-menu.ps');
+  let isSecondSidebarMenu = closestdropdownMenuPs.closest('.gm-second-nav-drawer');
 
   if (!closestdropdownMenuPs) {
     return ({
@@ -46,7 +48,7 @@ function getSubmenuDropdownRect(menuItem, settings, scrollbars) {
     top = 0;
   }
 
-  if (isVerticalMenu(settings)) {
+  if (isVerticalMenu(settings) || isSecondSidebarMenu) {
     top = 0;
   }
 
@@ -105,6 +107,8 @@ export default function initScrollbar(settings) {
       return;
     }
 
+    let isSecondSidebarMenu = currentDropdown.closest('.gm-second-nav-drawer');
+
     let dropdownWrapper = parentMenuItem.querySelector('.gm-dropdown-menu-wrapper');
     let headerStyle = parseInt(settings.header.style, 10);
     let maxHeightCalculated = getDropdownMaxHeight(currentDropdown, false);
@@ -123,7 +127,7 @@ export default function initScrollbar(settings) {
       dropdownWrapper.style.height = `${subDropdownRect.height}px`;
 
       currentDropdown.style.position = 'static';
-      if (isVerticalMenu(settings)) {
+      if (isVerticalMenu(settings) || isSecondSidebarMenu) {
         currentDropdown.style.maxHeight = '100%';
 
         if (currentDropdown.scrollHeight > maxHeightCalculated) {
@@ -153,11 +157,13 @@ export default function initScrollbar(settings) {
     // First dropdown level --------------------------------------------------------------
     let firstDropdownRect = getFirstDropdownRect(parentMenuItem, settings);
 
-    dropdownWrapper.style.top = `${firstDropdownRect.top}px`;
-    dropdownWrapper.style.width = `${firstDropdownRect.width}px`;
+    if (!isSecondSidebarMenu) {
+      dropdownWrapper.style.top = `${firstDropdownRect.top}px`;
+      dropdownWrapper.style.width = `${firstDropdownRect.width}px`;
+    }
 
     currentDropdown.style.position = 'static';
-    if (isVerticalMenu(settings)) {
+    if (isVerticalMenu(settings) || isSecondSidebarMenu) {
       currentDropdown.style.maxHeight = '100%';
 
       if (currentDropdown.scrollHeight > maxHeightCalculated) {
@@ -329,6 +335,7 @@ export default function initScrollbar(settings) {
 
   function updateDropdownStyles(elem) {
     let parentMenuItem = elem.closest('.gm-dropdown');
+    let isSecondSidebarMenu = parentMenuItem.closest('.gm-second-nav-drawer');
 
     if (parentMenuItem && parentMenuItem.classList.contains('gm-open')) {
 
@@ -336,7 +343,7 @@ export default function initScrollbar(settings) {
 
       elem.style.position = 'static';
       elem.style.transform = 'none';
-      if (isVerticalMenu(settings)) {
+      if (isVerticalMenu(settings) || isSecondSidebarMenu) {
         elem.style.maxHeight = '100%';
       } else {
         elem.style.maxHeight = `${maxHeightCalculated}px`;
