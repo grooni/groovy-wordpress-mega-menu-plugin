@@ -388,6 +388,7 @@ export function offcanvasSlide() {
     if (headerStyle === 2 && !options.minimalisticMenuMaxHeight && !isMobile(options.mobileWidth)) {
       let gmNavbarWrapper = document.querySelector('.gm-navbar > .gm-wrapper');
       let gmMainMenuWrapper = document.querySelector('.gm-main-menu-wrapper');
+      let gmOverlay = document.querySelector('.gm-dropdown-overlay');
 
       if (!gmNavbarWrapper || !gmMainMenuWrapper) {
         return false;
@@ -398,11 +399,17 @@ export function offcanvasSlide() {
 
       gmMainMenuWrapper.style.height = `calc( 100vh - ${topGap}px )`;
       gmMainMenuWrapper.style.top = `${topGap}px`;
+
+      if (gmOverlay) {
+        gmOverlay.style.height = `calc( 100vh - ${topGap}px )`;
+        gmOverlay.style.top = `${topGap}px`;
+      }
     }
 
     if (headerStyle === 1 && !options.secondSidebarMenuMaxHeight && !isMobile(options.mobileWidth)) {
       let gmNavbarWrapper = document.querySelector('.gm-navbar > .gm-wrapper');
       let gmMainMenuWrapper = document.querySelector('.gm-second-nav-drawer');
+      let gmOverlay = document.querySelector('.gm-dropdown-overlay');
 
       if (!gmNavbarWrapper || !gmMainMenuWrapper) {
         return false;
@@ -413,6 +420,11 @@ export function offcanvasSlide() {
 
       gmMainMenuWrapper.style.height = `calc( 100vh - ${topGap}px )`;
       gmMainMenuWrapper.style.top = `${topGap}px`;
+
+      if (gmOverlay) {
+        gmOverlay.style.height = `calc( 100vh - ${topGap}px )`;
+        gmOverlay.style.top = `${topGap}px`;
+      }
     }
 
     return false;

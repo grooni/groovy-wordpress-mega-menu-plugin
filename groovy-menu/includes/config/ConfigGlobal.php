@@ -445,7 +445,7 @@ return array(
 			'enable_critical_inline_css'  => array(
 				'type'        => 'checkbox',
 				'title'       => esc_html__( 'Enable Critical inline CSS', 'groovy-menu' ),
-				'default'     => false,
+				'default'     => true,
 				'description' => esc_html__( 'Adds CSS rules in front of the Groovy Menu HTML that describes the default sizes of menus and hidden elements.', 'groovy-menu' ),
 			),
 			'google_fonts_local'          => array(

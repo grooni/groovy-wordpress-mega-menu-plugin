@@ -4877,14 +4877,14 @@ export default class GmStyles {
       if (settings.dropdownOverlayColor) {
         const color = settings.dropdownOverlayColor;
         css.push({
-          '.gm-navbar.gm-navbar-dropdown-opened ~ .gm-dropdown-overlay': `background-color: ${color} !important;`,
+          '.gm-navbar.gm-navbar-dropdown-opened ~ .gm-dropdown-overlay, .gm-navbar.gm-navbar--style-2.gm-drawer--open ~ .gm-dropdown-overlay': `background-color: ${color} !important;`,
           media: 'desktop'
         });
       }
       if (settings.dropdownOverlayBlur) {
         const dropdownOverlayBlurRadius = settings.dropdownOverlayBlurRadius;
         css.push({
-          '.gm-navbar.gm-navbar-dropdown-opened ~ .gm-dropdown-overlay': `backdrop-filter: blur(${dropdownOverlayBlurRadius}px);`,
+          '.gm-navbar.gm-navbar-dropdown-opened ~ .gm-dropdown-overlay, .gm-navbar.gm-navbar--style-2.gm-drawer--open ~ .gm-dropdown-overlay': `backdrop-filter: blur(${dropdownOverlayBlurRadius}px);`,
           media: 'desktop'
         });
       }

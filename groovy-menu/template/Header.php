@@ -828,9 +828,17 @@ function groovyMenu( $args = array() ) {
 		$output_html .= ob_get_clean();
 
 
-		$menu_button_text_full = '';
+		$menu_button_text_full        = '';
+		$menu_second_button_text_full = '';
 		if ( $groovyMenuSettings['mobileMenuButtonShowText'] || 2 === $header_style ) {
 			$menu_button_text_full = '<span class="gm-menu-btn--text" >' . $menu_button_text . '</span >';
+		}
+
+		if ( 1 === $header_style && $groovyMenuSettings['secondSidebarMenuEnable'] ) {
+			if ( $groovyMenuSettings['secondSidebarMenuButtonShowText'] ) {
+				$menu_second_button_text_full = '<span class="gm-menu-btn--text" >' . $menu_button_text . '</span >';
+			}
+			$output_html .= '<div class="gm-menu-btn-second gm-burger hamburger">' . $menu_second_button_text_full . '<div class="hamburger-box"><div class="hamburger-inner"></div></div></div>';
 		}
 
 		if ( 2 === $header_style && $groovyMenuSettings['minimalisticCssHamburger'] ) {
@@ -1032,6 +1040,80 @@ function groovyMenu( $args = array() ) {
 		</div>
 		<div class="gm-padding"></div>
 	</' . esc_html( $wrapper_tag ) . '>';
+
+
+	// ---------------------------------------------------------------------------- second_sidebar_menu_enable --------.
+	if ( 1 === $header_style && $groovyMenuSettings['secondSidebarMenuEnable'] ) {
+		$second_css_classes = $styles->getHtmlClassesSecondSidebarMenu();
+
+		$output_html .= '<div class="gm-second-nav-drawer gm-hidden';
+		if ( ! empty( $second_css_classes ) ) {
+			$output_html .= ' ' . implode( ' ', $second_css_classes );
+		}
+		$output_html .= '">';
+
+
+		ob_start();
+		/**
+		 * Fires at the Top of Second Sidebar Menu.
+		 *
+		 * @since 2.5.0
+		 */
+		do_action( 'gm_second_sidebar_menu_top' );
+		$output_html .= ob_get_clean();
+
+
+		if ( isset( $groovyMenuSettings['secondSidebarMenuId'] ) && is_numeric( $groovyMenuSettings['secondSidebarMenuId'] ) ) {
+			// Re-assign nav_menu for the Second Sidebar Menu.
+			$args['menu'] = intval( $groovyMenuSettings['secondSidebarMenuId'] );
+
+			// Second Sidebar Menu wrapper.
+			$output_html .= '<div class="gm-second-nav-container">';
+
+
+			ob_start();
+			/**
+			 * Fires at the Second Sidebar Menu nav.
+			 *
+			 * @since 2.5.0
+			 */
+			do_action( 'gm_second_sidebar_menu_nav_first' );
+			$output_html .= ob_get_clean();
+
+
+			$output_html .= wp_nav_menu( $args );
+
+
+			ob_start();
+			/**
+			 * Fires at the Second Sidebar Menu nav.
+			 *
+			 * @since 2.5.0
+			 */
+			do_action( 'gm_second_sidebar_menu_nav_last' );
+			$output_html .= ob_get_clean();
+
+
+			$output_html .= '</div>'; // .gm-mobile-menu-container
+
+
+			$output_html .= '<div class="flex-grow-1"></div>';
+
+		}
+
+
+		ob_start();
+		/**
+		 * Fires at the Bottom of Second Sidebar Menu.
+		 *
+		 * @since 2.5.0
+		 */
+		do_action( 'gm_second_sidebar_menu_bottom' );
+		$output_html .= ob_get_clean();
+
+
+		$output_html .= '</div>';
+	}
 
 
 	// ------------------------------------------------------------------------------------------- mobile menu --------.
