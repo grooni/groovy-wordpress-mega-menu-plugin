@@ -493,6 +493,7 @@ function groovyMenu( $args = array() ) {
 					esc_url( $styles->getGlobal( 'social', 'social_' . $social . '_link' ) ) .
 					'" class="gm-toolbar-social-link" ' .
 					$link_attr .
+				    ' aria-label="' . $social . '"' .
 					'>';
 
 				$icon = $styles->getGlobal( 'social', 'social_' . $social . '_icon' );
@@ -890,7 +891,7 @@ function groovyMenu( $args = array() ) {
 	$output_html .= '<div class="gm-main-menu-wrapper">';
 
 	if ( 2 === $header_style && $groovyMenuSettings['minimalisticMenuFullscreen'] ) {
-		$output_html .= '<span class="gm-fullscreen-close"><svg height="32" width="32" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+		$output_html .= '<span class="gm-fullscreen-close" aria-label="close"><svg height="32" width="32" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
     <path fill-rule="evenodd" d="M 16 32 C 7.16 32 0 24.84 0 16 C 0 7.16 7.16 0 16 0 C 24.84 0 32 7.16 32 16 C 32 24.84 24.84 32 16 32 Z M 16 2 C 8.27 2 2 8.27 2 16 C 2 23.73 8.27 30 16 30 C 23.73 30 30 23.73 30 16 C 30 8.27 23.73 2 16 2 Z M 17.35 16 C 17.35 16 20.71 19.37 20.71 19.37 C 21.09 19.74 21.09 20.34 20.71 20.71 C 20.34 21.09 19.74 21.09 19.37 20.71 C 19.37 20.71 16 17.35 16 17.35 C 16 17.35 12.63 20.71 12.63 20.71 C 12.26 21.09 11.66 21.09 11.29 20.71 C 10.91 20.34 10.91 19.74 11.29 19.37 C 11.29 19.37 14.65 16 14.65 16 C 14.65 16 11.29 12.63 11.29 12.63 C 10.91 12.26 10.91 11.66 11.29 11.29 C 11.66 10.91 12.26 10.91 12.63 11.29 C 12.63 11.29 16 14.65 16 14.65 C 16 14.65 19.37 11.29 19.37 11.29 C 19.74 10.91 20.34 10.91 20.71 11.29 C 21.09 11.66 21.09 12.26 20.71 12.63 C 20.71 12.63 17.35 16 17.35 16 Z" />
 </svg></span>';
 	}
@@ -1138,7 +1139,7 @@ function groovyMenu( $args = array() ) {
 
 		if ( $groovyMenuSettings['mobileOffcanvasFullwidth'] ) {
 			$output_html .= '
-			<div class="gm-menu-btn gm-hamburger-close">
+			<div class="gm-menu-btn gm-hamburger-close" aria-label="close">
 				<div class="gm-menu-btn__inner">';
 			$menu_icon   = 'fa fa-times';
 			if ( ! empty( $styles->getGlobal( 'misc_icons', 'close_icon' ) ) ) {

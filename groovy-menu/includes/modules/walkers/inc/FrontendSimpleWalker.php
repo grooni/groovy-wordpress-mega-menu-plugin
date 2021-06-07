@@ -327,9 +327,9 @@ class FrontendSimpleWalker extends WalkerNavMenu {
 		} else {
 			if ( $depth < 1 ) {
 				if ( $this->hasParents() && $this->hasChildren( $classes ) ) {
-					$item_output .= '<span class="gm-caret ' . $atts['class'] . '"><i class="fa fa-fw fa-angle-right"></i></span>';
+					$item_output .= '<span class="gm-caret ' . $atts['class'] . '" aria-label="submenu"><i class="fa fa-fw fa-angle-right"></i></span>';
 				} elseif ( $this->hasChildren( $classes ) ) {
-					$item_output .= '<span class="gm-caret ' . $atts['class'] . '"><i class="fa fa-fw fa-angle-down"></i></span>';
+					$item_output .= '<span class="gm-caret ' . $atts['class'] . '" aria-label="dropdown"><i class="fa fa-fw fa-angle-down"></i></span>';
 				}
 			}
 		}

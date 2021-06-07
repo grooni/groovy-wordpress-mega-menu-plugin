@@ -755,9 +755,9 @@ class FrontendWalker extends WalkerNavMenu {
 				$item_output .= '</span>'; // .gm-menu-item__txt-wrapper
 				if ( ! $this->isMegaMenu || $depth < 1 ) {
 					if ( $this->hasParents() && $this->hasChildren( $classes ) ) {
-						$item_output .= '<span class="gm-caret"><i class="fa fa-fw fa-angle-right"></i></span>';
+						$item_output .= '<span class="gm-caret" aria-label="submenu"><i class="fa fa-fw fa-angle-right"></i></span>';
 					} elseif ( $this->hasChildren( $classes ) ) {
-						$item_output .= '<span class="gm-caret"><i class="fa fa-fw fa-angle-down"></i></span>';
+						$item_output .= '<span class="gm-caret" aria-label="dropdown"><i class="fa fa-fw fa-angle-down"></i></span>';
 					}
 				}
 				$item_output .= $thumb;
@@ -779,9 +779,9 @@ class FrontendWalker extends WalkerNavMenu {
 			} else {
 				if ( ! $this->isMegaMenu || $depth < 1 ) {
 					if ( $this->hasParents() && $this->hasChildren( $classes ) ) {
-						$item_output .= '<span class="gm-caret ' . $atts['class'] . '"><i class="fa fa-fw fa-angle-right"></i></span>';
+						$item_output .= '<span class="gm-caret ' . $atts['class'] . '" aria-label="submenu"><i class="fa fa-fw fa-angle-right"></i></span>';
 					} elseif ( $this->hasChildren( $classes ) ) {
-						$item_output .= '<span class="gm-caret ' . $atts['class'] . '"><i class="fa fa-fw fa-angle-down"></i></span>';
+						$item_output .= '<span class="gm-caret ' . $atts['class'] . '" aria-label="dropdown"><i class="fa fa-fw fa-angle-down"></i></span>';
 					}
 				}
 				$item_output .= $thumb;
