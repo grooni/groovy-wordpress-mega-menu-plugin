@@ -357,7 +357,35 @@ function groovyMenu( $args = array() ) {
 	$menu_button_text = $styles->getGlobal( 'misc_icons', 'menu_button_text' );
 	$menu_button_text = apply_filters( 'wpml_translate_single_string', $menu_button_text, 'groovy-menu', 'Global settings - Menu button text' );
 
-	// Clean output, first parent level;
+
+	// prepare for Second sidebar hamburger html.
+	$second_sidebar_burger = array(
+		'main_bar_left'                 => '',
+		'main_bar_right'                => '',
+		'main_bar_before_logo'          => '',
+		'main_bar_after_logo'           => '',
+		'main_bar_before_main_menu'     => '',
+		'main_bar_after_main_menu'      => '',
+		'main_bar_before_action_button' => '',
+	);
+
+	if (
+		1 === $header_style &&
+		$groovyMenuSettings['secondSidebarMenuEnable'] &&
+		! empty( $groovyMenuSettings['secondSidebarMenuSideIconPosition'] ) &&
+		isset( $second_sidebar_burger[ $groovyMenuSettings['secondSidebarMenuSideIconPosition'] ] )
+	) {
+		$menu_second_button_text_full = '';
+		if ( $groovyMenuSettings['secondSidebarMenuButtonShowText'] ) {
+			$menu_second_button_text_full = '<span class="gm-menu-btn--text" >' . $menu_button_text . '</span >';
+		}
+		$second_sidebar_burger_html = '<div class="gm-menu-btn-second gm-burger hamburger">' . $menu_second_button_text_full . '<div class="hamburger-box"><div class="hamburger-inner"></div></div></div>';
+
+		$second_sidebar_burger[ $groovyMenuSettings['secondSidebarMenuSideIconPosition'] ] = $second_sidebar_burger_html;
+	}
+
+
+	// Clean output, first level --------------------------------------------------------------------------------------.
 	ob_start();
 
 
@@ -557,6 +585,9 @@ function groovyMenu( $args = array() ) {
 	$output_html .= ob_get_clean();
 
 
+	$output_html .= GroovyMenuUtils::clean_output( $second_sidebar_burger['main_bar_before_logo'] );
+
+
 	$logo_url = trailingslashit( network_site_url() );
 	if ( ! empty( $styles->getGlobal( 'logo', 'logo_url' ) ) ) {
 		$logo_url = $styles->getGlobal( 'logo', 'logo_url' );
@@ -682,6 +713,9 @@ function groovyMenu( $args = array() ) {
 			'><span class="gm-logo__txt">' . esc_html( $logo_text ) . '</span></a>';
 
 	}
+
+
+	$output_html .= GroovyMenuUtils::clean_output( $second_sidebar_burger['main_bar_after_logo'] );
 
 
 	ob_start();
@@ -835,12 +869,7 @@ function groovyMenu( $args = array() ) {
 			$menu_button_text_full = '<span class="gm-menu-btn--text" >' . $menu_button_text . '</span >';
 		}
 
-		if ( 1 === $header_style && $groovyMenuSettings['secondSidebarMenuEnable'] ) {
-			if ( $groovyMenuSettings['secondSidebarMenuButtonShowText'] ) {
-				$menu_second_button_text_full = '<span class="gm-menu-btn--text" >' . $menu_button_text . '</span >';
-			}
-			$output_html .= '<div class="gm-menu-btn-second gm-burger hamburger">' . $menu_second_button_text_full . '<div class="hamburger-box"><div class="hamburger-inner"></div></div></div>';
-		}
+		$output_html .= GroovyMenuUtils::clean_output( $second_sidebar_burger['main_bar_left'] );
 
 		if ( 2 === $header_style && $groovyMenuSettings['minimalisticCssHamburger'] ) {
 
@@ -908,11 +937,17 @@ function groovyMenu( $args = array() ) {
 	$output_html .= ob_get_clean();
 
 
+	$output_html .= GroovyMenuUtils::clean_output( $second_sidebar_burger['main_bar_before_main_menu'] );
+
+
 	$output_html .= wp_nav_menu( $args );
 
 	if ( $is_menu_empty ) {
 		$output_html .= '<div class="gm-menu-empty">' . esc_html__( 'Please assign a menu to the primary menu location under Menus.', 'groovy-menu' ) . '</div>';
 	}
+
+
+	$output_html .= GroovyMenuUtils::clean_output( $second_sidebar_burger['main_bar_after_main_menu'] );
 
 
 	ob_start();
@@ -951,6 +986,20 @@ function groovyMenu( $args = array() ) {
 	if ( $show_gm_action ) {
 
 		$output_html .= '<div class="gm-actions">';
+
+
+		ob_start();
+		/**
+		 * Fires as first groovy menu action buttons.
+		 *
+		 * @since 1.3.0
+		 */
+		do_action( 'gm_main_menu_actions_button_first' );
+		$output_html .= ob_get_clean();
+
+
+		$output_html .= GroovyMenuUtils::clean_output( $second_sidebar_burger['main_bar_before_action_button'] );
+
 
 		if ( $styles->get( 'general', 'show_divider' ) ) {
 			if ( 1 === $header_style ) {
@@ -1033,6 +1082,20 @@ function groovyMenu( $args = array() ) {
 									</div>
 									';
 		}
+
+		ob_start();
+		/**
+		 * Fires as last groovy menu action buttons.
+		 *
+		 * @since 1.3.0
+		 */
+		do_action( 'gm_main_menu_actions_button_last' );
+		$output_html .= ob_get_clean();
+
+
+		$output_html .= GroovyMenuUtils::clean_output( $second_sidebar_burger['main_bar_right'] );
+
+
 		$output_html .= '</div>';
 	}
 	$output_html .= '</div>
