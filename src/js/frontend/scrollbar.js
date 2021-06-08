@@ -185,6 +185,7 @@ export default function initScrollbar(settings) {
 
     let headerStyle = parseInt(settings.header.style, 10);
     if (headerStyle === 1) {
+      handleScrollbarMouseEnterSecondSidebar();
       return;
     }
 
@@ -225,6 +226,40 @@ export default function initScrollbar(settings) {
 
     //currentDropdown.addEventListener('transitionend', handleTransitionEnd);
   }
+
+  function handleScrollbarMouseEnterSecondSidebar() {
+
+    let headerStyle = parseInt(settings.header.style, 10);
+    if (headerStyle === 1 && !settings.secondSidebarMenuEnable) {
+      return;
+    }
+
+    let currentDropdown = undefined;
+
+    if (headerStyle === 1 && settings.secondSidebarMenuEnable) {
+      currentDropdown = document.querySelector('.gm-second-nav-drawer .gm-second-nav-container .gm-navbar-nav');
+    }
+
+    if (!currentDropdown) {
+      return;
+    }
+
+    let drawerElem = document.querySelector('.gm-second-nav-drawer');
+    let containerElem = document.querySelector('.gm-second-nav-drawer .gm-second-nav-container');
+
+    let drawerMaxHeight = drawerElem.offsetHeight;
+
+    // Top level --------------------------------------------------------------
+    containerElem.style.overflow = 'hidden';
+    currentDropdown.style.position = 'static';
+    currentDropdown.style.maxHeight = drawerMaxHeight+'px';
+    currentDropdown.style.height = drawerMaxHeight + 'px';
+
+    activatePerfectScrollbar(currentDropdown);
+
+    //currentDropdown.addEventListener('transitionend', handleTransitionEnd);
+  }
+
 
   function handleTransitionEnd(event) {
     if (event.propertyName !== 'transform') {
@@ -508,7 +543,8 @@ export default function initScrollbar(settings) {
 
     let topLevelMenus = [
       '.gm-navbar.gm-navbar--style-3 .gm-inner .gm-container .gm-main-menu-wrapper',
-      '.gm-navbar.gm-navbar--style-5 .gm-inner .gm-container .gm-main-menu-wrapper'
+      '.gm-navbar.gm-navbar--style-5 .gm-inner .gm-container .gm-main-menu-wrapper',
+      '.gm-second-nav-drawer'
     ];
 
     let flag = false;

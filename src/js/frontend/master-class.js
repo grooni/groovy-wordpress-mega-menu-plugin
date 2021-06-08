@@ -518,7 +518,7 @@ class GroovyMenu {
     }
 
 
-    let gmAnchorItems = document.querySelectorAll('#gm-main-menu .gm-anchor, .gm-second-nav-drawer .gm-navbar-nav .gm-anchor, .gm-minicart, .gm-search, #gm-main-menu .mega-gm-dropdown > .gm-dropdown-menu-wrapper');
+    let gmAnchorItems = document.querySelectorAll('#gm-main-menu .gm-anchor, .gm-second-nav-drawer .gm-navbar-nav .gm-anchor, .gm-minicart, .gm-search, #gm-main-menu .gm-dropdown-menu-wrapper, .gm-second-nav-drawer .gm-navbar-nav .gm-dropdown-menu-wrapper');
     let gmMainMenu = document.querySelector('#gm-main-menu');
 
     if (gmAnchorItems) {
