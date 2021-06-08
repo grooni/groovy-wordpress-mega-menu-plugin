@@ -253,7 +253,6 @@ export default function initScrollbar(settings) {
     containerElem.style.overflow = 'hidden';
     currentDropdown.style.position = 'static';
     currentDropdown.style.maxHeight = drawerMaxHeight+'px';
-    currentDropdown.style.height = drawerMaxHeight + 'px';
 
     activatePerfectScrollbar(currentDropdown);
 

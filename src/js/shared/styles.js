@@ -1000,21 +1000,6 @@ export default class GmStyles {
         }
       }
 
-      // Top bar Side icon position
-      if (settings.secondSidebarMenuSideIconPosition === 'left') {
-        css.push({
-          '.gm-navbar .gm-inner > .gm-container': 'flex-direction: row-reverse !important;',
-          media: 'desktop'
-        });
-
-      } else if (settings.secondSidebarMenuSideIconPosition === 'right') {
-
-        css.push({
-          '.gm-navbar .gm-inner > .gm-container': 'flex-direction: row !important;',
-          media: 'desktop'
-        });
-      }
-
       // Hamburger icon
       const {
         hamburgerIconBorderWidth,
@@ -1025,7 +1010,7 @@ export default class GmStyles {
       let hamburgerIconBoxSize = hamburgerIconSize + (hamburgerIconPadding * 2) + (hamburgerIconBorderWidth * 2);
 
       css.push({
-        '.gm-navbar .gm-menu-btn-second.hamburger': `display: flex; position: relative; top: 0; margin: 0; text-align: center; cursor: pointer; justify-content: center; padding: 0; min-width: ${hamburgerIconBoxSize}px;`,
+        '.gm-navbar .gm-menu-btn-second.hamburger': `display: flex; position: relative; top: 0; margin: 0 6px; text-align: center; cursor: pointer; justify-content: center; padding: 0; min-width: ${hamburgerIconBoxSize}px;`,
         '.gm-navbar .gm-menu-btn-second.hamburger .hamburger-box, .gm-navbar .gm-menu-btn-second.hamburger .hamburger-inner, .gm-navbar .gm-menu-btn-second.hamburger .hamburger-inner::after, .gm-navbar .gm-menu-btn-second.hamburger .hamburger-inner::before': `width: ${hamburgerIconSize}px;`,
         '.gm-navbar .gm-menu-btn-second.hamburger .hamburger-box': `height: ${hamburgerIconSize}px;`,
         media: 'desktop'
@@ -5594,6 +5579,8 @@ export default class GmStyles {
           '.gm-navbar-sticky-toggle .gm-menu-actions-wrapper a.gm-minicart-link': `color: ${color} !important;`,
           '.gm-navbar-sticky-toggle .gm-menu-btn.gm-burger .hamburger-inner, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger .hamburger-inner::after, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger .hamburger-inner::before': `background-color: ${color};`,
           '.gm-navbar-sticky-toggle .gm-menu-btn.gm-burger.hamburger.is-active .hamburger-inner, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger.hamburger.is-active .hamburger-inner::after, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger.hamburger.is-active .hamburger-inner::before': `background-color: ${color};`,
+          '.gm-navbar-sticky-toggle .gm-menu-btn-second.gm-burger .hamburger-inner, .gm-navbar-sticky-toggle .gm-menu-btn-second.gm-burger .hamburger-inner::after, .gm-navbar-sticky-toggle .gm-menu-btn-second.gm-burger .hamburger-inner::before': `background-color: ${color};`,
+          '.gm-navbar-sticky-toggle .gm-menu-btn-second.gm-burger.hamburger.is-active .hamburger-inner, .gm-navbar-sticky-toggle .gm-menu-btn-second.gm-burger.hamburger.is-active .hamburger-inner::after, .gm-navbar-sticky-toggle .gm-menu-btn-second.gm-burger.hamburger.is-active .hamburger-inner::before': `background-color: ${color};`,
           media: 'desktop'
         });
       }
@@ -5606,6 +5593,8 @@ export default class GmStyles {
           '.gm-navbar-sticky-toggle .gm-menu-btn__inner': `font-size: ${size}px;`,
           '.gm-navbar-sticky-toggle .gm-menu-btn.gm-burger .hamburger-box, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger .hamburger-inner, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger .hamburger-inner::after, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger .hamburger-inner::before': `width: ${size}px;`,
           '.gm-navbar-sticky-toggle .gm-menu-btn.gm-burger .hamburger-box': `height: ${size}px;`,
+          '.gm-navbar-sticky-toggle .gm-menu-btn-second.gm-burger .hamburger-box, .gm-navbar-sticky-toggle .gm-menu-btn-second.gm-burger .hamburger-inner, .gm-navbar-sticky-toggle .gm-menu-btn-second.gm-burger .hamburger-inner::after, .gm-navbar-sticky-toggle .gm-menu-btn-second.gm-burger .hamburger-inner::before': `width: ${size}px;`,
+          '.gm-navbar-sticky-toggle .gm-menu-btn-second.gm-burger .hamburger-box': `height: ${size}px;`,
           media: 'desktop'
         });
       }
@@ -5615,7 +5604,7 @@ export default class GmStyles {
         const color = settings.hamburgerIconStickyBgColor;
 
         css.push({
-          '.gm-navbar-sticky-toggle .gm-menu-btn__inner, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger': `background-color: ${color};`,
+          '.gm-navbar-sticky-toggle .gm-menu-btn__inner, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger, .gm-navbar-sticky-toggle .gm-menu-btn-second.gm-burger': `background-color: ${color};`,
           media: 'desktop'
         });
       }
@@ -5625,7 +5614,7 @@ export default class GmStyles {
         const padding = settings.hamburgerIconStickyPadding;
 
         css.push({
-          '.gm-navbar-sticky-toggle .gm-menu-btn__inner, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger': `padding: ${padding}px;`,
+          '.gm-navbar-sticky-toggle .gm-menu-btn__inner, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger, .gm-navbar-sticky-toggle .gm-menu-btn-second.gm-burger': `padding: ${padding}px;`,
           media: 'desktop'
         });
       }
@@ -5641,7 +5630,7 @@ export default class GmStyles {
         } = settings;
 
         css.push({
-          '.gm-navbar-sticky-toggle .gm-menu-btn__inner, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger': `border: ${width}px solid ${color};`,
+          '.gm-navbar-sticky-toggle .gm-menu-btn__inner, .gm-navbar-sticky-toggle .gm-menu-btn.gm-burger, .gm-navbar-sticky-toggle .gm-menu-btn-second.gm-burger': `border: ${width}px solid ${color};`,
           media: 'desktop'
         });
       }
