@@ -250,8 +250,6 @@ class GroovyMenu {
       let gmMainMenu = document.querySelector('#gm-main-menu');
       let hasOpenedElems = false;
       let miniCart = e.target.closest('.gm-minicart');
-      let autoCloseDelay = options.subDropdownAutocloseDelay ? options.subDropdownAutocloseDelay : 500;
-      autoCloseDelay = autoCloseDelay < 1 ? 1 : autoCloseDelay;
       let diagonalDelay = options.subDropdownAdjacentDelay ? options.subDropdownAdjacentDelay : 300;
       diagonalDelay = diagonalDelay < 100 ? 100 : diagonalDelay;
       diagonalDelay = diagonalDelay - 95;
@@ -426,7 +424,7 @@ class GroovyMenu {
 
       } else { // apparently this is the top level menu without dropdown.
         // Close all dropdowns.
-        dropdownCloseAll(autoCloseDelay);
+        //dropdownCloseAll(1500);
       }
     };
 
