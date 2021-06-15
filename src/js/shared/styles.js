@@ -228,7 +228,7 @@ export default class GmStyles {
       if (settings.megaMenuCanvasContainerWidthType === 'mega-menu-canvas-wide-container-boxed' ||
         settings.megaMenuCanvasContainerWidthType === 'mega-menu-canvas-wide-container-wide') {
         css.push({
-          '.gm-main-menu-wrapper .mega-gm-dropdown > .gm-dropdown-menu, .gm-main-menu-wrapper .mega-gm-dropdown > .gm-dropdown-menu-wrapper': `
+          '.gm-navbar .gm-main-menu-wrapper .mega-gm-dropdown > .gm-dropdown-menu, .gm-navbar .gm-main-menu-wrapper .mega-gm-dropdown > .gm-dropdown-menu-wrapper': `
             width: 100vw;
             margin-left  : calc( -100vw / 2 + 100% / 2 );
             margin-right : calc( -100vw / 2 + 100% / 2 );
@@ -254,7 +254,7 @@ export default class GmStyles {
         const maxWidth = `${settings.megaMenuCanvasBoxedContainerBoxedWidth}px`;
 
         css.push({
-          '.gm-main-menu-wrapper .mega-gm-dropdown > .gm-dropdown-menu, .gm-main-menu-wrapper .mega-gm-dropdown > .gm-dropdown-menu-wrapper': `
+          '.gm-navbar .gm-main-menu-wrapper .mega-gm-dropdown > .gm-dropdown-menu, .gm-navbar .gm-main-menu-wrapper .mega-gm-dropdown > .gm-dropdown-menu-wrapper': `
             width: ${maxWidth};
             max-width : ${maxWidth};
             position: absolute;`
@@ -266,14 +266,14 @@ export default class GmStyles {
         const maxWidth = `${settings.megaMenuCanvasWideContainerBoxedWidth}px`;
 
         css.push({
-          '.gm-main-menu-wrapper .gm-grid-container': `max-width: ${maxWidth}`
+          '.gm-navbar .gm-main-menu-wrapper .gm-grid-container': `max-width: ${maxWidth}`
         });
       }
 
       // Mega menu canvas wide - container wide
       if (settings.megaMenuCanvasContainerWidthType === 'mega-menu-canvas-wide-container-wide') {
         css.push({
-          '.gm-main-menu-wrapper .gm-dropdown.mega-gm-dropdown .gm-dropdown-menu, .gm-grid-container': 'max-width: none'
+          '.gm-navbar .gm-main-menu-wrapper .gm-dropdown.mega-gm-dropdown .gm-dropdown-menu, .gm-grid-container': 'max-width: none'
         });
       }
 
