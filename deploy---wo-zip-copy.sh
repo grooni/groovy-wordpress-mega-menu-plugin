@@ -12,7 +12,7 @@ composer install
 
 ### ///////////////////////////////////
 echo 'gulp build groovy-menu'
-gulp build --production
+npm run gulp build --production
 
 
 ### ////////////////////////////////////

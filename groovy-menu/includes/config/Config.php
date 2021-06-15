@@ -1793,7 +1793,7 @@ return array(
 					'main_bar_after_main_menu'      => esc_html__( 'Main menu bar after nav menu', 'groovy-menu' ),
 					'main_bar_before_action_button' => esc_html__( 'Main menu bar before action button', 'groovy-menu' ),
 				),
-				'default'   => 'left',
+				'default'   => 'main_bar_right',
 				'condition' => array( 'second_sidebar_menu_enable', '==', true ),
 			),
 			'second_sidebar_menu_button_show_text_start'        => array(
