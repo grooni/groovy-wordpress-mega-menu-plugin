@@ -1607,10 +1607,8 @@ return array(
 				'title'     => esc_html__( 'Menu open type', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
-					'offcanvasSlideLeft'       => esc_html__( 'Offcanvas slide from the left', 'groovy-menu' ),
-					'offcanvasSlideRight'      => esc_html__( 'Offcanvas slide from the right', 'groovy-menu' ),
-					'offcanvasSlideSlide'      => esc_html__( 'Slide menu and container from the left', 'groovy-menu' ),
-					'offcanvasSlideSlideRight' => esc_html__( 'Slide menu and container from the right', 'groovy-menu' ),
+					'offcanvasSlideLeft'  => esc_html__( 'Offcanvas slide from the left', 'groovy-menu' ),
+					'offcanvasSlideRight' => esc_html__( 'Offcanvas slide from the right', 'groovy-menu' ),
 				),
 				'default'   => 'offcanvasSlideRight',
 				'condition' => array( 'second_sidebar_menu_enable', '==', true ),
@@ -1793,7 +1791,7 @@ return array(
 					'main_bar_after_main_menu'      => esc_html__( 'Main menu bar after nav menu', 'groovy-menu' ),
 					'main_bar_before_action_button' => esc_html__( 'Main menu bar before action button', 'groovy-menu' ),
 				),
-				'default'   => 'main_bar_left',
+				'default'   => 'main_bar_right',
 				'condition' => array( 'second_sidebar_menu_enable', '==', true ),
 			),
 			'second_sidebar_menu_button_show_text_start'        => array(

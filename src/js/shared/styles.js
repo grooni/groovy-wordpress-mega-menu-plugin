@@ -2828,6 +2828,13 @@ export default class GmStyles {
 
     // SHARED SETTINGS -------------------------------------------------------------------------------------------------
 
+    // Disable display of desktop menu version
+    if (settings.mobileDisableDesktop) {
+      css.push({
+        '.gm-disable-desktop-view, .gm-disable-desktop-view ~ .gm-second-nav-drawer, .gm-disable-desktop-view ~ .gm-main-menu-wrapper': 'display: none !important;',
+        media: 'desktop'
+      });
+    }
 
     // Toolbar Align
     if (settings.header.style === 1 || settings.header.style === 2) {

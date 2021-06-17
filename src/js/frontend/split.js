@@ -75,7 +75,7 @@ function setPaddingsAlignCenter () {
 
   if (gmSecondSidebarBurger && !options.forceLogoCentering) {
     if (options.secondSidebarMenuSideIconPosition === 'main_bar_left') {
-      widthMenuActions -= Math.floor(gmSecondSidebarBurger.offsetWidth / 2);
+      widthMenuActions -= gmSecondSidebarBurger.offsetWidth;
     }
     if (options.secondSidebarMenuSideIconPosition === 'main_bar_right') {
       widthMenuActions += Math.floor(gmSecondSidebarBurger.offsetWidth / 2);
