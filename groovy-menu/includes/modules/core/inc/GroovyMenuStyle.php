@@ -594,6 +594,7 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 			return $classes_navbar;
 		}
 
+
 		/**
 		 * @param bool $withFiles
 		 *

@@ -186,7 +186,7 @@ class GroovyMenuGFonts {
 
 	/**
 	 * @param string $preset_id
-	 * @param array $specific_font_data
+	 * @param array  $specific_font_data
 	 *
 	 * @return array
 	 */
@@ -525,9 +525,9 @@ class GroovyMenuGFonts {
 	/**
 	 * Parse and prepare font setting array for css rules
 	 *
-	 * @param string $variant   font variant.
-	 * @param array  $font_info family, variants, subset.
-	 * @param array  $subsets   font subset.
+	 * @param string $variant    font variant.
+	 * @param array  $font_info  family, variants, subset.
+	 * @param array  $subsets    font subset.
 	 * @param string $fonts_path path to font file.
 	 *
 	 * @return array
@@ -673,7 +673,10 @@ class GroovyMenuGFonts {
 
 		global $wp_filesystem;
 		if ( empty( $wp_filesystem ) ) {
-			$file_path = str_replace( array( '\\', '/' ), DIRECTORY_SEPARATOR, ABSPATH . '/wp-admin/includes/file.php' );
+			$file_path = str_replace( array(
+				'\\',
+				'/'
+			), DIRECTORY_SEPARATOR, ABSPATH . '/wp-admin/includes/file.php' );
 
 			if ( file_exists( $file_path ) ) {
 				require_once $file_path;

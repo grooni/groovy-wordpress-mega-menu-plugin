@@ -472,6 +472,12 @@ return array(
 				'default'     => true,
 				'description' => esc_html__( 'Add preload link tag', 'groovy-menu' ),
 			),
+			'remove_breaking_p_tag'       => array(
+				'type'        => 'checkbox',
+				'title'       => esc_html__( 'Clean the breaking HTML "P" tag in the blocks menu', 'groovy-menu' ),
+				'default'     => true,
+				'description' => esc_html__( 'Wordpress inserts paragraphs instead of line breaks by default. Sometimes replacing double line breaks with paragraph elements works with errors inside shortcodes.', 'groovy-menu' ),
+			),
 			'uninstall_data'              => array(
 				'type'        => 'checkbox',
 				'title'       => esc_html__( 'Remove All Data after uninstall', 'groovy-menu' ),
