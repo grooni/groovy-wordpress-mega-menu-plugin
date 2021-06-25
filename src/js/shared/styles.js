@@ -3118,7 +3118,7 @@ export default class GmStyles {
 
     if (settings.header.style !== 4) {
       css.push({
-        '.gm-navbar ~ .gm-main-menu-wrapper .gm-menu-item__icon, .gm-navbar .gm-main-menu-wrapper .gm-menu-item__icon': 'margin-right: 8px;'
+        '.gm-navbar ~ .gm-main-menu-wrapper .gm-menu-item__icon, .gm-navbar .gm-main-menu-wrapper .gm-menu-item__icon, .gm-toolbar-nav-container .gm-menu-item__icon': 'margin-right: 8px;'
       });
 
       // Show icons only in icon menu
@@ -4977,6 +4977,10 @@ export default class GmStyles {
         toolbarMenuSubWidth: subWidth,
         toolbarMenuHoverStyle: hoverStyle,
         toolbarMenuAppearanceStyle: appearanceStyle,
+        toolbarMenuTextSize: toolbarMenuTextSize,
+        toolbarMenuTextCase: toolbarMenuTextCase,
+        toolbarMenuTextWeight: toolbarMenuTextWeight,
+        toolbarMenuTextSpacing: toolbarMenuTextSpacing,
       } = settings;
 
       if (!showMobile) {
@@ -5079,6 +5083,50 @@ export default class GmStyles {
         css.push({
           '.gm-toolbar-nav-container ul ul': 'transition: all .28s ease-in-out 0s, -webkit-transform .28s ease-in-out 0s; transform: translateX(50%); opacity: 0;',
           '.gm-toolbar-nav-container ul li:hover > ul': 'visibility: visible; transform: translateX(0); opacity: 1;'
+        });
+      }
+
+      // Toolbar menu Top level menu item text size
+      if (toolbarMenuTextSize) {
+        css.push({
+          '.gm-toolbar-nav-container .gm-toolbar-nav .gm-anchor': `font-size: ${toolbarMenuTextSize}px`,
+          media: 'desktop'
+        });
+      }
+      // Toolbar menu Top level menu text weight
+      if (toolbarMenuTextWeight) {
+        const textWeight = toolbarMenuTextWeight.toString();
+
+        if (textWeight !== 'none') {
+          const isItalic = textWeight.match(/italic/);
+          const filteredTextWeight = textWeight.replace(/italic/, '');
+
+          if (isItalic) {
+            css.push({
+              '.gm-toolbar-nav-container .gm-toolbar-nav .gm-anchor': 'font-style: italic',
+              media: 'desktop'
+            });
+          }
+
+          css.push({
+            '.gm-toolbar-nav-container .gm-toolbar-nav .gm-anchor': `font-weight: ${filteredTextWeight}`,
+            media: 'desktop'
+          });
+        }
+      }
+      // Toolbar menu Top level menu item letter spacing
+      if (toolbarMenuTextSpacing) {
+        css.push({
+          '.gm-toolbar-nav-container .gm-toolbar-nav .gm-anchor': `letter-spacing: ${toolbarMenuTextSpacing}px`,
+          media: 'desktop'
+        });
+      }
+
+      // Toolbar menu Top level menu text case
+      if (toolbarMenuTextCase) {
+        css.push({
+          '.gm-toolbar-nav-container .gm-toolbar-nav .gm-anchor': `text-transform: ${toolbarMenuTextCase}`,
+          media: 'desktop'
         });
       }
 
