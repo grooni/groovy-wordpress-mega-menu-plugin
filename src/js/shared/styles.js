@@ -688,24 +688,61 @@ export default class GmStyles {
 
     if (settings.header.style === 1 && settings.secondSidebarMenuEnable) {
       const {
-        submenuBorderThickness: thickness,
-        submenuBorderStyle: style,
-        submenuBorderColor: color,
+        secondSidebarMenuTopBorderThickness: topBorderThickness,
+        secondSidebarMenuTopBorderStyle: topBorderStyle,
+        secondSidebarMenuTopBorderColor: topBorderColor,
+        secondSidebarMenuSubBorderThickness: subBorderThickness,
+        secondSidebarMenuSubBorderStyle: subBorderStyle,
+        secondSidebarMenuSubBorderColor: subBorderColor,
+        secondSidebarMenuTopColor: topColor,
+        secondSidebarMenuTopBg: topBg,
+        secondSidebarMenuTopColorHover: topColorHover,
+        secondSidebarMenuTopBgHover: topBgHover,
+        secondSidebarMenuTopFontSize: topFontSize,
+        secondSidebarMenuSubColor: subColor,
+        secondSidebarMenuSubBg: subBg,
+        secondSidebarMenuSubColorHover: subColorHover,
+        secondSidebarMenuSubBgHover: subBgHover,
+        secondSidebarMenuSubFontSize: subFontSize,
+
         secondSidebarMenuFullscreen
       } = settings;
 
-      // Submenu bottom border style, Thickness, Color
+      // Top menu bottom border style, Thickness, Color
       if (
-        settings.submenuBorderThickness &&
-        settings.submenuBorderStyle &&
-        settings.submenuBorderColor
+        settings.secondSidebarMenuTopBorderThickness &&
+        settings.secondSidebarMenuTopBorderStyle &&
+        settings.secondSidebarMenuTopBorderColor
       ) {
         css.push({
-          '.gm-second-nav-drawer .gm-navbar-nav > li > .gm-anchor, .gm-second-nav-drawer .gm-navbar-nav .gm-dropdown-menu .gm-menu-item__link:after':
-            `border-bottom: ${thickness}px ${style} ${color};`,
-          media: 'desktop'
+          '.gm-second-nav-drawer .gm-navbar-nav > li > .gm-anchor':
+            `border-bottom: ${topBorderThickness}px ${topBorderStyle} ${topBorderColor};`
         });
       }
+
+      // Submenu bottom border style, Thickness, Color
+      if (
+        settings.secondSidebarMenuSubBorderThickness &&
+        settings.secondSidebarMenuSubBorderStyle &&
+        settings.secondSidebarMenuSubBorderColor
+      ) {
+        css.push({
+          '.gm-second-nav-drawer .gm-navbar-nav .gm-dropdown-menu .gm-menu-item__link:after':
+            `border-bottom: ${subBorderThickness}px ${subBorderStyle} ${subBorderColor};`
+        });
+      }
+
+      css.push({
+        '#gm-second-nav-drawer .gm-navbar-nav > li > .gm-anchor': `font-size: ${topFontSize}px; color: ${topColor}; background: transparent;`,
+        '#gm-second-nav-drawer .gm-navbar-nav > li.gm-menu-item--lvl-0': `background: ${topBg};`,
+        '#gm-second-nav-drawer .gm-dropdown-menu-wrapper .gm-anchor': `font-size: ${subFontSize}px;`,
+        '#gm-second-nav-drawer .gm-second-nav-container > ul > li:hover > a, .gm-second-nav-container > ul > li.current-menu-item > a, .gm-second-nav-container > ul > li.current-menu-ancestor > a': `color: ${topColorHover} !important; background: transparent;`,
+        '#gm-second-nav-drawer .gm-second-nav-container > ul > li:hover, .gm-second-nav-container > ul > li.current-menu-item, .gm-second-nav-container > ul > li.current-menu-ancestor': `background: ${topBgHover} !important;`,
+        '#gm-second-nav-drawer .gm-second-nav-container .gm-dropdown-menu .gm-menu-item > .gm-anchor': `color: ${subColor}; background: ${subBg};`,
+        '#gm-second-nav-drawer .gm-second-nav-container .gm-dropdown-menu li.gm-menu-item:hover > .gm-anchor, #gm-second-nav-drawer .gm-second-nav-container .gm-dropdown-menu li.current-menu-item > .gm-anchor, #gm-second-nav-drawer .gm-second-nav-container .gm-dropdown-menu li.current-menu-ancestor > .gm-anchor': `color: ${subColorHover}; background: ${subBgHover};`,
+        '#gm-second-nav-drawer .gm-navbar-nav .gm-dropdown-menu .gm-menu-item:hover': 'background: transparent',
+      });
+
 
       // secondSidebarMenu navigation drawer open type (desktop)
       css.push({
@@ -841,49 +878,49 @@ export default class GmStyles {
       });
 
       // Appearance Styles
-      if (settings.dropdownAppearanceStyle === 'animate-from-bottom') {
+      if (settings.secondSidebarMenuAppearanceStyle === 'animate-from-bottom') {
         css.push({
-          '.gm-dropdown-appearance-animate-from-bottom ~ .gm-second-nav-drawer .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: all 0.2s; transform: translateY(80px);',
-          '.gm-dropdown-appearance-animate-from-bottom ~ .gm-second-nav-drawer .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'visibility: visible; transform: translateY(0); opacity: 1;',
+          '.gm-second-nav-drawer.gm-dropdown-appearance-animate-from-bottom .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: all 0.2s; transform: translateY(80px);',
+          '.gm-second-nav-drawer.gm-dropdown-appearance-animate-from-bottom .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'visibility: visible; transform: translateY(0); opacity: 1;',
           media: 'desktop'
         });
       }
-      if (settings.dropdownAppearanceStyle === 'animate-with-scaling') {
+      if (settings.secondSidebarMenuAppearanceStyle === 'animate-with-scaling') {
         css.push({
-          '.gm-dropdown-appearance-animate-with-scaling ~ .gm-second-nav-drawer .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: transform .25s ease , opacity .22s ease; transform: scale3d(1,0.1,1); opacity: 0.3;',
-          '.gm-dropdown-appearance-animate-with-scaling ~ .gm-second-nav-drawer .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'transform: scale3d(1,1,1); opacity: 1;',
+          '.gm-second-nav-drawer.gm-dropdown-appearance-animate-with-scaling .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: transform .25s ease , opacity .22s ease; transform: scale3d(1,0.1,1); opacity: 0.3;',
+          '.gm-second-nav-drawer.gm-dropdown-appearance-animate-with-scaling .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'transform: scale3d(1,1,1); opacity: 1;',
           media: 'desktop'
         });
       }
-      if (settings.dropdownAppearanceStyle === 'slide-from-left') {
+      if (settings.secondSidebarMenuAppearanceStyle === 'slide-from-left') {
         css.push({
-          '.gm-dropdown-appearance-slide-from-left ~ .gm-second-nav-drawer .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: transform .28s ease-in-out 0s, -webkit-transform .28s ease-in-out 0s; transform: translateX(-50%);',
-          '.gm-dropdown-appearance-slide-from-left ~ .gm-second-nav-drawer .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'visibility: visible; transform: translateX(0); opacity: 1;',
-          '.gm-navbar.gm-navbar--style-1.gm-dropdown-appearance-slide-from-left ~ .gm-second-nav-drawer .gm-menu-item--lvl-0:not(.gm-open) > .gm-dropdown-menu-wrapper': 'transform: translateX(-50px);',
+          '.gm-second-nav-drawer.gm-dropdown-appearance-slide-from-left .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: transform .28s ease-in-out 0s, -webkit-transform .28s ease-in-out 0s; transform: translateX(-50%);',
+          '.gm-second-nav-drawer.gm-dropdown-appearance-slide-from-left .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'visibility: visible; transform: translateX(0); opacity: 1;',
+          '.gm-second-nav-drawer.gm-dropdown-appearance-slide-from-left .gm-menu-item--lvl-0:not(.gm-open) > .gm-dropdown-menu-wrapper': 'transform: translateX(-50px);',
           media: 'desktop'
         });
       }
-      if (settings.dropdownAppearanceStyle === 'slide-from-left-fadein') {
+      if (settings.secondSidebarMenuAppearanceStyle === 'slide-from-left-fadein') {
         css.push({
-          '.gm-dropdown-appearance-slide-from-left-fadein ~ .gm-second-nav-drawer .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: all .28s ease-in-out 0s, -webkit-transform .28s ease-in-out 0s; transform: translateX(-50%); opacity: 0;',
-          '.gm-dropdown-appearance-slide-from-left-fadein ~ .gm-second-nav-drawer .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'visibility: visible; transform: translateX(0); opacity: 1;',
-          '.gm-navbar.gm-navbar--style-1.gm-dropdown-appearance-slide-from-left-fadein ~ .gm-second-nav-drawer .gm-menu-item--lvl-0:not(.gm-open) > .gm-dropdown-menu-wrapper': 'transform: translateX(-50px);',
+          '.gm-second-nav-drawer.gm-dropdown-appearance-slide-from-left-fadein .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: all .28s ease-in-out 0s, -webkit-transform .28s ease-in-out 0s; transform: translateX(-50%); opacity: 0;',
+          '.gm-second-nav-drawer.gm-dropdown-appearance-slide-from-left-fadein .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'visibility: visible; transform: translateX(0); opacity: 1;',
+          '.gm-second-nav-drawer.gm-dropdown-appearance-slide-from-left-fadein .gm-menu-item--lvl-0:not(.gm-open) > .gm-dropdown-menu-wrapper': 'transform: translateX(-50px);',
           media: 'desktop'
         });
       }
-      if (settings.dropdownAppearanceStyle === 'slide-from-right') {
+      if (settings.secondSidebarMenuAppearanceStyle === 'slide-from-right') {
         css.push({
-          '.gm-dropdown-appearance-slide-from-right ~ .gm-second-nav-drawer .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: transform .28s ease-in-out 0s, -webkit-transform .28s ease-in-out 0s; transform: translateX(50%);',
-          '.gm-dropdown-appearance-slide-from-right ~ .gm-second-nav-drawer .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'visibility: visible; transform: translateX(0); opacity: 1;',
-          '.gm-navbar.gm-navbar--style-1.gm-dropdown-appearance-slide-from-right ~ .gm-second-nav-drawer .gm-menu-item--lvl-0:not(.gm-open) > .gm-dropdown-menu-wrapper': 'transform: translateX(50px);',
+          '.gm-second-nav-drawer.gm-dropdown-appearance-slide-from-right .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: transform .28s ease-in-out 0s, -webkit-transform .28s ease-in-out 0s; transform: translateX(50%);',
+          '.gm-second-nav-drawer.gm-dropdown-appearance-slide-from-right .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'visibility: visible; transform: translateX(0); opacity: 1;',
+          '.gm-second-nav-drawer.gm-dropdown-appearance-slide-from-right .gm-menu-item--lvl-0:not(.gm-open) > .gm-dropdown-menu-wrapper': 'transform: translateX(50px);',
           media: 'desktop'
         });
       }
-      if (settings.dropdownAppearanceStyle === 'slide-from-right-fadein') {
+      if (settings.secondSidebarMenuAppearanceStyle === 'slide-from-right-fadein') {
         css.push({
-          '.gm-dropdown-appearance-slide-from-right-fadein ~ .gm-second-nav-drawer .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: all .28s ease-in-out 0s, -webkit-transform .28s ease-in-out 0s; transform: translateX(50%); opacity: 0;',
-          '.gm-dropdown-appearance-slide-from-right-fadein ~ .gm-second-nav-drawer .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'visibility: visible; transform: translateX(0); opacity: 1;',
-          '.gm-navbar.gm-navbar--style-1.gm-dropdown-appearance-slide-from-right-fadein ~ .gm-second-nav-drawer .gm-menu-item--lvl-0:not(.gm-open) > .gm-dropdown-menu-wrapper': 'transform: translateX(50px);',
+          '.gm-second-nav-drawer.gm-dropdown-appearance-slide-from-right-fadein .gm-dropdown > .gm-dropdown-menu-wrapper': 'transition: all .28s ease-in-out 0s, -webkit-transform .28s ease-in-out 0s; transform: translateX(50%); opacity: 0;',
+          '.gm-second-nav-drawer.gm-dropdown-appearance-slide-from-right-fadein .gm-dropdown.gm-open > .gm-dropdown-menu-wrapper': 'visibility: visible; transform: translateX(0); opacity: 1;',
+          '.gm-second-nav-drawer.gm-dropdown-appearance-slide-from-right-fadein .gm-menu-item--lvl-0:not(.gm-open) > .gm-dropdown-menu-wrapper': 'transform: translateX(50px);',
           media: 'desktop'
         });
       }
@@ -4977,7 +5014,6 @@ export default class GmStyles {
         toolbarMenuSubWidth: subWidth,
         toolbarMenuHoverStyle: hoverStyle,
         toolbarMenuAppearanceStyle: appearanceStyle,
-        toolbarMenuTextSize: toolbarMenuTextSize,
         toolbarMenuTextCase: toolbarMenuTextCase,
         toolbarMenuTextWeight: toolbarMenuTextWeight,
         toolbarMenuTextSpacing: toolbarMenuTextSpacing,
@@ -5086,13 +5122,6 @@ export default class GmStyles {
         });
       }
 
-      // Toolbar menu Top level menu item text size
-      if (toolbarMenuTextSize) {
-        css.push({
-          '.gm-toolbar-nav-container .gm-toolbar-nav .gm-anchor': `font-size: ${toolbarMenuTextSize}px`,
-          media: 'desktop'
-        });
-      }
       // Toolbar menu Top level menu text weight
       if (toolbarMenuTextWeight) {
         const textWeight = toolbarMenuTextWeight.toString();
