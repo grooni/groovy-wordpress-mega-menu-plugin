@@ -1231,6 +1231,11 @@ function groovyMenu( $args = array() ) {
 		if ( isset( $groovyMenuSettings['mobileNavMenu'] ) && is_numeric( $groovyMenuSettings['mobileNavMenu'] ) ) {
 			// Re-assign nav_menu for the mobile view.
 			$args['menu'] = intval( $groovyMenuSettings['mobileNavMenu'] );
+		} elseif ( isset( $groovyMenuSettings['mobileNavMenu'] ) && 'default' === $groovyMenuSettings['mobileNavMenu'] ) {
+			if ( ! empty( $groovyMenuSettings['nav_menu_data']['id'] ) ) {
+				// Re-assign nav_menu for the mobile view.
+				$args['menu'] = $groovyMenuSettings['nav_menu_data']['id'];
+			}
 		}
 
 
