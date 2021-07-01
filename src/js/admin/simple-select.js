@@ -89,7 +89,10 @@ export function handleSelectChanges () {
     'sticky_logo_txt_weight',
     'sticky_logo_txt_subset',
     'toolbar_menu_text_weight',
+    'toolbar_menu_text_subset',
     'toolbar_menu_letter_spacing',
+    'second_sidebar_menu_text_weight',
+    'second_sidebar_menu_text_subset',
   ];
 
   if (fontSelects.includes(this.dataset.name)) {

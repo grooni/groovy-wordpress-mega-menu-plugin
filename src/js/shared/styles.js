@@ -698,6 +698,9 @@ export default class GmStyles {
         secondSidebarMenuTopBg: topBg,
         secondSidebarMenuTopColorHover: topColorHover,
         secondSidebarMenuTopBgHover: topBgHover,
+        secondSidebarMenuTextWeight: fontWeight,
+        secondSidebarMenuTextCase: fontCase,
+        secondSidebarMenuLetterSpacing: fontLetterSpacing,
         secondSidebarMenuTopFontSize: topFontSize,
         secondSidebarMenuSubColor: subColor,
         secondSidebarMenuSubBg: subBg,
@@ -1098,6 +1101,43 @@ export default class GmStyles {
 
         css.push({
           '.gm-navbar .gm-menu-btn-second.hamburger': `border: ${hamburgerIconBorderWidth}px solid ${hamburgerIconBorderColor};`,
+          media: 'desktop'
+        });
+      }
+
+      // Second Sidebar menu text weight
+      if (fontWeight) {
+        const textWeight = fontWeight.toString();
+
+        if (textWeight !== 'none') {
+          const isItalic = textWeight.match(/italic/);
+          const filteredTextWeight = textWeight.replace(/italic/, '');
+
+          if (isItalic) {
+            css.push({
+              '.gm-second-nav-drawer, .gm-second-nav-drawer .gm-second-nav-container .gm-navbar-nav .gm-anchor': 'font-style: italic',
+              media: 'desktop'
+            });
+          }
+
+          css.push({
+            '.gm-second-nav-drawer, .gm-second-nav-drawer .gm-second-nav-container .gm-navbar-nav .gm-anchor': `font-weight: ${filteredTextWeight}`,
+            media: 'desktop'
+          });
+        }
+      }
+      // Second Sidebar menu text letter spacing
+      if (fontLetterSpacing) {
+        css.push({
+          '.gm-second-nav-drawer, .gm-second-nav-drawer .gm-second-nav-container .gm-navbar-nav .gm-anchor': `letter-spacing: ${fontLetterSpacing}px`,
+          media: 'desktop'
+        });
+      }
+
+      // Second Sidebar menu text case
+      if (fontCase) {
+        css.push({
+          '.gm-second-nav-drawer, .gm-second-nav-drawer .gm-second-nav-container .gm-navbar-nav .gm-anchor': `text-transform: ${fontCase}`,
           media: 'desktop'
         });
       }
