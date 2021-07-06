@@ -3105,6 +3105,65 @@ return array(
 				'type'        => 'checkbox',
 				'default'     => false,
 			),
+			'toolbar_margin_start'                         => array(
+				'title'     => esc_html__( 'Toolbar wrapper padding', 'groovy-menu' ),
+				'type'      => 'inlineStart',
+				'condition' => array(
+					array( 'toolbar_type', 'in', array( 'default' ) ),
+					array( 'header.style', 'in', array( '1', '2' ) )
+				),
+			),
+			'toolbar_margin_top'                           => array(
+				'title'     => esc_html__( 'Top', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 2000, 2000 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'toolbar_type', 'in', array( 'default' ) ),
+					array( 'header.style', 'in', array( '1', '2' ) )
+				),
+			),
+			'toolbar_margin_right'                         => array(
+				'title'     => esc_html__( 'Right', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 2000, 2000 ),
+				'default'   => 15,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'toolbar_type', 'in', array( 'default' ) ),
+					array( 'header.style', 'in', array( '1', '2' ) )
+				),
+			),
+			'toolbar_margin_bottom'                        => array(
+				'title'     => esc_html__( 'Bottom', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 2000, 2000 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'toolbar_type', 'in', array( 'default' ) ),
+					array( 'header.style', 'in', array( '1', '2' ) )
+				),
+			),
+			'toolbar_margin_left'                          => array(
+				'title'     => esc_html__( 'Left', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 2000, 2000 ),
+				'default'   => 15,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'toolbar_type', 'in', array( 'default' ) ),
+					array( 'header.style', 'in', array( '1', '2' ) )
+				),
+			),
+			'toolbar_margin_end'                           => array(
+				'type'      => 'inlineEnd',
+				'condition' => array(
+					array( 'toolbar_type', 'in', array( 'default' ) ),
+					array( 'header.style', 'in', array( '1', '2' ) )
+				),
+			),
 			'hamburger_group'                              => array(
 				'type'      => 'group',
 				'title'     => esc_html__( 'Side icon', 'groovy-menu' ) . ' (' . esc_html__( 'Hamburger', 'groovy-menu' ) . ')',

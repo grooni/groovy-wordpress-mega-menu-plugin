@@ -11,7 +11,7 @@ NAVBAR GENERAL STYLES
     width: 100%;
     margin-right: auto;
     margin-left: auto;
-    transition: height 0.2s ease;
+    transition: height 0.15s cubic-bezier(0.31, 1.04, 0.67, 0.91);
   }
 
   &.gm-navbar-fixed-sticky .gm-wrapper {
@@ -56,6 +56,11 @@ NAVBAR GENERAL STYLES
     display: flex;
     margin: 0 24px;
   }
+
+  &.gm-navbar-fixed-sticky .gm-inner .gm-container,
+  &.gm-navbar-fixed-sticky .gm-inner .gm-navbar-nav {
+    transition: height 0.42s cubic-bezier(0.31, 1.04, 0.67, 0.91);
+  }
 }
 
 .gm-inner {
@@ -68,7 +73,7 @@ NAVBAR GENERAL STYLES
 
   .gm-container,
   .gm-navbar-nav {
-    transition: height 0.2s ease;
+    transition: height 0.15s cubic-bezier(0.31, 1.04, 0.67, 0.91);
   }
 }
 
