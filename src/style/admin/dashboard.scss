@@ -248,7 +248,7 @@ GROOVY DASHBOARD PRESET
   border: 1px solid #e0e0e0;
   background-color: #fff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.09);
-  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   cursor: pointer;
 }
 

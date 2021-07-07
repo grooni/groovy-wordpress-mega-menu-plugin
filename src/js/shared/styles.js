@@ -3019,6 +3019,19 @@ export default class GmStyles {
         '.gm-padding': `padding-top: ${settings.mobileHeaderHeight}px`,
         media: 'mobile'
       });
+    } else if (!settings.overlap && settings.header.toolbar) {
+      let descHeaderHeight = settings.headerHeight + 38; // 38px is toolbar height. TODO: find path to calc toolbar in dynamic.
+      if (settings.toolbarMarginTop) {
+        descHeaderHeight += settings.toolbarMarginTop;
+      }
+      if (settings.toolbarMarginBottom) {
+        descHeaderHeight += settings.toolbarMarginBottom;
+      }
+
+      css.push({
+        '.gm-padding': `padding-top: ${descHeaderHeight}px`,
+        media: 'desktop'
+      });
     }
 
     // Sticky toolbar.

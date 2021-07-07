@@ -57,9 +57,21 @@ NAVBAR GENERAL STYLES
     margin: 0 24px;
   }
 
-  &.gm-navbar-fixed-sticky .gm-inner .gm-container,
-  &.gm-navbar-fixed-sticky .gm-inner .gm-navbar-nav {
-    transition: height 0.42s cubic-bezier(0.31, 1.04, 0.67, 0.91);
+  &.gm-navbar--style-1 .gm-inner,
+  &.gm-navbar--style-1 .gm-inner > .gm-container,
+  &.gm-navbar--style-1 .gm-inner > .gm-inner-bg {
+    //min-height: auto !important;
+    transition: all 0.36s ease-out;
+  }
+
+  > .gm-wrapper,
+  &.gm-navbar-fixed-sticky > .gm-wrapper {
+    opacity: 1;
+    transition: opacity 0.38s ease-out 0.12s;
+  }
+
+  &:not(.gm-init-done) > .gm-wrapper {
+    opacity: 0;
   }
 }
 
