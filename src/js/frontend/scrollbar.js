@@ -109,10 +109,12 @@ export default function initScrollbar(settings) {
 
     let isSecondSidebarMenu = currentDropdown.closest('.gm-second-nav-drawer');
 
+    let adminbarHeight = wpAdminBar === null ? 0 : wpAdminBar.offsetHeight;
+
     let dropdownWrapper = parentMenuItem.querySelector('.gm-dropdown-menu-wrapper');
     let headerStyle = parseInt(settings.header.style, 10);
-    let maxHeightCalculated = getDropdownMaxHeight(currentDropdown, false);
-    if ((1 === headerStyle || 4 === headerStyle) && settings.dropdownAppearanceStyle === 'animate-from-bottom') {
+    let maxHeightCalculated = getDropdownMaxHeight(currentDropdown, false) + adminbarHeight;
+    if ((1 === headerStyle || 3 === headerStyle || 4 === headerStyle || 5 === headerStyle) && settings.dropdownAppearanceStyle === 'animate-from-bottom') {
       maxHeightCalculated = maxHeightCalculated + 40;
     }
 
@@ -130,7 +132,7 @@ export default function initScrollbar(settings) {
       if (isVerticalMenu(settings) || isSecondSidebarMenu) {
         currentDropdown.style.maxHeight = '100%';
 
-        if (currentDropdown.scrollHeight > maxHeightCalculated) {
+        if (maxHeightCalculated < currentDropdown.scrollHeight) {
           currentDropdown.style.justifyContent = 'flex-start';
         } else {
           currentDropdown.style.justifyContent = null;
@@ -166,7 +168,7 @@ export default function initScrollbar(settings) {
     if (isVerticalMenu(settings) || isSecondSidebarMenu) {
       currentDropdown.style.maxHeight = '100%';
 
-      if (currentDropdown.scrollHeight > maxHeightCalculated) {
+      if (maxHeightCalculated < currentDropdown.scrollHeight) {
         currentDropdown.style.justifyContent = 'flex-start';
       } else {
         currentDropdown.style.justifyContent = null;
@@ -205,19 +207,28 @@ export default function initScrollbar(settings) {
 
     overallIndentHeight = expandedBtnElem === null ?
       overallIndentHeight :
-      overallIndentHeight + expandedBtnElem.offsetHeight + 24; // 24 - margin of expandedBtnElem top+bottom
+      overallIndentHeight + expandedBtnElem.offsetHeight;
 
-    overallIndentHeight = overallIndentHeight + adminbarHeight;
+    overallIndentHeight = overallIndentHeight + adminbarHeight + 32; // 32px for scroll fix
+
+    if (headerStyle === 3 && adminbarHeight) {
+      overallIndentHeight = overallIndentHeight + adminbarHeight;
+    }
+
+    let previewWrapper = document.querySelector('.gm-preview .gm-navbar');
+    if (previewWrapper && (headerStyle === 3 || headerStyle === 5)) {
+      overallIndentHeight = overallIndentHeight + 60;
+    }
 
     // Top level --------------------------------------------------------------
     currentDropdown.style.position = 'static';
     currentDropdown.style.maxHeight = `calc( 100% - ${overallIndentHeight}px )`;
-    if (headerStyle === 5) {
+    if (headerStyle === 3 || headerStyle === 5) {
       currentDropdown.style.height = `calc( 100% - ${overallIndentHeight}px )`;
     }
 
     // Misc -------------------------------------------------------------------
-    if (containerElem && adminbarHeight) {
+    if (containerElem && adminbarHeight && headerStyle !== 3 && headerStyle !== 5) {
       containerElem.style.maxHeight = `calc( 100% - ${adminbarHeight}px )`;
     }
 
