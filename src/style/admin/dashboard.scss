@@ -248,7 +248,7 @@ GROOVY DASHBOARD PRESET
   border: 1px solid #e0e0e0;
   background-color: #fff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.09);
-  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   cursor: pointer;
 }
 
@@ -544,6 +544,13 @@ GROOVY DASHBOARD PRESET
   min-height: 16px;
   padding: 15px;
   border-bottom: 1px solid #e5e5e5;
+}
+
+.gm-modal-notice {
+  text-align: center;
+  padding: 30px 20px;
+  width: 100%;
+  font-size: 110%;
 }
 
 /**************************

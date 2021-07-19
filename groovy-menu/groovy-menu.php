@@ -176,14 +176,14 @@ function groovy_menu_scripts() {
 
 	define( 'GROOVY_MENU_SCRIPTS_INIT', true );
 
-	wp_enqueue_style( 'groovy-menu-style', GROOVY_MENU_URL . 'assets/style/frontend.css', array(), GROOVY_MENU_VERSION );
+	wp_enqueue_style( 'groovy-menu-style', GROOVY_MENU_URL . 'assets/style/frontend.css', [], GROOVY_MENU_VERSION );
 	wp_style_add_data( 'groovy-menu-style', 'rtl', 'replace' );
-	wp_enqueue_script( 'groovy-menu-js', GROOVY_MENU_URL . 'assets/js/frontend.js', array(), GROOVY_MENU_VERSION, true );
+	wp_enqueue_script( 'groovy-menu-js', GROOVY_MENU_URL . 'assets/js/frontend.js', [], GROOVY_MENU_VERSION, true );
 	wp_localize_script( 'groovy-menu-js', 'groovyMenuHelper', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 	wp_localize_script( 'groovy-menu-js', 'groovyMenuNonce', array( 'style' => esc_attr( wp_create_nonce( 'gm_nonce_preset_save' ) ) ) );
 
 	foreach ( \GroovyMenu\FieldIcons::getFonts() as $name => $icon ) {
-		wp_enqueue_style( 'groovy-menu-style-fonts-' . $name, esc_url( GroovyMenuUtils::getUploadUri() . 'fonts/' . $name . '.css' ), array(), GROOVY_MENU_VERSION );
+		wp_enqueue_style( 'groovy-menu-style-fonts-' . $name, esc_url( GroovyMenuUtils::getUploadUri() . 'fonts/' . $name . '.css' ), [], GROOVY_MENU_VERSION );
 	}
 
 	/**
@@ -197,7 +197,7 @@ function groovy_menu_scripts() {
 
 function groovy_menu_toolbar() {
 	if ( function_exists( 'is_user_logged_in' ) && is_user_logged_in() && current_user_can( 'edit_theme_options' ) ) {
-		wp_enqueue_style( 'groovy-menu-style-toolbar', GROOVY_MENU_URL . 'assets/style/toolbar.css', array(), GROOVY_MENU_VERSION );
+		wp_enqueue_style( 'groovy-menu-style-toolbar', GROOVY_MENU_URL . 'assets/style/toolbar.css', [], GROOVY_MENU_VERSION );
 		wp_style_add_data( 'groovy-menu-style-toolbar', 'rtl', 'replace' );
 	}
 }
@@ -242,7 +242,7 @@ if ( ! is_admin() && ! gm_is_wplogin() ) {
 }
 
 function groovy_menu_start_pre_storage() {
-	if ( isset( $_GET['gm_action_preview'] ) && $_GET['gm_action_preview'] ) {
+	if ( isset( $_GET['gm_action_preview'] ) && $_GET['gm_action_preview'] ) { // @codingStandardsIgnoreLine
 		return;
 	}
 
@@ -526,8 +526,8 @@ if ( ! function_exists( 'groovy_menu_scripts_admin' ) ) {
 		// Only dashboard.
 		if ( in_array( $hook_suffix, array(
 				'groovy-menu_page_groovy_menu_settings',
-				'toplevel_page_groovy_menu_settings'
-			), true ) && ! isset( $_GET['action'] ) ) {
+				'toplevel_page_groovy_menu_settings',
+			), true ) && ! isset( $_GET['action'] ) ) { // @codingStandardsIgnoreLine
 			wp_enqueue_script( 'groovy-menu-js-dashboard', GROOVY_MENU_URL . 'assets/js/dashboard.js', array(), GROOVY_MENU_VERSION, true );
 			wp_enqueue_style( 'groovy-menu-style-font-roboto', 'https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap', array(), GROOVY_MENU_VERSION );
 		}
@@ -535,8 +535,8 @@ if ( ! function_exists( 'groovy_menu_scripts_admin' ) ) {
 		// Only preset editor page.
 		if ( in_array( $hook_suffix, array(
 				'groovy-menu_page_groovy_menu_settings',
-				'toplevel_page_groovy_menu_settings'
-			), true ) && isset( $_GET['id'] ) && isset( $_GET['action'] ) && 'edit' === $_GET['action'] ) {
+				'toplevel_page_groovy_menu_settings',
+			), true ) && isset( $_GET['id'] ) && isset( $_GET['action'] ) && 'edit' === $_GET['action'] ) { // @codingStandardsIgnoreLine
 			wp_enqueue_script( 'groovy-menu-js-preset', GROOVY_MENU_URL . 'assets/js/preset.js', [], GROOVY_MENU_VERSION, true );
 			wp_localize_script( 'groovy-menu-js-preset', 'groovyMenuNonce', array( 'style' => esc_attr( wp_create_nonce( 'gm_nonce_preset_save' ) ) ) );
 		}
@@ -741,7 +741,9 @@ function groovy_menu_add_gfonts_from_pre_storage() {
 				// Store for duplicate check.
 				$font_family_exist[] = $font_family;
 
-				wp_enqueue_style( 'groovy-menu-google-fonts-' . esc_attr( $index ), 'https://fonts.googleapis.com/css?family=' . esc_attr( $font_family ) );
+				echo '
+<link rel="stylesheet" id="gm-google-fonts-' . esc_attr( $index ) . '" href="https://fonts.googleapis.com/css?family=' . esc_attr( $font_family ) . '" type="text/css" media="all">
+';
 
 			}
 		}

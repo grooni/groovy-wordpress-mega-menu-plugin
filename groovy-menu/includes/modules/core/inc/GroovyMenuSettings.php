@@ -1921,7 +1921,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
                         <?php if ( ! $allow_library ) : ?>
 	                        <?php if ( ! $this->lver ) {
 		                        echo '</span><span class="preset-title__alpha-sub">';
-		                        esc_html_e( 'To enable presets from the online library, please enable the option in "Global settings > Tools > Allow fetching presets from online library"', 'groovy-menu' );
+		                        esc_html_e( 'To show presets from the online library, please enable toggle beside "Allow fetching presets from online library" placed in "Global Settings" at the "Tools" tab', 'groovy-menu' );
 		                        echo ' </span>';
 	                        } ?>
                         <?php endif; ?>

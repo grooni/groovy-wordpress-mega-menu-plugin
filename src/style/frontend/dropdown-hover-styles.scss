@@ -3,7 +3,7 @@ DROPDOWN HOVER STYLES
 ***********************************/
 
 .gm-dropdown-hover-style-shift-right,
-.gm-dropdown-hover-style-shift-right ~ .gm-main-menu-wrapper {
+.gm-dropdown-hover-style-shift-right ~ .gm-main-menu-wrapper:not(.gm-second-nav-drawer) {
   .gm-dropdown-menu .gm-menu-item:hover > .gm-anchor .gm-menu-item__txt-wrapper,
   .gm-dropdown-menu .gm-menu-item.gm-open > .gm-anchor .gm-menu-item__txt-wrapper {
     transform: translateX(25px);
@@ -59,7 +59,7 @@ DROPDOWN HOVER STYLES
 }
 
 [dir='rtl'] .gm-dropdown-hover-style-shift-right .gm-dropdown-menu,
-[dir='rtl'] .gm-dropdown-hover-style-shift-right ~ .gm-main-menu-wrapper .gm-dropdown-menu {
+[dir='rtl'] .gm-dropdown-hover-style-shift-right ~ .gm-main-menu-wrapper:not(.gm-second-nav-drawer) .gm-dropdown-menu {
   .gm-menu-item {
     overflow: hidden;
   }
@@ -69,8 +69,9 @@ DROPDOWN HOVER STYLES
   }
 }
 
-.gm-dropdown-appearance-fade-in-out .gm-main-menu-wrapper .gm-dropdown,
-.gm-dropdown-appearance-fade-in-out ~ .gm-main-menu-wrapper .gm-dropdown {
+.gm-dropdown-appearance-fade-in-out .gm-main-menu-wrapper:not(.gm-second-nav-drawer) .gm-dropdown,
+.gm-dropdown-appearance-fade-in-out.gm-second-nav-drawer .gm-dropdown,
+.gm-dropdown-appearance-fade-in-out ~ .gm-main-menu-wrapper:not(.gm-second-nav-drawer) .gm-dropdown {
   &.gm-minicart .gm-dropdown-menu,
   .gm-dropdown-menu-wrapper,
   .gm-dropdown-menu-wrapper .gm-dropdown-menu {
@@ -89,7 +90,9 @@ DROPDOWN HOVER STYLES
   transition: background 170ms ease-in-out 0s;
 }
 
-.gm-navbar.gm-navbar-dropdown-opened ~ .gm-dropdown-overlay {
+.gm-navbar.gm-navbar-dropdown-opened ~ .gm-dropdown-overlay,
+.gm-second-nav-drawer.gm-drawer--open ~ .gm-dropdown-overlay,
+.gm-navbar.gm-navbar--style-2.gm-drawer--open ~ .gm-dropdown-overlay {
   left: 0;
   top: 0;
   display: block;
@@ -100,7 +103,7 @@ DROPDOWN HOVER STYLES
 }
 
 .gm-dropdown-hover-style-fadein-link-color,
-.gm-dropdown-hover-style-fadein-link-color ~ .gm-main-menu-wrapper {
+.gm-dropdown-hover-style-fadein-link-color ~ .gm-main-menu-wrapper:not(.gm-second-nav-drawer) {
   .gm-navbar-nav .gm-menu-item {
     transition: background-color 0.55s ease;
   }
@@ -110,6 +113,7 @@ DROPDOWN HOVER STYLES
   }
 }
 
-.gm-dropdown-hover-style-shift-right.gm-navbar--style-2 ~ .gm-main-menu-wrapper .gm-dropdown-menu .gm-menu-item__link::before {
-  left: 32px;
+.gm-dropdown-hover-style-shift-right.gm-navbar--style-2 ~ .gm-main-menu-wrapper .gm-dropdown-menu .gm-menu-item__link::before,
+.gm-dropdown-hover-style-shift-right.gm-second-nav-drawer .gm-dropdown-menu .gm-menu-item__link::before {
+  left: 32px !important;
 }

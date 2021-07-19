@@ -389,8 +389,8 @@ return array(
 				'default' => 'fa fa-bars',
 			),
 			'menu_button_text' => array(
-				'title'       => esc_html__( 'Menu button text', 'groovy-menu' ),
-				'description' => esc_html__( 'The string from this field can be translated into other languages using WPML', 'groovy-menu' ),
+				'title'       => esc_html__( 'Hamburger menu text', 'groovy-menu' ),
+				'description' => esc_html__( 'This string can be translated with multilingual plugins', 'groovy-menu' ),
 				'type'        => 'text',
 				'default'     => 'Menu',
 			),
@@ -471,6 +471,12 @@ return array(
 				'title'       => esc_html__( 'Allow use preloader for internal fonts', 'groovy-menu' ),
 				'default'     => true,
 				'description' => esc_html__( 'Add preload link tag', 'groovy-menu' ),
+			),
+			'remove_breaking_p_tag'       => array(
+				'type'        => 'checkbox',
+				'title'       => esc_html__( 'Clean the breaking HTML "P" tag in the blocks menu', 'groovy-menu' ),
+				'default'     => true,
+				'description' => esc_html__( 'Wordpress inserts paragraphs instead of line breaks by default. Sometimes replacing double line breaks with paragraph elements works with errors inside shortcodes.', 'groovy-menu' ),
 			),
 			'uninstall_data'              => array(
 				'type'        => 'checkbox',

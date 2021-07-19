@@ -134,6 +134,7 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 * Improve: "General> Toolbar menu" section renamed to "General> Additional menu". Now you can insert additional nav menus in various places in the Groovy Menu.
 * Improve: Added the ability to add Menu Blocks, Icons, Badges for Addition menus.
 * Improve: Mobile "Show Hamburger icon as animated".
+* Improve: NPM modules updated.
 * Fix: Checking the existence of font files during Icon Pack loading and considering that when creating a CSS file.
 * Fix: Deleting font files if icon pack has been removed (under Dashboard > Global setting > Icons packs).
 * Fix: Hamburger icon at "Show Hamburger icon as animated" had an incorrect position when Toolbar was enabled.

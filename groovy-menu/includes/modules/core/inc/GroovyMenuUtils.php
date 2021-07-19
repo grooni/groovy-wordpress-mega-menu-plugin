@@ -309,11 +309,11 @@ class GroovyMenuUtils {
 						$type_obj = get_post_type_object( $type );
 						// Post type can has archive and single pages.
 						if ( is_object( $type_obj ) &&
-							(
-								( ! empty( $type_obj->has_archive ) && $type_obj->has_archive )
-								||
-								( ! empty( $type_obj->capability_type ) && 'post' === $type_obj->capability_type )
-							)
+						     (
+							     ( ! empty( $type_obj->has_archive ) && $type_obj->has_archive )
+							     ||
+							     ( ! empty( $type_obj->capability_type ) && 'post' === $type_obj->capability_type )
+						     )
 						) {
 							$post_types_ext[ $type . '--single' ] = $name . ' [' . esc_html__( 'single pages', 'groovy-menu' ) . ']';
 						}
@@ -1203,12 +1203,18 @@ class GroovyMenuUtils {
 
 		$default_image_sizes = get_intermediate_image_sizes();
 
-		$image_sizes = array( 'full' => array() );
+		static $image_sizes = array();
 
-		foreach ( $default_image_sizes as $size ) {
-			$image_sizes[ $size ]['width']  = intval( get_option( "{$size}_size_w" ) );
-			$image_sizes[ $size ]['height'] = intval( get_option( "{$size}_size_h" ) );
-			$image_sizes[ $size ]['crop']   = get_option( "{$size}_crop" ) ? get_option( "{$size}_crop" ) : false;
+		if ( empty( $image_sizes ) ) {
+
+			$image_sizes = array( 'full' => array() );
+
+			foreach ( $default_image_sizes as $size ) {
+				$image_sizes[ $size ]['width']  = intval( get_option( "{$size}_size_w" ) );
+				$image_sizes[ $size ]['height'] = intval( get_option( "{$size}_size_h" ) );
+				$image_sizes[ $size ]['crop']   = get_option( "{$size}_crop" ) ? get_option( "{$size}_crop" ) : false;
+			}
+
 		}
 
 		if ( isset( $_wp_additional_image_sizes ) && count( $_wp_additional_image_sizes ) ) {
@@ -1668,7 +1674,7 @@ class GroovyMenuUtils {
 	/**
 	 * @param string $name
 	 * @param array  $selectionData
-	 * @param array $font_files
+	 * @param array  $font_files
 	 *
 	 * @return array
 	 */
@@ -1811,11 +1817,11 @@ class GroovyMenuUtils {
 				$iconName = $iconName . rand( 100, 999 );
 			}
 
-			$comp_icons[ $iconName ] = true;
-			$selectionData['icons'][$key]['gm-name'] = $iconName;
+			$comp_icons[ $iconName ]                   = true;
+			$selectionData['icons'][ $key ]['gm-name'] = $iconName;
 
-			$code     = dechex( $icon['properties']['code'] );
-			$css      .= '.' . $name . '-' . $iconName . ':before { content: \'\\' . $code . '\'; }';
+			$code  = dechex( $icon['properties']['code'] );
+			$css  .= '.' . $name . '-' . $iconName . ':before { content: \'\\' . $code . '\'; }';
 		}
 
 		$return_array = array(
@@ -2800,9 +2806,22 @@ class GroovyMenuUtils {
 	}
 
 	public static function remove_p_tag( $content, $do_shortcode = true ) {
+		$global_settings = get_option( GroovyMenuStyle::OPTION_NAME );
+
+		// remove_breaking_p_tag
+		if ( empty( $global_settings['tools']['remove_breaking_p_tag'] ) || ! $global_settings['tools']['remove_breaking_p_tag'] ) {
+			if ( $do_shortcode ) {
+				$content = do_shortcode( $content );
+			}
+
+			return $content;
+		}
+
+		// Try to clean content from the breaking HTML "P" tag.
 		if ( $do_shortcode ) {
 			$content = do_shortcode( shortcode_unautop( $content ) );
 		}
+
 		$content = preg_replace( '#<p[^>]*>\[vc_row(.*?)\/vc_row]<\/p>#', '[vc_row$1/vc_row]', $content );
 		$content = preg_replace( '#<p[^>]*><div#', '<div', $content );
 		$content = preg_replace( '#\/div><\/p>#', '/div>', $content );

@@ -66,6 +66,7 @@ if ( $custom_js ) {
 	$output_custom_media .= "\n" . '<' . esc_attr( $tag_name ) . '>' . $custom_js . '</' . esc_attr( $tag_name ) . '>';
 }
 
+$header_style = intval( $groovyMenuSettings['header']['style'] );
 
 if ( class_exists( 'GroovyMenuActions' ) ) {
 	// Do custom shortcodes from preset.
@@ -76,6 +77,10 @@ if ( class_exists( 'GroovyMenuActions' ) ) {
 		GroovyMenuActions::check_toolbar_menu( $styles );
 	}
 
+	if ( in_array( $header_style, [ 1, 2 ], true ) ) {
+		// Do custom shortcodes from preset.
+		GroovyMenuActions::check_menu_block_for_actions( $styles );
+	}
 }
 
 
@@ -89,8 +94,7 @@ wp_enqueue_style( 'groovy-preview-style', GROOVY_MENU_URL . 'assets/style/' . $s
 wp_enqueue_script( 'groovy-js-preview', GROOVY_MENU_URL . 'assets/js/preview.js', [], GROOVY_MENU_VERSION, true );
 
 
-?>
-<html <?php echo $rtl_flag ? 'dir="rtl"' : ''; ?>>
+?><html <?php echo $rtl_flag ? 'dir="rtl"' : ''; ?>>
 <head>
 	<?php
 

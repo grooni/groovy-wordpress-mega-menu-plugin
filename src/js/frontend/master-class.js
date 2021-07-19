@@ -70,6 +70,9 @@ class GroovyMenu {
     let hamburgerMenu = (options.mobileIndependentCssHamburger && options.mobileIndependentCssHamburgerFloat && 2 !== headerStyle) ? document.querySelector('.gm-burger') : document.querySelector('.gm-menu-btn');
     let hamburgerMenuClose = document.querySelector('.gm-navigation-drawer .gm-hamburger-close');
 
+    let secondHamburgerMenu = document.querySelector('.gm-menu-btn-second');
+    let secondHamburgerMenuClose = document.querySelector('.gm-second-nav-drawer .gm-hamburger-close');
+
     if (options.mobileCustomHamburger) {
       hamburgerMenu = document.querySelector('.gm-custom-hamburger');
     }
@@ -77,6 +80,7 @@ class GroovyMenu {
     let hamburgerMenuExpanded = (options.sidebarExpandingMenuShowSideIcon && 5 === headerStyle) ? document.querySelector('.gm-navbar .gm-menu-btn--expanded') : undefined;
 
     let mainMenuWrapper = document.querySelector('.gm-main-menu-wrapper');
+    let secondMenuWrapper = document.querySelector('.gm-second-nav-drawer');
     let toolbar = document.querySelector('.gm-toolbar');
     let navbarWrapper = document.querySelector('.gm-wrapper');
     let gmSearch = document.querySelectorAll('.gm-search');
@@ -246,8 +250,6 @@ class GroovyMenu {
       let gmMainMenu = document.querySelector('#gm-main-menu');
       let hasOpenedElems = false;
       let miniCart = e.target.closest('.gm-minicart');
-      let autoCloseDelay = options.subDropdownAutocloseDelay ? options.subDropdownAutocloseDelay : 500;
-      autoCloseDelay = autoCloseDelay < 1 ? 1 : autoCloseDelay;
       let diagonalDelay = options.subDropdownAdjacentDelay ? options.subDropdownAdjacentDelay : 300;
       diagonalDelay = diagonalDelay < 100 ? 100 : diagonalDelay;
       diagonalDelay = diagonalDelay - 95;
@@ -422,7 +424,7 @@ class GroovyMenu {
 
       } else { // apparently this is the top level menu without dropdown.
         // Close all dropdowns.
-        dropdownCloseAll(autoCloseDelay);
+        //dropdownCloseAll(1500);
       }
     };
 
@@ -514,7 +516,7 @@ class GroovyMenu {
     }
 
 
-    let gmAnchorItems = document.querySelectorAll('#gm-main-menu .gm-anchor, .gm-minicart, .gm-search, #gm-main-menu .mega-gm-dropdown > .gm-dropdown-menu-wrapper');
+    let gmAnchorItems = document.querySelectorAll('#gm-main-menu .gm-anchor, .gm-second-nav-drawer .gm-navbar-nav .gm-anchor, .gm-minicart, .gm-search, #gm-main-menu .gm-dropdown-menu-wrapper, .gm-second-nav-drawer .gm-navbar-nav .gm-dropdown-menu-wrapper');
     let gmMainMenu = document.querySelector('#gm-main-menu');
 
     if (gmAnchorItems) {
@@ -612,15 +614,38 @@ class GroovyMenu {
       hamburgerMenu.classList.add(hamburgerMenuTypeMinimalistic);
     }
 
+    // CSS hamburger for second Sidebar Menu style menu.
+    if (secondHamburgerMenu && 1 === headerStyle) {
+      let hamburgerMenuTypeSecond = (options.secondSidebarMenuCssHamburgerType) ? options.secondSidebarMenuCssHamburgerType : 'hamburger--squeeze';
+      secondHamburgerMenu.classList.add(hamburgerMenuTypeSecond);
+    }
+
     initOffcanvas({
       options: options,
       navDrawer,
       mainMenuWrapper,
+      secondMenuWrapper,
       hamburgerMenu,
-      hamburgerMenuClose
+      hamburgerMenuClose,
+      secondHamburgerMenu,
+      secondHamburgerMenuClose
     });
 
     function setOffcanvas() {
+      if (!isMobile() && headerStyle === 1) {
+        if (options.secondSidebarMenuOpenType === 'offcanvasSlideSlide') {
+          offcanvasWrap(secondMenuWrapper, 'left', true);
+        } else if (options.secondSidebarMenuOpenType === 'offcanvasSlideSlideRight') {
+          offcanvasWrap(secondMenuWrapper, 'right', true);
+        } else if (options.secondSidebarMenuOpenType === 'offcanvasSlideLeft') {
+          offcanvasWrap(secondMenuWrapper, 'left');
+        } else if (options.secondSidebarMenuOpenType === 'offcanvasSlideRight') {
+          offcanvasWrap(secondMenuWrapper, 'right');
+        } else {
+          offcanvasWrap(secondMenuWrapper, 'left');
+        }
+      }
+
       if (!isMobile() && headerStyle === 2) {
         if (options.minimalisticMenuOpenType === 'offcanvasSlideSlide') {
           offcanvasWrap(mainMenuWrapper, 'left', true);
@@ -707,6 +732,11 @@ class GroovyMenu {
     // Append .gm-main-menu-wrapper css class to body
     if (headerStyle === 2) {
       navbar.after(mainMenuWrapper);
+    }
+
+    // Append .gm-second-nav-drawer css class to body
+    if (headerStyle === 1 && secondMenuWrapper) {
+      navbar.after(secondMenuWrapper);
     }
 
     document.querySelectorAll('.gm-search-wrapper')
