@@ -571,19 +571,14 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 				$classes_navbar[] = $custom_css_class;
 			}
 
-			$header_style = empty( $settings['header']['style'] ) ? 1 : intval( $settings['header']['style'] );
-			if ( ! empty( $settings['header']['style'] ) ) {
-				$classes_navbar[] = 'gm-navbar--style-' . $header_style;
-			}
-
 			// Top level hover Style.
-			if ( isset( $settings['dropdownHoverStyle'] ) && $settings['dropdownHoverStyle'] ) {
-				$classes_navbar[] = 'gm-dropdown-hover-style-' . $settings['dropdownHoverStyle'];
+			if ( isset( $settings['secondSidebarMenuHoverStyle'] ) && $settings['secondSidebarMenuHoverStyle'] ) {
+				$classes_navbar[] = 'gm-dropdown-hover-style-' . $settings['secondSidebarMenuHoverStyle'];
 			}
 
 			// Dropdown appearance style.
-			if ( isset( $settings['dropdownAppearanceStyle'] ) && $settings['dropdownAppearanceStyle'] ) {
-				$classes_navbar[] = 'gm-dropdown-appearance-' . $settings['dropdownAppearanceStyle'];
+			if ( isset( $settings['secondSidebarMenuAppearanceStyle'] ) && $settings['secondSidebarMenuAppearanceStyle'] ) {
+				$classes_navbar[] = 'gm-dropdown-appearance-' . $settings['secondSidebarMenuAppearanceStyle'];
 			}
 
 			// Scrollbar.

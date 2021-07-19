@@ -301,26 +301,46 @@ class GroovyMenuGFonts {
 
 		$fonts_options = array(
 			array(
-				'section'     => 'general',
+				'section'     => 'styles',
 				'font_option' => 'logo_txt_font',
 				'weight'      => array(
-					'general' => [ 'logo_txt_weight', 'sticky_logo_txt_weight' ]
+					'styles' => [
+						'logo_txt_weight',
+						'sticky_logo_txt_weight',
+					]
 				),
 				'subset'      => array(
-					'general' => [ 'logo_txt_subset', 'sticky_logo_txt_subset' ]
+					'styles' => [
+						'logo_txt_subset',
+						'
+						sticky_logo_txt_subset',
+					]
 				),
 			),
 			array(
 				'section'     => 'styles',
 				'font_option' => 'google_font',
 				'weight'      => array(
-					'styles'  => [ 'item_text_weight' ],
-					'mobile'  => [ 'mobile_item_text_weight', 'mobile_subitem_text_weight' ],
-					'general' => [ 'sub_level_item_text_weight', 'megamenu_title_text_weight' ]
+					'styles' => [
+						'item_text_weight',
+						'sub_level_item_text_weight',
+						'megamenu_title_text_weight',
+						'toolbar_menu_text_weight',
+						'second_sidebar_menu_text_weight',
+					],
+					'mobile' => [
+						'mobile_item_text_weight',
+						'mobile_subitem_text_weight',
+					],
 				),
 				'subset'      => array(
-					'styles'  => [ 'item_text_subset' ],
-					'general' => [ 'sub_level_item_text_subset', 'megamenu_title_text_subset' ]
+					'styles' => [
+						'item_text_subset',
+						'sub_level_item_text_subset',
+						'megamenu_title_text_subset',
+						'toolbar_menu_text_subset',
+						'second_sidebar_menu_text_subset',
+					],
 				),
 			),
 		);

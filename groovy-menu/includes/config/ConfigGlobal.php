@@ -389,8 +389,8 @@ return array(
 				'default' => 'fa fa-bars',
 			),
 			'menu_button_text' => array(
-				'title'       => esc_html__( 'Menu button text', 'groovy-menu' ),
-				'description' => esc_html__( 'The string from this field can be translated into other languages using WPML', 'groovy-menu' ),
+				'title'       => esc_html__( 'Hamburger menu text', 'groovy-menu' ),
+				'description' => esc_html__( 'This string can be translated with multilingual plugins', 'groovy-menu' ),
 				'type'        => 'text',
 				'default'     => 'Menu',
 			),

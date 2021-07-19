@@ -15,7 +15,7 @@
  * @type bool               $is_disable     If true - menu do not show
  *                                          }
  *
- * @return string  if  $echo is true then return empty string (by default)
+ * @return string  if $gm_echo is true then return empty string (by default)
  */
 function groovyMenu( $args = array() ) {
 
@@ -200,10 +200,14 @@ function groovyMenu( $args = array() ) {
 	$compiled_css = $styles->get( 'general', 'compiled_css' . ( is_rtl() ? '_rtl' : '' ) );
 
 	$additional_html_class = '';
+	if ( ! empty( $groovyMenuSettings['mobileDisableDesktop'] ) && $groovyMenuSettings['mobileDisableDesktop'] ) {
+		$additional_html_class .= ' gm-disable-desktop-view';
+	}
 	if ( ! empty( $groovyMenuSettings['extra_navbar_classes'] ) ) {
-		$additional_html_class = ' ' . implode( ' ', $groovyMenuSettings['extra_navbar_classes'] );
+		$additional_html_class .= ' ' . implode( ' ', $groovyMenuSettings['extra_navbar_classes'] );
 	}
 
+	$header_style = intval( $groovyMenuSettings['header']['style'] );
 
 	if ( class_exists( 'GroovyMenuActions' ) ) {
 		// Do custom shortcodes from preset.
@@ -214,6 +218,10 @@ function groovyMenu( $args = array() ) {
 			GroovyMenuActions::check_toolbar_menu( $styles );
 		}
 
+		if ( in_array( $header_style, [ 1, 2 ], true ) ) {
+			// Do custom shortcodes from preset.
+			GroovyMenuActions::check_menu_block_for_actions( $styles );
+		}
 	}
 
 
@@ -328,6 +336,7 @@ function groovyMenu( $args = array() ) {
 
 		$output_html .= groovy_menu_add_preset_style( $preset_id, $compiled_css, $args['gm_echo'] );
 
+		// Custom CSS & JS.
 		$custom_css = trim( stripslashes( $styles->get( 'general', 'css' ) ) );
 		$custom_js  = trim( stripslashes( $styles->get( 'general', 'js' ) ) );
 
@@ -349,8 +358,6 @@ function groovyMenu( $args = array() ) {
 	if ( isset( $groovyMenuSettings['mobileNavMenu'] ) && 'none' === $groovyMenuSettings['mobileNavMenu'] ) {
 		$show_mobile_menu = false;
 	}
-
-	$header_style = intval( $groovyMenuSettings['header']['style'] );
 
 	$searchForm = $groovyMenuSettings['searchForm'];
 
@@ -431,12 +438,13 @@ function groovyMenu( $args = array() ) {
 			$toolbar_phone = apply_filters( 'wpml_translate_single_string', $toolbar_phone, 'groovy-menu', 'Global settings - toolbar phone text' );
 		}
 
+		$toolbar_type      = isset( $groovyMenuSettings['toolbarType'] ) ? $groovyMenuSettings['toolbarType'] : 'default';
+		$toolbar_custom_id = isset( $groovyMenuSettings['toolbarCustomId'] ) ? intval( $groovyMenuSettings['toolbarCustomId'] ) : 0;
 		$output_html .= '
 				<div class="gm-toolbar" id="gm-toolbar">
-					<div class="gm-toolbar-bg"></div>
-					<div class="gm-container">
-						<div class="gm-toolbar-left">';
-
+					<div class="gm-toolbar-bg"></div>';
+			$output_html .= '<div class="gm-container">';
+			$output_html .= '<div class="gm-toolbar-left">';
 
 		ob_start();
 		/**
@@ -490,7 +498,7 @@ function groovyMenu( $args = array() ) {
 		$output_html .= ob_get_clean();
 
 
-		$output_html .= '</div>';
+			$output_html .= '</div>'; // .gm-toolbar-left
 		$output_html .= '<div class="gm-toolbar-right">';
 
 
@@ -565,14 +573,26 @@ function groovyMenu( $args = array() ) {
 		$output_html .= ob_get_clean();
 
 
-		$output_html .= '</div>';
-		$output_html .= '</div>';
-		$output_html .= '</div>';
+			$output_html .= '</div>'; // .gm-toolbar-right
+
+
+
+		$output_html .= '</div>'; // .gm-container
+		$output_html .= '</div>'; // #gm-toolbar.gm-toolbar
 	}
 	$output_html .= '<div class="gm-inner">
 				<div class="gm-inner-bg"></div>
-				<div class="gm-container">
-					<div class="gm-logo">';
+				<div class="gm-container">';
+
+	if ( 5 === $header_style ) {
+		$output_html .= '<div class="gm-menu-btn--expanded hamburger"><div class="hamburger-box"><div class="hamburger-inner"></div></div></div>';
+	}
+
+
+	$output_html .= GroovyMenuUtils::clean_output( $second_sidebar_burger['main_bar_left'] );
+
+
+	$output_html .= '<div class="gm-logo">';
 
 
 	ob_start();
@@ -826,7 +846,9 @@ function groovyMenu( $args = array() ) {
 
 		$mobile_search_icon_html .= '<div class="gm-search ' . ( $isFullScreen ? 'fullscreen' : 'gm-dropdown' ) . '">
 						<i class="gm-icon ' . esc_attr( $searchIcon ) . '"></i>
-						<span class="gm-search__txt">' . esc_html__( 'Search', 'groovy-menu' ) . '</span>
+						<span class="gm-search__txt">'
+		                            . esc_html__( 'Search', 'groovy-menu' ) .
+		                            '</span>
 					</div>';
 	}
 
@@ -868,8 +890,6 @@ function groovyMenu( $args = array() ) {
 		if ( $groovyMenuSettings['mobileMenuButtonShowText'] || 2 === $header_style ) {
 			$menu_button_text_full = '<span class="gm-menu-btn--text" >' . $menu_button_text . '</span >';
 		}
-
-		$output_html .= GroovyMenuUtils::clean_output( $second_sidebar_burger['main_bar_left'] );
 
 		if ( 2 === $header_style && $groovyMenuSettings['minimalisticCssHamburger'] ) {
 
@@ -1110,7 +1130,7 @@ function groovyMenu( $args = array() ) {
 	if ( 1 === $header_style && $groovyMenuSettings['secondSidebarMenuEnable'] ) {
 		$second_css_classes = $styles->getHtmlClassesSecondSidebarMenu();
 
-		$output_html .= '<div class="gm-second-nav-drawer gm-hidden';
+		$output_html .= '<div id="gm-second-nav-drawer" class="gm-second-nav-drawer gm-hidden';
 		if ( ! empty( $second_css_classes ) ) {
 			$output_html .= ' ' . implode( ' ', $second_css_classes );
 		}
@@ -1194,7 +1214,7 @@ function groovyMenu( $args = array() ) {
 		}
 		$output_html .= '">';
 
-		if ( $groovyMenuSettings['mobileIndependentCssHamburger'] && $groovyMenuSettings['mobileIndependentCssHamburger'] && 2 !== $header_style && ! $groovyMenuSettings['mobileCustomHamburger'] ) {
+		if ( $groovyMenuSettings['mobileIndependentCssHamburger'] && $groovyMenuSettings['mobileIndependentCssHamburgerFloat'] && 2 !== $header_style && ! $groovyMenuSettings['mobileCustomHamburger'] ) {
 			$output_html .= '<div class="gm-burger hamburger"><div class="hamburger-box"><div class="hamburger-inner"></div></div></div>';
 		}
 
