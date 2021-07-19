@@ -65,6 +65,7 @@ require_once GROOVY_MENU_DIR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
 
 if ( version_compare( PHP_VERSION, '7.0.0', '<' ) && class_exists( 'GroovyMenuUtils' ) && method_exists( 'GroovyMenuUtils', 'show_gm_php_version' ) ) {
 	add_action( 'admin_notices', array( 'GroovyMenuUtils', 'show_gm_php_version' ), 7 );
+
 	return;
 }
 
@@ -155,12 +156,13 @@ function groovy_menu_welcome() {
 		delete_option( 'groovy_menu_do_activation_redirect' );
 
 		$welcome_url = add_query_arg(
-			array( 'page'   => 'groovy_menu_welcome' ),
+			array( 'page' => 'groovy_menu_welcome' ),
 			admin_url( 'admin.php' )
 		);
 		wp_safe_redirect( esc_url( $welcome_url ) );
 	}
 }
+
 add_action( 'admin_init', 'groovy_menu_welcome' );
 
 function groovy_menu_deactivation() {

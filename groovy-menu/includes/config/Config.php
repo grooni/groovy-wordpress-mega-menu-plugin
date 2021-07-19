@@ -1494,7 +1494,7 @@ return array(
 					'fadein-link-color' => esc_html__( 'Fade in', 'groovy-menu' ),
 				),
 				'default'   => 'default',
-				'condition'   => array( 'second_sidebar_menu_enable', '==', true ),
+				'condition' => array( 'second_sidebar_menu_enable', '==', true ),
 			),
 			'second_sidebar_menu_top_lvl_menu_bg_start'         => array(
 				'title'     => esc_html__( 'Drawer background color', 'groovy-menu' ),
@@ -1898,7 +1898,7 @@ return array(
 				'condition' => array( 'scrollbar_enable', '==', true ),
 			),
 			'scrollbar_enable__end'                             => array(
-				'type'      => 'inlineEnd',
+				'type' => 'inlineEnd',
 			),
 			'scrollbar_enable_mobile'                           => array(
 				'title'       => esc_html__( 'Enable mobile menu scrollbar', 'groovy-menu' ),
@@ -2035,14 +2035,14 @@ return array(
 				'default' => 300,
 				'unit'    => 'px',
 			),
-			'minimalistic_menu_fullscreen'                    => array(
+			'minimalistic_menu_fullscreen'                      => array(
 				'title'       => esc_html__( 'Fullscreen menu', 'groovy-menu' ),
 				'description' => esc_html__( 'Allow navigation menu to open in fullscreen mode', 'groovy-menu' ),
 				'type'        => 'checkbox',
 				'default'     => false,
 				'condition'   => array( 'header.style', 'in', array( '2' ) ),
 			),
-			'minimalistic_menu_fullscreen_position'           => array(
+			'minimalistic_menu_fullscreen_position'             => array(
 				'title'     => esc_html__( 'Fullscreen menu', 'groovy-menu' ) . ' ' . esc_html__( 'position', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
@@ -2053,7 +2053,7 @@ return array(
 				'default'   => 'center',
 				'condition' => array( 'minimalistic_menu_fullscreen', '==', true ),
 			),
-			'minimalistic_menu_fullscreen_top_width'          => array(
+			'minimalistic_menu_fullscreen_top_width'            => array(
 				'title'     => esc_html__( 'Fullscreen menu', 'groovy-menu' ) . ' ' . esc_html__( 'top level width', 'groovy-menu' ),
 				'type'      => 'number',
 				'range'     => array( 50, 2500 ),
@@ -2061,7 +2061,7 @@ return array(
 				'unit'      => 'px',
 				'condition' => array( 'minimalistic_menu_fullscreen', '==', true ),
 			),
-			'minimalistic_menu_fullscreen_top_alignment'      => array(
+			'minimalistic_menu_fullscreen_top_alignment'        => array(
 				'title'     => esc_html__( 'Fullscreen menu', 'groovy-menu' ) . ' ' . esc_html__( 'top level alignment', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
@@ -2745,7 +2745,7 @@ return array(
 			'header_bottom_border_end'                     => array(
 				'type' => 'inlineEnd'
 			),
-			'top_level_hover_line_thickness'                   => array(
+			'top_level_hover_line_thickness'               => array(
 				'title'     => esc_html__( 'Top level hover line thickness', 'groovy-menu' ),
 				'type'      => 'number',
 				'range'     => array( 1, 20 ),
@@ -2879,18 +2879,18 @@ return array(
 			'item_text_end'                                => array(
 				'type' => 'inlineEnd'
 			),
-			'sub_item_text_start'                              => array(
+			'sub_item_text_start'                          => array(
 				'title' => esc_html__( 'Submenu text', 'groovy-menu' ),
 				'type'  => 'inlineStart',
 			),
-			'sub_level_item_text_size'                         => array(
+			'sub_level_item_text_size'                     => array(
 				'title'   => esc_html__( 'Size', 'groovy-menu' ),
 				'type'    => 'number',
 				'range'   => array( 10, 50 ),
 				'default' => 11,
 				'unit'    => 'px',
 			),
-			'sub_level_item_text_case'                         => array(
+			'sub_level_item_text_case'                     => array(
 				'title'   => esc_html__( 'Case', 'groovy-menu' ),
 				'type'    => 'select',
 				'options' => array(
@@ -2902,7 +2902,7 @@ return array(
 				),
 				'default' => 'uppercase',
 			),
-			'sub_level_item_text_weight'                       => array(
+			'sub_level_item_text_weight'                   => array(
 				'title'   => esc_html__( 'Font variant', 'groovy-menu' ),
 				'type'    => 'select',
 				'options' => array(
@@ -2910,7 +2910,7 @@ return array(
 				),
 				'default' => 'none',
 			),
-			'sub_level_item_text_subset'                       => array(
+			'sub_level_item_text_subset'                   => array(
 				'title'   => esc_html__( 'Subset', 'groovy-menu' ),
 				'type'    => 'select',
 				'options' => array(
@@ -2918,22 +2918,22 @@ return array(
 				),
 				'default' => 'none',
 			),
-			'sub_item_letter_spacing'                          => array(
+			'sub_item_letter_spacing'                      => array(
 				'title'   => esc_html__( 'Letter spacing', 'groovy-menu' ),
 				'type'    => 'number',
 				'range'   => array( 0, 5 ),
 				'default' => 0,
 				'unit'    => 'px',
 			),
-			'sub_item_text_end'                                => array(
+			'sub_item_text_end'                            => array(
 				'type' => 'inlineEnd'
 			),
-			'megamenu_title_text_start'                        => array(
+			'megamenu_title_text_start'                    => array(
 				'title'     => esc_html__( 'Mega menu title text', 'groovy-menu' ),
 				'condition' => array( 'header.style', 'in', array( '1' ) ),
 				'type'      => 'inlineStart',
 			),
-			'megamenu_title_text_size'                         => array(
+			'megamenu_title_text_size'                     => array(
 				'title'     => esc_html__( 'Size', 'groovy-menu' ),
 				'type'      => 'number',
 				'range'     => array( 10, 50 ),
@@ -2941,7 +2941,7 @@ return array(
 				'unit'      => 'px',
 				'condition' => array( 'header.style', 'in', array( '1' ) ),
 			),
-			'megamenu_title_text_case'                         => array(
+			'megamenu_title_text_case'                     => array(
 				'title'     => esc_html__( 'Case', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
@@ -2954,7 +2954,7 @@ return array(
 				'default'   => 'uppercase',
 				'condition' => array( 'header.style', 'in', array( '1' ) ),
 			),
-			'megamenu_title_text_weight'                       => array(
+			'megamenu_title_text_weight'                   => array(
 				'title'     => esc_html__( 'Font variant', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
@@ -2963,7 +2963,7 @@ return array(
 				'default'   => 'none',
 				'condition' => array( 'header.style', 'in', array( '1' ) ),
 			),
-			'megamenu_title_text_subset'                       => array(
+			'megamenu_title_text_subset'                   => array(
 				'title'     => esc_html__( 'Subset', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
@@ -2972,7 +2972,7 @@ return array(
 				'default'   => 'none',
 				'condition' => array( 'header.style', 'in', array( '1' ) ),
 			),
-			'menu_title_letter_spacing'                        => array(
+			'menu_title_letter_spacing'                    => array(
 				'title'     => esc_html__( 'Letter spacing', 'groovy-menu' ),
 				'type'      => 'number',
 				'range'     => array( 0, 5 ),
@@ -2980,10 +2980,10 @@ return array(
 				'unit'      => 'px',
 				'condition' => array( 'header.style', 'in', array( '1' ) ),
 			),
-			'megamenu_title_text_end'                          => array(
+			'megamenu_title_text_end'                      => array(
 				'type' => 'inlineEnd'
 			),
-			'logo_txt_font'                                    => array(
+			'logo_txt_font'                                => array(
 				'title'       => esc_html__( 'Text logo', 'groovy-menu' ) . ': ' . esc_html__( 'Google font family', 'groovy-menu' ),
 				'description' => esc_html__( 'Choose preferred Google font family for logo.', 'groovy-menu' ),
 				'type'        => 'select',
@@ -2993,12 +2993,12 @@ return array(
 				'default'     => 'none',
 				'condition'   => array( 'logo_type', '==', 'text' ),
 			),
-			'logo_txt_start'                                   => array(
+			'logo_txt_start'                               => array(
 				'title'     => esc_html__( 'Text logo', 'groovy-menu' ),
 				'type'      => 'inlineStart',
 				'condition' => array( 'logo_type', '==', 'text' ),
 			),
-			'logo_txt_font_size'                               => array(
+			'logo_txt_font_size'                           => array(
 				'title'     => esc_html__( 'font size', 'groovy-menu' ),
 				'type'      => 'number',
 				'range'     => array( 10, 50 ),
@@ -3006,7 +3006,7 @@ return array(
 				'unit'      => 'px',
 				'condition' => array( 'logo_type', '==', 'text' ),
 			),
-			'logo_txt_weight'                                  => array(
+			'logo_txt_weight'                              => array(
 				'title'     => esc_html__( 'variant', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
@@ -3015,7 +3015,7 @@ return array(
 				'default'   => 'none',
 				'condition' => array( 'logo_type', '==', 'text' ),
 			),
-			'logo_txt_subset'                                  => array(
+			'logo_txt_subset'                              => array(
 				'title'     => esc_html__( 'subset', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
@@ -3024,29 +3024,29 @@ return array(
 				'default'   => 'none',
 				'condition' => array( 'logo_type', '==', 'text' ),
 			),
-			'logo_txt_color'                                   => array(
+			'logo_txt_color'                               => array(
 				'title'     => esc_html__( 'color', 'groovy-menu' ),
 				'type'      => 'colorpicker',
 				'default'   => 'rgba(32,32,34,1)',
 				'alpha'     => true,
 				'condition' => array( 'logo_type', '==', 'text' ),
 			),
-			'logo_txt_color_hover'                             => array(
+			'logo_txt_color_hover'                         => array(
 				'title'     => esc_html__( 'hover color', 'groovy-menu' ),
 				'type'      => 'colorpicker',
 				'default'   => 'rgba(32,32,34,1)',
 				'alpha'     => true,
 				'condition' => array( 'logo_type', '==', 'text' ),
 			),
-			'logo_txt_end'                                     => array(
+			'logo_txt_end'                                 => array(
 				'type' => 'inlineEnd'
 			),
-			'toolbar_menu_text_start'                          => array(
+			'toolbar_menu_text_start'                      => array(
 				'title'     => esc_html__( 'Additional menu items text', 'groovy-menu' ),
 				'type'      => 'inlineStart',
 				'condition' => array( 'toolbar_menu_enable', '==', true ),
 			),
-			'toolbar_menu_text_case'                           => array(
+			'toolbar_menu_text_case'                       => array(
 				'title'     => esc_html__( 'Case', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
@@ -3059,7 +3059,7 @@ return array(
 				'default'   => 'none',
 				'condition' => array( 'toolbar_menu_enable', '==', true ),
 			),
-			'toolbar_menu_text_weight'                         => array(
+			'toolbar_menu_text_weight'                     => array(
 				'title'     => esc_html__( 'Font variant', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
@@ -3068,7 +3068,7 @@ return array(
 				'default'   => 'none',
 				'condition' => array( 'toolbar_menu_enable', '==', true ),
 			),
-			'toolbar_menu_text_subset'                         => array(
+			'toolbar_menu_text_subset'                     => array(
 				'title'     => esc_html__( 'Subset', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
@@ -3077,7 +3077,7 @@ return array(
 				'default'   => 'none',
 				'condition' => array( 'toolbar_menu_enable', '==', true ),
 			),
-			'toolbar_menu_letter_spacing'                      => array(
+			'toolbar_menu_letter_spacing'                  => array(
 				'title'     => esc_html__( 'Letter spacing', 'groovy-menu' ),
 				'type'      => 'number',
 				'range'     => array( 0, 5 ),
@@ -3085,16 +3085,16 @@ return array(
 				'unit'      => 'px',
 				'condition' => array( 'toolbar_menu_enable', '==', true ),
 			),
-			'toolbar_menu_text_end'                            => array(
+			'toolbar_menu_text_end'                        => array(
 				'type'      => 'inlineEnd',
 				'condition' => array( 'toolbar_menu_enable', '==', true ),
 			),
-			'second_sidebar_menu_text_start'                   => array(
+			'second_sidebar_menu_text_start'               => array(
 				'title'     => esc_html__( 'Second Sidebar menu items text', 'groovy-menu' ),
 				'type'      => 'inlineStart',
 				'condition' => array( 'second_sidebar_menu_enable', '==', true ),
 			),
-			'second_sidebar_menu_text_case'                    => array(
+			'second_sidebar_menu_text_case'                => array(
 				'title'     => esc_html__( 'Case', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
@@ -3107,7 +3107,7 @@ return array(
 				'default'   => 'none',
 				'condition' => array( 'second_sidebar_menu_enable', '==', true ),
 			),
-			'second_sidebar_menu_text_weight'                  => array(
+			'second_sidebar_menu_text_weight'              => array(
 				'title'     => esc_html__( 'Font variant', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
@@ -3116,7 +3116,7 @@ return array(
 				'default'   => 'none',
 				'condition' => array( 'second_sidebar_menu_enable', '==', true ),
 			),
-			'second_sidebar_menu_text_subset'                  => array(
+			'second_sidebar_menu_text_subset'              => array(
 				'title'     => esc_html__( 'Subset', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
@@ -3125,7 +3125,7 @@ return array(
 				'default'   => 'none',
 				'condition' => array( 'second_sidebar_menu_enable', '==', true ),
 			),
-			'second_sidebar_menu_letter_spacing'               => array(
+			'second_sidebar_menu_letter_spacing'           => array(
 				'title'     => esc_html__( 'Letter spacing', 'groovy-menu' ),
 				'type'      => 'number',
 				'range'     => array( 0, 5 ),
@@ -3133,7 +3133,7 @@ return array(
 				'unit'      => 'px',
 				'condition' => array( 'second_sidebar_menu_enable', '==', true ),
 			),
-			'second_sidebar_menu_text_end'                     => array(
+			'second_sidebar_menu_text_end'                 => array(
 				'type'      => 'inlineEnd',
 				'condition' => array( 'second_sidebar_menu_enable', '==', true ),
 			),
@@ -3167,8 +3167,8 @@ return array(
 				'default' => false,
 			),
 			'toolbar_align_center__start'                  => array(
-				'title'     => esc_html__( 'Align toolbar to the center', 'groovy-menu' ),
-				'type'      => 'inlineStart',
+				'title' => esc_html__( 'Align toolbar to the center', 'groovy-menu' ),
+				'type'  => 'inlineStart',
 			),
 			'toolbar_align_center'                         => array(
 				'title'   => esc_html__( 'Desktop', 'groovy-menu' ),
@@ -3269,7 +3269,7 @@ return array(
 			'toolbar_icon_hover_color'                     => array(
 				'title'   => esc_html__( 'Toolbar social icon hover color', 'groovy-menu' ),
 				'type'    => 'colorpicker',
-				'default'   => 'rgba(165, 226, 94, 1)',
+				'default' => 'rgba(165, 226, 94, 1)',
 				'alpha'   => true,
 			),
 			'toolbar_icon_switch_border'                   => array(
@@ -3802,7 +3802,7 @@ return array(
 			'checkout_btn_border_color_hover'              => array(
 				'title'     => esc_html__( 'color on hover', 'groovy-menu' ),
 				'type'      => 'colorpicker',
-				'default' => 'rgba(204, 32, 59, 1)',
+				'default'   => 'rgba(204, 32, 59, 1)',
 				'alpha'     => true,
 				'condition' => array( 'woocommerce_cart', '==', 'true' ),
 			),
@@ -3900,14 +3900,14 @@ return array(
 			'view_cart_btn_border_color'                   => array(
 				'title'     => esc_html__( 'color', 'groovy-menu' ),
 				'type'      => 'colorpicker',
-				'default' => 'rgba(204, 32, 59, 1)',
+				'default'   => 'rgba(204, 32, 59, 1)',
 				'alpha'     => true,
 				'condition' => array( 'woocommerce_cart', '==', 'true' ),
 			),
 			'view_cart_btn_border_color_hover'             => array(
 				'title'     => esc_html__( 'color on hover', 'groovy-menu' ),
 				'type'      => 'colorpicker',
-				'default' => 'rgba(204, 32, 59, 1)',
+				'default'   => 'rgba(204, 32, 59, 1)',
 				'alpha'     => true,
 				'condition' => array( 'woocommerce_cart', '==', 'true' ),
 			),
