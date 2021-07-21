@@ -11,7 +11,7 @@ NAVBAR GENERAL STYLES
     width: 100%;
     margin-right: auto;
     margin-left: auto;
-    transition: height 0.2s ease;
+    transition: height 0.15s cubic-bezier(0.31, 1.04, 0.67, 0.91);
   }
 
   &.gm-navbar-fixed-sticky .gm-wrapper {
@@ -54,7 +54,24 @@ NAVBAR GENERAL STYLES
 
   .gm-menu-actions-wrapper {
     display: flex;
-    margin: 0 32px;
+    margin: 0 24px;
+  }
+
+  &.gm-navbar--style-1 .gm-inner,
+  &.gm-navbar--style-1 .gm-inner > .gm-container,
+  &.gm-navbar--style-1 .gm-inner > .gm-inner-bg {
+    //min-height: auto !important;
+    transition: all 0.36s ease-out;
+  }
+
+  > .gm-wrapper,
+  &.gm-navbar-fixed-sticky > .gm-wrapper {
+    opacity: 1;
+    transition: opacity 0.38s ease-out 0.12s;
+  }
+
+  &:not(.gm-init-done) > .gm-wrapper {
+    opacity: 0;
   }
 }
 
@@ -68,7 +85,7 @@ NAVBAR GENERAL STYLES
 
   .gm-container,
   .gm-navbar-nav {
-    transition: height 0.2s ease;
+    transition: height 0.15s cubic-bezier(0.31, 1.04, 0.67, 0.91);
   }
 }
 
@@ -151,6 +168,10 @@ NAVBAR GENERAL STYLES
 
   .gm-anchor > .gm-caret,
   .gm-anchor:not(.gm-anchor--empty) {
+    cursor: pointer;
+  }
+
+  .gm-anchor.gm-dropdown-toggle {
     cursor: pointer;
   }
 
@@ -271,6 +292,10 @@ NAVBAR GENERAL STYLES
   align-items: center;
 }
 
+.gm-menu-item > .gm-anchor > .gm-menu-item__txt-wrapper {
+  display: flex;
+}
+
 /* bugfix: For sub-submenus that climb out of the right side of the screen and, on some WP Themes, they call the horizontal scroll of the browser when opening the first level submenu. */
 .gm-navbar {
   .gm-navbar-nav > .gm-dropdown:not(.gm-opened-before) .gm-dropdown-menu-wrapper {
@@ -293,6 +318,10 @@ NAVBAR GENERAL STYLES
 
 .gm-mobile-postwrap {
   display: none;
+}
+
+.gm-main-menu-wrapper .gm-custom-dropdown-width > .gm-dropdown-menu > .gm-menu-item.menu-item-object-gm_menu_block {
+  padding: 0;
 }
 
 /* ------------------------------------ Mobile menus Slider Style */
@@ -371,4 +400,20 @@ NAVBAR GENERAL STYLES
 .gm-menu-btn,
 .gm-minicart {
   -webkit-tap-highlight-color: transparent;
+}
+
+.gm-anchor,
+.gm-anchor:active,
+.gm-anchor:focus {
+  outline: none;
+}
+
+.gm-navbar.gm-navbar--align-left .gm-main-menu-wrapper.ps > .ps__rail-y {
+  left: -6px !important;
+}
+
+.gm-menu-btn--text {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
 }

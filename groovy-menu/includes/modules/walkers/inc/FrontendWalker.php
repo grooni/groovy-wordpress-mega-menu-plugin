@@ -42,11 +42,14 @@ class FrontendWalker extends WalkerNavMenu {
 
 		$custom_width            = $this->dropdownCustomWidth( $this->currentItem );
 		$custom_wrapper_in_style = '';
-		if ( $this->isMegaMenu && ! empty( $this->megaMenuCustomWidth ) && 1 === $this->currentLvl ) {
+
+		if ( ! empty( $this->megaMenuCustomWidth ) && $this->currentLvl > 0 && ! $show_in_mobile ) {
 			$wrapper_class .= ' gm-custom-dropdown-width';
 
-			$custom_wrapper_in_style = 'min-width: ' . $custom_width . 'px !important; max-width: ' . $custom_width . 'px !important;';
-			$custom_wrapper_in_style = ' style' . '="' . $custom_wrapper_in_style . '"';
+			if ( $custom_width ) {
+				$custom_wrapper_in_style = 'min-width: ' . $custom_width . 'px !important; max-width: ' . $custom_width . 'px !important;';
+				$custom_wrapper_in_style = ' style' . '="' . $custom_wrapper_in_style . '"';
+			}
 		}
 
 		if ( ! $this->isMegaMenu || ( $this->isMegaMenu && 2 !== $this->currentLvl ) ) {
@@ -64,7 +67,7 @@ class FrontendWalker extends WalkerNavMenu {
 				$styles .= 'background-repeat: ' . $this->getBackgroundRepeat( $this->currentItem ) . ';';
 				$styles .= 'background-position: ' . $this->getBackgroundPosition( $this->currentItem ) . ';';
 
-				if ( $this->isMegaMenu && ! empty( $this->megaMenuCustomWidth ) && 1 === $this->currentLvl ) {
+				if ( ! empty( $this->megaMenuCustomWidth ) && $this->currentLvl > 0 && ! $show_in_mobile ) {
 					$styles .= 'max-width: ' . $custom_width . 'px !important;';
 				}
 
@@ -499,15 +502,15 @@ class FrontendWalker extends WalkerNavMenu {
 				$classes[]          = 'mega-gm-dropdown';
 				$this->isMegaMenu   = true;
 
-				$custom_width = $this->dropdownCustomWidth( $this->currentItem );
-				if ( ! empty( $custom_width ) ) {
-					$this->megaMenuCustomWidth = $custom_width;
-				}
-
 				$megaMenuPositionStart = $this->megaMenuDropdownPositionStart( $this->currentItem );
 				if ( ! empty( $megaMenuPositionStart ) && $megaMenuPositionStart ) {
 					$classes[] = 'gm-custom-dropdown-position-start';
 				}
+			}
+
+			$custom_width = $this->dropdownCustomWidth( $this->currentItem );
+			if ( ! empty( $custom_width ) ) {
+				$this->megaMenuCustomWidth = $custom_width;
 			}
 
 			if ( $this->frozenLink( $this->currentItem ) ) {
@@ -752,9 +755,9 @@ class FrontendWalker extends WalkerNavMenu {
 				$item_output .= '</span>'; // .gm-menu-item__txt-wrapper
 				if ( ! $this->isMegaMenu || $depth < 1 ) {
 					if ( $this->hasParents() && $this->hasChildren( $classes ) ) {
-						$item_output .= '<span class="gm-caret"><i class="fa fa-fw fa-angle-right"></i></span>';
+						$item_output .= '<span class="gm-caret" aria-label="submenu"><i class="fa fa-fw fa-angle-right"></i></span>';
 					} elseif ( $this->hasChildren( $classes ) ) {
-						$item_output .= '<span class="gm-caret"><i class="fa fa-fw fa-angle-down"></i></span>';
+						$item_output .= '<span class="gm-caret" aria-label="dropdown"><i class="fa fa-fw fa-angle-down"></i></span>';
 					}
 				}
 				$item_output .= $thumb;
@@ -776,9 +779,9 @@ class FrontendWalker extends WalkerNavMenu {
 			} else {
 				if ( ! $this->isMegaMenu || $depth < 1 ) {
 					if ( $this->hasParents() && $this->hasChildren( $classes ) ) {
-						$item_output .= '<span class="gm-caret ' . $atts['class'] . '"><i class="fa fa-fw fa-angle-right"></i></span>';
+						$item_output .= '<span class="gm-caret ' . $atts['class'] . '" aria-label="submenu"><i class="fa fa-fw fa-angle-right"></i></span>';
 					} elseif ( $this->hasChildren( $classes ) ) {
-						$item_output .= '<span class="gm-caret ' . $atts['class'] . '"><i class="fa fa-fw fa-angle-down"></i></span>';
+						$item_output .= '<span class="gm-caret ' . $atts['class'] . '" aria-label="dropdown"><i class="fa fa-fw fa-angle-down"></i></span>';
 					}
 				}
 				$item_output .= $thumb;

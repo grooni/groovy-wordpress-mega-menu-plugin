@@ -2,11 +2,16 @@ import {getCoords, isMobile, unwrapInner, wrapInner} from '../shared/helpers';
 import _ from 'lodash';
 import {setCurrentItem} from './one-page';
 import {initPaddingsAlignCenter} from './split';
+import groovyTakeScreenshot from '../admin/screenshot';
 
 var options;
 var navDrawer;
 var mainMenuWrapper;
+var secondMenuWrapper;
 var hamburgerMenu;
+var hamburgerMenuClose;
+var secondHamburgerMenu;
+var secondHamburgerMenuClose;
 
 let offcanvasIsOpen = function (navDrawer) {
   let isOpen;
@@ -31,9 +36,13 @@ function offcanvasOpen(navDrawer) {
     if (gmNavbar) {
       gmNavbar.classList.add('gm-drawer--open');
     }
-    if (hamburgerMenu) {
+
+    let isSecondSidebarMenu = navDrawer.classList.contains('gm-second-nav-drawer');
+    let hamburger = isSecondSidebarMenu ? secondHamburgerMenu : hamburgerMenu;
+
+    if (hamburger) {
       setTimeout(() => {
-        hamburgerMenu.classList.add('is-active');
+        hamburger.classList.add('is-active');
       }, 450);
     }
   }
@@ -51,9 +60,13 @@ function offcanvasClose(navDrawer) {
     if (gmNavbar) {
       gmNavbar.classList.remove('gm-drawer--open');
     }
-    if (hamburgerMenu) {
+
+    let isSecondSidebarMenu = navDrawer.classList.contains('gm-second-nav-drawer');
+    let hamburger = isSecondSidebarMenu ? secondHamburgerMenu : hamburgerMenu;
+
+    if (hamburger) {
       setTimeout(() => {
-        hamburgerMenu.classList.remove('is-active');
+        hamburger.classList.remove('is-active');
       }, 450);
     }
   } else {
@@ -71,20 +84,31 @@ function offcanvasToggle(navDrawer) {
 
 function offcanvasClickOutside() {
   document.addEventListener('click', function (event) {
-    if (event.target.closest('.gm-menu-btn')) {
+    if (event.target.closest('.gm-menu-btn, .gm-menu-btn-second, .gm-burger, .gm-custom-hamburger')) {
       return;
     }
 
-    if (event.target.closest('.gm-navbar-nav, .gm-navigation-drawer, .gm-main-menu-wrapper, .gm-burger, .gm-custom-hamburger') === null) {
+    if (
+      event.type === 'click' &&
+      !event.target.closest('.gm-caret, .gm-dropdown-menu-title') &&
+      !event.target.closest('.gm-anchor') &&
+      !event.target.closest('.gm-menu-item') &&
+      !event.target.closest('.gm-navbar, .gm-navigation-drawer, .gm-main-menu-wrapper, .gm-second-nav-drawer')
+    ) {
+
       offcanvasClose(mainMenuWrapper);
+      offcanvasClose(secondMenuWrapper);
       offcanvasClose(navDrawer);
     }
+
   });
 }
 
 function makeHiddenVisible(navDrawer) {
   let mainMenuWrapper = document.querySelector('.gm-main-menu-wrapper');
+  let secondMenuWrapper = document.querySelector('.gm-second-nav-drawer');
   let isMobileFlag = isMobile(options.mobileWidth);
+  let headerStyle = parseInt(options.header.style, 10);
 
   if (navDrawer && navDrawer.classList.contains('gm-hidden') && isMobileFlag) {
     setTimeout(() => {
@@ -92,11 +116,19 @@ function makeHiddenVisible(navDrawer) {
     }, 100);
   }
 
-  if (mainMenuWrapper) {
+  if (mainMenuWrapper && (5 !== headerStyle && 3 !== headerStyle)) {
     if (!isMobileFlag) {
       mainMenuWrapper.classList.add('d-flex');
     } else {
       mainMenuWrapper.classList.remove('d-flex');
+    }
+  }
+
+  if (secondMenuWrapper) {
+    if (!isMobileFlag) {
+      secondMenuWrapper.classList.add('d-flex');
+    } else {
+      secondMenuWrapper.classList.remove('d-flex');
     }
   }
 }
@@ -139,15 +171,16 @@ function topIndentForBurger(navDrawer) {
   if (gmToolbar) {
     gmToolbarHeight = parseInt(window.getComputedStyle(gmToolbar, null).height);
     gmToolbarHeight = (!gmToolbarHeight) ? 0 : gmToolbarHeight;
-    offset = getCoords(gmToolbar).top - window.pageYOffset - wpAdminbarElemHeight;
-    if (offset < 1) {
-      if ((gmToolbarHeight + offset) < 1) {
+    let offsetToolbar = getCoords(gmToolbar).top - window.pageYOffset - wpAdminbarElemHeight;
+    if (offsetToolbar < 1) {
+      if ((gmToolbarHeight + offsetToolbar) < 1) {
         gmToolbarHeight = 0;
       } else {
-        gmToolbarHeight = gmToolbarHeight + offset;
+        gmToolbarHeight = gmToolbarHeight + offsetToolbar;
       }
     }
   }
+
   if (gmInner) {
     gmInnerHeight = parseInt(window.getComputedStyle(gmInner, null).height);
     gmInnerHeight = (!gmInnerHeight) ? 20 : gmInnerHeight;
@@ -166,8 +199,8 @@ function topIndentForBurger(navDrawer) {
         }
       }
     }
-
   }
+
   let gmBurgerHeightWrapper = parseInt(window.getComputedStyle(gmBurger, null).height);
   gmBurgerHeightWrapper = (!gmBurgerHeightWrapper) ? 20 : gmBurgerHeightWrapper;
   let gmBurgerWidth = parseInt(window.getComputedStyle(gmBurger, null).width);
@@ -195,7 +228,9 @@ function topIndentForBurger(navDrawer) {
       gmBurger.classList.remove('gm-burger--float');
     }
   } else {
-    indentPx = indentPx + offset;
+    if (offset < 0) {
+      indentPx = indentPx + offset;
+    }
   }
 
   if (gmBurgerPaddings > 0) {
@@ -228,6 +263,7 @@ function wrapContent() {
   let gmNavbar = document.querySelector('.gm-navbar');
   let navDrawer = document.querySelector('.gm-navigation-drawer');
   let mainMenuWrapper = document.querySelector('.gm-main-menu-wrapper');
+  let secondMainMenuWrapper = document.querySelector('.gm-second-nav-drawer');
   let contentWrapper = document.querySelector('.gm-nav-content-wrapper');
   let wpAdminBar = document.querySelector('#wpadminbar');
 
@@ -243,6 +279,10 @@ function wrapContent() {
 
   if (options.header.style === 2) {
     document.body.prepend(mainMenuWrapper);
+  }
+
+  if (options.header.style === 1 && secondMainMenuWrapper) {
+    document.body.prepend(secondMainMenuWrapper);
   }
 
   document.body.prepend(gmNavbar);
@@ -270,17 +310,36 @@ function closeIfNoChildren(navDrawer) {
 
 
 function forceLogoCentering() {
-  if (!options.forceLogoCenteringMobile || options.mobileLogoPosition !== 'center' || options.mobileSideIconPosition === 'left') {
-    return false;
-  }
 
   let gmLogo = document.querySelector('.gm-navbar .gm-logo > a');
-
   if (!gmLogo) {
     return null;
   }
 
+  let gmActions = document.querySelector('.gm-navbar .gm-menu-actions-wrapper');
+  let gmBurger = document.querySelector('.gm-navigation-drawer .gm-burger');
+  let gmContainer = document.querySelector('.gm-navbar .gm-container');
+  let indentPixelsDesk = 0;
+
   let isMobileFlag = isMobile(options.mobileWidth);
+
+  // Desktop logo centered.
+  if (gmActions && options.forceLogoCentering && options.header.style === 2 && options.header.align === 'center' && !isMobileFlag) {
+    indentPixelsDesk = Math.floor(gmActions.offsetWidth / 2) + indentPixelsDesk + 32;
+    if (gmContainer && indentPixelsDesk > 0 && indentPixelsDesk < Math.floor(gmContainer.clientWidth / 2)) {
+      if (options.minimalisticMenuSideIconPosition === 'right') {
+        gmLogo.style.marginLeft = `${indentPixelsDesk}px`;
+      } else {
+        gmLogo.style.marginLeft = `-${indentPixelsDesk}px`;
+      }
+      return true;
+    }
+  }
+
+  // Mobile logo centered.
+  if (!options.forceLogoCenteringMobile || options.mobileLogoPosition !== 'center') {
+    return false;
+  }
 
   if (!isMobileFlag) {
     gmLogo.style.marginLeft = null;
@@ -288,8 +347,6 @@ function forceLogoCentering() {
   }
 
 
-  let gmActions = document.querySelector('.gm-navbar .gm-menu-actions-wrapper');
-  let gmBurger = document.querySelector('.gm-navigation-drawer .gm-burger');
   let indentPixels = 0;
 
   if (gmBurger) {
@@ -297,12 +354,17 @@ function forceLogoCentering() {
   }
 
   if (gmActions) {
-    let gmContainer = document.querySelector('.gm-navbar .gm-container');
     indentPixels = Math.floor(gmActions.offsetWidth / 2) + indentPixels + 32;
     if (gmContainer && indentPixels > 0 && indentPixels < Math.floor(gmContainer.clientWidth / 2)) {
-      gmLogo.style.marginLeft = `${indentPixels}px`;
+      if (options.mobileSideIconPosition === 'right') {
+        gmLogo.style.marginLeft = `${indentPixels}px`;
+      } else {
+        gmLogo.style.marginLeft = `-${indentPixels}px`;
+      }
     }
   }
+
+  return true;
 
 }
 
@@ -310,26 +372,94 @@ function forceLogoCentering() {
 export function offcanvasSlide() {
   let headerStyle = parseInt(options.header.style, 10);
 
+  function clickHandler() {
+    checkMenuHeight();
+
+    if (!isMobile(options.mobileWidth) && headerStyle === 2) {
+      offcanvasToggle(mainMenuWrapper);
+    } else if (!isMobile(options.mobileWidth) && headerStyle === 1 && options.secondSidebarMenuEnable) {
+      offcanvasToggle(secondMenuWrapper);
+    } else {
+      offcanvasToggle(navDrawer);
+    }
+  }
+
+  function checkMenuHeight() {
+    if (headerStyle === 2 && !options.minimalisticMenuMaxHeight && !isMobile(options.mobileWidth)) {
+      let gmNavbarWrapper = document.querySelector('.gm-navbar > .gm-wrapper');
+      let gmMainMenuWrapper = document.querySelector('.gm-main-menu-wrapper');
+      let gmOverlay = document.querySelector('.gm-dropdown-overlay');
+
+      if (!gmNavbarWrapper || !gmMainMenuWrapper) {
+        return false;
+      }
+
+      let topGap = gmNavbarWrapper.clientHeight + gmNavbarWrapper.getBoundingClientRect().top;
+      topGap = (!topGap || topGap < 1) ? 0 : topGap;
+
+      gmMainMenuWrapper.style.height = `calc( 100vh - ${topGap}px )`;
+      gmMainMenuWrapper.style.top = `${topGap}px`;
+
+      if (gmOverlay) {
+        gmOverlay.style.height = `calc( 100vh - ${topGap}px )`;
+        gmOverlay.style.top = `${topGap}px`;
+      }
+    }
+
+    if (headerStyle === 1 && !options.secondSidebarMenuMaxHeight && !isMobile(options.mobileWidth)) {
+      let gmNavbarWrapper = document.querySelector('.gm-navbar > .gm-wrapper');
+      let gmMainMenuWrapper = document.querySelector('.gm-second-nav-drawer');
+      let gmOverlay = document.querySelector('.gm-dropdown-overlay');
+
+      if (!gmNavbarWrapper || !gmMainMenuWrapper) {
+        return false;
+      }
+
+      let topGap = gmNavbarWrapper.clientHeight + gmNavbarWrapper.getBoundingClientRect().top;
+      topGap = (!topGap || topGap < 1) ? 0 : topGap;
+
+      gmMainMenuWrapper.style.height = `calc( 100vh - ${topGap}px )`;
+      gmMainMenuWrapper.style.top = `${topGap}px`;
+
+      if (gmOverlay) {
+        gmOverlay.style.height = `calc( 100vh - ${topGap}px )`;
+        gmOverlay.style.top = `${topGap}px`;
+      }
+    }
+
+    return false;
+  }
+
   window.addEventListener('resize', _.debounce(() => {
     if (!isMobile(options.mobileWidth) && options.header.style !== 2 && document.querySelector('.gm-nav-content-wrapper') !== null) {
       unwrapInner('.gm-nav-content-wrapper');
     }
   }, 310));
 
-  function clickHandler() {
-    if (!isMobile(options.mobileWidth) && headerStyle === 2) {
-      offcanvasToggle(mainMenuWrapper);
-    } else {
-      offcanvasToggle(navDrawer);
-    }
-  }
-
   if (hamburgerMenu) {
     hamburgerMenu.addEventListener('click', clickHandler);
+  }
+  if (hamburgerMenuClose) {
+    hamburgerMenuClose.addEventListener('click', clickHandler);
+  }
+
+  if (secondHamburgerMenu) {
+    secondHamburgerMenu.addEventListener('click', clickHandler);
+  }
+  if (secondHamburgerMenuClose) {
+    secondHamburgerMenuClose.addEventListener('click', clickHandler);
   }
 
   // Close button event for Fullscreen minimalistic type.
   if (2 === headerStyle && options.minimalisticMenuFullscreen) {
+    let fullscreenCloseButton = document.querySelector('.gm-fullscreen-close');
+    if (fullscreenCloseButton) {
+      fullscreenCloseButton.addEventListener('click', clickHandler);
+    }
+  }
+
+  // Close button event for Fullscreen Second Sidebar Menu type.
+  if (1 === headerStyle && options.secondSidebarMenuEnable && options.secondSidebarMenuMaxHeight) {
     let fullscreenCloseButton = document.querySelector('.gm-fullscreen-close');
     if (fullscreenCloseButton) {
       fullscreenCloseButton.addEventListener('click', clickHandler);
@@ -352,6 +482,7 @@ export function offcanvasSlide() {
       offcanvasClose(navDrawer);
     }
 
+    checkMenuHeight();
     forceLogoCentering();
   }, 310));
 
@@ -359,8 +490,11 @@ export function offcanvasSlide() {
 
   window.addEventListener('scroll', _.debounce(() => {
     topIndentForBurger(navDrawer);
+    checkMenuHeight();
     forceLogoCentering();
   }, 200));
+
+  checkMenuHeight();
 
 }
 
@@ -388,5 +522,9 @@ export function initOffcanvas(args) {
   options = args.options;
   navDrawer = args.navDrawer;
   mainMenuWrapper = args.mainMenuWrapper;
+  secondMenuWrapper = args.secondMenuWrapper;
   hamburgerMenu = args.hamburgerMenu;
+  hamburgerMenuClose = args.hamburgerMenuClose;
+  secondHamburgerMenu = args.secondHamburgerMenu;
+  secondHamburgerMenuClose = args.secondHamburgerMenuClose;
 }

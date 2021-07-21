@@ -237,7 +237,7 @@ GROOVY TOOLBAR
     margin-top: -8px;
   }
 
-  ul li.menu-item-has-children > a:after {
+  ul li.menu-item-has-children > a > span:after {
     content: "";
     margin-left: 5px;
     display: inline-block;

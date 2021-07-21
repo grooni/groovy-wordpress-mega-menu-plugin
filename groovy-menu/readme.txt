@@ -2,9 +2,9 @@
 Contributors: Grooni
 Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive, responsive menu, sticky menu, vertical menu, horizontal menu, ajax cart
 Requires at least: 4.9.7
-Tested up to: 5.7
+Tested up to: 5.8
 Requires PHP: 7.0
-Stable tag: 1.2.16
+Stable tag: 1.3.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -115,6 +115,28 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.3.0 =
+* Add: Added new feature the Export/Import for Menu Blocks. (Phase 1).
+* Add: Added "Replace" button allows to replace icon pack under "Global setting > Icon pack" tab.
+* Add: Added ability to set a background image for a "Drawer" in "Minimalistic" type of menu.
+* Add: Added ability to select places for search icons and Woocommerce mini-cart in Minimalistic type of menu.
+* Add: Added the ability to integrate a menu using a special Groovy helper plugin, in cases where integration through a child theme is not possible, e.g.Genesis Framework based themes.
+* Add: Added settings to control time delay of appearing in/out between dropdowns and submenus.
+* Add: New feature "Animated Hamburger icon" for Minimalistic type of menu.
+* Add: New option "Show text beside hamburger icon" for Mobile and Minimalistic menu type.
+* Add: Setting "Tracking anchor links" for "Scrollbar & Onepage" preset section.
+* Add: Setting "Full height sidebar menu" for Minimalistic type of menu.
+* Add: New option "Enable inline critical CSS" that is placed under Dashboard > Global settings > at "Tools" tab.
+* Add: Added font settings for Additional menu items text under "Styles > Typography > Additional menu items text".
+* Add: Added padding setting for custom toolbar under "Styles > Toolbar > Toolbar padding".
+* Improve: "General > Toolbar menu" section renamed to "General > Additional menu". Now you can insert additional nav menus in different places in the header.
+* Improve: NPM modules have been updated.
+* Improve: Improved work of "Animated Hamburger icon".
+* Improve: Moved all font settings to "Styles > Typography" section.
+* Fix: Deleting font files if icon pack has been removed (under Dashboard > Global setting > Icon packs).
+* Fix: Checking the existence of font files during Icon Pack loading and considering that when creating a CSS file.
+* Fix: Bug with uploading ZIP with non-standard icon fonts from Icomoon.io has been fixed.
 
 = 1.2.16 =
 * Improve:  Possibility of correct interpretation of special characters ("\n", "\r", "\t", "\f", "\b") for outputting custom content added in "Groovy Menu > Custom code".

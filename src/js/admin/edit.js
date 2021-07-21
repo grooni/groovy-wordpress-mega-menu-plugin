@@ -289,6 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
           .toRGBA()
           .toString(0);
       }),50);
+
     });
   }
 

@@ -64,7 +64,17 @@ nav ul.gm-navbar-nav > li {
   line-height: inherit;
 }
 
+/* Divi fix for Woo ONSALE badge CSS conflict */
+.et_divi_theme.woocommerce span.onsale,
+.et_divi_theme.woocommerce-page span.onsale {
+  z-index: 1;
+}
+
 /* animation trasition fix */
+.gm-logo img,
+.gm-menu-item__icon,
+.gm-badge,
+.gm-navbar > .gm-padding,
 .gm-navbar-nav .gm-dropdown-menu-wrapper,
 .gm-dropdown-hover-style-shift-right .gm-dropdown-menu .gm-anchor .gm-menu-item__txt-wrapper {
   backface-visibility: hidden !important;

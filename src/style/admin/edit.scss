@@ -597,6 +597,14 @@ GROOVY MENU TABS MODULE
   margin: 0;
 }
 
+.gm-media-control {
+  min-width: 230px;
+
+  .gm-media-control-buttons {
+    text-align: center;
+  }
+}
+
 /***************************************
 GROOVY MENU POST TYPES
 ***************************************/

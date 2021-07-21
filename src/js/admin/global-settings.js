@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let permissionPostTypes = document.querySelectorAll('.gm-gui__module__post_types input.switch');
   let taxonomyPresets = document.querySelectorAll('.gm-gui__module__taxonomy_preset .gm-subselect');
   let uploadIconPackBtn = document.querySelector('.gm-upload-icon-pack');
+  let replaceIconPackBtns = document.querySelectorAll('.groovy-replace-icon-pack');
   let deleteIconPackBtns = document.querySelectorAll('.groovy-delete-font');
   let installDefaultIconPackBtn = document.querySelector('.gm-install-default-icon-pack');
   const uploadMediaInputs = document.querySelectorAll('.gm-upload-input');
@@ -137,6 +138,44 @@ document.addEventListener('DOMContentLoaded', () => {
     return false;
   }
 
+  function replaceIconPack (e) {
+    e.preventDefault();
+
+    let image;
+
+    if (image) {
+      image.open();
+      return;
+    }
+
+    image = wp.media({
+      title: 'Upload font',
+      multiple: false,
+      library: {type: 'application/octet-stream, application/zip'}
+    });
+
+    image.on('select', () => {
+      let uploadedImage = image
+        .state()
+        .get('selection')
+        .first()
+        .toJSON();
+      let uploadIconInput = document.querySelector('.groovy-upload-icon');
+
+      uploadIconInput.value = uploadedImage.id;
+
+      let replaceIconNameField = document.getElementById('gm-replace-field-name');
+      let iconPack = this.closest('.groovy-iconset');
+      // iconPack.dataset.name
+      replaceIconNameField.value = iconPack.dataset.name;
+
+      this.closest('form')
+        .submit();
+    });
+    image.open();
+    return false;
+  }
+
   function deleteIconPack () {
     let nonceField = document.getElementById('gm-nonce-editor-field');
     let nonce = nonceField ? nonceField.value : '';
@@ -155,6 +194,10 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', deleteIconPack);
   });
 
+  replaceIconPackBtns.forEach((replBtn) => {
+    replBtn.addEventListener('click', replaceIconPack);
+  });
+
   uploadMediaInputs.forEach((input) => {
     input.addEventListener('change', changeMedia);
     input.dispatchEvent(changeEvent);
@@ -168,4 +211,5 @@ document.addEventListener('DOMContentLoaded', () => {
     select.addEventListener('change', handleSelectChanges);
     select.dispatchEvent(changeEvent);
   });
+
 });

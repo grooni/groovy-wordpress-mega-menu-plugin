@@ -2,10 +2,7 @@
 
 .gm-burger {
   transition: all 0.1s;
-}
-
-.gm-burger .hamburger-box {
-  margin-top: 8px;
+  line-height: 8px;
 }
 
 .gm-main-menu-wrapper .gm-fullscreen-close {
@@ -25,4 +22,9 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.gm-menu-btn-second.gm-burger {
+  display: flex;
+  align-items: center;
 }

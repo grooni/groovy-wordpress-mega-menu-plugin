@@ -67,8 +67,11 @@ class GroovyMenu {
     let navbar = document.querySelector('.gm-navbar');
     let navDrawer = document.querySelector('.gm-navigation-drawer');
 
-    let hamburgerMenu = (options.mobileIndependentCssHamburger && 2 !== headerStyle) ? document.querySelector('.gm-burger') : document.querySelector('.gm-menu-btn');
-    let hamburgerMenuType = (options.mobileIndependentCssHamburgerType) ? options.mobileIndependentCssHamburgerType : 'hamburger--squeeze';
+    let hamburgerMenu = (options.mobileIndependentCssHamburger && options.mobileIndependentCssHamburgerFloat && 2 !== headerStyle) ? document.querySelector('.gm-burger') : document.querySelector('.gm-menu-btn');
+    let hamburgerMenuClose = document.querySelector('.gm-navigation-drawer .gm-hamburger-close');
+
+    let secondHamburgerMenu = document.querySelector('.gm-menu-btn-second');
+    let secondHamburgerMenuClose = document.querySelector('.gm-second-nav-drawer .gm-hamburger-close');
 
     if (options.mobileCustomHamburger) {
       hamburgerMenu = document.querySelector('.gm-custom-hamburger');
@@ -77,6 +80,7 @@ class GroovyMenu {
     let hamburgerMenuExpanded = (options.sidebarExpandingMenuShowSideIcon && 5 === headerStyle) ? document.querySelector('.gm-navbar .gm-menu-btn--expanded') : undefined;
 
     let mainMenuWrapper = document.querySelector('.gm-main-menu-wrapper');
+    let secondMenuWrapper = document.querySelector('.gm-second-nav-drawer');
     let toolbar = document.querySelector('.gm-toolbar');
     let navbarWrapper = document.querySelector('.gm-wrapper');
     let gmSearch = document.querySelectorAll('.gm-search');
@@ -238,7 +242,6 @@ class GroovyMenu {
 
     // Sub-Menus DROPDOWN action ----------------------------------------------------------------------------[ open ]---
     let initDropdownAction = (e) => {
-      let delay = 210; // delay for diagonal navigation in sub-menus.
       let closestDropdown = e.target.closest('.gm-dropdown');
       let closestAnchor = e.target.closest('.gm-anchor');
       let isClosestAnchorEmpty = closestAnchor && '#' === closestAnchor.getAttribute('href');
@@ -247,6 +250,9 @@ class GroovyMenu {
       let gmMainMenu = document.querySelector('#gm-main-menu');
       let hasOpenedElems = false;
       let miniCart = e.target.closest('.gm-minicart');
+      let diagonalDelay = options.subDropdownAdjacentDelay ? options.subDropdownAdjacentDelay : 300;
+      diagonalDelay = diagonalDelay < 100 ? 100 : diagonalDelay;
+      diagonalDelay = diagonalDelay - 95;
 
       if (closestDropdown) {
         isTopLevelClass = closestDropdown.classList.contains('gm-menu-item--lvl-0');
@@ -305,7 +311,7 @@ class GroovyMenu {
       if (closestDropdown) {
 
         if (!hasOpenedElems) {
-          delay = 0;
+          diagonalDelay = 0;
         }
 
         let openParents = getElemParents(closestDropdown, 'gm-open');
@@ -414,11 +420,11 @@ class GroovyMenu {
             }
           }
 
-        }, delay));
+        }, diagonalDelay));
 
       } else { // apparently this is the top level menu without dropdown.
         // Close all dropdowns.
-        dropdownCloseAll(420);
+        //dropdownCloseAll(1500);
       }
     };
 
@@ -446,12 +452,13 @@ class GroovyMenu {
         return;
       }
 
-      let delay = 350;
-
       // disable for search and WooCommerce buttons.
       if (elemClassList.contains('gm-search') || elemClassList.contains('gm-minicart')) {
         return;
       }
+
+      let diagonalDelay = options.subDropdownAdjacentDelay ? options.subDropdownAdjacentDelay : 300;
+      diagonalDelay = diagonalDelay < 100 ? 100 : diagonalDelay;
 
       closestDropdown.setAttribute('data-close', true);
 
@@ -460,20 +467,16 @@ class GroovyMenu {
         if (closestDropdown.getAttribute('data-close')) {
           dropdownClose(closestDropdown);
         }
-      }, delay));
+      }, diagonalDelay));
     };
 
-    // Sub-Menus DROPDOWN action ---------------------------------------------------------------------------[ touch ]---
+    // Sub-Menus DROPDOWN action -----------------------------------------------------------------------[ touch End ]---
     let initDropdownActionByTouch = (e) => {
       let closestDropdown = e.target.closest('.gm-dropdown');
-      let closestAnchor = e.target.closest('.gm-anchor');
-      let isClosestAnchorEmpty = closestAnchor && '#' === closestAnchor.getAttribute('href');
       let isTopLevelClass = false;
-
       let closestMenuItem = e.target.closest('.gm-menu-item');
 
       if (
-        !isClosestAnchorEmpty &&
         !e.target.closest('.gm-caret') &&
         closestMenuItem &&
         closestMenuItem.classList &&
@@ -496,6 +499,13 @@ class GroovyMenu {
       }
     };
 
+    // Sub-Menus DROPDOWN Auto Close action -----------------------------------------------------------[ auto close ]---
+    let dropdownAutoClose = () => {
+      let autoCloseDelay = options.subDropdownAutocloseDelay ? options.subDropdownAutocloseDelay : 500;
+      autoCloseDelay = autoCloseDelay < 1 ? 1 : autoCloseDelay;
+      dropdownCloseAll(autoCloseDelay);
+    };
+
 
     // Frozen links must be frozen.
     let gmFrozenLinkAnchorItems = document.querySelectorAll('.gm-frozen-link > .gm-anchor');
@@ -506,7 +516,7 @@ class GroovyMenu {
     }
 
 
-    let gmAnchorItems = document.querySelectorAll('#gm-main-menu .gm-anchor, .gm-minicart, .gm-search, #gm-main-menu .mega-gm-dropdown > .gm-dropdown-menu-wrapper');
+    let gmAnchorItems = document.querySelectorAll('#gm-main-menu .gm-anchor, .gm-second-nav-drawer .gm-navbar-nav .gm-anchor, .gm-minicart, .gm-search, #gm-main-menu .gm-dropdown-menu-wrapper, .gm-second-nav-drawer .gm-navbar-nav .gm-dropdown-menu-wrapper');
     let gmMainMenu = document.querySelector('#gm-main-menu');
 
     if (gmAnchorItems) {
@@ -538,9 +548,7 @@ class GroovyMenu {
         });
 
         if (!isTouchDevice && gmMainMenu) {
-          gmMainMenu.addEventListener('mouseleave', () => {
-            dropdownCloseAll(500);
-          });
+          gmMainMenu.addEventListener('mouseleave', dropdownAutoClose);
         }
       }
 
@@ -594,18 +602,50 @@ class GroovyMenu {
       }
     }
 
+    // CSS Mobile hamburger for non-minimalistic style menu.
     if (hamburgerMenu && options.mobileIndependentCssHamburger && 2 !== headerStyle && !options.mobileCustomHamburger) {
-      hamburgerMenu.classList.add(hamburgerMenuType);
+      let hamburgerMenuTypeMobile = (options.mobileIndependentCssHamburgerType) ? options.mobileIndependentCssHamburgerType : 'hamburger--squeeze';
+      hamburgerMenu.classList.add(hamburgerMenuTypeMobile);
+    }
+
+    // CSS hamburger for minimalistic style menu.
+    if (hamburgerMenu && options.minimalisticCssHamburger && 2 === headerStyle) {
+      let hamburgerMenuTypeMinimalistic = (options.minimalisticCssHamburgerType) ? options.minimalisticCssHamburgerType : 'hamburger--squeeze';
+      hamburgerMenu.classList.add(hamburgerMenuTypeMinimalistic);
+    }
+
+    // CSS hamburger for second Sidebar Menu style menu.
+    if (secondHamburgerMenu && 1 === headerStyle) {
+      let hamburgerMenuTypeSecond = (options.secondSidebarMenuCssHamburgerType) ? options.secondSidebarMenuCssHamburgerType : 'hamburger--squeeze';
+      secondHamburgerMenu.classList.add(hamburgerMenuTypeSecond);
     }
 
     initOffcanvas({
       options: options,
       navDrawer,
       mainMenuWrapper,
-      hamburgerMenu
+      secondMenuWrapper,
+      hamburgerMenu,
+      hamburgerMenuClose,
+      secondHamburgerMenu,
+      secondHamburgerMenuClose
     });
 
     function setOffcanvas() {
+      if (!isMobile() && headerStyle === 1) {
+        if (options.secondSidebarMenuOpenType === 'offcanvasSlideSlide') {
+          offcanvasWrap(secondMenuWrapper, 'left', true);
+        } else if (options.secondSidebarMenuOpenType === 'offcanvasSlideSlideRight') {
+          offcanvasWrap(secondMenuWrapper, 'right', true);
+        } else if (options.secondSidebarMenuOpenType === 'offcanvasSlideLeft') {
+          offcanvasWrap(secondMenuWrapper, 'left');
+        } else if (options.secondSidebarMenuOpenType === 'offcanvasSlideRight') {
+          offcanvasWrap(secondMenuWrapper, 'right');
+        } else {
+          offcanvasWrap(secondMenuWrapper, 'left');
+        }
+      }
+
       if (!isMobile() && headerStyle === 2) {
         if (options.minimalisticMenuOpenType === 'offcanvasSlideSlide') {
           offcanvasWrap(mainMenuWrapper, 'left', true);
@@ -694,6 +734,11 @@ class GroovyMenu {
       navbar.after(mainMenuWrapper);
     }
 
+    // Append .gm-second-nav-drawer css class to body
+    if (headerStyle === 1 && secondMenuWrapper) {
+      navbar.after(secondMenuWrapper);
+    }
+
     document.querySelectorAll('.gm-search-wrapper')
       .forEach((el) => {
         el.addEventListener('click', (e) => e.stopPropagation());
@@ -750,22 +795,24 @@ class GroovyMenu {
       }
     }
 
-    if (linksWithHashes !== null) {
-      window.addEventListener('scroll', _.debounce(setCurrentItem, 50));
+    if (options.scrollEnableAnchors) {
+      if (linksWithHashes !== null) {
+        window.addEventListener('scroll', _.debounce(setCurrentItem, 50));
 
-      setCurrentItem();
+        setCurrentItem();
 
-      window.addEventListener('load', () => {
-        setPagePositionByHash();
+        window.addEventListener('load', () => {
+          setPagePositionByHash();
+        });
+      }
+
+      linksWithHashes.forEach((link) => {
+        let targetHash = link.getAttribute('href');
+        link.addEventListener('click', (e) => {
+          scrollToId(e, scroll, targetHash, scrollOptions);
+        });
       });
     }
-
-    linksWithHashes.forEach((link) => {
-      let targetHash = link.getAttribute('href');
-      link.addEventListener('click', (e) => {
-        scrollToId(e, scroll, targetHash, scrollOptions);
-      });
-    });
 
     if (
       !isMobile() &&
@@ -802,6 +849,25 @@ class GroovyMenu {
 
     if (options.woocommerceCart) {
       watchWooMiniCartCounter();
+    }
+
+    if (headerStyle === 3 || headerStyle === 4 || headerStyle === 5) {
+      let gmToolbarMoveFrom = document.querySelector('.gm-navbar .gm-wrapper > .gm-toolbar');
+      let gmToolbarMoveTo = document.querySelector('.gm-navbar .gm-wrapper > .gm-inner .gm-main-menu-wrapper .gm-actions');
+      if (gmToolbarMoveFrom && gmToolbarMoveTo && !gmToolbarMoveFrom.getAttribute('data-moved')) {
+        gmToolbarMoveFrom.setAttribute('data-moved', '1');
+
+        gmToolbarMoveTo.append(gmToolbarMoveFrom);
+      }
+    }
+
+    // integration helper for Thrive Themes Builder
+    let gmThriveIntegration = document.querySelector('.groovy_menu_thrive_integration');
+    if (gmThriveIntegration) {
+      let gmThriveIntegrationHeader = document.querySelector('div[data-tcb-elem-type="header"]');
+      if (gmThriveIntegrationHeader) {
+        gmThriveIntegrationHeader.style.zIndex = '100';
+      }
     }
 
   }

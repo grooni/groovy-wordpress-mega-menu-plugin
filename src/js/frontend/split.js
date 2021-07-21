@@ -4,7 +4,7 @@ import _ from 'lodash';
 var options;
 
 export function splitMenu () {
-  let items = document.querySelectorAll('.gm-main-menu-wrapper .gm-navbar-nav > li');
+  let items = document.querySelectorAll('.gm-main-menu-wrapper:not(.gm-second-nav-drawer) .gm-navbar-nav > li');
   let itemsCount = items.length;
   let left = document.createElement('ul');
   let right = document.createElement('ul');
@@ -43,12 +43,14 @@ function setPaddingsAlignCenter () {
   const navRight = document.querySelector('.nav--right');
   const navLeft = document.querySelector('.nav--left');
   const gmActions = document.querySelector('.gm-navbar .gm-main-menu-wrapper .gm-actions');
+  const gmSecondSidebarBurger = document.querySelector('.gm-navbar .gm-menu-btn-second');
 
   var widthMenuActions = 0;
   var widthMiniCart = 0;
   var widthSearchIcon = 0;
   var widthDivider = 0;
   var actionsWidth = 0;
+  var secondWidth = 0;
 
   if (options.showDivider) {
     widthDivider = 10 + 1 + 10;
@@ -71,11 +73,29 @@ function setPaddingsAlignCenter () {
     actionsWidth = gmActions.offsetWidth + 30;
   }
 
+  if (gmSecondSidebarBurger && !options.forceLogoCentering) {
+    if (options.secondSidebarMenuSideIconPosition === 'main_bar_left') {
+      widthMenuActions -= gmSecondSidebarBurger.offsetWidth;
+    }
+    if (options.secondSidebarMenuSideIconPosition === 'main_bar_right') {
+      widthMenuActions += Math.floor(gmSecondSidebarBurger.offsetWidth / 2);
+    }
+    if (options.secondSidebarMenuSideIconPosition === 'main_bar_before_action_button') {
+      widthMenuActions += Math.floor(gmSecondSidebarBurger.offsetWidth / 2);
+    }
+  }
+
+  if (gmSecondSidebarBurger && options.forceLogoCentering) {
+    if (options.secondSidebarMenuSideIconPosition === 'main_bar_left') {
+      secondWidth = gmSecondSidebarBurger.offsetWidth;
+    }
+  }
+
   if (isRtl()) {
     if (navRight) {
       navRight.style.paddingRight = `${logoHalfWidthWithPadding}px`;
       if (actionsWidth) {
-        navRight.style.width = `calc(50% + ${actionsWidth}px)`;
+        navRight.style.width = `calc(50% + ${actionsWidth - secondWidth}px)`;
       }
     }
     if (navLeft) {
@@ -95,7 +115,7 @@ function setPaddingsAlignCenter () {
     if (navLeft) {
       navLeft.style.paddingRight = `${logoHalfWidthWithPadding}px`;
       if (actionsWidth) {
-        navLeft.style.width = `calc(50% + ${actionsWidth}px)`;
+        navLeft.style.width = `calc(50% + ${actionsWidth - secondWidth}px)`;
       }
     }
     if (logo) {

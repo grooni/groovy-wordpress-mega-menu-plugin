@@ -373,20 +373,31 @@ return array(
 	'misc_icons' => array(
 		'title'  => esc_html__( 'Misc icons', 'groovy-menu' ),
 		'fields' => array(
-			'search_icon' => array(
+			'search_icon'      => array(
 				'type'    => 'icon',
 				'title'   => esc_html__( 'Search icon', 'groovy-menu' ),
 				'default' => 'gmi gmi-zoom-search',
 			),
-			'cart_icon'   => array(
+			'cart_icon'        => array(
 				'type'    => 'icon',
 				'title'   => esc_html__( 'Cart icon', 'groovy-menu' ),
 				'default' => 'gmi gmi-bag',
 			),
-			'menu_icon'   => array(
+			'menu_icon'        => array(
 				'type'    => 'icon',
-				'title'   => esc_html__( 'Side icon', 'groovy-menu' ),
+				'title'   => esc_html__( 'Side icon', 'groovy-menu' ) . ' (' . esc_html__( 'Hamburger', 'groovy-menu' ) . ')',
 				'default' => 'fa fa-bars',
+			),
+			'menu_button_text' => array(
+				'title'       => esc_html__( 'Hamburger menu text', 'groovy-menu' ),
+				'description' => esc_html__( 'This string can be translated with multilingual plugins', 'groovy-menu' ),
+				'type'        => 'text',
+				'default'     => 'Menu',
+			),
+			'close_icon'       => array(
+				'type'    => 'icon',
+				'title'   => esc_html__( 'Close icon', 'groovy-menu' ),
+				'default' => 'fa fa-times',
 			),
 		),
 	),
@@ -419,6 +430,24 @@ return array(
 				'default'     => false,
 				'description' => esc_html__( 'The theme or another plugin can override the visibility of the Groovy menu settings at Appearance &gt; Menus. To show up Groovy menus settings instead, use this option.', 'groovy-menu' ),
 			),
+			'frontend_init_alt'           => array(
+				'type'        => 'checkbox',
+				'title'       => esc_html__( 'Alternative JavaScript initialization', 'groovy-menu' ),
+				'default'     => false,
+				'description' => esc_html__( 'If enabled can help in cases where third party caching plugins have hard-coded JavaScript output.', 'groovy-menu' ),
+			),
+			'frontend_init_immediately'   => array(
+				'type'        => 'checkbox',
+				'title'       => esc_html__( 'Run JavaScript initialization as soon as possible', 'groovy-menu' ),
+				'default'     => false,
+				'description' => esc_html__( 'If disabled, then initialization occurs on the JavaScript event "DOMContentLoaded". If enabled, then initialization is performed immediately. It can help in cases where third-party caching plugins have combined all JavaScript into one file and load it after the "DOMContentLoaded" event.', 'groovy-menu' ),
+			),
+			'enable_critical_inline_css'  => array(
+				'type'        => 'checkbox',
+				'title'       => esc_html__( 'Enable inline critical CSS', 'groovy-menu' ),
+				'default'     => false,
+				'description' => esc_html__( 'Adds CSS rules in front of the Groovy Menu HTML that describes the default sizes of menus and hidden elements.', 'groovy-menu' ),
+			),
 			'google_fonts_local'          => array(
 				'type'        => 'checkbox',
 				'title'       => esc_html__( 'Use local google fonts', 'groovy-menu' ),
@@ -443,7 +472,13 @@ return array(
 				'default'     => true,
 				'description' => esc_html__( 'Add preload link tag', 'groovy-menu' ),
 			),
-			'uninstall_data' => array(
+			'remove_breaking_p_tag'       => array(
+				'type'        => 'checkbox',
+				'title'       => esc_html__( 'Clean &lt;P&gt; tag from Menu blocks', 'groovy-menu' ),
+				'default'     => true,
+				'description' => esc_html__( 'Wordpress inserts paragraphs instead of line breaks by default. Sometimes replacing double line breaks with paragraph elements works with errors inside shortcodes.', 'groovy-menu' ),
+			),
+			'uninstall_data'              => array(
 				'type'        => 'checkbox',
 				'title'       => esc_html__( 'Remove All Data after uninstall', 'groovy-menu' ),
 				'default'     => false,

@@ -27,6 +27,9 @@ body:not(.fl-builder-edit) {
 
   .menu-item {
     margin-bottom: 0;
+    height: auto;
+    width: auto;
+    max-width: 100%;
   }
 
   .gm-navbar-nav {
@@ -65,6 +68,10 @@ body:not(.fl-builder-edit) {
 .gm-navigation-drawer ul.gm-navbar-nav > li,
 .gm-navigation-drawer ul.gm-dropdown-menu,
 .gm-navigation-drawer ul.gm-dropdown-menu > li,
+.gm-second-nav-drawer ul.gm-navbar-nav,
+.gm-second-nav-drawer ul.gm-navbar-nav > li,
+.gm-second-nav-drawer ul.gm-dropdown-menu,
+.gm-second-nav-drawer ul.gm-dropdown-menu > li,
 .gm-navbar .gm-toolbar-socials-list,
 .gm-navbar .gm-toolbar-socials-list > li,
 .gm-navbar .gm-plain-list-menu-wrapper > .gm-plain-list-menu {

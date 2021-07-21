@@ -248,7 +248,7 @@ GROOVY DASHBOARD PRESET
   border: 1px solid #e0e0e0;
   background-color: #fff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.09);
-  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   cursor: pointer;
 }
 
@@ -546,6 +546,13 @@ GROOVY DASHBOARD PRESET
   border-bottom: 1px solid #e5e5e5;
 }
 
+.gm-modal-notice {
+  text-align: center;
+  padding: 30px 20px;
+  width: 100%;
+  font-size: 110%;
+}
+
 /**************************
 GENERAL SETTINGS MODAL
 **************************/
@@ -656,7 +663,8 @@ GENERAL SETTINGS MODAL
 }
 
 .gm-upload-icon-pack,
-.gm-install-default-icon-pack {
+.gm-install-default-icon-pack,
+.gm-import-notice-btn {
   z-index: 999;
   padding: 10px 20px;
   cursor: pointer;
@@ -694,13 +702,15 @@ GENERAL SETTINGS MODAL
   line-height: 29px;
 }
 
-.groovy-delete-font {
+.groovy-delete-font,
+.groovy-replace-icon-pack {
   cursor: pointer;
   position: relative;
   z-index: 999;
   display: block;
   float: right;
   margin-bottom: 15px;
+  margin-left: 8px;
   padding: 8px 20px;
   user-select: none;
   transition: background-color linear 0.3s;
