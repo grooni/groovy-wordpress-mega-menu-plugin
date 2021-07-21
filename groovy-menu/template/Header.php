@@ -365,33 +365,6 @@ function groovyMenu( $args = array() ) {
 	$menu_button_text = apply_filters( 'wpml_translate_single_string', $menu_button_text, 'groovy-menu', 'Global settings - Menu button text' );
 
 
-	// prepare for Second sidebar hamburger html.
-	$second_sidebar_burger = array(
-		'main_bar_left'                 => '',
-		'main_bar_right'                => '',
-		'main_bar_before_logo'          => '',
-		'main_bar_after_logo'           => '',
-		'main_bar_before_main_menu'     => '',
-		'main_bar_after_main_menu'      => '',
-		'main_bar_before_action_button' => '',
-	);
-
-	if (
-		1 === $header_style &&
-		$groovyMenuSettings['secondSidebarMenuEnable'] &&
-		! empty( $groovyMenuSettings['secondSidebarMenuSideIconPosition'] ) &&
-		isset( $second_sidebar_burger[ $groovyMenuSettings['secondSidebarMenuSideIconPosition'] ] )
-	) {
-		$menu_second_button_text_full = '';
-		if ( $groovyMenuSettings['secondSidebarMenuButtonShowText'] ) {
-			$menu_second_button_text_full = '<span class="gm-menu-btn--text" >' . $menu_button_text . '</span >';
-		}
-		$second_sidebar_burger_html = '<div class="gm-menu-btn-second gm-burger hamburger">' . $menu_second_button_text_full . '<div class="hamburger-box"><div class="hamburger-inner"></div></div></div>';
-
-		$second_sidebar_burger[ $groovyMenuSettings['secondSidebarMenuSideIconPosition'] ] = $second_sidebar_burger_html;
-	}
-
-
 	// Clean output, first level --------------------------------------------------------------------------------------.
 	ob_start();
 
@@ -589,9 +562,6 @@ function groovyMenu( $args = array() ) {
 	}
 
 
-	$output_html .= GroovyMenuUtils::clean_output( $second_sidebar_burger['main_bar_left'] );
-
-
 	$output_html .= '<div class="gm-logo">';
 
 
@@ -603,10 +573,6 @@ function groovyMenu( $args = array() ) {
 	 */
 	do_action( 'gm_before_logo' );
 	$output_html .= ob_get_clean();
-
-
-	$output_html .= GroovyMenuUtils::clean_output( $second_sidebar_burger['main_bar_before_logo'] );
-
 
 	$logo_url = trailingslashit( network_site_url() );
 	if ( ! empty( $styles->getGlobal( 'logo', 'logo_url' ) ) ) {
@@ -733,10 +699,6 @@ function groovyMenu( $args = array() ) {
 			'><span class="gm-logo__txt">' . esc_html( $logo_text ) . '</span></a>';
 
 	}
-
-
-	$output_html .= GroovyMenuUtils::clean_output( $second_sidebar_burger['main_bar_after_logo'] );
-
 
 	ob_start();
 	/**
@@ -885,8 +847,7 @@ function groovyMenu( $args = array() ) {
 		$output_html .= ob_get_clean();
 
 
-		$menu_button_text_full        = '';
-		$menu_second_button_text_full = '';
+		$menu_button_text_full = '';
 		if ( $groovyMenuSettings['mobileMenuButtonShowText'] || 2 === $header_style ) {
 			$menu_button_text_full = '<span class="gm-menu-btn--text" >' . $menu_button_text . '</span >';
 		}
@@ -956,19 +917,11 @@ function groovyMenu( $args = array() ) {
 	do_action( 'gm_main_menu_nav_first' );
 	$output_html .= ob_get_clean();
 
-
-	$output_html .= GroovyMenuUtils::clean_output( $second_sidebar_burger['main_bar_before_main_menu'] );
-
-
 	$output_html .= wp_nav_menu( $args );
 
 	if ( $is_menu_empty ) {
 		$output_html .= '<div class="gm-menu-empty">' . esc_html__( 'Please assign a menu to the primary menu location under Menus.', 'groovy-menu' ) . '</div>';
 	}
-
-
-	$output_html .= GroovyMenuUtils::clean_output( $second_sidebar_burger['main_bar_after_main_menu'] );
-
 
 	ob_start();
 	/**
@@ -1016,10 +969,6 @@ function groovyMenu( $args = array() ) {
 		 */
 		do_action( 'gm_main_menu_actions_button_first' );
 		$output_html .= ob_get_clean();
-
-
-		$output_html .= GroovyMenuUtils::clean_output( $second_sidebar_burger['main_bar_before_action_button'] );
-
 
 		if ( $styles->get( 'general', 'show_divider' ) ) {
 			if ( 1 === $header_style ) {
@@ -1112,10 +1061,6 @@ function groovyMenu( $args = array() ) {
 		do_action( 'gm_main_menu_actions_button_last' );
 		$output_html .= ob_get_clean();
 
-
-		$output_html .= GroovyMenuUtils::clean_output( $second_sidebar_burger['main_bar_right'] );
-
-
 		$output_html .= '</div>';
 	}
 	$output_html .= '</div>
@@ -1124,80 +1069,6 @@ function groovyMenu( $args = array() ) {
 		</div>
 		<div class="gm-padding"></div>
 	</' . esc_html( $wrapper_tag ) . '>';
-
-
-	// ---------------------------------------------------------------------------- second_sidebar_menu_enable --------.
-	if ( 1 === $header_style && $groovyMenuSettings['secondSidebarMenuEnable'] ) {
-		$second_css_classes = $styles->getHtmlClassesSecondSidebarMenu();
-
-		$output_html .= '<div id="gm-second-nav-drawer" class="gm-second-nav-drawer gm-hidden';
-		if ( ! empty( $second_css_classes ) ) {
-			$output_html .= ' ' . implode( ' ', $second_css_classes );
-		}
-		$output_html .= '">';
-
-
-		ob_start();
-		/**
-		 * Fires at the Top of Second Sidebar Menu.
-		 *
-		 * @since 2.5.0
-		 */
-		do_action( 'gm_second_sidebar_menu_top' );
-		$output_html .= ob_get_clean();
-
-
-		if ( isset( $groovyMenuSettings['secondSidebarMenuId'] ) && is_numeric( $groovyMenuSettings['secondSidebarMenuId'] ) ) {
-			// Re-assign nav_menu for the Second Sidebar Menu.
-			$args['menu'] = intval( $groovyMenuSettings['secondSidebarMenuId'] );
-
-			// Second Sidebar Menu wrapper.
-			$output_html .= '<div class="gm-second-nav-container">';
-
-
-			ob_start();
-			/**
-			 * Fires at the Second Sidebar Menu nav.
-			 *
-			 * @since 2.5.0
-			 */
-			do_action( 'gm_second_sidebar_menu_nav_first' );
-			$output_html .= ob_get_clean();
-
-
-			$output_html .= wp_nav_menu( $args );
-
-
-			ob_start();
-			/**
-			 * Fires at the Second Sidebar Menu nav.
-			 *
-			 * @since 2.5.0
-			 */
-			do_action( 'gm_second_sidebar_menu_nav_last' );
-			$output_html .= ob_get_clean();
-
-
-			$output_html .= '</div>'; // .gm-mobile-menu-container
-
-
-			$output_html .= '<div class="flex-grow-1"></div>';
-
-		}
-
-
-		ob_start();
-		/**
-		 * Fires at the Bottom of Second Sidebar Menu.
-		 *
-		 * @since 2.5.0
-		 */
-		do_action( 'gm_second_sidebar_menu_bottom' );
-		$output_html .= ob_get_clean();
-
-
-		$output_html .= '</div>';
-	}
 
 
 	// ------------------------------------------------------------------------------------------- mobile menu --------.
