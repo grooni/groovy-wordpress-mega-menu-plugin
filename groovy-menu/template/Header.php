@@ -184,8 +184,8 @@ function groovyMenu( $args = array() ) {
 
 		$serialized_styles = $styles->serialize();
 
-		$groovyMenuSettings                  = $serialized_styles;
-		$groovyMenuSettings['preset']        = array(
+		$groovyMenuSettings                         = $serialized_styles;
+		$groovyMenuSettings['preset']               = array(
 			'id'   => $styles->getPreset()->getId(),
 			'name' => $styles->getPreset()->getName(),
 		);
@@ -413,11 +413,11 @@ function groovyMenu( $args = array() ) {
 
 		$toolbar_type      = isset( $groovyMenuSettings['toolbarType'] ) ? $groovyMenuSettings['toolbarType'] : 'default';
 		$toolbar_custom_id = isset( $groovyMenuSettings['toolbarCustomId'] ) ? intval( $groovyMenuSettings['toolbarCustomId'] ) : 0;
-		$output_html .= '
+		$output_html       .= '
 				<div class="gm-toolbar" id="gm-toolbar">
 					<div class="gm-toolbar-bg"></div>';
-			$output_html .= '<div class="gm-container">';
-			$output_html .= '<div class="gm-toolbar-left">';
+		$output_html       .= '<div class="gm-container">';
+		$output_html       .= '<div class="gm-toolbar-left">';
 
 		ob_start();
 		/**
@@ -471,7 +471,7 @@ function groovyMenu( $args = array() ) {
 		$output_html .= ob_get_clean();
 
 
-			$output_html .= '</div>'; // .gm-toolbar-left
+		$output_html .= '</div>'; // .gm-toolbar-left
 		$output_html .= '<div class="gm-toolbar-right">';
 
 
@@ -499,11 +499,11 @@ function groovyMenu( $args = array() ) {
 			if ( $styles->getGlobal( 'social', 'social_' . $social ) ) {
 
 				$output_html .= '<li class="gm-toolbar-socials-list__item"><a href="' .
-					esc_url( $styles->getGlobal( 'social', 'social_' . $social . '_link' ) ) .
-					'" class="gm-toolbar-social-link" ' .
-					$link_attr .
-				    ' aria-label="' . $social . '"' .
-					'>';
+				                esc_url( $styles->getGlobal( 'social', 'social_' . $social . '_link' ) ) .
+				                '" class="gm-toolbar-social-link" ' .
+				                $link_attr .
+				                ' aria-label="' . $social . '"' .
+				                '>';
 
 				$icon = $styles->getGlobal( 'social', 'social_' . $social . '_icon' );
 				if ( $icon ) {
@@ -546,8 +546,7 @@ function groovyMenu( $args = array() ) {
 		$output_html .= ob_get_clean();
 
 
-			$output_html .= '</div>'; // .gm-toolbar-right
-
+		$output_html .= '</div>'; // .gm-toolbar-right
 
 
 		$output_html .= '</div>'; // .gm-container
@@ -667,7 +666,10 @@ function groovyMenu( $args = array() ) {
 
 			switch ( $key ) {
 				case 'default':
-					$additional_class = ( in_array( $header_style, array( 4, 5 ), true ) ) ? 'header-sidebar' : 'default';
+					$additional_class = ( in_array( $header_style, array(
+						4,
+						5
+					), true ) ) ? 'header-sidebar' : 'default';
 
 					$logo_html .= '<img src="' . $img_src . '"' . $img_width . $img_height . ' class="gm-logo__img gm-logo__img-' . $additional_class . '" alt="' . $img_alt . '" />';
 					break;
