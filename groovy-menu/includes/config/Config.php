@@ -1907,7 +1907,7 @@ return array(
 				'description' => esc_html__( 'Enable scrolling for long lists of mobile menu & submenus', 'groovy-menu' ),
 			),
 			'scroll_enable_anchors'                             => array(
-				'title'       => esc_html__( 'Track anchor links', 'groovy-menu' ),
+				'title'       => esc_html__( 'Tracking anchor links', 'groovy-menu' ),
 				'type'        => 'checkbox',
 				'default'     => true,
 				'description' => esc_html__( 'Anchor links in a onepage menu', 'groovy-menu' ),
@@ -2073,7 +2073,7 @@ return array(
 				'condition' => array( 'minimalistic_menu_fullscreen', '==', true ),
 			),
 			'minimalistic_menu_max_height'                      => array(
-				'title'       => esc_html__( 'Slider max height', 'groovy-menu' ),
+				'title'       => esc_html__( 'Full height sidebar menu', 'groovy-menu' ),
 				'description' => esc_html__( 'Occupy maximum screen height. If disabled, then the slide will not overlap the top block.', 'groovy-menu' ),
 				'type'        => 'checkbox',
 				'default'     => true,
@@ -2180,7 +2180,7 @@ return array(
 				'default' => 'default',
 			),
 			'minimalistic_css_hamburger_start'                  => array(
-				'title'     => esc_html__( 'Show Hamburger icon as animated', 'groovy-menu' ) . ', ' . esc_html__( 'with &quot;X&quot; close icon', 'groovy-menu' ),
+				'title'     => esc_html__( 'Animated Hamburger icon', 'groovy-menu' ) . ', ' . esc_html__( 'with &quot;X&quot; close icon', 'groovy-menu' ),
 				'type'      => 'inlineStart',
 				'condition' => array( 'header.style', '==', '2' ),
 			),
@@ -2210,7 +2210,7 @@ return array(
 				'condition' => array( 'header.style', '==', '2' ),
 			),
 			'minimalistic_menu_button_show_text_start'          => array(
-				'title'       => esc_html__( 'Show menu button text', 'groovy-menu' ),
+				'title'       => esc_html__( 'Custom text beside hamburger icon', 'groovy-menu' ),
 				'description' => esc_html__( 'Text from Global setting, section Misc Icon', 'groovy-menu' ),
 				'type'        => 'inlineStart',
 				'condition'   => array( 'header.style', '==', '2' ),
@@ -3279,7 +3279,7 @@ return array(
 				'default'     => false,
 			),
 			'toolbar_margin_start'                         => array(
-				'title'     => esc_html__( 'Toolbar wrapper padding', 'groovy-menu' ),
+				'title'     => esc_html__( 'Toolbar padding', 'groovy-menu' ),
 				'type'      => 'inlineStart',
 				'condition' => array(
 					array( 'toolbar_type', 'in', array( 'default' ) ),
@@ -3956,7 +3956,7 @@ return array(
 				'default'     => false,
 			),
 			'mobile_independent_css_hamburger_start'    => array(
-				'title'     => esc_html__( 'Show Hamburger icon as animated', 'groovy-menu' ) . ', ' . esc_html__( 'with &quot;X&quot; close icon', 'groovy-menu' ),
+				'title'     => esc_html__( 'Animated Hamburger icon', 'groovy-menu' ) . ', ' . esc_html__( 'with &quot;X&quot; close icon', 'groovy-menu' ),
 				'type'      => 'inlineStart',
 				'condition' => array( 'header.style', 'in', array( '1', '3', '4', '5' ) ),
 			),
@@ -3994,7 +3994,7 @@ return array(
 				'condition' => array( 'header.style', 'in', array( '1', '3', '4', '5' ) ),
 			),
 			'mobile_menu_button_show_text_start'        => array(
-				'title'       => esc_html__( 'Show menu button text', 'groovy-menu' ),
+				'title'       => esc_html__( 'Custom text beside hamburger icon', 'groovy-menu' ),
 				'description' => esc_html__( 'Text from Global setting, section Misc Icon', 'groovy-menu' ),
 				'type'        => 'inlineStart',
 			),

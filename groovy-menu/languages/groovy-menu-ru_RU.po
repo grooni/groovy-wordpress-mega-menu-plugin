@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Groovy Menu 1.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-19 18:49+0300\n"
-"PO-Revision-Date: 2021-07-19 18:49+0300\n"
+"POT-Creation-Date: 2021-07-21 12:50+0300\n"
+"PO-Revision-Date: 2021-07-21 12:50+0300\n"
 "Last-Translator: Di_Skyer <diskyer@gmail.com>\n"
 "Language-Team: Русский\n"
 "Language: ru_RU\n"
@@ -26,7 +26,7 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: assets\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 
-#: groovy-menu.php:352
+#: groovy-menu.php:354
 msgid "Groovy menu Primary"
 msgstr "Groovy основное меню"
 
@@ -1109,7 +1109,7 @@ msgstr ""
 msgid "Drawer width"
 msgstr "Выпадающий"
 
-#: includes/config/Config.php:1466
+#: includes/config/Config.php:1466 includes/config/Config.php:2076
 #, fuzzy
 #| msgid "Sidebar menu"
 msgid "Full height sidebar menu"
@@ -1389,7 +1389,7 @@ msgid "Enable scrolling for long lists of mobile menu & submenus"
 msgstr "Включить скроллинг для длинных списков суб-меню и мега меню"
 
 #: includes/config/Config.php:1910
-msgid "Track anchor links"
+msgid "Tracking anchor links"
 msgstr ""
 
 #: includes/config/Config.php:1913
@@ -1570,11 +1570,6 @@ msgstr "Текст верхнего уровня меню"
 msgid "top level alignment"
 msgstr "Выравнивание ссылок меню верхнего уровня"
 
-#: includes/config/Config.php:2076
-#, fuzzy
-msgid "Slider max height"
-msgstr "Сдвиг вправо"
-
 #: includes/config/Config.php:2077
 msgid ""
 "Occupy maximum screen height. If disabled, then the slide will not overlap "
@@ -1595,8 +1590,9 @@ msgid "Top bar action icons Align"
 msgstr "Тулбар размер соц. иконок"
 
 #: includes/config/Config.php:2183 includes/config/Config.php:3959
-msgid "Show Hamburger icon as animated"
-msgstr ""
+#, fuzzy
+msgid "Animated Hamburger icon"
+msgstr "Моб. меню"
 
 #: includes/config/Config.php:2183 includes/config/Config.php:3959
 msgid "with &quot;X&quot; close icon"
@@ -1604,8 +1600,8 @@ msgstr ""
 
 #: includes/config/Config.php:2213 includes/config/Config.php:3997
 #, fuzzy
-msgid "Show menu button text"
-msgstr "Текст заголовка мегаменю"
+msgid "Custom text beside hamburger icon"
+msgstr "Иконка поиска"
 
 #: includes/config/Config.php:2214 includes/config/Config.php:3998
 msgid "Text from Global setting, section Misc Icon"
@@ -2054,8 +2050,9 @@ msgid "Add left/right border to social icons"
 msgstr "Добавить левую / правую границу для социальных иконок"
 
 #: includes/config/Config.php:3282
-msgid "Toolbar wrapper padding"
-msgstr ""
+#, fuzzy
+msgid "Toolbar padding"
+msgstr "Тулбар"
 
 #: includes/config/Config.php:3342 includes/config/Config.php:3346
 #: includes/config/ConfigGlobal.php:388
@@ -2787,7 +2784,7 @@ msgid ""
 msgstr ""
 
 #: includes/config/ConfigGlobal.php:447
-msgid "Enable Critical inline CSS"
+msgid "Enable inline critical CSS"
 msgstr ""
 
 #: includes/config/ConfigGlobal.php:449
@@ -2837,7 +2834,7 @@ msgid "Add preload link tag"
 msgstr ""
 
 #: includes/config/ConfigGlobal.php:477
-msgid "Clean the breaking HTML \"P\" tag in the blocks menu"
+msgid "Clean &lt;P&gt; tag from Menu blocks"
 msgstr ""
 
 #: includes/config/ConfigGlobal.php:479
@@ -4872,6 +4869,14 @@ msgstr "Липкое"
 msgid "Nav menu"
 msgstr "Навигационное меню"
 
+#, fuzzy
+#~ msgid "Slider max height"
+#~ msgstr "Сдвиг вправо"
+
+#, fuzzy
+#~ msgid "Show menu button text"
+#~ msgstr "Текст заголовка мегаменю"
+
 #~ msgid "Set left/right side border of menu. Side depends on menu align"
 #~ msgstr ""
 #~ "Установите левую / правую границу меню. Сторона зависит от выравнивания "
@@ -4895,10 +4900,6 @@ msgstr "Навигационное меню"
 #, fuzzy
 #~ msgid "Menu button text"
 #~ msgstr "Текст заголовка мегаменю"
-
-#, fuzzy
-#~ msgid "Toolbar menu"
-#~ msgstr "Тулбар"
 
 #, fuzzy
 #~ msgid "Left side First"

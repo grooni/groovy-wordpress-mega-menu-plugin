@@ -2,7 +2,7 @@
 Contributors: Grooni
 Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive, responsive menu, sticky menu, vertical menu, horizontal menu, ajax cart
 Requires at least: 4.9.7
-Tested up to: 5.7
+Tested up to: 5.8
 Requires PHP: 7.0
 Stable tag: 1.3.0
 License: GPLv3
@@ -117,27 +117,26 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 == Changelog ==
 
 = 1.3.0 =
-* Add: Added "Replace" button allows to replace icon pack at "Global setting > Icon pack" tab
-* Add: Added ability to set a background image for Slider in Minimalistic style menu.
-* Add: Added ability to select places for search icons and Woocommerce mini-cart in Minimalistic style menu.
-* Add: Added the ability to integrate a plugin using a special helper plugin, in cases where integration using a child theme is not possible, for example, for Genesis Framework themes.
+* Add: Added new feature the Export/Import for Menu Blocks. (Phase 1).
+* Add: Added "Replace" button allows to replace icon pack under "Global setting > Icon pack" tab.
+* Add: Added ability to set a background image for a "Drawer" in "Minimalistic" type of menu.
+* Add: Added ability to select places for search icons and Woocommerce mini-cart in Minimalistic type of menu.
+* Add: Added the ability to integrate a menu using a special Groovy helper plugin, in cases where integration through a child theme is not possible, e.g.Genesis Framework based themes.
 * Add: Added settings to control time delay of appearing in/out between dropdowns and submenus.
-* Add: New setting to set drawer width as fullwidth for mobile menu.
-* Add: Added global setting "Close icon".
-* Add: Added Thrive Theme Builder support.
-* Add: Added setting "Disable dropdown state for minicart".
-* Add: 2 New settings "Alternative JavaScript initialization", "Run JavaScript initialization as soon as possible" at Global settings > Tools. Enabling of which can help in cases where third party caching plugins have hard-coded JavaScript output.
-* Add: Option "Show Hamburger icon as animated" added for Minimalistic menu style.
-* Add: Option "Show menu button text" for Mobile and Minimalistic menu type.
-* Add: Option "Slider max height" for Minimalistic menu type.
-* Add: Global Option "Enable Critical inline CSS" for tools.
-* Improve: "General> Toolbar menu" section renamed to "General> Additional menu". Now you can insert additional nav menus in various places in the Groovy Menu.
-* Improve: Added the ability to add Menu Blocks, Icons, Badges for Addition menus.
-* Improve: Mobile "Show Hamburger icon as animated".
-* Improve: NPM modules updated.
+* Add: New feature "Animated Hamburger icon" for Minimalistic type of menu.
+* Add: New option "Show text beside hamburger icon" for Mobile and Minimalistic menu type.
+* Add: Setting "Tracking anchor links" for "Scrollbar & Onepage" preset section.
+* Add: Setting "Full height sidebar menu" for Minimalistic type of menu.
+* Add: New option "Enable inline critical CSS" that is placed under Dashboard > Global settings > at "Tools" tab.
+* Add: Added font settings for Additional menu items text under "Styles > Typography > Additional menu items text".
+* Add: Added padding setting for custom toolbar under "Styles > Toolbar > Toolbar padding".
+* Improve: "General > Toolbar menu" section renamed to "General > Additional menu". Now you can insert additional nav menus in different places in the header.
+* Improve: NPM modules have been updated.
+* Improve: Improved work of "Animated Hamburger icon".
+* Improve: Moved all font settings to "Styles > Typography" section.
+* Fix: Deleting font files if icon pack has been removed (under Dashboard > Global setting > Icon packs).
 * Fix: Checking the existence of font files during Icon Pack loading and considering that when creating a CSS file.
-* Fix: Deleting font files if icon pack has been removed (under Dashboard > Global setting > Icons packs).
-* Fix: Hamburger icon at "Show Hamburger icon as animated" had an incorrect position when Toolbar was enabled.
+* Fix: Bug with uploading ZIP with non-standard icon fonts from Icomoon.io has been fixed.
 
 = 1.2.16 =
 * Improve:  Possibility of correct interpretation of special characters ("\n", "\r", "\t", "\f", "\b") for outputting custom content added in "Groovy Menu > Custom code".

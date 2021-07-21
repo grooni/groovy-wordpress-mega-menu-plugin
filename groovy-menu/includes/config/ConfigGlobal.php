@@ -444,7 +444,7 @@ return array(
 			),
 			'enable_critical_inline_css'  => array(
 				'type'        => 'checkbox',
-				'title'       => esc_html__( 'Enable Critical inline CSS', 'groovy-menu' ),
+				'title'       => esc_html__( 'Enable inline critical CSS', 'groovy-menu' ),
 				'default'     => false,
 				'description' => esc_html__( 'Adds CSS rules in front of the Groovy Menu HTML that describes the default sizes of menus and hidden elements.', 'groovy-menu' ),
 			),
@@ -474,7 +474,7 @@ return array(
 			),
 			'remove_breaking_p_tag'       => array(
 				'type'        => 'checkbox',
-				'title'       => esc_html__( 'Clean the breaking HTML "P" tag in the blocks menu', 'groovy-menu' ),
+				'title'       => esc_html__( 'Clean &lt;P&gt; tag from Menu blocks', 'groovy-menu' ),
 				'default'     => true,
 				'description' => esc_html__( 'Wordpress inserts paragraphs instead of line breaks by default. Sometimes replacing double line breaks with paragraph elements works with errors inside shortcodes.', 'groovy-menu' ),
 			),
