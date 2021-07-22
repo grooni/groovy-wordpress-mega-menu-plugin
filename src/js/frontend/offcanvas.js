@@ -267,25 +267,29 @@ function wrapContent() {
   let contentWrapper = document.querySelector('.gm-nav-content-wrapper');
   let wpAdminBar = document.querySelector('#wpadminbar');
 
-  if (document.querySelector('.gm-nav-content-wrapper') !== null) {
-    return;
+  if (contentWrapper) {
+    return '';
   }
 
   if (!contentWrapper) {
     wrapInner(document.body, 'div', 'class', 'gm-nav-content-wrapper');
   }
 
-  document.body.prepend(navDrawer);
+  if (navDrawer) {
+    document.body.prepend(navDrawer);
+  }
 
-  if (options.header.style === 2) {
+  if (mainMenuWrapper && options.header.style === 2) {
     document.body.prepend(mainMenuWrapper);
   }
 
-  if (options.header.style === 1 && secondMainMenuWrapper) {
+  if (secondMainMenuWrapper && options.header.style === 1) {
     document.body.prepend(secondMainMenuWrapper);
   }
 
-  document.body.prepend(gmNavbar);
+  if (gmNavbar) {
+    document.body.prepend(gmNavbar);
+  }
 
   if (wpAdminBar !== null) {
     document.body.prepend(wpAdminBar);

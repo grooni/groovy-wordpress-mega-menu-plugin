@@ -4,7 +4,7 @@ Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive,
 Requires at least: 4.9.7
 Tested up to: 5.8
 Requires PHP: 7.0
-Stable tag: 1.3.0
+Stable tag: 1.3.0.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -115,6 +115,11 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.3.0.1 =
+* Add: Setting that allows disabling the mobile menu.
+* Add: Setting that allows disabling the desktop menu.
+* Fix: Fixed some minor bugs.
 
 = 1.3.0 =
 * Add: Added new feature the Export/Import for Menu Blocks. (Phase 1).

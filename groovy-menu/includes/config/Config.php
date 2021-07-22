@@ -3422,7 +3422,7 @@ return array(
 				'default'     => '',
 			),
 			'mobile_disable_desktop'                    => array(
-				'title'       => esc_html__( 'Disable display of desktop menu version', 'groovy-menu' ),
+				'title'       => esc_html__( 'Disable to display of desktop menu', 'groovy-menu' ),
 				'description' => '',
 				'type'        => 'checkbox',
 				'default'     => false,
