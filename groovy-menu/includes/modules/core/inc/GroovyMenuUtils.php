@@ -904,7 +904,7 @@ class GroovyMenuUtils {
 		return false;
 	}
 
-	function checkNavMenuLocationPage( $hook_suffix ) {
+	public static function checkNavMenuLocationPage( $hook_suffix ) {
 		if ( 'nav-menus.php' === $hook_suffix && 'locations' === $_REQUEST['action'] ) {
 			self::saveNavMenuLocation( 0 );
 		}
