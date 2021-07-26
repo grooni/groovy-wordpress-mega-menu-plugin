@@ -880,6 +880,38 @@ class GroovyMenuUtils {
 
 
 	/**
+	 * @param $nav_menu_selected_id
+	 *
+	 * @return bool
+	 */
+	public static function saveNavMenuLocation( $nav_menu_selected_id ) {
+		if ( ! current_user_can( 'administrator' ) ) {
+			return false;
+		}
+
+		$style           = new GroovyMenuStyle();
+		$global_settings = get_option( GroovyMenuStyle::OPTION_NAME );
+		$locations       = get_theme_mod( 'nav_menu_locations' );
+
+		if ( isset( $global_settings['taxonomies'] ) && isset( $global_settings['taxonomies']['default_master_menu'] ) ) {
+			if ( isset( $locations['gm_primary'] ) && $locations['gm_primary'] !== intval( $global_settings['taxonomies']['default_master_menu'] ) ) {
+				$global_settings['taxonomies']['default_master_menu'] = strval( $locations['gm_primary'] );
+
+				update_option( $style::OPTION_NAME, $global_settings );
+			}
+		}
+
+		return false;
+	}
+
+	function checkNavMenuLocationPage( $hook_suffix ) {
+		if ( 'nav-menus.php' === $hook_suffix && 'locations' === $_REQUEST['action'] ) {
+			self::saveNavMenuLocation( 0 );
+		}
+	}
+
+
+	/**
 	 * Return registered nav_menu locations.
 	 *
 	 * @param string $name check exists location name.

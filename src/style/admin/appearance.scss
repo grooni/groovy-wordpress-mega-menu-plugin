@@ -378,3 +378,18 @@
   display: block;
   margin-top: 10px;
 }
+
+.menu-item-bar .menu-item-handle {
+  label.item-title {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+  }
+
+  .item-title {
+    margin-right: 10em;
+  }
+}
