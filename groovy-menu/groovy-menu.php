@@ -75,6 +75,8 @@ register_deactivation_hook( __FILE__, 'groovy_menu_deactivation' );
 add_action( 'init', array( 'GroovyMenuUtils', 'add_groovy_menu_preset_post_type' ), 3 );
 add_filter( 'plugin_row_meta', array( 'GroovyMenuUtils', 'gm_plugin_meta_links' ), 10, 2 );
 add_filter( 'plugin_action_links', array( 'GroovyMenuUtils', 'gm_plugin_page_links' ), 10, 2 );
+add_filter( 'wp_update_nav_menu', array( 'GroovyMenuUtils', 'saveNavMenuLocation' ), 10 );
+add_action( 'admin_enqueue_scripts', array( 'GroovyMenuUtils', 'checkNavMenuLocationPage' ), 10 );
 
 add_action( 'init', 'groovy_menu_init_classes', 2 );
 
