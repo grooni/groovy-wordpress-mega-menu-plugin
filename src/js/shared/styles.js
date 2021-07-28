@@ -683,6 +683,14 @@ export default class GmStyles {
         });
       }
 
+      // Sub level menu item text size for Caret
+      if (settings.subLevelItemTextSize) {
+        css.push({
+          '.gm-navbar .gm-dropdown-menu .gm-dropdown-toggle .gm-caret': `font-size: ${settings.subLevelItemTextSize}px`,
+          media: 'desktop'
+        });
+      }
+
     } // settings.header.style === 1
 
     // ------------------------------------------------------------------------------------ settings.header.style === 2
@@ -5397,6 +5405,12 @@ export default class GmStyles {
       });
     }
 
+    // Preloader
+    if (settings.preloader) {
+      css.push({
+        '.gm-navbar:not(.gm-init-done) > .gm-wrapper': 'opacity: 0;'
+      });
+    }
 
 
     // Write css array.

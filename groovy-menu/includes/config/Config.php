@@ -229,6 +229,12 @@ return array(
 				'description' => esc_html__( 'You can switch between displaying or hiding icons added to menu items from &quot;Appearance > menus&quot;.', 'groovy-menu' ),
 				'default'     => true,
 			),
+			'preloader'                                       => array(
+				'title'       => esc_html__( 'Enable preloader of the menu', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'checkbox',
+				'default'     => false,
+			),
 			'menu_z_index'                                    => array(
 				'title'       => esc_html__( 'Menu z-index', 'groovy-menu' ),
 				'description' => esc_html__( 'Set the z-index to ensure the menu are higher than other site content.', 'groovy-menu' ),

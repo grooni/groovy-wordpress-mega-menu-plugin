@@ -69,10 +69,6 @@ NAVBAR GENERAL STYLES
     opacity: 1;
     transition: opacity 0.38s ease-out 0.12s;
   }
-
-  &:not(.gm-init-done) > .gm-wrapper {
-    opacity: 0;
-  }
 }
 
 .gm-inner {

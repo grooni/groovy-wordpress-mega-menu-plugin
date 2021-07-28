@@ -4,7 +4,7 @@ Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive,
 Requires at least: 4.9.7
 Tested up to: 5.8
 Requires PHP: 7.0
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -115,6 +115,10 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.3.2 =
+* Add: Added a setting to enable the preloader "General settings > Enable preloader of the menu".
+* Fix: Submenu caret size for second and lower levels
 
 = 1.3.1 =
 * Improve: Added work with "Bulk Select" WordPress 5.8 feature located under Appearance > Menus.
