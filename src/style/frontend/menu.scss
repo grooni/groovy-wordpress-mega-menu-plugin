@@ -413,3 +413,16 @@ NAVBAR GENERAL STYLES
   padding: 0;
   text-indent: 0;
 }
+
+.gm-expand-space {
+  height: 24px;
+  flex-grow: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
