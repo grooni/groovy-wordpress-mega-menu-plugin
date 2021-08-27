@@ -454,6 +454,40 @@ class GroovyMenuUtils {
 
 
 	/**
+	 * Get all posts by PAGE post type.
+	 *
+	 * @return array
+	 */
+	public static function getPagesList() {
+
+		static $cached_posts = array();
+
+		if ( ! empty( $cached_posts ) ) {
+			return $cached_posts;
+		}
+
+		$params = array(
+			'post_type'   => 'page',
+			'post_status' => 'publish',
+			'numberposts' => - 1,
+		);
+
+		$posts = get_posts( $params );
+
+		foreach ( $posts as $post ) {
+			if ( ! empty( $post->ID ) ) {
+				$title                     = empty( $post->post_title ) ? '' : $post->post_title;
+				$title                     = $title . ' (id:' . $post->ID . ')';
+				$cached_posts[ $post->ID ] = $title;
+			}
+		}
+
+		return $cached_posts;
+
+	}
+
+
+	/**
 	 * Get all posts by gm_menu_block post type.
 	 *
 	 * @param string $searchIcon
@@ -885,7 +919,7 @@ class GroovyMenuUtils {
 	 * @return bool
 	 */
 	public static function saveNavMenuLocation( $nav_menu_selected_id ) {
-		if ( ! current_user_can( 'administrator' ) ) {
+		if ( !current_user_can( 'administrator' ) ) {
 			return false;
 		}
 

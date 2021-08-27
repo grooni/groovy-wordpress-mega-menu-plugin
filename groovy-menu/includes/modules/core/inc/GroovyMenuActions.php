@@ -13,6 +13,7 @@ class GroovyMenuActions {
 	public static function do_preset_shortcodes( \GroovyMenuStyle $styles ) {
 		global $groovyMenuSettings;
 		global $groovyMenuActions;
+		global $groovyMenuPreview;
 
 		if ( ! isset( $groovyMenuSettings['_preset_shortcodes_added'] ) || ! $groovyMenuSettings['_preset_shortcodes_added'] ) {
 
@@ -69,6 +70,10 @@ class GroovyMenuActions {
 
 					// Prepare content.
 					$action_content = wp_unslash( self::prepare_string_for_unslash( $settings[ $setting_index ] ) );
+
+					if ( $groovyMenuPreview ) {
+						$action_content = stripslashes( $action_content );
+					}
 
 					// Wrap content.
 					$groovyMenuActions['custom_preset'][ $action_name ][] = $wrapper['before'] . $action_content . $wrapper['after'];
