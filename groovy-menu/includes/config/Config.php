@@ -1583,6 +1583,16 @@ return array(
 				'default'     => false,
 				'condition'   => array( 'header.style', 'in', array( '2' ) ),
 			),
+			'minimalistic_menu_fullscreen_as_megamenu'        => array(
+				'title'       => esc_html__( 'Organize fullscreen menu items into columns', 'groovy-menu' ),
+				'description' => esc_html__( 'Can work with nested menus based on settings under Appearance > Menus', 'groovy-menu' ),
+				'type'        => 'checkbox',
+				'default'     => false,
+				'condition'   => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_fullscreen', '==', true ),
+				),
+			),
 			'minimalistic_menu_fullscreen_position'           => array(
 				'title'     => esc_html__( 'Fullscreen menu', 'groovy-menu' ) . ' ' . esc_html__( 'position', 'groovy-menu' ),
 				'type'      => 'select',
@@ -1592,7 +1602,11 @@ return array(
 					'right'  => esc_html__( 'Right', 'groovy-menu' ),
 				),
 				'default'   => 'center',
-				'condition' => array( 'minimalistic_menu_fullscreen', '==', true ),
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_fullscreen', '==', true ),
+					array( 'minimalistic_menu_fullscreen_as_megamenu', '==', 'false' ),
+				),
 			),
 			'minimalistic_menu_fullscreen_top_width'          => array(
 				'title'     => esc_html__( 'Fullscreen menu', 'groovy-menu' ) . ' ' . esc_html__( 'top level width', 'groovy-menu' ),
@@ -1600,7 +1614,11 @@ return array(
 				'range'     => array( 50, 2500 ),
 				'default'   => 350,
 				'unit'      => 'px',
-				'condition' => array( 'minimalistic_menu_fullscreen', '==', true ),
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_fullscreen', '==', true ),
+					array( 'minimalistic_menu_fullscreen_as_megamenu', '==', 'false' ),
+				),
 			),
 			'minimalistic_menu_fullscreen_top_alignment'      => array(
 				'title'     => esc_html__( 'Fullscreen menu', 'groovy-menu' ) . ' ' . esc_html__( 'top level alignment', 'groovy-menu' ),
@@ -1611,7 +1629,11 @@ return array(
 					'flex-end'   => esc_html__( 'Right', 'groovy-menu' ),
 				),
 				'default'   => 'center',
-				'condition' => array( 'minimalistic_menu_fullscreen', '==', true ),
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_fullscreen', '==', true ),
+					array( 'minimalistic_menu_fullscreen_as_megamenu', '==', 'false' ),
+				),
 			),
 			'minimalistic_menu_max_height'                    => array(
 				'title'       => esc_html__( 'Full height sidebar menu', 'groovy-menu' ),

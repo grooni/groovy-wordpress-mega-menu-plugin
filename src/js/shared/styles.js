@@ -1491,7 +1491,8 @@ export default class GmStyles {
         const {
           minimalisticMenuFullscreenTopWidth: topWidth,
           minimalisticMenuFullscreenTopAlignment: topAlignment,
-          minimalisticMenuOpenAnimationSpeed: animSpeed
+          minimalisticMenuOpenAnimationSpeed: animSpeed,
+          minimalisticMenuFullscreenAsMegamenu: asMegamenu
         } = settings;
 
         let animSpeedBefore = animSpeed - 23;
@@ -1502,8 +1503,6 @@ export default class GmStyles {
           '.gm-navbar ~ .gm-main-menu-wrapper.gm-navbar-animated': `transition: all cubic-bezier(0.7, 0, 0.3, 1) ${animSpeedBefore}ms;`,
           '.gm-navbar ~ .gm-navbar-animated.gm-navigation-drawer--delay': `transition: all cubic-bezier(0.7, 0, 0.3, 1) ${animSpeed}ms ${animSpeedAfter}ms;`,
           '.gm-navbar ~ .gm-main-menu-wrapper.gm-navigation-drawer--open': 'width: 100vw !important;',
-          '.gm-navbar ~ .gm-main-menu-wrapper #gm-main-menu': `flex: 0 ${topWidth}px;`,
-          '.gm-main-menu-wrapper .gm-navbar-nav .gm-menu-item > .gm-anchor': `justify-content: ${topAlignment};`,
           '.gm-navigation-drawer--left.gm-navigation-drawer--open ~ .gm-nav-content-wrapper': 'transform: translate3d(100%, 0, 0);',
           '.gm-navigation-drawer--right.gm-navigation-drawer--open ~ .gm-nav-content-wrapper': 'transform: translate3d(-100%, 0, 0);',
           media: 'desktop'
@@ -1516,49 +1515,81 @@ export default class GmStyles {
           media: 'desktop'
         });
 
-        // Top Menu Position.
-        if (settings.minimalisticMenuFullscreenPosition === 'left') {
-          css.push({
-            '.gm-navbar ~ .gm-main-menu-wrapper #gm-main-menu': 'margin-right: auto;',
-            '.gm-main-menu-wrapper .gm-menu-item--lvl-0 > .gm-dropdown-menu-wrapper': `right: auto !important; left: ${topWidth}px !important;`,
-            '.gm-main-menu-wrapper .gm-dropdown:not(.gm-menu-item--lvl-0) .gm-dropdown-menu-wrapper': `right: auto !important; left: 100% !important;`,
-            '.gm-main-menu-wrapper.gm-navigation-drawer--right .gm-navbar-nav .gm-dropdown-menu .gm-caret i': `transform: rotate(0deg);`,
-            '.gm-main-menu-wrapper.gm-navigation-drawer--right .gm-navbar-nav > li > .gm-anchor .gm-caret i': `transform: rotate(-90deg);`,
-            media: 'desktop'
-          });
-        } else if (settings.minimalisticMenuFullscreenPosition === 'right') {
-          css.push({
-            '.gm-navbar ~ .gm-main-menu-wrapper #gm-main-menu': 'margin-left: auto;',
-            '.gm-main-menu-wrapper .gm-menu-item--lvl-0 > .gm-dropdown-menu-wrapper': `right: ${topWidth}px !important; left: auto !important;`,
-            '.gm-main-menu-wrapper .gm-dropdown:not(.gm-menu-item--lvl-0) .gm-dropdown-menu-wrapper': `right: 100% !important; left: auto !important;`,
-            '.gm-main-menu-wrapper.gm-navigation-drawer--left .gm-navbar-nav .gm-dropdown-menu .gm-caret i': `transform: rotate(180deg);`,
-            '.gm-main-menu-wrapper.gm-navigation-drawer--left .gm-navbar-nav > li > .gm-anchor .gm-caret i': `transform: rotate(90deg);`,
-            media: 'desktop'
-          });
-        } else if (settings.minimalisticMenuFullscreenPosition === 'center') {
-          let half_topWidth = parseInt(topWidth, 10) / 2 >> 0;
+
+        // MEGA MENU STYLE of Minimalistic Fullscreen menu.
+        if (asMegamenu) {
 
           css.push({
-            '.gm-main-menu-wrapper .gm-dropdown-menu-wrapper': `right: calc( 50vw + ${half_topWidth}px ) !important; left: auto !important;`,
-            '.gm-main-menu-wrapper .gm-dropdown:not(.gm-menu-item--lvl-0) .gm-dropdown-menu-wrapper': `right: 100% !important; left: auto !important;`,
-            '.gm-main-menu-wrapper.gm-navigation-drawer--left .gm-navbar-nav .gm-dropdown-menu .gm-caret i': `transform: rotate(180deg);`,
-            '.gm-main-menu-wrapper.gm-navigation-drawer--left .gm-navbar-nav > li > .gm-anchor .gm-caret i': `transform: rotate(90deg);`,
+            '.gm-navbar ~ .gm-main-menu-wrapper #gm-main-menu': 'flex: 1 100%; height: 100%; max-height: 100%;',
+            '.gm-navbar ~ .gm-main-menu-wrapper .gm-navbar-nav': 'display: flex; justify-content: center; flex-direction: row; flex-wrap: wrap; align-content: center; align-items: flex-start; margin-top: 140px;',
+            '.gm-navbar ~ .gm-main-menu-wrapper .gm-navbar-nav > .gm-menu-item': 'padding-right: 10px; padding-left: 10px; display: flex; flex-direction: column; flex-wrap: nowrap; align-content: flex-start; justify-content: center; align-items: center;',
+            '.gm-main-menu-wrapper .gm-dropdown-menu-wrapper': 'left: unset !important; position: static; visibility: visible; opacity: 1; transform: none !important; top: unset !important; height: auto !important; width: auto !important; z-index: unset !important;',
+            '.gm-navbar ~ .gm-main-menu-wrapper .gm-dropdown-menu': 'top: unset; bottom: unset; display: block; flex-direction: row; width: 100%; height: auto; justify-content: center; left: unset; position: relative; flex: 1; visibility: visible; opacity: 1;',
+            '.gm-navbar ~ .gm-main-menu-wrapper .gm-dropdown-menu .gm-menu-item': 'padding-right: 0; padding-left: 0; display: block; width: auto; max-width: inherit; height: auto; padding: inherit; margin: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: none;',
+            '.gm-navbar ~ .gm-main-menu-wrapper .gm-caret': 'display: none;',
+            '.gm-navbar ~ .gm-main-menu-wrapper .gm-dropdown-menu .gm-menu-item__link': 'padding-right: 12px; padding-left: 12px;',
+            '.gm-navbar ~ .gm-main-menu-wrapper .gm-dropdown:not(.gm-open) .gm-dropdown-menu-wrapper': 'pointer-events: auto;',
+            '.gm-navbar ~ .gm-main-menu-wrapper .gm-dropdown.gm-menu-item--lvl-1 .gm-dropdown-menu-wrapper .gm-anchor': 'padding-left: 20px;',
+            '.gm-navbar ~ .gm-main-menu-wrapper .gm-dropdown.gm-menu-item--lvl-2 .gm-dropdown-menu-wrapper .gm-anchor': 'padding-left: 28px;',
+            '.gm-navbar ~ .gm-main-menu-wrapper .gm-dropdown.gm-menu-item--lvl-3 .gm-dropdown-menu-wrapper .gm-anchor': 'padding-left: 36px;',
+            '.gm-navbar ~ .gm-main-menu-wrapper .gm-dropdown.gm-menu-item--lvl-4 .gm-dropdown-menu-wrapper .gm-anchor': 'padding-left: 44px;',
             media: 'desktop'
           });
-        }
 
-        // Top Menu Alignment.
-        if (settings.minimalisticMenuFullscreenTopAlignment === 'center') {
+
+        } else {
+
+          // Apply Fullscreen.
           css.push({
-            '.gm-main-menu-wrapper .gm-dropdown > .gm-anchor .gm-caret, .gm-main-menu-wrapper .gm-dropdown > .gm-anchor .gm-menu-item__txt-wrapper': 'margin-left: auto;',
-            '.gm-main-menu-wrapper .gm-dropdown > .gm-anchor .gm-menu-item__txt-wrapper': 'padding-left: 26px;',
+            '.gm-navbar ~ .gm-main-menu-wrapper #gm-main-menu': `flex: 0 ${topWidth}px;`,
+            '.gm-main-menu-wrapper .gm-navbar-nav .gm-menu-item > .gm-anchor': `justify-content: ${topAlignment};`,
             media: 'desktop'
           });
-        } else if (settings.minimalisticMenuFullscreenTopAlignment === 'flex-start') {
-          css.push({
-            '.gm-main-menu-wrapper .gm-dropdown > .gm-anchor .gm-caret': 'margin-left: auto;',
-            media: 'desktop'
-          });
+
+          // Top Menu Position.
+          if (settings.minimalisticMenuFullscreenPosition === 'left') {
+            css.push({
+              '.gm-navbar ~ .gm-main-menu-wrapper #gm-main-menu': 'margin-right: auto;',
+              '.gm-main-menu-wrapper .gm-menu-item--lvl-0 > .gm-dropdown-menu-wrapper': `right: auto !important; left: ${topWidth}px !important;`,
+              '.gm-main-menu-wrapper .gm-dropdown:not(.gm-menu-item--lvl-0) .gm-dropdown-menu-wrapper': `right: auto !important; left: 100% !important;`,
+              '.gm-main-menu-wrapper.gm-navigation-drawer--right .gm-navbar-nav .gm-dropdown-menu .gm-caret i': `transform: rotate(0deg);`,
+              '.gm-main-menu-wrapper.gm-navigation-drawer--right .gm-navbar-nav > li > .gm-anchor .gm-caret i': `transform: rotate(-90deg);`,
+              media: 'desktop'
+            });
+          } else if (settings.minimalisticMenuFullscreenPosition === 'right') {
+            css.push({
+              '.gm-navbar ~ .gm-main-menu-wrapper #gm-main-menu': 'margin-left: auto;',
+              '.gm-main-menu-wrapper .gm-menu-item--lvl-0 > .gm-dropdown-menu-wrapper': `right: ${topWidth}px !important; left: auto !important;`,
+              '.gm-main-menu-wrapper .gm-dropdown:not(.gm-menu-item--lvl-0) .gm-dropdown-menu-wrapper': `right: 100% !important; left: auto !important;`,
+              '.gm-main-menu-wrapper.gm-navigation-drawer--left .gm-navbar-nav .gm-dropdown-menu .gm-caret i': `transform: rotate(180deg);`,
+              '.gm-main-menu-wrapper.gm-navigation-drawer--left .gm-navbar-nav > li > .gm-anchor .gm-caret i': `transform: rotate(90deg);`,
+              media: 'desktop'
+            });
+          } else if (settings.minimalisticMenuFullscreenPosition === 'center') {
+            let half_topWidth = parseInt(topWidth, 10) / 2 >> 0;
+
+            css.push({
+              '.gm-main-menu-wrapper .gm-dropdown-menu-wrapper': `right: calc( 50vw + ${half_topWidth}px ) !important; left: auto !important;`,
+              '.gm-main-menu-wrapper .gm-dropdown:not(.gm-menu-item--lvl-0) .gm-dropdown-menu-wrapper': `right: 100% !important; left: auto !important;`,
+              '.gm-main-menu-wrapper.gm-navigation-drawer--left .gm-navbar-nav .gm-dropdown-menu .gm-caret i': `transform: rotate(180deg);`,
+              '.gm-main-menu-wrapper.gm-navigation-drawer--left .gm-navbar-nav > li > .gm-anchor .gm-caret i': `transform: rotate(90deg);`,
+              media: 'desktop'
+            });
+          }
+
+          // Top Menu Alignment.
+          if (settings.minimalisticMenuFullscreenTopAlignment === 'center') {
+            css.push({
+              '.gm-main-menu-wrapper .gm-dropdown > .gm-anchor .gm-caret, .gm-main-menu-wrapper .gm-dropdown > .gm-anchor .gm-menu-item__txt-wrapper': 'margin-left: auto;',
+              '.gm-main-menu-wrapper .gm-dropdown > .gm-anchor .gm-menu-item__txt-wrapper': 'padding-left: 26px;',
+              media: 'desktop'
+            });
+          } else if (settings.minimalisticMenuFullscreenTopAlignment === 'flex-start') {
+            css.push({
+              '.gm-main-menu-wrapper .gm-dropdown > .gm-anchor .gm-caret': 'margin-left: auto;',
+              media: 'desktop'
+            });
+          }
         }
 
         // Close Fullscreen button color.
