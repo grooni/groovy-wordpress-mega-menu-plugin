@@ -4,7 +4,7 @@ Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive,
 Requires at least: 4.9.7
 Tested up to: 5.8
 Requires PHP: 7.0
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -115,6 +115,13 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.3.3 =
+* Add: New option "Show hamburger menu only" for Minimalistic menu type.
+* Add: New feature "Organize fullscreen menu items into columns" when Minimalistic menu type "Fullscreen menu" is enabled.
+* Fix: Fixed bug with the incorrect position of the menu, when the search and mini-basket icons are disabled.
+* Fix: Drawer auto-closing now works by click on the anchor links in minimalistic style.
+* Fix: The incorrect appearance of added custom code in preview mode.
 
 = 1.3.2 =
 * Add: Added a setting to enable the preloader "General settings > Enable preloader of the menu".
