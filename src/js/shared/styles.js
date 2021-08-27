@@ -693,7 +693,7 @@ export default class GmStyles {
 
     } // settings.header.style === 1
 
-    // ------------------------------------------------------------------------------------ settings.header.style === 2
+    // ---------------------------------------------------------- settings.header.style === 1 with Second SideBar Menu
 
     if (settings.header.style === 1 && settings.secondSidebarMenuEnable) {
       const {

@@ -14,7 +14,7 @@ import {scrollToId, setCurrentItem} from './one-page';
 
 import {initPaddingsAlignCenter, splitMenu} from './split';
 import {disableStickyNav, enableStickyNav, initStickyNav} from './sticky';
-import {initOffcanvas, offcanvasSlide, offcanvasWrap} from './offcanvas';
+import {initOffcanvas, offcanvasSlide, offcanvasWrap, offcanvasToggle} from './offcanvas';
 import {initExpanding, expandingSidebarEvents} from './expanding';
 import {initMenuThumbnails} from './thumbnails';
 
@@ -809,7 +809,16 @@ class GroovyMenu {
       linksWithHashes.forEach((link) => {
         let targetHash = link.getAttribute('href');
         link.addEventListener('click', (e) => {
+
+          if (headerStyle === 2) {
+            let mainMenuWrapper = document.querySelector('.gm-main-menu-wrapper');
+            if (mainMenuWrapper) {
+              offcanvasToggle(mainMenuWrapper);
+            }
+          }
+
           scrollToId(e, scroll, targetHash, scrollOptions);
+
         });
       });
     }

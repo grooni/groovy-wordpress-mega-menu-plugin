@@ -69,6 +69,33 @@ NAVBAR GENERAL STYLES
     opacity: 1;
     transition: opacity 0.38s ease-out 0.12s;
   }
+
+  &.gm-navbar--show-only-hamburger {
+    display: inline;
+
+    .gm-padding,
+    .gm-wrapper > .gm-toolbar,
+    .gm-wrapper > .gm-inner .gm-inner-bg,
+    .gm-wrapper > .gm-inner .gm-container .gm-logo,
+    .gm-wrapper > .gm-inner .gm-container .gm-menu-actions-wrapper {
+      display: none !important;
+    }
+
+    .gm-wrapper,
+    .gm-wrapper > .gm-inner,
+    .gm-wrapper > .gm-inner > .gm-container {
+      display: inline;
+      position: inherit;
+      padding: 0;
+      margin: 0;
+      max-width: fit-content;
+      max-height: fit-content;
+      height: fit-content;
+      width: fit-content;
+      min-height: fit-content;
+      min-width: fit-content;
+    }
+  }
 }
 
 .gm-inner {

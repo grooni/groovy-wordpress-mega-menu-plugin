@@ -2373,6 +2373,8 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 
 			$admin_nav_menu_page = '<a href="' . admin_url( 'nav-menus.php?action=locations' ) . '">' . esc_html__( 'Manage Locations', 'groovy-menu' ) . '</a>';
 
+			//$pages_list = GroovyMenuUtils::getPagesList(); // TODO one page TEST-DEV mode
+
 			?>
 
 			<div class="gm-dashboard-container gm-dashboard__integration">

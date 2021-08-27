@@ -1,8 +1,8 @@
 import {getCoords, isMobile, unwrapInner, wrapInner} from '../shared/helpers';
 import _ from 'lodash';
-import {setCurrentItem} from './one-page';
-import {initPaddingsAlignCenter} from './split';
-import groovyTakeScreenshot from '../admin/screenshot';
+//import {setCurrentItem} from './one-page';
+//import {initPaddingsAlignCenter} from './split';
+//import groovyTakeScreenshot from '../admin/screenshot';
 
 var options;
 var navDrawer;
@@ -74,7 +74,7 @@ function offcanvasClose(navDrawer) {
   }
 }
 
-function offcanvasToggle(navDrawer) {
+export function offcanvasToggle(navDrawer) {
   if (offcanvasIsOpen(navDrawer)) {
     offcanvasClose(navDrawer);
   } else {

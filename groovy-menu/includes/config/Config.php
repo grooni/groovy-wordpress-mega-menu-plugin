@@ -1801,6 +1801,12 @@ return array(
 				'type'      => 'inlineEnd',
 				'condition' => array( 'header.style', '==', '2' ),
 			),
+			'minimalistic_menu_show_only_hamburger'           => array(
+				'title'       => esc_html__( 'Show hamburger menu only', 'groovy-menu' ),
+				'description' => esc_html__( 'The logo, main menu items, and other elements will not be displayed', 'groovy-menu' ),
+				'type'        => 'checkbox',
+				'default'     => false,
+			),
 			// ---------------------------------------------------------------------------------------------   CSS
 			'css_group'                                       => array(
 				'title'     => esc_html__( 'Custom CSS', 'groovy-menu' ),

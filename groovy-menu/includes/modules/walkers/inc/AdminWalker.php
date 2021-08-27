@@ -233,10 +233,10 @@ class AdminWalker extends WalkerNavMenu {
 			<div class="menu-item-handle">
 				<label class="item-title" for="menu-item-checkbox-<?php echo $item_id; ?>">
 					<input id="menu-item-checkbox-<?php echo $item_id; ?>" type="checkbox" class="menu-item-checkbox"
-						   data-menu-item-id="<?php echo $item_id; ?>" disabled="disabled"/>
+						data-menu-item-id="<?php echo $item_id; ?>" disabled="disabled"/>
 					<span class="item-title"><span
-								class="menu-item-title"><?php echo esc_html( $title ); ?></span> <span
-								class="is-submenu" <?php echo $submenu_text_escaped; ?>><?php _e( 'sub item', 'groovy-menu' ); ?></span></span>
+							class="menu-item-title"><?php echo esc_html( $title ); ?></span> <span
+							class="is-submenu" <?php echo $submenu_text_escaped; ?>><?php _e( 'sub item', 'groovy-menu' ); ?></span></span>
 				</label>
 				<span class="item-controls">
 						<span class="item-type"><?php echo esc_html( $itemTypeLabel ); ?></span>

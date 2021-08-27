@@ -503,6 +503,12 @@ if ( ! class_exists( 'GroovyMenuStyle' ) ) {
 					}
 				}
 
+				if ( 2 === $header_style ) {
+					if ( isset( $settings['minimalisticMenuShowOnlyHamburger'] ) && $settings['minimalisticMenuShowOnlyHamburger'] ) {
+						$classes_navbar[] = 'gm-navbar--show-only-hamburger';
+					}
+				}
+
 			}
 
 			if ( isset( $settings['shadow'] ) && $settings['shadow'] && ! in_array( $header_style, array( 3, 5 ), true ) ) {
