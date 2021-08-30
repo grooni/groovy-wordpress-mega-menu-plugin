@@ -2591,18 +2591,36 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 											$35</a></p>
 								</div>
 							</div>
+						<?php } ?>
 
 
+						<div class="gm-dashboard-body-section">
+							<div class="gm-dashboard-body-block--left">
+								<img class="gm-gui-picture gm-gui-picture__shortcode-integration"
+									src="<?php echo GROOVY_MENU_URL; ?>assets/images/shortcode-integration.svg" alt="">
+							</div>
+							<div class="gm-dashboard-body-block--right">
+								<h3><?php esc_html_e( 'Shortcode integration', 'groovy-menu' ); ?></h3>
+								<p><?php esc_html_e( 'You can use this shortcode  [groovy_menu]  to output the Groovy menu.', 'groovy-menu' ); ?></p>
+								<p>
+									<code class="gm-integrate-php-sample">[groovy_menu]</code>
+								</p>
+								<p><?php esc_html_e( 'For that insert, this shortcode in a place where you would like to place the menu.', 'groovy-menu' ); ?></p>
+							</div>
+						</div>
+
+
+						<?php if ( ! $this->lver ) { ?>
 							<div class="gm-dashboard-body-subsection">
-									<p><?php esc_html_e( 'Get stucked?', 'groovy-menu' ); ?>
-										<img
-												class="gm-gui-picture gm-gui-picture__need-help"
-												src="<?php echo GROOVY_MENU_URL; ?>assets/images/need-help.svg"
-												alt="">
-										<?php
-										echo sprintf( esc_html__( 'Ask the %s team', 'groovy-menu' ),
-											sprintf( '<a href="https://grooni.ticksy.com/" target="_blank">%s</a>', esc_html__( 'support', 'groovy-menu' ) )
-										); ?></p>
+								<p><?php esc_html_e( 'Get stucked?', 'groovy-menu' ); ?>
+									<img
+										class="gm-gui-picture gm-gui-picture__need-help"
+										src="<?php echo GROOVY_MENU_URL; ?>assets/images/need-help.svg"
+										alt="">
+									<?php
+									echo sprintf( esc_html__( 'Ask the %s team', 'groovy-menu' ),
+										sprintf( '<a href="https://grooni.ticksy.com/" target="_blank">%s</a>', esc_html__( 'support', 'groovy-menu' ) )
+									); ?></p>
 							</div>
 						<?php } ?>
 

@@ -4,7 +4,7 @@ Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive,
 Requires at least: 4.9.7
 Tested up to: 5.8
 Requires PHP: 7.0
-Stable tag: 1.3.3
+Stable tag: 1.3.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -115,6 +115,10 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.3.4 =
+* Add: New option "Mega menu item line height" and "Submenu item line height".
+* Fix: Now it is not possible to use "Automatic integration" together with "Theme Locations integration" at the same time.
 
 = 1.3.3 =
 * Add: New option "Show hamburger menu only" for Minimalistic menu type.
