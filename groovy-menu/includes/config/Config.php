@@ -489,6 +489,30 @@ return array(
 				'default' => '',
 				'alpha'   => true,
 			),
+			'sub_level_line_height_start'  => array(
+				'title' => esc_html__( 'Submenu', 'groovy-menu' ) . ' ' . esc_html__( 'item line height', 'groovy-menu' ),
+				'type'  => 'inlineStart',
+			),
+			'sub_level_line_height_type'   => array(
+				'title'   => esc_html__( 'type', 'groovy-menu' ),
+				'type'    => 'select',
+				'options' => array(
+					'inherit' => esc_html__( 'Inherit', 'groovy-menu' ),
+					'custom'  => esc_html__( 'Custom', 'groovy-menu' ),
+				),
+				'default' => 'inherit',
+			),
+			'sub_level_line_height_custom' => array(
+				'title'     => esc_html__( 'pixels', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( 0, 100 ),
+				'default'   => 18,
+				'unit'      => 'px',
+				'condition' => array( 'sub_level_line_height_type', 'in', array( 'custom' ) ),
+			),
+			'sub_level_line_height_end'    => array(
+				'type' => 'inlineEnd'
+			),
 			'sub_dropdown_radius_start'                       => array(
 				'title'     => esc_html__( 'Dropdown radius', 'groovy-menu' ),
 				'type'      => 'inlineStart',
@@ -685,6 +709,30 @@ return array(
 				'type'      => 'checkbox',
 				'default'   => true,
 				'condition' => array( 'header.style', 'in', array( '1' ) ),
+			),
+			'mega_menu_line_height_start'  => array(
+				'title' => esc_html__( 'Mega menu', 'groovy-menu' ) . ' ' . esc_html__( 'item line height', 'groovy-menu' ),
+				'type'  => 'inlineStart',
+			),
+			'mega_menu_line_height_type'   => array(
+				'title'   => esc_html__( 'type', 'groovy-menu' ),
+				'type'    => 'select',
+				'options' => array(
+					'inherit' => esc_html__( 'Inherit', 'groovy-menu' ),
+					'custom'  => esc_html__( 'Custom', 'groovy-menu' ),
+				),
+				'default' => 'inherit',
+			),
+			'mega_menu_line_height_custom' => array(
+				'title'     => esc_html__( 'pixels', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( 0, 100 ),
+				'default'   => 18,
+				'unit'      => 'px',
+				'condition' => array( 'mega_menu_line_height_type', 'in', array( 'custom' ) ),
+			),
+			'mega_menu_line_height_end'    => array(
+				'type' => 'inlineEnd'
 			),
 			'mega_menu_links_side_padding'                    => array(
 				'title'   => esc_html__( 'Mega menu links left/right padding', 'groovy-menu' ),
