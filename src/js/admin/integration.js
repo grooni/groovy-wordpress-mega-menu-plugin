@@ -9,6 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let autoIntegrate = document.querySelector('.gm-auto-integration-switcher').checked;
     let gmNonce = document.querySelector('#gm-nonce-auto-integration-field');
 
+    let locationIntegrate = document.querySelector('.gm-integration-location').value;
+    if (locationIntegrate) {
+      alert('Note: Only one of the above integrations can be active.');
+      return;
+    }
+
     const data = {
       action: 'gm_save_auto_integration',
       data: autoIntegrate,
@@ -31,6 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
   integrationLocationSaveBtn.addEventListener('click', function () {
     let locationIntegrate = document.querySelector('.gm-integration-location').value;
     let gmNonce = document.querySelector('#gm-nonce-auto-integration-field');
+
+    let autoIntegrate = document.querySelector('.gm-auto-integration-switcher').checked;
+    if (autoIntegrate) {
+      alert('Note: Only one of the above integrations can be active.');
+      return;
+    }
 
     const data = {
       action: 'gm_save_single_location_integration',

@@ -3910,6 +3910,24 @@ export default class GmStyles {
       });
     }
 
+    // Sub level item line height
+    if (settings.subLevelLineHeightType && settings.subLevelLineHeightType === 'custom') {
+      const lineHeightSM = settings.subLevelLineHeightCustom;
+      css.push({
+        '.gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav .gm-dropdown:not(.mega-gm-dropdown) .gm-dropdown-menu .gm-menu-item__link': `line-height: ${lineHeightSM}px`,
+        media: 'desktop'
+      });
+    }
+
+    // Sub level item line height for MegaMenu
+    if (settings.megaMenuLineHeightType && settings.megaMenuLineHeightType === 'custom') {
+      const lineHeightMM = settings.megaMenuLineHeightCustom;
+      css.push({
+        '.gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav .gm-dropdown.mega-gm-dropdown .gm-dropdown-menu .gm-menu-item__link': `line-height: ${lineHeightMM}px`,
+        media: 'desktop'
+      });
+    }
+
     // Mobile logo position
     if (settings.mobileLogoPosition !== 'default') {
       const {
