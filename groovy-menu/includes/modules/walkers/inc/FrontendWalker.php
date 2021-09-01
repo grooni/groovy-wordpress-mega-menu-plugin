@@ -422,7 +422,7 @@ class FrontendWalker extends WalkerNavMenu {
 
 					$current_title = apply_filters( 'the_title', $item->title, $item->ID );
 					if ( in_array( $current_title, $hiding_symbol, true ) ) {
-						$current_title = '';
+						$current_title = '&nbsp;';
 					}
 
 					$item_link .= '<span class="gm-menu-item__txt-wrapper">';
@@ -453,7 +453,7 @@ class FrontendWalker extends WalkerNavMenu {
 
 					$current_title = apply_filters( 'the_title', $item->title, $item->ID );
 					if ( in_array( $current_title, $hiding_symbol, true ) ) {
-						$current_title = '';
+						$current_title = '&nbsp;';
 					}
 
 					$item_title .= $current_title;
@@ -743,7 +743,7 @@ class FrontendWalker extends WalkerNavMenu {
 
 				$current_title = apply_filters( 'the_title', $item->title, $item->ID );
 				if ( in_array( $current_title, $hiding_symbol, true ) ) {
-					$current_title = '';
+					$current_title = '&nbsp;';
 				}
 
 				$item_output .= '<span class="gm-menu-item__txt-wrapper">';
