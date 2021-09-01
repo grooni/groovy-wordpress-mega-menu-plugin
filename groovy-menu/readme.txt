@@ -4,7 +4,7 @@ Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive,
 Requires at least: 4.9.7
 Tested up to: 5.8
 Requires PHP: 7.0
-Stable tag: 1.3.4
+Stable tag: 1.3.5
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -115,6 +115,10 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.3.5 =
+* Fix: Fixed some styles for Fullscreen Minimalistic menu type, when the "Organize fullscreen menu items into columns" toggle enabled.
+* Fix: A non-breaking space is now inserted for menu items whose title is hidden with a dash "-".
 
 = 1.3.4 =
 * Add: New option "Mega menu item line height" and "Submenu item line height".

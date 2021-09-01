@@ -1150,6 +1150,8 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	protected function getFirstLetterAsIcon( $item ) {
 		$return_default_letter = '?';
 
+		$hiding_symbol = array( '-', '–', '&#8211;' );
+
 		$item_id = $this->getId( $item );
 		if ( empty( $item_id ) ) {
 			return $return_default_letter;
@@ -1167,6 +1169,10 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 		} else {
 			// Use substr to get the first character.
 			$first_letter = substr( $title, 0, 1 );
+		}
+
+		if ( in_array( $first_letter, $hiding_symbol, true ) ) {
+			$first_letter = '&nbsp;';
 		}
 
 		return $first_letter;
