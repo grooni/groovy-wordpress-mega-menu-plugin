@@ -2437,7 +2437,8 @@ export default class GmStyles {
         sidebarExpandingMenuUseAnimation,
         sidebarExpandingMenuAnimationDuration,
         sidebarExpandingMenuIconSize,
-        sidebarExpandingMenuShowSideIcon
+        sidebarExpandingMenuShowSideIcon,
+        topLevelTextBackgroundHover
       } = settings;
 
       let iconSize = sidebarExpandingMenuIconSize ? sidebarExpandingMenuIconSize : 32;
@@ -2949,6 +2950,13 @@ export default class GmStyles {
         css.push({
           '.gm-navbar:not(.gm-navbar-sticky-toggle) .gm-navbar-nav > li.current-menu-item > .gm-anchor, .gm-navbar:not(.gm-navbar-sticky-toggle) .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor, .gm-navbar:not(.gm-navbar-sticky-toggle) .gm-navbar-nav > li.current-page-ancestor > .gm-anchor, .gm-navbar:not(.gm-navbar-sticky-toggle) .gm-navbar-nav > li.current-menu-parent > .gm-anchor, .gm-navbar:not(.gm-navbar-sticky-toggle) .gm-navbar-nav > .menu-item > .gm-anchor:hover, .gm-navbar:not(.gm-navbar-sticky-toggle) .gm-navbar-nav > .menu-item.gm-open > .gm-anchor': `color: ${settings.topLevelTextColorHover} !important`
         });
+
+        //topLevelTextBackgroundHover
+        if (settings.topLevelTextBackgroundHover && (settings.header.style === 3 || settings.header.style === 5)) {
+          css.push({
+            '.gm-navbar .gm-navbar-nav > li.current-menu-item > .gm-anchor, .gm-navbar .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor, .gm-navbar .gm-navbar-nav > li.current-page-ancestor > .gm-anchor, .gm-navbar .gm-navbar-nav > li.current-menu-parent > .gm-anchor, .gm-navbar .gm-navbar-nav > .menu-item > .gm-anchor:hover, .gm-navbar .gm-navbar-nav > .menu-item.gm-open > .gm-anchor': `background: ${settings.topLevelTextBackgroundHover};`
+          });
+        }
 
         // if option active: Change Top level menu background color when submenu(s) are opened
         // background_color_change_on_submenu_opened
