@@ -93,7 +93,10 @@ export function handleSelectChanges () {
     'toolbar_menu_letter_spacing',
     'second_sidebar_menu_text_weight',
     'second_sidebar_menu_text_subset',
+    'menu_links_desc_text_weight',
+    'menu_links_desc_text_subset',
   ];
+
 
   if (fontSelects.includes(this.dataset.name)) {
     return;
