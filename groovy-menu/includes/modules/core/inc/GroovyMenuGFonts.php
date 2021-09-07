@@ -312,8 +312,7 @@ class GroovyMenuGFonts {
 				'subset'      => array(
 					'styles' => [
 						'logo_txt_subset',
-						'
-						sticky_logo_txt_subset',
+						'sticky_logo_txt_subset',
 					]
 				),
 			),
@@ -327,6 +326,7 @@ class GroovyMenuGFonts {
 						'megamenu_title_text_weight',
 						'toolbar_menu_text_weight',
 						'second_sidebar_menu_text_weight',
+						'menu_links_desc_text_weight',
 					],
 					'mobile' => [
 						'mobile_item_text_weight',
@@ -340,6 +340,7 @@ class GroovyMenuGFonts {
 						'megamenu_title_text_subset',
 						'toolbar_menu_text_subset',
 						'second_sidebar_menu_text_subset',
+						'menu_links_desc_text_subset',
 					],
 				),
 			),
