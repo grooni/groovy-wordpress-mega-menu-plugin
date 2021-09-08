@@ -621,7 +621,7 @@ export default class GmStyles {
       css.push({
         '.gm-navbar .gm-container': 'padding-right: 15px; padding-left: 15px; flex: 1 100%;',
         '.gm-navbar .gm-toolbar .gm-container': `padding-top: ${settings.toolbarMarginTop}px; padding-right: ${settings.toolbarMarginRight}px; padding-bottom: ${settings.toolbarMarginBottom}px; padding-left: ${settings.toolbarMarginLeft}px;`,
-        '.gm-navbar .gm-menu-item:last-of-type:not(:only-of-type) > .gm-menu-item__link': 'border-bottom: none;',
+        //'.gm-navbar .gm-menu-item:last-of-type:not(:only-of-type) > .gm-menu-item__link': 'border-bottom: none;',
         '.gm-navbar .gm-dropdown-menu-wrapper--left': 'right: 0; left: auto;',
         '.gm-navbar .gm-dropdown-submenu .gm-dropdown-menu-wrapper': 'left: 100%; z-index: 1;',
         '.gm-navbar .gm-dropdown-submenu .gm-dropdown-menu-wrapper--left': 'right: 100%; left: auto; z-index: 1;',
