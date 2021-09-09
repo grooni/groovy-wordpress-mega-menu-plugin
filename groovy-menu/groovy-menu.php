@@ -64,6 +64,13 @@ $gm_supported_module = array(
 	'db_version' => $db_version,
 );
 
+if ( ! function_exists( 'gm_is_wplogin' ) ) {
+	function gm_is_wplogin() {
+		$path = str_replace( array( '\\', '/' ), DIRECTORY_SEPARATOR, ABSPATH );
+
+		return ( ( in_array( $path . 'wp-login.php', get_included_files(), true ) || in_array( $path . 'wp-register.php', get_included_files(), true ) ) || ( isset( $_GLOBALS['pagenow'] ) && 'wp-login.php' === $GLOBALS['pagenow'] ) || '/wp-login.php' === $_SERVER['PHP_SELF'] );
+	}
+}
 
 // Autoload modules and classes by composer.
 require_once GROOVY_MENU_DIR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
@@ -140,7 +147,7 @@ if ( method_exists( 'GroovyMenuUtils', 'load_font_internal' ) ) {
 }
 
 function groovy_menu_prevent_double_activation_free() {
-	// Check Free version work & disable it.
+	// Check Pro version work & disable it.
 	if ( function_exists( 'groovy_menu_activation' ) || is_plugin_active( 'groovy-menu/groovy-menu.php' ) ) {
 		deactivate_plugins( 'groovy-menu/groovy-menu.php' );
 	}
@@ -253,14 +260,6 @@ if ( ! function_exists( 'groovy_menu_add_version_class_2_html' ) ) {
 		$classes[] = 'groovy_menu_' . str_replace( '.', '-', GROOVY_MENU_VERSION );
 
 		return $classes;
-	}
-}
-
-if ( ! function_exists( 'gm_is_wplogin' ) ) {
-	function gm_is_wplogin() {
-		$path = str_replace( array( '\\', '/' ), DIRECTORY_SEPARATOR, ABSPATH );
-
-		return ( ( in_array( $path . 'wp-login.php', get_included_files(), true ) || in_array( $path . 'wp-register.php', get_included_files(), true ) ) || ( isset( $_GLOBALS['pagenow'] ) && 'wp-login.php' === $GLOBALS['pagenow'] ) || '/wp-login.php' === $_SERVER['PHP_SELF'] );
 	}
 }
 
