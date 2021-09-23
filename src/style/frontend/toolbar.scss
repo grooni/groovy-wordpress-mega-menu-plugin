@@ -79,9 +79,9 @@ GROOVY TOOLBAR
   display: none;
 }
 
-/* ------------------------------------ */
-/*    Toolbar Menu: Main CSS Styles     */
-/* ------------------------------------ */
+/* ----------------------------------
+   Toolbar Menu: Main CSS Styles
+ ------------------------------------ */
 .gm-toolbar-nav-container {
   padding: 0;
   margin: 0 16px;
@@ -99,7 +99,7 @@ GROOVY TOOLBAR
     padding: 0;
   }
 
-  &> ul > li {
+  & > ul > li {
     margin-left: 2px;
     margin-right: 2px;
   }
@@ -160,16 +160,16 @@ GROOVY TOOLBAR
     text-decoration: none;
   }
 
-  &> ul {
+  & > ul {
     display: flex;
   }
 
-  &> ul > li.menu-item {
+  & > ul > li.menu-item {
     margin: 0 2px;
   }
 
-  &:after,
-  ul:after {
+  &::after,
+  ul::after {
     content: '';
     display: block;
     clear: both;
@@ -212,13 +212,13 @@ GROOVY TOOLBAR
     position: relative;
   }
 
-  ul ul li > a:before {
+  ul ul li > a::before {
     position: absolute;
     left: 15px;
     display: inline-block;
     visibility: hidden;
     content: "";
-    transition: all .15s ease;
+    transition: all 0.15s ease;
     transform: translateX(0);
     opacity: 0;
     font: normal normal normal 16px/1 FontAwesome;
@@ -229,22 +229,16 @@ GROOVY TOOLBAR
     text-rendering: auto;
   }
 
-  ul ul li.menu-item-has-children > a:after {
+  ul ul li.menu-item-has-children > a::after {
     content: "";
     position: absolute;
     top: 50%;
     right: 15px;
     margin-top: -8px;
-  }
-
-  ul li.menu-item-has-children > a > span:after {
-    content: "";
-    margin-left: 5px;
-    display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
-    font-size: inherit;
-    text-rendering: auto;
     -webkit-font-smoothing: antialiased;
+    text-rendering: auto;
+    font-size: inherit;
   }
 
   ul li.last ul {
@@ -257,7 +251,7 @@ GROOVY TOOLBAR
     right: 99.5%;
   }
 
-  &> ul > li > a {
+  & > ul > li > a {
     line-height: 24px;
   }
 }

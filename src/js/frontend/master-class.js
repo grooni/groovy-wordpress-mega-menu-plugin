@@ -254,6 +254,14 @@ class GroovyMenu {
       diagonalDelay = diagonalDelay < 100 ? 100 : diagonalDelay;
       diagonalDelay = diagonalDelay - 95;
 
+      let isCloseByClickOnly = e.target.closest('.gm-close-by-click-only');
+      // Helper: do not close dropdown by mouse leave action.
+      if (isCloseByClickOnly) {
+        if (gmMainMenu) {
+          gmMainMenu.classList.add('gm-prevent-autoclose');
+        }
+      }
+
       if (closestDropdown) {
         isTopLevelClass = closestDropdown.classList.contains('gm-menu-item--lvl-0');
       }
@@ -432,8 +440,19 @@ class GroovyMenu {
     // Sub-Menus DROPDOWN action ---------------------------------------------------------------------------[ close ]---
     let leaveDropdownAction = (e) => {
 
-      let closestDropdown = e.target.closest('.gm-dropdown');
-      let isTopLevelClass = e.target.classList.contains('gm-menu-item--lvl-0');
+      let gmMainMenu         = document.querySelector('#gm-main-menu');
+      let closestDropdown    = e.target.closest('.gm-dropdown');
+      let isTopLevelClass    = e.target.classList.contains('gm-menu-item--lvl-0');
+      let isCloseByClickOnly = e.target.closest('.gm-close-by-click-only');
+
+      // do not close dropdown by mouse leave action.
+      if (isCloseByClickOnly) {
+        return;
+      } else {
+        if (gmMainMenu) {
+          gmMainMenu.classList.remove('gm-prevent-autoclose');
+        }
+      }
 
       // parent dropdown not exist.
       if (!closestDropdown) {
@@ -500,7 +519,13 @@ class GroovyMenu {
     };
 
     // Sub-Menus DROPDOWN Auto Close action -----------------------------------------------------------[ auto close ]---
-    let dropdownAutoClose = () => {
+    let dropdownAutoClose = (e) => {
+
+      // do not close dropdown by mouse leave action.
+      if (e.target && e.target.classList.contains('gm-prevent-autoclose')) {
+        return;
+      }
+
       let autoCloseDelay = options.subDropdownAutocloseDelay ? options.subDropdownAutocloseDelay : 500;
       autoCloseDelay = autoCloseDelay < 1 ? 1 : autoCloseDelay;
       dropdownCloseAll(autoCloseDelay);

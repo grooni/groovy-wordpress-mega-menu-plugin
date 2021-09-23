@@ -2939,6 +2939,79 @@ export default class GmStyles {
     }
 
 
+    // Show menu link Description.
+    if (settings.showMenuLinksDesc) {
+
+      css.push({
+        '.gm-navigation-drawer--mobile .gm-menu-item__desc': 'display: none;'
+      });
+
+      if (settings.menuLinksDescTxtFontSize) {
+        css.push({
+          '.gm-menu-item__desc': `font-size: ${settings.menuLinksDescTxtFontSize}px`,
+          media: 'desktop'
+        });
+      }
+
+      if (settings.menuLinksDescTextCase) {
+        css.push({
+          '.gm-menu-item__desc': `text-transform: ${settings.menuLinksDescTextCase}`,
+          media: 'desktop'
+        });
+      }
+
+      if (settings.menuLinksDescTextWeight) {
+        const textWeight = settings.menuLinksDescTextWeight.toString();
+
+        if (textWeight !== 'none') {
+          const isItalic = textWeight.match(/italic/);
+          const filteredTextWeight = textWeight.replace(/italic/, '');
+
+          if (isItalic) {
+            css.push({
+              '.gm-menu-item__desc': 'font-style: italic',
+              media: 'desktop'
+            });
+          }
+
+          css.push({
+            '.gm-menu-item__desc': `font-weight: ${filteredTextWeight}`,
+            media: 'desktop'
+          });
+        }
+      }
+
+      if (settings.menuLinksDescLetterSpacing) {
+        css.push({
+          '.gm-menu-item__desc': `letter-spacing: ${settings.menuLinksDescLetterSpacing}px`,
+          media: 'desktop'
+        });
+      }
+
+      if (settings.menuLinksDescTextColor) {
+        css.push({
+          '.gm-navbar-nav > .gm-menu-item > .gm-anchor > .gm-menu-item__txt-wrapper .gm-menu-item__desc': `color: ${settings.menuLinksDescTextColor};`,
+          '.gm-navbar:not(.gm-navbar-sticky-toggle) .gm-navbar-nav > li.current-menu-item > .gm-anchor .gm-menu-item__desc, .gm-navbar:not(.gm-navbar-sticky-toggle) .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor .gm-menu-item__desc, .gm-navbar:not(.gm-navbar-sticky-toggle) .gm-navbar-nav > li.current-page-ancestor > .gm-anchor .gm-menu-item__desc, .gm-navbar:not(.gm-navbar-sticky-toggle) .gm-navbar-nav > li.current-menu-parent > .gm-anchor .gm-menu-item__desc, .gm-navbar:not(.gm-navbar-sticky-toggle) .gm-navbar-nav > .menu-item > .gm-anchor:hover .gm-menu-item__desc, .gm-navbar:not(.gm-navbar-sticky-toggle) .gm-navbar-nav > .menu-item.gm-open > .gm-anchor .gm-menu-item__desc': `color: ${settings.menuLinksDescTextColorHover} !important;`,
+          '.gm-navbar ~ .gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-item > .gm-anchor .gm-menu-item__desc, .gm-navbar ~ .gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor .gm-menu-item__desc, .gm-navbar ~ .gm-main-menu-wrapper .gm-navbar-nav > li.current-page-ancestor > .gm-anchor .gm-menu-item__desc, .gm-navbar ~ .gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-parent > .gm-anchor .gm-menu-item__desc, .gm-navbar ~ .gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor:hover .gm-menu-item__desc, .gm-navbar ~ .gm-main-menu-wrapper .gm-navbar-nav > .menu-item.gm-open > .gm-anchor .gm-menu-item__desc': `color: ${settings.menuLinksDescTextColorHover} !important;`,
+        });
+      }
+
+      if (settings.stickyMenuLinksDescTextColor) {
+        css.push({
+          '.gm-navbar.gm-navbar-sticky-toggle .gm-navbar-nav > .gm-menu-item > .gm-anchor > .gm-menu-item__txt-wrapper .gm-menu-item__desc': `color: ${settings.stickyMenuLinksDescTextColor};`,
+          '.gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-parent > .gm-anchor .gm-menu-item__desc, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-item > .gm-anchor .gm-menu-item__desc, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-ancestor.gm-open > .gm-anchor .gm-menu-item__desc, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor .gm-menu-item__desc, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-page-ancestor.gm-open > .gm-anchor .gm-menu-item__desc, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-page-ancestor > .gm-anchor .gm-menu-item__desc, .gm-navbar-sticky-toggle .gm-navbar-nav > .menu-item.gm-open > .gm-anchor .gm-menu-item__desc, .gm-navbar-sticky-toggle .gm-navbar-nav > li > .gm-anchor:hover .gm-menu-item__desc': `color: ${settings.stickyMenuLinksDescTextColorHover} !important;`
+        });
+      }
+
+      if (settings.subLevelLinksDescTextColor) {
+        css.push({
+          '.gm-navbar-nav .gm-menu-item.gm-dropdown > .gm-dropdown-menu-wrapper .gm-anchor .gm-menu-item__txt-wrapper .gm-menu-item__desc': `color: ${settings.subLevelLinksDescTextColor};`,
+          '.gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav .gm-dropdown-menu li.current-menu-ancestor > .gm-menu-item__link .gm-menu-item__desc, .gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav .gm-dropdown-menu li.current-page-ancestor > .gm-menu-item__link .gm-menu-item__desc, .gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav .gm-dropdown-menu li.current-menu-item > .gm-menu-item__link .gm-menu-item__desc, .gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav .gm-dropdown-menu .gm-menu-item__link:hover .gm-menu-item__desc': `color: ${settings.subLevelLinksDescTextColorHover} !important;`
+        });
+      }
+
+    }
+
     // hover style 1
     if (settings.topLevelTextColorHover && settings.hoverStyle === '1') {
 
@@ -3060,7 +3133,7 @@ export default class GmStyles {
 
       if (googleFont !== 'none') {
         css.push({
-          '.gm-navbar, .gm-main-menu-wrapper, .gm-navigation-drawer': `font-family: '${googleFont}', sans-serif`
+          '.gm-navbar, .gm-main-menu-wrapper, .gm-navigation-drawer, ul li.gm-menu-item--lvl-0': `font-family: '${googleFont}', sans-serif`
         });
       } else {
         css.push({
@@ -4256,13 +4329,11 @@ export default class GmStyles {
       }
     }
 
-    // Hide Mobile menu if so selected
-    if (settings.mobileNavMenu && 'none' === settings.mobileNavMenu) {
-      css.push({
-        '.gm-hide-on-mobile': `display: none`,
-        media: 'mobile'
-      });
-    }
+    // Hide only on Mobile css class.
+    css.push({
+      '.gm-hide-on-mobile': `display: none`,
+      media: 'mobile'
+    });
 
     // Mobile header height
     if (settings.mobileHeaderHeight) {
