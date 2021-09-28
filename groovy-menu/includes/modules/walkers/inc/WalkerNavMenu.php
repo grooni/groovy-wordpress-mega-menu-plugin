@@ -18,12 +18,14 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	const IS_MEGAMENU_META = 'groovy_menu_is_megamenu';
 	const DO_NOT_SHOW_TITLE = 'groovy_menu_do_not_show_title';
 	const FROZEN_LINK = 'groovy_menu_frozen_link';
+	const PREVENT_AUTO_CLOSE = 'groovy_menu_prevent_autoclose';
 	const USE_HTML_AS_ICON = 'groovy_menu_use_html_as_icon';
 	const HTML_ICON_CONTENT = 'groovy_menu_html_icon_content';
 	const MEGAMENU_META_COLS = 'groovy_menu_megamenu_cols';
 	const MENU_BLOCK_URL = 'groovy_menu_block_url';
 	const MEGAMENU_META_POST = 'groovy_menu_megamenu_post';
 	const MEGAMENU_META_POST_NOT_MOBILE = 'groovy_menu_megamenu_post_not_mobile';
+	const HIDE_ON_MOBILE = 'groovy_menu_hide_on_mobile';
 	const IS_SHOW_FEATURED_IMAGE = 'groovy_menu_is_show_featured_image';
 	const ICON_CLASS = 'groovy_menu_icon_class';
 	const MEGAMENU_DROPDOWN_CUSTOM_WIDTH = 'groovy_menu_megamenu_dropdown_custom_width';
@@ -498,9 +500,18 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 					'field_class' => 'gm-badge-field gm-badge-type--text',
 				],
 				// ------------------------------------------------------------------------------------------- OTHER
-				'megamenu-post-not-mobile'         => [
+				'hide-on-mobile'           => [
+					'id'          => 'hide-on-mobile',
+					'label'       => esc_attr__( 'Hide menu item and its content on mobile', 'groovy-menu' ),
+					'description' => '',
+					'type'        => 'checkbox',
+					'default'     => false,
+					'lver'        => false,
+					'save_id'     => self::HIDE_ON_MOBILE,
+				],
+				'megamenu-post-not-mobile' => [
 					'id'          => 'megamenu-post-not-mobile',
-					'label'       => esc_attr__( 'Do not show Menu block content on mobile', 'groovy-menu' ),
+					'label'       => esc_attr__( 'Do not show the content of the Menu Block on mobile', 'groovy-menu' ),
 					'description' => '',
 					'type'        => 'checkbox',
 					'default'     => false,
@@ -514,6 +525,14 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 					'type'        => 'checkbox',
 					'default'     => false,
 					'save_id'     => self::FROZEN_LINK,
+				],
+				'prevent-auto-close'               => [
+					'id'          => 'prevent-auto-close',
+					'label'       => esc_attr__( 'Prevent dropdown auto close on "mouse leave" event', 'groovy-menu' ),
+					'description' => esc_attr__( 'Useful if it has a contact form widget in the dropdown', 'groovy-menu' ),
+					'type'        => 'checkbox',
+					'default'     => false,
+					'save_id'     => self::PREVENT_AUTO_CLOSE,
 				],
 				'is-show-featured'                 => [
 					'id'          => 'is-show-featured',
@@ -866,6 +885,25 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 	/**
 	 * @param object $item Object with menu item meta data.
 	 *
+	 * @return bool
+	 */
+	protected function preventAutoclose( $item ) {
+		$item_id = $this->getId( $item );
+		if ( empty( $item_id ) ) {
+			return false;
+		}
+
+		$val = $this->getGMNavMenuMetaWithCheck( $item_id, self::PREVENT_AUTO_CLOSE, true );
+		if ( '' === $val ) {
+			$val = false;
+		}
+
+		return $val;
+	}
+
+	/**
+	 * @param object $item Object with menu item meta data.
+	 *
 	 * @return int
 	 */
 	protected function megaMenuCols( $item ) {
@@ -1102,6 +1140,25 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 		}
 
 		$val = $this->getGMNavMenuMetaWithCheck( $item_id, self::MEGAMENU_META_POST_NOT_MOBILE, true );
+		if ( '' === $val ) {
+			$val = false;
+		}
+
+		return $val;
+	}
+
+	/**
+	 * @param object $item Object with menu item meta data.
+	 *
+	 * @return int|mixed
+	 */
+	protected function hideOnMobile( $item ) {
+		$item_id = $this->getId( $item );
+		if ( empty( $item_id ) ) {
+			return false;
+		}
+
+		$val = $this->getGMNavMenuMetaWithCheck( $item_id, self::HIDE_ON_MOBILE, true );
 		if ( '' === $val ) {
 			$val = false;
 		}

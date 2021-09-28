@@ -58,3 +58,13 @@
 }
 
 /* rtl:end:ignore */
+
+/* Safari 10.1+ */
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance:none) {
+    .gm-navbar.gm-navbar--style-5 .gm-main-menu-wrapper.ps,
+    .gm-navbar.gm-navbar--style-4 .gm-main-menu-wrapper.ps {
+      overflow: visible !important;
+    }
+  }
+}

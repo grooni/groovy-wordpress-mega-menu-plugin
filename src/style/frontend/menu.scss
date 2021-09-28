@@ -325,14 +325,17 @@ NAVBAR GENERAL STYLES
     display: block;
     visibility: hidden;
   }
+
   .gm-navbar-nav > .gm-dropdown:hover .gm-dropdown-menu-wrapper {
     display: block;
     visibility: visible;
   }
+
   .gm-navbar-nav > .gm-dropdown .gm-dropdown-menu .gm-dropdown-submenu:not(.gm-opened-before) .gm-dropdown-menu-wrapper {
     display: block;
     visibility: hidden;
   }
+
   .gm-navbar-nav > .gm-dropdown .gm-dropdown-menu .gm-dropdown-submenu:hover > .gm-dropdown-menu-wrapper {
     display: block;
     visibility: visible;
@@ -452,4 +455,10 @@ NAVBAR GENERAL STYLES
   align-items: center;
   flex-wrap: nowrap;
   flex-direction: row;
+}
+
+.gm-menu-item__desc {
+  display: block;
+  font-size: 10px;
+  line-height: 16px;
 }
