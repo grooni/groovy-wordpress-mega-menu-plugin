@@ -500,16 +500,15 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 					'field_class' => 'gm-badge-field gm-badge-type--text',
 				],
 				// ------------------------------------------------------------------------------------------- OTHER
-				'hide-on-mobile'           => [
+				'hide-on-mobile'                   => [
 					'id'          => 'hide-on-mobile',
 					'label'       => esc_attr__( 'Hide menu item and its content on mobile', 'groovy-menu' ),
 					'description' => '',
 					'type'        => 'checkbox',
 					'default'     => false,
-					'lver'        => false,
 					'save_id'     => self::HIDE_ON_MOBILE,
 				],
-				'megamenu-post-not-mobile' => [
+				'megamenu-post-not-mobile'         => [
 					'id'          => 'megamenu-post-not-mobile',
 					'label'       => esc_attr__( 'Do not show the content of the Menu Block on mobile', 'groovy-menu' ),
 					'description' => '',
