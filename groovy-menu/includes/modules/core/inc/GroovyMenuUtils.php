@@ -2318,10 +2318,11 @@ class GroovyMenuUtils {
 	 * Lic checker.
 	 *
 	 * @param bool $immediately Check without long timer
+	 * @param bool $reload Check with reload
 	 *
 	 * @return bool|string
 	 */
-	public static function check_lic( $immediately = false ) {
+	public static function check_lic( $immediately = false, $reload = false ) {
 		if ( ! $immediately && get_transient( GROOVY_MENU_DB_VER_OPTION . '__lic_cache' ) ) {
 			$lic_opt = get_option( GROOVY_MENU_DB_VER_OPTION . '__lic' );
 			if ( empty( $lic_opt ) || ! $lic_opt ) {
@@ -2336,6 +2337,10 @@ class GroovyMenuUtils {
 		global $gm_supported_module;
 
 		$check_url = 'https://license.grooni.com/user-dashboard/?glm_action=check&glm_page=product';
+
+		if ( $reload ) {
+			$check_url .= '&glm_reload=1';
+		}
 
 		$check_url .= '&glm_product=groovy-menu';
 		$check_url .= '&glm_theme=' . $gm_supported_module['theme'];

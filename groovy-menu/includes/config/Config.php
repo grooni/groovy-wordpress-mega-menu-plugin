@@ -495,6 +495,29 @@ return array(
 				'default' => '',
 				'alpha'   => true,
 			),
+			'sub_level_links_desc_text_color__start'          => array(
+				'title'     => esc_html__( 'Submenu link description text color', 'groovy-menu' ),
+				'type'      => 'inlineStart',
+				'condition' => array( 'show_menu_links_desc', '==', true ),
+			),
+			'sub_level_links_desc_text_color'                 => array(
+				'title'     => esc_html__( 'Normal', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'alpha'     => true,
+				'default'   => 'rgba(90, 90, 90, 1)',
+				'condition' => array( 'show_menu_links_desc', '==', true ),
+			),
+			'sub_level_links_desc_text_color_hover'           => array(
+				'title'     => esc_html__( 'Hover & Active', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'alpha'     => true,
+				'default'   => 'rgba(130, 23, 141, 1)',
+				'condition' => array( 'show_menu_links_desc', '==', true ),
+			),
+			'sub_level_links_desc_text_color__end'            => array(
+				'type'      => 'inlineEnd',
+				'condition' => array( 'show_menu_links_desc', '==', true ),
+			),
 			'sub_level_line_height_start'                     => array(
 				'title' => esc_html__( 'Submenu', 'groovy-menu' ) . ' ' . esc_html__( 'item line height', 'groovy-menu' ),
 				'type'  => 'inlineStart',
@@ -2384,17 +2407,24 @@ return array(
 				'title'     => esc_html__( 'Colors', 'groovy-menu' ),
 				'serialize' => false,
 			),
+			'top_level_text_color__start'                  => array(
+				'title' => esc_html__( 'Top level link text color', 'groovy-menu' ),
+				'type'  => 'inlineStart',
+			),
 			'top_level_text_color'                         => array(
-				'title'   => esc_html__( 'Top level link text color', 'groovy-menu' ),
+				'title'   => esc_html__( 'Normal', 'groovy-menu' ),
 				'type'    => 'colorpicker',
 				'alpha'   => true,
 				'default' => 'rgba(90, 90, 90, 1)',
 			),
 			'top_level_text_color_hover'                   => array(
-				'title'   => esc_html__( 'Top level hover and active link color', 'groovy-menu' ),
+				'title'   => esc_html__( 'Hover & Active', 'groovy-menu' ),
 				'type'    => 'colorpicker',
 				'alpha'   => true,
 				'default' => 'rgba(130, 23, 141, 1)',
+			),
+			'top_level_text_color__end'                    => array(
+				'type' => 'inlineEnd'
 			),
 			'top_level_text_color_change__start'           => array(
 				'title'     => esc_html__( 'Top level link text color when submenu(s) are opened', 'groovy-menu' ),
@@ -2430,6 +2460,52 @@ return array(
 					array( 'header.style', 'in', array( '1', '3', '4', '5' ) ),
 					array( 'background_color_change_on_submenu_opened', '==', true ),
 				)
+			),
+			'menu_links_desc_text_color__start'            => array(
+				'title'     => esc_html__( 'Top level link description text color', 'groovy-menu' ),
+				'type'      => 'inlineStart',
+				'condition' => array( 'show_menu_links_desc', '==', true ),
+			),
+			'menu_links_desc_text_color'                   => array(
+				'title'     => esc_html__( 'Normal', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'alpha'     => true,
+				'default'   => 'rgba(90, 90, 90, 1)',
+				'condition' => array( 'show_menu_links_desc', '==', true ),
+			),
+			'menu_links_desc_text_color_hover'             => array(
+				'title'     => esc_html__( 'Hover & Active', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'alpha'     => true,
+				'default'   => 'rgba(130, 23, 141, 1)',
+				'condition' => array( 'show_menu_links_desc', '==', true ),
+			),
+			'menu_links_desc_text_color__end'              => array(
+				'type'      => 'inlineEnd',
+				'condition' => array( 'show_menu_links_desc', '==', true ),
+			),
+			'sticky_menu_links_desc_text_color__start'     => array(
+				'title'     => esc_html__( 'Sticky top level description text color', 'groovy-menu' ),
+				'type'      => 'inlineStart',
+				'condition' => array( 'show_menu_links_desc', '==', true ),
+			),
+			'sticky_menu_links_desc_text_color'            => array(
+				'title'     => esc_html__( 'Normal', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'alpha'     => true,
+				'default'   => 'rgba(90, 90, 90, 1)',
+				'condition' => array( 'show_menu_links_desc', '==', true ),
+			),
+			'sticky_menu_links_desc_text_color_hover'      => array(
+				'title'     => esc_html__( 'Hover & Active', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'alpha'     => true,
+				'default'   => 'rgba(130, 23, 141, 1)',
+				'condition' => array( 'show_menu_links_desc', '==', true ),
+			),
+			'sticky_menu_links_desc_text_color__end'       => array(
+				'type'      => 'inlineEnd',
+				'condition' => array( 'show_menu_links_desc', '==', true ),
 			),
 			'typography_group'                             => array(
 				'type'      => 'group',
