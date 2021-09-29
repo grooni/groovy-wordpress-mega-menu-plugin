@@ -480,7 +480,7 @@ export function offcanvasSlide() {
     makeHiddenVisible(navDrawer);
     topIndentForBurger(navDrawer);
 
-    if (isMobile(options.mobileWidth) && options.mobilePreventAutoclose) {
+    if (isMobile(options.mobileWidth)) {
       // do nothing ...
     } else {
       offcanvasClose(navDrawer);
