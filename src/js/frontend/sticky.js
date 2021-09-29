@@ -102,7 +102,7 @@ function handleSlideDown() {
     }
 
     recalculatePaddingsAlignCenter({options});
-    if (isMobile(options.mobileWidth) && options.mobilePreventAutoclose) {
+    if (isMobile(options.mobileWidth)) {
       // do nothing ...
     } else {
       dropdownCloseAll(0);
@@ -123,12 +123,13 @@ function handleSlideDown() {
     navbarWrapper.style.transform = `translateY(${headerStickyHeight + getStickyMenuOffset() + toolbarHeight}px)`;
 
     recalculatePaddingsAlignCenter({options});
-    if (isMobile(options.mobileWidth) && options.mobilePreventAutoclose) {
+    if (isMobile(options.mobileWidth)) {
       // do nothing ...
     } else {
       dropdownCloseAll(0);
     }
   }
+
 
 }
 
@@ -147,7 +148,7 @@ function handleFixedSticky() {
     navbarWrapper.style.transform = `translateY(${offsetPixels}px)`;
 
     recalculatePaddingsAlignCenter({options});
-    if (isMobile(options.mobileWidth) && options.mobilePreventAutoclose) {
+    if (isMobile(options.mobileWidth)) {
       // do nothing ...
     } else {
       dropdownCloseAll(0);

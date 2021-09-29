@@ -3740,7 +3740,7 @@ return array(
 				'title'       => esc_html__( 'Prevent auto closing of the mobile menu', 'groovy-menu' ),
 				'type'        => 'checkbox',
 				'default'     => false,
-				'description' => esc_html__( 'Prevent automatically closing of the mobile menu when scrolling, resizing the page or tapping outside the menu area', 'groovy-menu' ),
+				'description' => esc_html__( 'Prevent automatically closing of the mobile menu on tap outside the drawer area', 'groovy-menu' ),
 			),
 			'mobile_logo_position'                      => array(
 				'title'   => esc_html__( 'Logo Align', 'groovy-menu' ),
