@@ -98,3 +98,11 @@ body:not(.fl-builder-edit) {
 .gm-dropdown:not(.gm-open) .gm-dropdown-menu-wrapper {
   overflow: hidden;
 }
+
+.gm-action__gm_main_menu_actions_button_first,
+.gm-action__gm_main_menu_actions_button_last {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}

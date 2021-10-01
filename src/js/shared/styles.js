@@ -3047,6 +3047,16 @@ export default class GmStyles {
 
     // SHARED SETTINGS -------------------------------------------------------------------------------------------------
 
+    css.push({
+      '.gm_action__visibility__mobile': 'display: none !important;',
+      media: 'desktop'
+    });
+
+    css.push({
+      '.gm_action__visibility__desktop': 'display: none !important;',
+      media: 'mobile'
+    });
+
     // Disable display of desktop menu version
     if (settings.mobileDisableDesktop) {
       css.push({
@@ -4338,7 +4348,7 @@ export default class GmStyles {
     // Mobile header height
     if (settings.mobileHeaderHeight) {
       css.push({
-        '.gm-inner .gm-container': `height: ${settings.mobileHeaderHeight}px`,
+        '.gm-inner .gm-container': `height: ${settings.mobileHeaderHeight}px;`,
         media: 'mobile'
       });
     }
@@ -4610,10 +4620,15 @@ export default class GmStyles {
     }
 
 
+    css.push({
+      '.gm-navbar .gm-logo': 'flex: 1 1; justify-content: flex-start;',
+      media: 'mobile'
+    });
+
     // Hide menu elements when drawler is open.
     if (settings.mobileIndependentCssHamburger) {
       css.push({
-        '.gm-navbar .gm-logo': 'transition: opacity 0.2s 0.18s',
+        '.gm-navbar .gm-logo': 'transition: opacity 0.2s 0.18s;',
         '.gm-navbar .gm-menu-actions-wrapper': 'transition: opacity 0.2s 0.18s, all 0.2s;',
         '.gm-drawer--open .gm-logo, .gm-drawer--open .gm-menu-actions-wrapper': 'opacity: 0; ',
         media: 'mobile'

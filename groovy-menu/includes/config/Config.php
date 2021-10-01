@@ -235,6 +235,12 @@ return array(
 				'description' => esc_html__( 'You can switch between displaying or hiding icons added to menu items from &quot;Appearance > menus&quot;.', 'groovy-menu' ),
 				'default'     => true,
 			),
+			'mobile_disable_desktop'                          => array(
+				'title'       => esc_html__( 'Disable to display the menu on desktops', 'groovy-menu' ),
+				'description' => esc_html__( 'To customize the display of the mobile menu go to &quot;Mobile menu > Mobile options > Mobile navigation menu&quot;', 'groovy-menu' ),
+				'type'        => 'checkbox',
+				'default'     => false,
+			),
 			'preloader'                                       => array(
 				'title'       => esc_html__( 'Enable preloader of the menu', 'groovy-menu' ),
 				'description' => '',
@@ -1972,11 +1978,14 @@ return array(
 				'default' => '',
 			),
 			// --------------------------------------------------------------------------------[ custom_shortcodes ]
-			'custom_shortcode_gm__start'                      => array(
+			'custom_shortcode_gm__start'                            => array(
 				'title' => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu' ) . ' ' . esc_html__( 'Groovy Menu wrapper', 'groovy-menu' ),
 				'type'  => 'inlineStart',
 			),
-			'action__gm_before_main_header'                   => array(
+			'custom_shortcode_gm__end'                              => array(
+				'type' => 'inlineEnd',
+			),
+			'action__gm_before_main_header'                         => array(
 				'title'             => esc_html__( 'Before Main Header', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -1986,7 +1995,18 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'action__gm_after_main_header'                    => array(
+			'action__gm_before_main_header__visibility'             => array(
+				'title'       => esc_html__( 'Visibility', 'groovy-menu' ) . ' [' . esc_html__( 'Before Main Header', 'groovy-menu' ) . ']',
+				'description' => esc_html__( 'You can select the visibility area for this field', 'groovy-menu' ),
+				'type'        => 'select',
+				'options'     => array(
+					'both'    => esc_html__( 'Both desktop & mobile', 'groovy-menu' ),
+					'desktop' => esc_html__( 'Only desktop', 'groovy-menu' ),
+					'mobile'  => esc_html__( 'Only mobile', 'groovy-menu' ),
+				),
+				'default'     => 'both',
+			),
+			'action__gm_after_main_header'                          => array(
 				'title'             => esc_html__( 'After Main Header', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -1996,15 +2016,27 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'custom_shortcode_gm__end'                        => array(
-				'type' => 'inlineEnd',
+			'action__gm_after_main_header__visibility'              => array(
+				'title'       => esc_html__( 'Visibility', 'groovy-menu' ) . ' [' . esc_html__( 'After Main Header', 'groovy-menu' ) . ']',
+				'description' => esc_html__( 'You can select the visibility area for this field', 'groovy-menu' ),
+				'type'        => 'select',
+				'options'     => array(
+					'both'    => esc_html__( 'Both desktop & mobile', 'groovy-menu' ),
+					'desktop' => esc_html__( 'Only desktop', 'groovy-menu' ),
+					'mobile'  => esc_html__( 'Only mobile', 'groovy-menu' ),
+				),
+				'default'     => 'both',
 			),
-			'custom_shortcode_toolbar__start'                 => array(
+			'custom_shortcode_toolbar__start'                       => array(
 				'title'     => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu' ) . ' ' . esc_html__( 'Toolbar', 'groovy-menu' ),
 				'type'      => 'inlineStart',
 				'condition' => array( 'header.toolbar', 'in', array( 'true', '1' ) ),
 			),
-			'action__gm_toolbar_left_first'                   => array(
+			'custom_shortcode_toolbar__end'                         => array(
+				'type'      => 'inlineEnd',
+				'condition' => array( 'header.toolbar', 'in', array( 'true', '1' ) ),
+			),
+			'action__gm_toolbar_left_first'                         => array(
 				'title'             => esc_html__( 'Toolbar Left First', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -2015,7 +2047,19 @@ return array(
 				'do_action'         => true,
 				'condition'         => array( 'header.toolbar', 'in', array( 'true', '1' ) ),
 			),
-			'action__gm_toolbar_left_last'                    => array(
+			'action__gm_toolbar_left_first__visibility'             => array(
+				'title'       => esc_html__( 'Visibility', 'groovy-menu' ) . ' [' . esc_html__( 'Toolbar Left First', 'groovy-menu' ) . ']',
+				'description' => esc_html__( 'You can select the visibility area for this field', 'groovy-menu' ),
+				'type'        => 'select',
+				'options'     => array(
+					'both'    => esc_html__( 'Both desktop & mobile', 'groovy-menu' ),
+					'desktop' => esc_html__( 'Only desktop', 'groovy-menu' ),
+					'mobile'  => esc_html__( 'Only mobile', 'groovy-menu' ),
+				),
+				'default'     => 'both',
+				'condition'   => array( 'header.toolbar', 'in', array( 'true', '1' ) ),
+			),
+			'action__gm_toolbar_left_last'                          => array(
 				'title'             => esc_html__( 'Toolbar Left Last', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -2026,7 +2070,19 @@ return array(
 				'do_action'         => true,
 				'condition'         => array( 'header.toolbar', 'in', array( 'true', '1' ) ),
 			),
-			'action__gm_toolbar_right_first'                  => array(
+			'action__gm_toolbar_left_last__visibility'              => array(
+				'title'       => esc_html__( 'Visibility', 'groovy-menu' ) . ' [' . esc_html__( 'Toolbar Left Last', 'groovy-menu' ) . ']',
+				'description' => esc_html__( 'You can select the visibility area for this field', 'groovy-menu' ),
+				'type'        => 'select',
+				'options'     => array(
+					'both'    => esc_html__( 'Both desktop & mobile', 'groovy-menu' ),
+					'desktop' => esc_html__( 'Only desktop', 'groovy-menu' ),
+					'mobile'  => esc_html__( 'Only mobile', 'groovy-menu' ),
+				),
+				'default'     => 'both',
+				'condition'   => array( 'header.toolbar', 'in', array( 'true', '1' ) ),
+			),
+			'action__gm_toolbar_right_first'                        => array(
 				'title'             => esc_html__( 'Toolbar Right First', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -2037,7 +2093,19 @@ return array(
 				'do_action'         => true,
 				'condition'         => array( 'header.toolbar', 'in', array( 'true', '1' ) ),
 			),
-			'action__gm_toolbar_right_last'                   => array(
+			'action__gm_toolbar_right_first__visibility'            => array(
+				'title'       => esc_html__( 'Visibility', 'groovy-menu' ) . ' [' . esc_html__( 'Toolbar Right First', 'groovy-menu' ) . ']',
+				'description' => esc_html__( 'You can select the visibility area for this field', 'groovy-menu' ),
+				'type'        => 'select',
+				'options'     => array(
+					'both'    => esc_html__( 'Both desktop & mobile', 'groovy-menu' ),
+					'desktop' => esc_html__( 'Only desktop', 'groovy-menu' ),
+					'mobile'  => esc_html__( 'Only mobile', 'groovy-menu' ),
+				),
+				'default'     => 'both',
+				'condition'   => array( 'header.toolbar', 'in', array( 'true', '1' ) ),
+			),
+			'action__gm_toolbar_right_last'                         => array(
 				'title'             => esc_html__( 'Toolbar Right Last', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -2048,15 +2116,26 @@ return array(
 				'do_action'         => true,
 				'condition'         => array( 'header.toolbar', 'in', array( 'true', '1' ) ),
 			),
-			'custom_shortcode_toolbar__end'                   => array(
-				'type'      => 'inlineEnd',
-				'condition' => array( 'header.toolbar', 'in', array( 'true', '1' ) ),
+			'action__gm_toolbar_right_last__visibility'             => array(
+				'title'       => esc_html__( 'Visibility', 'groovy-menu' ) . ' [' . esc_html__( 'Toolbar Right Last', 'groovy-menu' ) . ']',
+				'description' => esc_html__( 'You can select the visibility area for this field', 'groovy-menu' ),
+				'type'        => 'select',
+				'options'     => array(
+					'both'    => esc_html__( 'Both desktop & mobile', 'groovy-menu' ),
+					'desktop' => esc_html__( 'Only desktop', 'groovy-menu' ),
+					'mobile'  => esc_html__( 'Only mobile', 'groovy-menu' ),
+				),
+				'default'     => 'both',
+				'condition'   => array( 'header.toolbar', 'in', array( 'true', '1' ) ),
 			),
-			'custom_shortcode_logo__start'                    => array(
+			'custom_shortcode_logo__start'                          => array(
 				'title' => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu' ) . ' ' . esc_html__( 'Logo', 'groovy-menu' ),
 				'type'  => 'inlineStart',
 			),
-			'action__gm_before_logo'                          => array(
+			'custom_shortcode_logo__end'                            => array(
+				'type' => 'inlineEnd',
+			),
+			'action__gm_before_logo'                                => array(
 				'title'             => esc_html__( 'Logo Before', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -2066,7 +2145,18 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'action__gm_after_logo'                           => array(
+			'action__gm_before_logo__visibility'                    => array(
+				'title'       => esc_html__( 'Visibility', 'groovy-menu' ) . ' [' . esc_html__( 'Logo Before', 'groovy-menu' ) . ']',
+				'description' => esc_html__( 'You can select the visibility area for this field', 'groovy-menu' ),
+				'type'        => 'select',
+				'options'     => array(
+					'both'    => esc_html__( 'Both desktop & mobile', 'groovy-menu' ),
+					'desktop' => esc_html__( 'Only desktop', 'groovy-menu' ),
+					'mobile'  => esc_html__( 'Only mobile', 'groovy-menu' ),
+				),
+				'default'     => 'both',
+			),
+			'action__gm_after_logo'                                 => array(
 				'title'             => esc_html__( 'Logo After', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -2076,14 +2166,25 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'custom_shortcode_logo__end'                      => array(
-				'type' => 'inlineEnd',
+			'action__gm_after_logo__visibility'                     => array(
+				'title'       => esc_html__( 'Visibility', 'groovy-menu' ) . ' [' . esc_html__( 'Logo After', 'groovy-menu' ) . ']',
+				'description' => esc_html__( 'You can select the visibility area for this field', 'groovy-menu' ),
+				'type'        => 'select',
+				'options'     => array(
+					'both'    => esc_html__( 'Both desktop & mobile', 'groovy-menu' ),
+					'desktop' => esc_html__( 'Only desktop', 'groovy-menu' ),
+					'mobile'  => esc_html__( 'Only mobile', 'groovy-menu' ),
+				),
+				'default'     => 'both',
 			),
-			'custom_shortcode_nav__start'                     => array(
+			'custom_shortcode_nav__start'                           => array(
 				'title' => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu' ) . ' ' . esc_html__( 'Main Navigation', 'groovy-menu' ),
 				'type'  => 'inlineStart',
 			),
-			'action__gm_main_menu_nav_first'                  => array(
+			'custom_shortcode_nav__end'                             => array(
+				'type' => 'inlineEnd',
+			),
+			'action__gm_main_menu_nav_first'                        => array(
 				'title'             => esc_html__( 'Main Menu Navigation First', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -2093,7 +2194,7 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'action__gm_main_menu_nav_last'                   => array(
+			'action__gm_main_menu_nav_last'                         => array(
 				'title'             => esc_html__( 'Main Menu Navigation Last', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -2103,7 +2204,7 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'action__gm_after_main_menu_nav'                  => array(
+			'action__gm_after_main_menu_nav'                        => array(
 				'title'             => esc_html__( 'Main Menu After', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -2113,14 +2214,14 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'custom_shortcode_nav__end'                       => array(
-				'type' => 'inlineEnd',
-			),
-			'custom_shortcode_buttons__start'                 => array(
+			'custom_shortcode_buttons__start'                       => array(
 				'title' => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu' ) . ' ' . esc_html__( 'Action Buttons', 'groovy-menu' ),
 				'type'  => 'inlineStart',
 			),
-			'action__gm_main_menu_actions_button_first'       => array(
+			'custom_shortcode_buttons__end'                         => array(
+				'type' => 'inlineEnd',
+			),
+			'action__gm_main_menu_actions_button_first'             => array(
 				'title'             => esc_html__( 'Action Buttons First', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -2130,7 +2231,18 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'action__gm_main_menu_actions_button_last'        => array(
+			'action__gm_main_menu_actions_button_first__visibility' => array(
+				'title'       => esc_html__( 'Visibility', 'groovy-menu' ) . ' [' . esc_html__( 'Action Buttons First', 'groovy-menu' ) . ']',
+				'description' => esc_html__( 'You can select the visibility area for this field', 'groovy-menu' ),
+				'type'        => 'select',
+				'options'     => array(
+					'both'    => esc_html__( 'Both desktop & mobile', 'groovy-menu' ),
+					'desktop' => esc_html__( 'Only desktop', 'groovy-menu' ),
+					'mobile'  => esc_html__( 'Only mobile', 'groovy-menu' ),
+				),
+				'default'     => 'both',
+			),
+			'action__gm_main_menu_actions_button_last'              => array(
 				'title'             => esc_html__( 'Action Buttons Last', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -2140,14 +2252,25 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'custom_shortcode_buttons__end'                   => array(
-				'type' => 'inlineEnd',
+			'action__gm_main_menu_actions_button_last__visibility'  => array(
+				'title'       => esc_html__( 'Visibility', 'groovy-menu' ) . ' [' . esc_html__( 'Action Buttons Last', 'groovy-menu' ) . ']',
+				'description' => esc_html__( 'You can select the visibility area for this field', 'groovy-menu' ),
+				'type'        => 'select',
+				'options'     => array(
+					'both'    => esc_html__( 'Both desktop & mobile', 'groovy-menu' ),
+					'desktop' => esc_html__( 'Only desktop', 'groovy-menu' ),
+					'mobile'  => esc_html__( 'Only mobile', 'groovy-menu' ),
+				),
+				'default'     => 'both',
 			),
-			'custom_shortcode_hamburger__start'               => array(
+			'custom_shortcode_hamburger__start'                     => array(
 				'title' => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu' ) . ' ' . esc_html__( 'Mobile Hamburger', 'groovy-menu' ),
 				'type'  => 'inlineStart',
 			),
-			'action__gm_custom_mobile_hamburger'              => array(
+			'custom_shortcode_hamburger__end'                       => array(
+				'type' => 'inlineEnd',
+			),
+			'action__gm_custom_mobile_hamburger'                    => array(
 				'title'             => esc_html__( 'Action for', 'groovy-menu' ) . ' ' . esc_html__( 'Custom mobile menu open trigger', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -2157,7 +2280,18 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'action__gm_before_mobile_hamburger'              => array(
+			'action__gm_custom_mobile_hamburger__visibility'        => array(
+				'title'       => esc_html__( 'Visibility', 'groovy-menu' ) . ' [' . esc_html__( 'Menu open trigger', 'groovy-menu' ) . ']',
+				'description' => esc_html__( 'You can select the visibility area for this field', 'groovy-menu' ),
+				'type'        => 'select',
+				'options'     => array(
+					'both'    => esc_html__( 'Both desktop & mobile', 'groovy-menu' ),
+					'desktop' => esc_html__( 'Only desktop', 'groovy-menu' ),
+					'mobile'  => esc_html__( 'Only mobile', 'groovy-menu' ),
+				),
+				'default'     => 'mobile',
+			),
+			'action__gm_before_mobile_hamburger'                    => array(
 				'title'             => esc_html__( 'Before hamburger icon', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -2167,7 +2301,18 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'action__gm_after_mobile_hamburger'               => array(
+			'action__gm_before_mobile_hamburger__visibility'        => array(
+				'title'       => esc_html__( 'Visibility', 'groovy-menu' ) . ' [' . esc_html__( 'Before hamburger icon', 'groovy-menu' ) . ']',
+				'description' => esc_html__( 'You can select the visibility area for this field', 'groovy-menu' ),
+				'type'        => 'select',
+				'options'     => array(
+					'both'    => esc_html__( 'Both desktop & mobile', 'groovy-menu' ),
+					'desktop' => esc_html__( 'Only desktop', 'groovy-menu' ),
+					'mobile'  => esc_html__( 'Only mobile', 'groovy-menu' ),
+				),
+				'default'     => 'mobile',
+			),
+			'action__gm_after_mobile_hamburger'                     => array(
 				'title'             => esc_html__( 'After hamburger icon', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -2177,14 +2322,22 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'custom_shortcode_hamburger__end'                 => array(
-				'type' => 'inlineEnd',
+			'action__gm_after_mobile_hamburger__visibility'         => array(
+				'title'       => esc_html__( 'Visibility', 'groovy-menu' ) . ' [' . esc_html__( 'After hamburger icon', 'groovy-menu' ) . ']',
+				'description' => esc_html__( 'You can select the visibility area for this field', 'groovy-menu' ),
+				'type'        => 'select',
+				'options'     => array(
+					'both'    => esc_html__( 'Both desktop & mobile', 'groovy-menu' ),
+					'desktop' => esc_html__( 'Only desktop', 'groovy-menu' ),
+					'mobile'  => esc_html__( 'Only mobile', 'groovy-menu' ),
+				),
+				'default'     => 'mobile',
 			),
-			'custom_shortcode_mobile__start'                  => array(
+			'custom_shortcode_mobile__start'                        => array(
 				'title' => esc_html__( 'Insert custom shortcode or raw HTML for', 'groovy-memu' ) . ' ' . esc_html__( 'Mobile menu', 'groovy-menu' ),
 				'type'  => 'inlineStart',
 			),
-			'action__gm_mobile_main_menu_top'                 => array(
+			'action__gm_mobile_main_menu_top'                       => array(
 				'title'             => esc_html__( 'Mobile Menu Top', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -2194,7 +2347,7 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'action__gm_mobile_main_menu_nav_first'           => array(
+			'action__gm_mobile_main_menu_nav_first'                 => array(
 				'title'             => esc_html__( 'Mobile Menu Navigation First', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -2204,7 +2357,7 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'action__gm_mobile_main_menu_nav_last'            => array(
+			'action__gm_mobile_main_menu_nav_last'                  => array(
 				'title'             => esc_html__( 'Mobile Menu Navigation Last', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -2214,7 +2367,7 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'action__gm_mobile_after_main_menu_nav'           => array(
+			'action__gm_mobile_after_main_menu_nav'                 => array(
 				'title'             => esc_html__( 'Mobile Menu After', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -2224,7 +2377,7 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'action__gm_mobile_before_search_icon'            => array(
+			'action__gm_mobile_before_search_icon'                  => array(
 				'title'             => esc_html__( 'Mobile Before Search icon', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -2234,7 +2387,7 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'action__gm_mobile_before_minicart'               => array(
+			'action__gm_mobile_before_minicart'                     => array(
 				'title'             => esc_html__( 'Mobile Before Woo mini-cart', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -2244,7 +2397,7 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'action__gm_mobile_toolbar_end'                   => array(
+			'action__gm_mobile_toolbar_end'                         => array(
 				'title'             => esc_html__( 'Mobile Toolbar End', 'groovy-menu' ),
 				'type'              => 'textarea',
 				'codemirror_editor' => true,
@@ -2254,7 +2407,7 @@ return array(
 				'serialize'         => false,
 				'do_action'         => true,
 			),
-			'custom_shortcode_mobile__end'                    => array(
+			'custom_shortcode_mobile__end'                          => array(
 				'type' => 'inlineEnd',
 			),
 		)
@@ -3618,12 +3771,6 @@ return array(
 				'options'     => $nav_menus,
 				'default'     => '',
 			),
-			'mobile_disable_desktop'                    => array(
-				'title'       => esc_html__( 'Disable to display of desktop menu', 'groovy-menu' ),
-				'description' => '',
-				'type'        => 'checkbox',
-				'default'     => false,
-			),
 			'mobile_submenu_style'                      => array(
 				'title'   => esc_html__( 'Mobile submenus style', 'groovy-menu' ),
 				'type'    => 'select',
@@ -3648,7 +3795,7 @@ return array(
 				'title'       => esc_html__( 'Enable', 'groovy-menu' ),
 				'description' => '',
 				'type'        => 'checkbox',
-				'default'     => false,
+				'default'     => true,
 				'condition'   => array( 'header.style', 'in', array( '1', '3', '4', '5' ) ),
 			),
 			'mobile_independent_css_hamburger_type'     => array(
@@ -3662,7 +3809,7 @@ return array(
 				'title'       => esc_html__( 'Allow float', 'groovy-menu' ),
 				'description' => '',
 				'type'        => 'checkbox',
-				'default'     => false,
+				'default'     => true,
 				'condition'   => array( 'mobile_independent_css_hamburger', '==', true ),
 			),
 			'mobile_independent_css_hamburger_height'   => array(
@@ -3804,7 +3951,7 @@ return array(
 				'condition' => array( 'mobile_logo_position', 'in', array( 'left', 'center', 'right' ) ),
 			),
 			'mobile_side_icon_position'                 => array(
-				'title'   => esc_html__( 'Side icon Align', 'groovy-menu' ),
+				'title'   => esc_html__( 'Hamburger icon align', 'groovy-menu' ),
 				'type'    => 'select',
 				'options' => array(
 					'default' => esc_html__( 'Default', 'groovy-menu' ),
