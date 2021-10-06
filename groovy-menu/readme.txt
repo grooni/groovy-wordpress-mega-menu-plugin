@@ -4,7 +4,7 @@ Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive,
 Requires at least: 4.9.7
 Tested up to: 5.8
 Requires PHP: 7.0
-Stable tag: 1.3.6.1
+Stable tag: 1.3.7
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -115,6 +115,12 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.3.7 =
+* Add: For Actions in the Custom Code section, a new feature "visibility" has been added, which sets the rule for displaying "custom" on mobile, desktop or both versions.
+* Add: Now it is possible to separately specify the color of Hover and Active menu items.
+* Add: Added "Fixed" option for Badges position.
+* Fix: Bug with two "X" icons in mobile when Fullwidth with "Animated hamburger" together with enabled "Allow Float" toggle.
 
 = 1.3.6.1 =
 * Fix: Fixed a bug with closing dropdowns that have a contact form inside (phase 2 - fixed for mobile).

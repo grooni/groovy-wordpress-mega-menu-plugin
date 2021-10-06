@@ -322,6 +322,14 @@ export default class GmStyles {
             '.gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > li.current-page-ancestor > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-item > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor:hover, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item.gm-open > .gm-anchor': `color: ${settings.topLevelTextColorHover} !important`,
             media: 'desktop'
           });
+
+          if (settings.topLevelTextColorHoverSeparate && settings.topLevelTextColorHoverHover) {
+            css.push({
+              '.gm-navbar:not(.gm-navbar-sticky-toggle) .gm-navbar-nav > li.gm-menu-item > .gm-anchor:hover::after': `border-top-color: ${settings.topLevelTextColorHoverHover} !important;`,
+              '.gm-main-menu-wrapper .gm-navbar-nav > li.menu-item > .gm-anchor:hover': `color: ${settings.topLevelTextColorHoverHover} !important;`,
+              media: 'desktop'
+            });
+          }
         }
 
         // hover style 3
@@ -330,6 +338,13 @@ export default class GmStyles {
             '.gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-ancestor, .gm-main-menu-wrapper .gm-navbar-nav > li.current-page-ancestor, .gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-parent, .gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-item, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item.gm-open, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item:hover': `background-color: ${settings.topLevelTextColorHover}`,
             media: 'desktop'
           });
+
+          if (settings.topLevelTextColorHoverSeparate && settings.topLevelTextColorHoverHover) {
+            css.push({
+              '.gm-main-menu-wrapper .gm-navbar-nav > li.menu-item:hover': `background-color: ${settings.topLevelTextColorHoverHover} !important;`,
+              media: 'desktop'
+            });
+          }
         }
 
         // hover style 4
@@ -343,6 +358,13 @@ export default class GmStyles {
             '.gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > li.current-page-ancestor > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-item > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-parent > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor:hover, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item.gm-open > .gm-anchor': `border-color: ${settings.topLevelTextColorHover}`,
             media: 'desktop'
           });
+
+          if (settings.topLevelTextColorHoverSeparate && settings.topLevelTextColorHoverHover) {
+            css.push({
+              '.gm-main-menu-wrapper .gm-navbar-nav > li.menu-item > .gm-anchor:hover': `background-color: ${settings.topLevelTextColorHoverHover} !important; border-color: ${settings.topLevelTextColorHoverHover} !important;`,
+              media: 'desktop'
+            });
+          }
         }
 
         // hover style 5
@@ -351,6 +373,13 @@ export default class GmStyles {
             '.gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor .gm-menu-item__txt:after, .gm-main-menu-wrapper .gm-navbar-nav > li.current-page-ancestor > .gm-anchor .gm-menu-item__txt:after, .gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-parent > .gm-anchor .gm-menu-item__txt:after, .gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-item > .gm-anchor .gm-menu-item__txt:after, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor:hover .gm-menu-item__txt:after, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item.gm-open > .gm-anchor .gm-menu-item__txt:after': `background-color: ${settings.topLevelTextColorHover}`,
             media: 'desktop'
           });
+
+          if (settings.topLevelTextColorHoverSeparate && settings.topLevelTextColorHoverHover) {
+            css.push({
+              '.gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor:hover .gm-menu-item__txt:after': `background-color: ${settings.topLevelTextColorHoverHover} !important;`,
+              media: 'desktop'
+            });
+          }
         }
 
         // hover style 6
@@ -359,6 +388,13 @@ export default class GmStyles {
             '.gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-item > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-parent > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > li.current-page-ancestor > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor:hover, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item.gm-open > .gm-anchor': `background-color: ${settings.topLevelTextColorHover}`,
             media: 'desktop'
           });
+
+          if (settings.topLevelTextColorHoverSeparate && settings.topLevelTextColorHoverHover) {
+            css.push({
+              '.gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor:hover': `background-color: ${settings.topLevelTextColorHoverHover} !important;`,
+              media: 'desktop'
+            });
+          }
         }
 
         // hover style 7
@@ -372,6 +408,14 @@ export default class GmStyles {
             '.gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-parent > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-item > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav li.current-menu-ancestor > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav li.current-page-ancestor > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav li.current-menu-ancestor.gm-open > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav li.current-page-ancestor.gm-open > .gm-anchor, .gm-main-menu-wrapper .gm-navbar-nav > li > .gm-anchor:hover, .gm-main-menu-wrapper .gm-navbar-nav > .menu-item.gm-open > .gm-anchor': `color: ${settings.topLevelTextColorHover} !important`,
             media: 'desktop'
           });
+
+          if (settings.topLevelTextColorHoverSeparate && settings.topLevelTextColorHoverHover) {
+            css.push({
+              '.gm-main-menu-wrapper .gm-navbar-nav > li.gm-menu-item > .gm-anchor:hover::after': `border-bottom-color: ${settings.topLevelTextColorHoverHover} !important;`,
+              '.gm-main-menu-wrapper .gm-navbar-nav > li.gm-menu-item > .gm-anchor:hover': `color: ${settings.topLevelTextColorHoverHover} !important;`,
+              media: 'desktop'
+            });
+          }
         }
       }
 
@@ -2438,7 +2482,7 @@ export default class GmStyles {
         sidebarExpandingMenuAnimationDuration,
         sidebarExpandingMenuIconSize,
         sidebarExpandingMenuShowSideIcon,
-        topLevelTextBackgroundHover
+        //topLevelTextBackgroundHover
       } = settings;
 
       let iconSize = sidebarExpandingMenuIconSize ? sidebarExpandingMenuIconSize : 32;
@@ -2994,6 +3038,12 @@ export default class GmStyles {
           '.gm-navbar:not(.gm-navbar-sticky-toggle) .gm-navbar-nav > li.current-menu-item > .gm-anchor .gm-menu-item__desc, .gm-navbar:not(.gm-navbar-sticky-toggle) .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor .gm-menu-item__desc, .gm-navbar:not(.gm-navbar-sticky-toggle) .gm-navbar-nav > li.current-page-ancestor > .gm-anchor .gm-menu-item__desc, .gm-navbar:not(.gm-navbar-sticky-toggle) .gm-navbar-nav > li.current-menu-parent > .gm-anchor .gm-menu-item__desc, .gm-navbar:not(.gm-navbar-sticky-toggle) .gm-navbar-nav > .menu-item > .gm-anchor:hover .gm-menu-item__desc, .gm-navbar:not(.gm-navbar-sticky-toggle) .gm-navbar-nav > .menu-item.gm-open > .gm-anchor .gm-menu-item__desc': `color: ${settings.menuLinksDescTextColorHover} !important;`,
           '.gm-navbar ~ .gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-item > .gm-anchor .gm-menu-item__desc, .gm-navbar ~ .gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor .gm-menu-item__desc, .gm-navbar ~ .gm-main-menu-wrapper .gm-navbar-nav > li.current-page-ancestor > .gm-anchor .gm-menu-item__desc, .gm-navbar ~ .gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-parent > .gm-anchor .gm-menu-item__desc, .gm-navbar ~ .gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor:hover .gm-menu-item__desc, .gm-navbar ~ .gm-main-menu-wrapper .gm-navbar-nav > .menu-item.gm-open > .gm-anchor .gm-menu-item__desc': `color: ${settings.menuLinksDescTextColorHover} !important;`,
         });
+
+        if (settings.menuLinksDescTextColorHoverSeparate && settings.menuLinksDescTextColorHoverHover) {
+          css.push({
+            '.gm-navbar:not(.gm-navbar-sticky-toggle) .gm-navbar-nav > .menu-item > .gm-anchor:hover .gm-menu-item__txt-wrapper .gm-menu-item__desc, .gm-navbar ~ .gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor:hover .gm-menu-item__txt-wrapper .gm-menu-item__desc': `color: ${settings.menuLinksDescTextColorHoverHover} !important;`,
+          });
+        }
       }
 
       if (settings.stickyMenuLinksDescTextColor) {
@@ -3001,6 +3051,12 @@ export default class GmStyles {
           '.gm-navbar.gm-navbar-sticky-toggle .gm-navbar-nav > .gm-menu-item > .gm-anchor > .gm-menu-item__txt-wrapper .gm-menu-item__desc': `color: ${settings.stickyMenuLinksDescTextColor};`,
           '.gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-parent > .gm-anchor .gm-menu-item__desc, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-item > .gm-anchor .gm-menu-item__desc, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-ancestor.gm-open > .gm-anchor .gm-menu-item__desc, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor .gm-menu-item__desc, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-page-ancestor.gm-open > .gm-anchor .gm-menu-item__desc, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-page-ancestor > .gm-anchor .gm-menu-item__desc, .gm-navbar-sticky-toggle .gm-navbar-nav > .menu-item.gm-open > .gm-anchor .gm-menu-item__desc, .gm-navbar-sticky-toggle .gm-navbar-nav > li > .gm-anchor:hover .gm-menu-item__desc': `color: ${settings.stickyMenuLinksDescTextColorHover} !important;`
         });
+
+        if (settings.stickyMenuLinksDescTextColorHoverSeparate && settings.stickyMenuLinksDescTextColorHoverHover) {
+          css.push({
+            '.gm-navbar-sticky-toggle .gm-navbar-nav > li > .gm-anchor:hover .gm-menu-item__txt-wrapper .gm-menu-item__desc': `color: ${settings.stickyMenuLinksDescTextColorHoverHover} !important;`,
+          });
+        }
       }
 
       if (settings.subLevelLinksDescTextColor) {
@@ -3008,6 +3064,12 @@ export default class GmStyles {
           '.gm-navbar-nav .gm-menu-item.gm-dropdown > .gm-dropdown-menu-wrapper .gm-anchor .gm-menu-item__txt-wrapper .gm-menu-item__desc': `color: ${settings.subLevelLinksDescTextColor};`,
           '.gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav .gm-dropdown-menu li.current-menu-ancestor > .gm-menu-item__link .gm-menu-item__desc, .gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav .gm-dropdown-menu li.current-page-ancestor > .gm-menu-item__link .gm-menu-item__desc, .gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav .gm-dropdown-menu li.current-menu-item > .gm-menu-item__link .gm-menu-item__desc, .gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav .gm-dropdown-menu .gm-menu-item__link:hover .gm-menu-item__desc': `color: ${settings.subLevelLinksDescTextColorHover} !important;`
         });
+
+        if (settings.subLevelLinksDescTextColorHoverSeparate && settings.subLevelLinksDescTextColorHoverHover) {
+          css.push({
+            '.gm-main-menu-wrapper #gm-main-menu .gm-navbar-nav .gm-dropdown-menu .gm-menu-item__link:hover .gm-menu-item__txt-wrapper .gm-menu-item__desc': `color: ${settings.subLevelLinksDescTextColorHoverHover} !important;`
+          });
+        }
       }
 
     }
@@ -3019,10 +3081,23 @@ export default class GmStyles {
         css.push({
           '.gm-navbar ~ .gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-item > .gm-anchor, .gm-navbar ~ .gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor, .gm-navbar ~ .gm-main-menu-wrapper .gm-navbar-nav > li.current-page-ancestor > .gm-anchor, .gm-navbar ~ .gm-main-menu-wrapper .gm-navbar-nav > li.current-menu-parent > .gm-anchor, .gm-navbar ~ .gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor:hover, .gm-navbar ~ .gm-main-menu-wrapper .gm-navbar-nav > .menu-item.gm-open > .gm-anchor': `color: ${settings.topLevelTextColorHover} !important`
         });
+
+        if (settings.topLevelTextColorHoverSeparate && settings.topLevelTextColorHoverHover) {
+          css.push({
+            '.gm-navbar ~ .gm-main-menu-wrapper .gm-navbar-nav > .menu-item > .gm-anchor:hover': `color: ${settings.topLevelTextColorHoverHover} !important;`
+          });
+        }
+
       } else {
         css.push({
           '.gm-navbar:not(.gm-navbar-sticky-toggle) .gm-navbar-nav > li.current-menu-item > .gm-anchor, .gm-navbar:not(.gm-navbar-sticky-toggle) .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor, .gm-navbar:not(.gm-navbar-sticky-toggle) .gm-navbar-nav > li.current-page-ancestor > .gm-anchor, .gm-navbar:not(.gm-navbar-sticky-toggle) .gm-navbar-nav > li.current-menu-parent > .gm-anchor, .gm-navbar:not(.gm-navbar-sticky-toggle) .gm-navbar-nav > .menu-item > .gm-anchor:hover, .gm-navbar:not(.gm-navbar-sticky-toggle) .gm-navbar-nav > .menu-item.gm-open > .gm-anchor': `color: ${settings.topLevelTextColorHover} !important`
         });
+
+        if (settings.topLevelTextColorHoverSeparate && settings.topLevelTextColorHoverHover) {
+          css.push({
+            '.gm-navbar:not(.gm-navbar-sticky-toggle) .gm-navbar-nav > .menu-item > .gm-anchor:hover': `color: ${settings.topLevelTextColorHoverHover} !important;`
+          });
+        }
 
         //topLevelTextBackgroundHover
         if (settings.topLevelTextBackgroundHover && (settings.header.style === 3 || settings.header.style === 5)) {
@@ -3046,6 +3121,16 @@ export default class GmStyles {
     }
 
     // SHARED SETTINGS -------------------------------------------------------------------------------------------------
+
+    css.push({
+      '.gm_action__visibility__mobile': 'display: none !important;',
+      media: 'desktop'
+    });
+
+    css.push({
+      '.gm_action__visibility__desktop': 'display: none !important;',
+      media: 'mobile'
+    });
 
     // Disable display of desktop menu version
     if (settings.mobileDisableDesktop) {
@@ -3819,17 +3904,17 @@ export default class GmStyles {
 
       if (settings.searchFormInputFieldBackground) {
         css.push({
-          '.gm-search__fullscreen-container .gm-search__input[type="text"]': `background: ${settings.searchFormInputFieldBackground}`,
-          '.gm-search__fullscreen-container .gm-search-btn': `background: ${settings.searchFormInputFieldBackground} !important`,
-          '.gm-search:not(.fullscreen) .gm-search__input': `background: ${settings.searchFormInputFieldBackground}`,
+          '.gm-search__fullscreen-container .gm-search__input[type="text"]': `background: ${settings.searchFormInputFieldBackground} !important;`,
+          '.gm-search__fullscreen-container .gm-search-btn': `background: ${settings.searchFormInputFieldBackground} !important;`,
+          '.gm-search:not(.fullscreen) .gm-search__input': `background: ${settings.searchFormInputFieldBackground} !important;`,
         });
       }
 
       if (settings.searchFormInputFieldColor) {
         css.push({
-          '.gm-search__fullscreen-container .gm-search__input[type="text"]': `color: ${settings.searchFormInputFieldColor}`,
-          '.gm-search__fullscreen-container .gm-search__alpha': `color: ${settings.searchFormInputFieldColor}`,
-          '.gm-search:not(.fullscreen) .gm-search__input': `color: ${settings.searchFormInputFieldColor}`,
+          '.gm-search__fullscreen-container .gm-search__input[type="text"]': `color: ${settings.searchFormInputFieldColor} !important;`,
+          '.gm-search__fullscreen-container .gm-search__alpha': `color: ${settings.searchFormInputFieldColor} !important;`,
+          '.gm-search:not(.fullscreen) .gm-search__input': `color: ${settings.searchFormInputFieldColor} !important;`,
         });
       }
 
@@ -3841,8 +3926,8 @@ export default class GmStyles {
 
         css.push({
           '.gm-search:not(.fullscreen) .gm-search-wrapper': `border-right: ${searchFormSideBorderThickness}px ${settings.searchFormSideBorderStyle} ${settings.searchFormSideBorderColor}`,
-          '.gm-search__fullscreen-container .gm-search__input[type="text"]': `border-bottom: ${settings.searchFormSideBorderThickness}px ${settings.searchFormSideBorderStyle} ${settings.searchFormSideBorderColor}`,
-          '.gm-search__fullscreen-container .gm-search-btn': `border-bottom: ${settings.searchFormSideBorderThickness}px ${settings.searchFormSideBorderStyle} ${settings.searchFormSideBorderColor} !important`,
+          '.gm-search__fullscreen-container .gm-search__input[type="text"]': `border-bottom: ${settings.searchFormSideBorderThickness}px ${settings.searchFormSideBorderStyle} ${settings.searchFormSideBorderColor} !important; border-top: none !important; border-left: none !important; border-right: none !important;`,
+          '.gm-search__fullscreen-container .gm-search-btn': `border-bottom: ${settings.searchFormSideBorderThickness}px ${settings.searchFormSideBorderStyle} ${settings.searchFormSideBorderColor} !important; border-top: none !important; border-left: none !important; border-right: none !important;`,
         });
       }
 
@@ -4338,7 +4423,7 @@ export default class GmStyles {
     // Mobile header height
     if (settings.mobileHeaderHeight) {
       css.push({
-        '.gm-inner .gm-container': `height: ${settings.mobileHeaderHeight}px`,
+        '.gm-inner .gm-container': `height: ${settings.mobileHeaderHeight}px;`,
         media: 'mobile'
       });
     }
@@ -4610,10 +4695,15 @@ export default class GmStyles {
     }
 
 
+    css.push({
+      '.gm-navbar .gm-logo': 'flex: 1 1; justify-content: flex-start;',
+      media: 'mobile'
+    });
+
     // Hide menu elements when drawler is open.
     if (settings.mobileIndependentCssHamburger) {
       css.push({
-        '.gm-navbar .gm-logo': 'transition: opacity 0.2s 0.18s',
+        '.gm-navbar .gm-logo': 'transition: opacity 0.2s 0.18s;',
         '.gm-navbar .gm-menu-actions-wrapper': 'transition: opacity 0.2s 0.18s, all 0.2s;',
         '.gm-drawer--open .gm-logo, .gm-drawer--open .gm-menu-actions-wrapper': 'opacity: 0; ',
         media: 'mobile'
@@ -5060,7 +5150,7 @@ export default class GmStyles {
     }
 
     css.push({
-      '.gm-main-menu-wrapper': 'display: none;',
+      '.gm-main-menu-wrapper': 'display: none !important;',
       media: 'mobile'
     });
 
@@ -5585,6 +5675,13 @@ export default class GmStyles {
               '.gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-parent > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-item > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-ancestor.gm-open > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-page-ancestor > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-page-ancestor.gm-open > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li > .gm-anchor:hover, .gm-navbar-sticky-toggle .gm-navbar-nav > .menu-item.gm-open > .gm-anchor': `color: ${settings.stickyTopLevelTextColorHover} !important`,
               media: 'desktop'
             });
+
+            if (settings.stickyTopLevelTextColorHoverSeparate && settings.stickyTopLevelTextColorHoverHover) {
+              css.push({
+                '.gm-navbar-sticky-toggle .gm-navbar-nav > li.gm-menu-item:hover > .gm-anchor::after': `border-top-color: ${settings.stickyTopLevelTextColorHoverHover} !important;`,
+                '.gm-navbar-sticky-toggle .gm-navbar-nav > li.gm-menu-item > .gm-anchor:hover': `color: ${settings.stickyTopLevelTextColorHoverHover} !important;`
+              });
+            }
           }
 
           // hover style 3
@@ -5593,6 +5690,12 @@ export default class GmStyles {
               '.gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-parent, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-item, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-ancestor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-ancestor.gm-open, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-page-ancestor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-page-ancestor.gm-open, .gm-navbar-sticky-toggle .gm-navbar-nav > .menu-item.gm-open, .gm-navbar-sticky-toggle .gm-navbar-nav > li:hover': `background-color: ${settings.stickyTopLevelTextColorHover} !important`,
               media: 'desktop'
             });
+
+            if (settings.stickyTopLevelTextColorHoverSeparate && settings.stickyTopLevelTextColorHoverHover) {
+              css.push({
+                '.gm-navbar-sticky-toggle .gm-navbar-nav > li.gm-menu-item:hover': `background-color: ${settings.stickyTopLevelTextColorHoverHover} !important;`
+              });
+            }
           }
 
           // hover style 4
@@ -5606,6 +5709,12 @@ export default class GmStyles {
               '.gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-parent > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-page-ancestor > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-item > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > .menu-item.gm-open > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li:hover > .gm-anchor': `border-color: ${settings.stickyTopLevelTextColorHover} !important`,
               media: 'desktop'
             });
+
+            if (settings.stickyTopLevelTextColorHoverSeparate && settings.stickyTopLevelTextColorHoverHover) {
+              css.push({
+                '.gm-navbar-sticky-toggle .gm-navbar-nav > li.gm-menu-item:hover > .gm-anchor': `background-color: ${settings.stickyTopLevelTextColorHoverHover} !important; border-color: ${settings.stickyTopLevelTextColorHoverHover} !important;`,
+              });
+            }
           }
 
           // hover style 5
@@ -5614,6 +5723,12 @@ export default class GmStyles {
               '.gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-parent > .gm-anchor .gm-menu-item__txt:after, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor .gm-menu-item__txt:after, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-page-ancestor > .gm-anchor .gm-menu-item__txt:after, .gm-navbar-sticky-toggle .gm-navbar-nav > li:hover > .gm-anchor .gm-menu-item__txt:after, .gm-navbar-sticky-toggle .gm-navbar-nav > li > .gm-anchor .gm-menu-item__txt:after': `background-color: ${settings.stickyTopLevelTextColorHover} !important`,
               media: 'desktop'
             });
+
+            if (settings.stickyTopLevelTextColorHoverSeparate && settings.stickyTopLevelTextColorHoverHover) {
+              css.push({
+                '.gm-navbar-sticky-toggle .gm-navbar-nav > li.gm-menu-item:hover > .gm-anchor .gm-menu-item__txt:after': `background-color: ${settings.stickyTopLevelTextColorHoverHover} !important;`
+              });
+            }
           }
 
           // hover style 6
@@ -5622,6 +5737,12 @@ export default class GmStyles {
               '.gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-parent > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-page-ancestor > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-item > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li > .gm-anchor:hover, .gm-navbar-sticky-toggle .gm-navbar-nav > .menu-item.gm-open > .gm-anchor': `background-color: ${settings.stickyTopLevelTextColorHover} !important`,
               media: 'desktop'
             });
+
+            if (settings.stickyTopLevelTextColorHoverSeparate && settings.stickyTopLevelTextColorHoverHover) {
+              css.push({
+                '.gm-navbar-sticky-toggle .gm-navbar-nav > li.gm-menu-item > .gm-anchor:hover': `background-color: ${settings.stickyTopLevelTextColorHoverHover} !important;`
+              });
+            }
           }
 
           // hover style 7
@@ -5635,6 +5756,13 @@ export default class GmStyles {
               '.gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-parent > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-item > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-ancestor.gm-open > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-page-ancestor > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-page-ancestor.gm-open > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > .menu-item.gm-open > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li > .gm-anchor:hover': `color: ${settings.stickyTopLevelTextColorHover} !important`,
               media: 'desktop'
             });
+
+            if (settings.stickyTopLevelTextColorHoverSeparate && settings.stickyTopLevelTextColorHoverHover) {
+              css.push({
+                '.gm-navbar-sticky-toggle .gm-navbar-nav > li.gm-menu-item > .gm-anchor:hover::after': `border-bottom-color: ${settings.stickyTopLevelTextColorHoverHover} !important;`,
+                '.gm-navbar-sticky-toggle .gm-navbar-nav > li.gm-menu-item > .gm-anchor:hover': `color: ${settings.stickyTopLevelTextColorHoverHover} !important;`,
+              });
+            }
           }
         }
 
@@ -6145,6 +6273,12 @@ export default class GmStyles {
         css.push({
           '.gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-parent > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-item > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-ancestor.gm-open > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-menu-ancestor > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-page-ancestor.gm-open > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li.current-page-ancestor > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > .menu-item.gm-open > .gm-anchor, .gm-navbar-sticky-toggle .gm-navbar-nav > li > .gm-anchor:hover': `color: ${settings.stickyTopLevelTextColorHover} !important`
         });
+
+        if (settings.stickyTopLevelTextColorHoverSeparate && settings.stickyTopLevelTextColorHoverHover) {
+          css.push({
+            '.gm-navbar-sticky-toggle .gm-navbar-nav > li.gm-menu-item > .gm-anchor:hover': `color: ${settings.stickyTopLevelTextColorHoverHover} !important;`
+          });
+        }
       }
 
       // if option active: Change Top level menu sticky background color when submenu(s) are opened

@@ -260,3 +260,13 @@ GROOVY TOOLBAR
 .gm-navbar #gm-toolbar .gm-toolbar-nav-container ul {
   padding: 0;
 }
+
+.gm-action__gm_toolbar_left_first,
+.gm-action__gm_toolbar_left_last,
+.gm-action__gm_toolbar_right_first,
+.gm-action__gm_toolbar_right_last {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}

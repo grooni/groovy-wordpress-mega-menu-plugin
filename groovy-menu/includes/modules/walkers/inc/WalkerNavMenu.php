@@ -617,6 +617,7 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 		$variants = array(
 			'relative' => esc_html__( 'Relative', 'groovy-menu' ),
 			'absolute' => esc_html__( 'Absolute', 'groovy-menu' ),
+			'fixed'    => esc_html__( 'Fixed', 'groovy-menu' ),
 		);
 
 		return $variants;
