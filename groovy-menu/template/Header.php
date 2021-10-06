@@ -1098,7 +1098,7 @@ function groovyMenu( $args = array() ) {
 
 		$output_html .= '<div class="gm-grid-container d-flex flex-column h-100">';
 
-		if ( $groovyMenuSettings['mobileOffcanvasFullwidth'] ) {
+		if ( $groovyMenuSettings['mobileOffcanvasFullwidth'] && ! ( $groovyMenuSettings['mobileIndependentCssHamburger'] && $groovyMenuSettings['mobileIndependentCssHamburgerFloat'] ) ) {
 			$output_html .= '
 			<div class="gm-menu-btn gm-hamburger-close" aria-label="close">
 				<div class="gm-menu-btn__inner">';

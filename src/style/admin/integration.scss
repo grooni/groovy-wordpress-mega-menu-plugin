@@ -64,7 +64,7 @@
   .gm-gui-picture {
     max-width: 120px;
     max-height: 120px;
-   }
+  }
 
   .gm-gui-picture__play-video,
   .gm-gui-picture__need-help {
@@ -79,5 +79,15 @@
       text-align: center;
       line-height: 1em;
     }
+  }
+
+  .gm-integrate-shortcode {
+    font-size: 1.3em;
+    padding: 6px 12px;
+  }
+
+  .gm-dashboard-body-section label {
+    font-size: 16px;
+    margin-right: 5px;
   }
 }
