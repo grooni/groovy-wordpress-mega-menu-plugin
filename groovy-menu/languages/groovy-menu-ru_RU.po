@@ -2,10 +2,10 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Groovy Menu 1.3.6.1\n"
+"Project-Id-Version: Groovy Menu 1.3.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 18:35+0300\n"
-"PO-Revision-Date: 2021-09-29 18:35+0300\n"
+"POT-Creation-Date: 2021-10-06 19:11+0300\n"
+"PO-Revision-Date: 2021-10-06 19:11+0300\n"
 "Last-Translator: Di_Skyer <diskyer@gmail.com>\n"
 "Language-Team: Русский\n"
 "Language: ru_RU\n"
@@ -64,17 +64,17 @@ msgstr ""
 msgid "Top level links align"
 msgstr "Выравнивание ссылок меню верхнего уровня"
 
-#: includes/config/Config.php:35 includes/config/Config.php:1817
-#: includes/config/Config.php:3750 includes/config/Config.php:3811
+#: includes/config/Config.php:35 includes/config/Config.php:1835
+#: includes/config/Config.php:3937 includes/config/Config.php:3998
 msgid "Align left"
 msgstr "Выровнять слева"
 
-#: includes/config/Config.php:36 includes/config/Config.php:3751
+#: includes/config/Config.php:36 includes/config/Config.php:3938
 msgid "Align center"
 msgstr "Выровнять по центру"
 
-#: includes/config/Config.php:37 includes/config/Config.php:1818
-#: includes/config/Config.php:3752 includes/config/Config.php:3812
+#: includes/config/Config.php:37 includes/config/Config.php:1836
+#: includes/config/Config.php:3939 includes/config/Config.php:3999
 msgid "Align right"
 msgstr "Выровнять справа"
 
@@ -88,11 +88,11 @@ msgid ""
 "Calculation of the center position for nav including the width of the logo."
 msgstr "Расчет центральной позиции для навигации, включая ширину логотипа."
 
-#: includes/config/Config.php:59 includes/config/Config.php:3757
+#: includes/config/Config.php:59 includes/config/Config.php:3944
 msgid "Forced centered logo"
 msgstr ""
 
-#: includes/config/Config.php:60 includes/config/Config.php:3758
+#: includes/config/Config.php:60 includes/config/Config.php:3945
 msgid ""
 "The central position of the logo is calculated depending on the width of the "
 "screen and side elements."
@@ -191,13 +191,13 @@ msgstr "Переключите, чтобы показать / скрыть ми�
 msgid "WPML language switcher icon size"
 msgstr "Размер иконки переключателя языка WPML"
 
-#: includes/config/Config.php:164 includes/config/Config.php:839
-#: includes/config/Config.php:3306
+#: includes/config/Config.php:164 includes/config/Config.php:857
+#: includes/config/Config.php:3499
 msgid "Desktop icon size"
 msgstr "Размер иконки"
 
-#: includes/config/Config.php:172 includes/config/Config.php:847
-#: includes/config/Config.php:3315
+#: includes/config/Config.php:172 includes/config/Config.php:865
+#: includes/config/Config.php:3508
 msgid "Mobile icon size"
 msgstr "Размер мобильной иконки"
 
@@ -244,57 +244,67 @@ msgstr ""
 "к элементам меню здесь \"Внешний вид > Меню\""
 
 #: includes/config/Config.php:239
+msgid "Disable to display the menu on desktops"
+msgstr ""
+
+#: includes/config/Config.php:240
+msgid ""
+"To customize the display of the mobile menu go to &quot;Mobile menu > Mobile "
+"options > Mobile navigation menu&quot;"
+msgstr ""
+
+#: includes/config/Config.php:245
 #, fuzzy
 #| msgid "Sidebar menu"
 msgid "Enable preloader of the menu"
 msgstr "Боковое меню"
 
-#: includes/config/Config.php:245
+#: includes/config/Config.php:251
 msgid "Menu z-index"
 msgstr "Меню Z-index"
 
-#: includes/config/Config.php:246
+#: includes/config/Config.php:252
 msgid "Set the z-index to ensure the menu are higher than other site content."
 msgstr ""
 "Установите z-index что бы убедиться, что меню будет выше остального контента "
 "сайта."
 
-#: includes/config/Config.php:253 includes/config/Config.php:522
+#: includes/config/Config.php:259 includes/config/Config.php:540
 msgid "Submenu"
 msgstr "Подменю"
 
-#: includes/config/Config.php:258
+#: includes/config/Config.php:264
 msgid "Show submenu"
 msgstr "Показть подменю"
 
-#: includes/config/Config.php:259
+#: includes/config/Config.php:265
 msgid "Select behavior of opening the submenu."
 msgstr "Подменю открывать при"
 
-#: includes/config/Config.php:262 includes/config/Config.php:904
+#: includes/config/Config.php:268 includes/config/Config.php:922
 msgid "on hover"
 msgstr "наведение"
 
-#: includes/config/Config.php:263
+#: includes/config/Config.php:269
 msgid "on click"
 msgstr "клике"
 
-#: includes/config/Config.php:268
+#: includes/config/Config.php:274
 msgid "Submenu width"
 msgstr "Ширина подменю"
 
-#: includes/config/Config.php:269
+#: includes/config/Config.php:275
 msgid ""
 "By applying this option you can set width of submenu excluding mega menu. "
 "Note: this option works with default and icon menu types."
 msgstr ""
 "Применяя эту опцию, вы можете установить ширину подменю, исключая мегаменю.  "
 
-#: includes/config/Config.php:276
+#: includes/config/Config.php:282
 msgid "Hide background image at submenu"
 msgstr "Скрыть фоновое изображение в подменю"
 
-#: includes/config/Config.php:277
+#: includes/config/Config.php:283
 msgid ""
 "You can hide background image at submenu settings in &quot;Appearance > "
 "Menus&quot;."
@@ -302,89 +312,89 @@ msgstr ""
 "Вы можете скрыть фоновое изображение установленное в настройках подменю в "
 "\"Внешний вид > Меню\""
 
-#: includes/config/Config.php:282
+#: includes/config/Config.php:288
 msgid "Top level link bottom border"
 msgstr "Нижняя граница ссылки верхнего уровня"
 
-#: includes/config/Config.php:287 includes/config/Config.php:415
-#: includes/config/Config.php:446 includes/config/Config.php:935
-#: includes/config/Config.php:1343 includes/config/Config.php:1379
-#: includes/config/Config.php:1415 includes/config/Config.php:2379
-#: includes/config/Config.php:2875 includes/config/Config.php:2895
-#: includes/config/Config.php:3853
+#: includes/config/Config.php:293 includes/config/Config.php:421
+#: includes/config/Config.php:452 includes/config/Config.php:953
+#: includes/config/Config.php:1361 includes/config/Config.php:1397
+#: includes/config/Config.php:1433 includes/config/Config.php:2544
+#: includes/config/Config.php:3068 includes/config/Config.php:3088
+#: includes/config/Config.php:4040
 msgid "thickness"
 msgstr "толщина"
 
-#: includes/config/Config.php:295 includes/config/Config.php:405
-#: includes/config/Config.php:436 includes/config/Config.php:945
-#: includes/config/Config.php:1351 includes/config/Config.php:1387
-#: includes/config/Config.php:1423 includes/config/Config.php:3860
+#: includes/config/Config.php:301 includes/config/Config.php:411
+#: includes/config/Config.php:442 includes/config/Config.php:963
+#: includes/config/Config.php:1369 includes/config/Config.php:1405
+#: includes/config/Config.php:1441 includes/config/Config.php:4047
 msgid "style"
 msgstr "стиль"
 
-#: includes/config/Config.php:298 includes/config/Config.php:410
-#: includes/config/Config.php:441 includes/config/Config.php:948
-#: includes/config/Config.php:1354 includes/config/Config.php:1390
-#: includes/config/Config.php:1426 includes/config/Config.php:3465
-#: includes/config/Config.php:3570 includes/config/Config.php:3863
+#: includes/config/Config.php:304 includes/config/Config.php:416
+#: includes/config/Config.php:447 includes/config/Config.php:966
+#: includes/config/Config.php:1372 includes/config/Config.php:1408
+#: includes/config/Config.php:1444 includes/config/Config.php:3658
+#: includes/config/Config.php:3763 includes/config/Config.php:4050
 msgid "Dotted"
 msgstr "Точечная"
 
-#: includes/config/Config.php:299 includes/config/Config.php:409
-#: includes/config/Config.php:440 includes/config/Config.php:949
-#: includes/config/Config.php:1355 includes/config/Config.php:1391
-#: includes/config/Config.php:1427 includes/config/Config.php:3466
-#: includes/config/Config.php:3571 includes/config/Config.php:3864
+#: includes/config/Config.php:305 includes/config/Config.php:415
+#: includes/config/Config.php:446 includes/config/Config.php:967
+#: includes/config/Config.php:1373 includes/config/Config.php:1409
+#: includes/config/Config.php:1445 includes/config/Config.php:3659
+#: includes/config/Config.php:3764 includes/config/Config.php:4051
 msgid "Dashed"
 msgstr "Штрих пункт."
 
-#: includes/config/Config.php:300 includes/config/Config.php:408
-#: includes/config/Config.php:439 includes/config/Config.php:950
-#: includes/config/Config.php:1356 includes/config/Config.php:1392
-#: includes/config/Config.php:1428 includes/config/Config.php:3464
-#: includes/config/Config.php:3569 includes/config/Config.php:3865
+#: includes/config/Config.php:306 includes/config/Config.php:414
+#: includes/config/Config.php:445 includes/config/Config.php:968
+#: includes/config/Config.php:1374 includes/config/Config.php:1410
+#: includes/config/Config.php:1446 includes/config/Config.php:3657
+#: includes/config/Config.php:3762 includes/config/Config.php:4052
 msgid "Solid"
 msgstr "Cплошная"
 
-#: includes/config/Config.php:306 includes/config/Config.php:422
-#: includes/config/Config.php:453 includes/config/Config.php:894
-#: includes/config/Config.php:958 includes/config/Config.php:1362
-#: includes/config/Config.php:1398 includes/config/Config.php:1434
-#: includes/config/Config.php:1726 includes/config/Config.php:2386
-#: includes/config/Config.php:2704 includes/config/Config.php:2882
-#: includes/config/Config.php:2902 includes/config/Config.php:3054
-#: includes/config/Config.php:3074 includes/config/Config.php:3107
-#: includes/config/Config.php:3127 includes/config/Config.php:3160
-#: includes/config/Config.php:3180 includes/config/Config.php:3217
-#: includes/config/Config.php:3241 includes/config/Config.php:3480
-#: includes/config/Config.php:3585 includes/config/Config.php:3870
+#: includes/config/Config.php:312 includes/config/Config.php:428
+#: includes/config/Config.php:459 includes/config/Config.php:912
+#: includes/config/Config.php:976 includes/config/Config.php:1380
+#: includes/config/Config.php:1416 includes/config/Config.php:1452
+#: includes/config/Config.php:1744 includes/config/Config.php:2551
+#: includes/config/Config.php:2897 includes/config/Config.php:3075
+#: includes/config/Config.php:3095 includes/config/Config.php:3247
+#: includes/config/Config.php:3267 includes/config/Config.php:3300
+#: includes/config/Config.php:3320 includes/config/Config.php:3353
+#: includes/config/Config.php:3373 includes/config/Config.php:3410
+#: includes/config/Config.php:3434 includes/config/Config.php:3673
+#: includes/config/Config.php:3778 includes/config/Config.php:4057
 msgid "color"
 msgstr "цвет"
 
-#: includes/config/Config.php:317
+#: includes/config/Config.php:323
 msgid "Submenu active link color"
 msgstr "Подменю цвет активной ссылки"
 
-#: includes/config/Config.php:324
+#: includes/config/Config.php:330
 msgid "First level submenu background color"
 msgstr "Цвет фона подменю первого уровня"
 
-#: includes/config/Config.php:331
+#: includes/config/Config.php:337
 msgid "Next level submenu background color"
 msgstr "Цвет фона подменю следующего уровня"
 
-#: includes/config/Config.php:338 includes/config/Config.php:1212
+#: includes/config/Config.php:344 includes/config/Config.php:1230
 #, fuzzy
 msgid "Dropdown appearance style"
 msgstr "Стиль появления подменю"
 
-#: includes/config/Config.php:341 includes/config/Config.php:356
-#: includes/config/Config.php:1215 includes/config/Config.php:1231
-#: includes/config/Config.php:1816 includes/config/Config.php:2525
-#: includes/config/Config.php:2574 includes/config/Config.php:2625
-#: includes/config/Config.php:2730 includes/config/Config.php:2786
-#: includes/config/Config.php:3749 includes/config/Config.php:3810
-#: includes/config/Config.php:4007 includes/config/Config.php:4047
+#: includes/config/Config.php:347 includes/config/Config.php:362
+#: includes/config/Config.php:1233 includes/config/Config.php:1249
+#: includes/config/Config.php:1834 includes/config/Config.php:2718
+#: includes/config/Config.php:2767 includes/config/Config.php:2818
+#: includes/config/Config.php:2923 includes/config/Config.php:2979
+#: includes/config/Config.php:3936 includes/config/Config.php:3997
+#: includes/config/Config.php:4194 includes/config/Config.php:4234
 #: includes/modules/core/inc/GroovyMenuSingleMetaPreset.php:106
 #: includes/modules/core/inc/GroovyMenuSingleMetaPreset.php:125
 #: includes/modules/fields/inc/FieldTaxonomyPreset.php:22
@@ -392,264 +402,278 @@ msgstr "Стиль появления подменю"
 msgid "Default"
 msgstr "По умолч."
 
-#: includes/config/Config.php:342 includes/config/Config.php:1216
+#: includes/config/Config.php:348 includes/config/Config.php:1234
 msgid "Fade in out"
 msgstr "Менять прозрачность"
 
-#: includes/config/Config.php:343 includes/config/Config.php:1217
+#: includes/config/Config.php:349 includes/config/Config.php:1235
 msgid "Animate from bottom"
 msgstr "Анимация снизу"
 
-#: includes/config/Config.php:344 includes/config/Config.php:1218
+#: includes/config/Config.php:350 includes/config/Config.php:1236
 msgid "Animate with scaling"
 msgstr ""
 
-#: includes/config/Config.php:345 includes/config/Config.php:1219
+#: includes/config/Config.php:351 includes/config/Config.php:1237
 #, fuzzy
 msgid "Slide from right"
 msgstr "Сдвиг вправо"
 
-#: includes/config/Config.php:346 includes/config/Config.php:1220
+#: includes/config/Config.php:352 includes/config/Config.php:1238
 msgid "Slide from right FadeIn"
 msgstr ""
 
-#: includes/config/Config.php:347 includes/config/Config.php:1221
+#: includes/config/Config.php:353 includes/config/Config.php:1239
 #, fuzzy
 msgid "Slide from left"
 msgstr "Смещение канваса слева"
 
-#: includes/config/Config.php:348 includes/config/Config.php:1222
+#: includes/config/Config.php:354 includes/config/Config.php:1240
 msgid "Slide from left FadeIn"
 msgstr ""
 
-#: includes/config/Config.php:353 includes/config/Config.php:1228
+#: includes/config/Config.php:359 includes/config/Config.php:1246
 #, fuzzy
 msgid "Menu item hover style"
 msgstr "Стиль наведения для появлении подменю"
 
-#: includes/config/Config.php:357 includes/config/Config.php:1232
+#: includes/config/Config.php:363 includes/config/Config.php:1250
 msgid "Shift right"
 msgstr "Сдвиг вправо"
 
-#: includes/config/Config.php:358 includes/config/Config.php:1233
+#: includes/config/Config.php:364 includes/config/Config.php:1251
 #, fuzzy
 msgid "Fade in"
 msgstr "Менять прозрачность"
 
-#: includes/config/Config.php:363
+#: includes/config/Config.php:369
 msgid "Page overlay when menu drops down"
 msgstr ""
 
-#: includes/config/Config.php:367
+#: includes/config/Config.php:373
 #, fuzzy
 msgid "Show overlay"
 msgstr "наведение"
 
-#: includes/config/Config.php:373 includes/config/Config.php:3352
-#: includes/config/Config.php:3375
+#: includes/config/Config.php:379 includes/config/Config.php:3545
+#: includes/config/Config.php:3568
 msgid "Background color"
 msgstr "Цвет фона"
 
-#: includes/config/Config.php:380 includes/config/Config.php:1733
+#: includes/config/Config.php:386 includes/config/Config.php:1751
 msgid "Blur effect"
 msgstr ""
 
-#: includes/config/Config.php:387 includes/config/Config.php:1740
+#: includes/config/Config.php:393 includes/config/Config.php:1758
 msgid "Blur intensity"
 msgstr ""
 
-#: includes/config/Config.php:401
+#: includes/config/Config.php:407
 msgid "Submenu bottom border"
 msgstr "Подменю нижняя граница"
 
-#: includes/config/Config.php:432
+#: includes/config/Config.php:438
 msgid "Submenu box border top color"
 msgstr "Подменю цвет рамки "
 
-#: includes/config/Config.php:462
+#: includes/config/Config.php:468
 msgid "Shift down the submenu at the height of the top border thickness"
 msgstr ""
 
-#: includes/config/Config.php:469
+#: includes/config/Config.php:475
 msgid "Submenu text color"
 msgstr "Цвет текста подменю"
 
-#: includes/config/Config.php:475
+#: includes/config/Config.php:481
 msgid "Submenu text hover color"
 msgstr "Цвет наведения текста подменю"
 
-#: includes/config/Config.php:481
+#: includes/config/Config.php:487
 msgid "Submenu active link text color"
 msgstr "Цвет активной ссылки подменю"
 
-#: includes/config/Config.php:487
+#: includes/config/Config.php:493
 msgid "Submenu background color"
 msgstr "Цвет фона подменю"
 
-#: includes/config/Config.php:493
+#: includes/config/Config.php:499
 msgid "Submenu item hover background color"
 msgstr "Подменю цвет фона при наведении"
 
-#: includes/config/Config.php:499
+#: includes/config/Config.php:505
 #, fuzzy
 #| msgid "Submenu text color"
 msgid "Submenu link description text color"
 msgstr "Цвет текста подменю"
 
-#: includes/config/Config.php:504 includes/config/Config.php:2415
-#: includes/config/Config.php:2470
+#: includes/config/Config.php:510 includes/config/Config.php:2580
+#: includes/config/Config.php:2647
 #, fuzzy
 #| msgid "400 (Normal)"
 msgid "Normal"
 msgstr "400 (Норм)"
 
-#: includes/config/Config.php:511 includes/config/Config.php:2421
-#: includes/config/Config.php:2477
+#: includes/config/Config.php:517 includes/config/Config.php:2586
+#: includes/config/Config.php:2654
 #, fuzzy
 msgid "Hover & Active"
 msgstr "Запущен (Активно)"
 
-#: includes/config/Config.php:522 includes/config/Config.php:743
+#: includes/config/Config.php:524 includes/config/Config.php:2592
+#: includes/config/Config.php:2661
+#, fuzzy
+#| msgid "Submenu text hover color"
+msgid "Separate hover color"
+msgstr "Цвет наведения текста подменю"
+
+#: includes/config/Config.php:529 includes/config/Config.php:2597
+#: includes/config/Config.php:2667
+#, fuzzy
+#| msgid "Hovers"
+msgid "Hover"
+msgstr "наведение"
+
+#: includes/config/Config.php:540 includes/config/Config.php:761
 #, fuzzy
 #| msgid "Menu height"
 msgid "item line height"
 msgstr "Высота меню"
 
-#: includes/config/Config.php:526 includes/config/Config.php:747
+#: includes/config/Config.php:544 includes/config/Config.php:765
 #, fuzzy
 #| msgid "Logo type"
 msgid "type"
 msgstr "Тип"
 
-#: includes/config/Config.php:529 includes/config/Config.php:750
+#: includes/config/Config.php:547 includes/config/Config.php:768
 msgid "Inherit"
 msgstr ""
 
-#: includes/config/Config.php:530 includes/config/Config.php:751
+#: includes/config/Config.php:548 includes/config/Config.php:769
 #, fuzzy
 #| msgid "Custom JS"
 msgid "Custom"
 msgstr "Пользов-ский"
 
-#: includes/config/Config.php:535 includes/config/Config.php:756
+#: includes/config/Config.php:553 includes/config/Config.php:774
 msgid "pixels"
 msgstr ""
 
-#: includes/config/Config.php:546
+#: includes/config/Config.php:564
 msgid "Dropdown radius"
 msgstr ""
 
-#: includes/config/Config.php:551 includes/config/Config.php:1450
-#: includes/config/Config.php:1504
+#: includes/config/Config.php:569 includes/config/Config.php:1468
+#: includes/config/Config.php:1522
 msgid "switch"
 msgstr "Переключить"
 
-#: includes/config/Config.php:558 includes/config/Config.php:1457
-#: includes/config/Config.php:1792 includes/config/Config.php:2349
+#: includes/config/Config.php:576 includes/config/Config.php:1475
+#: includes/config/Config.php:1810 includes/config/Config.php:2514
 msgid "top left"
 msgstr "сверху слева"
 
-#: includes/config/Config.php:569 includes/config/Config.php:1465
-#: includes/config/Config.php:1794 includes/config/Config.php:2351
+#: includes/config/Config.php:587 includes/config/Config.php:1483
+#: includes/config/Config.php:1812 includes/config/Config.php:2516
 msgid "top right"
 msgstr "сверху справа"
 
-#: includes/config/Config.php:580 includes/config/Config.php:1473
-#: includes/config/Config.php:1797 includes/config/Config.php:2354
+#: includes/config/Config.php:598 includes/config/Config.php:1491
+#: includes/config/Config.php:1815 includes/config/Config.php:2519
 msgid "bottom left"
 msgstr "внизу слева"
 
-#: includes/config/Config.php:591 includes/config/Config.php:1481
-#: includes/config/Config.php:1799 includes/config/Config.php:2356
+#: includes/config/Config.php:609 includes/config/Config.php:1499
+#: includes/config/Config.php:1817 includes/config/Config.php:2521
 msgid "bottom right"
 msgstr "внизу справа"
 
-#: includes/config/Config.php:606
+#: includes/config/Config.php:624
 #, fuzzy
 msgid "Dropdown gap"
 msgstr "Отступ выпадающего меню"
 
-#: includes/config/Config.php:607
+#: includes/config/Config.php:625
 msgid "Gap between Main menu and Dropdown menu"
 msgstr ""
 
-#: includes/config/Config.php:615
+#: includes/config/Config.php:633
 msgid "Submenu gap"
 msgstr "Отсут суб-меню"
 
-#: includes/config/Config.php:616
+#: includes/config/Config.php:634
 msgid "Gap beside Dropdown menu and Submenu"
 msgstr ""
 
-#: includes/config/Config.php:624
+#: includes/config/Config.php:642
 msgid "Time delay of smooth appearing between dropdowns and submenus"
 msgstr ""
 
-#: includes/config/Config.php:625
+#: includes/config/Config.php:643
 msgid "Affects to diagonal movement between adjacent menu items"
 msgstr ""
 
-#: includes/config/Config.php:632
+#: includes/config/Config.php:650
 msgid "Time delay of auto closing for submenus"
 msgstr ""
 
-#: includes/config/Config.php:633
+#: includes/config/Config.php:651
 msgid "Affects how quickly the submenu will close after mouseout event"
 msgstr ""
 
-#: includes/config/Config.php:640 includes/config/Config.php:743
+#: includes/config/Config.php:658 includes/config/Config.php:761
 #: includes/modules/core/inc/GroovyMenuSettings.php:2155
 #: includes/modules/walkers/inc/WalkerNavMenu.php:187
 msgid "Mega menu"
 msgstr "Мега меню"
 
-#: includes/config/Config.php:645
+#: includes/config/Config.php:663
 msgid "Show Mega Menu titles as a regular menu items"
 msgstr "Показывать заголовки Мега Меню как обычные пункты меню"
 
-#: includes/config/Config.php:646
+#: includes/config/Config.php:664
 msgid "For sub mega menu items."
 msgstr "Для элементов под Мега Меню."
 
-#: includes/config/Config.php:646
+#: includes/config/Config.php:664
 msgid "Show with links and badges."
 msgstr "Показывать со сслыками и бейджами."
 
-#: includes/config/Config.php:651
+#: includes/config/Config.php:669
 msgid "Highlight the titles of the megamenu on hover state and active"
 msgstr ""
 
-#: includes/config/Config.php:652
+#: includes/config/Config.php:670
 msgid ""
 "It&rsquo;s apply for mega menu titles that contain links. Highlight the "
 "title with colors according to the settings as for usual menu items."
 msgstr ""
 
-#: includes/config/Config.php:658
+#: includes/config/Config.php:676
 msgid "Mega menu title text color"
 msgstr "Цвет текста заголовка мегаменю"
 
-#: includes/config/Config.php:665
+#: includes/config/Config.php:683
 msgid "Mega menu canvas and container width"
 msgstr "Мега меню канвас и контейнер, ширина"
 
-#: includes/config/Config.php:668
+#: includes/config/Config.php:686
 msgid "Mega menu canvas and container boxed"
 msgstr "Мега меню канвас и контейнер фиксированы"
 
-#: includes/config/Config.php:669
+#: includes/config/Config.php:687
 msgid "Mega menu canvas wide - container boxed"
 msgstr "Мега меню канвас широкий - и контейнер фиксированный"
 
-#: includes/config/Config.php:670
+#: includes/config/Config.php:688
 msgid "Mega menu canvas and container wide"
 msgstr "Мега меню канвас и контейнер широкие"
 
-#: includes/config/Config.php:676
+#: includes/config/Config.php:694
 msgid "Mega menu canvas and container boxed width"
 msgstr "Мега меню канвас и контейнер фиксированы, ширина"
 
-#: includes/config/Config.php:685
+#: includes/config/Config.php:703
 msgid ""
 "Note that container will be 30px narrower than canvas. (canvas width by "
 "default is 1200px)."
@@ -657,1507 +681,1569 @@ msgstr ""
 "Обратите внимание, что контейнер будет на 30 пикселей уже, чем канвас . "
 "(ширина канваса по умолчанию составляет 1200 пикселей)."
 
-#: includes/config/Config.php:692
+#: includes/config/Config.php:710
 msgid "Mega menu canvas wide - container boxed width"
 msgstr "Мега меню канвас широкий - контейнер фиксированный, ширина"
 
-#: includes/config/Config.php:701
+#: includes/config/Config.php:719
 msgid "Default container width is 1200px."
 msgstr "Ширина контейнера по умолчанию составляет 1200 пикселей."
 
-#: includes/config/Config.php:708
+#: includes/config/Config.php:726
 msgid "Custom Mega menu background color"
 msgstr "Произвольный цвет фона Мега меню"
 
-#: includes/config/Config.php:714
+#: includes/config/Config.php:732
 msgid "Mega menu background color"
 msgstr "Цвет фона Мега меню"
 
-#: includes/config/Config.php:724
+#: includes/config/Config.php:742
 msgid "Add Mega menu columns padding"
 msgstr "Добавить отступы для колонок Мега меню"
 
-#: includes/config/Config.php:730
+#: includes/config/Config.php:748
 msgid "Mega menu columns divider color"
 msgstr "Мега меню цвет разделителя колонок"
 
-#: includes/config/Config.php:737
+#: includes/config/Config.php:755
 msgid "Mega menu links bottom border"
 msgstr "Мена меню ссылки нижняя граница"
 
-#: includes/config/Config.php:767
+#: includes/config/Config.php:785
 #, fuzzy
 msgid "Mega menu links left/right padding"
 msgstr "Добавить отступы для колонок Мега меню"
 
-#: includes/config/Config.php:774
+#: includes/config/Config.php:792
 msgid "Mega menu gap"
 msgstr "Отступ Мега меню"
 
-#: includes/config/Config.php:775
+#: includes/config/Config.php:793
 msgid "Gap between Main menu and Mega menu"
 msgstr ""
 
-#: includes/config/Config.php:783
+#: includes/config/Config.php:801
 #: includes/modules/core/inc/GroovyMenuUtils.php:550 template/Header.php:814
-#: template/Header.php:1214
+#: template/Header.php:1219
 msgid "Search"
 msgstr "Поиск"
 
-#: includes/config/Config.php:788
+#: includes/config/Config.php:806
 msgid "Search form type"
 msgstr "Тип формы поиска"
 
-#: includes/config/Config.php:792
+#: includes/config/Config.php:810
 msgid "Select a type of the search form"
 msgstr "Выберите тип формы поиска"
 
-#: includes/config/Config.php:797
+#: includes/config/Config.php:815
 msgid "Dropdown"
 msgstr "Выпадающий"
 
-#: includes/config/Config.php:800
+#: includes/config/Config.php:818
 msgid "Fullscreen"
 msgstr "Полноэкранный"
 
-#: includes/config/Config.php:801
+#: includes/config/Config.php:819
 msgid "Disable"
 msgstr "Выключен"
 
-#: includes/config/Config.php:806
+#: includes/config/Config.php:824
 msgid "Filter search result by"
 msgstr "Фильтровать поиск"
 
-#: includes/config/Config.php:811
+#: includes/config/Config.php:829
 msgid "Search in all post types"
 msgstr "Поиск по всем типам постов"
 
-#: includes/config/Config.php:824
+#: includes/config/Config.php:842
 msgid "Canvas background color for fullscreen search wrapper"
 msgstr "Цвет фона для области поиска полноэкранного типа"
 
-#: includes/config/Config.php:825
+#: includes/config/Config.php:843
 msgid "Also applicable for mobile screen resolutions"
 msgstr "Так же применяется для мобильного вида"
 
-#: includes/config/Config.php:834
+#: includes/config/Config.php:852
 msgid "Search form icon size"
 msgstr "Размер иконки формы поиска"
 
-#: includes/config/Config.php:847 includes/config/Config.php:3315
+#: includes/config/Config.php:865 includes/config/Config.php:3508
 #, fuzzy
 msgid "Slide container"
 msgstr "Боковая иконка"
 
-#: includes/config/Config.php:858
+#: includes/config/Config.php:876
 #, fuzzy
 msgid "Search icon position"
 msgstr "Искать в портфолио"
 
-#: includes/config/Config.php:859 includes/config/Config.php:875
-#: includes/config/Config.php:3271 includes/config/Config.php:3287
-#: includes/config/Config.php:3927
+#: includes/config/Config.php:877 includes/config/Config.php:893
+#: includes/config/Config.php:3464 includes/config/Config.php:3480
+#: includes/config/Config.php:4114
 msgid "You can change the icon color in the [Styles] - [Side Icon] section."
 msgstr ""
 
-#: includes/config/Config.php:859 includes/config/Config.php:3271
+#: includes/config/Config.php:877 includes/config/Config.php:3464
 msgid "See [Side icon] and [Side icon sticky]"
 msgstr ""
 
-#: includes/config/Config.php:862 includes/config/Config.php:878
-#: includes/config/Config.php:3274 includes/config/Config.php:3290
+#: includes/config/Config.php:880 includes/config/Config.php:896
+#: includes/config/Config.php:3467 includes/config/Config.php:3483
 msgid "Drawer (bottom position)"
 msgstr ""
 
-#: includes/config/Config.php:863 includes/config/Config.php:879
-#: includes/config/Config.php:3275 includes/config/Config.php:3291
+#: includes/config/Config.php:881 includes/config/Config.php:897
+#: includes/config/Config.php:3468 includes/config/Config.php:3484
 #, fuzzy
 msgid "Top bar side icon"
 msgstr "Тулбар размер соц. иконок"
 
-#: includes/config/Config.php:864 includes/config/Config.php:880
-#: includes/config/Config.php:3276 includes/config/Config.php:3292
+#: includes/config/Config.php:882 includes/config/Config.php:898
+#: includes/config/Config.php:3469 includes/config/Config.php:3485
 msgid "Top bar side icon & Drawer (bottom position)"
 msgstr ""
 
-#: includes/config/Config.php:865 includes/config/Config.php:881
-#: includes/config/Config.php:3277 includes/config/Config.php:3293
+#: includes/config/Config.php:883 includes/config/Config.php:899
+#: includes/config/Config.php:3470 includes/config/Config.php:3486
 #, fuzzy
 msgid "Hide icon"
 msgstr "Боковая иконка"
 
-#: includes/config/Config.php:874
+#: includes/config/Config.php:892
 #, fuzzy
 msgid "Mobile search icon position"
 msgstr "Переключение на мобильное меню "
 
-#: includes/config/Config.php:875 includes/config/Config.php:3287
+#: includes/config/Config.php:893 includes/config/Config.php:3480
 msgid "See [Side icon mobile] and [Side icon mobile sticky]"
 msgstr ""
 
-#: includes/config/Config.php:889 includes/config/Config.php:917
-#: includes/config/Config.php:927 includes/config/Config.php:973
-#: includes/config/Config.php:1005 includes/config/Config.php:1015
+#: includes/config/Config.php:907 includes/config/Config.php:935
+#: includes/config/Config.php:945 includes/config/Config.php:991
+#: includes/config/Config.php:1023 includes/config/Config.php:1033
 #, fuzzy
 msgid "Opened search form"
 msgstr "Выберите тип формы поиска"
 
-#: includes/config/Config.php:889
+#: includes/config/Config.php:907
 #, fuzzy
 msgid "Search icon color"
 msgstr "Иконка поиска"
 
-#: includes/config/Config.php:917
+#: includes/config/Config.php:935
 #, fuzzy
 msgid "Fullscreen close icon color"
 msgstr "Цвет фона для полноэкранного холста"
 
-#: includes/config/Config.php:927
+#: includes/config/Config.php:945
 msgid "Side border"
 msgstr "Боковая граница"
 
-#: includes/config/Config.php:973
+#: includes/config/Config.php:991
 msgid "Input field colors"
 msgstr ""
 
-#: includes/config/Config.php:981 includes/config/Config.php:1023
+#: includes/config/Config.php:999 includes/config/Config.php:1041
 msgid "background"
 msgstr "фон"
 
-#: includes/config/Config.php:990 includes/config/Config.php:3423
-#: includes/config/Config.php:3528
+#: includes/config/Config.php:1008 includes/config/Config.php:3616
+#: includes/config/Config.php:3721
 msgid "text color"
 msgstr "цвет текста"
 
-#: includes/config/Config.php:1005
+#: includes/config/Config.php:1023
 msgid "Dropdown background"
 msgstr "Цвет фона раскрывающегося списка"
 
-#: includes/config/Config.php:1015
+#: includes/config/Config.php:1033
 msgid "Dropdown search button"
 msgstr ""
 
-#: includes/config/Config.php:1032
+#: includes/config/Config.php:1050
 msgid "hover background"
 msgstr "цвет фона при наведении"
 
-#: includes/config/Config.php:1047 includes/config/Config.php:2056
+#: includes/config/Config.php:1065 includes/config/Config.php:2144
 #: includes/config/ConfigGlobal.php:18
 msgid "Logo"
 msgstr "Логотип"
 
-#: includes/config/Config.php:1052
+#: includes/config/Config.php:1070
 msgid "Logo type"
 msgstr "Выберите тип логотипа "
 
-#: includes/config/Config.php:1062 includes/config/Config.php:3766
+#: includes/config/Config.php:1080 includes/config/Config.php:3953
 msgid "Logo margin"
 msgstr "Отступ для логотипа"
 
-#: includes/config/Config.php:1070 includes/config/Config.php:2974
-#: includes/config/Config.php:3771
+#: includes/config/Config.php:1088 includes/config/Config.php:3167
+#: includes/config/Config.php:3958
 msgid "Top"
 msgstr "Верх"
 
-#: includes/config/Config.php:1081 includes/config/Config.php:1679
-#: includes/config/Config.php:1706 includes/config/Config.php:2985
-#: includes/config/Config.php:3779
+#: includes/config/Config.php:1099 includes/config/Config.php:1697
+#: includes/config/Config.php:1724 includes/config/Config.php:3178
+#: includes/config/Config.php:3966
 #: includes/modules/walkers/inc/WalkerNavMenu.php:595
 msgid "Right"
 msgstr "Справа"
 
-#: includes/config/Config.php:1092 includes/config/Config.php:2996
-#: includes/config/Config.php:3787
+#: includes/config/Config.php:1110 includes/config/Config.php:3189
+#: includes/config/Config.php:3974
 msgid "Bottom"
 msgstr "Снизу"
 
-#: includes/config/Config.php:1103 includes/config/Config.php:1677
-#: includes/config/Config.php:1704 includes/config/Config.php:3007
-#: includes/config/Config.php:3795
+#: includes/config/Config.php:1121 includes/config/Config.php:1695
+#: includes/config/Config.php:1722 includes/config/Config.php:3200
+#: includes/config/Config.php:3982
 #: includes/modules/walkers/inc/WalkerNavMenu.php:594
 msgid "Left"
 msgstr "Слева"
 
-#: includes/config/Config.php:1121
+#: includes/config/Config.php:1139
 msgid "Logo height"
 msgstr "Высота логотипа"
 
-#: includes/config/Config.php:1129
+#: includes/config/Config.php:1147
 msgid "Mobile logo height"
 msgstr "Высота логотипа мобильной версии"
 
-#: includes/config/Config.php:1137
+#: includes/config/Config.php:1155
 msgid "Show Alternative text for logo"
 msgstr "Показывать Альтернативный текст для логотипа"
 
-#: includes/config/Config.php:1137 includes/config/Config.php:1144
+#: includes/config/Config.php:1155 includes/config/Config.php:1162
 msgid "Alt attribute"
 msgstr "атрибут Alt"
 
-#: includes/config/Config.php:1140 includes/config/Config.php:1147
+#: includes/config/Config.php:1158 includes/config/Config.php:1165
 msgid "This attribute is editable in the WordPress media library."
 msgstr "Этот атрибут доступен для редактирования в медиа-библиотеке WordPress."
 
-#: includes/config/Config.php:1140
+#: includes/config/Config.php:1158
 msgid ""
 "If there is no alternative text, then the attribute will be displayed empty."
 msgstr "Если альтернативного текста нет, атрибут будет отображаться пустым."
 
-#: includes/config/Config.php:1144
+#: includes/config/Config.php:1162
 msgid "Show Title as Alternative text"
 msgstr "Показывать Заголовок в качестве Альтернативного текста"
 
-#: includes/config/Config.php:1154
+#: includes/config/Config.php:1172
 #, fuzzy
 msgid "Additional menu"
 msgstr "Минимальное меню"
 
-#: includes/config/Config.php:1159
+#: includes/config/Config.php:1177
 #, fuzzy
 msgid "Enable additional navigation menu"
 msgstr "Мобильное навигационное меню"
 
-#: includes/config/Config.php:1165
+#: includes/config/Config.php:1183
 #, fuzzy
 msgid "Navigation menu"
-msgstr "Меню навигации (из меню «Внешний вид»> «Меню»)"
+msgstr "Меню по умолчанию для всего контента"
 
-#: includes/config/Config.php:1173
+#: includes/config/Config.php:1191
 #, fuzzy
 msgid "Additional menu position"
 msgstr "Верхняя граница панели инструментов"
 
-#: includes/config/Config.php:1177
+#: includes/config/Config.php:1195
 #, fuzzy
 msgid "Toolbar: Left side First"
 msgstr "Верхняя граница панели инструментов"
 
-#: includes/config/Config.php:1178
+#: includes/config/Config.php:1196
 #, fuzzy
 msgid "Toolbar: Left side Last"
 msgstr "Верхняя граница панели инструментов"
 
-#: includes/config/Config.php:1179
+#: includes/config/Config.php:1197
 #, fuzzy
 msgid "Toolbar: Right side First"
 msgstr "Верхняя граница панели инструментов"
 
-#: includes/config/Config.php:1180
+#: includes/config/Config.php:1198
 #, fuzzy
 msgid "Toolbar: Right side Last"
 msgstr "Верхняя граница панели инструментов"
 
-#: includes/config/Config.php:1181
+#: includes/config/Config.php:1199
 #, fuzzy
 msgid "Logo: Before"
 msgstr "Выберите тип логотипа "
 
-#: includes/config/Config.php:1182
+#: includes/config/Config.php:1200
 #, fuzzy
 msgid "Logo: After"
 msgstr "Выберите тип логотипа "
 
-#: includes/config/Config.php:1183
+#: includes/config/Config.php:1201
 msgid "Main header: Before"
 msgstr ""
 
-#: includes/config/Config.php:1184
+#: includes/config/Config.php:1202
 msgid "Main header: After"
 msgstr ""
 
-#: includes/config/Config.php:1185
+#: includes/config/Config.php:1203
 #, fuzzy
 msgid "Main nav menu: After"
 msgstr "Моб. меню"
 
-#: includes/config/Config.php:1186
+#: includes/config/Config.php:1204
 msgid "Main nav menu: First"
 msgstr ""
 
-#: includes/config/Config.php:1187
+#: includes/config/Config.php:1205
 #, fuzzy
 msgid "Main nav menu: Last"
 msgstr "Навигационная метка"
 
-#: includes/config/Config.php:1188
+#: includes/config/Config.php:1206
 msgid "Action buttons: First"
 msgstr ""
 
-#: includes/config/Config.php:1189
+#: includes/config/Config.php:1207
 msgid "Action buttons: Last"
 msgstr ""
 
-#: includes/config/Config.php:1190
+#: includes/config/Config.php:1208
 #, fuzzy
 msgid "Mobile hamburger: Custom"
 msgstr "Моб. меню"
 
-#: includes/config/Config.php:1191
+#: includes/config/Config.php:1209
 #, fuzzy
 msgid "Mobile hamburger: Before"
 msgstr "Моб. меню"
 
-#: includes/config/Config.php:1192
+#: includes/config/Config.php:1210
 #, fuzzy
 msgid "Mobile hamburger: After"
 msgstr "Моб. меню"
 
-#: includes/config/Config.php:1193
+#: includes/config/Config.php:1211
 #, fuzzy
 msgid "Mobile drawer: Top"
 msgstr "Верхний отступ для моб. меню"
 
-#: includes/config/Config.php:1194
+#: includes/config/Config.php:1212
 #, fuzzy
 msgid "Mobile drawer: Nav First"
 msgstr "Мобильное навигационное меню"
 
-#: includes/config/Config.php:1195
+#: includes/config/Config.php:1213
 #, fuzzy
 msgid "Mobile drawer: Nav Last"
 msgstr "Мобильное навигационное меню"
 
-#: includes/config/Config.php:1196
+#: includes/config/Config.php:1214
 #, fuzzy
 msgid "Mobile drawer: After"
 msgstr "Моб. меню"
 
-#: includes/config/Config.php:1197
+#: includes/config/Config.php:1215
 #, fuzzy
 msgid "Mobile drawer: Before search icon"
 msgstr "Иконка поиска"
 
-#: includes/config/Config.php:1198
+#: includes/config/Config.php:1216
 #, fuzzy
 msgid "Mobile drawer: Before mini-cart"
 msgstr "Woo корзина"
 
-#: includes/config/Config.php:1199
+#: includes/config/Config.php:1217
 #, fuzzy
 msgid "Mobile Toolbar: First"
 msgstr "Тулбар цвет соц. иконок"
 
-#: includes/config/Config.php:1205
+#: includes/config/Config.php:1223
 #, fuzzy
 msgid "Show additional menu at the mobile"
 msgstr "Показать \"V\" символ для меню верхнем уровня с подменю"
 
-#: includes/config/Config.php:1239
+#: includes/config/Config.php:1257
 #, fuzzy
 msgid "Top level menu styles"
 msgstr "Стиль наведения верхнего уровня меню"
 
-#: includes/config/Config.php:1244 includes/config/Config.php:1289
-#: includes/config/Config.php:1886 includes/config/Config.php:3712
+#: includes/config/Config.php:1262 includes/config/Config.php:1307
+#: includes/config/Config.php:1904 includes/config/Config.php:3899
 #, fuzzy
 msgid "Color"
 msgstr "Цвет"
 
-#: includes/config/Config.php:1251 includes/config/Config.php:1296
-#: includes/config/Config.php:1809 includes/config/Config.php:2282
-#: includes/config/Config.php:2366
+#: includes/config/Config.php:1269 includes/config/Config.php:1314
+#: includes/config/Config.php:1827 includes/config/Config.php:2447
+#: includes/config/Config.php:2531
 msgid "Background"
 msgstr "Фон"
 
-#: includes/config/Config.php:1258 includes/config/Config.php:1303
+#: includes/config/Config.php:1276 includes/config/Config.php:1321
 #, fuzzy
 msgid "Color hover"
 msgstr "цвет наведения"
 
-#: includes/config/Config.php:1265 includes/config/Config.php:1310
+#: includes/config/Config.php:1283 includes/config/Config.php:1328
 #, fuzzy
 msgid "Background hover"
 msgstr "Цвет фона"
 
-#: includes/config/Config.php:1272 includes/config/Config.php:1317
-#: includes/config/Config.php:1878 includes/config/Config.php:3704
+#: includes/config/Config.php:1290 includes/config/Config.php:1335
+#: includes/config/Config.php:1896 includes/config/Config.php:3891
 #, fuzzy
 msgid "Font size"
 msgstr "размер шрифта"
 
-#: includes/config/Config.php:1284
+#: includes/config/Config.php:1302
 #, fuzzy
 msgid "Dropdown menu styles"
 msgstr "Тип меню"
 
-#: includes/config/Config.php:1329
+#: includes/config/Config.php:1347
 #, fuzzy
 msgid "Dropdown width"
 msgstr "Выпадающий"
 
-#: includes/config/Config.php:1337
+#: includes/config/Config.php:1355
 #, fuzzy
 msgid "Dropdown border"
 msgstr "Цвет фона раскрывающегося списка"
 
-#: includes/config/Config.php:1373
+#: includes/config/Config.php:1391
 msgid "Dropdown top border styles"
 msgstr ""
 
-#: includes/config/Config.php:1409
+#: includes/config/Config.php:1427
 msgid "Dropdown divider lines"
 msgstr ""
 
-#: includes/config/Config.php:1445
+#: includes/config/Config.php:1463
 #, fuzzy
 msgid "Menu dropdown radius"
 msgstr "Верхняя граница панели инструментов"
 
-#: includes/config/Config.php:1494
+#: includes/config/Config.php:1512
 msgid "Scrollbar"
 msgstr "Скроллбар"
 
-#: includes/config/Config.php:1494
+#: includes/config/Config.php:1512
 #, fuzzy
 msgid "Onepage"
 msgstr "отдельные страницы"
 
-#: includes/config/Config.php:1499
+#: includes/config/Config.php:1517
 #, fuzzy
 msgid "Enable internal submenus scrollbar"
 msgstr "Включить Скролбар"
 
-#: includes/config/Config.php:1501
+#: includes/config/Config.php:1519
 msgid "Enable scrolling for long lists of submenus and mega menus"
 msgstr "Включить скроллинг для длинных списков суб-меню и мега меню"
 
-#: includes/config/Config.php:1510
+#: includes/config/Config.php:1528
 #, fuzzy
 msgid "scroll speed"
 msgstr "прокрутка"
 
-#: includes/config/Config.php:1522
+#: includes/config/Config.php:1540
 #, fuzzy
 msgid "Enable mobile menu scrollbar"
 msgstr "Включить Скролбар"
 
-#: includes/config/Config.php:1525
+#: includes/config/Config.php:1543
 #, fuzzy
 msgid "Enable scrolling for long lists of mobile menu & submenus"
 msgstr "Включить скроллинг для длинных списков суб-меню и мега меню"
 
-#: includes/config/Config.php:1528
+#: includes/config/Config.php:1546
 msgid "Tracking anchor links"
 msgstr ""
 
-#: includes/config/Config.php:1531
+#: includes/config/Config.php:1549
 msgid "Anchor links in a onepage menu"
 msgstr ""
 
-#: includes/config/Config.php:1534
+#: includes/config/Config.php:1552
 msgid "Enable to handle anchor links for &quot;Menu blocks&quot; content"
 msgstr ""
 
-#: includes/config/Config.php:1537
+#: includes/config/Config.php:1555
 msgid ""
 "Allows to enable anchor links in &quot;Menu blocks&quot; and smooth scroll"
 msgstr ""
 
-#: includes/config/Config.php:1541
+#: includes/config/Config.php:1559
 msgid "Custom scroll speed options"
 msgstr ""
 
-#: includes/config/Config.php:1544
+#: includes/config/Config.php:1562
 msgid ""
 "Used to smoothly scroll the page content to anchor links in a onepage menu"
 msgstr ""
 
-#: includes/config/Config.php:1547 includes/config/Config.php:1556
-#: includes/config/Config.php:1565
+#: includes/config/Config.php:1565 includes/config/Config.php:1574
+#: includes/config/Config.php:1583
 msgid "Scroll Speed"
 msgstr ""
 
-#: includes/config/Config.php:1548
+#: includes/config/Config.php:1566
 msgid "Amount of time in milliseconds it should take to scroll 1000px"
 msgstr ""
 
-#: includes/config/Config.php:1556
+#: includes/config/Config.php:1574
 msgid "Minimum"
 msgstr "Минимум"
 
-#: includes/config/Config.php:1557
+#: includes/config/Config.php:1575
 msgid "The minimum amount of time the scroll animation should take"
 msgstr ""
 
-#: includes/config/Config.php:1565
+#: includes/config/Config.php:1583
 msgid "Maximum"
 msgstr "Максимум"
 
-#: includes/config/Config.php:1566
+#: includes/config/Config.php:1584
 msgid "The maximum amount of time the scroll animation should take"
 msgstr ""
 
-#: includes/config/Config.php:1574
+#: includes/config/Config.php:1592
 msgid "Scroll easing pattern to use"
 msgstr ""
 
-#: includes/config/Config.php:1575
+#: includes/config/Config.php:1593
 msgid ""
 "Linear Moves at the same speed from start point to end point. Ease-In "
 "Gradually increases in speed. Ease-In-Out Gradually increases in speed, "
 "peaks, and then gradually slows down. Ease-Out Gradually decreases in speed."
 msgstr ""
 
-#: includes/config/Config.php:1578
+#: includes/config/Config.php:1596
 msgid "Linear"
 msgstr ""
 
-#: includes/config/Config.php:1579
+#: includes/config/Config.php:1597
 msgid "Ease-In Quad"
 msgstr ""
 
-#: includes/config/Config.php:1580
+#: includes/config/Config.php:1598
 msgid "Ease-In Cubic"
 msgstr ""
 
-#: includes/config/Config.php:1581
+#: includes/config/Config.php:1599
 msgid "Ease-In Quart"
 msgstr ""
 
-#: includes/config/Config.php:1582
+#: includes/config/Config.php:1600
 msgid "Ease-In Quint"
 msgstr ""
 
-#: includes/config/Config.php:1583
+#: includes/config/Config.php:1601
 msgid "Ease-In-Out Quad"
 msgstr ""
 
-#: includes/config/Config.php:1584
+#: includes/config/Config.php:1602
 msgid "Ease-In-Out Cubic"
 msgstr ""
 
-#: includes/config/Config.php:1585
+#: includes/config/Config.php:1603
 msgid "Ease-In-Out Quart"
 msgstr ""
 
-#: includes/config/Config.php:1586
+#: includes/config/Config.php:1604
 msgid "Ease-In-Out Quint"
 msgstr ""
 
-#: includes/config/Config.php:1587
+#: includes/config/Config.php:1605
 msgid "Ease-Out Quad"
 msgstr ""
 
-#: includes/config/Config.php:1588
+#: includes/config/Config.php:1606
 msgid "Ease-Out Cubic"
 msgstr ""
 
-#: includes/config/Config.php:1589
+#: includes/config/Config.php:1607
 msgid "Ease-Out Quart"
 msgstr ""
 
-#: includes/config/Config.php:1590
+#: includes/config/Config.php:1608
 msgid "Ease-Out Quint"
 msgstr ""
 
-#: includes/config/Config.php:1596
+#: includes/config/Config.php:1614
 msgid "Menu item preview"
 msgstr "Миниатюра пункта"
 
-#: includes/config/Config.php:1601
+#: includes/config/Config.php:1619
 #: includes/modules/core/inc/GroovyMenuSettings.php:1800
 #: includes/modules/core/inc/GroovyMenuSettings.php:2836
 #: template/PreviewModal.php:8
 msgid "Preview"
 msgstr "Предпросмотр"
 
-#: includes/config/Config.php:1605 includes/config/Config.php:3067
-#: includes/config/Config.php:3120 includes/config/Config.php:3173
-#: includes/config/Config.php:3233 includes/config/Config.php:3472
-#: includes/config/Config.php:3577
+#: includes/config/Config.php:1623 includes/config/Config.php:3260
+#: includes/config/Config.php:3313 includes/config/Config.php:3366
+#: includes/config/Config.php:3426 includes/config/Config.php:3665
+#: includes/config/Config.php:3770
 msgid "width"
 msgstr "ширина"
 
-#: includes/config/Config.php:1613
+#: includes/config/Config.php:1631
 msgid "height"
 msgstr "высота"
 
-#: includes/config/Config.php:1624
+#: includes/config/Config.php:1642
 msgid "Minimalistic menu"
 msgstr "Минимальное меню"
 
-#: includes/config/Config.php:1630
+#: includes/config/Config.php:1648
 msgid "Minimalistic menu open type"
 msgstr "Минимальное меню типа открытия"
 
-#: includes/config/Config.php:1633 includes/config/Config.php:3732
+#: includes/config/Config.php:1651 includes/config/Config.php:3919
 msgid "Offcanvas slide from the left"
 msgstr "Смещение канваса слева"
 
-#: includes/config/Config.php:1634 includes/config/Config.php:3733
+#: includes/config/Config.php:1652 includes/config/Config.php:3920
 msgid "Offcanvas slide from the right"
 msgstr "Смещение канваса справа"
 
-#: includes/config/Config.php:1635 includes/config/Config.php:3734
+#: includes/config/Config.php:1653 includes/config/Config.php:3921
 msgid "Slide menu and container from the left"
 msgstr "Выподающее слева"
 
-#: includes/config/Config.php:1636 includes/config/Config.php:3735
+#: includes/config/Config.php:1654 includes/config/Config.php:3922
 msgid "Slide menu and container from the right"
 msgstr "Выподающее справа"
 
-#: includes/config/Config.php:1642
+#: includes/config/Config.php:1660
 msgid "Drawer animation speed"
 msgstr ""
 
-#: includes/config/Config.php:1650
+#: includes/config/Config.php:1668
 #, fuzzy
 msgid "Top level width"
 msgstr "Текст верхнего уровня меню"
 
-#: includes/config/Config.php:1657 includes/config/Config.php:1674
-#: includes/config/Config.php:1689 includes/config/Config.php:1701
+#: includes/config/Config.php:1675 includes/config/Config.php:1692
+#: includes/config/Config.php:1707 includes/config/Config.php:1719
 #, fuzzy
 msgid "Fullscreen menu"
 msgstr "Полноэкранный"
 
-#: includes/config/Config.php:1658
+#: includes/config/Config.php:1676
 msgid "Allow navigation menu to open in fullscreen mode"
 msgstr ""
 
-#: includes/config/Config.php:1664
+#: includes/config/Config.php:1682
 msgid "Organize fullscreen menu items into columns"
 msgstr ""
 
-#: includes/config/Config.php:1665
+#: includes/config/Config.php:1683
 msgid "Can work with nested menus based on settings under Appearance > Menus"
 msgstr ""
 
-#: includes/config/Config.php:1674 includes/config/Config.php:1788
-#: includes/config/Config.php:2345
+#: includes/config/Config.php:1692 includes/config/Config.php:1806
+#: includes/config/Config.php:2510
 msgid "position"
 msgstr "расположение"
 
-#: includes/config/Config.php:1678 includes/config/Config.php:1705
+#: includes/config/Config.php:1696 includes/config/Config.php:1723
 #, fuzzy
 msgid "Center"
 msgstr "сверху в центре"
 
-#: includes/config/Config.php:1689
+#: includes/config/Config.php:1707
 #, fuzzy
 msgid "top level width"
 msgstr "Текст верхнего уровня меню"
 
-#: includes/config/Config.php:1701
+#: includes/config/Config.php:1719
 #, fuzzy
 msgid "top level alignment"
 msgstr "Выравнивание ссылок меню верхнего уровня"
 
-#: includes/config/Config.php:1716
+#: includes/config/Config.php:1734
 #, fuzzy
 #| msgid "Sidebar menu"
 msgid "Full height sidebar menu"
 msgstr "Боковое меню"
 
-#: includes/config/Config.php:1717
+#: includes/config/Config.php:1735
 msgid ""
 "Occupy maximum screen height. If disabled, then the slide will not overlap "
 "the top block."
 msgstr ""
 
-#: includes/config/Config.php:1722 includes/config/Config.php:2286
+#: includes/config/Config.php:1740 includes/config/Config.php:2451
 msgid "Top level menu background color"
 msgstr "Цвет фона меню верхнего уровня"
 
-#: includes/config/Config.php:1722
+#: includes/config/Config.php:1740
 msgid "Slider"
 msgstr ""
 
-#: includes/config/Config.php:1751
+#: includes/config/Config.php:1769
 #, fuzzy
 msgid "Slider menu background Image"
 msgstr "Фоновое изображение Mega menu"
 
-#: includes/config/Config.php:1758
+#: includes/config/Config.php:1776
 #, fuzzy
 msgid "Slider menu background image size"
 msgstr "Размер фоновое изображение меню верхнего уровня"
 
-#: includes/config/Config.php:1764
+#: includes/config/Config.php:1782
 #, fuzzy
 msgid "Slider menu background"
 msgstr "Фон меню верхнего уровня"
 
-#: includes/config/Config.php:1768 includes/config/Config.php:1772
-#: includes/config/Config.php:2325 includes/config/Config.php:2329
+#: includes/config/Config.php:1786 includes/config/Config.php:1790
+#: includes/config/Config.php:2490 includes/config/Config.php:2494
 msgid "repeat"
 msgstr "повторение"
 
-#: includes/config/Config.php:1771 includes/config/Config.php:2328
+#: includes/config/Config.php:1789 includes/config/Config.php:2493
 msgid "no-repeat"
 msgstr "не повторять"
 
-#: includes/config/Config.php:1773 includes/config/Config.php:2330
+#: includes/config/Config.php:1791 includes/config/Config.php:2495
 msgid "repeat-x"
 msgstr "повторение-x"
 
-#: includes/config/Config.php:1774 includes/config/Config.php:2331
+#: includes/config/Config.php:1792 includes/config/Config.php:2496
 msgid "repeat-y"
 msgstr "повторение-н"
 
-#: includes/config/Config.php:1779 includes/config/Config.php:2336
+#: includes/config/Config.php:1797 includes/config/Config.php:2501
 msgid "attachment"
 msgstr "фиксация"
 
-#: includes/config/Config.php:1782 includes/config/Config.php:2339
+#: includes/config/Config.php:1800 includes/config/Config.php:2504
 msgid "fixed"
 msgstr "фиксир-ное"
 
-#: includes/config/Config.php:1783 includes/config/Config.php:2340
+#: includes/config/Config.php:1801 includes/config/Config.php:2505
 msgid "scroll"
 msgstr "прокрутка"
 
-#: includes/config/Config.php:1791 includes/config/Config.php:2348
+#: includes/config/Config.php:1809 includes/config/Config.php:2513
 msgid "center center"
 msgstr "центр центр"
 
-#: includes/config/Config.php:1793 includes/config/Config.php:2350
+#: includes/config/Config.php:1811 includes/config/Config.php:2515
 msgid "top center"
 msgstr "сверху в центре"
 
-#: includes/config/Config.php:1795 includes/config/Config.php:2352
+#: includes/config/Config.php:1813 includes/config/Config.php:2517
 msgid "center left"
 msgstr "вцентре слева"
 
-#: includes/config/Config.php:1796 includes/config/Config.php:2353
+#: includes/config/Config.php:1814 includes/config/Config.php:2518
 msgid "center right"
 msgstr "в центре справа"
 
-#: includes/config/Config.php:1798 includes/config/Config.php:2355
+#: includes/config/Config.php:1816 includes/config/Config.php:2520
 msgid "bottom center"
 msgstr "снизу в центре"
 
-#: includes/config/Config.php:1804 includes/config/Config.php:2361
+#: includes/config/Config.php:1822 includes/config/Config.php:2526
 msgid "Cover background"
 msgstr "Фоновая обложка"
 
-#: includes/config/Config.php:1813
+#: includes/config/Config.php:1831
 #, fuzzy
 msgid "Top bar action icons Align"
 msgstr "Тулбар размер соц. иконок"
 
-#: includes/config/Config.php:1823 includes/config/Config.php:3643
+#: includes/config/Config.php:1841 includes/config/Config.php:3830
 #, fuzzy
 msgid "Animated Hamburger icon"
 msgstr "Моб. меню"
 
-#: includes/config/Config.php:1823 includes/config/Config.php:3643
+#: includes/config/Config.php:1841 includes/config/Config.php:3830
 msgid "with &quot;X&quot; close icon"
 msgstr ""
 
-#: includes/config/Config.php:1828 includes/config/Config.php:1859
-#: includes/config/Config.php:3648 includes/config/Config.php:3686
+#: includes/config/Config.php:1846 includes/config/Config.php:1877
+#: includes/config/Config.php:3835 includes/config/Config.php:3873
 #, fuzzy
 msgid "Enable"
-msgstr "Включить автоматическую интеграцию"
+msgstr "Разрешить автоматическую интеграцию"
 
-#: includes/config/Config.php:1834 includes/config/Config.php:3655
+#: includes/config/Config.php:1852 includes/config/Config.php:3842
 msgid "Hamburger animation style"
 msgstr ""
 
-#: includes/config/Config.php:1841 includes/config/Config.php:3669
+#: includes/config/Config.php:1859 includes/config/Config.php:3856
 #, fuzzy
 msgid "line thickness"
 msgstr "толщина"
 
-#: includes/config/Config.php:1853 includes/config/Config.php:3681
+#: includes/config/Config.php:1871 includes/config/Config.php:3868
 #, fuzzy
 msgid "Custom text beside hamburger icon"
 msgstr "Иконка поиска"
 
-#: includes/config/Config.php:1854 includes/config/Config.php:3682
+#: includes/config/Config.php:1872 includes/config/Config.php:3869
 msgid "Text from Global setting, section Misc Icon"
 msgstr ""
 
-#: includes/config/Config.php:1866 includes/config/Config.php:3692
+#: includes/config/Config.php:1884 includes/config/Config.php:3879
 #, fuzzy
 msgid "Flex position"
 msgstr "расположение"
 
-#: includes/config/Config.php:1869 includes/config/Config.php:3695
+#: includes/config/Config.php:1887 includes/config/Config.php:3882
 #, fuzzy
 msgid "left"
 msgstr "Слева"
 
-#: includes/config/Config.php:1870 includes/config/Config.php:3696
+#: includes/config/Config.php:1888 includes/config/Config.php:3883
 #, fuzzy
 msgid "right"
 msgstr "Справа"
 
-#: includes/config/Config.php:1871 includes/config/Config.php:3697
+#: includes/config/Config.php:1889 includes/config/Config.php:3884
 #, fuzzy
 msgid "top"
 msgstr "Верх"
 
-#: includes/config/Config.php:1872 includes/config/Config.php:3698
+#: includes/config/Config.php:1890 includes/config/Config.php:3885
 #, fuzzy
 msgid "bottom"
 msgstr "Снизу"
 
-#: includes/config/Config.php:1893 includes/config/Config.php:3719
+#: includes/config/Config.php:1911 includes/config/Config.php:3906
 #, fuzzy
 msgid "Color sticky"
 msgstr "Цвета"
 
-#: includes/config/Config.php:1904
+#: includes/config/Config.php:1922
 #, fuzzy
 #| msgid "Submenu text"
 msgid "Show hamburger menu only"
 msgstr "Текст подменю"
 
-#: includes/config/Config.php:1905
+#: includes/config/Config.php:1923
 msgid "The logo, main menu items, and other elements will not be displayed"
 msgstr ""
 
-#: includes/config/Config.php:1911 includes/config/Config.php:1916
+#: includes/config/Config.php:1929 includes/config/Config.php:1934
 msgid "Custom CSS"
 msgstr "Пользов-ский CSS"
 
-#: includes/config/Config.php:1941 includes/config/Config.php:1946
+#: includes/config/Config.php:1959 includes/config/Config.php:1964
 msgid "Custom JS"
 msgstr "Пользов-ский JS"
 
-#: includes/config/Config.php:1965
+#: includes/config/Config.php:1983
 msgid "Custom code"
 msgstr "Пользов-ский код"
 
-#: includes/config/Config.php:1970
+#: includes/config/Config.php:1988
 msgid "Custom CSS class"
 msgstr "Пользов-ский CSS класс"
 
-#: includes/config/Config.php:1976 includes/config/Config.php:2003
-#: includes/config/Config.php:2056 includes/config/Config.php:2083
-#: includes/config/Config.php:2120 includes/config/Config.php:2147
-#: includes/config/Config.php:2184
+#: includes/config/Config.php:1994 includes/config/Config.php:2043
+#: includes/config/Config.php:2144 includes/config/Config.php:2193
+#: includes/config/Config.php:2230 includes/config/Config.php:2279
+#: includes/config/Config.php:2349
 msgid "Insert custom shortcode or raw HTML for"
 msgstr ""
 
-#: includes/config/Config.php:1976
+#: includes/config/Config.php:1994
 #, fuzzy
 msgid "Groovy Menu wrapper"
 msgstr "Groovy Menu пресет"
 
-#: includes/config/Config.php:1980
+#: includes/config/Config.php:2001 includes/config/Config.php:2011
 msgid "Before Main Header"
 msgstr ""
 
-#: includes/config/Config.php:1990
+#: includes/config/Config.php:2011 includes/config/Config.php:2032
+#: includes/config/Config.php:2063 includes/config/Config.php:2086
+#: includes/config/Config.php:2109 includes/config/Config.php:2132
+#: includes/config/Config.php:2161 includes/config/Config.php:2182
+#: includes/config/Config.php:2247 includes/config/Config.php:2268
+#: includes/config/Config.php:2296 includes/config/Config.php:2317
+#: includes/config/Config.php:2338
+#, fuzzy
+msgid "Visibility"
+msgstr ""
+"Тема или другой плагин отменяет видимость настроек меню Groovy. Для "
+"отображения настроек меню Groovy, пожалуйста, нажмите на кнопку"
+
+#: includes/config/Config.php:2012 includes/config/Config.php:2033
+#: includes/config/Config.php:2064 includes/config/Config.php:2087
+#: includes/config/Config.php:2110 includes/config/Config.php:2133
+#: includes/config/Config.php:2162 includes/config/Config.php:2183
+#: includes/config/Config.php:2248 includes/config/Config.php:2269
+#: includes/config/Config.php:2297 includes/config/Config.php:2318
+#: includes/config/Config.php:2339
+msgid "You can select the visibility area for this field"
+msgstr ""
+
+#: includes/config/Config.php:2015 includes/config/Config.php:2036
+#: includes/config/Config.php:2067 includes/config/Config.php:2090
+#: includes/config/Config.php:2113 includes/config/Config.php:2136
+#: includes/config/Config.php:2165 includes/config/Config.php:2186
+#: includes/config/Config.php:2251 includes/config/Config.php:2272
+#: includes/config/Config.php:2300 includes/config/Config.php:2321
+#: includes/config/Config.php:2342
+msgid "Both desktop & mobile"
+msgstr ""
+
+#: includes/config/Config.php:2016 includes/config/Config.php:2037
+#: includes/config/Config.php:2068 includes/config/Config.php:2091
+#: includes/config/Config.php:2114 includes/config/Config.php:2137
+#: includes/config/Config.php:2166 includes/config/Config.php:2187
+#: includes/config/Config.php:2252 includes/config/Config.php:2273
+#: includes/config/Config.php:2301 includes/config/Config.php:2322
+#: includes/config/Config.php:2343
+#, fuzzy
+msgid "Only desktop"
+msgstr "Компьютер"
+
+#: includes/config/Config.php:2017 includes/config/Config.php:2038
+#: includes/config/Config.php:2069 includes/config/Config.php:2092
+#: includes/config/Config.php:2115 includes/config/Config.php:2138
+#: includes/config/Config.php:2167 includes/config/Config.php:2188
+#: includes/config/Config.php:2253 includes/config/Config.php:2274
+#: includes/config/Config.php:2302 includes/config/Config.php:2323
+#: includes/config/Config.php:2344
+#, fuzzy
+#| msgid "Only 1 logo + mobile logo"
+msgid "Only mobile"
+msgstr "Только 1 лого + моб. лого"
+
+#: includes/config/Config.php:2022 includes/config/Config.php:2032
 msgid "After Main Header"
 msgstr ""
 
-#: includes/config/Config.php:2003 includes/config/Config.php:2844
+#: includes/config/Config.php:2043 includes/config/Config.php:3037
 #: includes/config/ConfigGlobal.php:339
 #: includes/modules/fields/inc/FieldHeader.php:53
 msgid "Toolbar"
 msgstr "Тулбар"
 
-#: includes/config/Config.php:2008
+#: includes/config/Config.php:2052 includes/config/Config.php:2063
 #, fuzzy
 msgid "Toolbar Left First"
 msgstr "Верхняя граница панели инструментов"
 
-#: includes/config/Config.php:2019
+#: includes/config/Config.php:2075 includes/config/Config.php:2086
 msgid "Toolbar Left Last"
 msgstr ""
 
-#: includes/config/Config.php:2030
+#: includes/config/Config.php:2098 includes/config/Config.php:2109
 msgid "Toolbar Right First"
 msgstr ""
 
-#: includes/config/Config.php:2041
+#: includes/config/Config.php:2121 includes/config/Config.php:2132
 msgid "Toolbar Right Last"
 msgstr ""
 
-#: includes/config/Config.php:2060
+#: includes/config/Config.php:2151 includes/config/Config.php:2161
 #, fuzzy
 msgid "Logo Before"
 msgstr "Выберите тип логотипа "
 
-#: includes/config/Config.php:2070
+#: includes/config/Config.php:2172 includes/config/Config.php:2182
 #, fuzzy
 msgid "Logo After"
 msgstr "Выберите тип логотипа "
 
-#: includes/config/Config.php:2083
+#: includes/config/Config.php:2193
 #, fuzzy
 msgid "Main Navigation"
 msgstr "Главная Навигация"
 
-#: includes/config/Config.php:2087
+#: includes/config/Config.php:2200
 msgid "Main Menu Navigation First"
 msgstr ""
 
-#: includes/config/Config.php:2097
+#: includes/config/Config.php:2210
 #, fuzzy
 msgid "Main Menu Navigation Last"
 msgstr "Навигационная метка"
 
-#: includes/config/Config.php:2107
+#: includes/config/Config.php:2220
 msgid "Main Menu After"
 msgstr ""
 
-#: includes/config/Config.php:2120
+#: includes/config/Config.php:2230
 msgid "Action Buttons"
 msgstr ""
 
-#: includes/config/Config.php:2124
+#: includes/config/Config.php:2237 includes/config/Config.php:2247
 msgid "Action Buttons First"
 msgstr ""
 
-#: includes/config/Config.php:2134
+#: includes/config/Config.php:2258 includes/config/Config.php:2268
 msgid "Action Buttons Last"
 msgstr ""
 
-#: includes/config/Config.php:2147
+#: includes/config/Config.php:2279
 #, fuzzy
 msgid "Mobile Hamburger"
 msgstr "Моб. меню"
 
-#: includes/config/Config.php:2151
+#: includes/config/Config.php:2286
 msgid "Action for"
 msgstr ""
 
-#: includes/config/Config.php:2151 includes/config/Config.php:3637
+#: includes/config/Config.php:2286 includes/config/Config.php:3824
 msgid "Custom mobile menu open trigger"
 msgstr ""
 
-#: includes/config/Config.php:2161
+#: includes/config/Config.php:2296
+#, fuzzy
+#| msgid "Minimalistic menu open type"
+msgid "Menu open trigger"
+msgstr "Минимальное меню типа открытия"
+
+#: includes/config/Config.php:2307 includes/config/Config.php:2317
 #, fuzzy
 msgid "Before hamburger icon"
 msgstr "Иконка поиска"
 
-#: includes/config/Config.php:2171
+#: includes/config/Config.php:2328 includes/config/Config.php:2338
 msgid "After hamburger icon"
 msgstr ""
 
-#: includes/config/Config.php:2184 includes/config/Config.php:3605
+#: includes/config/Config.php:2349 includes/config/Config.php:3798
 msgid "Mobile menu"
 msgstr "Моб. меню"
 
-#: includes/config/Config.php:2188
+#: includes/config/Config.php:2353
 #, fuzzy
 msgid "Mobile Menu Top"
 msgstr "Верхний отступ для моб. меню"
 
-#: includes/config/Config.php:2198
+#: includes/config/Config.php:2363
 #, fuzzy
 msgid "Mobile Menu Navigation First"
 msgstr "Мобильное навигационное меню"
 
-#: includes/config/Config.php:2208
+#: includes/config/Config.php:2373
 #, fuzzy
 msgid "Mobile Menu Navigation Last"
 msgstr "Мобильное навигационное меню"
 
-#: includes/config/Config.php:2218
+#: includes/config/Config.php:2383
 #, fuzzy
 msgid "Mobile Menu After"
 msgstr "Моб. меню"
 
-#: includes/config/Config.php:2228
+#: includes/config/Config.php:2393
 #, fuzzy
 msgid "Mobile Before Search icon"
 msgstr "Иконка поиска"
 
-#: includes/config/Config.php:2238
+#: includes/config/Config.php:2403
 #, fuzzy
 msgid "Mobile Before Woo mini-cart"
 msgstr "Woo корзина"
 
-#: includes/config/Config.php:2248
+#: includes/config/Config.php:2413
 #, fuzzy
 msgid "Mobile Toolbar End"
 msgstr "Тулбар цвет соц. иконок"
 
-#: includes/config/Config.php:2263
+#: includes/config/Config.php:2428
 msgid "Styles"
 msgstr "Стили"
 
-#: includes/config/Config.php:2268
+#: includes/config/Config.php:2433
 msgid "Hover styles"
 msgstr "Стили наведения"
 
-#: includes/config/Config.php:2273
+#: includes/config/Config.php:2438
 msgid "Top level hover Style"
 msgstr "Стиль наведения верхнего уровня меню"
 
-#: includes/config/Config.php:2292
+#: includes/config/Config.php:2457
 msgid "Change Top level menu background color when submenu(s) are opened"
 msgstr "Изменить цвет фона меню верхнего уровня когда открыты под-меню"
 
-#: includes/config/Config.php:2298
+#: includes/config/Config.php:2463
 msgid "Top level menu background color when submenu(s) are opened"
 msgstr "Цвет фона меню верхнего уровня когда открыты под-меню"
 
-#: includes/config/Config.php:2308
+#: includes/config/Config.php:2473
 msgid "Top level menu background Image"
 msgstr "Фоновое изображение меню верхнего уровня"
 
-#: includes/config/Config.php:2315
+#: includes/config/Config.php:2480
 msgid "Top level menu background image size"
 msgstr "Размер фоновое изображение меню верхнего уровня"
 
-#: includes/config/Config.php:2321
+#: includes/config/Config.php:2486
 msgid "Top level menu background"
 msgstr "Фон меню верхнего уровня"
 
-#: includes/config/Config.php:2370
+#: includes/config/Config.php:2535
 msgid "Border"
 msgstr "Линия"
 
-#: includes/config/Config.php:2375
+#: includes/config/Config.php:2540
 msgid "Menu bottom border"
 msgstr "Нижняя граница меню"
 
-#: includes/config/Config.php:2395
+#: includes/config/Config.php:2560
 #, fuzzy
 #| msgid "Top level hover Style"
 msgid "Top level hover line thickness"
 msgstr "Стиль наведения верхнего уровня меню"
 
-#: includes/config/Config.php:2407 includes/config/Config.php:3818
+#: includes/config/Config.php:2572 includes/config/Config.php:4005
 msgid "Colors"
 msgstr "Цвета"
 
-#: includes/config/Config.php:2411
+#: includes/config/Config.php:2576
 msgid "Top level link text color"
 msgstr "Цвет текста пунктов меню верхнего уровня"
 
-#: includes/config/Config.php:2430
+#: includes/config/Config.php:2607
 #, fuzzy
 msgid "Top level link text color when submenu(s) are opened"
 msgstr "Цвет фона меню верхнего уровня когда открыты под-меню"
 
-#: includes/config/Config.php:2438
+#: includes/config/Config.php:2615
 msgid "normal"
 msgstr ""
 
-#: includes/config/Config.php:2448
+#: includes/config/Config.php:2625
 #, fuzzy
 msgid "hover and active"
 msgstr "Запущен (Активно)"
 
-#: includes/config/Config.php:2465
+#: includes/config/Config.php:2642
 #, fuzzy
 #| msgid "Top level link text color"
 msgid "Top level link description text color"
 msgstr "Цвет текста пунктов меню верхнего уровня"
 
-#: includes/config/Config.php:2489 includes/config/Config.php:3988
+#: includes/config/Config.php:2682 includes/config/Config.php:4175
 msgid "Typography"
 msgstr "Шрифты"
 
-#: includes/config/Config.php:2493 includes/config/Config.php:2663
+#: includes/config/Config.php:2686 includes/config/Config.php:2856
 msgid "Google font family"
 msgstr "Google шрифты"
 
-#: includes/config/Config.php:2494
+#: includes/config/Config.php:2687
 msgid "Choose preferred Google font family for menu."
 msgstr "Выберите предпочтительный шрифт для меню"
 
-#: includes/config/Config.php:2504
+#: includes/config/Config.php:2697
 msgid "Top level menu items gutter space"
 msgstr "Растояние между пунктами меню верхнего уровня"
 
-#: includes/config/Config.php:2506
+#: includes/config/Config.php:2699
 msgid "This value will be applied as padding to left and right of the item."
 msgstr "Это значение будет применено как отступ слева и справа от элемента."
 
-#: includes/config/Config.php:2511 includes/config/Config.php:3993
+#: includes/config/Config.php:2704 includes/config/Config.php:4180
 msgid "Top level text"
 msgstr "Текст верхнего уровня меню"
 
-#: includes/config/Config.php:2515 includes/config/Config.php:2563
-#: includes/config/Config.php:2613 includes/config/Config.php:3997
-#: includes/config/Config.php:4037
+#: includes/config/Config.php:2708 includes/config/Config.php:2756
+#: includes/config/Config.php:2806 includes/config/Config.php:4184
+#: includes/config/Config.php:4224
 msgid "Size"
 msgstr "Размер"
 
-#: includes/config/Config.php:2522 includes/config/Config.php:2570
-#: includes/config/Config.php:2621 includes/config/Config.php:2726
-#: includes/config/Config.php:2782 includes/config/Config.php:4004
-#: includes/config/Config.php:4044
+#: includes/config/Config.php:2715 includes/config/Config.php:2763
+#: includes/config/Config.php:2814 includes/config/Config.php:2919
+#: includes/config/Config.php:2975 includes/config/Config.php:4191
+#: includes/config/Config.php:4231
 msgid "Case"
 msgstr "Регистр"
 
-#: includes/config/Config.php:2526 includes/config/Config.php:2575
-#: includes/config/Config.php:2626 includes/config/Config.php:2731
-#: includes/config/Config.php:2787 includes/config/Config.php:4008
-#: includes/config/Config.php:4048
+#: includes/config/Config.php:2719 includes/config/Config.php:2768
+#: includes/config/Config.php:2819 includes/config/Config.php:2924
+#: includes/config/Config.php:2980 includes/config/Config.php:4195
+#: includes/config/Config.php:4235
 msgid "Uppercase"
 msgstr "C Большой "
 
-#: includes/config/Config.php:2527 includes/config/Config.php:2576
-#: includes/config/Config.php:2627 includes/config/Config.php:2732
-#: includes/config/Config.php:2788 includes/config/Config.php:4009
-#: includes/config/Config.php:4049
+#: includes/config/Config.php:2720 includes/config/Config.php:2769
+#: includes/config/Config.php:2820 includes/config/Config.php:2925
+#: includes/config/Config.php:2981 includes/config/Config.php:4196
+#: includes/config/Config.php:4236
 msgid "Capitalize"
 msgstr "ЗАГЛАВНЫЕ"
 
-#: includes/config/Config.php:2528 includes/config/Config.php:2577
-#: includes/config/Config.php:2628 includes/config/Config.php:2733
-#: includes/config/Config.php:2789 includes/config/Config.php:4010
-#: includes/config/Config.php:4050
+#: includes/config/Config.php:2721 includes/config/Config.php:2770
+#: includes/config/Config.php:2821 includes/config/Config.php:2926
+#: includes/config/Config.php:2982 includes/config/Config.php:4197
+#: includes/config/Config.php:4237
 msgid "Lowercase"
 msgstr "строчные"
 
-#: includes/config/Config.php:2533 includes/config/Config.php:2582
-#: includes/config/Config.php:2634 includes/config/Config.php:2739
-#: includes/config/Config.php:2795 includes/config/Config.php:4015
-#: includes/config/Config.php:4055
+#: includes/config/Config.php:2726 includes/config/Config.php:2775
+#: includes/config/Config.php:2827 includes/config/Config.php:2932
+#: includes/config/Config.php:2988 includes/config/Config.php:4202
+#: includes/config/Config.php:4242
 msgid "Font variant"
 msgstr "Вариант шрифта"
 
-#: includes/config/Config.php:2536 includes/config/Config.php:2544
-#: includes/config/Config.php:2573 includes/config/Config.php:2585
-#: includes/config/Config.php:2593 includes/config/Config.php:2624
-#: includes/config/Config.php:2637 includes/config/Config.php:2646
-#: includes/config/Config.php:2689 includes/config/Config.php:2698
-#: includes/config/Config.php:2729 includes/config/Config.php:2742
-#: includes/config/Config.php:2751 includes/config/Config.php:2785
-#: includes/config/Config.php:2798 includes/config/Config.php:2807
-#: includes/config/Config.php:3409 includes/config/Config.php:3514
-#: includes/config/Config.php:4018 includes/config/Config.php:4058
+#: includes/config/Config.php:2729 includes/config/Config.php:2737
+#: includes/config/Config.php:2766 includes/config/Config.php:2778
+#: includes/config/Config.php:2786 includes/config/Config.php:2817
+#: includes/config/Config.php:2830 includes/config/Config.php:2839
+#: includes/config/Config.php:2882 includes/config/Config.php:2891
+#: includes/config/Config.php:2922 includes/config/Config.php:2935
+#: includes/config/Config.php:2944 includes/config/Config.php:2978
+#: includes/config/Config.php:2991 includes/config/Config.php:3000
+#: includes/config/Config.php:3602 includes/config/Config.php:3707
+#: includes/config/Config.php:4205 includes/config/Config.php:4245
 msgid "Select value"
 msgstr "Выбрать"
 
-#: includes/config/Config.php:2541 includes/config/Config.php:2590
-#: includes/config/Config.php:2643 includes/config/Config.php:2748
-#: includes/config/Config.php:2804
+#: includes/config/Config.php:2734 includes/config/Config.php:2783
+#: includes/config/Config.php:2836 includes/config/Config.php:2941
+#: includes/config/Config.php:2997
 msgid "Subset"
 msgstr "Тип"
 
-#: includes/config/Config.php:2549 includes/config/Config.php:2598
-#: includes/config/Config.php:2652 includes/config/Config.php:2757
-#: includes/config/Config.php:2813 includes/config/Config.php:4023
-#: includes/config/Config.php:4063
+#: includes/config/Config.php:2742 includes/config/Config.php:2791
+#: includes/config/Config.php:2845 includes/config/Config.php:2950
+#: includes/config/Config.php:3006 includes/config/Config.php:4210
+#: includes/config/Config.php:4250
 msgid "Letter spacing"
 msgstr "Межбукв. раст."
 
-#: includes/config/Config.php:2559
+#: includes/config/Config.php:2752
 msgid "Submenu text"
 msgstr "Текст подменю"
 
-#: includes/config/Config.php:2608
+#: includes/config/Config.php:2801
 msgid "Mega menu title text"
 msgstr "Текст заголовка мегаменю"
 
-#: includes/config/Config.php:2663 includes/config/Config.php:2673
+#: includes/config/Config.php:2856 includes/config/Config.php:2866
 msgid "Text logo"
 msgstr "Текстовый логотип"
 
-#: includes/config/Config.php:2664
+#: includes/config/Config.php:2857
 msgid "Choose preferred Google font family for logo."
 msgstr "Выберите предпочитаемое семейство шрифтов Google для логотипа."
 
-#: includes/config/Config.php:2678 includes/config/Config.php:2774
-#: includes/config/Config.php:3398 includes/config/Config.php:3503
+#: includes/config/Config.php:2871 includes/config/Config.php:2967
+#: includes/config/Config.php:3591 includes/config/Config.php:3696
 msgid "font size"
 msgstr "размер шрифта"
 
-#: includes/config/Config.php:2686
+#: includes/config/Config.php:2879
 msgid "variant"
 msgstr "вариант"
 
-#: includes/config/Config.php:2695
+#: includes/config/Config.php:2888
 msgid "subset"
 msgstr "тип"
 
-#: includes/config/Config.php:2711
+#: includes/config/Config.php:2904
 msgid "hover color"
 msgstr "цвет наведения"
 
-#: includes/config/Config.php:2721
+#: includes/config/Config.php:2914
 #, fuzzy
 msgid "Additional menu items text"
 msgstr "Минимальное меню"
 
-#: includes/config/Config.php:2769
+#: includes/config/Config.php:2962
 #, fuzzy
 #| msgid "Menu item title"
 msgid "Menu items description text"
 msgstr "Миниатюра пункта меню"
 
-#: includes/config/Config.php:2827
+#: includes/config/Config.php:3020
 msgid "Shadow"
 msgstr "Тень"
 
-#: includes/config/Config.php:2831
+#: includes/config/Config.php:3024
 msgid "Menu shadow"
 msgstr "Тень меню"
 
-#: includes/config/Config.php:2837
+#: includes/config/Config.php:3030
 msgid "Submenu shadow"
 msgstr "Тень подменю"
 
-#: includes/config/Config.php:2849
+#: includes/config/Config.php:3042
 msgid "Hide toolbar on mobile devices"
 msgstr "Скрыть тулбар на мобильных"
 
-#: includes/config/Config.php:2854
+#: includes/config/Config.php:3047
 #, fuzzy
 msgid "Align toolbar to the center"
 msgstr "Выровнять по центру"
 
-#: includes/config/Config.php:2858
+#: includes/config/Config.php:3051
 #, fuzzy
 msgid "Desktop"
 msgstr "Компьютер"
 
-#: includes/config/Config.php:2863
+#: includes/config/Config.php:3056
 #, fuzzy
 msgid "Mobile"
 msgstr "Мобильный"
 
-#: includes/config/Config.php:2871
+#: includes/config/Config.php:3064
 msgid "Toolbar top border"
 msgstr "Верхняя граница панели инструментов"
 
-#: includes/config/Config.php:2891
+#: includes/config/Config.php:3084
 msgid "Toolbar bottom border"
 msgstr "Нижняя граница панели инструментов"
 
-#: includes/config/Config.php:2911
+#: includes/config/Config.php:3104
 msgid "Toolbar background color"
 msgstr "Тулбар цвет фона"
 
-#: includes/config/Config.php:2917
+#: includes/config/Config.php:3110
 msgid "Toolbar additional information color"
 msgstr "Цвет панели дополнительной информации"
 
-#: includes/config/Config.php:2923
+#: includes/config/Config.php:3116
 msgid "WPML dropdown background color"
 msgstr "Цвет фона раскрывающегося списка WPML"
 
-#: includes/config/Config.php:2929
+#: includes/config/Config.php:3122
 msgid "Toolbar additional information font size"
 msgstr "Размер шрифта тулбара"
 
-#: includes/config/Config.php:2936
+#: includes/config/Config.php:3129
 msgid "Hide social icon link text on mobile devices"
 msgstr "Скрыть текст ссылки социальных сетей на мобильных устройствах"
 
-#: includes/config/Config.php:2941
+#: includes/config/Config.php:3134
 msgid "Toolbar social icon size"
 msgstr "Тулбар размер соц. иконок"
 
-#: includes/config/Config.php:2948
+#: includes/config/Config.php:3141
 msgid "Toolbar social icon color"
 msgstr "Тулбар цвет соц. иконок"
 
-#: includes/config/Config.php:2954
+#: includes/config/Config.php:3147
 msgid "Toolbar social icon hover color"
 msgstr "Тулбар цвет наведения иконок"
 
-#: includes/config/Config.php:2960
+#: includes/config/Config.php:3153
 msgid "Add left/right border to social icons"
 msgstr "Добавить левую / правую границу для социальных иконок"
 
-#: includes/config/Config.php:2966
+#: includes/config/Config.php:3159
 #, fuzzy
 msgid "Toolbar padding"
 msgstr "Тулбар"
 
-#: includes/config/Config.php:3026 includes/config/Config.php:3030
+#: includes/config/Config.php:3219 includes/config/Config.php:3223
 #: includes/config/ConfigGlobal.php:388
 msgid "Side icon"
 msgstr "Боковая иконка"
 
-#: includes/config/Config.php:3026 includes/config/ConfigGlobal.php:388
+#: includes/config/Config.php:3219 includes/config/ConfigGlobal.php:388
 msgid "Hamburger"
 msgstr ""
 
-#: includes/config/Config.php:3034 includes/config/Config.php:3087
-#: includes/config/Config.php:3140 includes/config/Config.php:3194
+#: includes/config/Config.php:3227 includes/config/Config.php:3280
+#: includes/config/Config.php:3333 includes/config/Config.php:3387
 msgid "size"
 msgstr "размер"
 
-#: includes/config/Config.php:3041 includes/config/Config.php:3094
-#: includes/config/Config.php:3147 includes/config/Config.php:3202
+#: includes/config/Config.php:3234 includes/config/Config.php:3287
+#: includes/config/Config.php:3340 includes/config/Config.php:3395
 msgid "padding area"
 msgstr "отступ"
 
-#: includes/config/Config.php:3048 includes/config/Config.php:3101
-#: includes/config/Config.php:3154 includes/config/Config.php:3210
-#: includes/config/Config.php:3437 includes/config/Config.php:3542
+#: includes/config/Config.php:3241 includes/config/Config.php:3294
+#: includes/config/Config.php:3347 includes/config/Config.php:3403
+#: includes/config/Config.php:3630 includes/config/Config.php:3735
 msgid "background color"
 msgstr "цвет фона"
 
-#: includes/config/Config.php:3063
+#: includes/config/Config.php:3256
 msgid "Side icon border"
 msgstr "Боковая икона граница"
 
-#: includes/config/Config.php:3083
+#: includes/config/Config.php:3276
 msgid "Side icon mobile"
 msgstr "Боковая иконка мобильное меню"
 
-#: includes/config/Config.php:3116
+#: includes/config/Config.php:3309
 msgid "Side icon mobile border"
 msgstr "Боковая иконка мобильное меню граница"
 
-#: includes/config/Config.php:3136
+#: includes/config/Config.php:3329
 #, fuzzy
 msgid "Side icon mobile float"
 msgstr "Боковая иконка мобильное меню"
 
-#: includes/config/Config.php:3169
+#: includes/config/Config.php:3362
 #, fuzzy
 msgid "Side icon mobile float border"
 msgstr "Боковая иконка мобильное меню граница"
 
-#: includes/config/Config.php:3189
+#: includes/config/Config.php:3382
 #, fuzzy
 msgid "Side icon mobile fullwidth"
 msgstr "Боковая иконка мобильное меню"
 
-#: includes/config/Config.php:3228
+#: includes/config/Config.php:3421
 #, fuzzy
 msgid "Side icon mobile fullwidth border"
 msgstr "Боковая иконка мобильное меню граница"
 
-#: includes/config/Config.php:3253
+#: includes/config/Config.php:3446
 msgid "Woo minicart"
 msgstr "Woo корзина"
 
-#: includes/config/Config.php:3257
+#: includes/config/Config.php:3450
 msgid "Show WooCommerce minicart"
 msgstr "Показать WooCommerce мини-корзину"
 
-#: includes/config/Config.php:3261
+#: includes/config/Config.php:3454
 msgid "Toggle switch to show/hide WooCommerce minicart"
 msgstr "Переключите, чтобы показать / скрыть мини-корзину WooCommerce"
 
-#: includes/config/Config.php:3270
+#: includes/config/Config.php:3463
 #, fuzzy
 msgid "Woocomerce mini-cart icon position"
 msgstr "Woo размер иконки корзины"
 
-#: includes/config/Config.php:3286
+#: includes/config/Config.php:3479
 #, fuzzy
 msgid "Mobile Woocomerce mini-cart icon position"
 msgstr "Woo размер иконки корзины"
 
-#: includes/config/Config.php:3301
+#: includes/config/Config.php:3494
 msgid "WooCommerce minicart icon size"
 msgstr "Woo размер иконки корзины"
 
-#: includes/config/Config.php:3324
+#: includes/config/Config.php:3517
 msgid "wooCommerce cart icon size"
 msgstr "WooCommerce размер иконки"
 
-#: includes/config/Config.php:3329
+#: includes/config/Config.php:3522
 msgid "Disable dropdown state for minicart"
 msgstr ""
 
-#: includes/config/Config.php:3336
+#: includes/config/Config.php:3529
 msgid "WooCommerce minicart count"
 msgstr "Woo счетчик товара в корзине"
 
-#: includes/config/Config.php:3341
+#: includes/config/Config.php:3534
 msgid "Shape"
 msgstr ""
 
-#: includes/config/Config.php:3344
+#: includes/config/Config.php:3537
 msgid "Drop"
 msgstr "Сбросить"
 
-#: includes/config/Config.php:3345
+#: includes/config/Config.php:3538
 msgid "Circle"
 msgstr "Круг"
 
-#: includes/config/Config.php:3346
+#: includes/config/Config.php:3539
 msgid "Square"
 msgstr ""
 
-#: includes/config/Config.php:3359 includes/config/Config.php:3382
+#: includes/config/Config.php:3552 includes/config/Config.php:3575
 msgid "Text color"
 msgstr "Цвет текста"
 
-#: includes/config/Config.php:3370
+#: includes/config/Config.php:3563
 msgid "WooCommerce minicart dropdown"
 msgstr "Woo корзина выподающее меню"
 
-#: includes/config/Config.php:3393
+#: includes/config/Config.php:3586
 msgid "Checkout button"
 msgstr "Кнопка заказа"
 
-#: includes/config/Config.php:3406 includes/config/Config.php:3511
+#: includes/config/Config.php:3599 includes/config/Config.php:3704
 msgid "font weight"
 msgstr "толщина шрифта"
 
-#: includes/config/Config.php:3410 includes/config/Config.php:3515
+#: includes/config/Config.php:3603 includes/config/Config.php:3708
 msgid "100"
 msgstr ""
 
-#: includes/config/Config.php:3411 includes/config/Config.php:3516
+#: includes/config/Config.php:3604 includes/config/Config.php:3709
 msgid "300 (Light)"
 msgstr "300 (Тонкий)"
 
-#: includes/config/Config.php:3412 includes/config/Config.php:3517
+#: includes/config/Config.php:3605 includes/config/Config.php:3710
 msgid "400 (Normal)"
 msgstr "400 (Норм)"
 
-#: includes/config/Config.php:3413 includes/config/Config.php:3518
+#: includes/config/Config.php:3606 includes/config/Config.php:3711
 msgid "500"
 msgstr ""
 
-#: includes/config/Config.php:3414 includes/config/Config.php:3519
+#: includes/config/Config.php:3607 includes/config/Config.php:3712
 msgid "600"
 msgstr ""
 
-#: includes/config/Config.php:3415 includes/config/Config.php:3520
+#: includes/config/Config.php:3608 includes/config/Config.php:3713
 msgid "700 (Bold)"
 msgstr "700 (Жир)"
 
-#: includes/config/Config.php:3416 includes/config/Config.php:3521
+#: includes/config/Config.php:3609 includes/config/Config.php:3714
 msgid "800"
 msgstr ""
 
-#: includes/config/Config.php:3417 includes/config/Config.php:3522
+#: includes/config/Config.php:3610 includes/config/Config.php:3715
 msgid "900"
 msgstr ""
 
-#: includes/config/Config.php:3430 includes/config/Config.php:3535
+#: includes/config/Config.php:3623 includes/config/Config.php:3728
 msgid "text color on hover"
 msgstr "цвет текста при наведении"
 
-#: includes/config/Config.php:3444 includes/config/Config.php:3549
+#: includes/config/Config.php:3637 includes/config/Config.php:3742
 msgid "background color on hover"
 msgstr "цвет фона при наведении"
 
-#: includes/config/Config.php:3455
+#: includes/config/Config.php:3648
 msgid "Checkout button border"
 msgstr "Кнопка заказа границы"
 
-#: includes/config/Config.php:3460 includes/config/Config.php:3565
+#: includes/config/Config.php:3653 includes/config/Config.php:3758
 msgid "Border style"
 msgstr "Стиль границ"
 
-#: includes/config/Config.php:3463 includes/config/Config.php:3568
+#: includes/config/Config.php:3656 includes/config/Config.php:3761
 msgid "None"
 msgstr "Не задано"
 
-#: includes/config/Config.php:3487 includes/config/Config.php:3592
+#: includes/config/Config.php:3680 includes/config/Config.php:3785
 msgid "color on hover"
 msgstr "цвет наведения"
 
-#: includes/config/Config.php:3498
+#: includes/config/Config.php:3691
 msgid "View cart button"
 msgstr "Посмотреть кнопку корзины"
 
-#: includes/config/Config.php:3560
+#: includes/config/Config.php:3753
 msgid "View cart button border"
 msgstr "Посмотреть границу кнопки корзины"
 
-#: includes/config/Config.php:3610
+#: includes/config/Config.php:3803
 msgid "Mobile options"
 msgstr "Мобильные опции"
 
-#: includes/config/Config.php:3615
+#: includes/config/Config.php:3808
 msgid "Mobile navigation menu"
 msgstr "Мобильное навигационное меню"
 
-#: includes/config/Config.php:3616
+#: includes/config/Config.php:3809
 msgid ""
 "If for some reason you need to show another menu in the mobile version, then "
 "assign it here."
@@ -2165,122 +2251,118 @@ msgstr ""
 "Если необходимо по любым причинам показывать другое меню в мобильной версии "
 "то назначте его здесь."
 
-#: includes/config/Config.php:3622
-msgid "Disable to display of desktop menu"
-msgstr ""
-
-#: includes/config/Config.php:3628
+#: includes/config/Config.php:3815
 #, fuzzy
 msgid "Mobile submenus style"
 msgstr "Моб. меню"
 
-#: includes/config/Config.php:3631
+#: includes/config/Config.php:3818
 msgid "Standard dropdown list"
 msgstr ""
 
-#: includes/config/Config.php:3632 includes/config/Config.php:3833
-#: includes/config/Config.php:3975
+#: includes/config/Config.php:3819 includes/config/Config.php:4020
+#: includes/config/Config.php:4162
 msgid "Slider mobile submenu opening style"
 msgstr ""
 
-#: includes/config/Config.php:3638
+#: includes/config/Config.php:3825
 msgid ""
 "Place any custom element with CSS class [gm-custom-hamburger] as open/close "
 "trigger for a mobile menu"
 msgstr ""
 
-#: includes/config/Config.php:3638
+#: includes/config/Config.php:3825
 msgid "For example"
 msgstr "Для примера"
 
-#: includes/config/Config.php:3638
+#: includes/config/Config.php:3825
 msgid "This option will disable the output of Groovy Menu hamburger menu"
 msgstr ""
 
-#: includes/config/Config.php:3662
+#: includes/config/Config.php:3849
 msgid "Allow float"
 msgstr ""
 
-#: includes/config/Config.php:3729
+#: includes/config/Config.php:3916
 msgid "Mobile navigation drawer open type"
 msgstr "Мобильнаое меню тип открытия"
 
-#: includes/config/Config.php:3740
+#: includes/config/Config.php:3927
 msgid "Prevent auto closing of the mobile menu"
 msgstr ""
 
-#: includes/config/Config.php:3743
+#: includes/config/Config.php:3930
 msgid ""
 "Prevent automatically closing of the mobile menu on tap outside the drawer "
 "area"
 msgstr ""
 
-#: includes/config/Config.php:3746
+#: includes/config/Config.php:3933
 #: includes/modules/fields/inc/FieldHeader.php:46
 msgid "Logo Align"
 msgstr "Логотип"
 
-#: includes/config/Config.php:3807
+#: includes/config/Config.php:3994
 #, fuzzy
-msgid "Side icon Align"
-msgstr "Боковая иконка"
+msgid "Hamburger icon align"
+msgstr "Искать в портфолио"
 
-#: includes/config/Config.php:3823
+#: includes/config/Config.php:4010
 msgid "Mobile navigation drawer background color"
 msgstr "Мобильное меню цвет фона "
 
-#: includes/config/Config.php:3829
+#: includes/config/Config.php:4016
 #, fuzzy
 msgid "Mobile submenu title background color"
 msgstr "Цвет фона подменю первого уровня"
 
-#: includes/config/Config.php:3836
+#: includes/config/Config.php:4023
 msgid "Mobile navigation drawer text color"
 msgstr "Мобильная меню цвет фона "
 
-#: includes/config/Config.php:3842
+#: includes/config/Config.php:4029
 #, fuzzy
 msgid "Mobile navigation drawer text hover and active link color"
 msgstr "Мобильное меню, цвет наведения"
 
-#: includes/config/Config.php:3848
+#: includes/config/Config.php:4035
 #, fuzzy
 msgid "Menu items bottom border"
 msgstr "Нижняя граница меню"
 
-#: includes/config/Config.php:3879
+#: includes/config/Config.php:4066
 #, fuzzy
 msgid "Mobile toolbar icons color"
 msgstr "Тулбар цвет соц. иконок"
 
-#: includes/config/Config.php:3885
+#: includes/config/Config.php:4072
 msgid "Use custom colors for submenu carets"
 msgstr ""
 
-#: includes/config/Config.php:3890
+#: includes/config/Config.php:4077
 #, fuzzy
 msgid "Top level caret color"
 msgstr "Цвет текста пунктов меню верхнего уровня"
 
-#: includes/config/Config.php:3897
+#: includes/config/Config.php:4084
 #, fuzzy
 msgid "Sub level caret color"
 msgstr "Цвет текста подменю"
 
-#: includes/config/Config.php:3904
+#: includes/config/Config.php:4091
 #, fuzzy
 msgid "Current (active) caret color"
 msgstr "Цвет активной ссылки подменю"
 
-#: includes/config/Config.php:3913
+#: includes/config/Config.php:4100
 msgid "Sizes"
 msgstr "Размеры"
 
-#: includes/config/Config.php:3918
+#: includes/config/Config.php:4105
 msgid "Mobile version switch"
 msgstr "Переключение на мобильное меню "
 
-#: includes/config/Config.php:3919
+#: includes/config/Config.php:4106
 msgid ""
 "You can change switch to mobile breakpoint using this option. "
 "(default:1023px)."
@@ -2288,49 +2370,49 @@ msgstr ""
 "Вы можете установить значение появления мобильного меню. (По умолчанию: "
 "1023px)."
 
-#: includes/config/Config.php:3926
+#: includes/config/Config.php:4113
 #, fuzzy
 msgid "Fullwidth mobile navigation drawer"
 msgstr "Мобильное меню, ширина"
 
-#: includes/config/Config.php:3927
+#: includes/config/Config.php:4114
 #, fuzzy
 msgid "See [Side icon mobile fullwidth]"
 msgstr "Боковая иконка мобильное меню"
 
-#: includes/config/Config.php:3932
+#: includes/config/Config.php:4119
 msgid "Mobile navigation drawer width"
 msgstr "Мобильное меню, ширина"
 
-#: includes/config/Config.php:3937
+#: includes/config/Config.php:4124
 msgid "Maximum size"
 msgstr "Максимальный размер"
 
-#: includes/config/Config.php:3945
+#: includes/config/Config.php:4132
 msgid "Dynamic minimum size"
 msgstr ""
 
-#: includes/config/Config.php:3956
+#: includes/config/Config.php:4143
 msgid "Mobile header height"
 msgstr "Мобильное меню, высота шапки"
 
-#: includes/config/Config.php:3963
+#: includes/config/Config.php:4150
 msgid "Mobile menu top gap"
 msgstr "Верхний отступ для моб. меню"
 
-#: includes/config/Config.php:3970
+#: includes/config/Config.php:4157
 msgid "Mobile submenu title height"
 msgstr "Мобильное суб-меню, высота заголовка"
 
-#: includes/config/Config.php:3978
+#: includes/config/Config.php:4165
 msgid "Mobile navigation menu item vertical padding"
 msgstr "Мобильное меню, вертикальный отступ"
 
-#: includes/config/Config.php:3979
+#: includes/config/Config.php:4166
 msgid "This value will applied as padding to top and bottom of the item"
 msgstr "Это значение будет применено как отступ сверху и снизу пункта"
 
-#: includes/config/Config.php:4033
+#: includes/config/Config.php:4220
 msgid "Sublevel text"
 msgstr "Текст подуровня"
 
@@ -4729,27 +4811,33 @@ msgstr "Связанный"
 msgid "Absolute"
 msgstr "Абсолютное"
 
-#: includes/modules/walkers/inc/WalkerNavMenu.php:629
+#: includes/modules/walkers/inc/WalkerNavMenu.php:620
+#, fuzzy
+#| msgid "fixed"
+msgid "Fixed"
+msgstr "фиксир-ное"
+
+#: includes/modules/walkers/inc/WalkerNavMenu.php:630
 msgid "none"
 msgstr "не задано"
 
-#: includes/modules/walkers/inc/WalkerNavMenu.php:1010
+#: includes/modules/walkers/inc/WalkerNavMenu.php:1011
 msgid "Divi Builder Conflict Prevention"
 msgstr "Предотвращение конфликта с Divi Builder"
 
-#: includes/modules/walkers/inc/WalkerNavMenu.php:1015
+#: includes/modules/walkers/inc/WalkerNavMenu.php:1016
 msgid "Fusion Builder Conflict Prevention"
 msgstr "Предотвращение конфликта с Fusion Builder"
 
-#: includes/modules/walkers/inc/WalkerNavMenu.php:1020
+#: includes/modules/walkers/inc/WalkerNavMenu.php:1021
 msgid "Cornerstone Conflict Prevention"
 msgstr "Предотвращение конфликста с Cornerstone"
 
-#: includes/modules/walkers/inc/WalkerNavMenu.php:1024
+#: includes/modules/walkers/inc/WalkerNavMenu.php:1025
 msgid "Elementor Conflict Prevention"
 msgstr "Предотвращение конфликста с Elementor"
 
-#: includes/modules/walkers/inc/WalkerNavMenu.php:1028
+#: includes/modules/walkers/inc/WalkerNavMenu.php:1029
 msgid "Divi builder Conflict Prevention"
 msgstr "Предотвращение конфликта с Divi Builder"
 
@@ -4797,11 +4885,11 @@ msgstr ""
 msgid "Please add image or text logo"
 msgstr "Добавьте логотип или текст"
 
-#: template/Header.php:925
+#: template/Header.php:945
 msgid "Please assign a menu to the primary menu location under Menus."
 msgstr "Пожалуйста, назначьте меню для основного меню в \"Внешний вид > Меню\""
 
-#: template/Header.php:1015 template/Header.php:1265
+#: template/Header.php:1027 template/Header.php:1270
 msgid "My cart"
 msgstr "Моя корзина"
 
@@ -4813,6 +4901,10 @@ msgstr "Липкое"
 msgid "Nav menu"
 msgstr "Навигационное меню"
 
+#, fuzzy
+#~ msgid "Side icon Align"
+#~ msgstr "Боковая иконка"
+
 #~ msgid "Top level hover and active link color"
 #~ msgstr "Вверхнего меню - цвет наведения и цвет активной ссылки "
 
@@ -4820,11 +4912,6 @@ msgstr "Навигационное меню"
 #~| msgid "Sidebar menu"
 #~ msgid "Second Sidebar menu"
 #~ msgstr "Боковое меню"
-
-#, fuzzy
-#~| msgid "Minimalistic menu open type"
-#~ msgid "Menu open type"
-#~ msgstr "Минимальное меню типа открытия"
 
 #, fuzzy
 #~ msgid "Drawer width"
@@ -4861,10 +4948,6 @@ msgstr "Навигационное меню"
 #, fuzzy
 #~ msgid "Show animated Hamburger"
 #~ msgstr "Моб. меню"
-
-#, fuzzy
-#~ msgid "Menu hamburger icon position"
-#~ msgstr "Искать в портфолио"
 
 #, fuzzy
 #~ msgid "Main menu bar left"
