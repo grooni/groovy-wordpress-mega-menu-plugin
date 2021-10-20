@@ -27,7 +27,8 @@ export function dropdownOpen(elem, options) {
     dropdownWrapper !== null &&
     (getCoords(dropdownWrapper).left + dropdownWrapper.offsetWidth > document.body.clientWidth || hasParentLeft) &&
     (getCoords(dropdownWrapper).left - dropdownWrapper.offsetWidth * 2 > 0) ||
-    (dropdownWrapper !== null && getCoords(dropdownWrapper).left < 0)
+    (dropdownWrapper !== null && getCoords(dropdownWrapper).left < 0) ||
+    (dropdownWrapper !== null && dropdownWrapper.classList.contains('gm-custom-dropdown-width') && getCoords(dropdownWrapper).left + dropdownWrapper.offsetWidth > document.body.clientWidth)
   ) {
     dropdownWrapper.classList.add('gm-dropdown-menu-wrapper--left');
   }

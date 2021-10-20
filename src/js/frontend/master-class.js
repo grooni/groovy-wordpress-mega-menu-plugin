@@ -281,6 +281,16 @@ class GroovyMenu {
         return false;
       }
 
+
+      // sub_click_only_caret options
+      if (isTopLevelClass && options.subClickOnlyCaretFirst && options.showSubmenu === 'click' && !e.target.closest('.gm-caret')) {
+        return false;
+      }
+      if (!isTopLevelClass && options.subClickOnlyCaretSecond && options.showSubmenu === 'click' && !e.target.closest('.gm-caret')) {
+        return false;
+      }
+
+
       // fast toggle.
       if (e.target.closest('.gm-caret') || e.target.closest('.gm-dropdown-menu-title') || (closestDropdown && isClosestAnchorEmpty && e.type === 'click')) {
         e.preventDefault();
