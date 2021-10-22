@@ -286,7 +286,7 @@ NAVBAR GENERAL STYLES
   transition: all 0.2s;
 }
 
-.gm-navbar--has-shadow:not(.gm-navbar-sticky-toggle) .gm-inner {
+.gm-navbar--has-shadow:not(.gm-navbar-sticky-toggle):not(.gm-navbar--style-4) .gm-inner {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 

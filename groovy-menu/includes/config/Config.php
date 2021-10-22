@@ -270,6 +270,31 @@ return array(
 				),
 				'default'     => 'hover',
 			),
+			'sub_click_only_caret_start'                            => array(
+				'title'       => esc_html__( 'Open submenu only at click on the caret icon.', 'groovy-menu' ),
+				'description' => esc_html__( 'If toggles are disabled then opening the submenu is possible at click on the menu item
+.', 'groovy-menu' ),
+				'type'        => 'inlineStart',
+				'condition'   => array( 'show_submenu', 'in', array( 'click' ) ),
+			),
+			'sub_click_only_caret_first'                            => array(
+				'title'       => esc_html__( 'First menu level', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'checkbox',
+				'condition'   => array( 'show_submenu', 'in', array( 'click' ) ),
+				'default'     => false,
+			),
+			'sub_click_only_caret_second'                           => array(
+				'title'       => esc_html__( 'All the following submenu levels', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'checkbox',
+				'condition'   => array( 'show_submenu', 'in', array( 'click' ) ),
+				'default'     => false,
+			),
+			'sub_click_only_caret_end'                              => array(
+				'type'      => 'inlineEnd',
+				'condition' => array( 'show_submenu', 'in', array( 'click' ) ),
+			),
 			'sub_level_width'                                       => array(
 				'title'       => esc_html__( 'Submenu width', 'groovy-menu' ),
 				'description' => esc_html__( 'By applying this option you can set width of submenu excluding mega menu. Note: this option works with default and icon menu types.', 'groovy-menu' ),
@@ -3020,17 +3045,69 @@ return array(
 				'title'     => esc_html__( 'Shadow', 'groovy-menu' ),
 				'serialize' => false,
 			),
+			'shadow_start'                                 => array(
+				'title' => esc_html__( 'Menu shadow', 'groovy-menu' ),
+				'type'  => 'inlineStart',
+			),
 			'shadow'                                       => array(
-				'title'       => esc_html__( 'Menu shadow', 'groovy-menu' ),
+				'title'       => esc_html__( 'Enable', 'groovy-menu' ),
 				'description' => '',
 				'type'        => 'checkbox',
 				'default'     => true,
 			),
+			'shadow_type'                                  => array(
+				'title'     => esc_html__( 'Type', 'groovy-menu' ),
+				'type'      => 'select',
+				'options'   => array(
+					'tiny'   => esc_html__( 'Tiny', 'groovy-menu' ),
+					'medium' => esc_html__( 'Medium', 'groovy-menu' ),
+					'large'  => esc_html__( 'Large', 'groovy-menu' ),
+					'deep'   => esc_html__( 'Deep', 'groovy-menu' ),
+				),
+				'condition' => array( 'shadow', '==', 'true' ),
+				'default'   => 'tiny',
+			),
+			'shadow_color'                                 => array(
+				'title'     => esc_html__( 'color', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => 'rgba(0,0,0,0.1)',
+				'condition' => array( 'shadow', '==', 'true' ),
+				'alpha'     => true,
+			),
+			'shadow_end'                                   => array(
+				'type' => 'inlineEnd',
+			),
+			'shadow_dropdown_start'                        => array(
+				'title' => esc_html__( 'Submenu shadow', 'groovy-menu' ),
+				'type'  => 'inlineStart',
+			),
 			'shadow_dropdown'                              => array(
-				'title'       => esc_html__( 'Submenu shadow', 'groovy-menu' ),
+				'title'       => esc_html__( 'Enable', 'groovy-menu' ),
 				'description' => '',
 				'type'        => 'checkbox',
 				'default'     => true,
+			),
+			'shadow_dropdown_type'                         => array(
+				'title'     => esc_html__( 'Type', 'groovy-menu' ),
+				'type'      => 'select',
+				'options'   => array(
+					'tiny'   => esc_html__( 'Tiny', 'groovy-menu' ),
+					'medium' => esc_html__( 'Medium', 'groovy-menu' ),
+					'large'  => esc_html__( 'Large', 'groovy-menu' ),
+					'deep'   => esc_html__( 'Deep', 'groovy-menu' ),
+				),
+				'condition' => array( 'shadow_dropdown', '==', 'true' ),
+				'default'   => 'medium',
+			),
+			'shadow_dropdown_color'                        => array(
+				'title'     => esc_html__( 'color', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => 'rgba(0,0,0,0.1)',
+				'condition' => array( 'shadow_dropdown', '==', 'true' ),
+				'alpha'     => true,
+			),
+			'shadow_dropdown_end'                          => array(
+				'type' => 'inlineEnd',
 			),
 			'toolbar_group'                                => array(
 				'type'      => 'group',
