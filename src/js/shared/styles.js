@@ -3142,6 +3142,15 @@ export default class GmStyles {
 
     // Shadows for menu
     let sideVertMenu = settings.header.align === 'right' ? '-' : '';
+    if (settings.header.style === 2) {
+      if (settings.minimalisticMenuOpenType === 'offcanvasSlideLeft' || settings.minimalisticMenuOpenType === 'offcanvasSlideSlide') {
+        sideVertMenu = '';
+      }
+      if (settings.minimalisticMenuOpenType === 'offcanvasSlideRight' || settings.minimalisticMenuOpenType === 'offcanvasSlideSlideRight') {
+        sideVertMenu = '-';
+      }
+    }
+
     if (settings.shadow && settings.shadowColor) {
       if (settings.header.style === 4) {
         css.push({
