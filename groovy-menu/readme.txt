@@ -4,7 +4,7 @@ Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive,
 Requires at least: 4.9.7
 Tested up to: 5.8
 Requires PHP: 7.0
-Stable tag: 1.3.7
+Stable tag: 1.3.8
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -115,6 +115,13 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.3.8 =
+* Add: Added new options for submenu opening as "On click" that allow opening submenus only at click on the caret.
+* Add: New options for "Shadow settings" for choice shadow styles and colors.
+* Fix: "Menu shadow" and "Submenu shadow" settings now also work for vertical menu types.
+* Fix: Bug when the vertical submenu of the third level was higher than other submenus.
+* Fix: Fixed a bug that prevented Visual Composer from loading the front-end builder for menu_block.
 
 = 1.3.7 =
 * Add: For Actions in the Custom Code section, a new feature "visibility" has been added, which sets the rule for displaying "custom" on mobile, desktop or both versions.

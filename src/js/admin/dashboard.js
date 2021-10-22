@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let presetSetDefaultBtns = document.querySelectorAll('.preset-set-default');
   let presetDuplicateBtns = document.querySelectorAll('.preset-duplicate');
   let presetExportBtns = document.querySelectorAll('.preset-export');
+  let presetImportBtns = document.querySelectorAll('.preset-import');
   let thumbnailBtns = document.querySelectorAll('.preset-thumbnail');
   let thumbnailUnsetBtns = document.querySelectorAll('.preset-thumbnail-unset');
   let presetDeleteBtns = document.querySelectorAll('.preset-delete');
@@ -289,6 +290,49 @@ document.addEventListener('DOMContentLoaded', () => {
   presetExportBtns.forEach((btn) => {
     btn.addEventListener('click', exportPreset);
   });
+
+  presetImportBtns.forEach((btn) => {
+    btn.addEventListener('click', importPreset);
+  });
+
+
+  function importPreset() {
+    let id = this.closest('.preset').dataset.id;
+    let titlePreset = this.closest('.preset').dataset.name;
+
+    let modalContent = document.querySelector('#import-preset-modal');
+    let closeModalBtn = document.querySelector('#import-preset-modal .gm-modal-close');
+    let titleModal = document.querySelector('#import-preset-modal .gm-modal-title-preset-name');
+    let formModal = document.querySelector('#import-preset-modal .gm-import-preset-form');
+
+    let importUrl = '?page=groovy_menu_settings&action=importPreset&id=' + id;
+
+    if (modalContent === null) {
+      return;
+    }
+
+    let importModal = new tingle.modal({
+      footer: false,
+      stickyFooter: false,
+      closeMethods: ['overlay', 'escape'],
+      cssClass: ['gm-modal--lg'],
+      beforeOpen() {
+        titleModal.innerHTML = ' id:[' + id + '] "' + titlePreset + '"';
+        formModal.setAttribute('action', importUrl);
+        modalContent.classList.remove('gm-hidden');
+      }
+    });
+
+    importModal.setContent(modalContent);
+
+    importModal.open();
+
+    closeModalBtn.addEventListener('click', () => {
+      modalContent.classList.add('gm-hidden');
+      importModal.close();
+    });
+  }
+
 
   // Set thumbnail
   function setThumbnail () {

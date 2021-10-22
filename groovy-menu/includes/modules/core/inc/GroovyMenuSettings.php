@@ -458,6 +458,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 			);
 			if ( ! $this->lver ) {
 				$actions[] = 'import';
+				$actions[] = 'importPreset';
 				$actions[] = 'importFromLibrary';
 				$actions[] = 'duplicate';
 			}
@@ -868,6 +869,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 			);
 			if ( ! $this->lver ) {
 				$actions[] = 'import';
+				$actions[] = 'importPreset';
 				$actions[] = 'importFromLibrary';
 				$actions[] = 'duplicate';
 			}
@@ -1163,7 +1165,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 		 *
 		 * @return null
 		 */
-		public function import() {
+		public function import( $exist_preset = 0 ) {
 			if ( ! GroovyMenuRoleCapabilities::canImport( true ) ) {
 				return;
 			}
@@ -1199,7 +1201,11 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 			}
 
 
-			$presetId = GroovyMenuPreset::create( $data['name'] );
+			if ( $exist_preset > 0 ) {
+				$presetId = $exist_preset;
+			} else {
+				$presetId = GroovyMenuPreset::create( $data['name'] );
+			}
 
 			// Disable cache.
 			GroovyMenuPreset::getAll( true, true );
@@ -1238,7 +1244,10 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 
 			$style->update();
 			$style = new GroovyMenuStyle( $presetId );
-			GroovyMenuPreset::setPreviewById( $presetId, $data['img'] );
+
+			if ( ! empty( $data['img'] ) ) {
+				GroovyMenuPreset::setPreviewById( $presetId, $data['img'] );
+			}
 
 			if ( function_exists( 'groovy_menu_check_gfonts_params' ) ) {
 				groovy_menu_check_gfonts_params();
@@ -1250,6 +1259,30 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 			);
 
 			GroovyMenuUtils::safe_redirect( $redirect_url );
+		}
+
+
+		/**
+		 * Import preset (update).
+		 *
+		 * @return null
+		 */
+		public function importPreset() {
+			if ( ! GroovyMenuRoleCapabilities::canImport( true ) ) {
+				return;
+			}
+
+			if ( ! isset( $_GET['id'] ) || empty( $_GET['id'] ) ) {
+				return;
+			}
+
+			$presetId = intval( esc_attr( $_GET['id'] ) );
+
+			if ( ! empty( $presetId ) ) {
+				self::import( $presetId );
+			}
+
+			return;
 		}
 
 		/**
@@ -1810,6 +1843,13 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 													<?php
 													if ( ! $this->lver && class_exists( '\GroovyMenu\Templates' ) ) {
 														\GroovyMenu\Templates::presetActionLiExport();
+													}
+													?>
+												<?php endif; ?>
+												<?php if ( GroovyMenuRoleCapabilities::canImport( true ) ) : ?>
+													<?php
+													if ( ! $this->lver && class_exists( '\GroovyMenu\Templates' ) ) {
+														\GroovyMenu\Templates::presetActionLiImport();
 													}
 													?>
 												<?php endif; ?>
@@ -2612,11 +2652,8 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 									<p><?php esc_html_e( 'if none of the above methods of automatic integration doesn\'t work properly, and for manual integration, you do not have enough time and experience.', 'groovy-menu' ); ?></p>
 									<p><?php esc_html_e( 'You can order to the manual integration service from our team.', 'groovy-menu' ); ?></p>
 									<p><?php esc_html_e( 'We do it in the shortest time!', 'groovy-menu' ); ?></p>
-									<p><a
-											class="gm-welcome-big-button gm-welcome-big-button--green"
-											href="https://gum.co/groovy-integration"
-											target="_blank"><?php esc_html_e( 'Manual integration', 'groovy-menu' ); ?>
-											$35</a></p>
+									<p><a class="gm-welcome-big-button gm-welcome-big-button--green" href="https://gum.co/groovy-integration"
+											target="_blank"><?php esc_html_e( 'Manual integration', 'groovy-menu' ); ?> $35</a></p>
 								</div>
 							</div>
 						<?php } ?>
@@ -2631,9 +2668,13 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 								<h3><?php esc_html_e( 'Shortcode integration', 'groovy-menu' ); ?></h3>
 								<p><?php esc_html_e( 'You can use this shortcode  [groovy_menu]  to output the Groovy menu.', 'groovy-menu' ); ?></p>
 								<p>
-									<code class="gm-integrate-php-sample">[groovy_menu]</code>
+									<code class="gm-integrate-php-sample gm-integrate-shortcode">[groovy_menu]</code>
 								</p>
 								<p><?php esc_html_e( 'For that insert, this shortcode in a place where you would like to place the menu.', 'groovy-menu' ); ?></p>
+								<?php
+								//$this->shortcode_constructor_box();
+								?>
+
 							</div>
 						</div>
 
@@ -2674,6 +2715,49 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 			 */
 			do_action( 'gm_after_integration_dashboard_output' );
 
+		}
+
+		/**
+		 * Shortcode Constructor..
+		 */
+		public function shortcode_constructor_box() {
+
+			$presets = GroovyMenuPreset::getAll();
+			$menus   = get_terms( 'nav_menu', array( 'hide_empty' => false ) );
+
+			?>
+			<div class="groovy-meta-box-wrapper">
+				<?php if ( ! $this->lver ) { ?>
+					<div class="groovy-meta-box-item">
+						<div class="groovy-meta-box-item--label">
+							<label for="groovy-preset"><?php esc_html_e( 'Menu preset', 'groovy-menu' ); ?></label>
+						</div>
+						<div class="groovy-meta-box-item--select">
+							<select id="groovy-preset" class="groovy-select-maxwidth">
+								<option value=""><?php esc_html_e( 'Default', 'groovy-menu' ); ?></option>
+								<?php foreach ( $presets as $preset ) { ?>
+									<option value="<?php echo esc_attr( $preset->id ); ?>"><?php echo esc_html( $preset->name ); ?></option>
+								<?php } ?>
+							</select>
+						</div>
+					</div>
+				<?php } ?>
+				<div class="groovy-meta-box-item">
+					<div class="groovy-meta-box-item--label">
+						<label
+							for="groovy-menu-name"><?php esc_html_e( 'Navigation menu (from Appearance > Menus)', 'groovy-menu' ); ?></label>
+					</div>
+					<div class="groovy-meta-box-item--select">
+						<select id="groovy-menu-name" class="groovy-select-maxwidth">
+							<option value=""><?php esc_html_e( 'Default', 'groovy-menu' ); ?></option>
+							<?php foreach ( $menus as $menu ) { ?>
+								<option value="<?php echo esc_attr( $menu->slug ); ?>"><?php echo esc_html( $menu->name ); ?></option>
+							<?php } ?>
+						</select>
+					</div>
+				</div>
+			</div>
+			<?php
 		}
 
 		public function edit() {

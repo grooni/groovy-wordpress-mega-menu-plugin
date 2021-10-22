@@ -2647,7 +2647,7 @@ class GroovyMenuUtils {
 			$detected = 'fl_builder';
 		}
 
-		// Elementor builder.
+		// Elementor builder plugin.
 		if ( isset( $_GET['elementor-preview'] ) ) { // @codingStandardsIgnoreLine
 			$detected = 'elementor';
 		}
@@ -2677,6 +2677,11 @@ class GroovyMenuUtils {
 		// Cornerstone builder (example: Pro theme)
 		if ( isset( $_POST['cs_preview_state'] ) && $_POST['cs_preview_state'] && 'off' !== $_POST['cs_preview_state'] ) {
 			$detected = 'cornerstone_builder';
+		}
+
+		// "Visual Composer" page builder plugin.
+		if ( defined( 'VCV_VERSION' ) && ! empty( $_GET['vcv-source-id'] ) ) { // @codingStandardsIgnoreLine
+			$detected = 'visual_composer_builder';
 		}
 
 		return $detected;

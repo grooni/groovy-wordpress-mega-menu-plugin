@@ -1029,6 +1029,11 @@ class WalkerNavMenu extends Walker_Nav_Menu {
 				return '[ ' . __( 'Divi builder Conflict Prevention', 'groovy-menu' ) . ' ]';
 			}
 
+			// prevent conflict with Visual Composer builder.
+			if ( 'visual_composer_builder' === $wp_builders ) {
+				return '[ ' . __( 'Visual Composer Conflict Prevention', 'groovy-menu' ) . ' ]';
+			}
+
 
 			$post_id = intval( $post_id );
 
