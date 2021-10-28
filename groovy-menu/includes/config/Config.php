@@ -4183,7 +4183,7 @@ return array(
 				'description' => esc_html__( 'You can change switch to mobile breakpoint using this option. (default:1023px).', 'groovy-menu' ),
 				'type'        => 'number',
 				'default'     => '1023',
-				'range'       => array( 0, 2000 ),
+				'range'       => array( 0, 9000 ),
 				'unit'        => 'px',
 			),
 			'mobile_offcanvas_fullwidth'                => array(

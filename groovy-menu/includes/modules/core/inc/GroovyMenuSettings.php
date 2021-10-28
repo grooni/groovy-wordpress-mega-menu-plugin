@@ -76,6 +76,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				add_action( 'admin_menu', array( $this, 'addThemesPage_free' ) );
 			} else {
 				add_action( 'admin_menu', array( $this, 'addThemesPage_full' ) );
+				add_action( 'gm_after_main_header', array( $this, 'checkMenuBlockRequirements' ), 1000 );
 			}
 
 			add_filter( 'pre_get_posts', array( $this, 'search_filter' ) );
@@ -3574,6 +3575,16 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 			}
 
 			return $query;
+		}
+
+		public function checkMenuBlockRequirements() {
+
+			if ( defined( 'VCV_VERSION' ) && defined( 'VCV_PREFIX' ) ) {
+				if ( function_exists( 'groovy_menu_visual_composer_builder_support' ) ) {
+					groovy_menu_visual_composer_builder_support();
+				}
+			}
+
 		}
 
 	}
