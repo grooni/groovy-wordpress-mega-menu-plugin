@@ -850,6 +850,16 @@ class GroovyMenu {
             if (mainMenuWrapper) {
               offcanvasToggle(mainMenuWrapper);
             }
+
+            let hamburgerMenuButton = document.querySelector('.gm-burger');
+            if (hamburgerMenuButton) {
+              setTimeout(() => {
+                if (hamburgerMenuButton.classList.contains('is-active')) {
+                  hamburgerMenuButton.classList.remove('is-active');
+                }
+              }, 500);
+            }
+
           }
 
           scrollToId(e, scroll, targetHash, scrollOptions);
