@@ -111,11 +111,12 @@ export function dropdownToggle(elem, options) {
     if (elem.classList.contains('gm-dropdown-submenu')) {
       // close only siblings
       let elParent = elem.closest('.gm-dropdown-menu');
-      let elParentChildren = elParent.children;
-
-      for (let el of elParentChildren) {
-        if (el.classList.contains('gm-open')) {
-          dropdownClose(el);
+      if (elParent) {
+        let elParentChildren = elParent.children;
+        for (let el of elParentChildren) {
+          if (el.classList.contains('gm-open')) {
+            dropdownClose(el);
+          }
         }
       }
     } else {

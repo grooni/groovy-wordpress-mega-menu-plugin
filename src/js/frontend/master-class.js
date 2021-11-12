@@ -501,19 +501,23 @@ class GroovyMenu {
 
     // Sub-Menus DROPDOWN action -----------------------------------------------------------------------[ touch End ]---
     let initDropdownActionByTouch = (e) => {
-      let closestDropdown = e.target.closest('.gm-dropdown');
+
       let isTopLevelClass = false;
+      let closestDropdown = e.target.closest('.gm-dropdown');
       let closestMenuItem = e.target.closest('.gm-menu-item');
+      let closestCaret = e.target.closest('.gm-caret');
+
+      if (closestMenuItem) {
+        isTopLevelClass = closestMenuItem.classList.contains('gm-menu-item--lvl-0');
+      }
 
       if (
-        !e.target.closest('.gm-caret') &&
+        !closestCaret &&
         closestMenuItem &&
         closestMenuItem.classList &&
         closestMenuItem.classList.contains('gm-dropdown') &&
         !closestMenuItem.classList.contains('gm-open')
       ) {
-
-        isTopLevelClass = closestMenuItem.classList.contains('gm-menu-item--lvl-0');
 
         if (isTopLevelClass) {
           dropdownCloseAll(0);
@@ -526,6 +530,32 @@ class GroovyMenu {
         e.preventDefault();
 
       }
+
+      // Touch on caret.
+      if (closestCaret) {
+
+        if (closestDropdown && isTopLevelClass) {
+
+          let isOpenedBefore = closestDropdown.classList.contains('gm-open');
+
+          dropdownCloseAll(0);
+
+          if (!isOpenedBefore) {
+            dropdownOpen(closestDropdown, options);
+          }
+
+        } else {
+          dropdownToggle(closestDropdown, options);
+        }
+
+        // Prevent next EventListener 'click'.
+        e.preventDefault();
+        e.stopPropagation();
+
+        return false;
+      }
+
+
     };
 
     // Sub-Menus DROPDOWN Auto Close action -----------------------------------------------------------[ auto close ]---
@@ -551,6 +581,8 @@ class GroovyMenu {
     }
 
 
+
+    // Click / Mouse[enter|leave] / touch Events ----------------------------------------------------------[ Events ]---
     let gmAnchorItems = document.querySelectorAll('#gm-main-menu .gm-anchor, .gm-second-nav-drawer .gm-navbar-nav .gm-anchor, .gm-minicart, .gm-search, #gm-main-menu .gm-dropdown-menu-wrapper, .gm-second-nav-drawer .gm-navbar-nav .gm-dropdown-menu-wrapper');
     let gmMainMenu = document.querySelector('#gm-main-menu');
 
@@ -560,7 +592,7 @@ class GroovyMenu {
       if (gmAnchorItems) {
         gmAnchorItems.forEach((dropdownItem) => {
           if (isTouchDevice) {
-            dropdownItem.addEventListener('touchend', initDropdownActionByTouch);
+            dropdownItem.addEventListener('touchstart', initDropdownActionByTouch);
           }
           dropdownItem.addEventListener('click', initDropdownAction);
         });
