@@ -4,7 +4,7 @@ Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive,
 Requires at least: 4.9.7
 Tested up to: 5.8
 Requires PHP: 7.0
-Stable tag: 1.3.8
+Stable tag: 1.3.9
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -115,6 +115,11 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.3.9 =
+* Fix: Fixed logic for choosing one active menu integration under the integrations section.
+* Fix: Determinated and fixed a bug with incorrect working of background image on iOS devices with active option "background-size: cover".
+* Fix: Fixed bug with some sub-menu opening on iPad.
 
 = 1.3.8 =
 * Add: Added new options for submenu opening as "On click" that allow opening submenus only at click on the caret.
