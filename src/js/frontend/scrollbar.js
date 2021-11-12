@@ -107,6 +107,11 @@ export default function initScrollbar(settings) {
       return;
     }
 
+    let isTouchDevice = 'ontouchstart' in document.documentElement;
+    if (isTouchDevice) {
+      return;
+    }
+
     let isSecondSidebarMenu = currentDropdown.closest('.gm-second-nav-drawer');
 
     let adminbarHeight = wpAdminBar === null ? 0 : wpAdminBar.offsetHeight;

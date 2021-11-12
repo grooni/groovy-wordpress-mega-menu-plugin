@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let gmNonce = document.querySelector('#gm-nonce-auto-integration-field');
 
     let locationIntegrate = document.querySelector('.gm-integration-location').value;
-    if (locationIntegrate) {
+    if (autoIntegrate && locationIntegrate) {
       alert('Note: Only one of the above integrations can be active.');
       return;
     }
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let gmNonce = document.querySelector('#gm-nonce-auto-integration-field');
 
     let autoIntegrate = document.querySelector('.gm-auto-integration-switcher').checked;
-    if (autoIntegrate) {
+    if (autoIntegrate && locationIntegrate) {
       alert('Note: Only one of the above integrations can be active.');
       return;
     }
