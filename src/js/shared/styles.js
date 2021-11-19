@@ -1425,6 +1425,7 @@ export default class GmStyles {
         '.gm-navbar ~ .gm-navbar-animated.gm-navigation-drawer--delay': `transition: transform cubic-bezier(0.7, 0, 0.3, 1) ${animSpeed}ms ${animSpeedAfter}ms;`,
         '.gm-nav-content-wrapper': `transition: transform cubic-bezier(0.7, 0, 0.3, 1) ${animSpeed}ms;`,
         '.gm-navbar.gm-navbar--style-2 ~ .gm-main-menu-wrapper .gm-dropdown-menu-wrapper': 'z-index: -1;',
+        '.gm-menu-btn-close-drawer .hamburger': 'padding: 0;',
         media: 'desktop'
       });
 
@@ -1455,6 +1456,41 @@ export default class GmStyles {
           media: 'desktop'
         });
       }
+
+      if (!minimalisticMenuFullscreen || (minimalisticMenuFullscreen && !settings.minimalisticMenuFullscreenAsMegamenu)) {
+        css.push({
+          '.gm-main-menu-wrapper': 'flex-wrap: nowrap; flex-direction: column; align-content: center;',
+          '.gm-navbar ~ .gm-main-menu-wrapper #gm-main-menu': 'flex: 1 100%; width: 100%; display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: center; align-items: stretch;',
+          media: 'desktop'
+        });
+        if (settings.minimalisticMenuAlignment && settings.minimalisticMenuAlignment === 'top') {
+          css.push({
+            '.gm-navbar ~ .gm-main-menu-wrapper > #gm-main-menu, .gm-navbar ~ .gm-main-menu-wrapper .gm-dropdown-menu': 'padding-top: 32px; justify-content: flex-start;',
+            media: 'desktop'
+          });
+        }
+      }
+
+      if (!minimalisticMenuFullscreen && settings.minimalisticMenuShowCloseButton) {
+        const {
+          minimalisticMenuCloseButtonPosition: minCloseBtnPos,
+          minimalisticMenuCloseButtonTop,
+          minimalisticMenuCloseButtonRight,
+          minimalisticMenuCloseButtonBottom,
+          minimalisticMenuCloseButtonLeft,
+        } = settings;
+
+        css.push({
+          '.gm-main-menu-wrapper .gm-menu-btn-close-drawer': `padding: ${minimalisticMenuCloseButtonTop}px ${minimalisticMenuCloseButtonRight}px ${minimalisticMenuCloseButtonBottom}px ${minimalisticMenuCloseButtonLeft}px;`,
+          media: 'desktop'
+        });
+
+        css.push({
+          '.gm-main-menu-wrapper .gm-menu-btn-close-drawer': `display: flex; flex-wrap: nowrap; flex-direction: row; align-content: center; justify-content: ${minCloseBtnPos}; flex: 0; width: 100%;`,
+          media: 'desktop'
+        });
+      }
+      //gm-menu-btn-close-drawer
 
       css.push({
         '.gm-dropdown-with-scrollbar ~ .gm-main-menu-wrapper .gm-dropdown-menu .ps__rail-y': 'top: 0 !important;',

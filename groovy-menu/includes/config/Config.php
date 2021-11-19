@@ -1755,6 +1755,20 @@ return array(
 					array( 'minimalistic_menu_fullscreen_as_megamenu', '==', 'false' ),
 				),
 			),
+			'minimalistic_menu_alignment'                           => array(
+				'title'       => esc_html__( 'Menu list alignment', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'select',
+				'options'     => array(
+					'top'    => esc_html__( 'Top', 'groovy-menu' ),
+					'center' => esc_html__( 'Center', 'groovy-menu' ),
+				),
+				'default'     => 'center',
+				'condition'   => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_fullscreen_as_megamenu', '==', 'false' ),
+				),
+			),
 			'minimalistic_menu_max_height'                          => array(
 				'title'       => esc_html__( 'Full height sidebar menu', 'groovy-menu' ),
 				'description' => esc_html__( 'Occupy maximum screen height. If disabled, then the slide will not overlap the top block.', 'groovy-menu' ),
@@ -1942,6 +1956,97 @@ return array(
 			'minimalistic_menu_button_show_text_end'                => array(
 				'type'      => 'inlineEnd',
 				'condition' => array( 'header.style', '==', '2' ),
+			),
+			'minimalistic_menu_show_close_button'                   => array(
+				'title'       => esc_html__( 'Show close menu button on Drawer', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'checkbox',
+				'default'     => false,
+				'condition'   => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_fullscreen', '==', 'false' ),
+				),
+			),
+			'minimalistic_menu_close_button_position'               => array(
+				'title'       => esc_html__( 'Close menu button position', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'select',
+				'options'     => array(
+					'flex-start' => esc_html__( 'flex-start', 'groovy-menu' ),
+					'center'     => esc_html__( 'center', 'groovy-menu' ),
+					'flex-end'   => esc_html__( 'flex-end', 'groovy-menu' ),
+				),
+				'default'     => 'flex-end',
+				'condition'   => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_fullscreen', '==', 'false' ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'minimalistic_menu_close_button_start'                  => array(
+				'title'     => esc_html__( 'Close menu button padding', 'groovy-menu' ),
+				'type'      => 'inlineStart',
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_fullscreen', '==', 'false' ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'minimalistic_menu_close_button_top'                    => array(
+				'title'     => esc_html__( 'Top', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 1000, 1000 ),
+				'default'   => 15,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_fullscreen', '==', 'false' ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'minimalistic_menu_close_button_right'                  => array(
+				'title'     => esc_html__( 'Right', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 1000, 1000 ),
+				'default'   => 53,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_fullscreen', '==', 'false' ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'minimalistic_menu_close_button_bottom'                 => array(
+				'title'     => esc_html__( 'Bottom', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 1000, 1000 ),
+				'default'   => 15,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_fullscreen', '==', 'false' ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'minimalistic_menu_close_button_left'                   => array(
+				'title'     => esc_html__( 'Left', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 1000, 1000 ),
+				'default'   => 53,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_fullscreen', '==', 'false' ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'minimalistic_menu_close_button_end'                    => array(
+				'type'      => 'inlineEnd',
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_fullscreen', '==', 'false' ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
 			),
 			'minimalistic_menu_show_only_hamburger'                 => array(
 				'title'       => esc_html__( 'Show hamburger menu only', 'groovy-menu' ),
