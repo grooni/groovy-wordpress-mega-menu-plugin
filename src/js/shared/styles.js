@@ -1780,6 +1780,89 @@ export default class GmStyles {
       }
 
 
+      // Hamburger icon
+      if (settings.minimalisticMenuShowCloseButton) {
+
+        const {
+          hamburgerCloseIconBorderWidth,
+          hamburgerCloseIconPadding,
+          hamburgerCloseIconSize
+        } = settings;
+
+        let hamburgerCloseIconBoxSize = hamburgerCloseIconSize + (hamburgerCloseIconPadding * 2) + (hamburgerCloseIconBorderWidth * 2);
+
+        css.push({
+          '.gm-menu-btn-close-drawer .hamburger': `cursor: pointer; justify-content: center; padding: 0; min-width: ${hamburgerCloseIconBoxSize}px;`,
+          '.gm-menu-btn-close-drawer .hamburger .hamburger-box, .gm-menu-btn-close-drawer .hamburger .hamburger-inner, .gm-menu-btn-close-drawer .hamburger .hamburger-inner::after, .gm-menu-btn-close-drawer .hamburger .hamburger-inner::before': `width: ${hamburgerCloseIconSize}px;`,
+          '.gm-menu-btn-close-drawer .hamburger .hamburger-box': `height: ${hamburgerCloseIconSize}px;`,
+          '.gm-menu-btn-close-drawer .gm-menu-btn__inner': `font-size: ${hamburgerCloseIconSize}px;`,
+          media: 'desktop'
+        });
+
+        // Hamburger line height
+        if (settings.minimalisticCssHamburgerHeight) {
+          css.push({
+            '.gm-menu-btn-close-drawer .hamburger .hamburger-inner, .gm-menu-btn-close-drawer .hamburger .hamburger-inner::after, .gm-menu-btn-close-drawer .hamburger .hamburger-inner::before': `height: ${settings.minimalisticCssHamburgerHeight}px;`,
+          });
+        }
+
+        // Hamburger icon color
+        if (settings.hamburgerCloseIconColor) {
+          css.push({
+            '.gm-menu-btn-close-drawer .hamburger .hamburger-inner, .gm-menu-btn-close-drawer .hamburger .hamburger-inner::after, .gm-menu-btn-close-drawer .hamburger .hamburger-inner::before': `background-color: ${settings.hamburgerCloseIconColor};`,
+            '.gm-menu-btn-close-drawer .gm-menu-btn__inner': `color: ${settings.hamburgerCloseIconColor};`,
+            media: 'desktop'
+          });
+        }
+
+        // Hamburger icon padding area
+        if (settings.hamburgerCloseIconPadding) {
+          css.push({
+            '.gm-menu-btn-close-drawer .hamburger': `padding: ${settings.hamburgerCloseIconPadding}px;`,
+            '.gm-menu-btn-close-drawer .gm-menu-btn__inner': `padding: ${settings.hamburgerCloseIconPadding}px;`,
+            media: 'desktop'
+          });
+        }
+
+        // Hamburger icon bg color
+        if (settings.hamburgerCloseIconBgColor) {
+          const {hamburgerCloseIconBgColor} = settings;
+
+          css.push({
+            '.gm-menu-btn-close-drawer .hamburger': `background-color: ${hamburgerCloseIconBgColor};`,
+            '.gm-menu-btn-close-drawer .gm-menu-btn__inner': `background-color: ${hamburgerCloseIconBgColor};`,
+            media: 'desktop'
+          });
+        }
+
+        // Hamburger icon border
+        if (
+          settings.hamburgerCloseIconBorderWidth !== 0 &&
+          settings.hamburgerCloseIconBorderColor
+        ) {
+          const {
+            hamburgerCloseIconBorderWidth,
+            hamburgerCloseIconBorderColor
+          } = settings;
+
+          css.push({
+            '.gm-menu-btn-close-drawer .hamburger': `border: ${hamburgerCloseIconBorderWidth}px solid ${hamburgerCloseIconBorderColor};`,
+            '.gm-menu-btn-close-drawer .gm-menu-btn__inner': `border: ${hamburgerCloseIconBorderWidth}px solid ${hamburgerCloseIconBorderColor};`,
+            media: 'desktop'
+          });
+        }
+
+      }
+
+      // Sub level box width
+      if (settings.subLevelWidth) {
+        css.push({
+          '.gm-main-menu-wrapper #gm-main-menu .gm-dropdown-menu-wrapper .gm-dropdown-menu': `width: ${settings.subLevelWidth}px`,
+          media: 'desktop'
+        });
+      }
+
+
     }
 
     // ------------------------------------------------------------------------------------ settings.header.style === 3

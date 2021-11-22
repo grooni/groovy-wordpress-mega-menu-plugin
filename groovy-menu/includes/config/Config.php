@@ -3454,6 +3454,109 @@ return array(
 			'hamburger_icon_border_end'                    => array(
 				'type' => 'inlineEnd'
 			),
+			'hamburger_close_icon_start'                   => array(
+				'title'     => esc_html__( 'Close hamburger on drawer icon', 'groovy-menu' ),
+				'type'      => 'inlineStart',
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_fullscreen', '==', 'false' ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'hamburger_close_icon_size'                    => array(
+				'title'     => esc_html__( 'size', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( 10, 50 ),
+				'default'   => 24,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_fullscreen', '==', 'false' ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'hamburger_close_icon_padding'                 => array(
+				'title'     => esc_html__( 'padding area', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( 0, 20 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_fullscreen', '==', 'false' ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'hamburger_close_icon_bg_color'                => array(
+				'title'     => esc_html__( 'background color', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => 'rgba(0,0,0,0)',
+				'alpha'     => true,
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_fullscreen', '==', 'false' ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'hamburger_close_icon_color'                   => array(
+				'title'     => esc_html__( 'color', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => 'rgba(104,104,104,1)',
+				'alpha'     => true,
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_fullscreen', '==', 'false' ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'hamburger_close_icon_end'                     => array(
+				'type'      => 'inlineEnd',
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_fullscreen', '==', 'false' ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'hamburger_close_icon_border_start'            => array(
+				'title'     => esc_html__( 'Close hamburger on drawer icon border', 'groovy-menu' ),
+				'type'      => 'inlineStart',
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_fullscreen', '==', 'false' ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'hamburger_close_icon_border_width'            => array(
+				'title'     => esc_html__( 'width', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( 0, 5 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_fullscreen', '==', 'false' ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'hamburger_close_icon_border_color'            => array(
+				'title'     => esc_html__( 'color', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => 'rgba(0,0,0,0)',
+				'alpha'     => true,
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_fullscreen', '==', 'false' ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'hamburger_close_icon_border_end'              => array(
+				'type'      => 'inlineEnd',
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_fullscreen', '==', 'false' ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
 			'hamburger_icon_mobile_start'                  => array(
 				'title' => esc_html__( 'Side icon mobile', 'groovy-menu' ),
 				'type'  => 'inlineStart'

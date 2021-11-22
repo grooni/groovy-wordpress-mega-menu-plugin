@@ -928,6 +928,27 @@ function groovyMenu( $args = array() ) {
 </svg></span>';
 	}
 
+	if ( 2 === $header_style && ! $groovyMenuSettings['minimalisticMenuFullscreen'] && $groovyMenuSettings['minimalisticMenuShowCloseButton'] ) {
+		$output_html .= '<div class="gm-menu-btn-close-drawer">';
+		if ( $groovyMenuSettings['minimalisticCssHamburger'] ) {
+
+			$output_html .= '<div class="hamburger is-active ' . $groovyMenuSettings['minimalisticCssHamburgerType'] . '"><div class="hamburger-box"><div class="hamburger-inner"></div></div></div>';
+
+		} else {
+			$output_html .= '<span class="gm-menu-btn">';
+			$output_html .= '	<span class="gm-menu-btn__inner">';
+
+			$menu_icon = 'fa fa-bars';
+			if ( ! empty( $styles->getGlobal( 'misc_icons', 'close_icon' ) ) ) {
+				$menu_icon = $styles->getGlobal( 'misc_icons', 'close_icon' );
+			}
+			$output_html .= '	<i class="' . esc_attr( $menu_icon ) . '"></i>';
+			$output_html .= '	</span>';
+			$output_html .= '</span>';
+		}
+		$output_html .= '</div>';
+	}
+
 	$output_html .= '<nav id="gm-main-menu">';
 
 	ob_start();
@@ -1337,6 +1358,28 @@ function groovyMenu( $args = array() ) {
  *
  */
 function gm_wp_nav_menu( $args = array() ) {
+	global $groovyMenuSettings;
+
+	if ( ! empty( $args['menu'] ) || ! empty( $args['gm_preset_id'] ) ) {
+		\GroovyMenu\PreStorage::get_instance()->remove_all_gm();
+	}
+
+	$defaults_args = array(
+		'menu'           => 'default',
+		'gm_preset_id'   => 'default',
+		'echo'           => false,
+		'gm_echo'        => true,
+		'gm_pre_storage' => false,
+		'depth'          => 0, // limit the depth of the nav.
+		'is_disable'     => false,
+	);
+
+	$args = shortcode_atts( $defaults_args, $args, '' );
+
+	if ( ! empty( $args['gm_preset_id'] ) ) {
+		$groovyMenuSettings['preset']['id'] = $args['gm_preset_id'];
+	}
+
 	return groovyMenu( $args );
 }
 
