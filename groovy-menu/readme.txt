@@ -4,7 +4,7 @@ Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive,
 Requires at least: 4.9.7
 Tested up to: 5.8
 Requires PHP: 7.0
-Stable tag: 1.3.9
+Stable tag: 1.3.10
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -115,6 +115,13 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.3.10 =
+* Add: Added the ability to display the "X" icon for closing the menu for the mobile version, without using the "Animated Hamburger menu" setting.
+* Add: New feature for displaying the close icon "X" of the menu for the desktop version of Minimalistic style.
+* Add: New setting for vertical positioning of menu items in the desktop Minimalistic style "Menu list alignment".
+* Add: New setting for mobile positioning of menu items in the horizontal plane "Menu items horizontal Align".
+* Fix: Now in the desktop the Minimalistic style submenu matches the width of the setting in "General > Submenu > Submenu width".
 
 = 1.3.9 =
 * Fix: Fixed logic for choosing one active menu integration under the integrations section.

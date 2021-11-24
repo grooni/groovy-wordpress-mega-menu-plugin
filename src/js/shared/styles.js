@@ -1425,7 +1425,6 @@ export default class GmStyles {
         '.gm-navbar ~ .gm-navbar-animated.gm-navigation-drawer--delay': `transition: transform cubic-bezier(0.7, 0, 0.3, 1) ${animSpeed}ms ${animSpeedAfter}ms;`,
         '.gm-nav-content-wrapper': `transition: transform cubic-bezier(0.7, 0, 0.3, 1) ${animSpeed}ms;`,
         '.gm-navbar.gm-navbar--style-2 ~ .gm-main-menu-wrapper .gm-dropdown-menu-wrapper': 'z-index: -1;',
-        '.gm-menu-btn-close-drawer .hamburger': 'padding: 0;',
         media: 'desktop'
       });
 
@@ -1457,7 +1456,7 @@ export default class GmStyles {
         });
       }
 
-      if (!minimalisticMenuFullscreen || (minimalisticMenuFullscreen && !settings.minimalisticMenuFullscreenAsMegamenu)) {
+      if (minimalisticMenuFullscreen && !settings.minimalisticMenuFullscreenAsMegamenu) {
         css.push({
           '.gm-main-menu-wrapper': 'flex-wrap: nowrap; flex-direction: column; align-content: center;',
           '.gm-navbar ~ .gm-main-menu-wrapper #gm-main-menu': 'flex: 1 100%; width: 100%; display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: center; align-items: stretch;',
@@ -1465,13 +1464,13 @@ export default class GmStyles {
         });
         if (settings.minimalisticMenuAlignment && settings.minimalisticMenuAlignment === 'top') {
           css.push({
-            '.gm-navbar ~ .gm-main-menu-wrapper > #gm-main-menu, .gm-navbar ~ .gm-main-menu-wrapper .gm-dropdown-menu': 'padding-top: 32px; justify-content: flex-start;',
+            '.gm-navbar ~ .gm-main-menu-wrapper > #gm-main-menu, .gm-navbar ~ .gm-main-menu-wrapper .gm-dropdown-menu, .gm-navbar ~ .gm-main-menu-wrapper': 'padding-top: 32px; justify-content: flex-start;',
             media: 'desktop'
           });
         }
       }
 
-      if (!minimalisticMenuFullscreen && settings.minimalisticMenuShowCloseButton) {
+      if (settings.minimalisticMenuShowCloseButton) {
         const {
           minimalisticMenuCloseButtonPosition: minCloseBtnPos,
           minimalisticMenuCloseButtonTop,
@@ -1489,8 +1488,26 @@ export default class GmStyles {
           '.gm-main-menu-wrapper .gm-menu-btn-close-drawer': `display: flex; flex-wrap: nowrap; flex-direction: row; align-content: center; justify-content: ${minCloseBtnPos}; flex: 0; width: 100%;`,
           media: 'desktop'
         });
+
+        if (minimalisticMenuFullscreen) {
+          css.push({
+            '.gm-main-menu-wrapper .gm-menu-btn-close-drawer': 'position: fixed; top: 0;',
+            media: 'desktop'
+          });
+        } else {
+          css.push({
+            '.gm-navbar ~ .gm-main-menu-wrapper #gm-main-menu': 'flex: 1 100%; width: 100%; display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: center; align-items: stretch;',
+            '.gm-navbar ~ .gm-main-menu-wrapper': 'flex-wrap: nowrap; flex-direction: column;',
+            media: 'desktop'
+          });
+          if (settings.minimalisticMenuAlignment && settings.minimalisticMenuAlignment === 'top') {
+            css.push({
+              '.gm-navbar ~ .gm-main-menu-wrapper > #gm-main-menu, .gm-navbar ~ .gm-main-menu-wrapper .gm-dropdown-menu, .gm-navbar ~ .gm-main-menu-wrapper': 'padding-top: 32px; justify-content: flex-start;',
+              media: 'desktop'
+            });
+          }
+        }
       }
-      //gm-menu-btn-close-drawer
 
       css.push({
         '.gm-dropdown-with-scrollbar ~ .gm-main-menu-wrapper .gm-dropdown-menu .ps__rail-y': 'top: 0 !important;',
@@ -1627,7 +1644,7 @@ export default class GmStyles {
 
           // Apply Fullscreen.
           css.push({
-            '.gm-navbar ~ .gm-main-menu-wrapper #gm-main-menu': `flex: 0 ${topWidth}px;`,
+            '.gm-navbar ~ .gm-main-menu-wrapper #gm-main-menu': `flex: 0 ${topWidth}px; width: ${topWidth}px;`,
             '.gm-main-menu-wrapper .gm-navbar-nav .gm-menu-item > .gm-anchor': `justify-content: ${topAlignment};`,
             media: 'desktop'
           });
@@ -1792,7 +1809,7 @@ export default class GmStyles {
         let hamburgerCloseIconBoxSize = hamburgerCloseIconSize + (hamburgerCloseIconPadding * 2) + (hamburgerCloseIconBorderWidth * 2);
 
         css.push({
-          '.gm-menu-btn-close-drawer .hamburger': `cursor: pointer; justify-content: center; padding: 0; min-width: ${hamburgerCloseIconBoxSize}px;`,
+          '.gm-menu-btn-close-drawer .hamburger': `padding: 0; cursor: pointer; justify-content: center; padding: 0; min-width: ${hamburgerCloseIconBoxSize}px; max-height: ${hamburgerCloseIconBoxSize}px;`,
           '.gm-menu-btn-close-drawer .hamburger .hamburger-box, .gm-menu-btn-close-drawer .hamburger .hamburger-inner, .gm-menu-btn-close-drawer .hamburger .hamburger-inner::after, .gm-menu-btn-close-drawer .hamburger .hamburger-inner::before': `width: ${hamburgerCloseIconSize}px;`,
           '.gm-menu-btn-close-drawer .hamburger .hamburger-box': `height: ${hamburgerCloseIconSize}px;`,
           '.gm-menu-btn-close-drawer .gm-menu-btn__inner': `font-size: ${hamburgerCloseIconSize}px;`,
@@ -1803,6 +1820,7 @@ export default class GmStyles {
         if (settings.minimalisticCssHamburgerHeight) {
           css.push({
             '.gm-menu-btn-close-drawer .hamburger .hamburger-inner, .gm-menu-btn-close-drawer .hamburger .hamburger-inner::after, .gm-menu-btn-close-drawer .hamburger .hamburger-inner::before': `height: ${settings.minimalisticCssHamburgerHeight}px;`,
+            media: 'desktop'
           });
         }
 
@@ -4369,18 +4387,23 @@ export default class GmStyles {
       gmCssBurgerSize = (settings.hamburgerIconMobileFullwidthPadding) ? gmCssBurgerSize + (settings.hamburgerIconMobileFullwidthPadding * 2) : gmCssBurgerSize;
       gmCssBurgerSize = (settings.hamburgerIconMobileFullwidthBorderWidth) ? gmCssBurgerSize + (settings.hamburgerIconMobileFullwidthBorderWidth * 2) : gmCssBurgerSize;
 
-      if (settings.mobileIndependentCssHamburger) {
+     // if (settings.mobileIndependentCssHamburger) { // TODO debug ---.
+
+        /* // TODO debug ---.
+
         burgerIndent = gmCssBurgerSize + 8;
 
         if (burgerIndent < 32) {
           burgerIndent = 32;
         }
 
+
         css.push({
           '.gm-navigation-drawer--mobile.gm-navigation-drawer--right .gm-mobile-menu-container .gm-navbar-nav': `margin-left: ${burgerIndent}px !important;`,
           '.gm-navigation-drawer--mobile.gm-navigation-drawer--left .gm-mobile-menu-container .gm-navbar-nav': `margin-right: ${burgerIndent}px !important;`,
           media: 'mobile'
         });
+
 
         // Mobile submenu style SLIDER
         if (settings.mobileSubmenuStyle && 'slider' === settings.mobileSubmenuStyle) {
@@ -4390,8 +4413,9 @@ export default class GmStyles {
             media: 'mobile'
           });
         }
+      */
 
-      } else {
+    //  } else { // TODO debug ---.
 
         burgerIndent = gmCssBurgerSize;
 
@@ -4404,7 +4428,7 @@ export default class GmStyles {
           '.gm-navigation-drawer--mobile.gm-navigation-drawer--left .gm-menu-btn.gm-hamburger-close': 'margin-right: 0; margin-left: auto;',
         });
 
-      }
+     // } // TODO debug ---.
 
       css.push({
         '.gm-navigation-drawer--mobile': 'max-width: 100%; width: 100%;',
@@ -4503,6 +4527,10 @@ export default class GmStyles {
           }
         }
 
+        if (settings.mobileMenuShowCloseButton) {
+          canvasIndent = 0;
+        }
+
         css.push({
           '.gm-navigation-drawer--mobile': 'max-width:' + settings.mobileOffcanvasWidth + 'px; width: calc( 100% - ' + canvasIndent + 'px );',
         });
@@ -4523,6 +4551,103 @@ export default class GmStyles {
       });
 
     }
+
+
+    // Mobile Hamburger CLOSE icon.
+    if (settings.mobileMenuShowCloseButton) {
+
+      const {
+        mobileMenuCloseButtonPosition: mobCloseBtnPos,
+        mobileMenuCloseButtonTop,
+        mobileMenuCloseButtonRight,
+        mobileMenuCloseButtonBottom,
+        mobileMenuCloseButtonLeft,
+      } = settings;
+
+      css.push({
+        '.gm-navigation-drawer--mobile .gm-menu-btn-close-mobile-drawer': `padding: ${mobileMenuCloseButtonTop}px ${mobileMenuCloseButtonRight}px ${mobileMenuCloseButtonBottom}px ${mobileMenuCloseButtonLeft}px;`,
+        media: 'mobile'
+      });
+
+      css.push({
+        '.gm-navigation-drawer--mobile .gm-menu-btn-close-mobile-drawer': `display: flex; flex-wrap: nowrap; flex-direction: row; align-content: center; justify-content: ${mobCloseBtnPos}; flex: 0; width: 100%;`,
+        media: 'mobile'
+      });
+
+      const {
+        hamburgerIconMobileFullwidthBorderWidth,
+        hamburgerIconMobileFullwidthPadding,
+        hamburgerIconMobileFullwidthSize
+      } = settings;
+
+      let hamburgerIconMobileFullwidthBoxSize = hamburgerIconMobileFullwidthSize + (hamburgerIconMobileFullwidthPadding * 2) + (hamburgerIconMobileFullwidthBorderWidth * 2);
+
+      css.push({
+        '.gm-menu-btn-close-mobile-drawer .hamburger': `padding: 0; cursor: pointer; justify-content: center; padding: 0; min-width: ${hamburgerIconMobileFullwidthBoxSize}px;`,
+        '.gm-menu-btn-close-mobile-drawer .hamburger .hamburger-box, .gm-menu-btn-close-mobile-drawer .hamburger .hamburger-inner, .gm-menu-btn-close-mobile-drawer .hamburger .hamburger-inner::after, .gm-menu-btn-close-mobile-drawer .hamburger .hamburger-inner::before': `width: ${hamburgerIconMobileFullwidthSize}px;`,
+        '.gm-menu-btn-close-mobile-drawer .hamburger .hamburger-box': `height: ${hamburgerIconMobileFullwidthSize}px;`,
+        '.gm-menu-btn-close-mobile-drawer .gm-menu-btn__inner': `font-size: ${hamburgerIconMobileFullwidthSize}px;`,
+        media: 'mobile'
+      });
+
+      // Hamburger line height
+      let mobileCSSHamburgerHeight = settings.mobileIndependentCssHamburgerHeight;
+      if (settings.header.style === 2 && settings.minimalisticCssHamburgerHeight) {
+        mobileCSSHamburgerHeight = settings.minimalisticCssHamburgerHeight;
+      }
+      if (mobileCSSHamburgerHeight) {
+        css.push({
+          '.gm-menu-btn-close-mobile-drawer .hamburger .hamburger-inner, .gm-menu-btn-close-mobile-drawer .hamburger .hamburger-inner::after, .gm-menu-btn-close-mobile-drawer .hamburger .hamburger-inner::before': `height: ${mobileCSSHamburgerHeight}px;`,
+          media: 'mobile'
+        });
+      }
+
+      // Hamburger icon color
+      if (settings.hamburgerIconMobileFullwidthColor) {
+        css.push({
+          '.gm-menu-btn-close-mobile-drawer .hamburger .hamburger-inner, .gm-menu-btn-close-mobile-drawer .hamburger .hamburger-inner::after, .gm-menu-btn-close-mobile-drawer .hamburger .hamburger-inner::before': `background-color: ${settings.hamburgerIconMobileFullwidthColor};`,
+          '.gm-menu-btn-close-mobile-drawer .gm-menu-btn__inner': `color: ${settings.hamburgerIconMobileFullwidthColor};`,
+          media: 'mobile'
+        });
+      }
+
+      // Hamburger icon padding area
+      if (settings.hamburgerIconMobileFullwidthPadding) {
+        css.push({
+          '.gm-menu-btn-close-mobile-drawer .hamburger': `padding: ${settings.hamburgerIconMobileFullwidthPadding}px;`,
+          '.gm-menu-btn-close-mobile-drawer .gm-menu-btn__inner': `padding: ${settings.hamburgerIconMobileFullwidthPadding}px;`,
+          media: 'mobile'
+        });
+      }
+
+      // Hamburger icon bg color
+      if (settings.hamburgerIconMobileFullwidthBgColor) {
+        css.push({
+          '.gm-menu-btn-close-mobile-drawer .hamburger': `background-color: ${settings.hamburgerIconMobileFullwidthBgColor};`,
+          '.gm-menu-btn-close-mobile-drawer .gm-menu-btn__inner': `background-color: ${settings.hamburgerIconMobileFullwidthBgColor};`,
+          media: 'mobile'
+        });
+      }
+
+      // Hamburger icon border
+      if (
+        settings.hamburgerIconMobileFullwidthBorderWidth !== 0 &&
+        settings.hamburgerIconMobileFullwidthBorderColor
+      ) {
+        const {
+          hamburgerIconMobileFullwidthBorderWidth,
+          hamburgerIconMobileFullwidthBorderColor
+        } = settings;
+
+        css.push({
+          '.gm-menu-btn-close-mobile-drawer .hamburger': `border: ${hamburgerIconMobileFullwidthBorderWidth}px solid ${hamburgerIconMobileFullwidthBorderColor};`,
+          '.gm-menu-btn-close-mobile-drawer .gm-menu-btn__inner': `border: ${hamburgerIconMobileFullwidthBorderWidth}px solid ${hamburgerIconMobileFullwidthBorderColor};`,
+          media: 'mobile'
+        });
+      }
+
+    }
+
 
     if (settings.mobileItemsPaddingY) {
       let caretHeight = settings.mobileItemsPaddingY * 2 + 20;
@@ -4592,9 +4717,31 @@ export default class GmStyles {
       }
     }
 
+    // mobile_menu_line_position
+    if (settings.mobileMenuLinePosition && 'default' !== settings.mobileMenuLinePosition) {
+      if ('center' === settings.mobileMenuLinePosition) {
+        css.push({
+          '.gm-navigation-drawer .gm-dropdown > .gm-anchor .gm-menu-item__txt-wrapper': 'padding-right: 0;',
+          media: 'mobile'
+        });
+      } else if ('right' === settings.mobileMenuLinePosition) {
+        css.push({
+          '.gm-navigation-drawer .gm-dropdown > .gm-anchor .gm-menu-item__txt-wrapper, .gm-navigation-drawer--mobile .gm-menu-item > .gm-anchor > .gm-menu-item__txt-wrapper, .gm-navigation-drawer--mobile .gm-navbar-nav .gm-dropdown-menu-title .gm-menu-item__txt-wrapper': 'padding-right: 36px;',
+          media: 'mobile'
+        });
+      }
+
+      css.push({
+        '.gm-navigation-drawer .gm-anchor .gm-menu-item__txt-wrapper, .gm-navigation-drawer .gm-mega-menu__item__title .gm-menu-item__txt-wrapper': '    margin-right: unset;',
+        '.gm-navigation-drawer .gm-menu-item > .gm-anchor, .gm-mobile-submenu-style-slider .gm-navbar-nav .gm-dropdown-menu-wrapper .gm-dropdown-menu-title': `justify-content: ${settings.mobileMenuLinePosition};`,
+        media: 'mobile'
+      });
+    }
+
     // Hide only on Mobile css class.
     css.push({
-      '.gm-hide-on-mobile': `display: none`,
+      '.gm-hide-on-mobile': 'display: none;',
+      '.gm-hide-on-mobile-by-option': 'display: none !important;',
       media: 'mobile'
     });
 
