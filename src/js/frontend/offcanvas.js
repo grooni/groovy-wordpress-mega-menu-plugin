@@ -454,6 +454,13 @@ export function offcanvasSlide() {
     secondHamburgerMenuClose.addEventListener('click', clickHandler);
   }
 
+  if (2 === headerStyle && options.minimalisticMenuShowCloseButton) {
+    let gmCloseBtnDrawer = document.querySelector('.gm-menu-btn-close-drawer');
+    if (gmCloseBtnDrawer) {
+      gmCloseBtnDrawer.addEventListener('click', clickHandler);
+    }
+  }
+
   // Close button event for Fullscreen minimalistic type.
   if (2 === headerStyle && options.minimalisticMenuFullscreen) {
     let fullscreenCloseButton = document.querySelector('.gm-fullscreen-close');

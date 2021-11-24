@@ -1755,6 +1755,20 @@ return array(
 					array( 'minimalistic_menu_fullscreen_as_megamenu', '==', 'false' ),
 				),
 			),
+			'minimalistic_menu_alignment'                           => array(
+				'title'       => esc_html__( 'Menu list alignment', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'select',
+				'options'     => array(
+					'top'    => esc_html__( 'Top', 'groovy-menu' ),
+					'center' => esc_html__( 'Center', 'groovy-menu' ),
+				),
+				'default'     => 'center',
+				'condition'   => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_fullscreen_as_megamenu', '==', 'false' ),
+				),
+			),
 			'minimalistic_menu_max_height'                          => array(
 				'title'       => esc_html__( 'Full height sidebar menu', 'groovy-menu' ),
 				'description' => esc_html__( 'Occupy maximum screen height. If disabled, then the slide will not overlap the top block.', 'groovy-menu' ),
@@ -1942,6 +1956,87 @@ return array(
 			'minimalistic_menu_button_show_text_end'                => array(
 				'type'      => 'inlineEnd',
 				'condition' => array( 'header.style', '==', '2' ),
+			),
+			'minimalistic_menu_show_close_button'                   => array(
+				'title'       => esc_html__( 'Show close menu button on Drawer', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'checkbox',
+				'default'     => false,
+				'condition'   => array( 'header.style', 'in', array( '2' ) ),
+			),
+			'minimalistic_menu_close_button_position'               => array(
+				'title'       => esc_html__( 'Close menu button position', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'select',
+				'options'     => array(
+					'flex-start' => esc_html__( 'flex-start', 'groovy-menu' ),
+					'center'     => esc_html__( 'center', 'groovy-menu' ),
+					'flex-end'   => esc_html__( 'flex-end', 'groovy-menu' ),
+				),
+				'default'     => 'flex-end',
+				'condition'   => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'minimalistic_menu_close_button_start'                  => array(
+				'title'     => esc_html__( 'Close menu button padding', 'groovy-menu' ),
+				'type'      => 'inlineStart',
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'minimalistic_menu_close_button_top'                    => array(
+				'title'     => esc_html__( 'Top', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 1000, 1000 ),
+				'default'   => 10,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'minimalistic_menu_close_button_right'                  => array(
+				'title'     => esc_html__( 'Right', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 1000, 1000 ),
+				'default'   => 53,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'minimalistic_menu_close_button_bottom'                 => array(
+				'title'     => esc_html__( 'Bottom', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 1000, 1000 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'minimalistic_menu_close_button_left'                   => array(
+				'title'     => esc_html__( 'Left', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 1000, 1000 ),
+				'default'   => 53,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'minimalistic_menu_close_button_end'                    => array(
+				'type'      => 'inlineEnd',
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
 			),
 			'minimalistic_menu_show_only_hamburger'                 => array(
 				'title'       => esc_html__( 'Show hamburger menu only', 'groovy-menu' ),
@@ -3333,21 +3428,114 @@ return array(
 				'title' => esc_html__( 'Side icon border', 'groovy-menu' ),
 				'type'  => 'inlineStart',
 			),
-			'hamburger_icon_border_width'                  => array(
+			'hamburger_icon_border_width'       => array(
 				'title'   => esc_html__( 'width', 'groovy-menu' ),
 				'type'    => 'number',
 				'range'   => array( 0, 5 ),
 				'default' => 0,
 				'unit'    => 'px',
 			),
-			'hamburger_icon_border_color'                  => array(
+			'hamburger_icon_border_color'       => array(
 				'title'   => esc_html__( 'color', 'groovy-menu' ),
 				'type'    => 'colorpicker',
 				'default' => 'rgba(0,0,0,0)',
 				'alpha'   => true,
 			),
-			'hamburger_icon_border_end'                    => array(
+			'hamburger_icon_border_end'         => array(
 				'type' => 'inlineEnd'
+			),
+			'hamburger_close_icon_start'        => array(
+				'title'     => esc_html__( 'Close hamburger on drawer icon', 'groovy-menu' ),
+				'type'      => 'inlineStart',
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'hamburger_close_icon_size'         => array(
+				'title'     => esc_html__( 'size', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( 10, 50 ),
+				'default'   => 24,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'hamburger_close_icon_padding'      => array(
+				'title'     => esc_html__( 'padding area', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( 0, 20 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'hamburger_close_icon_bg_color'     => array(
+				'title'     => esc_html__( 'background color', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => 'rgba(0,0,0,0)',
+				'alpha'     => true,
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'hamburger_close_icon_color'        => array(
+				'title'     => esc_html__( 'color', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => 'rgba(104,104,104,1)',
+				'alpha'     => true,
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'hamburger_close_icon_end'          => array(
+				'type'      => 'inlineEnd',
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'hamburger_close_icon_border_start' => array(
+				'title'     => esc_html__( 'Close hamburger on drawer icon border', 'groovy-menu' ),
+				'type'      => 'inlineStart',
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'hamburger_close_icon_border_width' => array(
+				'title'     => esc_html__( 'width', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( 0, 5 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'hamburger_close_icon_border_color' => array(
+				'title'     => esc_html__( 'color', 'groovy-menu' ),
+				'type'      => 'colorpicker',
+				'default'   => 'rgba(0,0,0,0)',
+				'alpha'     => true,
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
+			),
+			'hamburger_close_icon_border_end'   => array(
+				'type'      => 'inlineEnd',
+				'condition' => array(
+					array( 'header.style', 'in', array( '2' ) ),
+					array( 'minimalistic_menu_show_close_button', '==', true ),
+				),
 			),
 			'hamburger_icon_mobile_start'                  => array(
 				'title' => esc_html__( 'Side icon mobile', 'groovy-menu' ),
@@ -3456,9 +3644,9 @@ return array(
 				'type' => 'inlineEnd'
 			),
 			'hamburger_icon_mobile_fullwidth_start'        => array(
-				'title'     => esc_html__( 'Side icon mobile fullwidth', 'groovy-menu' ),
+				'title'     => esc_html__( 'Close icon on mobile drawer', 'groovy-menu' ),
 				'type'      => 'inlineStart',
-				'condition' => array( 'mobile_offcanvas_fullwidth', '==', true ),
+				'condition' => array( 'mobile_menu_show_close_button', '==', true ),
 			),
 			'hamburger_icon_mobile_fullwidth_size'         => array(
 				'title'     => esc_html__( 'size', 'groovy-menu' ),
@@ -3466,7 +3654,7 @@ return array(
 				'range'     => array( 10, 50 ),
 				'default'   => 24,
 				'unit'      => 'px',
-				'condition' => array( 'mobile_offcanvas_fullwidth', '==', true ),
+				'condition' => array( 'mobile_menu_show_close_button', '==', true ),
 			),
 			'hamburger_icon_mobile_fullwidth_padding'      => array(
 				'title'     => esc_html__( 'padding area', 'groovy-menu' ),
@@ -3474,30 +3662,30 @@ return array(
 				'range'     => array( 0, 20 ),
 				'default'   => 0,
 				'unit'      => 'px',
-				'condition' => array( 'mobile_offcanvas_fullwidth', '==', true ),
+				'condition' => array( 'mobile_menu_show_close_button', '==', true ),
 			),
 			'hamburger_icon_mobile_fullwidth_bg_color'     => array(
 				'title'     => esc_html__( 'background color', 'groovy-menu' ),
 				'type'      => 'colorpicker',
 				'default'   => 'rgba(0,0,0,0)',
 				'alpha'     => true,
-				'condition' => array( 'mobile_offcanvas_fullwidth', '==', true ),
+				'condition' => array( 'mobile_menu_show_close_button', '==', true ),
 			),
 			'hamburger_icon_mobile_fullwidth_color'        => array(
 				'title'     => esc_html__( 'color', 'groovy-menu' ),
 				'type'      => 'colorpicker',
 				'default'   => 'rgba(104,104,104,1)',
 				'alpha'     => true,
-				'condition' => array( 'mobile_offcanvas_fullwidth', '==', true ),
+				'condition' => array( 'mobile_menu_show_close_button', '==', true ),
 			),
 			'hamburger_icon_mobile_fullwidth_end'          => array(
 				'type'      => 'inlineEnd',
-				'condition' => array( 'mobile_offcanvas_fullwidth', '==', true ),
+				'condition' => array( 'mobile_menu_show_close_button', '==', true ),
 			),
 			'hamburger_icon_mobile_fullwidth_border_start' => array(
-				'title'     => esc_html__( 'Side icon mobile fullwidth border', 'groovy-menu' ),
+				'title'     => esc_html__( 'Close icon on mobile drawer border', 'groovy-menu' ),
 				'type'      => 'inlineStart',
-				'condition' => array( 'mobile_offcanvas_fullwidth', '==', true ),
+				'condition' => array( 'mobile_menu_show_close_button', '==', true ),
 			),
 			'hamburger_icon_mobile_fullwidth_border_width' => array(
 				'title'     => esc_html__( 'width', 'groovy-menu' ),
@@ -3505,18 +3693,18 @@ return array(
 				'range'     => array( 0, 5 ),
 				'default'   => 0,
 				'unit'      => 'px',
-				'condition' => array( 'mobile_offcanvas_fullwidth', '==', true ),
+				'condition' => array( 'mobile_menu_show_close_button', '==', true ),
 			),
 			'hamburger_icon_mobile_fullwidth_border_color' => array(
 				'title'     => esc_html__( 'color', 'groovy-menu' ),
 				'type'      => 'colorpicker',
 				'default'   => 'rgba(0,0,0,0)',
 				'alpha'     => true,
-				'condition' => array( 'mobile_offcanvas_fullwidth', '==', true ),
+				'condition' => array( 'mobile_menu_show_close_button', '==', true ),
 			),
 			'hamburger_icon_mobile_fullwidth_border_end'   => array(
 				'type'      => 'inlineEnd',
-				'condition' => array( 'mobile_offcanvas_fullwidth', '==', true ),
+				'condition' => array( 'mobile_menu_show_close_button', '==', true ),
 			),
 			'woo_cart_group'                               => array(
 				'type'      => 'group',
@@ -4006,6 +4194,76 @@ return array(
 				'default'     => false,
 				'description' => esc_html__( 'Prevent automatically closing of the mobile menu on tap outside the drawer area', 'groovy-menu' ),
 			),
+			'mobile_menu_show_close_button'     => array(
+				'title'       => esc_html__( 'Show close menu button on Drawer', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'checkbox',
+				'default'     => true,
+			),
+			'mobile_menu_close_button_position' => array(
+				'title'       => esc_html__( 'Close menu button position', 'groovy-menu' ),
+				'description' => '',
+				'type'        => 'select',
+				'options'     => array(
+					'flex-start' => esc_html__( 'flex-start', 'groovy-menu' ),
+					'center'     => esc_html__( 'center', 'groovy-menu' ),
+					'flex-end'   => esc_html__( 'flex-end', 'groovy-menu' ),
+				),
+				'default'     => 'flex-end',
+				'condition'   => array( 'mobile_menu_show_close_button', '==', true ),
+			),
+			'mobile_menu_close_button_start'    => array(
+				'title'     => esc_html__( 'Close menu button padding', 'groovy-menu' ),
+				'type'      => 'inlineStart',
+				'condition' => array( 'mobile_menu_show_close_button', '==', true ),
+			),
+			'mobile_menu_close_button_top'      => array(
+				'title'     => esc_html__( 'Top', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 1000, 1000 ),
+				'default'   => 12,
+				'unit'      => 'px',
+				'condition' => array( 'mobile_menu_show_close_button', '==', true ),
+			),
+			'mobile_menu_close_button_right'    => array(
+				'title'     => esc_html__( 'Right', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 1000, 1000 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array( 'mobile_menu_show_close_button', '==', true ),
+			),
+			'mobile_menu_close_button_bottom'   => array(
+				'title'     => esc_html__( 'Bottom', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 1000, 1000 ),
+				'default'   => 12,
+				'unit'      => 'px',
+				'condition' => array( 'mobile_menu_show_close_button', '==', true ),
+			),
+			'mobile_menu_close_button_left'     => array(
+				'title'     => esc_html__( 'Left', 'groovy-menu' ),
+				'type'      => 'number',
+				'range'     => array( - 1000, 1000 ),
+				'default'   => 0,
+				'unit'      => 'px',
+				'condition' => array( 'mobile_menu_show_close_button', '==', true ),
+			),
+			'mobile_menu_close_button_end'      => array(
+				'type'      => 'inlineEnd',
+				'condition' => array( 'mobile_menu_show_close_button', '==', true ),
+			),
+			'mobile_menu_line_position'         => array(
+				'title'   => esc_html__( 'Menu items horizontal Align', 'groovy-menu' ),
+				'type'    => 'select',
+				'options' => array(
+					'default' => esc_html__( 'Default', 'groovy-menu' ),
+					'left'    => esc_html__( 'Align left', 'groovy-menu' ),
+					'center'  => esc_html__( 'Align center', 'groovy-menu' ),
+					'right'   => esc_html__( 'Align right', 'groovy-menu' ),
+				),
+				'default' => 'default',
+			),
 			'mobile_logo_position'                      => array(
 				'title'   => esc_html__( 'Logo Align', 'groovy-menu' ),
 				'type'    => 'select',
@@ -4188,7 +4446,7 @@ return array(
 			),
 			'mobile_offcanvas_fullwidth'                => array(
 				'title'       => esc_html__( 'Fullwidth mobile navigation drawer', 'groovy-menu' ),
-				'description' => esc_html__( 'You can change the icon color in the [Styles] - [Side Icon] section.', 'groovy-menu' ) . ' ' . esc_html__( 'See [Side icon mobile fullwidth]', 'groovy-menu' ),
+				'description' => esc_html__( 'You can change the icon color in the [Styles] - [Side Icon] section.', 'groovy-menu' ) . ' ' . esc_html__( 'See [Close icon on mobile drawer]', 'groovy-menu' ),
 				'type'        => 'checkbox',
 				'default'     => false,
 			),
