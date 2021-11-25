@@ -4114,7 +4114,7 @@ return array(
 				'title'       => esc_html__( 'Allow float', 'groovy-menu' ),
 				'description' => '',
 				'type'        => 'checkbox',
-				'default'     => true,
+				'default'     => false,
 				'condition'   => array( 'mobile_independent_css_hamburger', '==', true ),
 			),
 			'mobile_independent_css_hamburger_height'   => array(
