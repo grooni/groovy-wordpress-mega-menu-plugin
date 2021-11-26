@@ -894,6 +894,13 @@ class GroovyMenu {
 
           }
 
+          if (isMobile()) {
+            let mobileMenuWrapper = document.querySelector('.gm-navigation-drawer--mobile');
+            if (mobileMenuWrapper) {
+              offcanvasToggle(mobileMenuWrapper);
+            }
+          }
+
           scrollToId(e, scroll, targetHash, scrollOptions);
 
         });
