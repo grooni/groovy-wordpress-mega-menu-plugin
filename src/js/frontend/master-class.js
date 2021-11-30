@@ -2,7 +2,6 @@
  * Groovy menu plugin
  */
 
-import GmStyles from '../shared/styles';
 import _ from 'lodash';
 import fixMenuCloseOnIOS, {
   isMobile as isMobileHelper,
@@ -29,7 +28,6 @@ import {
   dropdownClose
 } from './dropdown';
 import {overlapMenu} from './overlap';
-import {reinsertCompiledStyles} from './save-styles';
 import {watchWooMiniCartCounter} from './woo-minicart';
 
 class GroovyMenu {
@@ -57,8 +55,6 @@ class GroovyMenu {
 
     let options = this.options;
 
-    let gmStyles = new GmStyles(options);
-    let cssGenerated = gmStyles.get();
     let headerStyle = parseInt(options.header.style, 10);
     const body = document.body;
     const wpAdminBar = document.querySelector('#wpadminbar');
@@ -167,20 +163,6 @@ class GroovyMenu {
 
     if (headerStyle === 1 || headerStyle === 2) {
       overlapMenu(options);
-    }
-
-    if (navbar) {
-      if (navbar.classList.contains('gm-no-compiled-css') || isPreview) {
-        gmStyles.addToHeader(cssGenerated);
-      }
-
-      if (!isPreview) {
-        if (navbar.classList.contains('gm-no-compiled-css')
-          || options.version !== navbar.getAttribute('data-version')) {
-          gmStyles.addToHeader(cssGenerated);
-          reinsertCompiledStyles(gmStyles, options, cssGenerated);
-        }
-      }
     }
 
     document.addEventListener('click', (e) => {

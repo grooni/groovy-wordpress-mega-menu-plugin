@@ -3003,4 +3003,9 @@ class GroovyMenuUtils {
 	}
 
 
+	public static function enquare_styles_recompile() {
+		wp_enqueue_script( 'groovy-menu-style-update', GROOVY_MENU_URL . 'assets/js/styleupdate.js', [], GROOVY_MENU_VERSION, true );
+	}
+
+
 }

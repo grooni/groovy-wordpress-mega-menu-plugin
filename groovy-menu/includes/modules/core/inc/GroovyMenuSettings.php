@@ -83,6 +83,15 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 
 			GroovyMenuUtils::groovy_wpml_register_single_string( $style );
 
+			$settings = $style->serialize( true );
+			$compiled_css = $style->get( 'general', 'compiled_css' . ( is_rtl() ? '_rtl' : '' ) );
+			if ( empty( $compiled_css ) || $settings['version'] !== GROOVY_MENU_VERSION ) {
+				if ( method_exists( 'GroovyMenuUtils', 'enquare_styles_recompile' ) ) {
+					add_action( 'gm_enqueue_script_actions', array( 'GroovyMenuUtils', 'enquare_styles_recompile' ), 15 );
+					//add_action( 'wp_enqueue_scripts', array( 'GroovyMenuUtils', 'enquare_styles_recompile' ), 15 );
+				}
+			}
+
 		}
 
 		/**
