@@ -32,6 +32,7 @@ module.exports = {
     integration: './src/js/integration.js',
     preset: './src/js/preset.js',
     preview: './src/js/preview.js',
+    styleupdate: './src/js/styleupdate.js',
   },
 
   output: {

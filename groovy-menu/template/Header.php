@@ -225,6 +225,11 @@ function groovyMenu( $args = array() ) {
 	}
 
 
+	if ( method_exists( 'GroovyMenuUtils', 'enquare_styles_recompile' ) ) {
+		GroovyMenuUtils::enquare_styles_recompile( $compiled_css, $groovyMenuSettings['version'] );
+	}
+
+
 	/**
 	 * Google Font link building
 	 */
@@ -841,7 +846,7 @@ function groovyMenu( $args = array() ) {
 	}
 
 
-	if ( ( $groovyMenuSettings['mobileIndependentCssHamburger'] && $groovyMenuSettings['mobileIndependentCssHamburgerFloat'] && 2 !== $header_style ) || $groovyMenuSettings['mobileCustomHamburger'] ) {
+	if ( $groovyMenuSettings['mobileCustomHamburger'] ) {
 
 
 		if ( $groovyMenuSettings['mobileCustomHamburger'] ) {
@@ -878,7 +883,7 @@ function groovyMenu( $args = array() ) {
 
 			$output_html .= '<div class="gm-menu-btn gm-burger hamburger">' . $menu_button_text_full . '<div class="hamburger-box"><div class="hamburger-inner"></div></div></div>';
 
-		} elseif ( $groovyMenuSettings['mobileIndependentCssHamburger'] && ! $groovyMenuSettings['mobileIndependentCssHamburgerFloat'] && 2 !== $header_style ) {
+		} elseif ( 2 !== $header_style && $groovyMenuSettings['mobileIndependentCssHamburger'] ) {
 
 			$output_html .= '<div class="gm-menu-btn gm-burger hamburger">' . $menu_button_text_full . '<div class="hamburger-box"><div class="hamburger-inner"></div></div></div>';
 
@@ -1112,6 +1117,7 @@ function groovyMenu( $args = array() ) {
 		if ( 'slider' === $styles->get( 'mobile', 'mobile_submenu_style' ) ) {
 			$output_html .= ' gm-mobile-submenu-style-slider';
 		}
+
 		$output_html .= '">';
 
 		$output_html .= '<div class="gm-grid-container d-flex flex-column h-100">';
