@@ -225,6 +225,11 @@ function groovyMenu( $args = array() ) {
 	}
 
 
+	if ( method_exists( 'GroovyMenuUtils', 'enquare_styles_recompile' ) ) {
+		GroovyMenuUtils::enquare_styles_recompile( $compiled_css, $groovyMenuSettings['version'] );
+	}
+
+
 	/**
 	 * Google Font link building
 	 */
