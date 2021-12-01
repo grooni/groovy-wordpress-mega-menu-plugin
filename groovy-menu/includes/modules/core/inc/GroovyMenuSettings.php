@@ -88,7 +88,6 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 			if ( empty( $compiled_css ) || $settings['version'] !== GROOVY_MENU_VERSION ) {
 				if ( method_exists( 'GroovyMenuUtils', 'enquare_styles_recompile' ) ) {
 					add_action( 'gm_enqueue_script_actions', array( 'GroovyMenuUtils', 'enquare_styles_recompile' ), 15 );
-					//add_action( 'wp_enqueue_scripts', array( 'GroovyMenuUtils', 'enquare_styles_recompile' ), 15 );
 				}
 			}
 
@@ -227,7 +226,7 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 					update_option( GROOVY_MENU_DB_VER_OPTION . '__msg_data', $msg_proposal );
 				}
 
-				$transition_timer = 6 * HOUR_IN_SECONDS;
+				$transition_timer = 2 * HOUR_IN_SECONDS;
 
 				// Set delay for next queue.
 				set_transient( GROOVY_MENU_DB_VER_OPTION . '__msg_delay', true, $transition_timer );
@@ -273,6 +272,8 @@ if ( ! class_exists( 'GroovyMenuSettings' ) ) {
 				'dashboard',
 				'nav-menus',
 				'nav-menus.php',
+				'plugins',
+				'plugins.php',
 				'edit-gm_menu_block',
 				'toplevel_page_groovy_menu_settings',
 				'groovy-menu_page_groovy_menu_welcome',

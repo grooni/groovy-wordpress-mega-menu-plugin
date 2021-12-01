@@ -4,7 +4,7 @@ Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive,
 Requires at least: 4.9.7
 Tested up to: 5.8
 Requires PHP: 7.0
-Stable tag: 1.3.10.2
+Stable tag: 1.4.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -115,6 +115,10 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.4.0 =
+* Improve: The plugin has been highly optimized, the size of the main frontend.js file has been reduced by more than 3 times.
+* Fix: Fixed display of mobile hamburger in some cases.
 
 = 1.3.10 =
 * Add: Added the ability to display the "X" icon for closing the menu for the mobile version, without using the "Animated Hamburger menu" setting.
