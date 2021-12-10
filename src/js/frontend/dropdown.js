@@ -105,6 +105,10 @@ export function dropdownClose(elem) {
 }
 
 export function dropdownToggle(elem, options) {
+  if (!elem) {
+    return;
+  }
+
   if (elem.classList.contains('gm-open')) {
     dropdownClose(elem);
   } else {
@@ -116,6 +120,16 @@ export function dropdownToggle(elem, options) {
         for (let el of elParentChildren) {
           if (el.classList.contains('gm-open')) {
             dropdownClose(el);
+          }
+        }
+      } else {
+        let elParentToolsMenu = elem.closest('.sub-menu');
+        if (elParentToolsMenu) {
+          let elParentChildren = elParentToolsMenu.children;
+          for (let el of elParentChildren) {
+            if (el.classList.contains('gm-open')) {
+              dropdownClose(el);
+            }
           }
         }
       }
