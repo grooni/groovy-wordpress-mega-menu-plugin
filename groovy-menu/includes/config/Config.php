@@ -3046,6 +3046,16 @@ return array(
 			'logo_txt_end'                                 => array(
 				'type' => 'inlineEnd'
 			),
+			'toolbar_menu_text_font'                       => array(
+				'title'       => esc_html__( 'Additional menu', 'groovy-menu' ) . ': ' . esc_html__( 'Google font family', 'groovy-menu' ),
+				'description' => esc_html__( 'Choose preferred Google font family for additional menu.', 'groovy-menu' ),
+				'type'        => 'select',
+				'options'     => array(
+					'none' => 'Inherit'
+				),
+				'default'     => 'none',
+				'condition'   => array( 'toolbar_menu_enable', '==', true ),
+			),
 			'toolbar_menu_text_start'                      => array(
 				'title'     => esc_html__( 'Additional menu items text', 'groovy-menu' ),
 				'type'      => 'inlineStart',
@@ -3064,7 +3074,7 @@ return array(
 				'default'   => 'none',
 				'condition' => array( 'toolbar_menu_enable', '==', true ),
 			),
-			'toolbar_menu_text_weight'                     => array(
+			'toolbar_menu_txt_weight'                     => array(
 				'title'     => esc_html__( 'Font variant', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
@@ -3073,7 +3083,7 @@ return array(
 				'default'   => 'none',
 				'condition' => array( 'toolbar_menu_enable', '==', true ),
 			),
-			'toolbar_menu_text_subset'                     => array(
+			'toolbar_menu_txt_subset'                     => array(
 				'title'     => esc_html__( 'Subset', 'groovy-menu' ),
 				'type'      => 'select',
 				'options'   => array(
