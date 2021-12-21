@@ -2684,6 +2684,11 @@ class GroovyMenuUtils {
 			$detected = 'visual_composer_builder';
 		}
 
+		// "Bricks" page builder plugin.
+		if ( defined( 'BRICKS_BUILDER_PARAM' ) && ! empty( $_GET['bricks'] ) && 'run' === $_GET['bricks'] ) { // @codingStandardsIgnoreLine
+			$detected = 'bricks_builder';
+		}
+
 		return $detected;
 	}
 
