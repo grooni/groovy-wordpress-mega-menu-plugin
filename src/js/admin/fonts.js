@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       self.setChoiceByValue(currVal);
       if (self.passedElement.element.dataset.name === 'logo_txt_font'
-        || self.passedElement.element.dataset.name === 'google_font') {
+        || self.passedElement.element.dataset.name === 'google_font'
+        || self.passedElement.element.dataset.name === 'toolbar_menu_text_font') {
         setTimeout(() => {
           setFontsPreview(self);
         }, 50);
@@ -35,9 +36,14 @@ document.addEventListener('DOMContentLoaded', () => {
     callbackOnInit: setCurrValue
   };
 
+  const toolbarMenuFont = new Choices('[data-name="toolbar_menu_text_font"]', commonSelectOptions);
+  const toolbarMenuVariantSelect = new Choices('[data-name$="toolbar_menu_txt_weight"]', commonSelectOptions);
+  const toolbarMenuSubsetSelect = new Choices('[data-name$="toolbar_menu_txt_subset"]', commonSelectOptions);
+
   const logoFontSelect = new Choices('[data-name="logo_txt_font"]', commonSelectOptions);
   const logoVariantSelect = new Choices('[data-name$="logo_txt_weight"]', commonSelectOptions);
   const logoSubsetSelect = new Choices('[data-name$="logo_txt_subset"]', commonSelectOptions);
+
   const itemFontSelect = new Choices('[data-name="google_font"]', commonSelectOptions);
   const itemVariantSelect = new Choices('[data-name$="text_weight"]', commonSelectOptions);
   const itemSubsetSelect = new Choices('[data-name$="text_subset"]', commonSelectOptions);
@@ -51,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     axios.post(ajaxurl, params)
       .then((response) => {
         fontItems = response.data.data[0].items;
+        fillFontsSelects(toolbarMenuFont, fontItems, toolbarMenuSubsetSelect, toolbarMenuVariantSelect);
         fillFontsSelects(logoFontSelect, fontItems, logoSubsetSelect, logoVariantSelect);
         fillFontsSelects(itemFontSelect, fontItems, itemSubsetSelect, itemVariantSelect);
       })
@@ -141,6 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, false);
   }
 
+  initSelectChanges(toolbarMenuFont, toolbarMenuSubsetSelect, toolbarMenuVariantSelect);
   initSelectChanges(logoFontSelect, logoSubsetSelect, logoVariantSelect);
   initSelectChanges(itemFontSelect, itemSubsetSelect, itemVariantSelect);
 
@@ -204,8 +212,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }, false);
   }
 
-  scrollToActivePosition(itemFontSelect);
+  scrollToActivePosition(toolbarMenuFont);
   scrollToActivePosition(logoFontSelect);
+  scrollToActivePosition(itemFontSelect);
 
   function getFontsValues (fontItems) {
     let fontsArr = [];
@@ -248,6 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.gm-gui__font-preview-wrapper').forEach((preview) => {
       preview.style.display = 'none';
     });
+    toolbarMenuFont.setChoiceByValue('none');
     logoFontSelect.setChoiceByValue('none');
     itemFontSelect.setChoiceByValue('none');
   });
@@ -264,6 +274,15 @@ document.addEventListener('DOMContentLoaded', () => {
       .forEach((item) => {
         if (item.closest('.gm-sublevel').classList.contains('active')) {
           logoFontSelect.setChoiceByValue('none');
+        }
+      });
+
+    document.querySelectorAll(`.${toolbarMenuFont.choiceList.element.className}`)
+      .forEach((item) => {
+        if (item.closest('.gm-sublevel')
+          .classList
+          .contains('active')) {
+          toolbarMenuFont.setChoiceByValue('none');
         }
       });
   });

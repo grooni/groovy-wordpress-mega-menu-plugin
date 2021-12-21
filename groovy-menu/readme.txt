@@ -4,7 +4,7 @@ Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive,
 Requires at least: 4.9.7
 Tested up to: 5.8
 Requires PHP: 7.0
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -115,6 +115,12 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.4.1 =
+* Add: Option for additional menu that allow to show submenu on click or hover.
+* Add: Added option to set own font for additional menu.
+* Add: Added compatibility with Bricks page builder.
+* Fix: Error Message deprecated $render_slug on PHP 8+
 
 = 1.4.0 =
 * Improve: The plugin has been highly optimized, the size of the main frontend.js file has been reduced by more than 3 times.

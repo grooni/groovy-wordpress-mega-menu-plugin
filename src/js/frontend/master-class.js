@@ -563,6 +563,66 @@ class GroovyMenu {
     }
 
 
+    // Sub-Menus DROPDOWN action Toolbar menu (Additional menu) --------------------------------[ open toolbar menu ]---
+    let initDropdownActionToolbar = (e) => {
+      let closestAnchor = e.target.closest('.gm-anchor');
+      let closestDropdown = e.target.closest('.gm-dropdown');
+      if (!closestDropdown) {
+        return false;
+      }
+      let isClosestAnchorEmpty = closestAnchor && '#' === closestAnchor.getAttribute('href');
+      let isTopLevelClass = false;
+      let gmMainMenu = document.querySelector('.gm-toolbar-nav-container .gm-toolbar-nav');
+
+      if (gmMainMenu) {
+        gmMainMenu.classList.add('gm-prevent-autoclose');
+      }
+
+      if (closestDropdown) {
+        isTopLevelClass = closestDropdown.classList.contains('gm-menu-item--lvl-0');
+      }
+
+      // Don't scroll for empty # links.
+      if (isClosestAnchorEmpty && e.type === 'click') {
+        e.preventDefault();
+      }
+
+      // Ignore work with previously frozen link.
+      if (
+        closestDropdown &&
+        closestDropdown.classList.contains('gm-frozen-link') &&
+        e.type === 'click'
+      ) {
+        return false;
+      }
+
+      // fast toggle.
+      if ((closestDropdown && e.target.closest('.gm-caret')) || (closestDropdown && isClosestAnchorEmpty && e.type === 'click')) {
+        e.preventDefault();
+
+        if (!isMobile()) {
+          e.stopPropagation();
+        }
+
+        if (closestDropdown && isTopLevelClass) {
+
+          let isOpenedBefore = closestDropdown.classList.contains('gm-open');
+
+          dropdownCloseAll(0);
+
+          if (!isOpenedBefore) {
+            dropdownOpen(closestDropdown, options);
+          }
+
+        } else {
+          dropdownToggle(closestDropdown, options);
+        }
+
+        return false;
+      }
+
+    };
+
 
     // Click / Mouse[enter|leave] / touch Events ----------------------------------------------------------[ Events ]---
     let gmAnchorItems = document.querySelectorAll('#gm-main-menu .gm-anchor, .gm-second-nav-drawer .gm-navbar-nav .gm-anchor, .gm-minicart, .gm-search, #gm-main-menu .gm-dropdown-menu-wrapper, .gm-second-nav-drawer .gm-navbar-nav .gm-dropdown-menu-wrapper');
@@ -612,6 +672,19 @@ class GroovyMenu {
         }
         dropdownItem.addEventListener('click', initDropdownAction);
       });
+    }
+
+    if (options.toolbarMenuEnable && 'click' === options.toolbarMenuShowSubmenu) {
+      // Click (touch) action for toolbar menu items (additional menu).
+      let gmAnchorItemsToolbar = document.querySelectorAll('.gm-toolbar-nav-container .gm-anchor');
+      if (gmAnchorItemsToolbar) {
+        gmAnchorItemsToolbar.forEach((dropdownItem) => {
+          if (isTouchDevice) {
+            dropdownItem.addEventListener('touchend', initDropdownActionByTouch);
+          }
+          dropdownItem.addEventListener('click', initDropdownActionToolbar);
+        });
+      }
     }
 
     let gmDropdownTitleElems = document.querySelectorAll('.gm-dropdown-menu-wrapper .gm-dropdown-menu-title');
