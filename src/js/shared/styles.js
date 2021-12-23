@@ -5630,6 +5630,7 @@ export default class GmStyles {
         '.gm-toolbar-nav-container ul ul li:hover > a, .gm-toolbar-nav-container ul ul li.current-menu-item > a, .gm-toolbar-nav-container ul ul li.current-menu-ancestor > a': `color: ${subColorHover}; background: ${subBgHover};`,
         '.gm-toolbar-nav-container ul ul li:last-child > a': `border-bottom: ${subLineThickness}px ${subLineStyle} ${subLineColor};`,
         '.gm-toolbar-nav-container ul ul': `font-size: ${subFontSize}px !important; width: ${subWidth}px;`,
+        '.gm-toolbar-nav-container ul ul.sub-menu': 'visibility: hidden;',
         '.gm-toolbar-nav-container ul ul .gm-menu-item__link': `font-size: ${subFontSize}px !important;`,
         '.gm-toolbar-nav-container ul ul ul': `margin-top: -${subTopLineThickness}px; width: ${subWidth}px;`,
         '.gm-toolbar-nav-container ul ul ul ul': `margin-top: 0; width: ${subWidth}px;`,
@@ -5675,6 +5676,10 @@ export default class GmStyles {
 
 
       if ('click' === toolbarMenuShowSubmenu) {
+
+        css.push({
+          '.gm-toolbar-nav-container ul li.gm-open > ul.sub-menu': 'visibility: visible;',
+        });
 
         // Toolbar menu Submenu appearance style
         if ('animate-from-bottom' === appearanceStyle) {
@@ -5723,6 +5728,10 @@ export default class GmStyles {
         }
 
       } else {
+
+        css.push({
+          '.gm-toolbar-nav-container ul li:hover > ul.sub-menu': 'visibility: visible;',
+        });
 
         // Toolbar menu Submenu appearance style
         if ('animate-from-bottom' === appearanceStyle) {
