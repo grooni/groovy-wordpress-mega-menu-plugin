@@ -1124,7 +1124,16 @@ function groovyMenu( $args = array() ) {
 		$output_html .= $gm_main_menu_actions_button_last;
 
 		$output_html .= '</div>';
+
+	} elseif ( ! empty( $gm_main_menu_actions_button_first ) || ! empty( $gm_main_menu_actions_button_last ) ) {
+
+		$output_html .= '<div class="gm-actions">';
+		$output_html .= $gm_main_menu_actions_button_first;
+		$output_html .= $gm_main_menu_actions_button_last;
+		$output_html .= '</div>';
+
 	}
+
 	$output_html .= '</div>
 				</div>
 			</div>
