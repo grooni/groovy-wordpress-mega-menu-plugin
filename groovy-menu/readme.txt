@@ -2,9 +2,9 @@
 Contributors: Grooni
 Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive, responsive menu, sticky menu, vertical menu, horizontal menu, ajax cart
 Requires at least: 4.9.7
-Tested up to: 5.8
+Tested up to: 5.9
 Requires PHP: 7.0
-Stable tag: 1.4.1.1
+Stable tag: 1.4.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -115,6 +115,13 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.4.2 =
+* Fix: Show desktop version of $gm_main_menu_actions_button_first & $gm_main_menu_actions_button_last even if there are no action buttons.
+* Fix: Fixed fadeout animation for close dropdown event that before missed in 2.x version.
+* Fix: Fixed bug when background for dropdowns couldn't be set under "Appearance > Menus > Groovy menu item options > Background image for next level dropdown".
+* Fix: Fixed a look of popup of featured image beside dropdowns.
+* Fix: Broken view of menu in preset preview has been fixed.
 
 = 1.4.1.1 =
 * HotFix: Additional menu Dropdown appearance style.

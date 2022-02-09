@@ -3013,7 +3013,9 @@ class GroovyMenuUtils {
 	 * @param $saved_preset_version
 	 */
 	public static function enquare_styles_recompile( $compiled_css, $saved_preset_version ) {
-		if ( empty( $compiled_css ) || $saved_preset_version !== GROOVY_MENU_VERSION ) {
+		global $groovyMenuPreview;
+
+		if ( empty( $compiled_css ) || $saved_preset_version !== GROOVY_MENU_VERSION || $groovyMenuPreview ) {
 			wp_enqueue_script( 'groovy-menu-style-update', GROOVY_MENU_URL . 'assets/js/styleupdate.js', [], GROOVY_MENU_VERSION, true );
 		}
 	}
