@@ -2,6 +2,7 @@ import axios from 'axios';
 import tingle from 'tingle.js';
 import { resetPreviewModalState } from './modal';
 import { uploadMedia, removeMedia, changeMedia } from './media';
+import {isMobile} from '../shared/helpers';
 
 document.addEventListener('DOMContentLoaded', () => {
   let gmNonce = document.querySelector('#gm-nonce-editor-field');
