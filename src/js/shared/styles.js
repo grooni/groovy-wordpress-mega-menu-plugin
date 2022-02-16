@@ -1875,6 +1875,7 @@ export default class GmStyles {
       // Sub level box width
       if (settings.subLevelWidth) {
         css.push({
+          '.gm-main-menu-wrapper #gm-main-menu .gm-dropdown-menu-wrapper': `max-width: ${settings.subLevelWidth}px`,
           '.gm-main-menu-wrapper #gm-main-menu .gm-dropdown-menu-wrapper .gm-dropdown-menu': `width: ${settings.subLevelWidth}px`,
           media: 'desktop'
         });
@@ -2866,7 +2867,7 @@ export default class GmStyles {
         '.gm-navbar #gm-main-menu': 'position: static; flex: 1 100%; align-self: flex-end; margin: 52px 0 0 0;',
         '.gm-navbar .gm-navbar-nav': 'display: flex; flex-direction: column; width: 100%; height: auto; justify-content: flex-start;',
         '.gm-navbar .gm-dropdown-menu-wrapper': 'width: 100%; height: 100%;',
-        '.gm-navbar:not(.gm-expanding--open) .gm-dropdown-menu-wrapper': 'visibility: hidden;',
+        '.gm-navbar:not(.gm-expanding--open) .gm-dropdown-menu-wrapper': 'visibility: hidden; opacity: 0;',
         '.gm-navbar .gm-dropdown-menu .gm-menu-item': 'padding-right: 0; padding-left: 0;',
         '.gm-navbar .gm-dropdown-menu .gm-menu-item__link': 'padding-right: 32px; padding-left: 32px;',
         '.gm-navbar .gm-dropdown-menu .groovy-menu-wim-wrap': 'padding-right: 32px; padding-left: 32px;',

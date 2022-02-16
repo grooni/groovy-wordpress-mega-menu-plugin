@@ -4,7 +4,7 @@ Tags: mega menu, megamenu, navigation, mobile menu, drop down, menu, responsive,
 Requires at least: 4.9.7
 Tested up to: 5.9
 Requires PHP: 7.0
-Stable tag: 1.4.2
+Stable tag: 1.4.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -115,6 +115,10 @@ The source code of the plugin can be found at [GitHub](https://github.com/grooni
 5. Mega menu with menu blocks.
 
 == Changelog ==
+
+= 1.4.3 =
+* Fix: Minimalistic menu bug with submenu gap on iOS.
+* Fix: Bug with Expanding sidebar right side on MacOS/iOS in Chrome browser.
 
 = 1.4.2 =
 * Fix: Show desktop version of $gm_main_menu_actions_button_first & $gm_main_menu_actions_button_last even if there are no action buttons.
