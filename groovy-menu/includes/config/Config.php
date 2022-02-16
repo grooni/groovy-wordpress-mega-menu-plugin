@@ -2697,7 +2697,7 @@ return array(
 				'title'     => esc_html__( 'Top level hover line thickness', 'groovy-menu' ),
 				'type'      => 'number',
 				'range'     => array( 1, 20 ),
-				'default'   => 3,
+				'default'   => 2,
 				'unit'      => 'px',
 				'condition' => array(
 					array( 'header.style', 'in', array( '1' ) ),
